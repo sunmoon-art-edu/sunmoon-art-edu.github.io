@@ -23,6 +23,9 @@ def photo_src(name):
     p = f'assets/photos/{name}'
     if INLINE and os.path.exists(p):
         return 'data:image/jpeg;base64,' + base64.b64encode(open(p, 'rb').read()).decode()
+    if os.path.exists(p):  # cache-bust: a replaced photo gets a new URL
+        import hashlib
+        return p + '?v=' + hashlib.md5(open(p, 'rb').read()).hexdigest()[:8]
     return p
 
 # ---------------------------------------------------------------- slice source
