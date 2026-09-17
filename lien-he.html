@@ -657,7 +657,7 @@ body.has-float{padding-bottom:0}
 .pagehead + .section{padding-top:clamp(3rem,6vw,4.5rem)}
 .homeclasses .grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:2.5rem}
 @media (min-width:640px){.homeclasses .grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1000px){.homeclasses .grid{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1000px){.homeclasses .grid{grid-template-columns:repeat(3,1fr)}}
 .hc{background:var(--ivory);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;min-height:11rem;transition:background .3s ease}
 .hc:hover{background:var(--ivory-2)}
 .hc .age{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
@@ -728,8 +728,10 @@ body.has-float{padding-bottom:0}
         <p class="lede">Kể cho chúng tôi một chút về con (hoặc về bạn). SunMoon sẽ gợi ý chương trình và hẹn một buổi học thử vào giờ phù hợp với gia đình.</p>
       </div>
       <dl class="clist">
-        <div><dt>Điện thoại</dt><dd><a href="tel:+84396308188">039 630 8188</a></dd></div>
-        <div><dt>Zalo / WhatsApp</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo 039 630 8188</a></dd></div>
+        <div><dt>Điện thoại</dt><dd><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></dd></div>
+        <div><dt>Zalo</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a> / <a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></dd></div>
+        <div><dt>Fanpage</dt><dd><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></dd></div>
+        <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></dd></div>
         <div><dt>Email</dt><dd><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></dd></div>
         <div><dt>Địa chỉ</dt><dd>Park 01 &amp; Landmark 6, Vinhomes Central Park, 208 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM</dd></div>
       </dl>
@@ -741,13 +743,17 @@ body.has-float{padding-bottom:0}
         <div class="field"><label for="f-phone">Số điện thoại hoặc Zalo</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err">Cần một số để SunMoon liên hệ lại.</span></div>
       </div>
       <div class="field">
-        <label>Lớp dành cho ai?</label>
-        <div class="chips" role="radiogroup" aria-label="Nhóm tuổi người học">
-          <label><input type="radio" name="group" value="Little (3–5 tuổi)" checked><span>Bé 3–5 tuổi</span></label>
-          <label><input type="radio" name="group" value="Kids (5–13 tuổi)"><span>Bé 5–13 tuổi</span></label>
-          <label><input type="radio" name="group" value="Thiếu niên / HSK"><span>Thiếu niên · HSK</span></label>
-          <label><input type="radio" name="group" value="Người lớn"><span>Người lớn · Cuộc sống &amp; công việc</span></label>
-          <label><input type="radio" name="group" value="Toán / Tiền tiểu học / Chữ đẹp"><span>Toán · Tiền tiểu học · Chữ đẹp</span></label>
+        <label>Quan tâm lớp nào?</label>
+        <div class="chips" role="radiogroup" aria-label="Quan tâm lớp nào?">
+          <label><input type="radio" name="group" value="SunMoon PreChinese" checked><span>SunMoon PreChinese</span></label>
+          <label><input type="radio" name="group" value="SunMoon ChineseKids"><span>SunMoon ChineseKids</span></label>
+          <label><input type="radio" name="group" value="Tiếng Trung thương mại"><span>Tiếng Trung thương mại</span></label>
+          <label><input type="radio" name="group" value="Lớp cá nhân hoá theo nhu cầu"><span>Lớp cá nhân hoá theo nhu cầu</span></label>
+          <label><input type="radio" name="group" value="Lớp giao tiếp"><span>Lớp giao tiếp</span></label>
+          <label><input type="radio" name="group" value="Lớp HSK"><span>Lớp HSK</span></label>
+          <label><input type="radio" name="group" value="Toán tư duy"><span>Toán tư duy</span></label>
+          <label><input type="radio" name="group" value="Luyện chữ đẹp"><span>Luyện chữ đẹp</span></label>
+          <label><input type="radio" name="group" value="Chương trình Camp"><span>Chương trình Camp</span></label>
         </div>
       </div>
       <div class="row two">
@@ -801,10 +807,11 @@ body.has-float{padding-bottom:0}
       <div>
         <h4>Liên hệ</h4>
         <ul class="contact-list">
-          <li><span>Điện thoại &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> · <a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo</a></li>
+          <li><span>Điện thoại &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
           <li><span>Email</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
           <li><span>Địa chỉ</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM</li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoonartandeducation" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Fanpage</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
         </ul>
       </div>
     </div>
@@ -862,8 +869,10 @@ body.has-float{padding-bottom:0}
         <p class="lede">Kể cho chúng tôi một chút về con (hoặc về bạn). SunMoon sẽ gợi ý chương trình và hẹn một buổi học thử vào giờ phù hợp với gia đình.</p>
       </div>
       <dl class="clist">
-        <div><dt>Điện thoại</dt><dd><a href="tel:+84396308188">039 630 8188</a></dd></div>
-        <div><dt>Zalo / WhatsApp</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo 039 630 8188</a></dd></div>
+        <div><dt>Điện thoại</dt><dd><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></dd></div>
+        <div><dt>Zalo</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a> / <a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></dd></div>
+        <div><dt>Fanpage</dt><dd><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></dd></div>
+        <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></dd></div>
         <div><dt>Email</dt><dd><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></dd></div>
         <div><dt>Địa chỉ</dt><dd>Park 01 &amp; Landmark 6, Vinhomes Central Park, 208 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM</dd></div>
       </dl>
@@ -875,13 +884,17 @@ body.has-float{padding-bottom:0}
         <div class="field"><label for="f-phone">Số điện thoại hoặc Zalo</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err">Cần một số để SunMoon liên hệ lại.</span></div>
       </div>
       <div class="field">
-        <label>Lớp dành cho ai?</label>
-        <div class="chips" role="radiogroup" aria-label="Nhóm tuổi người học">
-          <label><input type="radio" name="group" value="Little (3–5 tuổi)" checked><span>Bé 3–5 tuổi</span></label>
-          <label><input type="radio" name="group" value="Kids (5–13 tuổi)"><span>Bé 5–13 tuổi</span></label>
-          <label><input type="radio" name="group" value="Thiếu niên / HSK"><span>Thiếu niên · HSK</span></label>
-          <label><input type="radio" name="group" value="Người lớn"><span>Người lớn · Cuộc sống &amp; công việc</span></label>
-          <label><input type="radio" name="group" value="Toán / Tiền tiểu học / Chữ đẹp"><span>Toán · Tiền tiểu học · Chữ đẹp</span></label>
+        <label>Quan tâm lớp nào?</label>
+        <div class="chips" role="radiogroup" aria-label="Quan tâm lớp nào?">
+          <label><input type="radio" name="group" value="SunMoon PreChinese" checked><span>SunMoon PreChinese</span></label>
+          <label><input type="radio" name="group" value="SunMoon ChineseKids"><span>SunMoon ChineseKids</span></label>
+          <label><input type="radio" name="group" value="Tiếng Trung thương mại"><span>Tiếng Trung thương mại</span></label>
+          <label><input type="radio" name="group" value="Lớp cá nhân hoá theo nhu cầu"><span>Lớp cá nhân hoá theo nhu cầu</span></label>
+          <label><input type="radio" name="group" value="Lớp giao tiếp"><span>Lớp giao tiếp</span></label>
+          <label><input type="radio" name="group" value="Lớp HSK"><span>Lớp HSK</span></label>
+          <label><input type="radio" name="group" value="Toán tư duy"><span>Toán tư duy</span></label>
+          <label><input type="radio" name="group" value="Luyện chữ đẹp"><span>Luyện chữ đẹp</span></label>
+          <label><input type="radio" name="group" value="Chương trình Camp"><span>Chương trình Camp</span></label>
         </div>
       </div>
       <div class="row two">
@@ -935,10 +948,11 @@ body.has-float{padding-bottom:0}
       <div>
         <h4>Liên hệ</h4>
         <ul class="contact-list">
-          <li><span>Điện thoại &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> · <a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo</a></li>
+          <li><span>Điện thoại &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
           <li><span>Email</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
           <li><span>Địa chỉ</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM</li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoonartandeducation" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Fanpage</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
         </ul>
       </div>
     </div>
@@ -996,8 +1010,10 @@ body.has-float{padding-bottom:0}
         <p class="lede">Tell us a little about your child (or yourself). We'll suggest a programme and arrange a trial at a time that suits you.</p>
       </div>
       <dl class="clist">
-        <div><dt>Phone</dt><dd><a href="tel:+84396308188">039 630 8188</a></dd></div>
-        <div><dt>WhatsApp / Zalo</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo 039 630 8188</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></dd></div>
+        <div><dt>Zalo</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a> / <a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></dd></div>
+        <div><dt>Facebook page</dt><dd><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></dd></div>
+        <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></dd></div>
         <div><dt>Email</dt><dd><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></dd></div>
         <div><dt>Address</dt><dd>Park 01 &amp; Landmark 6, Vinhomes Central Park, 208 Nguyen Huu Canh, Binh Thanh District, Ho Chi Minh City</dd></div>
       </dl>
@@ -1009,13 +1025,17 @@ body.has-float{padding-bottom:0}
         <div class="field"><label for="f-phone">Phone or Zalo</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err">We need a number to reply to you.</span></div>
       </div>
       <div class="field">
-        <label>Who is the class for?</label>
-        <div class="chips" role="radiogroup" aria-label="Learner age group">
-          <label><input type="radio" name="group" value="Little (3–5)" checked><span>Child, 3–5</span></label>
-          <label><input type="radio" name="group" value="Kids (5–13)"><span>Child, 5–13</span></label>
-          <label><input type="radio" name="group" value="Teen / HSK"><span>Teen · HSK</span></label>
-          <label><input type="radio" name="group" value="Adult"><span>Adult · Life &amp; Work</span></label>
-          <label><input type="radio" name="group" value="Maths / Pre-Primary / Handwriting"><span>Maths · Pre-Primary · Handwriting</span></label>
+        <label>Which class are you interested in?</label>
+        <div class="chips" role="radiogroup" aria-label="Which class are you interested in?">
+          <label><input type="radio" name="group" value="SunMoon PreChinese" checked><span>SunMoon PreChinese</span></label>
+          <label><input type="radio" name="group" value="SunMoon ChineseKids"><span>SunMoon ChineseKids</span></label>
+          <label><input type="radio" name="group" value="Business Chinese"><span>Business Chinese</span></label>
+          <label><input type="radio" name="group" value="Personalised Classes"><span>Personalised Classes</span></label>
+          <label><input type="radio" name="group" value="Conversational Chinese"><span>Conversational Chinese</span></label>
+          <label><input type="radio" name="group" value="HSK Classes"><span>HSK Classes</span></label>
+          <label><input type="radio" name="group" value="Logical Maths"><span>Logical Maths</span></label>
+          <label><input type="radio" name="group" value="Beautiful Handwriting"><span>Beautiful Handwriting</span></label>
+          <label><input type="radio" name="group" value="SunMoon Camps"><span>SunMoon Camps</span></label>
         </div>
       </div>
       <div class="row two">
@@ -1069,10 +1089,11 @@ body.has-float{padding-bottom:0}
       <div>
         <h4>Contact</h4>
         <ul class="contact-list">
-          <li><span>Phone &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> · <a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo</a></li>
+          <li><span>Phone &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
           <li><span>Email</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
           <li><span>Address</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyen Huu Canh, Binh Thanh, Ho Chi Minh City</li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoonartandeducation" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Facebook page</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
         </ul>
       </div>
     </div>
@@ -1130,8 +1151,10 @@ body.has-float{padding-bottom:0}
         <p class="lede">简单介绍一下孩子（或您自己）。我们会推荐合适的课程，并在方便的时间安排一堂试听课。</p>
       </div>
       <dl class="clist">
-        <div><dt>电话</dt><dd><a href="tel:+84396308188">039 630 8188</a></dd></div>
-        <div><dt>Zalo / WhatsApp</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo 039 630 8188</a></dd></div>
+        <div><dt>电话</dt><dd><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></dd></div>
+        <div><dt>Zalo</dt><dd><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a> / <a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></dd></div>
+        <div><dt>Facebook 主页</dt><dd><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></dd></div>
+        <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></dd></div>
         <div><dt>邮箱</dt><dd><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></dd></div>
         <div><dt>地址</dt><dd>Park 01 &amp; Landmark 6, Vinhomes Central Park, 208 Nguyen Huu Canh, Binh Thanh, Ho Chi Minh City（胡志明市平盛郡）</dd></div>
       </dl>
@@ -1143,13 +1166,17 @@ body.has-float{padding-bottom:0}
         <div class="field"><label for="f-phone">电话或 Zalo</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err">我们需要一个号码来回复您。</span></div>
       </div>
       <div class="field">
-        <label>这堂课是为谁准备的？</label>
-        <div class="chips" role="radiogroup" aria-label="学员年龄段">
-          <label><input type="radio" name="group" value="幼儿班 (3–5岁)" checked><span>3–5 岁儿童</span></label>
-          <label><input type="radio" name="group" value="少儿班 (5–13岁)"><span>5–13 岁儿童</span></label>
-          <label><input type="radio" name="group" value="青少年 / HSK"><span>青少年 · HSK</span></label>
-          <label><input type="radio" name="group" value="成人"><span>成人 · 生活与职场</span></label>
-          <label><input type="radio" name="group" value="数学 / 幼小衔接 / 书写"><span>数学 · 幼小衔接 · 书写</span></label>
+        <label>对哪门课感兴趣？</label>
+        <div class="chips" role="radiogroup" aria-label="对哪门课感兴趣？">
+          <label><input type="radio" name="group" value="SunMoon PreChinese" checked><span>SunMoon PreChinese</span></label>
+          <label><input type="radio" name="group" value="SunMoon ChineseKids"><span>SunMoon ChineseKids</span></label>
+          <label><input type="radio" name="group" value="商务中文"><span>商务中文</span></label>
+          <label><input type="radio" name="group" value="个性化定制课程"><span>个性化定制课程</span></label>
+          <label><input type="radio" name="group" value="中文口语交际课"><span>中文口语交际课</span></label>
+          <label><input type="radio" name="group" value="HSK 课程"><span>HSK 课程</span></label>
+          <label><input type="radio" name="group" value="逻辑思维数学"><span>逻辑思维数学</span></label>
+          <label><input type="radio" name="group" value="书写练习"><span>书写练习</span></label>
+          <label><input type="radio" name="group" value="营地课程"><span>营地课程</span></label>
         </div>
       </div>
       <div class="row two">
@@ -1203,10 +1230,11 @@ body.has-float{padding-bottom:0}
       <div>
         <h4>联系方式</h4>
         <ul class="contact-list">
-          <li><span>电话 &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> · <a href="https://zalo.me/0396308188" target="_blank" rel="noopener">Zalo</a></li>
+          <li><span>电话 &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
           <li><span>邮箱</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
           <li><span>地址</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyen Huu Canh, Binh Thanh, 胡志明市</li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoonartandeducation" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Facebook 主页</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
+          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
         </ul>
       </div>
     </div>

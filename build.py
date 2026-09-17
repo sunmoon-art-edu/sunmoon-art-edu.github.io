@@ -52,7 +52,7 @@ HOME, ABOUT, CLASSES, PARENTS, FAQ, CONTACT = (
     'index.html', 'gioi-thieu.html', 'lop-hoc.html', 'ba-me.html', 'hoi-dap.html', 'lien-he.html')
 ANCHOR_PAGE = {
     'about': ABOUT, 'approach': ABOUT, 'teachers': ABOUT,
-    'programs': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES,
+    'programs': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'comm': CLASSES,
     'work': CLASSES, 'more': CLASSES, 'journey': CLASSES,
     'parents': PARENTS, 'stories': PARENTS, 'guide': PARENTS,
     'faq': FAQ, 'contact': CONTACT, 'trial': CONTACT,
@@ -66,7 +66,7 @@ L = {
             cta='Đăng ký học thử', menu='Điều hướng chính', home_label='SunMoon Art & Education — trang chủ',
             strap='Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành',
             titles={ABOUT: ('Giới thiệu', 'Về SunMoon', 'Một trung tâm tiếng Trung được xây quanh cách trẻ thật sự học một ngôn ngữ.'),
-                    CLASSES: ('Các lớp học', 'Chương trình tại SunMoon', 'Tiếng Trung theo độ tuổi, lộ trình HSK, lớp cho người lớn, cùng các lớp Toán tư duy, Tiền tiểu học và Luyện chữ đẹp.'),
+                    CLASSES: ('Các lớp học', 'Chương trình tại SunMoon', 'Tiếng Trung cho bé theo độ tuổi, tiếng Trung thương mại, giao tiếp, HSK, lớp cá nhân hoá, cùng Toán tư duy, Luyện chữ đẹp và các chương trình Camp.'),
                     PARENTS: ('Dành cho ba mẹ', 'Đồng hành cùng ba mẹ', 'Những câu hỏi thật, câu chuyện thật, và những điều nên biết trước khi con bắt đầu.'),
                     FAQ: ('Hỏi đáp', 'Câu hỏi thường gặp', 'Những điều ba mẹ hay hỏi SunMoon nhất.'),
                     CONTACT: ('Liên hệ', 'Đăng ký học thử', 'Kể cho SunMoon một chút về con, chúng tôi sẽ gợi ý lớp phù hợp và hẹn buổi học thử.')}),
@@ -75,7 +75,7 @@ L = {
             cta='Book a trial', menu='Primary', home_label='SunMoon Art & Education — home',
             strap='Chinese Language · Culture · Creativity · Growth',
             titles={ABOUT: ('About', 'About SunMoon', 'A Chinese language centre built around the way children actually learn a language.'),
-                    CLASSES: ('Classes', 'Programmes at SunMoon', 'Chinese by age, the HSK pathway, adult classes, plus Logical Maths, Pre-Primary and Handwriting.'),
+                    CLASSES: ('Classes', 'Programmes at SunMoon', 'Chinese for children by age, Business Chinese, conversation, HSK and personalised classes, plus Logical Maths, Handwriting and seasonal Camps.'),
                     PARENTS: ('For parents', 'Walking with parents', 'Real questions, real stories, and what is worth knowing before your child starts.'),
                     FAQ: ('FAQ', 'Questions parents ask', 'The things parents ask us most often.'),
                     CONTACT: ('Contact', 'Book a trial class', 'Tell us a little about your child. We will suggest a programme and arrange a trial.')}),
@@ -84,7 +84,7 @@ L = {
             cta='预约试听', menu='主导航', home_label='SunMoon Art & Education — 首页',
             strap='中文语言 · 文化 · 创造力 · 成长',
             titles={ABOUT: ('关于日月', '关于日月', '一所围绕孩子真实学习方式而建立的中文学习中心。'),
-                    CLASSES: ('课程', '日月的课程', '按年龄划分的中文课、HSK 进阶之路、成人课程，以及思维数学、幼小衔接与书写练习。'),
+                    CLASSES: ('课程', '日月的课程', '按年龄划分的少儿中文、商务中文、口语交际、HSK 与个性化定制课程，以及逻辑思维数学、书写练习和营地课程。'),
                     PARENTS: ('家长须知', '与家长同行', '真实的问题、真实的故事，以及孩子开始学习前值得了解的事。'),
                     FAQ: ('常见问题', '家长常问的问题', '家长最常问我们的问题。'),
                     CONTACT: ('联系我们', '预约试听课', '简单介绍一下孩子，我们会推荐合适的课程并安排试听。')}),
@@ -227,7 +227,7 @@ def build_head(lang, page):
 .pagehead + .section{{padding-top:clamp(3rem,6vw,4.5rem)}}
 .homeclasses .grid{{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:2.5rem}}
 @media (min-width:640px){{.homeclasses .grid{{grid-template-columns:1fr 1fr}}}}
-@media (min-width:1000px){{.homeclasses .grid{{grid-template-columns:repeat(4,1fr)}}}}
+@media (min-width:1000px){{.homeclasses .grid{{grid-template-columns:repeat(3,1fr)}}}}
 .hc{{background:var(--ivory);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;min-height:11rem;transition:background .3s ease}}
 .hc:hover{{background:var(--ivory-2)}}
 .hc .age{{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}}
