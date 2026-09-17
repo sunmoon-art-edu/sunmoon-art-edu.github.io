@@ -561,6 +561,12 @@ p{margin:0}
 .done .copied{font-size:.85rem;color:var(--vermilion);margin-top:.6rem;min-height:1.2em}
 .form.sent .row,.form.sent .foot,.form.sent .field{display:none}
 
+/* ---------- compact contact links ---------- */
+.clinks{display:flex;flex-wrap:wrap;gap:.5rem}
+.clinks a{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .85rem;border:1px solid var(--line-strong);border-radius:999px;background:var(--ivory);color:var(--ink);font-size:.9rem;line-height:1;white-space:nowrap;transition:border-color .2s,color .2s}
+.clinks a:hover{border-color:var(--vermilion);color:var(--vermilion)}
+.clinks a svg{flex:0 0 auto}
+.clinks.page{border-top:1px solid var(--line);padding-top:1.6rem}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}

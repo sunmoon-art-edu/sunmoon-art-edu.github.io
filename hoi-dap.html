@@ -564,6 +564,12 @@ p{margin:0}
 .done .copied{font-size:.85rem;color:var(--vermilion);margin-top:.6rem;min-height:1.2em}
 .form.sent .row,.form.sent .foot,.form.sent .field{display:none}
 
+/* ---------- compact contact links ---------- */
+.clinks{display:flex;flex-wrap:wrap;gap:.5rem}
+.clinks a{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .85rem;border:1px solid var(--line-strong);border-radius:999px;background:var(--ivory);color:var(--ink);font-size:.9rem;line-height:1;white-space:nowrap;transition:border-color .2s,color .2s}
+.clinks a:hover{border-color:var(--vermilion);color:var(--vermilion)}
+.clinks a svg{flex:0 0 auto}
+.clinks.page{border-top:1px solid var(--line);padding-top:1.6rem}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -764,13 +770,15 @@ body.has-float{padding-bottom:0}
       </div>
       <div>
         <h4>Liên hệ</h4>
-        <ul class="contact-list">
-          <li><span>Điện thoại &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
-          <li><span>Email</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
-          <li><span>Địa chỉ</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM</li>
-          <li><span>Fanpage</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
-        </ul>
+        <div class="clinks foot" aria-label="Liên hệ nhanh">
+          <a href="tel:+84396308188"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 630 8188</a>
+          <a href="tel:+84394009488"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 400 9488</a>
+          <a href="https://zalo.me/0396308188" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Zalo</a>
+          <a href="mailto:sunmoonartandeducation@gmail.com"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+          <a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Fanpage</a>
+          <a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Facebook</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Vinhomes+Central+Park+208+Nguy%E1%BB%85n+H%E1%BB%AFu+C%E1%BA%A3nh+B%C3%ACnh+Th%E1%BA%A1nh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Bản đồ</a>
+        </div>
       </div>
     </div>
     <div class="bottom">
@@ -870,13 +878,15 @@ body.has-float{padding-bottom:0}
       </div>
       <div>
         <h4>Liên hệ</h4>
-        <ul class="contact-list">
-          <li><span>Điện thoại &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
-          <li><span>Email</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
-          <li><span>Địa chỉ</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyễn Hữu Cảnh, Bình Thạnh, TP.HCM</li>
-          <li><span>Fanpage</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
-        </ul>
+        <div class="clinks foot" aria-label="Liên hệ nhanh">
+          <a href="tel:+84396308188"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 630 8188</a>
+          <a href="tel:+84394009488"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 400 9488</a>
+          <a href="https://zalo.me/0396308188" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Zalo</a>
+          <a href="mailto:sunmoonartandeducation@gmail.com"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+          <a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Fanpage</a>
+          <a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Facebook</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Vinhomes+Central+Park+208+Nguy%E1%BB%85n+H%E1%BB%AFu+C%E1%BA%A3nh+B%C3%ACnh+Th%E1%BA%A1nh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Bản đồ</a>
+        </div>
       </div>
     </div>
     <div class="bottom">
@@ -976,13 +986,15 @@ body.has-float{padding-bottom:0}
       </div>
       <div>
         <h4>Contact</h4>
-        <ul class="contact-list">
-          <li><span>Phone &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
-          <li><span>Email</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
-          <li><span>Address</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyen Huu Canh, Binh Thanh, Ho Chi Minh City</li>
-          <li><span>Facebook page</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
-        </ul>
+        <div class="clinks foot" aria-label="Quick contact">
+          <a href="tel:+84396308188"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 630 8188</a>
+          <a href="tel:+84394009488"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 400 9488</a>
+          <a href="https://zalo.me/0396308188" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Zalo</a>
+          <a href="mailto:sunmoonartandeducation@gmail.com"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+          <a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Fanpage</a>
+          <a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Facebook</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Vinhomes+Central+Park+208+Nguy%E1%BB%85n+H%E1%BB%AFu+C%E1%BA%A3nh+B%C3%ACnh+Th%E1%BA%A1nh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Map</a>
+        </div>
       </div>
     </div>
     <div class="bottom">
@@ -1082,13 +1094,15 @@ body.has-float{padding-bottom:0}
       </div>
       <div>
         <h4>联系方式</h4>
-        <ul class="contact-list">
-          <li><span>电话 &amp; Zalo</span><a href="tel:+84396308188">039 630 8188</a> / <a href="tel:+84394009488">039 400 9488</a></li>
-          <li><span>邮箱</span><a href="mailto:sunmoonartandeducation@gmail.com">sunmoonartandeducation@gmail.com</a></li>
-          <li><span>地址</span>Park 01 &amp; Landmark 6, Vinhomes Central Park,<br>208 Nguyen Huu Canh, Binh Thanh, 胡志明市</li>
-          <li><span>Facebook 主页</span><a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener">facebook.com/sunmoonartandeducation</a></li>
-          <li><span>Facebook</span><a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener">facebook.com/sunmoon.art.n.edu</a></li>
-        </ul>
+        <div class="clinks foot" aria-label="快速联系">
+          <a href="tel:+84396308188"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 630 8188</a>
+          <a href="tel:+84394009488"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>039 400 9488</a>
+          <a href="https://zalo.me/0396308188" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Zalo</a>
+          <a href="mailto:sunmoonartandeducation@gmail.com"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+          <a href="https://www.facebook.com/sunmoonartandeducation/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Fanpage</a>
+          <a href="https://www.facebook.com/sunmoon.art.n.edu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>Facebook</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Vinhomes+Central+Park+208+Nguy%E1%BB%85n+H%E1%BB%AFu+C%E1%BA%A3nh+B%C3%ACnh+Th%E1%BA%A1nh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>地图</a>
+        </div>
       </div>
     </div>
     <div class="bottom">
