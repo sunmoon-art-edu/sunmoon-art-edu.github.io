@@ -47,6 +47,14 @@ s=open('app.html',encoding='utf-8').read()
 s=s.replace('YCT 1',f'YCT {LV}').replace('YCT1',f'YCT{LV}').replace('yct1',f'yct{LV}')
 s=s.replace('/*DATA*/',js).replace('/*PRIOR*/{}',json.dumps(prior,ensure_ascii=False))
 s=s.replace('/*STROKES*/{}',json.dumps(need,ensure_ascii=False,separators=(',',':')))
+# bộ thủ + cách ghép chữ (makemeahanzi, cùng nguồn với nét chữ)
+rad={}
+for line in open('makemeahanzi-dictionary.txt',encoding='utf-8'):
+    o=json.loads(line); c=o['character']
+    if c not in need or c not in chars: continue
+    m=re.match(r'^[⿰⿱⿵⿶⿷⿸⿹⿺⿻]([^？⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻])([^？⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻])$',o.get('decomposition',''))
+    rad[c]=[o.get('radical',''),(m.group(1)+m.group(2)) if m else '']
+s=s.replace('/*RAD*/{}',json.dumps(rad,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*AUDIO*/{}',json.dumps(audio,ensure_ascii=False,separators=(',',':')))
 open(f'../yct{LV}-artifact.html','w',encoding='utf-8').write(s)
 page=('<!doctype html>\n<html lang="vi">\n<head>\n<meta charset="utf-8">\n'
