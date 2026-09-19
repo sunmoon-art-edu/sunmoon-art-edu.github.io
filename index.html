@@ -1641,23 +1641,37 @@ body.has-float{padding-bottom:0}
 <script>
 (function(){
   /* ---- config: connect the trial form here (Google Apps Script / Formspree / your API). Leave empty until ready. ---- */
-  var FORM_ENDPOINT = '';
+  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec';
 
   var d=document, w=window;
   var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var LANGS={vi:'Tiếng Việt',en:'English',zh:'中文'};
   var ZALO='https://zalo.me/0396308188';
   var MSG={
-    en:{open:'Open menu',close:'Close menu',title:'Your message is ready',copied:'Copied. Paste it into the Zalo chat.',copy:'Copy message',go:'Open Zalo and send',
-        hint:'Zalo will open a chat with SunMoon (039 630 8188). Paste the message and send it, we reply personally.',
+    en:{open:'Open menu',close:'Close menu',title:'Registration sent ✓',copied:'Copied. Paste it into the Zalo chat.',copy:'Copy message',go:'Open Zalo and send',
+        hint:'SunMoon has received your details. Zalo is opening — tap and hold the chat box, choose Paste, then Send to chat with us.',
         compose:function(x){return 'Hello SunMoon, I would like to book a trial class.\n- Parent: '+x.parent+'\n- Phone/Zalo: '+x.phone+'\n- Class: '+x.group+(x.age?'\n- Age: '+x.age:'')+'\n- Chinese experience: '+x.experience+(x.message?'\n- Note: '+x.message:'');}},
-    vi:{open:'Mở menu',close:'Đóng menu',title:'Tin nhắn đã soạn sẵn',copied:'Đã sao chép. Dán vào khung chat Zalo là xong.',copy:'Sao chép tin nhắn',go:'Mở Zalo và gửi',
-        hint:'Zalo sẽ mở khung chat với SunMoon (039 630 8188). Dán tin nhắn và gửi, SunMoon sẽ trả lời trực tiếp.',
+    vi:{open:'Mở menu',close:'Đóng menu',title:'Đã gửi đăng ký ✓',copied:'Đã sao chép. Dán vào khung chat Zalo là xong.',copy:'Sao chép tin nhắn',go:'Mở Zalo và gửi',
+        hint:'SunMoon đã nhận thông tin đăng ký của ba mẹ. Zalo đang mở — nhấn giữ ô chat, chọn Dán rồi Gửi để trò chuyện với SunMoon ngay.',
         compose:function(x){return 'Xin chào SunMoon, tôi muốn đăng ký học thử.\n- Phụ huynh: '+x.parent+'\n- SĐT/Zalo: '+x.phone+'\n- Lớp: '+x.group+(x.age?'\n- Tuổi: '+x.age:'')+'\n- Đã học tiếng Trung: '+x.experience+(x.message?'\n- Ghi chú: '+x.message:'');}},
-    zh:{open:'打开菜单',close:'关闭菜单',title:'信息已为您准备好',copied:'已复制。粘贴到 Zalo 聊天框即可。',copy:'复制信息',go:'打开 Zalo 发送',
-        hint:'Zalo 将打开与日月（039 630 8188）的聊天窗口。粘贴信息并发送，我们会亲自回复。',
+    zh:{open:'打开菜单',close:'关闭菜单',title:'报名已提交 ✓',copied:'已复制。粘贴到 Zalo 聊天框即可。',copy:'复制信息',go:'打开 Zalo 发送',
+        hint:'日月已收到您的报名信息。Zalo 正在打开——长按聊天框，选择粘贴并发送，即可与我们沟通。',
         compose:function(x){return '您好日月，我想预约试听课。\n- 家长：'+x.parent+'\n- 电话/Zalo：'+x.phone+'\n- 班级：'+x.group+(x.age?'\n- 年龄：'+x.age:'')+'\n- 中文基础：'+x.experience+(x.message?'\n- 备注：'+x.message:'');}}
   };
+  var MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent||'');
+  /* gửi đăng ký về Lịch toàn năng SunMoon (tab Học thử) — sendBeacon để không mất khi chuyển sang Zalo */
+  function sendLead(o){
+    if(!FORM_ENDPOINT) return;
+    o.nguon='Web chinesekidsvn.com';
+    var body=JSON.stringify(o);
+    try{ if(navigator.sendBeacon && navigator.sendBeacon(FORM_ENDPOINT, new Blob([body],{type:'text/plain'}))) return; }catch(e){}
+    try{ fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain'},body:body}); }catch(e){}
+  }
+  /* chép tin + mở Zalo SunMoon ngay trong cùng 1 lần bấm */
+  function goZalo(text){
+    try{ navigator.clipboard.writeText(text); }catch(e){}
+    if(MOBILE){ w.location.href=ZALO; } else { w.open(ZALO,'_blank','noopener'); }
+  }
   var lang='vi';
   function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
@@ -1822,7 +1836,8 @@ body.has-float{padding-bottom:0}
         function copy(){ try{ navigator.clipboard.writeText(text).then(function(){ flag.textContent=MSG[lang].copied; }); }catch(err){} }
         done.querySelector('.copy').addEventListener('click', copy); copy();
         done.scrollIntoView({behavior: reduce?'auto':'smooth', block:'nearest'});
-        if(FORM_ENDPOINT){ fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({parent:x.n,phone:x.p,age:x.a,group:cname,lang:lang,submitted_at:new Date().toISOString()})}).catch(function(){}); }
+        sendLead({tenBe:x.n,phuHuynh:x.n,sdt:x.p,tuoi:x.a,chuongTrinh:cname,ghiChu:'Đăng ký từ popup lớp · '+lang});
+        goZalo(text);
       });
       requestAnimationFrame(function(){ box.classList.add('on'); });
       if(card.id && location.hash!=='#'+card.id) history.replaceState(null,'','#'+card.id);
@@ -1857,8 +1872,8 @@ body.has-float{padding-bottom:0}
       done.querySelector('.copy').addEventListener('click', copy);
       copy();
       done.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'});
-      if(FORM_ENDPOINT){ data.submitted_at=new Date().toISOString(); data.lang=lang;
-        fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)}).catch(function(){}); }
+      sendLead({tenBe:data.parent,phuHuynh:data.parent,sdt:data.phone,tuoi:data.age,chuongTrinh:data.group,ghiChu:[data.experience?('Đã học: '+data.experience):'',data.message||'','form Liên hệ · '+lang].filter(Boolean).join(' · ')});
+      goZalo(text);
     });
     form.querySelectorAll('input').forEach(function(i){ i.addEventListener('input', function(){ i.closest('.field').classList.remove('invalid'); }); });
     }
