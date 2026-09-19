@@ -324,7 +324,8 @@ LESSONS.forEach((L, i) => {
   if (L.review) {
     L.nodes.push({ id: `${i}-r0`, type: "r", lesson: i, label: "Ôn từ vựng 1", icon: "复" },
                  { id: `${i}-r1`, type: "r", lesson: i, label: "Ôn từ vựng 2", icon: "习" },
-                 { id: `${i}-s`, type: "s", lesson: i, label: "Ôn câu & viết", icon: "句" });
+                 { id: `${i}-s`, type: "s", lesson: i, label: "Ôn câu", icon: "句" },
+                 { id: `${i}-v0`, type: "v", lesson: i, label: "Ôn viết chữ", icon: "写", review: true });
     NODES.push(...L.nodes); return;
   }
   const n = L.W.length, parts = Math.ceil(n / 5), size = Math.ceil(n / parts);
@@ -332,7 +333,11 @@ LESSONS.forEach((L, i) => {
     const words = L.W.slice(k * size, (k + 1) * size);
     L.nodes.push({ id: `${i}-w${k}`, type: "w", lesson: i, words, label: parts > 1 ? `Từ mới ${k + 1}` : "Từ mới", icon: words[0].h[0] });
   }
-  L.nodes.push({ id: `${i}-s`, type: "s", lesson: i, label: "Câu & viết chữ", icon: "句" });
+  const wc = [...new Set(L.W.flatMap(w => [...w.h]))].filter(c => STROKES[c]);
+  const vp = Math.ceil(wc.length / 8), vs = Math.ceil(wc.length / vp);
+  for (let k = 0; k < vp; k++)
+    L.nodes.push({ id: `${i}-v${k}`, type: "v", lesson: i, chars: wc.slice(k * vs, (k + 1) * vs), label: vp > 1 ? `Tập viết ${k + 1}` : "Tập viết", icon: "写" });
+  L.nodes.push({ id: `${i}-s`, type: "s", lesson: i, label: "Luyện câu", icon: "句" });
   NODES.push(...L.nodes);
 });
 
@@ -515,7 +520,6 @@ function exSents(L) {
   L.sents.forEach((s, k) => q.push({ t: k === 1 ? "listenArr" : "arrange", s }));
   q.splice(1, 0, { t: "match", ws: shuffle(L.W).slice(0, 5) });
   q.push({ t: "read", s: shuffle(L.sents)[0] });
-  L.write.filter(c => STROKES[c]).forEach(c => q.push({ t: "write", c }));
   return q;
 }
 
@@ -530,12 +534,18 @@ function reviewLesson() {
   return { i: LESSONS.length - 1, W: ALL, sents: shuffle(ALL_SENTS).slice(0, 4), write: writes };
 }
 
+function exWrite(node) {
+  const chars = node.review ? shuffle([...new Set(ALL.flatMap(w => [...w.h]))].filter(c => STROKES[c])).slice(0, 8) : node.chars;
+  return chars.map(c => ({ t: "write", c, demo: true }));
+}
+
 /* session */
 let S = null;
 const stage = $("#stage"), checkBtn = $("#checkBtn"), skipBtn = $("#skipBtn");
 function startNode(node) {
   const L = LESSONS[node.lesson];
-  const q = node.type === "w" ? exWords(node) : node.type === "r" ? exReview() : exSents(L.review ? reviewLesson() : L);
+  const q = node.type === "w" ? exWords(node) : node.type === "r" ? exReview()
+    : node.type === "v" ? exWrite(node) : exSents(L.review ? reviewLesson() : L);
   S = { node, q, i: 0, hearts: 5, right: 0, wrong: 0 };
   $("#lesson").hidden = false; document.body.style.overflow = "hidden";
   renderEx();
@@ -668,7 +678,7 @@ const R = {
     stage.innerHTML = `<div class="ask">Viết chữ theo đúng thứ tự nét</div><div class="winfo"><div class="p">${esc(w && w.h === c ? w.p : "")}</div><div class="v">${w ? (w.h === c ? esc(w.v) : `trong từ <span class="han">${esc(w.h)}</span> · ${esc(w.v)}`) : ""}</div></div>` + writeBoxHtml() +
       `<div class="wtools"><button class="btn ghost" id="wDemo">Xem mẫu</button><button class="btn ghost" id="wSay">Nghe</button></div>`;
     const opts = { onComplete: ({ totalMistakes }) => { S.mode = "check"; feedback(true, `<span class="h">${esc(c)}</span> · ${totalMistakes ? `sai ${totalMistakes} nét, lần sau cố hơn nhé` : "đúng hết các nét!"}`, true); } };
-    requestAnimationFrame(() => { if (!makeWriter(c, opts, false)) next(); });
+    requestAnimationFrame(() => { if (!makeWriter(c, opts, !!ex.demo)) next(); });
     $("#wDemo").onclick = () => makeWriter(c, opts, true);
     $("#wSay").onclick = () => speak(c);
     speak(c);
