@@ -142,6 +142,10 @@ _ns = {}
 exec(open('src/lop-chi-tiet.py', encoding='utf-8').read(), _ns)
 DETAIL_H, DETAIL_C = _ns['H'], _ns['C']
 
+# 19/09 chị Linh: các lớp có học online và offline (tạm áp cho 6 lớp tiếng Trung)
+ONLINE_OK = {'little', 'kids', 'hsk', 'comm', 'work', 'custom'}
+MODES = {'vi': ('Offline tại P1 & L6', 'Online'), 'en': ('In person at P1 & L6', 'Online'), 'zh': ('线下 · P1 & L6', '线上')}
+
 def detail_html(cid, lang):
     c, h = DETAIL_C[cid], DETAIL_H[lang]
     x = c[lang]
@@ -190,7 +194,8 @@ def detail_html(cid, lang):
     else:
         note = f'<p class="more-note">{x.get("note") or h["note"]}</p>'
     attrs = ''.join(f' data-{k}="{x[k]}"' for k in ('kicker', 'reg', 'ask') if x.get(k))
-    return (f'<div class="more" hidden{attrs}>{tag}{para("lead","more-lead")}'
+    modes = (f'<p class="modes"><span>{MODES[lang][0]}</span><span>{MODES[lang][1]}</span></p>' if cid in ONLINE_OK else '')
+    return (f'<div class="more" hidden{attrs}>{modes}{tag}{para("lead","more-lead")}'
             f'<div class="{grid}">' + ''.join(secs) + '</div>'
             f'{faq_sec}{note}</div>')
 
@@ -200,6 +205,8 @@ def add_details(html, lang):
         art, cid = m.group(0), m.group(2)
         if cid not in DETAIL_C:
             return art
+        if cid in ONLINE_OK:
+            art = re.sub(r'(<h3 class="name">.*?</h3>)', lambda mm: mm.group(1) + f'\n        <p class="modes"><span>{MODES[lang][0]}</span><span>{MODES[lang][1]}</span></p>', art, count=1, flags=re.S)
         art = re.sub(r'(\s*<a class="link" href="[^"]*#trial">)',
                      lambda mm: f'\n        <button type="button" class="more-btn">{btn} <span aria-hidden="true">+</span></button>' + mm.group(1),
                      art, count=1)
