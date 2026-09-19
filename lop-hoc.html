@@ -647,6 +647,25 @@ p{margin:0}
 .vcard .ico{width:52px;height:52px;color:var(--vermilion);margin-bottom:.4rem}
 .vcard h3{font-family:var(--sans);font-size:1.08rem;font-weight:600;line-height:1.3;color:var(--ink)}
 .vcard p{font-size:.96rem;line-height:1.5;color:var(--ink-2);max-width:26ch}
+.docs-badge{display:inline-block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--vermilion);border:1px solid var(--vermilion);border-radius:999px;padding:.5rem .9rem;margin-bottom:2rem}
+.docs-group{margin-bottom:3rem}
+.docs-group .lede{margin:.5rem 0 1.4rem}
+.docs-grid{display:grid;gap:1rem}
+@media (min-width:640px){.docs-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.docs-grid{grid-template-columns:repeat(3,1fr)}}
+.doc{border:1px solid var(--line);border-radius:var(--radius);background:var(--ivory);padding:1.3rem;display:flex;flex-direction:column;gap:.55rem;position:relative}
+.doc h4{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1}
+.doc-meta{font-size:.9rem;color:var(--ink-3);margin:0 0 .3rem}
+.dl{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.6rem;padding:.7rem .8rem;border:1px solid var(--line-strong);border-radius:10px;color:var(--ink);font-size:.93rem;transition:border-color .2s,color .2s,background .2s}
+.dl:hover{border-color:var(--vermilion);color:var(--vermilion);background:var(--ivory-2)}
+.dl svg{color:var(--vermilion)}
+.dl small{font-size:.78rem;color:var(--ink-3)}
+.docs-extra{margin-top:1rem;max-width:26rem}
+.doc-soon{background:var(--ivory-2)}
+.doc-soon h4{font-size:1.25rem;line-height:1.2}
+.soon{align-self:flex-start;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;background:var(--vermilion);color:var(--ivory);border-radius:999px;padding:.3rem .6rem}
+.docs-src{font-size:.85rem;color:var(--ink-3);font-style:italic;max-width:48rem}
+.gate{max-width:460px}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -772,6 +791,7 @@ body.has-float{padding-bottom:0}
       <a href="gioi-thieu.html">Giới thiệu</a>
       <a href="lop-hoc.html" class="is-here" aria-current="page">Các lớp học</a>
       <a href="ba-me.html">Dành cho ba mẹ</a>
+      <a href="tai-lieu.html">Tài liệu</a>
       <a href="lien-he.html">Liên hệ</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
@@ -780,7 +800,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="lien-he.html">Liên hệ</a>
+  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Đăng ký học thử</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành</p>
@@ -1011,7 +1031,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Khám phá</h4>
-        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="lien-he.html">Liên hệ</a></li></ul>
+        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="tai-lieu.html">Tài liệu</a></li><li><a href="lien-he.html">Liên hệ</a></li></ul>
       </div>
       <div>
         <h4>Liên hệ</h4>
@@ -1049,6 +1069,7 @@ body.has-float{padding-bottom:0}
       <a href="gioi-thieu.html">Giới thiệu</a>
       <a href="lop-hoc.html" class="is-here" aria-current="page">Các lớp học</a>
       <a href="ba-me.html">Dành cho ba mẹ</a>
+      <a href="tai-lieu.html">Tài liệu</a>
       <a href="lien-he.html">Liên hệ</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
@@ -1057,7 +1078,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="lien-he.html">Liên hệ</a>
+  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Đăng ký học thử</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành</p>
@@ -1288,7 +1309,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Khám phá</h4>
-        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="lien-he.html">Liên hệ</a></li></ul>
+        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="tai-lieu.html">Tài liệu</a></li><li><a href="lien-he.html">Liên hệ</a></li></ul>
       </div>
       <div>
         <h4>Liên hệ</h4>
@@ -1326,6 +1347,7 @@ body.has-float{padding-bottom:0}
       <a href="gioi-thieu.html">About</a>
       <a href="lop-hoc.html" class="is-here" aria-current="page">Classes</a>
       <a href="ba-me.html">For parents</a>
+      <a href="tai-lieu.html">Resources</a>
       <a href="lien-he.html">Contact</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
@@ -1334,7 +1356,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Home</a><a class="item" href="gioi-thieu.html">About</a><a class="item" href="lop-hoc.html">Classes</a><a class="item" href="ba-me.html">For parents</a><a class="item" href="lien-he.html">Contact</a>
+  <a class="item" href="index.html">Home</a><a class="item" href="gioi-thieu.html">About</a><a class="item" href="lop-hoc.html">Classes</a><a class="item" href="ba-me.html">For parents</a><a class="item" href="tai-lieu.html">Resources</a><a class="item" href="lien-he.html">Contact</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Book a trial class</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Chinese Language · Culture · Creativity · Growth</p>
@@ -1566,7 +1588,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Explore</h4>
-        <ul><li><a href="index.html">Home</a></li><li><a href="gioi-thieu.html">About</a></li><li><a href="ba-me.html">For parents</a></li><li><a href="lien-he.html">Contact</a></li></ul>
+        <ul><li><a href="index.html">Home</a></li><li><a href="gioi-thieu.html">About</a></li><li><a href="ba-me.html">For parents</a></li><li><a href="tai-lieu.html">Resources</a></li><li><a href="lien-he.html">Contact</a></li></ul>
       </div>
       <div>
         <h4>Contact</h4>
@@ -1604,6 +1626,7 @@ body.has-float{padding-bottom:0}
       <a href="gioi-thieu.html">关于日月</a>
       <a href="lop-hoc.html" class="is-here" aria-current="page">课程</a>
       <a href="ba-me.html">家长须知</a>
+      <a href="tai-lieu.html">学习资料</a>
       <a href="lien-he.html">联系我们</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
@@ -1612,7 +1635,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">首页</a><a class="item" href="gioi-thieu.html">关于日月</a><a class="item" href="lop-hoc.html">课程</a><a class="item" href="ba-me.html">家长须知</a><a class="item" href="lien-he.html">联系我们</a>
+  <a class="item" href="index.html">首页</a><a class="item" href="gioi-thieu.html">关于日月</a><a class="item" href="lop-hoc.html">课程</a><a class="item" href="ba-me.html">家长须知</a><a class="item" href="tai-lieu.html">学习资料</a><a class="item" href="lien-he.html">联系我们</a>
   <a class="btn btn-primary" href="lien-he.html#trial">预约试听课</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">中文语言 · 文化 · 创造力 · 成长</p>
@@ -1843,7 +1866,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>探索</h4>
-        <ul><li><a href="index.html">首页</a></li><li><a href="gioi-thieu.html">关于日月</a></li><li><a href="ba-me.html">家长须知</a></li><li><a href="lien-he.html">联系我们</a></li></ul>
+        <ul><li><a href="index.html">首页</a></li><li><a href="gioi-thieu.html">关于日月</a></li><li><a href="ba-me.html">家长须知</a></li><li><a href="tai-lieu.html">学习资料</a></li><li><a href="lien-he.html">联系我们</a></li></ul>
       </div>
       <div>
         <h4>联系方式</h4>
@@ -2085,6 +2108,36 @@ body.has-float{padding-bottom:0}
     var hid=(location.hash||'').slice(1);
     if(hid && /^[a-z]+$/.test(hid)){ var hc=d.getElementById(hid); if(hc && hc.querySelector('.more') && !d.querySelector('.detail')){ hc.scrollIntoView({block:'center'}); openDetail(hc); } }
 
+
+    /* tài liệu: để lại SĐT 1 lần → tải tất cả (lưu về Lịch toàn năng) */
+    var GT={vi:{t:'Nhận tài liệu miễn phí',s:'Để lại tên và số điện thoại một lần, sau đó ba mẹ tải được tất cả tài liệu.',n:'Tên phụ huynh / học viên',p:'Số điện thoại / Zalo',b:'Mở tài liệu',e:'Vui lòng nhập tên và số điện thoại',x:'Đóng'},
+            en:{t:'Get the free materials',s:'Leave your name and phone number once, then download everything.',n:'Parent / learner name',p:'Phone / Zalo',b:'Open the file',e:'Please enter your name and phone number',x:'Close'},
+            zh:{t:'免费领取资料',s:'留一次姓名和电话，即可下载全部资料。',n:'家长 / 学员姓名',p:'电话 / Zalo',b:'打开资料',e:'请填写姓名和电话',x:'关闭'}};
+    function unlocked(){ try{ return localStorage.getItem('sunmoon-dl')==='1'; }catch(e){ return false; } }
+    [].forEach.call(d.querySelectorAll('a.dl'), function(a){
+      a.addEventListener('click', function(e){
+        if(unlocked()) return;
+        e.preventDefault();
+        var t=GT[lang]||GT.vi, box=d.createElement('div'); box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true');
+        box.innerHTML='<div class="detail-panel gate"><button type="button" class="detail-x" aria-label="'+t.x+'">×</button><h3 class="detail-title">'+t.t+'</h3><p class="detail-sub">'+t.s+'</p>'
+          +'<form class="detail-form" novalidate><input name="n" placeholder="'+t.n+'" autocomplete="name"><input name="p" type="tel" inputmode="tel" placeholder="'+t.p+'" autocomplete="tel">'
+          +'<p class="detail-err" aria-live="polite"></p><div class="detail-actions"><button class="btn btn-primary" type="submit">'+t.b+'</button></div></form></div>';
+        d.body.appendChild(box); d.body.style.overflow='hidden';
+        function kill(){ box.remove(); d.body.style.overflow=''; }
+        box.addEventListener('click', function(ev){ if(ev.target===box) kill(); });
+        box.querySelector('.detail-x').addEventListener('click', kill);
+        var f=box.querySelector('form'); setTimeout(function(){ f.n.focus(); },50);
+        f.addEventListener('submit', function(ev){
+          ev.preventDefault();
+          var n=f.n.value.trim(), p=f.p.value.trim();
+          if(!n||p.replace(/\D/g,'').length<9){ f.querySelector('.detail-err').textContent=t.e; return; }
+          sendLead({tenBe:n,phuHuynh:n,sdt:p,chuongTrinh:'Tải tài liệu '+(a.dataset.lvl||''),ghiChu:'Tải tài liệu trên web · '+lang});
+          try{ localStorage.setItem('sunmoon-dl','1'); }catch(err){}
+          kill(); w.open(a.href,'_blank','noopener');
+        });
+        requestAnimationFrame(function(){ box.classList.add('on'); });
+      });
+    });
     /* trial form */
     if(form){
     form.addEventListener('submit', function(e){

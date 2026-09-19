@@ -209,6 +209,36 @@
     var hid=(location.hash||'').slice(1);
     if(hid && /^[a-z]+$/.test(hid)){ var hc=d.getElementById(hid); if(hc && hc.querySelector('.more') && !d.querySelector('.detail')){ hc.scrollIntoView({block:'center'}); openDetail(hc); } }
 
+
+    /* tài liệu: để lại SĐT 1 lần → tải tất cả (lưu về Lịch toàn năng) */
+    var GT={vi:{t:'Nhận tài liệu miễn phí',s:'Để lại tên và số điện thoại một lần, sau đó ba mẹ tải được tất cả tài liệu.',n:'Tên phụ huynh / học viên',p:'Số điện thoại / Zalo',b:'Mở tài liệu',e:'Vui lòng nhập tên và số điện thoại',x:'Đóng'},
+            en:{t:'Get the free materials',s:'Leave your name and phone number once, then download everything.',n:'Parent / learner name',p:'Phone / Zalo',b:'Open the file',e:'Please enter your name and phone number',x:'Close'},
+            zh:{t:'免费领取资料',s:'留一次姓名和电话，即可下载全部资料。',n:'家长 / 学员姓名',p:'电话 / Zalo',b:'打开资料',e:'请填写姓名和电话',x:'关闭'}};
+    function unlocked(){ try{ return localStorage.getItem('sunmoon-dl')==='1'; }catch(e){ return false; } }
+    [].forEach.call(d.querySelectorAll('a.dl'), function(a){
+      a.addEventListener('click', function(e){
+        if(unlocked()) return;
+        e.preventDefault();
+        var t=GT[lang]||GT.vi, box=d.createElement('div'); box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true');
+        box.innerHTML='<div class="detail-panel gate"><button type="button" class="detail-x" aria-label="'+t.x+'">×</button><h3 class="detail-title">'+t.t+'</h3><p class="detail-sub">'+t.s+'</p>'
+          +'<form class="detail-form" novalidate><input name="n" placeholder="'+t.n+'" autocomplete="name"><input name="p" type="tel" inputmode="tel" placeholder="'+t.p+'" autocomplete="tel">'
+          +'<p class="detail-err" aria-live="polite"></p><div class="detail-actions"><button class="btn btn-primary" type="submit">'+t.b+'</button></div></form></div>';
+        d.body.appendChild(box); d.body.style.overflow='hidden';
+        function kill(){ box.remove(); d.body.style.overflow=''; }
+        box.addEventListener('click', function(ev){ if(ev.target===box) kill(); });
+        box.querySelector('.detail-x').addEventListener('click', kill);
+        var f=box.querySelector('form'); setTimeout(function(){ f.n.focus(); },50);
+        f.addEventListener('submit', function(ev){
+          ev.preventDefault();
+          var n=f.n.value.trim(), p=f.p.value.trim();
+          if(!n||p.replace(/\D/g,'').length<9){ f.querySelector('.detail-err').textContent=t.e; return; }
+          sendLead({tenBe:n,phuHuynh:n,sdt:p,chuongTrinh:'Tải tài liệu '+(a.dataset.lvl||''),ghiChu:'Tải tài liệu trên web · '+lang});
+          try{ localStorage.setItem('sunmoon-dl','1'); }catch(err){}
+          kill(); w.open(a.href,'_blank','noopener');
+        });
+        requestAnimationFrame(function(){ box.classList.add('on'); });
+      });
+    });
     /* trial form */
     if(form){
     form.addEventListener('submit', function(e){

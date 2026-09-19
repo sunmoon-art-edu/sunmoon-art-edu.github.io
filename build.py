@@ -51,45 +51,48 @@ BODIES = {l: slice_body(R(f'src/body-{l}.html')) for l in LANGS}
 
 # ------------------------------------------------------------------ page model
 # section key -> page it now lives on (used to rewrite in-page anchors)
-HOME, ABOUT, CLASSES, PARENTS, FAQ, CONTACT = (
-    'index.html', 'gioi-thieu.html', 'lop-hoc.html', 'ba-me.html', 'hoi-dap.html', 'lien-he.html')
+HOME, ABOUT, CLASSES, PARENTS, FAQ, CONTACT, DOCS = (
+    'index.html', 'gioi-thieu.html', 'lop-hoc.html', 'ba-me.html', 'hoi-dap.html', 'lien-he.html', 'tai-lieu.html')
 ANCHOR_PAGE = {
     'about': ABOUT, 'approach': ABOUT, 'teachers': ABOUT,
     'programs': CLASSES, 'math': CLASSES, 'writing': CLASSES, 'camp': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'comm': CLASSES,
     'work': CLASSES, 'more': CLASSES, 'journey': CLASSES,
     'parents': PARENTS, 'stories': PARENTS, 'guide': PARENTS,
-    'faq': PARENTS, 'contact': CONTACT, 'trial': CONTACT,
+    'faq': PARENTS, 'docs': DOCS, 'contact': CONTACT, 'trial': CONTACT,
 }
 NAV = [(HOME, 'home'), (ABOUT, 'about'), (CLASSES, 'classes'), (PARENTS, 'parents'),
-       (CONTACT, 'contact')]   # 19/09: bỏ trang Hỏi đáp (chị Linh) — câu hỏi gộp vào Dành cho ba mẹ
+       (DOCS, 'docs'), (CONTACT, 'contact')]   # 19/09: bỏ trang Hỏi đáp (chị Linh) — câu hỏi gộp vào Dành cho ba mẹ
 
 L = {
  'vi': dict(nav=dict(home='Trang chủ', about='Giới thiệu', classes='Các lớp học',
-                     parents='Dành cho ba mẹ', faq='Hỏi đáp', contact='Liên hệ'),
+                     parents='Dành cho ba mẹ', faq='Hỏi đáp', docs='Tài liệu', contact='Liên hệ'),
             cta='Đăng ký học thử', menu='Điều hướng chính', home_label='SunMoon Art & Education — trang chủ',
             strap='Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành',
             titles={ABOUT: ('Giới thiệu', 'Về SunMoon', 'Một trung tâm tiếng Trung được xây quanh cách trẻ thật sự học một ngôn ngữ.'),
                     CLASSES: ('Các lớp học', 'Chương trình tại SunMoon', 'Tiếng Trung cho bé theo độ tuổi, tiếng Trung thương mại, giao tiếp, HSK, lớp cá nhân hoá, cùng Toán tư duy, Luyện chữ đẹp và các chương trình Camp.'),
                     PARENTS: ('Dành cho ba mẹ', 'Đồng hành cùng ba mẹ', 'Những câu hỏi thật, câu chuyện thật, và những điều nên biết trước khi con bắt đầu.'),
                     FAQ: ('Hỏi đáp', 'Câu hỏi thường gặp', 'Những điều ba mẹ hay hỏi SunMoon nhất.'),
+                    DOCS: ('Tài liệu', 'Tài liệu học miễn phí', 'Đề thi mẫu, từ vựng và file nghe YCT, HSK chính thức. Để lại số điện thoại 1 lần là tải được tất cả.'),
                     CONTACT: ('Liên hệ', 'Đăng ký học thử', 'Kể cho SunMoon một chút về con, chúng tôi sẽ gợi ý lớp phù hợp và hẹn buổi học thử.')}),
  'en': dict(nav=dict(home='Home', about='About', classes='Classes',
-                     parents='For parents', faq='FAQ', contact='Contact'),
+                     parents='For parents', faq='FAQ', docs='Resources', contact='Contact'),
             cta='Book a trial class', menu='Primary', home_label='SunMoon Art & Education — home',
             strap='Chinese Language · Culture · Creativity · Growth',
             titles={ABOUT: ('About', 'About SunMoon', 'A Chinese language centre built around the way children actually learn a language.'),
                     CLASSES: ('Classes', 'Programmes at SunMoon', 'Chinese for children by age, Business Chinese, conversation, HSK and personalised classes, plus Logical Maths, Handwriting and seasonal Camps.'),
                     PARENTS: ('For parents', 'Walking with parents', 'Real questions, real stories, and what is worth knowing before your child starts.'),
                     FAQ: ('FAQ', 'Questions parents ask', 'The things parents ask us most often.'),
+                    DOCS: ('Resources', 'Free learning resources', 'Official YCT and HSK sample tests, vocabulary and audio. Leave your phone number once to download everything.'),
                     CONTACT: ('Contact', 'Book a trial class', 'Tell us a little about your child. We will suggest a programme and arrange a trial.')}),
  'zh': dict(nav=dict(home='首页', about='关于日月', classes='课程',
-                     parents='家长须知', faq='常见问题', contact='联系我们'),
+                     parents='家长须知', faq='常见问题', docs='学习资料', contact='联系我们'),
             cta='预约试听课', menu='主导航', home_label='SunMoon Art & Education — 首页',
             strap='中文语言 · 文化 · 创造力 · 成长',
             titles={ABOUT: ('关于日月', '关于日月', '一所围绕孩子真实学习方式而建立的中文学习中心。'),
                     CLASSES: ('课程', '日月的课程', '按年龄划分的少儿中文、商务中文、口语交际、HSK 与个性化定制课程，以及逻辑思维数学、书写练习和营地课程。'),
                     PARENTS: ('家长须知', '与家长同行', '真实的问题、真实的故事，以及孩子开始学习前值得了解的事。'),
                     FAQ: ('常见问题', '家长常问的问题', '家长最常问我们的问题。'),
+                    DOCS: ('学习资料', '免费学习资料', 'YCT、HSK 官方样卷、词汇和听力。留一次电话即可下载全部资料。'),
                     CONTACT: ('联系我们', '预约试听课', '简单介绍一下孩子，我们会推荐合适的课程并安排试听。')}),
 }
 
@@ -99,6 +102,7 @@ PAGES = {
     CLASSES: ['programs', 'journey', 'trial', 'final'],
     PARENTS: ['parents', 'stories', 'guide', 'faq', 'trial', 'final'],
     CONTACT: ['contact', 'final'],
+    DOCS:    ['docs', 'final'],
 }
 
 # ------------------------------------------------------- rewrite links & photos
@@ -212,6 +216,73 @@ def add_details(html, lang):
                      art, count=1)
         return art.replace('</article>', detail_html(cid, lang) + '\n      </article>')
     return re.sub(r'<article class="(x?prog)[^"]*" id="(\w+)"[^>]*>.*?</article>', sub, html, flags=re.S)
+
+
+# ------------------------------------------------------------ trang Tài liệu (19/09)
+DOCS_T = {
+ 'vi': dict(badge='Miễn phí · Tài liệu chính thức · Để lại SĐT 1 lần là tải được tất cả',
+            yct='YCT — Thi tiếng Trung cho học sinh', yct_sub='Kỳ thi chuẩn quốc tế dành cho học sinh tiểu học, THCS. 4 cấp.',
+            hsk='HSK — Thi năng lực tiếng Trung', hsk_sub='Chứng chỉ dùng cho du học, học bổng, xin việc. 6 cấp.',
+            lvl='Cấp', words='từ', pages='trang', mins='phút',
+            f_yct='Đề cương + từ vựng + đề mẫu', f_mau='Đề thi mẫu + đáp án', f_dc='Đề cương + từ vựng', f_nghe='File nghe',
+            vocab_all='Từ vựng HSK 1–6 (file Excel)',
+            pre='Giáo trình SunMoon PreChinese', pre_d='Giáo trình trung tâm tự soạn cho bé 3–7 tuổi. Bản xem thử sắp có.',
+            comm='Tài liệu Giao tiếp', comm_d='Bộ mẫu câu giao tiếp theo tình huống do SunMoon biên soạn. Sắp có.',
+            paid='Sách bài tập online', paid_d='Bài tập luyện thêm YCT · HSK · Giao tiếp, có đáp án. Có phí.', soon='Sắp ra mắt', ask='Nhắn Zalo để được báo sớm',
+            src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
+ 'en': dict(badge='Free · Official materials · Leave your number once to download everything',
+            yct='YCT — Youth Chinese Test', yct_sub='The international Chinese test for primary and secondary students. 4 levels.',
+            hsk='HSK — Chinese Proficiency Test', hsk_sub='The certificate for study abroad, scholarships and jobs. 6 levels.',
+            lvl='Level', words='words', pages='pages', mins='min',
+            f_yct='Syllabus + vocabulary + sample test', f_mau='Sample test + answers', f_dc='Syllabus + vocabulary', f_nghe='Listening audio',
+            vocab_all='HSK 1–6 vocabulary (Excel)',
+            pre='SunMoon PreChinese course book', pre_d='Our own course book for ages 3–7. Preview pages coming soon.',
+            comm='Conversation materials', comm_d='Situational phrase sets written by SunMoon. Coming soon.',
+            paid='Online workbooks', paid_d='Extra YCT · HSK · conversation practice with answers. Paid.', soon='Coming soon', ask='Message us on Zalo to hear first',
+            src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
+ 'zh': dict(badge='免费 · 官方资料 · 留一次电话即可下载全部',
+            yct='YCT — 中小学生汉语考试', yct_sub='面向中小学生的国际标准化中文考试，共 4 级。',
+            hsk='HSK — 汉语水平考试', hsk_sub='用于留学、奖学金和求职的证书，共 6 级。',
+            lvl='级', words='词', pages='页', mins='分钟',
+            f_yct='大纲 + 词汇 + 样卷', f_mau='样卷 + 答案', f_dc='大纲 + 词汇', f_nghe='听力音频',
+            vocab_all='HSK 1–6 级词汇表（Excel）',
+            pre='日月 PreChinese 教材', pre_d='中心自编的 3–7 岁教材，试读页即将上线。',
+            comm='口语交际资料', comm_d='日月编写的情境句型资料，即将上线。',
+            paid='线上练习册', paid_d='YCT · HSK · 口语额外练习，附答案，收费。', soon='即将推出', ask='Zalo 留言，第一时间通知您',
+            src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
+}
+YCT_INFO = [(1, 80, 35, 11), (2, 150, 42, 15), (3, 300, 52, 21), (4, 600, 55, 30)]
+HSK_INFO = [(1, 150, 14, 38, 15), (2, 300, 18, 50, 26), (3, 600, 22, 51, 36), (4, 1200, 24, 54, 31), (5, 2500, 25, 75, 30), (6, 5000, 30, 118, 36)]
+IC_PDF = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>'
+IC_AUD = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>'
+
+def docs_section(lang):
+    t = DOCS_T[lang]
+    dl = lambda href, ic, label, meta, lvl: (f'<a class="dl" href="{href}" data-lvl="{lvl}" target="_blank" rel="noopener">'
+                                            f'{ic}<span>{label}</span><small>{meta}</small></a>')
+    yct = ''.join(f'<article class="doc"><h4>YCT {n}</h4><p class="doc-meta">~{w} {t["words"]}</p>'
+                  + dl(f'tailieu/yct/YCT{n}-de-cuong-tu-vung-de-mau.pdf', IC_PDF, t['f_yct'], f'{p} {t["pages"]}', f'YCT{n}')
+                  + dl(f'tailieu/yct/YCT{n}-file-nghe.m4a', IC_AUD, t['f_nghe'], f'{m} {t["mins"]}', f'YCT{n}')
+                  + '</article>' for n, w, p, m in YCT_INFO)
+    hsk = ''.join(f'<article class="doc"><h4>HSK {n}</h4><p class="doc-meta">{"≥" if n == 6 else "~"}{w} {t["words"]}</p>'
+                  + dl(f'tailieu/hsk/HSK{n}-de-thi-mau.pdf', IC_PDF, t['f_mau'], f'{p} {t["pages"]}', f'HSK{n}')
+                  + dl(f'tailieu/hsk/HSK{n}-file-nghe.m4a', IC_AUD, t['f_nghe'], f'{m} {t["mins"]}', f'HSK{n}')
+                  + dl(f'tailieu/hsk/HSK{n}-de-cuong-tu-vung.pdf', IC_PDF, t['f_dc'], f'{pd} {t["pages"]}', f'HSK{n}')
+                  + '</article>' for n, w, p, pd, m in HSK_INFO)
+    soon = lambda title, desc, extra='': (f'<article class="doc doc-soon"><span class="soon">{t["soon"]}</span><h4>{title}</h4>'
+                                          f'<p class="doc-meta">{desc}</p>{extra}</article>')
+    return f"""<section class="section docs" id="docs">
+  <div class="wrap">
+    <p class="docs-badge reveal">{t['badge']}</p>
+    <div class="docs-group reveal"><h3 class="h3">{t['yct']}</h3><p class="lede">{t['yct_sub']}</p><div class="docs-grid">{yct}</div></div>
+    <div class="docs-group reveal"><h3 class="h3">{t['hsk']}</h3><p class="lede">{t['hsk_sub']}</p><div class="docs-grid">{hsk}</div>
+      <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
+    <div class="docs-group reveal"><div class="docs-grid">
+      {soon(t['pre'], t['pre_d'])}{soon(t['comm'], t['comm_d'])}{soon(t['paid'], t['paid_d'], f'<a class="link" href="https://zalo.me/0396308188" target="_blank" rel="noopener">{t["ask"]}</a>')}
+    </div></div>
+    <p class="docs-src">{t['src']}</p>
+  </div>
+</section>"""
 
 # ------------------------------------------------------------------ page chrome
 def nav_html(lang, page):
@@ -329,7 +400,7 @@ def build_page(page):
         _, sec, _ = BODIES[lang]
         parts = [chrome(lang, page), '<main>', page_head(lang, page)]
         for key in PAGES[page]:
-            html = home_classes(lang) if key == 'homeclasses' else sec[key]
+            html = home_classes(lang) if key == 'homeclasses' else (docs_section(lang) if key == 'docs' else sec[key])
             if page != HOME and key == 'about':
                 html = html.replace('<section class="section intro" id="about">',
                                     '<section class="section intro no-top" id="about">')
