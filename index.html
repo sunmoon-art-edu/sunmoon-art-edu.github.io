@@ -720,6 +720,7 @@ p{margin:0}
 .vcard.vwide p{max-width:40ch}
 @media (min-width:760px){.tl .row{grid-template-columns:10rem 12rem 1fr}}
 .tl .age.long{font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.25}
+@media (min-width:760px){.prog.self{grid-column:1/-1}}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -806,7 +807,7 @@ body.has-float{padding-bottom:0}
 .pagehead + .section{padding-top:clamp(3rem,6vw,4.5rem)}
 .homeclasses .grid{display:grid;gap:1rem;margin-top:2.5rem}
 @media (min-width:640px){.homeclasses .grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1000px){.homeclasses .grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1000px){.homeclasses .grid{grid-template-columns:repeat(12,1fr)}.hc{grid-column:span 3}.hc[href$="#little"],.hc[href$="#kids"]{grid-column:span 6}}
 .hc{--tint:var(--sun);--tp:22%;position:relative;overflow:hidden;background:color-mix(in srgb,var(--tint) var(--tp),var(--ivory));border-radius:16px;padding:1.6rem 1.4rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;min-height:12rem;transition:transform .25s ease,box-shadow .25s ease}
 .hc:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(60,40,20,.35)}
 .hc .age{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vermilion);font-weight:600}
@@ -818,6 +819,7 @@ body.has-float{padding-bottom:0}
 .hc[href$="#hsk"],.hc[href$="#work"],.hc[href$="#math"]{--tint:var(--moon);--tp:30%}
 .hc[href$="#comm"],.hc[href$="#camp"]{--tint:var(--vermilion);--tp:12%}
 .hc[href$="#custom"],.hc[href$="#writing"]{--tint:var(--sun);--tp:25%}
+.hc[href$="#self"]{--tint:var(--vermilion);--tp:12%}
 .hc[href$="#little"] .sc,.hc[href$="#kids"] .sc{opacity:.45;color:var(--vermilion)}
 .hc[href$="#little"] h3,.hc[href$="#kids"] h3{font-size:1.55rem}
 .homeclasses .more-link{margin-top:2rem;display:inline-flex}
@@ -948,6 +950,12 @@ body.has-float{padding-bottom:0}
           <h3>Lớp cá nhân hoá theo nhu cầu</h3>
           <p>Nội dung, lịch học và tốc độ xây riêng theo mục tiêu của từng học viên.</p>
           <span class="sc" aria-hidden="true">人</span>
+        </a>
+        <a class="hc" href="lop-hoc.html#self">
+          <span class="age">Tự học</span>
+          <h3>Lớp tự học</h3>
+          <p>SunMoon đưa giáo trình và cách học, học viên tự học trên đó.</p>
+          <span class="sc" aria-hidden="true">自</span>
         </a>
         <a class="hc" href="lop-hoc.html#math">
           <span class="age">3–6 tuổi</span>
@@ -1207,6 +1215,12 @@ body.has-float{padding-bottom:0}
           <p>Nội dung, lịch học và tốc độ xây riêng theo mục tiêu của từng học viên.</p>
           <span class="sc" aria-hidden="true">人</span>
         </a>
+        <a class="hc" href="lop-hoc.html#self">
+          <span class="age">Tự học</span>
+          <h3>Lớp tự học</h3>
+          <p>SunMoon đưa giáo trình và cách học, học viên tự học trên đó.</p>
+          <span class="sc" aria-hidden="true">自</span>
+        </a>
         <a class="hc" href="lop-hoc.html#math">
           <span class="age">3–6 tuổi</span>
           <h3>Toán tư duy</h3>
@@ -1465,6 +1479,12 @@ body.has-float{padding-bottom:0}
           <p>Content, schedule and pace built around each learner’s goals.</p>
           <span class="sc" aria-hidden="true">人</span>
         </a>
+        <a class="hc" href="lop-hoc.html#self">
+          <span class="age">Self-study</span>
+          <h3>Self-study Chinese</h3>
+          <p>SunMoon provides the materials and the method; you study on your own.</p>
+          <span class="sc" aria-hidden="true">自</span>
+        </a>
         <a class="hc" href="lop-hoc.html#math">
           <span class="age">Ages 3–6</span>
           <h3>Logical Maths</h3>
@@ -1722,6 +1742,12 @@ body.has-float{padding-bottom:0}
           <h3>个性化定制课程</h3>
           <p>内容、时间与进度，围绕每位学员的目标来设计。</p>
           <span class="sc" aria-hidden="true">人</span>
+        </a>
+        <a class="hc" href="lop-hoc.html#self">
+          <span class="age">自学</span>
+          <h3>自学课程</h3>
+          <p>日月提供教材和学习方法，学员自主学习。</p>
+          <span class="sc" aria-hidden="true">自</span>
         </a>
         <a class="hc" href="lop-hoc.html#math">
           <span class="age">3–6 岁</span>

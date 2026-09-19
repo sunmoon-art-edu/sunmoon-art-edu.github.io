@@ -720,6 +720,7 @@ p{margin:0}
 .vcard.vwide p{max-width:40ch}
 @media (min-width:760px){.tl .row{grid-template-columns:10rem 12rem 1fr}}
 .tl .age.long{font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.25}
+@media (min-width:760px){.prog.self{grid-column:1/-1}}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -806,7 +807,7 @@ body.has-float{padding-bottom:0}
 .pagehead + .section{padding-top:clamp(3rem,6vw,4.5rem)}
 .homeclasses .grid{display:grid;gap:1rem;margin-top:2.5rem}
 @media (min-width:640px){.homeclasses .grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1000px){.homeclasses .grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1000px){.homeclasses .grid{grid-template-columns:repeat(12,1fr)}.hc{grid-column:span 3}.hc[href$="#little"],.hc[href$="#kids"]{grid-column:span 6}}
 .hc{--tint:var(--sun);--tp:22%;position:relative;overflow:hidden;background:color-mix(in srgb,var(--tint) var(--tp),var(--ivory));border-radius:16px;padding:1.6rem 1.4rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;min-height:12rem;transition:transform .25s ease,box-shadow .25s ease}
 .hc:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(60,40,20,.35)}
 .hc .age{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vermilion);font-weight:600}
@@ -818,6 +819,7 @@ body.has-float{padding-bottom:0}
 .hc[href$="#hsk"],.hc[href$="#work"],.hc[href$="#math"]{--tint:var(--moon);--tp:30%}
 .hc[href$="#comm"],.hc[href$="#camp"]{--tint:var(--vermilion);--tp:12%}
 .hc[href$="#custom"],.hc[href$="#writing"]{--tint:var(--sun);--tp:25%}
+.hc[href$="#self"]{--tint:var(--vermilion);--tp:12%}
 .hc[href$="#little"] .sc,.hc[href$="#kids"] .sc{opacity:.45;color:var(--vermilion)}
 .hc[href$="#little"] h3,.hc[href$="#kids"] h3{font-size:1.55rem}
 .homeclasses .more-link{margin-top:2rem;display:inline-flex}
@@ -976,6 +978,16 @@ body.has-float{padding-bottom:0}
         <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       <div class="more" hidden data-kicker="Theo nhu cầu · Personalised Classes" data-reg="Đăng ký tư vấn / học thử" data-ask="Nhắn Zalo cho SunMoon"><p class="modes"><span>Offline tại P1 & L6</span><span>Online</span></p><p class="more-tag">Lớp học được thiết kế cho riêng bạn</p><p class="more-lead">Không phải ai cũng cần học cùng một lộ trình.<br>Mỗi người có một mục tiêu, một nền tảng và một quỹ thời gian khác nhau.<br><br>SunMoon xây dựng chương trình học dựa trên điểm xuất phát và mục tiêu thực tế của từng học viên — từ học nhanh để giao tiếp, chuẩn bị du học, phục vụ công việc đến củng cố những phần kiến thức còn thiếu.</p><div class="more-stack"><section><h4>Phù hợp với</h4><ul><li>Người có mục tiêu học tập riêng: du học, công việc, thi cử, giao tiếp…</li><li>Người cần học cấp tốc cho một nhu cầu cụ thể</li><li>Người bận rộn, cần lịch học linh hoạt</li><li>Học viên muốn tập trung vào một kỹ năng hoặc chủ đề nhất định</li><li>Trẻ cần kèm riêng, củng cố hoặc bù đắp kiến thức</li></ul></section><section><h4>Mỗi lộ trình bắt đầu từ bạn</h4><ol class="more-steps"><li><b>Hiểu mục tiêu</b><span>Giáo viên trao đổi để hiểu trình độ hiện tại, nhu cầu và thời gian bạn có thể dành cho việc học.</span></li><li><b>Thiết kế lộ trình</b><span>Nội dung, tốc độ và tài liệu được điều chỉnh theo mục tiêu riêng.</span></li><li><b>Học & thực hành</b><span>Tập trung vào những kiến thức và kỹ năng bạn thực sự cần sử dụng.</span></li><li><b>Theo dõi & điều chỉnh</b><span>Đánh giá tiến bộ theo từng giai đoạn và thay đổi nội dung khi mục tiêu hoặc nhu cầu của bạn thay đổi.</span></li></ol></section><section><h4>Linh hoạt về hình thức</h4><div class="more-forms"><div><b>1 kèm 1</b><span>Toàn bộ thời lượng và nội dung tập trung vào một học viên.</span></div><div><b>Nhóm nhỏ</b><span>Có thể học cùng bạn bè, người thân hoặc nhóm có cùng mục tiêu.</span></div><div><b>Online / Offline</b><span>Lựa chọn hình thức học phù hợp với lịch trình và nhu cầu của bạn.</span></div></div></section></div><section class="more-faq"><h4>Ba mẹ thường hỏi</h4><details><summary>Học online được không?</summary><p>Có. Nội dung và cách triển khai được điều chỉnh để phù hợp với hình thức học online.</p></details><details><summary>Có được lựa chọn giáo viên không?</summary><p>SunMoon sẽ tư vấn giáo viên dựa trên độ tuổi, trình độ, mục tiêu và phong cách học của học viên.</p></details><details><summary>Có thể thay đổi nội dung trong quá trình học không?</summary><p>Có. Lộ trình được theo dõi và điều chỉnh theo tiến độ thực tế.</p></details></section><section class="more-end"><h4>Một lộ trình riêng. Một tốc độ riêng.</h4><p class="more-note">Lịch học và học phí được SunMoon tư vấn dựa trên mục tiêu, trình độ và hình thức học của từng học viên.</p></section></div>
+      </article>
+      <article class="prog self reveal" id="self">
+        <span class="glyph" aria-hidden="true">自</span>
+        <div class="top"><span class="num">Chương trình 07</span><span class="age">Tự học</span></div>
+        <h3 class="name"><small>Self-study Programme</small>Lớp tự học</h3>
+        <p class="tagline"><span>Tự học đúng cách, có SunMoon dẫn đường.</span></p>
+        <p class="vi">SunMoon đưa giáo trình và cách học, học viên tự học trên đó.</p>
+        <div class="focus"><span>Giáo trình SunMoon</span><span>Hướng dẫn cách học</span><span>Tự học theo nhịp riêng</span></div>
+        <p class="copy">Dành cho học viên muốn chủ động. SunMoon <strong>đưa giáo trình và cách học</strong>, học viên tự học trên đó.</p>
+        <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       </article>
     </div>
 
@@ -1274,6 +1286,16 @@ body.has-float{padding-bottom:0}
         <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       <div class="more" hidden data-kicker="Theo nhu cầu · Personalised Classes" data-reg="Đăng ký tư vấn / học thử" data-ask="Nhắn Zalo cho SunMoon"><p class="modes"><span>Offline tại P1 & L6</span><span>Online</span></p><p class="more-tag">Lớp học được thiết kế cho riêng bạn</p><p class="more-lead">Không phải ai cũng cần học cùng một lộ trình.<br>Mỗi người có một mục tiêu, một nền tảng và một quỹ thời gian khác nhau.<br><br>SunMoon xây dựng chương trình học dựa trên điểm xuất phát và mục tiêu thực tế của từng học viên — từ học nhanh để giao tiếp, chuẩn bị du học, phục vụ công việc đến củng cố những phần kiến thức còn thiếu.</p><div class="more-stack"><section><h4>Phù hợp với</h4><ul><li>Người có mục tiêu học tập riêng: du học, công việc, thi cử, giao tiếp…</li><li>Người cần học cấp tốc cho một nhu cầu cụ thể</li><li>Người bận rộn, cần lịch học linh hoạt</li><li>Học viên muốn tập trung vào một kỹ năng hoặc chủ đề nhất định</li><li>Trẻ cần kèm riêng, củng cố hoặc bù đắp kiến thức</li></ul></section><section><h4>Mỗi lộ trình bắt đầu từ bạn</h4><ol class="more-steps"><li><b>Hiểu mục tiêu</b><span>Giáo viên trao đổi để hiểu trình độ hiện tại, nhu cầu và thời gian bạn có thể dành cho việc học.</span></li><li><b>Thiết kế lộ trình</b><span>Nội dung, tốc độ và tài liệu được điều chỉnh theo mục tiêu riêng.</span></li><li><b>Học & thực hành</b><span>Tập trung vào những kiến thức và kỹ năng bạn thực sự cần sử dụng.</span></li><li><b>Theo dõi & điều chỉnh</b><span>Đánh giá tiến bộ theo từng giai đoạn và thay đổi nội dung khi mục tiêu hoặc nhu cầu của bạn thay đổi.</span></li></ol></section><section><h4>Linh hoạt về hình thức</h4><div class="more-forms"><div><b>1 kèm 1</b><span>Toàn bộ thời lượng và nội dung tập trung vào một học viên.</span></div><div><b>Nhóm nhỏ</b><span>Có thể học cùng bạn bè, người thân hoặc nhóm có cùng mục tiêu.</span></div><div><b>Online / Offline</b><span>Lựa chọn hình thức học phù hợp với lịch trình và nhu cầu của bạn.</span></div></div></section></div><section class="more-faq"><h4>Ba mẹ thường hỏi</h4><details><summary>Học online được không?</summary><p>Có. Nội dung và cách triển khai được điều chỉnh để phù hợp với hình thức học online.</p></details><details><summary>Có được lựa chọn giáo viên không?</summary><p>SunMoon sẽ tư vấn giáo viên dựa trên độ tuổi, trình độ, mục tiêu và phong cách học của học viên.</p></details><details><summary>Có thể thay đổi nội dung trong quá trình học không?</summary><p>Có. Lộ trình được theo dõi và điều chỉnh theo tiến độ thực tế.</p></details></section><section class="more-end"><h4>Một lộ trình riêng. Một tốc độ riêng.</h4><p class="more-note">Lịch học và học phí được SunMoon tư vấn dựa trên mục tiêu, trình độ và hình thức học của từng học viên.</p></section></div>
+      </article>
+      <article class="prog self reveal" id="self">
+        <span class="glyph" aria-hidden="true">自</span>
+        <div class="top"><span class="num">Chương trình 07</span><span class="age">Tự học</span></div>
+        <h3 class="name"><small>Self-study Programme</small>Lớp tự học</h3>
+        <p class="tagline"><span>Tự học đúng cách, có SunMoon dẫn đường.</span></p>
+        <p class="vi">SunMoon đưa giáo trình và cách học, học viên tự học trên đó.</p>
+        <div class="focus"><span>Giáo trình SunMoon</span><span>Hướng dẫn cách học</span><span>Tự học theo nhịp riêng</span></div>
+        <p class="copy">Dành cho học viên muốn chủ động. SunMoon <strong>đưa giáo trình và cách học</strong>, học viên tự học trên đó.</p>
+        <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       </article>
     </div>
 
@@ -1574,6 +1596,16 @@ body.has-float{padding-bottom:0}
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       <div class="more" hidden data-kicker="Tailored · Personalised Classes" data-reg="Request advice / a trial lesson" data-ask="Message SunMoon on Zalo"><p class="modes"><span>In person at P1 & L6</span><span>Online</span></p><p class="more-tag">A class designed just for you</p><p class="more-lead">Not everyone needs the same pathway.<br>Everyone has different goals, a different starting point and different amounts of time.<br><br>SunMoon builds each programme around the learner's real starting point and goals — from fast-track conversation and study-abroad preparation to Chinese for work or filling knowledge gaps.</p><div class="more-stack"><section><h4>Right for</h4><ul><li>Learners with their own goals: study abroad, work, exams, conversation…</li><li>Anyone who needs an intensive course for a specific need</li><li>Busy people who need a flexible schedule</li><li>Learners who want to focus on one skill or topic</li><li>Children who need one-to-one support or catch-up</li></ul></section><section><h4>Every pathway starts with you</h4><ol class="more-steps"><li><b>Understand your goals</b><span>The teacher talks with you about your current level, needs and the time you can give.</span></li><li><b>Design the pathway</b><span>Content, pace and materials adjusted to your goals.</span></li><li><b>Learn & practise</b><span>Focus on the knowledge and skills you really need.</span></li><li><b>Track & adjust</b><span>Progress reviewed stage by stage, with content updated as your goals change.</span></li></ol></section><section><h4>Flexible formats</h4><div class="more-forms"><div><b>One-to-one</b><span>All the time and content focused on one learner.</span></div><div><b>Small group</b><span>Learn with friends, family or a group with the same goal.</span></div><div><b>Online / Offline</b><span>Choose the format that fits your schedule and needs.</span></div></div></section></div><section class="more-faq"><h4>Frequently asked</h4><details><summary>Can I learn online?</summary><p>Yes. Content and delivery are adapted for online learning.</p></details><details><summary>Can I choose my teacher?</summary><p>SunMoon recommends a teacher based on the learner's age, level, goals and learning style.</p></details><details><summary>Can the content change along the way?</summary><p>Yes. The pathway is tracked and adjusted to actual progress.</p></details></section><section class="more-end"><h4>Your own pathway. Your own pace.</h4><p class="more-note">SunMoon advises on schedule and fees based on each learner's goals, level and format.</p></section></div>
       </article>
+      <article class="prog self reveal" id="self">
+        <span class="glyph" aria-hidden="true">自</span>
+        <div class="top"><span class="num">Program 07</span><span class="age">Self-study</span></div>
+        <h3 class="name"><small>Self-study Programme</small>Self-study Chinese</h3>
+        <p class="tagline"><span>Study on your own, the right way.</span></p>
+        <p class="vi">SunMoon provides the course materials and the method; learners study on their own.</p>
+        <div class="focus"><span>SunMoon materials</span><span>How-to-study guidance</span><span>Your own pace</span></div>
+        <p class="copy">For learners who like to take the lead. SunMoon <strong>provides the materials and the method</strong>; you study on your own.</p>
+        <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </article>
     </div>
 
     <div class="extra reveal" id="more">
@@ -1871,6 +1903,16 @@ body.has-float{padding-bottom:0}
         <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       <div class="more" hidden data-kicker="按需定制 · Personalised Classes" data-reg="预约咨询 / 试听" data-ask="Zalo 联系日月"><p class="modes"><span>线下 · P1 & L6</span><span>线上</span></p><p class="more-tag">为您量身设计的课程</p><p class="more-lead">不是每个人都需要同一条学习路径。<br>每个人的目标、基础和可用时间都不同。<br><br>日月根据每位学员的实际起点和目标设计课程——无论是速成口语、留学准备、工作需要，还是查漏补缺。</p><div class="more-stack"><section><h4>适合</h4><ul><li>有自己学习目标的人：留学、工作、考试、口语……</li><li>有具体需求、需要速成的人</li><li>工作忙、需要灵活时间的人</li><li>想专注某一项技能或主题的学员</li><li>需要一对一辅导、巩固或补习的孩子</li></ul></section><section><h4>每条路径都从您出发</h4><ol class="more-steps"><li><b>了解目标</b><span>老师与您沟通，了解现有水平、需求和可用于学习的时间。</span></li><li><b>设计路径</b><span>内容、进度和教材按您的目标调整。</span></li><li><b>学习与练习</b><span>专注于您真正需要用到的知识和技能。</span></li><li><b>跟进与调整</b><span>分阶段评估进步，目标或需求变化时及时调整内容。</span></li></ol></section><section><h4>形式灵活</h4><div class="more-forms"><div><b>一对一</b><span>全部时间和内容只为一位学员。</span></div><div><b>小组</b><span>可以和朋友、家人或同目标的人一起学。</span></div><div><b>线上 / 线下</b><span>选择适合您时间和需求的上课方式。</span></div></div></section></div><section class="more-faq"><h4>常见问题</h4><details><summary>可以线上学吗？</summary><p>可以。内容和授课方式会针对线上学习调整。</p></details><details><summary>可以选择老师吗？</summary><p>日月会根据学员的年龄、水平、目标和学习风格推荐老师。</p></details><details><summary>学习过程中可以调整内容吗？</summary><p>可以。学习路径会根据实际进度跟进并调整。</p></details></section><section class="more-end"><h4>专属路径，专属节奏。</h4><p class="more-note">上课时间与学费：日月会根据每位学员的目标、水平和上课形式为您介绍。</p></section></div>
+      </article>
+      <article class="prog self reveal" id="self">
+        <span class="glyph" aria-hidden="true">自</span>
+        <div class="top"><span class="num">课程 07</span><span class="age">自学</span></div>
+        <h3 class="name"><small>Self-study Programme</small>自学课程</h3>
+        <p class="tagline"><span>自己学，也要学对方法。</span></p>
+        <p class="vi">日月提供教材和学习方法，学员自主学习。</p>
+        <div class="focus"><span>日月教材</span><span>学习方法指导</span><span>按自己的节奏</span></div>
+        <p class="copy">适合喜欢自主学习的学员。日月<strong>提供教材和学习方法</strong>，学员自主学习。</p>
+        <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       </article>
     </div>
 

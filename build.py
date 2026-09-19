@@ -55,7 +55,7 @@ HOME, ABOUT, CLASSES, PARENTS, FAQ, CONTACT, DOCS = (
     'index.html', 'gioi-thieu.html', 'lop-hoc.html', 'ba-me.html', 'hoi-dap.html', 'lien-he.html', 'tai-lieu.html')
 ANCHOR_PAGE = {
     'about': ABOUT, 'approach': ABOUT, 'teachers': ABOUT,
-    'programs': CLASSES, 'math': CLASSES, 'writing': CLASSES, 'camp': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'comm': CLASSES,
+    'programs': CLASSES, 'math': CLASSES, 'writing': CLASSES, 'camp': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'self': CLASSES, 'comm': CLASSES,
     'work': CLASSES, 'more': CLASSES, 'journey': CLASSES,
     'parents': PARENTS, 'stories': PARENTS, 'guide': PARENTS,
     'faq': PARENTS, 'docs': DOCS, 'modes': CLASSES, 'contact': CONTACT, 'trial': CONTACT,
@@ -424,7 +424,7 @@ def build_head(lang, page):
 .pagehead + .section{{padding-top:clamp(3rem,6vw,4.5rem)}}
 .homeclasses .grid{{display:grid;gap:1rem;margin-top:2.5rem}}
 @media (min-width:640px){{.homeclasses .grid{{grid-template-columns:1fr 1fr}}}}
-@media (min-width:1000px){{.homeclasses .grid{{grid-template-columns:repeat(3,1fr)}}}}
+@media (min-width:1000px){{.homeclasses .grid{{grid-template-columns:repeat(12,1fr)}}.hc{{grid-column:span 3}}.hc[href$="#little"],.hc[href$="#kids"]{{grid-column:span 6}}}}
 .hc{{--tint:var(--sun);--tp:22%;position:relative;overflow:hidden;background:color-mix(in srgb,var(--tint) var(--tp),var(--ivory));border-radius:16px;padding:1.6rem 1.4rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;min-height:12rem;transition:transform .25s ease,box-shadow .25s ease}}
 .hc:hover{{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(60,40,20,.35)}}
 .hc .age{{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vermilion);font-weight:600}}
@@ -436,6 +436,7 @@ def build_head(lang, page):
 .hc[href$="#hsk"],.hc[href$="#work"],.hc[href$="#math"]{{--tint:var(--moon);--tp:30%}}
 .hc[href$="#comm"],.hc[href$="#camp"]{{--tint:var(--vermilion);--tp:12%}}
 .hc[href$="#custom"],.hc[href$="#writing"]{{--tint:var(--sun);--tp:25%}}
+.hc[href$="#self"]{{--tint:var(--vermilion);--tp:12%}}
 .hc[href$="#little"] .sc,.hc[href$="#kids"] .sc{{opacity:.45;color:var(--vermilion)}}
 .hc[href$="#little"] h3,.hc[href$="#kids"] h3{{font-size:1.55rem}}
 .homeclasses .more-link{{margin-top:2rem;display:inline-flex}}
