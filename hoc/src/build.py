@@ -19,6 +19,7 @@ data={}
 cache='strokes.json'
 if os.path.exists(cache): data=json.load(open(cache,encoding='utf-8'))
 wchars=chars|set(''.join(re.findall(r'write:\[([^\]]+)\]',js)).replace('"','').replace(',',''))
+wchars|=set('习')  # chữ ví dụ nét hất (phần Học cách viết chữ)
 for c in sorted(wchars):
     if c in data: continue
     data[c]=json.load(urllib.request.urlopen('https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1/'+urllib.parse.quote(c)+'.json',timeout=20))
