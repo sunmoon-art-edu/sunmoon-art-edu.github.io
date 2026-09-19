@@ -9,13 +9,13 @@
   var ZALO='https://zalo.me/0396308188';
   var MSG={
     en:{open:'Open menu',close:'Close menu',title:'Registration sent ✓',copied:'Copied. Paste it into the Zalo chat.',copy:'Copy message',go:'Open Zalo and send',
-        hint:'SunMoon has received your details. Zalo is opening — tap and hold the chat box, choose Paste, then Send to chat with us.',
+        hint:'SunMoon has received your details. Tap one of the Zalo numbers below, then tap and hold the chat box → Paste → Send.',
         compose:function(x){return 'Hello SunMoon, I would like to book a trial class.\n- Parent: '+x.parent+'\n- Phone/Zalo: '+x.phone+'\n- Class: '+x.group+(x.age?'\n- Age: '+x.age:'')+'\n- Chinese experience: '+x.experience+(x.message?'\n- Note: '+x.message:'');}},
     vi:{open:'Mở menu',close:'Đóng menu',title:'Đã gửi đăng ký ✓',copied:'Đã sao chép. Dán vào khung chat Zalo là xong.',copy:'Sao chép tin nhắn',go:'Mở Zalo và gửi',
-        hint:'SunMoon đã nhận thông tin đăng ký của ba mẹ. Zalo đang mở — nhấn giữ ô chat, chọn Dán rồi Gửi để trò chuyện với SunMoon ngay.',
+        hint:'SunMoon đã nhận thông tin đăng ký của ba mẹ. Bấm 1 trong 2 số Zalo bên dưới, rồi nhấn giữ ô chat → Dán → Gửi để trò chuyện ngay.',
         compose:function(x){return 'Xin chào SunMoon, tôi muốn đăng ký học thử.\n- Phụ huynh: '+x.parent+'\n- SĐT/Zalo: '+x.phone+'\n- Lớp: '+x.group+(x.age?'\n- Tuổi: '+x.age:'')+'\n- Đã học tiếng Trung: '+x.experience+(x.message?'\n- Ghi chú: '+x.message:'');}},
     zh:{open:'打开菜单',close:'关闭菜单',title:'报名已提交 ✓',copied:'已复制。粘贴到 Zalo 聊天框即可。',copy:'复制信息',go:'打开 Zalo 发送',
-        hint:'日月已收到您的报名信息。Zalo 正在打开——长按聊天框，选择粘贴并发送，即可与我们沟通。',
+        hint:'日月已收到您的报名信息。点击下方任一 Zalo 号码，长按聊天框→粘贴→发送即可。',
         compose:function(x){return '您好日月，我想预约试听课。\n- 家长：'+x.parent+'\n- 电话/Zalo：'+x.phone+'\n- 班级：'+x.group+(x.age?'\n- 年龄：'+x.age:'')+'\n- 中文基础：'+x.experience+(x.message?'\n- 备注：'+x.message:'');}}
   };
   var MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent||'');
@@ -27,11 +27,10 @@
     try{ if(navigator.sendBeacon && navigator.sendBeacon(FORM_ENDPOINT, new Blob([body],{type:'text/plain'}))) return; }catch(e){}
     try{ fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain'},body:body}); }catch(e){}
   }
-  /* chép tin + mở Zalo SunMoon ngay trong cùng 1 lần bấm */
-  function goZalo(text){
-    try{ navigator.clipboard.writeText(text); }catch(e){}
-    if(MOBILE){ w.location.href=ZALO; } else { w.open(ZALO,'_blank','noopener'); }
-  }
+  /* 2 nút Zalo SunMoon — bấm nút nào cũng chép lại tin rồi mở đúng số đó */
+  var ZALOS=[['039 630 8188','https://zalo.me/0396308188'],['039 400 9488','https://zalo.me/0394009488']];
+  function zaloBtns(){ return ZALOS.map(function(z){ return '<a class="btn btn-zalo2" target="_blank" rel="noopener" href="'+z[1]+'">Zalo '+z[0]+'</a>'; }).join(''); }
+  function bindZalo(root,text){ [].forEach.call(root.querySelectorAll('.btn-zalo2'), function(a){ a.addEventListener('click', function(){ try{ navigator.clipboard.writeText(text); }catch(e){} }); }); }
   var lang='vi';
   function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
@@ -191,13 +190,13 @@
         var text=t.msg(cname,x); f.querySelector('.detail-err').textContent='';
         var done=f.querySelector('.detail-done');
         done.innerHTML='<b>'+MSG[lang].title+'</b><pre class="msg">'+esc(text)+'</pre><p class="hint-line">'+MSG[lang].hint+'</p>'
-          +'<div class="detail-actions"><a class="btn btn-primary" target="_blank" rel="noopener" href="'+ZALO+'">'+MSG[lang].go+'</a><button type="button" class="btn btn-ghost copy">'+MSG[lang].copy+'</button></div><p class="copied" aria-live="polite"></p>';
+          +'<div class="detail-actions zalo2">'+zaloBtns()+'<button type="button" class="btn btn-ghost copy">'+MSG[lang].copy+'</button></div><p class="copied" aria-live="polite"></p>';
         var flag=done.querySelector('.copied');
         function copy(){ try{ navigator.clipboard.writeText(text).then(function(){ flag.textContent=MSG[lang].copied; }); }catch(err){} }
         done.querySelector('.copy').addEventListener('click', copy); copy();
         done.scrollIntoView({behavior: reduce?'auto':'smooth', block:'nearest'});
         sendLead({tenBe:x.n,phuHuynh:x.n,sdt:x.p,tuoi:x.a,chuongTrinh:cname,ghiChu:'Đăng ký từ popup lớp · '+lang});
-        goZalo(text);
+        bindZalo(done,text);
       });
       requestAnimationFrame(function(){ box.classList.add('on'); });
       if(card.id && location.hash!=='#'+card.id) history.replaceState(null,'','#'+card.id);
@@ -226,14 +225,14 @@
       var done=form.querySelector('.done');
       form.classList.add('sent');
       done.innerHTML='<b>'+MSG[lang].title+'</b><pre class="msg">'+esc(text)+'</pre><p class="hint-line">'+MSG[lang].hint+'</p>'
-        +'<div class="done-actions"><a class="btn btn-primary" target="_blank" rel="noopener" href="'+ZALO+'">'+MSG[lang].go+'</a><button type="button" class="btn btn-ghost copy">'+MSG[lang].copy+'</button></div><p class="copied" aria-live="polite"></p>';
+        +'<div class="done-actions zalo2">'+zaloBtns()+'<button type="button" class="btn btn-ghost copy">'+MSG[lang].copy+'</button></div><p class="copied" aria-live="polite"></p>';
       var flag=done.querySelector('.copied');
       function copy(){ try{ navigator.clipboard.writeText(text).then(function(){ flag.textContent=MSG[lang].copied; }); }catch(e){} }
       done.querySelector('.copy').addEventListener('click', copy);
       copy();
       done.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'});
       sendLead({tenBe:data.parent,phuHuynh:data.parent,sdt:data.phone,tuoi:data.age,chuongTrinh:data.group,ghiChu:[data.experience?('Đã học: '+data.experience):'',data.message||'','form Liên hệ · '+lang].filter(Boolean).join(' · ')});
-      goZalo(text);
+      bindZalo(done,text);
     });
     form.querySelectorAll('input').forEach(function(i){ i.addEventListener('input', function(){ i.closest('.field').classList.remove('invalid'); }); });
     }
