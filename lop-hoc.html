@@ -664,8 +664,24 @@ p{margin:0}
 .doc-soon{background:var(--ivory-2)}
 .doc-soon h4{font-size:1.25rem;line-height:1.2}
 .soon{align-self:flex-start;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;background:var(--vermilion);color:var(--ivory);border-radius:999px;padding:.3rem .6rem}
+.bt-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:0 0 1.25rem}
+.bt-strip img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px}
+@media (max-width:639px){.bt-strip{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory}.bt-strip img{scroll-snap-align:start}}
 .docs-src{font-size:.85rem;color:var(--ink-3);font-style:italic;max-width:48rem}
 .gate{max-width:460px}
+.modes{background:var(--ivory-2)}
+.mgrid{display:grid;gap:1.2rem;margin-top:2.6rem}
+@media (min-width:900px){.mgrid{grid-template-columns:repeat(3,1fr)}}
+.mcard{background:var(--ivory);border:1px solid var(--line);border-radius:18px;padding:1.6rem 1.5rem 1.7rem;display:flex;flex-direction:column;gap:1.1rem;box-shadow:0 10px 30px rgba(60,40,20,.06)}
+.mcard-top{display:flex;gap:1rem;align-items:center}
+.mcard-ic{flex:0 0 64px;height:64px;border-radius:50%;background:var(--vermilion);color:var(--ivory);display:grid;place-items:center}
+.mcard-ic svg{width:36px;height:36px}
+.mcard h3{font-family:var(--serif);font-size:1.5rem;line-height:1.1;color:var(--ink)}
+.mcard-top p{margin:.3rem 0 0;font-style:italic;color:var(--ink-2);font-size:.95rem}
+.mcard ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.mcard li{display:grid;grid-template-columns:18px 1fr;gap:.6rem;align-items:start;font-size:.97rem;line-height:1.45;color:var(--ink-2)}
+.mcard li svg{color:var(--vermilion);margin-top:.15rem}
+.mcard .btn{margin-top:auto;align-self:center}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -967,6 +983,28 @@ body.has-float{padding-bottom:0}
     </div>
   </div>
 </section>
+<section class="section modes" id="modes">
+  <div class="wrap">
+    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> Hình thức học</p><h2 class="h2">Chọn cách học phù hợp với bạn</h2></div>
+    <div class="mgrid reveal">
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>Học tại trung tâm</h3><p>Tại P1 & L6, Vinhomes Central Park</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lớp nhỏ, tối đa 6 học viên</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học qua trò chơi, tương tác và thực hành thật</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Kiểm tra trình độ trước khi xếp lớp</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>Học online</h3><p>Dành cho học viên bận rộn, ở xa</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học trực tiếp với giáo viên qua Zoom</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tiết kiệm thời gian và chi phí đi lại</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Nội dung điều chỉnh cho phù hợp học online</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>Học kèm 1-1</h3><p>Cá nhân hoá hoàn toàn</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lộ trình riêng theo mục tiêu và trình độ</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lịch học linh hoạt theo thời gian của bạn</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học tại trung tâm hoặc online</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
+      </article>
+    </div>
+  </div>
+</section>
 <!-- ============ JOURNEY ============ -->
 <section class="section journey" id="journey">
   <div class="wrap">
@@ -1242,6 +1280,28 @@ body.has-float{padding-bottom:0}
       <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Các bé muốn trải nghiệm trong kỳ nghỉ hè, đông, xuân</li><li>Bé chưa học hoặc đã học tiếng Trung đều tham gia được</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li>Dùng tiếng Trung qua <b>hoạt động thật</b></li><li>Hiểu thêm văn hoá Trung Hoa</li><li>Kết bạn, tự tin làm việc nhóm</li></ul></section><section><h4>Một buổi học</h4><ul><li>Mỗi ngày một chủ đề</li><li>Trò chơi, thủ công, nấu ăn, biểu diễn…</li><li>Tổng kết, ba mẹ xem lại hoạt động của con</li></ul></section><section><h4>Lớp học</h4><ul><li>Khoá ngắn theo mùa</li><li>Lịch và nội dung <b>thông báo trước khi mở đăng ký</b></li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Khi nào có Camp?</summary><p>SunMoon thông báo trên Fanpage và Zalo trước mỗi mùa. Ba mẹ nhắn để được báo sớm.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
       </div>
+    </div>
+  </div>
+</section>
+<section class="section modes" id="modes">
+  <div class="wrap">
+    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> Hình thức học</p><h2 class="h2">Chọn cách học phù hợp với bạn</h2></div>
+    <div class="mgrid reveal">
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>Học tại trung tâm</h3><p>Tại P1 & L6, Vinhomes Central Park</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lớp nhỏ, tối đa 6 học viên</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học qua trò chơi, tương tác và thực hành thật</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Kiểm tra trình độ trước khi xếp lớp</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>Học online</h3><p>Dành cho học viên bận rộn, ở xa</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học trực tiếp với giáo viên qua Zoom</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tiết kiệm thời gian và chi phí đi lại</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Nội dung điều chỉnh cho phù hợp học online</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>Học kèm 1-1</h3><p>Cá nhân hoá hoàn toàn</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lộ trình riêng theo mục tiêu và trình độ</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lịch học linh hoạt theo thời gian của bạn</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học tại trung tâm hoặc online</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
+      </article>
     </div>
   </div>
 </section>
@@ -1524,6 +1584,28 @@ body.has-float{padding-bottom:0}
     </div>
   </div>
 </section>
+<section class="section modes" id="modes">
+  <div class="wrap">
+    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> Ways to learn</p><h2 class="h2">Choose the way that suits you</h2></div>
+    <div class="mgrid reveal">
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>At the centre</h3><p>At P1 & L6, Vinhomes Central Park</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Small classes, max 6 learners</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Learning through games, interaction and real practice</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Level check before placement</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Get advice</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>Online</h3><p>For busy learners or those far away</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Live lessons with a teacher on Zoom</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Save time and travel costs</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Content adapted for online learning</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Get advice</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>One-to-one</h3><p>Fully personalised</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your own pathway by goal and level</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Flexible schedule around your time</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>At the centre or online</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">Get advice</a>
+      </article>
+    </div>
+  </div>
+</section>
 <!-- ============ JOURNEY ============ -->
 <section class="section journey" id="journey">
   <div class="wrap">
@@ -1799,6 +1881,28 @@ body.has-float{padding-bottom:0}
       <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li>想在暑假、寒假、春假体验学习的孩子</li><li>零基础或已学过中文的孩子都可参加</li></ul></section><section><h4>学完后，孩子能够</h4><ul><li>在<b>真实活动</b>中使用中文</li><li>了解中华文化</li><li>结交朋友，学会团队合作</li></ul></section><section><h4>一节课的安排</h4><ul><li>每天一个主题</li><li>游戏、手工、烹饪、表演……</li><li>结营展示，家长可看到孩子的成果</li></ul></section><section><h4>班级形式</h4><ul><li>按季节开设的短期营</li><li>时间和内容<b>在开放报名前公布</b></li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>什么时候有营地课程？</summary><p>每季开营前会在 Facebook 和 Zalo 公布，欢迎留言提前获取通知。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
       </div>
+    </div>
+  </div>
+</section>
+<section class="section modes" id="modes">
+  <div class="wrap">
+    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> 上课形式</p><h2 class="h2">选择适合您的学习方式</h2></div>
+    <div class="mgrid reveal">
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>中心上课</h3><p>Vinhomes Central Park 的 P1 和 L6</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>小班教学，每班最多 6 人</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>在游戏、互动和实践中学习</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>分班前进行水平测试</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">立即咨询</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>线上上课</h3><p>适合忙碌或住得远的学员</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>通过 Zoom 与老师实时上课</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>节省时间和交通费用</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>内容针对线上学习调整</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">立即咨询</a>
+      </article>
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>一对一</h3><p>完全个性化</p></div></div>
+        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>按目标和水平定制学习路径</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上课时间灵活</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可在中心或线上上课</span></li></ul>
+        <a class="btn btn-primary" href="lien-he.html#trial">立即咨询</a>
+      </article>
     </div>
   </div>
 </section>

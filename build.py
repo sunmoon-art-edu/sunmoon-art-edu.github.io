@@ -58,7 +58,7 @@ ANCHOR_PAGE = {
     'programs': CLASSES, 'math': CLASSES, 'writing': CLASSES, 'camp': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'comm': CLASSES,
     'work': CLASSES, 'more': CLASSES, 'journey': CLASSES,
     'parents': PARENTS, 'stories': PARENTS, 'guide': PARENTS,
-    'faq': PARENTS, 'docs': DOCS, 'contact': CONTACT, 'trial': CONTACT,
+    'faq': PARENTS, 'docs': DOCS, 'modes': CLASSES, 'contact': CONTACT, 'trial': CONTACT,
 }
 NAV = [(HOME, 'home'), (ABOUT, 'about'), (CLASSES, 'classes'), (PARENTS, 'parents'),
        (DOCS, 'docs'), (CONTACT, 'contact')]   # 19/09: bỏ trang Hỏi đáp (chị Linh) — câu hỏi gộp vào Dành cho ba mẹ
@@ -97,9 +97,9 @@ L = {
 }
 
 PAGES = {
-    HOME:    ['hero', 'about', 'homeclasses', 'why', 'inside', 'trial', 'final'],
+    HOME:    ['hero', 'about', 'homeclasses', 'why', 'modes', 'inside', 'trial', 'final'],
     ABOUT:   ['about', 'approach', 'teachers', 'inside', 'final'],
-    CLASSES: ['programs', 'journey', 'trial', 'final'],
+    CLASSES: ['programs', 'modes', 'journey', 'trial', 'final'],
     PARENTS: ['parents', 'stories', 'guide', 'faq', 'trial', 'final'],
     CONTACT: ['contact', 'final'],
     DOCS:    ['docs', 'final'],
@@ -226,7 +226,7 @@ DOCS_T = {
             lvl='Cấp', words='từ', pages='trang', mins='phút',
             f_yct='Đề cương + từ vựng + đề mẫu', f_mau='Đề thi mẫu + đáp án', f_dc='Đề cương + từ vựng', f_nghe='File nghe',
             vocab_all='Từ vựng HSK 1–6 (file Excel)',
-            pre='Giáo trình SunMoon PreChinese', pre_d='Giáo trình trung tâm tự soạn cho bé 3–7 tuổi. Bản xem thử sắp có.',
+            bt='Bài tập SunMoon tự soạn', bt_d='Có tranh, pinyin, luyện chữ — làm ở lớp và ở nhà.', bt_alt='Phiếu bài tập SunMoon', pre='Giáo trình SunMoon PreChinese', pre_d='Giáo trình trung tâm tự soạn cho bé 3–7 tuổi. Bản xem thử sắp có.',
             comm='Tài liệu Giao tiếp', comm_d='Bộ mẫu câu giao tiếp theo tình huống do SunMoon biên soạn. Sắp có.',
             paid='Sách bài tập online', paid_d='Bài tập luyện thêm YCT · HSK · Giao tiếp, có đáp án. Có phí.', soon='Sắp ra mắt', ask='Nhắn Zalo để được báo sớm',
             src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
@@ -236,7 +236,7 @@ DOCS_T = {
             lvl='Level', words='words', pages='pages', mins='min',
             f_yct='Syllabus + vocabulary + sample test', f_mau='Sample test + answers', f_dc='Syllabus + vocabulary', f_nghe='Listening audio',
             vocab_all='HSK 1–6 vocabulary (Excel)',
-            pre='SunMoon PreChinese course book', pre_d='Our own course book for ages 3–7. Preview pages coming soon.',
+            bt='SunMoon\'s own worksheets', bt_d='Pictures, pinyin and character practice — for class and home.', bt_alt='SunMoon worksheet', pre='SunMoon PreChinese course book', pre_d='Our own course book for ages 3–7. Preview pages coming soon.',
             comm='Conversation materials', comm_d='Situational phrase sets written by SunMoon. Coming soon.',
             paid='Online workbooks', paid_d='Extra YCT · HSK · conversation practice with answers. Paid.', soon='Coming soon', ask='Message us on Zalo to hear first',
             src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
@@ -246,7 +246,7 @@ DOCS_T = {
             lvl='级', words='词', pages='页', mins='分钟',
             f_yct='大纲 + 词汇 + 样卷', f_mau='样卷 + 答案', f_dc='大纲 + 词汇', f_nghe='听力音频',
             vocab_all='HSK 1–6 级词汇表（Excel）',
-            pre='日月 PreChinese 教材', pre_d='中心自编的 3–7 岁教材，试读页即将上线。',
+            bt='日月自编练习', bt_d='配图、拼音、写字练习——课堂和家里都能用。', bt_alt='日月练习单', pre='日月 PreChinese 教材', pre_d='中心自编的 3–7 岁教材，试读页即将上线。',
             comm='口语交际资料', comm_d='日月编写的情境句型资料，即将上线。',
             paid='线上练习册', paid_d='YCT · HSK · 口语额外练习，附答案，收费。', soon='即将推出', ask='Zalo 留言，第一时间通知您',
             src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
@@ -277,10 +277,51 @@ def docs_section(lang):
     <div class="docs-group reveal"><h3 class="h3">{t['yct']}</h3><p class="lede">{t['yct_sub']}</p><div class="docs-grid">{yct}</div></div>
     <div class="docs-group reveal"><h3 class="h3">{t['hsk']}</h3><p class="lede">{t['hsk_sub']}</p><div class="docs-grid">{hsk}</div>
       <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
-    <div class="docs-group reveal"><div class="docs-grid">
+    <div class="docs-group reveal"><h3 class="h3">{t['bt']}</h3><p class="lede">{t['bt_d']}</p>
+      <div class="bt-strip">{''.join(f'<img src="{photo_src(f"baitap-{i}.jpg")}" alt="{t["bt_alt"]}" loading="lazy">' for i in (1, 2, 3))}</div>
+      <div class="docs-grid">
       {soon(t['pre'], t['pre_d'])}{soon(t['comm'], t['comm_d'])}{soon(t['paid'], t['paid_d'], f'<a class="link" href="https://zalo.me/0396308188" target="_blank" rel="noopener">{t["ask"]}</a>')}
     </div></div>
     <p class="docs-src">{t['src']}</p>
+  </div>
+</section>"""
+
+
+# ------------------------------------------------------------ mục Hình thức học (20/09)
+MODES_T = {
+ 'vi': dict(eyebrow='Hình thức học', h='Chọn cách học phù hợp với bạn', cta='Tư vấn ngay', cards=[
+   ('Học tại trung tâm', 'Tại P1 & L6, Vinhomes Central Park', ['Lớp nhỏ, tối đa 6 học viên', 'Học qua trò chơi, tương tác và thực hành thật', 'Kiểm tra trình độ trước khi xếp lớp']),
+   ('Học online', 'Dành cho học viên bận rộn, ở xa', ['Học trực tiếp với giáo viên qua Zoom', 'Tiết kiệm thời gian và chi phí đi lại', 'Nội dung điều chỉnh cho phù hợp học online']),
+   ('Học kèm 1-1', 'Cá nhân hoá hoàn toàn', ['Lộ trình riêng theo mục tiêu và trình độ', 'Lịch học linh hoạt theo thời gian của bạn', 'Học tại trung tâm hoặc online'])]),
+ 'en': dict(eyebrow='Ways to learn', h='Choose the way that suits you', cta='Get advice', cards=[
+   ('At the centre', 'At P1 & L6, Vinhomes Central Park', ['Small classes, max 6 learners', 'Learning through games, interaction and real practice', 'Level check before placement']),
+   ('Online', 'For busy learners or those far away', ['Live lessons with a teacher on Zoom', 'Save time and travel costs', 'Content adapted for online learning']),
+   ('One-to-one', 'Fully personalised', ['Your own pathway by goal and level', 'Flexible schedule around your time', 'At the centre or online'])]),
+ 'zh': dict(eyebrow='上课形式', h='选择适合您的学习方式', cta='立即咨询', cards=[
+   ('中心上课', 'Vinhomes Central Park 的 P1 和 L6', ['小班教学，每班最多 6 人', '在游戏、互动和实践中学习', '分班前进行水平测试']),
+   ('线上上课', '适合忙碌或住得远的学员', ['通过 Zoom 与老师实时上课', '节省时间和交通费用', '内容针对线上学习调整']),
+   ('一对一', '完全个性化', ['按目标和水平定制学习路径', '上课时间灵活', '可在中心或线上上课'])]),
+}
+MODE_IC = [
+ '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg>',
+ '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg>',
+ '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg>',
+]
+CHECK = '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
+def modes_section(lang):
+    t = MODES_T[lang]
+    cards = ''.join(f"""
+      <article class="mcard">
+        <div class="mcard-top"><span class="mcard-ic">{MODE_IC[i]}</span><div><h3>{title}</h3><p>{sub}</p></div></div>
+        <ul>{''.join(f'<li>{CHECK}<span>{x}</span></li>' for x in items)}</ul>
+        <a class="btn btn-primary" href="#trial">{t['cta']}</a>
+      </article>""" for i, (title, sub, items) in enumerate(t['cards']))
+    return f"""<section class="section modes" id="modes">
+  <div class="wrap">
+    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> {t['eyebrow']}</p><h2 class="h2">{t['h']}</h2></div>
+    <div class="mgrid reveal">{cards}
+    </div>
   </div>
 </section>"""
 
@@ -400,7 +441,7 @@ def build_page(page):
         _, sec, _ = BODIES[lang]
         parts = [chrome(lang, page), '<main>', page_head(lang, page)]
         for key in PAGES[page]:
-            html = home_classes(lang) if key == 'homeclasses' else (docs_section(lang) if key == 'docs' else sec[key])
+            html = home_classes(lang) if key == 'homeclasses' else (docs_section(lang) if key == 'docs' else (modes_section(lang) if key == 'modes' else sec[key]))
             if page != HOME and key == 'about':
                 html = html.replace('<section class="section intro" id="about">',
                                     '<section class="section intro no-top" id="about">')
