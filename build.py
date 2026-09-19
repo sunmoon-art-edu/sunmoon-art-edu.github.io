@@ -147,17 +147,19 @@ def detail_html(cid, lang):
     c, h = DETAIL_C[cid], DETAIL_H[lang]
     x = c[lang]
     ul = lambda items: '<ul>' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>'
-    out_t = h['out_adult'] if c['adult'] else h['out']
+    para = lambda k, cls: f'<p class="{cls}">{x[k]}</p>' if x.get(k) else ''
+    t_out = x.get('t_out') or (h['out_adult'] if c['adult'] else h['out'])
     faq = ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in x['faq'])
-    return (f'<div class="more" hidden>'
+    tag = ('<p class="more-tag">' + '<br>'.join(x['tag']) + '</p>') if x.get('tag') else ''
+    return (f'<div class="more" hidden>{tag}'
             f'<div class="more-grid">'
             f'<section><h4>{h["fit"]}</h4>{ul(x["fit"])}</section>'
-            f'<section><h4>{out_t}</h4>{ul(x["out"])}</section>'
-            f'<section><h4>{h["how"]}</h4>{ul(x["how"])}</section>'
-            f'<section><h4>{h["cls"]}</h4>{ul(x["cls"])}</section>'
+            f'<section><h4>{t_out}</h4>{ul(x["out"])}</section>'
+            f'<section><h4>{x.get("t_how") or h["how"]}</h4>{para("how_intro","more-intro")}{ul(x["how"])}{para("how_outro","more-outro")}</section>'
+            f'<section><h4>{x.get("t_cls") or h["cls"]}</h4>{ul(x["cls"])}</section>'
             f'</div>'
             f'<section class="more-faq"><h4>{h["faq"]}</h4>{faq}</section>'
-            f'<p class="more-note">{h["note"]}</p>'
+            f'<p class="more-note">{x.get("note") or h["note"]}</p>'
             f'</div>')
 
 def add_details(html, lang):

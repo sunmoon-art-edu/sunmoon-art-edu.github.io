@@ -138,13 +138,13 @@
 
     /* class detail popup + quick trial sign-up */
     var DT={
-      vi:{close:'Đóng',reg:'Đăng ký học thử lớp này',name:'Tên phụ huynh / học viên',phone:'Số điện thoại / Zalo',age:'Tuổi của con (nếu có)',send:'Gửi đăng ký qua Zalo',
+      vi:{cta:'Đăng ký học thử',close:'Đóng',reg:'Đăng ký học thử lớp này',name:'Tên phụ huynh / học viên',phone:'Số điện thoại / Zalo',age:'Tuổi của con (nếu có)',send:'Gửi đăng ký qua Zalo',
           need:'Vui lòng nhập tên và số điện thoại',ask:'Nhắn Zalo hỏi thêm',
           msg:function(c,x){return 'Xin chào SunMoon, tôi muốn đăng ký học thử lớp '+c+'.\n- Họ tên: '+x.n+'\n- SĐT/Zalo: '+x.p+(x.a?'\n- Tuổi của con: '+x.a:'');}},
-      en:{close:'Close',reg:'Book a trial for this class',name:'Parent / learner name',phone:'Phone / Zalo',age:"Child's age (if any)",send:'Send via Zalo',
+      en:{cta:'Book a trial',close:'Close',reg:'Book a trial for this class',name:'Parent / learner name',phone:'Phone / Zalo',age:"Child's age (if any)",send:'Send via Zalo',
           need:'Please enter your name and phone number',ask:'Ask us on Zalo',
           msg:function(c,x){return 'Hello SunMoon, I would like to book a trial for '+c+'.\n- Name: '+x.n+'\n- Phone/Zalo: '+x.p+(x.a?"\n- Child's age: "+x.a:'');}},
-      zh:{close:'关闭',reg:'预约本课程试听',name:'家长 / 学员姓名',phone:'电话 / Zalo',age:'孩子年龄（如有）',send:'通过 Zalo 发送',
+      zh:{cta:'预约试听',close:'关闭',reg:'预约本课程试听',name:'家长 / 学员姓名',phone:'电话 / Zalo',age:'孩子年龄（如有）',send:'通过 Zalo 发送',
           need:'请填写姓名和电话',ask:'Zalo 咨询',
           msg:function(c,x){return '您好日月，我想预约'+c+'的试听课。\n- 姓名：'+x.n+'\n- 电话/Zalo：'+x.p+(x.a?'\n- 孩子年龄：'+x.a:'');}}
     };
@@ -156,6 +156,7 @@
       box.innerHTML='<div class="detail-panel"><button type="button" class="detail-x" aria-label="'+t.close+'">×</button>'
         +'<p class="detail-kicker">'+esc(age)+(kicker&&kicker!==cname?' · '+esc(kicker):'')+'</p><h3 class="detail-title">'+esc(cname)+'</h3>'
         +'<div class="detail-body">'+more.innerHTML+'</div>'
+        +'<div class="detail-sticky"><button type="button" class="btn btn-primary detail-go">'+t.cta+'</button></div>'
         +'<form class="detail-form" novalidate><h4>'+t.reg+'</h4>'
         +'<input name="n" placeholder="'+t.name+'" autocomplete="name"><input name="p" type="tel" inputmode="tel" placeholder="'+t.phone+'" autocomplete="tel"><input name="a" placeholder="'+t.age+'">'
         +'<p class="detail-err" aria-live="polite"></p><div class="detail-actions"><button class="btn btn-primary" type="submit">'+t.send+'</button>'
@@ -166,6 +167,9 @@
       box.addEventListener('click', function(e){ if(e.target===box) kill(); });
       box.querySelector('.detail-x').addEventListener('click', kill); d.addEventListener('keydown', onk);
       var f=box.querySelector('form');
+      var sticky=box.querySelector('.detail-sticky');
+      box.querySelector('.detail-go').addEventListener('click', function(){ f.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'}); setTimeout(function(){ f.n.focus({preventScroll:true}); }, reduce?0:450); });
+      if('IntersectionObserver' in w){ new IntersectionObserver(function(en){ sticky.classList.toggle('hide', en[0].isIntersecting); },{root:box.querySelector('.detail-panel'),threshold:0.15}).observe(f); }
       f.addEventListener('submit', function(e){
         e.preventDefault();
         var x={n:f.n.value.trim(),p:f.p.value.trim(),a:f.a.value.trim()};
