@@ -685,6 +685,26 @@ p{margin:0}
 .mcard li{display:grid;grid-template-columns:18px 1fr;gap:.6rem;align-items:start;font-size:.97rem;line-height:1.45;color:var(--ink-2)}
 .mcard li svg{color:var(--vermilion);margin-top:.15rem}
 .mcard .btn{margin-top:auto;align-self:center}
+/* approach: bỏ nền đen (chị Linh: KO DÙNG MÀU ĐEN) */
+.approach{background:var(--sun-wash);color:var(--ink)}
+.approach .eyebrow{color:var(--ink-2)}
+.approach .eyebrow .sc,.approach .h2 em,.adapts .sc,.step-card .sc{color:var(--vermilion)}
+.approach .copy{color:var(--ink-2)}
+.adapts div{border-color:var(--line-strong);background:var(--ivory)}
+.steps{background:var(--line);border-color:var(--line)}
+.step-card{background:var(--ivory)}
+.step-card:hover{background:var(--ivory-2)}
+.step-card .idx{color:var(--ink-3)}
+.step-card p{color:var(--ink-2)}
+.step-card .vi{color:var(--ink-3)}
+.btn-primary:hover{background:#A32E21;border-color:#A32E21;color:#fff}
+.btn-ghost:hover{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.trial .btn-dark{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.trial .btn-dark:hover{background:#A32E21;border-color:#A32E21;color:#fff}
+.trial .btn-outline:hover{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.final .btn-fill:hover{background:#A32E21;border-color:#A32E21;color:#fff}
+.chips input:checked + span{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.nav .lang:hover{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -758,7 +778,7 @@ body.has-float{padding-bottom:0}
 .langs{display:flex;align-items:center;gap:.2rem;border:1px solid var(--line-strong);border-radius:999px;padding:.2rem}
 .langs button{font-size:.68rem;font-weight:600;letter-spacing:.08em;padding:.35rem .6rem;border-radius:999px;color:var(--ink-2);transition:background .2s,color .2s}
 .langs button:hover{color:var(--ink)}
-.langs button[aria-pressed="true"]{background:var(--ink);color:var(--ivory)}
+.langs button[aria-pressed="true"]{background:var(--vermilion);color:#fff}
 .header .langs{margin-left:auto}
 @media (min-width:1120px){.header .langs{margin-left:0}}
 .drawer .langs{align-self:flex-start;margin-top:1.2rem}
@@ -845,23 +865,21 @@ body.has-float{padding-bottom:0}
     </div>
   </div>
 </section>
-<!-- ============ INTRO ============ -->
-<section class="section intro" id="about">
+<!-- ============ WHY ============ -->
+<section class="section why">
   <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow"><span class="sc">介绍</span> Giới thiệu</p>
-      <h2 class="h2">Không chỉ là một lớp tiếng Trung.</h2>
-      <p class="stack"><span>Mỗi tuổi một cách học.</span><span>Mỗi bé một nhu cầu.</span><span class="accent">Một hành trình ý nghĩa.</span></p>
+    <div class="reveal why-head">
+      <p class="eyebrow"><span class="sc">为何</span> Vì sao SunMoon</p>
+      <h2 class="h2">Giá trị khác biệt tại SunMoon</h2>
+      <p class="why-sub">Học đúng tuổi · Nói được thật · Tiến bộ thấy rõ</p>
     </div>
-    <div class="body reveal">
-      <p>Ở SunMoon, chúng tôi tin rằng trẻ học ngôn ngữ tốt nhất khi các con <strong>thực sự tò mò</strong> về nó.</p>
-      <p>Vì vậy lớp học của SunMoon được xây quanh trò chuyện, kể chuyện, sáng tạo, vận động và tương tác thật, chứ không chỉ là học thuộc từ vựng.</p>
-      <p>Từ từ tiếng Trung đầu tiên đến một cuộc hội thoại tự tin, mỗi giai đoạn có một cách học riêng.</p>
-      <div class="vi-block">
-        <span class="sc">今天 · 明天</span>
-        <p class="vi">Học tiếng Trung từ hôm nay. Mở rộng thế giới của ngày mai.</p>
-        <p class="vi" style="margin-top:.6rem">SunMoon xây dựng những lộ trình học tiếng Trung phù hợp với từng độ tuổi, từng khả năng và từng mục tiêu. Không học cùng một cách cho tất cả. Mỗi đứa trẻ có một tốc độ phát triển khác nhau.</p>
-      </div>
+    <div class="vgrid reveal">
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>Lớp nhỏ, tối đa 6 học viên</h3><p>Giáo viên theo sát từng người. Ai cũng được nói, được sửa.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>Giáo viên tận tâm</h3><p>Giáo viên bản xứ, du học sinh Trung Quốc, tốt nghiệp chính quy, có chứng chỉ quốc tế.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>Nhận xét riêng sau mỗi buổi</h3><p>Ba mẹ biết con làm tốt điều gì và cần rèn thêm điều gì.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Học online & offline</h3><p>Học tại P1, L6 Vinhomes Central Park hoặc học online tại nhà.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Học bù, bảo lưu linh hoạt</h3><p>Nghỉ có báo trước, SunMoon xếp buổi bù hoặc bảo lưu buổi học.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>Lộ trình rõ ràng</h3><p>Từ 3 tuổi đến HSK 6: PreChinese → ChineseKids → HSK.</p></div>
     </div>
   </div>
 </section>
@@ -931,43 +949,28 @@ body.has-float{padding-bottom:0}
     <a class="link more-link reveal" href="lop-hoc.html">Xem các lớp học <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
-<!-- ============ WHY ============ -->
-<section class="section why">
+<!-- ============ APPROACH ============ -->
+<section class="section approach" id="approach">
   <div class="wrap">
-    <div class="reveal why-head">
-      <p class="eyebrow"><span class="sc">为何</span> Vì sao SunMoon</p>
-      <h2 class="h2">Giá trị khác biệt tại SunMoon</h2>
-      <p class="why-sub">Học đúng tuổi · Nói được thật · Tiến bộ thấy rõ</p>
+    <div class="reveal">
+      <p class="eyebrow"><span class="sc">方法</span> Cách dạy của SunMoon</p>
+      <h2 class="h2">Chúng tôi không tin vào <em>một</em> cách học duy nhất.</h2>
+      <div class="copy">
+        <p>Một bé 3 tuổi không nên học tiếng Trung như một bạn 13 tuổi. Và một người đang bận kinh doanh không nên đi cùng con đường với học sinh phổ thông.</p>
+        <p>Cách dạy của SunMoon thay đổi theo:</p>
+      </div>
+      <div class="adapts">
+        <div><b>Độ tuổi</b><span class="sc">年龄</span></div>
+        <div><b>Khả năng</b><span class="sc">能力</span></div>
+        <div><b>Tính cách</b><span class="sc">性格</span></div>
+        <div><b>Mục tiêu</b><span class="sc">目的</span></div>
+      </div>
     </div>
-    <div class="vgrid reveal">
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>Lớp nhỏ, tối đa 6 học viên</h3><p>Giáo viên theo sát từng người. Ai cũng được nói, được sửa.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>Giáo viên tận tâm</h3><p>Giáo viên bản xứ, du học sinh Trung Quốc, tốt nghiệp chính quy, có chứng chỉ quốc tế.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>Nhận xét riêng sau mỗi buổi</h3><p>Ba mẹ biết con làm tốt điều gì và cần rèn thêm điều gì.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Học online & offline</h3><p>Học tại P1, L6 Vinhomes Central Park hoặc học online tại nhà.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Học bù, bảo lưu linh hoạt</h3><p>Nghỉ có báo trước, SunMoon xếp buổi bù hoặc bảo lưu buổi học.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>Lộ trình rõ ràng</h3><p>Từ 3 tuổi đến HSK 6: PreChinese → ChineseKids → HSK.</p></div>
-    </div>
-  </div>
-</section>
-<section class="section modes" id="modes">
-  <div class="wrap">
-    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> Hình thức học</p><h2 class="h2">Chọn cách học phù hợp với bạn</h2></div>
-    <div class="mgrid reveal">
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>Học tại trung tâm</h3><p>Tại P1 & L6, Vinhomes Central Park</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lớp nhỏ, tối đa 6 học viên</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học qua trò chơi, tương tác và thực hành thật</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Kiểm tra trình độ trước khi xếp lớp</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>Học online</h3><p>Dành cho học viên bận rộn, ở xa</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học trực tiếp với giáo viên qua Zoom</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tiết kiệm thời gian và chi phí đi lại</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Nội dung điều chỉnh cho phù hợp học online</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>Học kèm 1-1</h3><p>Cá nhân hoá hoàn toàn</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lộ trình riêng theo mục tiêu và trình độ</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lịch học linh hoạt theo thời gian của bạn</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học tại trung tâm hoặc online</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
-      </article>
+    <div class="steps reveal">
+      <div class="step-card"><span class="idx">Bước 1</span><span class="sc" aria-hidden="true">发现</span><h3>Khám phá</h3><p>Khơi gợi sự tò mò trước.</p><p class="vi">Discover</p></div>
+      <div class="step-card"><span class="idx">Bước 2</span><span class="sc" aria-hidden="true">连接</span><h3>Kết nối</h3><p>Kết nối ngôn ngữ với trải nghiệm thật.</p><p class="vi">Connect</p></div>
+      <div class="step-card"><span class="idx">Bước 3</span><span class="sc" aria-hidden="true">练习</span><h3>Luyện tập</h3><p>Luyện tập qua tương tác, không chỉ lặp lại.</p><p class="vi">Practise</p></div>
+      <div class="step-card"><span class="idx">Bước 4</span><span class="sc" aria-hidden="true">成长</span><h3>Trưởng thành</h3><p>Từng bước sử dụng tiếng Trung độc lập.</p><p class="vi">Grow</p></div>
     </div>
   </div>
 </section>
@@ -1097,23 +1100,21 @@ body.has-float{padding-bottom:0}
     </div>
   </div>
 </section>
-<!-- ============ INTRO ============ -->
-<section class="section intro" id="about">
+<!-- ============ WHY ============ -->
+<section class="section why">
   <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow"><span class="sc">介绍</span> Giới thiệu</p>
-      <h2 class="h2">Không chỉ là một lớp tiếng Trung.</h2>
-      <p class="stack"><span>Mỗi tuổi một cách học.</span><span>Mỗi bé một nhu cầu.</span><span class="accent">Một hành trình ý nghĩa.</span></p>
+    <div class="reveal why-head">
+      <p class="eyebrow"><span class="sc">为何</span> Vì sao SunMoon</p>
+      <h2 class="h2">Giá trị khác biệt tại SunMoon</h2>
+      <p class="why-sub">Học đúng tuổi · Nói được thật · Tiến bộ thấy rõ</p>
     </div>
-    <div class="body reveal">
-      <p>Ở SunMoon, chúng tôi tin rằng trẻ học ngôn ngữ tốt nhất khi các con <strong>thực sự tò mò</strong> về nó.</p>
-      <p>Vì vậy lớp học của SunMoon được xây quanh trò chuyện, kể chuyện, sáng tạo, vận động và tương tác thật, chứ không chỉ là học thuộc từ vựng.</p>
-      <p>Từ từ tiếng Trung đầu tiên đến một cuộc hội thoại tự tin, mỗi giai đoạn có một cách học riêng.</p>
-      <div class="vi-block">
-        <span class="sc">今天 · 明天</span>
-        <p class="vi">Học tiếng Trung từ hôm nay. Mở rộng thế giới của ngày mai.</p>
-        <p class="vi" style="margin-top:.6rem">SunMoon xây dựng những lộ trình học tiếng Trung phù hợp với từng độ tuổi, từng khả năng và từng mục tiêu. Không học cùng một cách cho tất cả. Mỗi đứa trẻ có một tốc độ phát triển khác nhau.</p>
-      </div>
+    <div class="vgrid reveal">
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>Lớp nhỏ, tối đa 6 học viên</h3><p>Giáo viên theo sát từng người. Ai cũng được nói, được sửa.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>Giáo viên tận tâm</h3><p>Giáo viên bản xứ, du học sinh Trung Quốc, tốt nghiệp chính quy, có chứng chỉ quốc tế.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>Nhận xét riêng sau mỗi buổi</h3><p>Ba mẹ biết con làm tốt điều gì và cần rèn thêm điều gì.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Học online & offline</h3><p>Học tại P1, L6 Vinhomes Central Park hoặc học online tại nhà.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Học bù, bảo lưu linh hoạt</h3><p>Nghỉ có báo trước, SunMoon xếp buổi bù hoặc bảo lưu buổi học.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>Lộ trình rõ ràng</h3><p>Từ 3 tuổi đến HSK 6: PreChinese → ChineseKids → HSK.</p></div>
     </div>
   </div>
 </section>
@@ -1183,43 +1184,28 @@ body.has-float{padding-bottom:0}
     <a class="link more-link reveal" href="lop-hoc.html">Xem các lớp học <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
-<!-- ============ WHY ============ -->
-<section class="section why">
+<!-- ============ APPROACH ============ -->
+<section class="section approach" id="approach">
   <div class="wrap">
-    <div class="reveal why-head">
-      <p class="eyebrow"><span class="sc">为何</span> Vì sao SunMoon</p>
-      <h2 class="h2">Giá trị khác biệt tại SunMoon</h2>
-      <p class="why-sub">Học đúng tuổi · Nói được thật · Tiến bộ thấy rõ</p>
+    <div class="reveal">
+      <p class="eyebrow"><span class="sc">方法</span> Cách dạy của SunMoon</p>
+      <h2 class="h2">Chúng tôi không tin vào <em>một</em> cách học duy nhất.</h2>
+      <div class="copy">
+        <p>Một bé 3 tuổi không nên học tiếng Trung như một bạn 13 tuổi. Và một người đang bận kinh doanh không nên đi cùng con đường với học sinh phổ thông.</p>
+        <p>Cách dạy của SunMoon thay đổi theo:</p>
+      </div>
+      <div class="adapts">
+        <div><b>Độ tuổi</b><span class="sc">年龄</span></div>
+        <div><b>Khả năng</b><span class="sc">能力</span></div>
+        <div><b>Tính cách</b><span class="sc">性格</span></div>
+        <div><b>Mục tiêu</b><span class="sc">目的</span></div>
+      </div>
     </div>
-    <div class="vgrid reveal">
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>Lớp nhỏ, tối đa 6 học viên</h3><p>Giáo viên theo sát từng người. Ai cũng được nói, được sửa.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>Giáo viên tận tâm</h3><p>Giáo viên bản xứ, du học sinh Trung Quốc, tốt nghiệp chính quy, có chứng chỉ quốc tế.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>Nhận xét riêng sau mỗi buổi</h3><p>Ba mẹ biết con làm tốt điều gì và cần rèn thêm điều gì.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Học online & offline</h3><p>Học tại P1, L6 Vinhomes Central Park hoặc học online tại nhà.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Học bù, bảo lưu linh hoạt</h3><p>Nghỉ có báo trước, SunMoon xếp buổi bù hoặc bảo lưu buổi học.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>Lộ trình rõ ràng</h3><p>Từ 3 tuổi đến HSK 6: PreChinese → ChineseKids → HSK.</p></div>
-    </div>
-  </div>
-</section>
-<section class="section modes" id="modes">
-  <div class="wrap">
-    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> Hình thức học</p><h2 class="h2">Chọn cách học phù hợp với bạn</h2></div>
-    <div class="mgrid reveal">
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>Học tại trung tâm</h3><p>Tại P1 & L6, Vinhomes Central Park</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lớp nhỏ, tối đa 6 học viên</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học qua trò chơi, tương tác và thực hành thật</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Kiểm tra trình độ trước khi xếp lớp</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>Học online</h3><p>Dành cho học viên bận rộn, ở xa</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học trực tiếp với giáo viên qua Zoom</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tiết kiệm thời gian và chi phí đi lại</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Nội dung điều chỉnh cho phù hợp học online</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>Học kèm 1-1</h3><p>Cá nhân hoá hoàn toàn</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lộ trình riêng theo mục tiêu và trình độ</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lịch học linh hoạt theo thời gian của bạn</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học tại trung tâm hoặc online</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Tư vấn ngay</a>
-      </article>
+    <div class="steps reveal">
+      <div class="step-card"><span class="idx">Bước 1</span><span class="sc" aria-hidden="true">发现</span><h3>Khám phá</h3><p>Khơi gợi sự tò mò trước.</p><p class="vi">Discover</p></div>
+      <div class="step-card"><span class="idx">Bước 2</span><span class="sc" aria-hidden="true">连接</span><h3>Kết nối</h3><p>Kết nối ngôn ngữ với trải nghiệm thật.</p><p class="vi">Connect</p></div>
+      <div class="step-card"><span class="idx">Bước 3</span><span class="sc" aria-hidden="true">练习</span><h3>Luyện tập</h3><p>Luyện tập qua tương tác, không chỉ lặp lại.</p><p class="vi">Practise</p></div>
+      <div class="step-card"><span class="idx">Bước 4</span><span class="sc" aria-hidden="true">成长</span><h3>Trưởng thành</h3><p>Từng bước sử dụng tiếng Trung độc lập.</p><p class="vi">Grow</p></div>
     </div>
   </div>
 </section>
@@ -1349,23 +1335,21 @@ body.has-float{padding-bottom:0}
     </div>
   </div>
 </section>
-<!-- ============ INTRO ============ -->
-<section class="section intro" id="about">
+<!-- ============ WHY ============ -->
+<section class="section why">
   <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow"><span class="sc">介绍</span> Introduction</p>
-      <h2 class="h2">More than a Chinese class.</h2>
-      <p class="stack"><span>Different ages.</span><span>Different needs.</span><span class="accent">One meaningful journey.</span></p>
+    <div class="reveal why-head">
+      <p class="eyebrow"><span class="sc">为何</span> Why SunMoon</p>
+      <h2 class="h2">What makes SunMoon different</h2>
+      <p class="why-sub">Right for their age · Real speaking · Visible progress</p>
     </div>
-    <div class="body reveal">
-      <p>At SunMoon, we believe children learn a language best when they are <strong>genuinely curious</strong> about it.</p>
-      <p>That is why our classrooms are designed around conversation, stories, creativity, movement and real interaction, not simply memorising vocabulary.</p>
-      <p>From a child's first Chinese word to a confident conversation, every stage has its own way of learning.</p>
-      <div class="vi-block">
-        <span class="sc">今天 · 明天</span>
-        <p class="vi">Học tiếng Trung từ hôm nay. Mở rộng thế giới của ngày mai.</p>
-        <p class="vi" style="margin-top:.6rem">SunMoon xây dựng những lộ trình học tiếng Trung phù hợp với từng độ tuổi, từng khả năng và từng mục tiêu. Không học cùng một cách cho tất cả. Mỗi đứa trẻ có một tốc độ phát triển khác nhau.</p>
-      </div>
+    <div class="vgrid reveal">
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>Small classes, max 6 learners</h3><p>The teacher follows each learner. Everyone speaks and gets corrected.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>Dedicated teachers</h3><p>Native speakers, graduates from China, degree-qualified teachers with international certificates.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>Personal feedback after every lesson</h3><p>Parents know what their child did well and what to practise next.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Online & in person</h3><p>Learn at P1 or L6, Vinhomes Central Park, or online from home.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Flexible make-ups</h3><p>Tell us in advance and SunMoon arranges a make-up lesson or saves it for later.</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>A clear pathway</h3><p>From age 3 to HSK 6: PreChinese → ChineseKids → HSK.</p></div>
     </div>
   </div>
 </section>
@@ -1435,43 +1419,28 @@ body.has-float{padding-bottom:0}
     <a class="link more-link reveal" href="lop-hoc.html">See our classes <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
-<!-- ============ WHY ============ -->
-<section class="section why">
+<!-- ============ APPROACH ============ -->
+<section class="section approach" id="approach">
   <div class="wrap">
-    <div class="reveal why-head">
-      <p class="eyebrow"><span class="sc">为何</span> Why SunMoon</p>
-      <h2 class="h2">What makes SunMoon different</h2>
-      <p class="why-sub">Right for their age · Real speaking · Visible progress</p>
+    <div class="reveal">
+      <p class="eyebrow"><span class="sc">方法</span> Our Approach · How we teach</p>
+      <h2 class="h2">We don't believe in <em>one</em> way of learning.</h2>
+      <div class="copy">
+        <p>A three-year-old should not learn Chinese like a thirteen-year-old. And a busy entrepreneur should not follow the same path as a school student.</p>
+        <p>Our teaching approach adapts to:</p>
+      </div>
+      <div class="adapts">
+        <div><b>Age</b><span class="sc">年龄</span></div>
+        <div><b>Ability</b><span class="sc">能力</span></div>
+        <div><b>Personality</b><span class="sc">性格</span></div>
+        <div><b>Purpose</b><span class="sc">目的</span></div>
+      </div>
     </div>
-    <div class="vgrid reveal">
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>Small classes, max 6 learners</h3><p>The teacher follows each learner. Everyone speaks and gets corrected.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>Dedicated teachers</h3><p>Native speakers, graduates from China, degree-qualified teachers with international certificates.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>Personal feedback after every lesson</h3><p>Parents know what their child did well and what to practise next.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Online & in person</h3><p>Learn at P1 or L6, Vinhomes Central Park, or online from home.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Flexible make-ups</h3><p>Tell us in advance and SunMoon arranges a make-up lesson or saves it for later.</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>A clear pathway</h3><p>From age 3 to HSK 6: PreChinese → ChineseKids → HSK.</p></div>
-    </div>
-  </div>
-</section>
-<section class="section modes" id="modes">
-  <div class="wrap">
-    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> Ways to learn</p><h2 class="h2">Choose the way that suits you</h2></div>
-    <div class="mgrid reveal">
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>At the centre</h3><p>At P1 & L6, Vinhomes Central Park</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Small classes, max 6 learners</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Learning through games, interaction and real practice</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Level check before placement</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Get advice</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>Online</h3><p>For busy learners or those far away</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Live lessons with a teacher on Zoom</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Save time and travel costs</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Content adapted for online learning</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Get advice</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>One-to-one</h3><p>Fully personalised</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your own pathway by goal and level</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Flexible schedule around your time</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>At the centre or online</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">Get advice</a>
-      </article>
+    <div class="steps reveal">
+      <div class="step-card"><span class="idx">Step 1</span><span class="sc" aria-hidden="true">发现</span><h3>Discover</h3><p>Spark curiosity first.</p><p class="vi">Khơi gợi sự tò mò.</p></div>
+      <div class="step-card"><span class="idx">Step 2</span><span class="sc" aria-hidden="true">连接</span><h3>Connect</h3><p>Link the language to real experience.</p><p class="vi">Kết nối ngôn ngữ với trải nghiệm thật.</p></div>
+      <div class="step-card"><span class="idx">Step 3</span><span class="sc" aria-hidden="true">练习</span><h3>Practise</h3><p>Practise through interaction, not repetition alone.</p><p class="vi">Luyện tập qua tương tác.</p></div>
+      <div class="step-card"><span class="idx">Step 4</span><span class="sc" aria-hidden="true">成长</span><h3>Grow</h3><p>Step by step, use Chinese independently.</p><p class="vi">Từng bước sử dụng tiếng Trung độc lập.</p></div>
     </div>
   </div>
 </section>
@@ -1601,23 +1570,21 @@ body.has-float{padding-bottom:0}
     </div>
   </div>
 </section>
-<!-- ============ INTRO ============ -->
-<section class="section intro" id="about">
+<!-- ============ WHY ============ -->
+<section class="section why">
   <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow"><span class="sc">介绍</span> 关于日月</p>
-      <h2 class="h2">不只是一堂中文课。</h2>
-      <p class="stack"><span>不同的年龄。</span><span>不同的需求。</span><span class="accent">一段有意义的旅程。</span></p>
+    <div class="reveal why-head">
+      <p class="eyebrow"><span class="sc">为何</span> 为何日月</p>
+      <h2 class="h2">日月的不同之处</h2>
+      <p class="why-sub">因龄施教 · 真正开口 · 进步看得见</p>
     </div>
-    <div class="body reveal">
-      <p>在日月，我们相信：当孩子对一种语言<strong>真正好奇</strong>时，学得最好。</p>
-      <p>因此，我们的课堂围绕对话、故事、创造、肢体活动和真实互动来设计，而不只是背单词。</p>
-      <p>从孩子的第一个中文词到一段自信的对话，每个阶段都有属于它自己的学习方式。</p>
-      <div class="vi-block">
-        <span class="sc">今天 · 明天</span>
-        <p class="vi">今天开始学中文，打开明天更广阔的世界。</p>
-        <p class="vi" style="margin-top:.6rem">日月为不同年龄、不同能力、不同目标的学习者设计各自合适的中文学习路径。不用同一种方法教所有人。每个孩子都有自己的成长节奏。</p>
-      </div>
+    <div class="vgrid reveal">
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>小班教学，每班最多 6 人</h3><p>老师关注每一位学员，人人都有机会开口、得到纠正。</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>用心的老师</h3><p>母语老师、中国留学归来、科班毕业并持有国际证书的老师。</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>每节课后的个人点评</h3><p>家长清楚孩子做得好的地方和需要继续练习的内容。</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>线上与线下</h3><p>在 Vinhomes Central Park 的 P1、L6 上课，或在家线上学习。</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>灵活补课与保留</h3><p>提前告知，日月会安排补课或保留课时。</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>清晰的学习路径</h3><p>从 3 岁到 HSK 6：PreChinese → ChineseKids → HSK。</p></div>
     </div>
   </div>
 </section>
@@ -1687,43 +1654,28 @@ body.has-float{padding-bottom:0}
     <a class="link more-link reveal" href="lop-hoc.html">查看全部课程 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
-<!-- ============ WHY ============ -->
-<section class="section why">
+<!-- ============ APPROACH ============ -->
+<section class="section approach" id="approach">
   <div class="wrap">
-    <div class="reveal why-head">
-      <p class="eyebrow"><span class="sc">为何</span> 为何日月</p>
-      <h2 class="h2">日月的不同之处</h2>
-      <p class="why-sub">因龄施教 · 真正开口 · 进步看得见</p>
+    <div class="reveal">
+      <p class="eyebrow"><span class="sc">方法</span> 我们怎么教</p>
+      <h2 class="h2">我们不相信<em>只有一种</em>学习方式。</h2>
+      <div class="copy">
+        <p>三岁的孩子不该像十三岁的孩子那样学中文。忙碌的创业者也不该走和学生一样的路。</p>
+        <p>我们的教学方法会根据以下因素调整：</p>
+      </div>
+      <div class="adapts">
+        <div><b>年龄</b><span class="sc">Age</span></div>
+        <div><b>能力</b><span class="sc">Ability</span></div>
+        <div><b>性格</b><span class="sc">Personality</span></div>
+        <div><b>目的</b><span class="sc">Purpose</span></div>
+      </div>
     </div>
-    <div class="vgrid reveal">
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="15" r="5"/><circle cx="32" cy="15" r="5"/><circle cx="24" cy="27" r="5"/><path d="M8 41c1-6 5-9 10-9M40 41c-1-6-5-9-10-9M16 43c1-5 4-8 8-8s7 3 8 8"/></svg><h3>小班教学，每班最多 6 人</h3><p>老师关注每一位学员，人人都有机会开口、得到纠正。</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="13" r="7"/><path d="M11 43c1-9 6-14 13-14s12 5 13 14"/><path d="M18 30l6 7 6-7"/></svg><h3>用心的老师</h3><p>母语老师、中国留学归来、科班毕业并持有国际证书的老师。</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="36" rx="3"/><path d="M16 17h16M16 24h16M16 31h9"/><path d="M28 34l3 3 6-7"/></svg><h3>每节课后的个人点评</h3><p>家长清楚孩子做得好的地方和需要继续练习的内容。</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>线上与线下</h3><p>在 Vinhomes Central Park 的 P1、L6 上课，或在家线上学习。</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>灵活补课与保留</h3><p>提前告知，日月会安排补课或保留课时。</p></div>
-      <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>清晰的学习路径</h3><p>从 3 岁到 HSK 6：PreChinese → ChineseKids → HSK。</p></div>
-    </div>
-  </div>
-</section>
-<section class="section modes" id="modes">
-  <div class="wrap">
-    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> 上课形式</p><h2 class="h2">选择适合您的学习方式</h2></div>
-    <div class="mgrid reveal">
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36M10 42V20l14-10 14 10v22"/><path d="M20 42V30h8v12M15 24h4M29 24h4"/></svg></span><div><h3>中心上课</h3><p>Vinhomes Central Park 的 P1 和 L6</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>小班教学，每班最多 6 人</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>在游戏、互动和实践中学习</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>分班前进行水平测试</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">立即咨询</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M4 38h40"/><circle cx="24" cy="19" r="3.5"/><path d="M18 28c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><div><h3>线上上课</h3><p>适合忙碌或住得远的学员</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>通过 Zoom 与老师实时上课</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>节省时间和交通费用</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>内容针对线上学习调整</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">立即咨询</a>
-      </article>
-      <article class="mcard">
-        <div class="mcard-top"><span class="mcard-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5.5-12 11-12s10 4 11 12M27 40c.5-6 3-9 6-9s6 3 7 9"/></svg></span><div><h3>一对一</h3><p>完全个性化</p></div></div>
-        <ul><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>按目标和水平定制学习路径</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上课时间灵活</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可在中心或线上上课</span></li></ul>
-        <a class="btn btn-primary" href="lien-he.html#trial">立即咨询</a>
-      </article>
+    <div class="steps reveal">
+      <div class="step-card"><span class="idx">第一步</span><span class="sc" aria-hidden="true">发现</span><h3>发现</h3><p>先唤起好奇心。</p><p class="vi">Discover</p></div>
+      <div class="step-card"><span class="idx">第二步</span><span class="sc" aria-hidden="true">连接</span><h3>连接</h3><p>把语言和真实经验连起来。</p><p class="vi">Connect</p></div>
+      <div class="step-card"><span class="idx">第三步</span><span class="sc" aria-hidden="true">练习</span><h3>练习</h3><p>在互动中练习，而不只是重复。</p><p class="vi">Practise</p></div>
+      <div class="step-card"><span class="idx">第四步</span><span class="sc" aria-hidden="true">成长</span><h3>成长</h3><p>一步一步，独立使用中文。</p><p class="vi">Grow</p></div>
     </div>
   </div>
 </section>

@@ -97,7 +97,7 @@ L = {
 }
 
 PAGES = {
-    HOME:    ['hero', 'about', 'homeclasses', 'why', 'modes', 'inside', 'trial', 'final'],
+    HOME:    ['hero', 'why', 'homeclasses', 'approach', 'inside', 'trial', 'final'],
     ABOUT:   ['about', 'approach', 'teachers', 'inside', 'final'],
     CLASSES: ['programs', 'modes', 'journey', 'trial', 'final'],
     PARENTS: ['parents', 'stories', 'guide', 'faq', 'trial', 'final'],
@@ -405,7 +405,7 @@ def build_head(lang, page):
 .langs{{display:flex;align-items:center;gap:.2rem;border:1px solid var(--line-strong);border-radius:999px;padding:.2rem}}
 .langs button{{font-size:.68rem;font-weight:600;letter-spacing:.08em;padding:.35rem .6rem;border-radius:999px;color:var(--ink-2);transition:background .2s,color .2s}}
 .langs button:hover{{color:var(--ink)}}
-.langs button[aria-pressed="true"]{{background:var(--ink);color:var(--ivory)}}
+.langs button[aria-pressed="true"]{{background:var(--vermilion);color:#fff}}
 .header .langs{{margin-left:auto}}
 @media (min-width:1120px){{.header .langs{{margin-left:0}}}}
 .drawer .langs{{align-self:flex-start;margin-top:1.2rem}}
