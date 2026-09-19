@@ -215,9 +215,25 @@
             en:{t:'Get the free materials',s:'Leave your name and phone number once, then download everything.',n:'Parent / learner name',p:'Phone / Zalo',b:'Open the file',e:'Please enter your name and phone number',x:'Close'},
             zh:{t:'免费领取资料',s:'留一次姓名和电话，即可下载全部资料。',n:'家长 / 学员姓名',p:'电话 / Zalo',b:'打开资料',e:'请填写姓名和电话',x:'关闭'}};
     function unlocked(){ try{ return localStorage.getItem('sunmoon-dl')==='1'; }catch(e){ return false; } }
+    var AU={vi:{dl:'Tải về máy',x:'Đóng'},en:{dl:'Download',x:'Close'},zh:{dl:'下载',x:'关闭'}};
+    function isAudio(a){ return /\.m4a$/i.test(a.getAttribute('href')||''); }
+    function playAudio(a){
+      var t=AU[lang]||AU.vi, doc=a.closest('.doc'), h=doc&&doc.querySelector('h4'), box=d.createElement('div');
+      box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true');
+      box.innerHTML='<div class="detail-panel player"><button type="button" class="detail-x" aria-label="'+t.x+'">×</button>'
+        +'<p class="player-k">'+(h?h.textContent:'')+'</p><h3 class="detail-title">'+a.querySelector('span').textContent+'</h3>'
+        +'<audio controls autoplay preload="metadata" src="'+a.href+'"></audio>'
+        +'<a class="link player-dl" href="'+a.href+'" download>'+t.dl+'</a></div>';
+      d.body.appendChild(box); d.body.style.overflow='hidden';
+      function kill(){ var au=box.querySelector('audio'); if(au) au.pause(); box.remove(); d.body.style.overflow=''; }
+      box.addEventListener('click', function(ev){ if(ev.target===box) kill(); });
+      box.querySelector('.detail-x').addEventListener('click', kill);
+      requestAnimationFrame(function(){ box.classList.add('on'); });
+    }
+    function openFile(a){ if(isAudio(a)) playAudio(a); else w.open(a.href,'_blank','noopener'); }
     [].forEach.call(d.querySelectorAll('a.dl'), function(a){
       a.addEventListener('click', function(e){
-        if(unlocked()) return;
+        if(unlocked()){ if(isAudio(a)){ e.preventDefault(); playAudio(a); } return; }
         e.preventDefault();
         var t=GT[lang]||GT.vi, box=d.createElement('div'); box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true');
         box.innerHTML='<div class="detail-panel gate"><button type="button" class="detail-x" aria-label="'+t.x+'">×</button><h3 class="detail-title">'+t.t+'</h3><p class="detail-sub">'+t.s+'</p>'
@@ -234,7 +250,7 @@
           if(!n||p.replace(/\D/g,'').length<9){ f.querySelector('.detail-err').textContent=t.e; return; }
           sendLead({tenBe:n,phuHuynh:n,sdt:p,chuongTrinh:'Tải tài liệu '+(a.dataset.lvl||''),ghiChu:'Tải tài liệu trên web · '+lang});
           try{ localStorage.setItem('sunmoon-dl','1'); }catch(err){}
-          kill(); w.open(a.href,'_blank','noopener');
+          kill(); openFile(a);
         });
         requestAnimationFrame(function(){ box.classList.add('on'); });
       });
