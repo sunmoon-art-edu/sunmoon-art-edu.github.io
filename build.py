@@ -251,8 +251,8 @@ DOCS_T = {
             paid='线上练习册', paid_d='YCT · HSK · 口语额外练习，附答案，收费。', soon='即将推出', ask='Zalo 留言，第一时间通知您',
             src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
 }
-YCT_INFO = [(1, 80, 35, 11), (2, 150, 42, 15), (3, 300, 52, 21), (4, 600, 55, 30)]
-HSK_INFO = [(1, 150, 14, 38, 15), (2, 300, 18, 50, 26), (3, 600, 22, 51, 36), (4, 1200, 24, 54, 31), (5, 2500, 25, 75, 30), (6, 5000, 30, 118, 36)]
+YCT_INFO = [(1, 80, 32, 11), (2, 150, 39, 15), (3, 300, 47, 21), (4, 600, 50, 30)]
+HSK_INFO = [(1, 150, 14, 25, 15), (2, 300, 18, 32, 26), (3, 600, 22, 33, 36), (4, 1200, 24, 35, 31), (5, 2500, 25, 36, 30), (6, 5000, 30, 41, 36)]
 IC_PDF = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>'
 IC_AUD = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>'
 
