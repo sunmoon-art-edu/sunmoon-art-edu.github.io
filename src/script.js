@@ -151,13 +151,13 @@
 
     /* class detail popup + quick trial sign-up */
     var DT={
-      vi:{cta:'Đăng ký học thử',close:'Đóng',reg:'Đăng ký học thử lớp này',name:'Tên phụ huynh / học viên',phone:'Số điện thoại / Zalo',age:'Tuổi của con (nếu có)',send:'Gửi đăng ký qua Zalo',
-          need:'Vui lòng nhập tên và số điện thoại',ask:'Nhắn Zalo hỏi thêm',
+      vi:{cta:'Đăng ký học thử',close:'Đóng',reg:'Đăng ký học thử',sub:'Gửi thông tin cho SunMoon qua Zalo',name:'Tên phụ huynh / học viên',phone:'Số điện thoại / Zalo',age:'Tuổi của con (nếu có)',send:'Gửi đăng ký qua Zalo',
+          need:'Vui lòng nhập tên và số điện thoại',ask:'Nhắn Zalo để được tư vấn',
           msg:function(c,x){return 'Xin chào SunMoon, tôi muốn đăng ký học thử lớp '+c+'.\n- Họ tên: '+x.n+'\n- SĐT/Zalo: '+x.p+(x.a?'\n- Tuổi của con: '+x.a:'');}},
-      en:{cta:'Book a trial',close:'Close',reg:'Book a trial for this class',name:'Parent / learner name',phone:'Phone / Zalo',age:"Child's age (if any)",send:'Send via Zalo',
-          need:'Please enter your name and phone number',ask:'Ask us on Zalo',
+      en:{cta:'Book a trial',close:'Close',reg:'Book a trial lesson',sub:'Send your details to SunMoon via Zalo',name:'Parent / learner name',phone:'Phone / Zalo',age:"Child's age (if any)",send:'Send via Zalo',
+          need:'Please enter your name and phone number',ask:'Message us on Zalo for advice',
           msg:function(c,x){return 'Hello SunMoon, I would like to book a trial for '+c+'.\n- Name: '+x.n+'\n- Phone/Zalo: '+x.p+(x.a?"\n- Child's age: "+x.a:'');}},
-      zh:{cta:'预约试听',close:'关闭',reg:'预约本课程试听',name:'家长 / 学员姓名',phone:'电话 / Zalo',age:'孩子年龄（如有）',send:'通过 Zalo 发送',
+      zh:{cta:'预约试听',close:'关闭',reg:'预约试听',sub:'通过 Zalo 把信息发给日月',name:'家长 / 学员姓名',phone:'电话 / Zalo',age:'孩子年龄（如有）',send:'通过 Zalo 发送',
           need:'请填写姓名和电话',ask:'Zalo 咨询',
           msg:function(c,x){return '您好日月，我想预约'+c+'的试听课。\n- 姓名：'+x.n+'\n- 电话/Zalo：'+x.p+(x.a?'\n- 孩子年龄：'+x.a:'');}}
     };
@@ -167,13 +167,13 @@
       var cname=clone.textContent.trim(), age=(card.querySelector('.age')||{}).textContent||'';
       var box=d.createElement('div'); box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true'); box.setAttribute('aria-label',cname);
       box.innerHTML='<div class="detail-panel"><button type="button" class="detail-x" aria-label="'+t.close+'">×</button>'
-        +'<p class="detail-kicker">'+esc(age)+(kicker&&kicker!==cname?' · '+esc(kicker):'')+'</p><h3 class="detail-title">'+esc(cname)+'</h3>'
+        +'<p class="detail-kicker">'+(more.dataset.kicker?esc(more.dataset.kicker)+'':'')+(more.dataset.kicker?'':esc(age))+(!more.dataset.kicker&&kicker&&kicker!==cname?' · '+esc(kicker):'')+'</p><h3 class="detail-title">'+esc(cname)+'</h3>'
         +'<div class="detail-body">'+more.innerHTML+'</div>'
         +'<div class="detail-sticky"><button type="button" class="btn btn-primary detail-go">'+t.cta+'</button></div>'
-        +'<form class="detail-form" novalidate><h4>'+t.reg+'</h4>'
+        +'<form class="detail-form" novalidate><h4>'+esc(more.dataset.reg||t.reg)+'</h4><p class="detail-sub">'+t.sub+'</p>'
         +'<input name="n" placeholder="'+t.name+'" autocomplete="name"><input name="p" type="tel" inputmode="tel" placeholder="'+t.phone+'" autocomplete="tel"><input name="a" placeholder="'+t.age+'">'
         +'<p class="detail-err" aria-live="polite"></p><div class="detail-actions"><button class="btn btn-primary" type="submit">'+t.send+'</button>'
-        +'<a class="btn btn-ghost" target="_blank" rel="noopener" href="'+ZALO+'">'+t.ask+'</a></div><div class="detail-done"></div></form></div>';
+        +'<a class="btn btn-ghost" target="_blank" rel="noopener" href="'+ZALO+'">'+esc(more.dataset.ask||t.ask)+'</a></div><div class="detail-done"></div></form></div>';
       d.body.appendChild(box); d.body.style.overflow='hidden';
       function kill(){ box.remove(); d.body.style.overflow=''; d.removeEventListener('keydown',onk); if(location.hash==='#'+card.id) history.replaceState(null,'',location.pathname+location.search); }
       function onk(e){ if(e.key==='Escape') kill(); }

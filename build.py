@@ -157,21 +157,43 @@ def detail_html(cid, lang):
         if pick is not None:
             out[pick] = re.sub(r'(<b>.*?</b>)(.*)', lambda m: m.group(1) + plain(m.group(2)), out[pick], count=1)
         return out
-    x = dict(x, fit=[plain(s) for s in x['fit']], how=[plain(s) for s in x['how']],
-             out=keep_one(x['out'], last=(cid == 'little')), cls=keep_one(x['cls']))
+    skills = cid == 'kids'   # danh sách kỹ năng: giữ đậm tên kỹ năng (Nghe – Nói, Đọc…) như chị viết
+    x = dict(x, fit=[plain(s) for s in x.get('fit', [])], how=[plain(s) for s in x.get('how', [])],
+             out=(x.get('out', []) if skills else keep_one(x.get('out', []), last=(cid == 'little'))), cls=keep_one(x.get('cls', [])))
     t_out = x.get('t_out') or (h['out_adult'] if c['adult'] else h['out'])
     faq = ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in x['faq'])
     tag = ('<p class="more-tag">' + '<br>'.join(x['tag']) + '</p>') if x.get('tag') else ''
-    return (f'<div class="more" hidden>{tag}'
-            f'<div class="more-grid">'
-            f'<section><h4>{h["fit"]}</h4>{ul(x["fit"])}</section>'
-            f'<section><h4>{t_out}</h4>{ul(x["out"])}</section>'
-            f'<section><h4>{x.get("t_how") or h["how"]}</h4>{para("how_intro","more-intro")}{ul(x["how"])}{para("how_outro","more-outro")}</section>'
-            f'<section><h4>{x.get("t_cls") or h["cls"]}</h4>{ul(x["cls"])}</section>'
-            f'</div>'
-            f'<section class="more-faq"><h4>{h["faq"]}</h4>{faq}</section>'
-            f'<p class="more-note">{x.get("note") or h["note"]}</p>'
-            f'</div>')
+    if x.get('steps'):
+        how_list = '<ol class="more-steps">' + ''.join(f'<li><b>{t}</b><span>{d}</span></li>' for t, d in x['steps']) + '</ol>'
+    else:
+        how_list = ul(x['how'])
+    secs = []
+    if x['fit']:
+        secs.append(f'<section><h4>{x.get("t_fit") or h["fit"]}</h4>{ul(x["fit"])}</section>')
+    if x['out']:
+        secs.append(f'<section><h4>{t_out}</h4>{para("out_intro","more-intro")}{ul(x["out"])}{para("out_outro","more-outro")}</section>')
+    secs.append(f'<section><h4>{x.get("t_how") or h["how"]}</h4>{para("how_intro","more-intro")}{how_list}{para("how_outro","more-outro")}</section>')
+    for title, intro, items in x.get('extra', []):
+        secs.append(f'<section><h4>{title}</h4><p class="more-intro">{intro}</p>{ul(items)}</section>')
+    if x['cls']:
+        secs.append(f'<section><h4>{x.get("t_cls") or h["cls"]}</h4>{ul(x["cls"])}</section>')
+    elif x.get('cls_text'):
+        secs.append(f'<section class="more-text"><h4>{x["t_cls"]}</h4>' + ''.join(f'<p>{t}</p>' for t in x['cls_text']) + '</section>')
+    if x.get('forms'):
+        secs.append(f'<section><h4>{x["t_forms"]}</h4><div class="more-forms">' + ''.join(f'<div><b>{t}</b><span>{d}</span></div>' for t, d in x['forms']) + '</div></section>')
+    stack = x.get('steps') or x.get('extra') or x.get('forms')
+    grid = 'more-stack' if stack else 'more-grid'
+    faq_sec = f'<section class="more-faq"><h4>{x.get("t_faq") or h["faq"]}</h4>{faq}</section>' if x['faq'] else ''
+    if x.get('t_note'):
+        note = (f'<section class="more-end"><h4>{x["t_note"]}</h4>'
+                + (f'<p class="more-endlead">{x["note_lead"]}</p>' if x.get('note_lead') else '')
+                + f'<p class="more-note">{x["note"]}</p></section>')
+    else:
+        note = f'<p class="more-note">{x.get("note") or h["note"]}</p>'
+    attrs = ''.join(f' data-{k}="{x[k]}"' for k in ('kicker', 'reg', 'ask') if x.get(k))
+    return (f'<div class="more" hidden{attrs}>{tag}{para("lead","more-lead")}'
+            f'<div class="{grid}">' + ''.join(secs) + '</div>'
+            f'{faq_sec}{note}</div>')
 
 def add_details(html, lang):
     btn = DETAIL_H[lang]['more']
