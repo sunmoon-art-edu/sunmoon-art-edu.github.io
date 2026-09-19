@@ -227,8 +227,9 @@ p{margin:0}
 .hero .sub b{display:block;font-weight:600;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;color:var(--ink);margin-bottom:.6rem}
 .hero .actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
 .hero .strap{margin-top:3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.hero .strap span::after{content:"·";margin-left:1.4rem;color:var(--sun)}
-.hero .strap span:last-child::after{content:""}
+.hero .strap a{color:var(--ink-2);font-weight:600;text-underline-offset:.35em;transition:color .2s}
+.hero .strap a:hover{color:var(--vermilion);text-decoration:underline}
+.hero .strap a:not(:last-child)::after{content:"·";margin-left:1.4rem;color:var(--vermilion);display:inline-block}
 .hero-visual{position:relative}
 .hero-visual .ph.main{aspect-ratio:4/5}
 .hero-visual .ph.main.shot .cap{display:none}
@@ -659,6 +660,14 @@ p{margin:0}
 .dl svg{color:var(--vermilion)}
 .dl small{font-size:.78rem;color:var(--ink-3)}
 .docs-extra{margin-top:1rem;max-width:26rem}
+.app-card{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;border:1px solid var(--vermilion);border-radius:var(--radius);background:var(--ivory-2);padding:1.3rem;margin-bottom:1.4rem;color:var(--ink);transition:transform .2s}
+.app-card:hover{transform:translateY(-2px)}
+.app-glyph{font-family:var(--serif);font-size:2.6rem;line-height:1;width:4.2rem;height:4.2rem;display:grid;place-items:center;border-radius:50%;background:var(--vermilion);color:var(--vermilion-ink);flex:none}
+.app-txt{display:flex;flex-direction:column;gap:.25rem;flex:1 1 16rem;min-width:0}
+.app-txt small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--vermilion)}
+.app-txt strong{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.1}
+.app-txt span{color:var(--ink-3);font-size:.95rem}
+
 .doc-soon{background:var(--ivory-2)}
 .doc-soon h4{font-size:1.25rem;line-height:1.2}
 .soon{align-self:flex-start;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;background:var(--vermilion);color:var(--ivory);border-radius:999px;padding:.3rem .6rem}

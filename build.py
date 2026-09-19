@@ -229,6 +229,7 @@ DOCS_T = {
             bt='Bài tập SunMoon tự soạn', bt_d='Có tranh, pinyin, luyện chữ — làm ở lớp và ở nhà.', bt_alt='Phiếu bài tập SunMoon', pre='Giáo trình SunMoon PreChinese', pre_d='Giáo trình trung tâm tự soạn cho bé 3–7 tuổi. Bản xem thử sắp có.',
             comm='Tài liệu Giao tiếp', comm_d='Bộ mẫu câu giao tiếp theo tình huống do SunMoon biên soạn. Sắp có.',
             paid='Sách bài tập online', paid_d='Bài tập luyện thêm YCT · HSK · Giao tiếp, có đáp án. Có phí.', soon='Sắp ra mắt', ask='Nhắn Zalo để được báo sớm',
+            app_new='Mới · Miễn phí', app_h='App học YCT 1', app_d='12 bài, 80 từ. Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game.', app_cta='Học ngay',
             src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
  'en': dict(badge='Free · Official materials · Leave your number once to download everything',
             yct='YCT — Youth Chinese Test', yct_sub='The international Chinese test for primary and secondary students. 4 levels.',
@@ -239,6 +240,7 @@ DOCS_T = {
             bt='SunMoon\'s own worksheets', bt_d='Pictures, pinyin and character practice — for class and home.', bt_alt='SunMoon worksheet', pre='SunMoon PreChinese course book', pre_d='Our own course book for ages 3–7. Preview pages coming soon.',
             comm='Conversation materials', comm_d='Situational phrase sets written by SunMoon. Coming soon.',
             paid='Online workbooks', paid_d='Extra YCT · HSK · conversation practice with answers. Paid.', soon='Coming soon', ask='Message us on Zalo to hear first',
+            app_new='New · Free', app_h='YCT 1 learning app', app_d='12 lessons, 80 words. Listening, matching, sentence building and character writing — like a game.', app_cta='Start learning',
             src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
  'zh': dict(badge='免费 · 官方资料 · 留一次电话即可下载全部',
             yct='YCT — 中小学生汉语考试', yct_sub='面向中小学生的国际标准化中文考试，共 4 级。',
@@ -249,6 +251,7 @@ DOCS_T = {
             bt='日月自编练习', bt_d='配图、拼音、写字练习——课堂和家里都能用。', bt_alt='日月练习单', pre='日月 PreChinese 教材', pre_d='中心自编的 3–7 岁教材，试读页即将上线。',
             comm='口语交际资料', comm_d='日月编写的情境句型资料，即将上线。',
             paid='线上练习册', paid_d='YCT · HSK · 口语额外练习，附答案，收费。', soon='即将推出', ask='Zalo 留言，第一时间通知您',
+            app_new='全新 · 免费', app_h='YCT 1 学习 App', app_d='12 课，80 个词。听力、配对、连词成句、写汉字——像玩游戏一样学习。', app_cta='开始学习',
             src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
 }
 YCT_INFO = [(1, 80, 32, 11), (2, 150, 39, 15), (3, 300, 47, 21), (4, 600, 50, 30)]
@@ -274,7 +277,10 @@ def docs_section(lang):
     return f"""<section class="section docs" id="docs">
   <div class="wrap">
     <p class="docs-badge reveal">{t['badge']}</p>
-    <div class="docs-group reveal"><h3 class="h3">{t['yct']}</h3><p class="lede">{t['yct_sub']}</p><div class="docs-grid">{yct}</div></div>
+    <div class="docs-group reveal"><h3 class="h3">{t['yct']}</h3><p class="lede">{t['yct_sub']}</p>
+      <a class="app-card" href="hoc/yct1.html" target="_blank" rel="noopener"><span class="app-glyph" aria-hidden="true">学</span>
+        <span class="app-txt"><small>{t['app_new']}</small><strong>{t['app_h']}</strong><span>{t['app_d']}</span></span><span class="btn btn-primary">{t['app_cta']}</span></a>
+      <div class="docs-grid">{yct}</div></div>
     <div class="docs-group reveal"><h3 class="h3">{t['hsk']}</h3><p class="lede">{t['hsk_sub']}</p><div class="docs-grid">{hsk}</div>
       <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
     <div class="docs-group reveal"><h3 class="h3">{t['bt']}</h3><p class="lede">{t['bt_d']}</p>
