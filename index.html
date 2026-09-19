@@ -570,6 +570,41 @@ p{margin:0}
 .clinks a:hover{border-color:var(--vermilion);color:var(--vermilion)}
 .clinks a svg{flex:0 0 auto}
 .clinks.page{border-top:1px solid var(--line);padding-top:1.6rem}
+/* ---------- class detail popup ---------- */
+.has-more{cursor:pointer}
+.more-btn{align-self:flex-start;background:none;border:1px solid var(--line-strong);border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);cursor:pointer;margin-top:auto;transition:border-color .2s,color .2s}
+.more-btn:hover{border-color:var(--vermilion);color:var(--vermilion)}
+.more-btn span{font-size:1rem;margin-left:.2rem}
+.prog .more-btn + .link,.xprog .more-btn + .link{margin-top:.2rem}
+.detail{position:fixed;inset:0;z-index:80;background:rgba(30,24,20,.45);display:flex;align-items:flex-end;justify-content:center;opacity:0;transition:opacity .25s ease}
+.detail.on{opacity:1}
+@media (min-width:760px){.detail{align-items:center;padding:2rem}}
+.detail-panel{position:relative;background:var(--ivory);color:var(--ink);width:100%;max-width:760px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:2rem 1.4rem 1.6rem;box-shadow:0 20px 60px rgba(0,0,0,.25);transform:translateY(24px);transition:transform .3s ease}
+.detail.on .detail-panel{transform:none}
+@media (min-width:760px){.detail-panel{border-radius:18px;padding:2.4rem 2.4rem 2rem}}
+.detail-x{position:absolute;top:.8rem;right:.9rem;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--ivory);font-size:1.5rem;line-height:1;cursor:pointer;color:var(--ink)}
+.detail-kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin:0 2.5rem .4rem 0}
+.detail-title{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.3rem);line-height:1.1;margin:0 0 1.2rem}
+.more-grid{display:grid;gap:1.1rem 2rem}
+@media (min-width:640px){.more-grid{grid-template-columns:1fr 1fr}}
+.detail h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vermilion);font-weight:600;margin:0 0 .5rem}
+.detail ul{margin:0;padding-left:1.1rem;display:grid;gap:.3rem}
+.detail li{font-size:.97rem;line-height:1.45;color:var(--ink-2)}
+.detail li b{color:var(--ink);font-weight:600}
+.more-faq{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.1rem}
+.more-faq details{border-bottom:1px solid var(--line);padding:.6rem 0}
+.more-faq summary{cursor:pointer;font-weight:600;font-size:.97rem;color:var(--ink)}
+.more-faq details p{margin:.4rem 0 0;color:var(--ink-2);font-style:italic;font-size:.95rem;line-height:1.5}
+.more-note{margin:1rem 0 0;font-size:.9rem;color:var(--ink-3);font-style:italic}
+.detail-form{margin-top:1.4rem;background:var(--ivory-2);border:1px solid var(--line);border-radius:14px;padding:1.2rem;display:grid;gap:.6rem}
+.detail-form h4{margin-bottom:.2rem}
+.detail-form input{font:inherit;font-size:1rem;padding:.8rem .9rem;border:1px solid var(--line-strong);border-radius:10px;background:var(--ivory);color:var(--ink);width:100%;box-sizing:border-box}
+.detail-form input:focus{outline:2px solid var(--vermilion);outline-offset:1px}
+.detail-err{color:var(--vermilion);font-size:.88rem;margin:0;min-height:0}
+.detail-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+.detail-done:empty{display:none}
+.detail-done{margin-top:.4rem}
+.detail-done .msg{white-space:pre-wrap;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:.8rem;font-size:.9rem;margin:.5rem 0}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -758,55 +793,55 @@ body.has-float{padding-bottom:0}
       <p class="lede" style="margin-top:1rem">Mỗi lớp một mục tiêu rõ ràng. Lớp nhỏ, học qua trò chuyện, trò chơi và tương tác thật.</p>
     </div>
     <div class="grid reveal">
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#little">
           <span class="age">3–7 tuổi</span>
           <h3>SunMoon PreChinese</h3>
           <p>Làm quen tiếng Trung qua truyện kể, bài hát và vận động.</p>
           <span class="sc" aria-hidden="true">小</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#kids">
           <span class="age">7–13 tuổi</span>
           <h3>SunMoon ChineseKids</h3>
           <p>Nghe, nói, đọc, viết và văn hoá Trung Hoa, từng bước vững chắc.</p>
           <span class="sc" aria-hidden="true">声</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#work">
           <span class="age">Người lớn</span>
           <h3>Tiếng Trung thương mại</h3>
           <p>Đàm phán, nhập hàng, bán hàng và làm việc với đối tác Trung Quốc.</p>
           <span class="sc" aria-hidden="true">商</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#custom">
           <span class="age">Theo nhu cầu</span>
           <h3>Lớp cá nhân hoá theo nhu cầu</h3>
           <p>Nội dung, lịch học và tốc độ xây riêng theo mục tiêu của từng học viên.</p>
           <span class="sc" aria-hidden="true">人</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#comm">
           <span class="age">Thiếu niên &amp; người lớn</span>
           <h3>Lớp giao tiếp</h3>
           <p>Tự tin nói tiếng Trung trong đời sống, du lịch và công việc.</p>
           <span class="sc" aria-hidden="true">说</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#hsk">
           <span class="age">Thiếu niên &amp; người lớn</span>
           <h3>Lớp HSK</h3>
           <p>Từ nền tảng đến HSK 6, mục tiêu rõ ràng cho từng cấp độ.</p>
           <span class="sc" aria-hidden="true">路</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#math">
           <span class="age">3–6 tuổi</span>
           <h3>Toán tư duy</h3>
           <p>Số, hình khối và quy luật qua đồ vật thật và trò chơi.</p>
           <span class="sc" aria-hidden="true">数</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#writing">
           <span class="age">5–7 tuổi</span>
           <h3>Luyện chữ đẹp</h3>
           <p>Cầm bút, tư thế ngồi và từng nét cơ bản.</p>
           <span class="sc" aria-hidden="true">书</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#camp">
           <span class="age">Hè · Đông · Xuân</span>
           <h3>Chương trình Camp</h3>
           <p>Summer Camp, Winter Camp, Spring Camp… tiếng Trung, văn hoá và hoạt động sáng tạo.</p>
@@ -985,55 +1020,55 @@ body.has-float{padding-bottom:0}
       <p class="lede" style="margin-top:1rem">Mỗi lớp một mục tiêu rõ ràng. Lớp nhỏ, học qua trò chuyện, trò chơi và tương tác thật.</p>
     </div>
     <div class="grid reveal">
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#little">
           <span class="age">3–7 tuổi</span>
           <h3>SunMoon PreChinese</h3>
           <p>Làm quen tiếng Trung qua truyện kể, bài hát và vận động.</p>
           <span class="sc" aria-hidden="true">小</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#kids">
           <span class="age">7–13 tuổi</span>
           <h3>SunMoon ChineseKids</h3>
           <p>Nghe, nói, đọc, viết và văn hoá Trung Hoa, từng bước vững chắc.</p>
           <span class="sc" aria-hidden="true">声</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#work">
           <span class="age">Người lớn</span>
           <h3>Tiếng Trung thương mại</h3>
           <p>Đàm phán, nhập hàng, bán hàng và làm việc với đối tác Trung Quốc.</p>
           <span class="sc" aria-hidden="true">商</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#custom">
           <span class="age">Theo nhu cầu</span>
           <h3>Lớp cá nhân hoá theo nhu cầu</h3>
           <p>Nội dung, lịch học và tốc độ xây riêng theo mục tiêu của từng học viên.</p>
           <span class="sc" aria-hidden="true">人</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#comm">
           <span class="age">Thiếu niên &amp; người lớn</span>
           <h3>Lớp giao tiếp</h3>
           <p>Tự tin nói tiếng Trung trong đời sống, du lịch và công việc.</p>
           <span class="sc" aria-hidden="true">说</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#hsk">
           <span class="age">Thiếu niên &amp; người lớn</span>
           <h3>Lớp HSK</h3>
           <p>Từ nền tảng đến HSK 6, mục tiêu rõ ràng cho từng cấp độ.</p>
           <span class="sc" aria-hidden="true">路</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#math">
           <span class="age">3–6 tuổi</span>
           <h3>Toán tư duy</h3>
           <p>Số, hình khối và quy luật qua đồ vật thật và trò chơi.</p>
           <span class="sc" aria-hidden="true">数</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#writing">
           <span class="age">5–7 tuổi</span>
           <h3>Luyện chữ đẹp</h3>
           <p>Cầm bút, tư thế ngồi và từng nét cơ bản.</p>
           <span class="sc" aria-hidden="true">书</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#camp">
           <span class="age">Hè · Đông · Xuân</span>
           <h3>Chương trình Camp</h3>
           <p>Summer Camp, Winter Camp, Spring Camp… tiếng Trung, văn hoá và hoạt động sáng tạo.</p>
@@ -1212,55 +1247,55 @@ body.has-float{padding-bottom:0}
       <p class="lede" style="margin-top:1rem">Every class has a clear purpose. Small groups, learning through conversation, games and real interaction.</p>
     </div>
     <div class="grid reveal">
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#little">
           <span class="age">Ages 3–7</span>
           <h3>SunMoon PreChinese</h3>
           <p>A first taste of Chinese through stories, songs and movement.</p>
           <span class="sc" aria-hidden="true">小</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#kids">
           <span class="age">Ages 7–13</span>
           <h3>SunMoon ChineseKids</h3>
           <p>Listening, speaking, reading, writing and Chinese culture, step by step.</p>
           <span class="sc" aria-hidden="true">声</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#work">
           <span class="age">Adults</span>
           <h3>Business Chinese</h3>
           <p>Negotiating, sourcing, selling and working with Chinese partners.</p>
           <span class="sc" aria-hidden="true">商</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#custom">
           <span class="age">Tailored</span>
           <h3>Personalised Classes</h3>
           <p>Content, schedule and pace built around each learner’s goals.</p>
           <span class="sc" aria-hidden="true">人</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#comm">
           <span class="age">Teens &amp; adults</span>
           <h3>Conversational Chinese</h3>
           <p>Speak Chinese with confidence in daily life, travel and work.</p>
           <span class="sc" aria-hidden="true">说</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#hsk">
           <span class="age">Teens &amp; adults</span>
           <h3>HSK Classes</h3>
           <p>From foundations to HSK 6, with clear goals at every level.</p>
           <span class="sc" aria-hidden="true">路</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#math">
           <span class="age">Ages 3–6</span>
           <h3>Logical Maths</h3>
           <p>Numbers, shapes and patterns through real objects and games.</p>
           <span class="sc" aria-hidden="true">数</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#writing">
           <span class="age">Ages 5–7</span>
           <h3>Beautiful Handwriting</h3>
           <p>Pen grip, posture and every basic stroke.</p>
           <span class="sc" aria-hidden="true">书</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#camp">
           <span class="age">Summer · Winter · Spring</span>
           <h3>SunMoon Camps</h3>
           <p>Summer Camp, Winter Camp, Spring Camp… Chinese, culture and creative activities.</p>
@@ -1439,55 +1474,55 @@ body.has-float{padding-bottom:0}
       <p class="lede" style="margin-top:1rem">每门课都有清晰的目标。小班教学，在对话、游戏和真实互动中学习。</p>
     </div>
     <div class="grid reveal">
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#little">
           <span class="age">3–7 岁</span>
           <h3>SunMoon PreChinese</h3>
           <p>通过故事、儿歌和律动，第一次爱上中文。</p>
           <span class="sc" aria-hidden="true">小</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#kids">
           <span class="age">7–13 岁</span>
           <h3>SunMoon ChineseKids</h3>
           <p>听、说、读、写与中华文化，一步一步打牢基础。</p>
           <span class="sc" aria-hidden="true">声</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#work">
           <span class="age">成人</span>
           <h3>商务中文</h3>
           <p>谈判、采购、销售，与中国伙伴顺畅合作。</p>
           <span class="sc" aria-hidden="true">商</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#custom">
           <span class="age">按需定制</span>
           <h3>个性化定制课程</h3>
           <p>内容、时间与进度，围绕每位学员的目标来设计。</p>
           <span class="sc" aria-hidden="true">人</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#comm">
           <span class="age">青少年与成人</span>
           <h3>中文口语交际课</h3>
           <p>在生活、旅行和工作中自信开口说中文。</p>
           <span class="sc" aria-hidden="true">说</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#hsk">
           <span class="age">青少年与成人</span>
           <h3>HSK 课程</h3>
           <p>从零基础到 HSK 6，每个级别目标清晰。</p>
           <span class="sc" aria-hidden="true">路</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#math">
           <span class="age">3–6 岁</span>
           <h3>逻辑思维数学</h3>
           <p>通过实物和游戏认识数字、图形与规律。</p>
           <span class="sc" aria-hidden="true">数</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#writing">
           <span class="age">5–7 岁</span>
           <h3>书写练习</h3>
           <p>握笔、坐姿和每一个基本笔画。</p>
           <span class="sc" aria-hidden="true">书</span>
         </a>
-        <a class="hc" href="lop-hoc.html">
+        <a class="hc" href="lop-hoc.html#camp">
           <span class="age">夏 · 冬 · 春</span>
           <h3>营地课程</h3>
           <p>夏令营、冬令营、春令营……中文、文化与创意活动。</p>
@@ -1732,6 +1767,62 @@ body.has-float{padding-bottom:0}
       box.addEventListener('click', kill); d.addEventListener('keydown', onk);
       requestAnimationFrame(function(){ box.classList.add('on'); });
     }
+
+
+    /* class detail popup + quick trial sign-up */
+    var DT={
+      vi:{close:'Đóng',reg:'Đăng ký học thử lớp này',name:'Tên phụ huynh / học viên',phone:'Số điện thoại / Zalo',age:'Tuổi của con (nếu có)',send:'Gửi đăng ký qua Zalo',
+          need:'Vui lòng nhập tên và số điện thoại',ask:'Nhắn Zalo hỏi thêm',
+          msg:function(c,x){return 'Xin chào SunMoon, tôi muốn đăng ký học thử lớp '+c+'.\n- Họ tên: '+x.n+'\n- SĐT/Zalo: '+x.p+(x.a?'\n- Tuổi của con: '+x.a:'');}},
+      en:{close:'Close',reg:'Book a trial for this class',name:'Parent / learner name',phone:'Phone / Zalo',age:"Child's age (if any)",send:'Send via Zalo',
+          need:'Please enter your name and phone number',ask:'Ask us on Zalo',
+          msg:function(c,x){return 'Hello SunMoon, I would like to book a trial for '+c+'.\n- Name: '+x.n+'\n- Phone/Zalo: '+x.p+(x.a?"\n- Child's age: "+x.a:'');}},
+      zh:{close:'关闭',reg:'预约本课程试听',name:'家长 / 学员姓名',phone:'电话 / Zalo',age:'孩子年龄（如有）',send:'通过 Zalo 发送',
+          need:'请填写姓名和电话',ask:'Zalo 咨询',
+          msg:function(c,x){return '您好日月，我想预约'+c+'的试听课。\n- 姓名：'+x.n+'\n- 电话/Zalo：'+x.p+(x.a?'\n- 孩子年龄：'+x.a:'');}}
+    };
+    function openDetail(card){
+      var t=DT[lang], more=card.querySelector('.more'); if(!more) return;
+      var nameEl=card.querySelector('.name'); var clone=nameEl.cloneNode(true); var sm=clone.querySelector('small'); var kicker=sm?sm.textContent:''; if(sm) sm.remove();
+      var cname=clone.textContent.trim(), age=(card.querySelector('.age')||{}).textContent||'';
+      var box=d.createElement('div'); box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true'); box.setAttribute('aria-label',cname);
+      box.innerHTML='<div class="detail-panel"><button type="button" class="detail-x" aria-label="'+t.close+'">×</button>'
+        +'<p class="detail-kicker">'+esc(age)+(kicker&&kicker!==cname?' · '+esc(kicker):'')+'</p><h3 class="detail-title">'+esc(cname)+'</h3>'
+        +'<div class="detail-body">'+more.innerHTML+'</div>'
+        +'<form class="detail-form" novalidate><h4>'+t.reg+'</h4>'
+        +'<input name="n" placeholder="'+t.name+'" autocomplete="name"><input name="p" type="tel" inputmode="tel" placeholder="'+t.phone+'" autocomplete="tel"><input name="a" placeholder="'+t.age+'">'
+        +'<p class="detail-err" aria-live="polite"></p><div class="detail-actions"><button class="btn btn-primary" type="submit">'+t.send+'</button>'
+        +'<a class="btn btn-ghost" target="_blank" rel="noopener" href="'+ZALO+'">'+t.ask+'</a></div><div class="detail-done"></div></form></div>';
+      d.body.appendChild(box); d.body.style.overflow='hidden';
+      function kill(){ box.remove(); d.body.style.overflow=''; d.removeEventListener('keydown',onk); if(location.hash==='#'+card.id) history.replaceState(null,'',location.pathname+location.search); }
+      function onk(e){ if(e.key==='Escape') kill(); }
+      box.addEventListener('click', function(e){ if(e.target===box) kill(); });
+      box.querySelector('.detail-x').addEventListener('click', kill); d.addEventListener('keydown', onk);
+      var f=box.querySelector('form');
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        var x={n:f.n.value.trim(),p:f.p.value.trim(),a:f.a.value.trim()};
+        if(!x.n||!x.p){ f.querySelector('.detail-err').textContent=t.need; (x.n?f.p:f.n).focus(); return; }
+        var text=t.msg(cname,x); f.querySelector('.detail-err').textContent='';
+        var done=f.querySelector('.detail-done');
+        done.innerHTML='<b>'+MSG[lang].title+'</b><pre class="msg">'+esc(text)+'</pre><p class="hint-line">'+MSG[lang].hint+'</p>'
+          +'<div class="detail-actions"><a class="btn btn-primary" target="_blank" rel="noopener" href="'+ZALO+'">'+MSG[lang].go+'</a><button type="button" class="btn btn-ghost copy">'+MSG[lang].copy+'</button></div><p class="copied" aria-live="polite"></p>';
+        var flag=done.querySelector('.copied');
+        function copy(){ try{ navigator.clipboard.writeText(text).then(function(){ flag.textContent=MSG[lang].copied; }); }catch(err){} }
+        done.querySelector('.copy').addEventListener('click', copy); copy();
+        done.scrollIntoView({behavior: reduce?'auto':'smooth', block:'nearest'});
+        if(FORM_ENDPOINT){ fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({parent:x.n,phone:x.p,age:x.a,group:cname,lang:lang,submitted_at:new Date().toISOString()})}).catch(function(){}); }
+      });
+      requestAnimationFrame(function(){ box.classList.add('on'); });
+      if(card.id && location.hash!=='#'+card.id) history.replaceState(null,'','#'+card.id);
+    }
+    [].forEach.call(d.querySelectorAll('.prog, .xprog'), function(card){
+      if(!card.querySelector('.more')) return;
+      card.classList.add('has-more');
+      card.addEventListener('click', function(e){ if(e.target.closest('a')) return; openDetail(card); });
+    });
+    var hid=(location.hash||'').slice(1);
+    if(hid && /^[a-z]+$/.test(hid)){ var hc=d.getElementById(hid); if(hc && hc.querySelector('.more') && !d.querySelector('.detail')){ hc.scrollIntoView({block:'center'}); openDetail(hc); } }
 
     /* trial form */
     if(form){

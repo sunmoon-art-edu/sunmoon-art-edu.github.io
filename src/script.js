@@ -135,6 +135,62 @@
       requestAnimationFrame(function(){ box.classList.add('on'); });
     }
 
+
+    /* class detail popup + quick trial sign-up */
+    var DT={
+      vi:{close:'Đóng',reg:'Đăng ký học thử lớp này',name:'Tên phụ huynh / học viên',phone:'Số điện thoại / Zalo',age:'Tuổi của con (nếu có)',send:'Gửi đăng ký qua Zalo',
+          need:'Vui lòng nhập tên và số điện thoại',ask:'Nhắn Zalo hỏi thêm',
+          msg:function(c,x){return 'Xin chào SunMoon, tôi muốn đăng ký học thử lớp '+c+'.\n- Họ tên: '+x.n+'\n- SĐT/Zalo: '+x.p+(x.a?'\n- Tuổi của con: '+x.a:'');}},
+      en:{close:'Close',reg:'Book a trial for this class',name:'Parent / learner name',phone:'Phone / Zalo',age:"Child's age (if any)",send:'Send via Zalo',
+          need:'Please enter your name and phone number',ask:'Ask us on Zalo',
+          msg:function(c,x){return 'Hello SunMoon, I would like to book a trial for '+c+'.\n- Name: '+x.n+'\n- Phone/Zalo: '+x.p+(x.a?"\n- Child's age: "+x.a:'');}},
+      zh:{close:'关闭',reg:'预约本课程试听',name:'家长 / 学员姓名',phone:'电话 / Zalo',age:'孩子年龄（如有）',send:'通过 Zalo 发送',
+          need:'请填写姓名和电话',ask:'Zalo 咨询',
+          msg:function(c,x){return '您好日月，我想预约'+c+'的试听课。\n- 姓名：'+x.n+'\n- 电话/Zalo：'+x.p+(x.a?'\n- 孩子年龄：'+x.a:'');}}
+    };
+    function openDetail(card){
+      var t=DT[lang], more=card.querySelector('.more'); if(!more) return;
+      var nameEl=card.querySelector('.name'); var clone=nameEl.cloneNode(true); var sm=clone.querySelector('small'); var kicker=sm?sm.textContent:''; if(sm) sm.remove();
+      var cname=clone.textContent.trim(), age=(card.querySelector('.age')||{}).textContent||'';
+      var box=d.createElement('div'); box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true'); box.setAttribute('aria-label',cname);
+      box.innerHTML='<div class="detail-panel"><button type="button" class="detail-x" aria-label="'+t.close+'">×</button>'
+        +'<p class="detail-kicker">'+esc(age)+(kicker&&kicker!==cname?' · '+esc(kicker):'')+'</p><h3 class="detail-title">'+esc(cname)+'</h3>'
+        +'<div class="detail-body">'+more.innerHTML+'</div>'
+        +'<form class="detail-form" novalidate><h4>'+t.reg+'</h4>'
+        +'<input name="n" placeholder="'+t.name+'" autocomplete="name"><input name="p" type="tel" inputmode="tel" placeholder="'+t.phone+'" autocomplete="tel"><input name="a" placeholder="'+t.age+'">'
+        +'<p class="detail-err" aria-live="polite"></p><div class="detail-actions"><button class="btn btn-primary" type="submit">'+t.send+'</button>'
+        +'<a class="btn btn-ghost" target="_blank" rel="noopener" href="'+ZALO+'">'+t.ask+'</a></div><div class="detail-done"></div></form></div>';
+      d.body.appendChild(box); d.body.style.overflow='hidden';
+      function kill(){ box.remove(); d.body.style.overflow=''; d.removeEventListener('keydown',onk); if(location.hash==='#'+card.id) history.replaceState(null,'',location.pathname+location.search); }
+      function onk(e){ if(e.key==='Escape') kill(); }
+      box.addEventListener('click', function(e){ if(e.target===box) kill(); });
+      box.querySelector('.detail-x').addEventListener('click', kill); d.addEventListener('keydown', onk);
+      var f=box.querySelector('form');
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        var x={n:f.n.value.trim(),p:f.p.value.trim(),a:f.a.value.trim()};
+        if(!x.n||!x.p){ f.querySelector('.detail-err').textContent=t.need; (x.n?f.p:f.n).focus(); return; }
+        var text=t.msg(cname,x); f.querySelector('.detail-err').textContent='';
+        var done=f.querySelector('.detail-done');
+        done.innerHTML='<b>'+MSG[lang].title+'</b><pre class="msg">'+esc(text)+'</pre><p class="hint-line">'+MSG[lang].hint+'</p>'
+          +'<div class="detail-actions"><a class="btn btn-primary" target="_blank" rel="noopener" href="'+ZALO+'">'+MSG[lang].go+'</a><button type="button" class="btn btn-ghost copy">'+MSG[lang].copy+'</button></div><p class="copied" aria-live="polite"></p>';
+        var flag=done.querySelector('.copied');
+        function copy(){ try{ navigator.clipboard.writeText(text).then(function(){ flag.textContent=MSG[lang].copied; }); }catch(err){} }
+        done.querySelector('.copy').addEventListener('click', copy); copy();
+        done.scrollIntoView({behavior: reduce?'auto':'smooth', block:'nearest'});
+        if(FORM_ENDPOINT){ fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({parent:x.n,phone:x.p,age:x.a,group:cname,lang:lang,submitted_at:new Date().toISOString()})}).catch(function(){}); }
+      });
+      requestAnimationFrame(function(){ box.classList.add('on'); });
+      if(card.id && location.hash!=='#'+card.id) history.replaceState(null,'','#'+card.id);
+    }
+    [].forEach.call(d.querySelectorAll('.prog, .xprog'), function(card){
+      if(!card.querySelector('.more')) return;
+      card.classList.add('has-more');
+      card.addEventListener('click', function(e){ if(e.target.closest('a')) return; openDetail(card); });
+    });
+    var hid=(location.hash||'').slice(1);
+    if(hid && /^[a-z]+$/.test(hid)){ var hc=d.getElementById(hid); if(hc && hc.querySelector('.more') && !d.querySelector('.detail')){ hc.scrollIntoView({block:'center'}); openDetail(hc); } }
+
     /* trial form */
     if(form){
     form.addEventListener('submit', function(e){

@@ -55,7 +55,7 @@ HOME, ABOUT, CLASSES, PARENTS, FAQ, CONTACT = (
     'index.html', 'gioi-thieu.html', 'lop-hoc.html', 'ba-me.html', 'hoi-dap.html', 'lien-he.html')
 ANCHOR_PAGE = {
     'about': ABOUT, 'approach': ABOUT, 'teachers': ABOUT,
-    'programs': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'comm': CLASSES,
+    'programs': CLASSES, 'math': CLASSES, 'writing': CLASSES, 'camp': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'comm': CLASSES,
     'work': CLASSES, 'more': CLASSES, 'journey': CLASSES,
     'parents': PARENTS, 'stories': PARENTS, 'guide': PARENTS,
     'faq': FAQ, 'contact': CONTACT, 'trial': CONTACT,
@@ -136,6 +136,41 @@ def fill_photos(html):
             out += shot(photos['gallery'][i], cap) if i < len(photos['gallery']) else raw[i]
         html = html[:g.start()] + g.group(1) + out + g.group(3) + html[g.end():]
     return html
+
+
+# ---------------------------------------------------------- class detail popups
+_ns = {}
+exec(open('src/lop-chi-tiet.py', encoding='utf-8').read(), _ns)
+DETAIL_H, DETAIL_C = _ns['H'], _ns['C']
+
+def detail_html(cid, lang):
+    c, h = DETAIL_C[cid], DETAIL_H[lang]
+    x = c[lang]
+    ul = lambda items: '<ul>' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>'
+    out_t = h['out_adult'] if c['adult'] else h['out']
+    faq = ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in x['faq'])
+    return (f'<div class="more" hidden>'
+            f'<div class="more-grid">'
+            f'<section><h4>{h["fit"]}</h4>{ul(x["fit"])}</section>'
+            f'<section><h4>{out_t}</h4>{ul(x["out"])}</section>'
+            f'<section><h4>{h["how"]}</h4>{ul(x["how"])}</section>'
+            f'<section><h4>{h["cls"]}</h4>{ul(x["cls"])}</section>'
+            f'</div>'
+            f'<section class="more-faq"><h4>{h["faq"]}</h4>{faq}</section>'
+            f'<p class="more-note">{h["note"]}</p>'
+            f'</div>')
+
+def add_details(html, lang):
+    btn = DETAIL_H[lang]['more']
+    def sub(m):
+        art, cid = m.group(0), m.group(2)
+        if cid not in DETAIL_C:
+            return art
+        art = re.sub(r'(\s*<a class="link" href="[^"]*#trial">)',
+                     lambda mm: f'\n        <button type="button" class="more-btn">{btn} <span aria-hidden="true">+</span></button>' + mm.group(1),
+                     art, count=1)
+        return art.replace('</article>', detail_html(cid, lang) + '\n      </article>')
+    return re.sub(r'<article class="(x?prog)[^"]*" id="(\w+)"[^>]*>.*?</article>', sub, html, flags=re.S)
 
 # ------------------------------------------------------------------ page chrome
 def nav_html(lang, page):
@@ -257,7 +292,10 @@ def build_page(page):
             if page != HOME and key == 'about':
                 html = html.replace('<section class="section intro" id="about">',
                                     '<section class="section intro no-top" id="about">')
-            parts.append(rewrite_links(fill_photos(html), page))
+            html = rewrite_links(fill_photos(html), page)
+            if key == 'programs':
+                html = add_details(html, lang)
+            parts.append(html)
         parts += ['</main>', footer_for(lang, page)]
         per_lang[lang] = '\n'.join(p for p in parts if p)
     head = build_head('vi', page)

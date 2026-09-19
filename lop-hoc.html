@@ -570,6 +570,41 @@ p{margin:0}
 .clinks a:hover{border-color:var(--vermilion);color:var(--vermilion)}
 .clinks a svg{flex:0 0 auto}
 .clinks.page{border-top:1px solid var(--line);padding-top:1.6rem}
+/* ---------- class detail popup ---------- */
+.has-more{cursor:pointer}
+.more-btn{align-self:flex-start;background:none;border:1px solid var(--line-strong);border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);cursor:pointer;margin-top:auto;transition:border-color .2s,color .2s}
+.more-btn:hover{border-color:var(--vermilion);color:var(--vermilion)}
+.more-btn span{font-size:1rem;margin-left:.2rem}
+.prog .more-btn + .link,.xprog .more-btn + .link{margin-top:.2rem}
+.detail{position:fixed;inset:0;z-index:80;background:rgba(30,24,20,.45);display:flex;align-items:flex-end;justify-content:center;opacity:0;transition:opacity .25s ease}
+.detail.on{opacity:1}
+@media (min-width:760px){.detail{align-items:center;padding:2rem}}
+.detail-panel{position:relative;background:var(--ivory);color:var(--ink);width:100%;max-width:760px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:2rem 1.4rem 1.6rem;box-shadow:0 20px 60px rgba(0,0,0,.25);transform:translateY(24px);transition:transform .3s ease}
+.detail.on .detail-panel{transform:none}
+@media (min-width:760px){.detail-panel{border-radius:18px;padding:2.4rem 2.4rem 2rem}}
+.detail-x{position:absolute;top:.8rem;right:.9rem;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--ivory);font-size:1.5rem;line-height:1;cursor:pointer;color:var(--ink)}
+.detail-kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin:0 2.5rem .4rem 0}
+.detail-title{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.3rem);line-height:1.1;margin:0 0 1.2rem}
+.more-grid{display:grid;gap:1.1rem 2rem}
+@media (min-width:640px){.more-grid{grid-template-columns:1fr 1fr}}
+.detail h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vermilion);font-weight:600;margin:0 0 .5rem}
+.detail ul{margin:0;padding-left:1.1rem;display:grid;gap:.3rem}
+.detail li{font-size:.97rem;line-height:1.45;color:var(--ink-2)}
+.detail li b{color:var(--ink);font-weight:600}
+.more-faq{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.1rem}
+.more-faq details{border-bottom:1px solid var(--line);padding:.6rem 0}
+.more-faq summary{cursor:pointer;font-weight:600;font-size:.97rem;color:var(--ink)}
+.more-faq details p{margin:.4rem 0 0;color:var(--ink-2);font-style:italic;font-size:.95rem;line-height:1.5}
+.more-note{margin:1rem 0 0;font-size:.9rem;color:var(--ink-3);font-style:italic}
+.detail-form{margin-top:1.4rem;background:var(--ivory-2);border:1px solid var(--line);border-radius:14px;padding:1.2rem;display:grid;gap:.6rem}
+.detail-form h4{margin-bottom:.2rem}
+.detail-form input{font:inherit;font-size:1rem;padding:.8rem .9rem;border:1px solid var(--line-strong);border-radius:10px;background:var(--ivory);color:var(--ink);width:100%;box-sizing:border-box}
+.detail-form input:focus{outline:2px solid var(--vermilion);outline-offset:1px}
+.detail-err{color:var(--vermilion);font-size:.88rem;margin:0;min-height:0}
+.detail-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+.detail-done:empty{display:none}
+.detail-done{margin-top:.4rem}
+.detail-done .msg{white-space:pre-wrap;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:.8rem;font-size:.9rem;margin:.5rem 0}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -737,7 +772,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho trẻ mới bắt đầu làm quen với tiếng Trung. Lớp nhỏ, tối đa 6 bé.</p>
         <div class="focus"><span>Nghe</span><span>Nói</span><span>Phát âm</span><span>Từ vựng</span><span>Kể chuyện</span><span>Âm nhạc &amp; vận động</span><span>Hoạt động sáng tạo</span></div>
         <p class="copy">Ở tuổi này, con không cần "học chăm hơn". <strong>Con cần được trải nghiệm ngôn ngữ một cách tự nhiên.</strong> Qua truyện kể, bài hát, vận động, trò chơi và hoạt động sáng tạo, tiếng Trung trở thành thứ con thích, không phải thứ con phải học thuộc.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>3–7 tuổi</b>, mới bắt đầu làm quen tiếng Trung</li><li>Bé chưa cần biết chữ, chưa cần biết pinyin</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li><b>Nghe hiểu</b> và đáp lại câu đơn giản</li><li>Nói được <b>từ vựng quen thuộc</b>: màu sắc, con vật, gia đình, đồ ăn…</li><li>Hát, kể lại truyện ngắn bằng tiếng Trung</li><li><b>Thích</b> tiếng Trung, tự tin mở miệng</li></ul></section><section><h4>Một buổi học</h4><ul><li>Khởi động bằng bài hát, vận động</li><li>Học từ mới qua thẻ hình, đồ vật thật</li><li>Trò chơi và kể chuyện để luyện nói</li><li>Hoạt động sáng tạo: tô, vẽ, làm thủ công</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, <b>tối đa 6 bé</b></li><li>Giáo viên theo sát từng bé</li><li>Sau buổi học, ba mẹ nhận <b>nhận xét riêng</b> của con</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Con chưa biết gì về tiếng Trung có học được không?</summary><p>Được. Lớp dành cho bé bắt đầu từ con số 0.</p></details><details><summary>Con nhút nhát, ít nói thì sao?</summary><p>Lớp nhỏ nên cô để ý từng bé, cho con làm quen dần qua trò chơi.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog kids reveal" id="kids">
@@ -748,7 +785,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho trẻ đã bắt đầu có nền tảng hoặc đang muốn học tiếng Trung bài bản hơn. Lớp nhỏ, tối đa 6 bé.</p>
         <div class="focus"><span>Nghe</span><span>Nói</span><span>Đọc</span><span>Viết</span><span>Từ vựng</span><span>Ngữ pháp</span><span>Giao tiếp</span><span>Văn hoá Trung Hoa</span></div>
         <p class="copy">Khi con lớn lên, mối quan hệ của con với ngôn ngữ cũng thay đổi. Lớp ChineseKids đi dần từ giao tiếp vui chơi sang <strong>nền tảng ngôn ngữ vững hơn</strong>, giúp con tự tin hơn ở cả nghe, nói, đọc và viết.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>7–13 tuổi</b></li><li>Bé mới bắt đầu hoặc đã học một ít, muốn học bài bản hơn</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li><b>Nghe – nói – đọc – viết</b> đều tay theo cấp độ</li><li>Đọc pinyin, nhận mặt và viết <b>chữ Hán</b></li><li>Giao tiếp các chủ đề hằng ngày</li><li>Có nền để thi <b>YCT / HSK</b> khi cần</li></ul></section><section><h4>Một buổi học</h4><ul><li>Ôn bài cũ bằng trò chơi nhanh</li><li>Học từ, mẫu câu mới theo chủ đề</li><li>Luyện hội thoại theo cặp, theo nhóm</li><li>Luyện đọc, viết chữ Hán và giao bài về nhà vừa sức</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, <b>tối đa 6 bé</b></li><li>Xếp lớp theo trình độ sau buổi học thử</li><li>Ba mẹ nhận <b>nhận xét riêng</b> sau buổi học</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Con đã học ở nơi khác rồi thì vào lớp nào?</summary><p>Con học thử 1 buổi, cô sẽ kiểm tra và xếp đúng trình độ.</p></details><details><summary>Có bài tập về nhà không?</summary><p>Có, bài vừa sức để con ôn lại, không quá nặng.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog work reveal" id="work">
@@ -759,7 +798,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho người đi làm và chủ kinh doanh cần làm việc với đối tác, nhà cung cấp và khách hàng Trung Quốc.</p>
         <div class="focus"><span>Đàm phán giá</span><span>Nhập hàng</span><span>Bán hàng</span><span>Tin nhắn &amp; email công việc</span><span>Bất động sản</span><span>Thuật ngữ ngành</span></div>
         <p class="copy">Học đúng từ vựng và mẫu câu bạn dùng mỗi ngày: <strong>trao đổi giá, đặt hàng, xử lý đơn và giữ quan hệ với đối tác.</strong></p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Người đi làm, chủ kinh doanh</li><li>Làm việc với <b>đối tác, nhà cung cấp, khách hàng Trung Quốc</b></li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li><b>Trao đổi giá</b>, đặt hàng, theo dõi đơn</li><li>Nhắn tin, email công việc bằng tiếng Trung</li><li>Nắm <b>thuật ngữ</b> đúng ngành của mình</li><li>Tự tin gọi điện, gặp mặt đối tác</li></ul></section><section><h4>Một buổi học</h4><ul><li>Học theo <b>tình huống thật</b> trong công việc của bạn</li><li>Luyện mẫu câu, từ vựng chuyên ngành</li><li>Đóng vai: đàm phán, chốt đơn, xử lý sự cố</li></ul></section><section><h4>Lớp học</h4><ul><li>Nhóm nhỏ hoặc <b>1 kèm 1</b></li><li>Nội dung điều chỉnh theo ngành nghề của bạn</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Tôi chưa biết tiếng Trung có học được không?</summary><p>Được. Giáo viên sẽ bắt đầu từ nền tảng rồi đi vào tiếng Trung công việc.</p></details><details><summary>Học xong bao lâu thì dùng được?</summary><p>Tuỳ trình độ và mục tiêu. Giáo viên sẽ tư vấn lộ trình sau buổi trao đổi đầu tiên.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog custom reveal" id="custom">
@@ -770,7 +811,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Lớp 1 kèm 1 hoặc nhóm nhỏ, xây quanh mục tiêu, trình độ và lịch của học viên.</p>
         <div class="focus"><span>Lớp 1 kèm 1</span><span>Nhóm nhỏ</span><span>Lịch linh hoạt</span><span>Nội dung riêng</span><span>Mục tiêu cụ thể</span></div>
         <p class="copy">Không phải lúc nào bạn cũng cần một giáo trình đầy đủ. Đôi khi bạn chỉ cần <strong>đúng phần tiếng Trung cho việc của mình.</strong> Giáo viên trao đổi trước để hiểu mục tiêu, rồi mới xây bài học.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Người học có <b>mục tiêu riêng</b>: du học, công việc, thi cử, giao tiếp gấp…</li><li>Người bận, cần <b>lịch linh hoạt</b></li><li>Bé cần kèm riêng, bù kiến thức</li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li>Đạt đúng <b>mục tiêu bạn đặt ra</b></li><li>Tiến bộ theo tốc độ của riêng mình</li></ul></section><section><h4>Một buổi học</h4><ul><li>Giáo viên trao đổi trước để hiểu mục tiêu</li><li>Xây <b>nội dung riêng</b> cho từng người</li><li>Đánh giá tiến bộ, điều chỉnh sau mỗi giai đoạn</li></ul></section><section><h4>Lớp học</h4><ul><li><b>1 kèm 1</b> hoặc nhóm nhỏ tự chọn</li><li>Lịch học thoả thuận theo thời gian của bạn</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Học online được không?</summary><p>Được. Ba mẹ hoặc học viên nhắn SunMoon để sắp xếp.</p></details><details><summary>Chọn giáo viên được không?</summary><p>SunMoon gợi ý giáo viên phù hợp với mục tiêu, bạn có thể học thử trước.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog comm reveal" id="comm">
@@ -781,7 +824,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho người muốn nói được tiếng Trung trong đời sống hằng ngày, du lịch và công việc.</p>
         <div class="focus"><span>Phát âm đúng</span><span>Nghe hiểu</span><span>Phản xạ nói</span><span>Mẫu câu thông dụng</span><span>Tình huống thực tế</span></div>
         <p class="copy">Học qua tình huống thật: chào hỏi, mua sắm, đi lại, gọi món, trao đổi công việc. Mục tiêu là <strong>nói tự nhiên và tự tin</strong>, không chỉ thuộc từ.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li><b>Thiếu niên và người lớn</b></li><li>Muốn nói tiếng Trung trong đời sống, du lịch, công việc</li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li><b>Phát âm đúng</b>, nghe hiểu người bản xứ nói chậm</li><li>Chào hỏi, hỏi đường, mua sắm, gọi món</li><li>Giới thiệu bản thân, nói chuyện về công việc, sở thích</li><li><b>Phản xạ</b> nói nhanh hơn, bớt ngại</li></ul></section><section><h4>Một buổi học</h4><ul><li>Học mẫu câu theo tình huống</li><li>Luyện nói theo cặp, đóng vai</li><li>Sửa phát âm trực tiếp từng người</li></ul></section><section><h4>Lớp học</h4><ul><li>Nhóm nhỏ, ai cũng được nói nhiều</li><li>Có thể học thử trước khi đăng ký</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Tôi chỉ muốn nói, không cần viết chữ được không?</summary><p>Được. Lớp tập trung nghe – nói, chữ Hán chỉ học phần cần thiết.</p></details><details><summary>Tôi đã quên gần hết thì sao?</summary><p>Học thử 1 buổi, giáo viên sẽ xếp bạn vào nhóm phù hợp.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog hsk reveal" id="hsk">
@@ -800,7 +845,9 @@ body.has-float{padding-bottom:0}
           <div class="step" style="--i:6"><i></i><b>HSK 6</b><small>Giao tiếp thành thạo</small></div>
         </div>
         <p class="copy">Từ học tiếng Trung <strong>đến dùng tiếng Trung một cách tự tin.</strong> Mỗi cấp độ có mục tiêu học tập rõ ràng và tiến bộ đo được.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li><b>Thiếu niên và người lớn</b> cần chứng chỉ HSK</li><li>Chuẩn bị du học, học bổng, xin việc</li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li>Nắm chắc <b>từ vựng và ngữ pháp</b> đúng cấp độ</li><li>Quen <b>dạng đề</b>, làm bài đúng thời gian</li><li>Tự tin đi thi <b>HSK 1 → HSK 6</b></li></ul></section><section><h4>Một buổi học</h4><ul><li>Học kiến thức theo giáo trình HSK</li><li>Luyện đề theo từng kỹ năng: nghe, đọc, viết</li><li>Chữa bài, chỉ ra lỗi hay sai</li></ul></section><section><h4>Lớp học</h4><ul><li>Nhóm nhỏ theo cấp độ</li><li>Kiểm tra trình độ đầu vào miễn phí khi học thử</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Tôi nên thi HSK mấy?</summary><p>Tuỳ mục tiêu (du học, học bổng, công việc). Giáo viên sẽ tư vấn khi bạn học thử.</p></details><details><summary>Có luyện HSKK (thi nói) không?</summary><p>Có thể kết hợp. Bạn nhắn SunMoon để được tư vấn.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
     </div>
 
@@ -813,7 +860,7 @@ body.has-float{padding-bottom:0}
         <p class="lede">Cùng một cách dạy: đúng tuổi, lớp nhỏ, học qua chơi và tương tác thật.</p>
       </div>
       <div class="extra-grid">
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="math">
         <figure class="ph shot xshot" data-photo="class-math" role="img" aria-label="Giờ Toán tư duy tại SunMoon"><span class="cap">Giờ Toán tư duy tại SunMoon</span></figure>
         <span class="glyph" aria-hidden="true">数</span>
         <div class="top"><span class="age">3–6 tuổi</span></div>
@@ -821,10 +868,12 @@ body.has-float{padding-bottom:0}
         <p class="tagline">Nghĩ trước khi đếm.</p>
         <div class="focus"><span>Số & lượng</span><span>Hình khối</span><span>Quy luật</span><span>Logic</span><span>Trò chơi tư duy</span></div>
         <p class="copy">Không phải học thuộc bảng cộng. Con làm quen với số, hình và quy luật qua đồ vật thật và trò chơi, để <strong>hình thành cách suy nghĩ có logic</strong> từ sớm.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>3–6 tuổi</b></li><li>Chuẩn bị nền tư duy trước khi vào lớp 1</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li>Hiểu <b>số và lượng</b>, không chỉ đếm thuộc lòng</li><li>Nhận biết <b>hình khối, quy luật</b></li><li>Biết suy luận, giải câu đố đơn giản</li><li>Tập trung và kiên nhẫn hơn</li></ul></section><section><h4>Một buổi học</h4><ul><li>Học bằng <b>đồ vật thật</b> và mô hình</li><li>Trò chơi tư duy, câu đố</li><li>Tình huống thực tế: chia kẹo, xếp hình…</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, <b>tối đa 6 bé</b></li><li>Ba mẹ nhận <b>nhận xét riêng</b> sau buổi học</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Toán tư duy khác học toán ở trường thế nào?</summary><p>Con học cách suy nghĩ qua đồ vật và trò chơi, không học thuộc bảng tính.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
       
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="writing">
         <figure class="ph shot xshot" data-photo="class-writing" role="img" aria-label="Luyện từng nét chữ"><span class="cap">Luyện từng nét chữ</span></figure>
         <span class="glyph" aria-hidden="true">书</span>
         <div class="top"><span class="age">5–7 tuổi</span></div>
@@ -832,16 +881,20 @@ body.has-float{padding-bottom:0}
         <p class="tagline">Nét chữ, nết người.</p>
         <div class="focus"><span>Cầm bút đúng</span><span>Tư thế ngồi</span><span>Nét cơ bản</span><span>Chữ đều & sạch</span></div>
         <p class="copy">Từ cách cầm bút, tư thế ngồi đến từng nét cơ bản. Con viết đẹp hơn mỗi tuần, và quan trọng hơn là <strong>kiên nhẫn hơn</strong>.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>5–7 tuổi</b></li><li>Chuẩn bị vào lớp 1 hoặc đang học lớp 1</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li><b>Cầm bút đúng</b>, ngồi đúng tư thế</li><li>Viết đúng <b>nét cơ bản</b>, chữ đều và sạch</li><li>Kiên nhẫn, cẩn thận hơn</li></ul></section><section><h4>Một buổi học</h4><ul><li>Khởi động tay, tập tư thế ngồi</li><li>Luyện từng nét, từng chữ cùng cô</li><li>Khen và sửa riêng cho từng bé</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, cô cầm tay sửa cho từng bé</li><li>Ba mẹ nhận <b>nhận xét riêng</b> sau buổi học</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Con viết chữ tiếng Việt hay tiếng Trung?</summary><p>Ba mẹ nhắn SunMoon để được tư vấn nội dung phù hợp với con.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
-      <article class="xprog reveal" style="padding-top:1.8rem">
+      <article class="xprog reveal" id="camp" style="padding-top:1.8rem">
         <span class="glyph" aria-hidden="true">营</span>
         <div class="top"><span class="age">Hè · Đông · Xuân</span></div>
         <h3 class="name">Chương trình Camp</h3>
         <p class="tagline">Học mà như đi chơi.</p>
         <div class="focus"><span>Summer Camp</span><span>Winter Camp</span><span>Spring Camp</span><span>Văn hoá Trung Hoa</span><span>Hoạt động sáng tạo</span></div>
         <p class="copy">Các khoá ngắn theo mùa, kết hợp tiếng Trung với trò chơi, thủ công và trải nghiệm văn hoá. Lịch và nội dung từng mùa <strong>được thông báo trước khi mở đăng ký</strong>.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Các bé muốn <b>trải nghiệm</b> trong kỳ nghỉ hè, đông, xuân</li><li>Bé chưa học hoặc đã học tiếng Trung đều tham gia được</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li>Dùng tiếng Trung qua <b>hoạt động thật</b></li><li>Hiểu thêm <b>văn hoá Trung Hoa</b></li><li>Kết bạn, tự tin làm việc nhóm</li></ul></section><section><h4>Một buổi học</h4><ul><li>Mỗi ngày một chủ đề</li><li>Trò chơi, thủ công, nấu ăn, biểu diễn…</li><li>Tổng kết, ba mẹ xem lại hoạt động của con</li></ul></section><section><h4>Lớp học</h4><ul><li>Khoá ngắn theo mùa</li><li>Lịch và nội dung <b>thông báo trước khi mở đăng ký</b></li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Khi nào có Camp?</summary><p>SunMoon thông báo trên Fanpage và Zalo trước mỗi mùa. Ba mẹ nhắn để được báo sớm.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
       </div>
     </div>
@@ -991,7 +1044,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho trẻ mới bắt đầu làm quen với tiếng Trung. Lớp nhỏ, tối đa 6 bé.</p>
         <div class="focus"><span>Nghe</span><span>Nói</span><span>Phát âm</span><span>Từ vựng</span><span>Kể chuyện</span><span>Âm nhạc &amp; vận động</span><span>Hoạt động sáng tạo</span></div>
         <p class="copy">Ở tuổi này, con không cần "học chăm hơn". <strong>Con cần được trải nghiệm ngôn ngữ một cách tự nhiên.</strong> Qua truyện kể, bài hát, vận động, trò chơi và hoạt động sáng tạo, tiếng Trung trở thành thứ con thích, không phải thứ con phải học thuộc.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>3–7 tuổi</b>, mới bắt đầu làm quen tiếng Trung</li><li>Bé chưa cần biết chữ, chưa cần biết pinyin</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li><b>Nghe hiểu</b> và đáp lại câu đơn giản</li><li>Nói được <b>từ vựng quen thuộc</b>: màu sắc, con vật, gia đình, đồ ăn…</li><li>Hát, kể lại truyện ngắn bằng tiếng Trung</li><li><b>Thích</b> tiếng Trung, tự tin mở miệng</li></ul></section><section><h4>Một buổi học</h4><ul><li>Khởi động bằng bài hát, vận động</li><li>Học từ mới qua thẻ hình, đồ vật thật</li><li>Trò chơi và kể chuyện để luyện nói</li><li>Hoạt động sáng tạo: tô, vẽ, làm thủ công</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, <b>tối đa 6 bé</b></li><li>Giáo viên theo sát từng bé</li><li>Sau buổi học, ba mẹ nhận <b>nhận xét riêng</b> của con</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Con chưa biết gì về tiếng Trung có học được không?</summary><p>Được. Lớp dành cho bé bắt đầu từ con số 0.</p></details><details><summary>Con nhút nhát, ít nói thì sao?</summary><p>Lớp nhỏ nên cô để ý từng bé, cho con làm quen dần qua trò chơi.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog kids reveal" id="kids">
@@ -1002,7 +1057,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho trẻ đã bắt đầu có nền tảng hoặc đang muốn học tiếng Trung bài bản hơn. Lớp nhỏ, tối đa 6 bé.</p>
         <div class="focus"><span>Nghe</span><span>Nói</span><span>Đọc</span><span>Viết</span><span>Từ vựng</span><span>Ngữ pháp</span><span>Giao tiếp</span><span>Văn hoá Trung Hoa</span></div>
         <p class="copy">Khi con lớn lên, mối quan hệ của con với ngôn ngữ cũng thay đổi. Lớp ChineseKids đi dần từ giao tiếp vui chơi sang <strong>nền tảng ngôn ngữ vững hơn</strong>, giúp con tự tin hơn ở cả nghe, nói, đọc và viết.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>7–13 tuổi</b></li><li>Bé mới bắt đầu hoặc đã học một ít, muốn học bài bản hơn</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li><b>Nghe – nói – đọc – viết</b> đều tay theo cấp độ</li><li>Đọc pinyin, nhận mặt và viết <b>chữ Hán</b></li><li>Giao tiếp các chủ đề hằng ngày</li><li>Có nền để thi <b>YCT / HSK</b> khi cần</li></ul></section><section><h4>Một buổi học</h4><ul><li>Ôn bài cũ bằng trò chơi nhanh</li><li>Học từ, mẫu câu mới theo chủ đề</li><li>Luyện hội thoại theo cặp, theo nhóm</li><li>Luyện đọc, viết chữ Hán và giao bài về nhà vừa sức</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, <b>tối đa 6 bé</b></li><li>Xếp lớp theo trình độ sau buổi học thử</li><li>Ba mẹ nhận <b>nhận xét riêng</b> sau buổi học</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Con đã học ở nơi khác rồi thì vào lớp nào?</summary><p>Con học thử 1 buổi, cô sẽ kiểm tra và xếp đúng trình độ.</p></details><details><summary>Có bài tập về nhà không?</summary><p>Có, bài vừa sức để con ôn lại, không quá nặng.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog work reveal" id="work">
@@ -1013,7 +1070,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho người đi làm và chủ kinh doanh cần làm việc với đối tác, nhà cung cấp và khách hàng Trung Quốc.</p>
         <div class="focus"><span>Đàm phán giá</span><span>Nhập hàng</span><span>Bán hàng</span><span>Tin nhắn &amp; email công việc</span><span>Bất động sản</span><span>Thuật ngữ ngành</span></div>
         <p class="copy">Học đúng từ vựng và mẫu câu bạn dùng mỗi ngày: <strong>trao đổi giá, đặt hàng, xử lý đơn và giữ quan hệ với đối tác.</strong></p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Người đi làm, chủ kinh doanh</li><li>Làm việc với <b>đối tác, nhà cung cấp, khách hàng Trung Quốc</b></li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li><b>Trao đổi giá</b>, đặt hàng, theo dõi đơn</li><li>Nhắn tin, email công việc bằng tiếng Trung</li><li>Nắm <b>thuật ngữ</b> đúng ngành của mình</li><li>Tự tin gọi điện, gặp mặt đối tác</li></ul></section><section><h4>Một buổi học</h4><ul><li>Học theo <b>tình huống thật</b> trong công việc của bạn</li><li>Luyện mẫu câu, từ vựng chuyên ngành</li><li>Đóng vai: đàm phán, chốt đơn, xử lý sự cố</li></ul></section><section><h4>Lớp học</h4><ul><li>Nhóm nhỏ hoặc <b>1 kèm 1</b></li><li>Nội dung điều chỉnh theo ngành nghề của bạn</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Tôi chưa biết tiếng Trung có học được không?</summary><p>Được. Giáo viên sẽ bắt đầu từ nền tảng rồi đi vào tiếng Trung công việc.</p></details><details><summary>Học xong bao lâu thì dùng được?</summary><p>Tuỳ trình độ và mục tiêu. Giáo viên sẽ tư vấn lộ trình sau buổi trao đổi đầu tiên.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog custom reveal" id="custom">
@@ -1024,7 +1083,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Lớp 1 kèm 1 hoặc nhóm nhỏ, xây quanh mục tiêu, trình độ và lịch của học viên.</p>
         <div class="focus"><span>Lớp 1 kèm 1</span><span>Nhóm nhỏ</span><span>Lịch linh hoạt</span><span>Nội dung riêng</span><span>Mục tiêu cụ thể</span></div>
         <p class="copy">Không phải lúc nào bạn cũng cần một giáo trình đầy đủ. Đôi khi bạn chỉ cần <strong>đúng phần tiếng Trung cho việc của mình.</strong> Giáo viên trao đổi trước để hiểu mục tiêu, rồi mới xây bài học.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Người học có <b>mục tiêu riêng</b>: du học, công việc, thi cử, giao tiếp gấp…</li><li>Người bận, cần <b>lịch linh hoạt</b></li><li>Bé cần kèm riêng, bù kiến thức</li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li>Đạt đúng <b>mục tiêu bạn đặt ra</b></li><li>Tiến bộ theo tốc độ của riêng mình</li></ul></section><section><h4>Một buổi học</h4><ul><li>Giáo viên trao đổi trước để hiểu mục tiêu</li><li>Xây <b>nội dung riêng</b> cho từng người</li><li>Đánh giá tiến bộ, điều chỉnh sau mỗi giai đoạn</li></ul></section><section><h4>Lớp học</h4><ul><li><b>1 kèm 1</b> hoặc nhóm nhỏ tự chọn</li><li>Lịch học thoả thuận theo thời gian của bạn</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Học online được không?</summary><p>Được. Ba mẹ hoặc học viên nhắn SunMoon để sắp xếp.</p></details><details><summary>Chọn giáo viên được không?</summary><p>SunMoon gợi ý giáo viên phù hợp với mục tiêu, bạn có thể học thử trước.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog comm reveal" id="comm">
@@ -1035,7 +1096,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho người muốn nói được tiếng Trung trong đời sống hằng ngày, du lịch và công việc.</p>
         <div class="focus"><span>Phát âm đúng</span><span>Nghe hiểu</span><span>Phản xạ nói</span><span>Mẫu câu thông dụng</span><span>Tình huống thực tế</span></div>
         <p class="copy">Học qua tình huống thật: chào hỏi, mua sắm, đi lại, gọi món, trao đổi công việc. Mục tiêu là <strong>nói tự nhiên và tự tin</strong>, không chỉ thuộc từ.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li><b>Thiếu niên và người lớn</b></li><li>Muốn nói tiếng Trung trong đời sống, du lịch, công việc</li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li><b>Phát âm đúng</b>, nghe hiểu người bản xứ nói chậm</li><li>Chào hỏi, hỏi đường, mua sắm, gọi món</li><li>Giới thiệu bản thân, nói chuyện về công việc, sở thích</li><li><b>Phản xạ</b> nói nhanh hơn, bớt ngại</li></ul></section><section><h4>Một buổi học</h4><ul><li>Học mẫu câu theo tình huống</li><li>Luyện nói theo cặp, đóng vai</li><li>Sửa phát âm trực tiếp từng người</li></ul></section><section><h4>Lớp học</h4><ul><li>Nhóm nhỏ, ai cũng được nói nhiều</li><li>Có thể học thử trước khi đăng ký</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Tôi chỉ muốn nói, không cần viết chữ được không?</summary><p>Được. Lớp tập trung nghe – nói, chữ Hán chỉ học phần cần thiết.</p></details><details><summary>Tôi đã quên gần hết thì sao?</summary><p>Học thử 1 buổi, giáo viên sẽ xếp bạn vào nhóm phù hợp.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
 
       <article class="prog hsk reveal" id="hsk">
@@ -1054,7 +1117,9 @@ body.has-float{padding-bottom:0}
           <div class="step" style="--i:6"><i></i><b>HSK 6</b><small>Giao tiếp thành thạo</small></div>
         </div>
         <p class="copy">Từ học tiếng Trung <strong>đến dùng tiếng Trung một cách tự tin.</strong> Mỗi cấp độ có mục tiêu học tập rõ ràng và tiến bộ đo được.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li><b>Thiếu niên và người lớn</b> cần chứng chỉ HSK</li><li>Chuẩn bị du học, học bổng, xin việc</li></ul></section><section><h4>Sau khoá, bạn có thể</h4><ul><li>Nắm chắc <b>từ vựng và ngữ pháp</b> đúng cấp độ</li><li>Quen <b>dạng đề</b>, làm bài đúng thời gian</li><li>Tự tin đi thi <b>HSK 1 → HSK 6</b></li></ul></section><section><h4>Một buổi học</h4><ul><li>Học kiến thức theo giáo trình HSK</li><li>Luyện đề theo từng kỹ năng: nghe, đọc, viết</li><li>Chữa bài, chỉ ra lỗi hay sai</li></ul></section><section><h4>Lớp học</h4><ul><li>Nhóm nhỏ theo cấp độ</li><li>Kiểm tra trình độ đầu vào miễn phí khi học thử</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Tôi nên thi HSK mấy?</summary><p>Tuỳ mục tiêu (du học, học bổng, công việc). Giáo viên sẽ tư vấn khi bạn học thử.</p></details><details><summary>Có luyện HSKK (thi nói) không?</summary><p>Có thể kết hợp. Bạn nhắn SunMoon để được tư vấn.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
     </div>
 
@@ -1067,7 +1132,7 @@ body.has-float{padding-bottom:0}
         <p class="lede">Cùng một cách dạy: đúng tuổi, lớp nhỏ, học qua chơi và tương tác thật.</p>
       </div>
       <div class="extra-grid">
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="math">
         <figure class="ph shot xshot" data-photo="class-math" role="img" aria-label="Giờ Toán tư duy tại SunMoon"><span class="cap">Giờ Toán tư duy tại SunMoon</span></figure>
         <span class="glyph" aria-hidden="true">数</span>
         <div class="top"><span class="age">3–6 tuổi</span></div>
@@ -1075,10 +1140,12 @@ body.has-float{padding-bottom:0}
         <p class="tagline">Nghĩ trước khi đếm.</p>
         <div class="focus"><span>Số & lượng</span><span>Hình khối</span><span>Quy luật</span><span>Logic</span><span>Trò chơi tư duy</span></div>
         <p class="copy">Không phải học thuộc bảng cộng. Con làm quen với số, hình và quy luật qua đồ vật thật và trò chơi, để <strong>hình thành cách suy nghĩ có logic</strong> từ sớm.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>3–6 tuổi</b></li><li>Chuẩn bị nền tư duy trước khi vào lớp 1</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li>Hiểu <b>số và lượng</b>, không chỉ đếm thuộc lòng</li><li>Nhận biết <b>hình khối, quy luật</b></li><li>Biết suy luận, giải câu đố đơn giản</li><li>Tập trung và kiên nhẫn hơn</li></ul></section><section><h4>Một buổi học</h4><ul><li>Học bằng <b>đồ vật thật</b> và mô hình</li><li>Trò chơi tư duy, câu đố</li><li>Tình huống thực tế: chia kẹo, xếp hình…</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, <b>tối đa 6 bé</b></li><li>Ba mẹ nhận <b>nhận xét riêng</b> sau buổi học</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Toán tư duy khác học toán ở trường thế nào?</summary><p>Con học cách suy nghĩ qua đồ vật và trò chơi, không học thuộc bảng tính.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
       
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="writing">
         <figure class="ph shot xshot" data-photo="class-writing" role="img" aria-label="Luyện từng nét chữ"><span class="cap">Luyện từng nét chữ</span></figure>
         <span class="glyph" aria-hidden="true">书</span>
         <div class="top"><span class="age">5–7 tuổi</span></div>
@@ -1086,16 +1153,20 @@ body.has-float{padding-bottom:0}
         <p class="tagline">Nét chữ, nết người.</p>
         <div class="focus"><span>Cầm bút đúng</span><span>Tư thế ngồi</span><span>Nét cơ bản</span><span>Chữ đều & sạch</span></div>
         <p class="copy">Từ cách cầm bút, tư thế ngồi đến từng nét cơ bản. Con viết đẹp hơn mỗi tuần, và quan trọng hơn là <strong>kiên nhẫn hơn</strong>.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Bé <b>5–7 tuổi</b></li><li>Chuẩn bị vào lớp 1 hoặc đang học lớp 1</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li><b>Cầm bút đúng</b>, ngồi đúng tư thế</li><li>Viết đúng <b>nét cơ bản</b>, chữ đều và sạch</li><li>Kiên nhẫn, cẩn thận hơn</li></ul></section><section><h4>Một buổi học</h4><ul><li>Khởi động tay, tập tư thế ngồi</li><li>Luyện từng nét, từng chữ cùng cô</li><li>Khen và sửa riêng cho từng bé</li></ul></section><section><h4>Lớp học</h4><ul><li>Lớp nhỏ, cô cầm tay sửa cho từng bé</li><li>Ba mẹ nhận <b>nhận xét riêng</b> sau buổi học</li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Con viết chữ tiếng Việt hay tiếng Trung?</summary><p>Ba mẹ nhắn SunMoon để được tư vấn nội dung phù hợp với con.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
-      <article class="xprog reveal" style="padding-top:1.8rem">
+      <article class="xprog reveal" id="camp" style="padding-top:1.8rem">
         <span class="glyph" aria-hidden="true">营</span>
         <div class="top"><span class="age">Hè · Đông · Xuân</span></div>
         <h3 class="name">Chương trình Camp</h3>
         <p class="tagline">Học mà như đi chơi.</p>
         <div class="focus"><span>Summer Camp</span><span>Winter Camp</span><span>Spring Camp</span><span>Văn hoá Trung Hoa</span><span>Hoạt động sáng tạo</span></div>
         <p class="copy">Các khoá ngắn theo mùa, kết hợp tiếng Trung với trò chơi, thủ công và trải nghiệm văn hoá. Lịch và nội dung từng mùa <strong>được thông báo trước khi mở đăng ký</strong>.</p>
+        <button type="button" class="more-btn">Xem chi tiết lớp <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Đăng ký học thử <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Phù hợp với</h4><ul><li>Các bé muốn <b>trải nghiệm</b> trong kỳ nghỉ hè, đông, xuân</li><li>Bé chưa học hoặc đã học tiếng Trung đều tham gia được</li></ul></section><section><h4>Sau khoá, con có thể</h4><ul><li>Dùng tiếng Trung qua <b>hoạt động thật</b></li><li>Hiểu thêm <b>văn hoá Trung Hoa</b></li><li>Kết bạn, tự tin làm việc nhóm</li></ul></section><section><h4>Một buổi học</h4><ul><li>Mỗi ngày một chủ đề</li><li>Trò chơi, thủ công, nấu ăn, biểu diễn…</li><li>Tổng kết, ba mẹ xem lại hoạt động của con</li></ul></section><section><h4>Lớp học</h4><ul><li>Khoá ngắn theo mùa</li><li>Lịch và nội dung <b>thông báo trước khi mở đăng ký</b></li></ul></section></div><section class="more-faq"><h4>Ba mẹ hay hỏi</h4><details><summary>Khi nào có Camp?</summary><p>SunMoon thông báo trên Fanpage và Zalo trước mỗi mùa. Ba mẹ nhắn để được báo sớm.</p></details></section><p class="more-note">Lịch học và học phí: SunMoon tư vấn riêng theo tuổi và trình độ của con.</p></div>
       </article>
       </div>
     </div>
@@ -1246,7 +1317,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho trẻ mới bắt đầu làm quen với tiếng Trung. Small classes, at most 6 children.</p>
         <div class="focus"><span>Listening</span><span>Speaking</span><span>Pronunciation</span><span>Vocabulary</span><span>Storytelling</span><span>Music &amp; Movement</span><span>Creative Activities</span></div>
         <p class="copy">At this age, children don't need to "study harder". <strong>They need to experience language naturally.</strong> Through stories, songs, movement, games and creative activities, Mandarin becomes something they enjoy, not something they have to memorise.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li>Children <b>aged 3–7</b> starting Chinese</li><li>No reading or pinyin needed</li></ul></section><section><h4>After the course, your child can</h4><ul><li><b>Understand</b> and answer simple sentences</li><li>Use <b>everyday words</b>: colours, animals, family, food…</li><li>Sing songs and retell short stories in Chinese</li><li><b>Enjoy</b> Chinese and speak with confidence</li></ul></section><section><h4>A typical lesson</h4><ul><li>Warm-up with songs and movement</li><li>New words with picture cards and real objects</li><li>Games and storytelling to practise speaking</li><li>Creative time: colouring, drawing, crafts</li></ul></section><section><h4>Class format</h4><ul><li>Small groups, <b>max 6 children</b></li><li>The teacher follows each child closely</li><li>Parents receive <b>personal feedback</b> after each lesson</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>My child has never learnt Chinese. Is that OK?</summary><p>Yes. This class starts from zero.</p></details><details><summary>My child is shy. Will they cope?</summary><p>Groups are small, so the teacher helps each child warm up through games.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
 
       <article class="prog kids reveal" id="kids">
@@ -1257,7 +1330,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">Dành cho trẻ đã bắt đầu có nền tảng hoặc đang muốn học tiếng Trung bài bản hơn. Small classes, at most 6 children.</p>
         <div class="focus"><span>Listening</span><span>Speaking</span><span>Reading</span><span>Writing</span><span>Vocabulary</span><span>Grammar</span><span>Communication</span><span>Chinese Culture</span></div>
         <p class="copy">As children grow, their relationship with language changes. Our ChineseKids class gradually moves from playful communication to <strong>stronger language foundations</strong>, helping students become more confident in listening, speaking, reading and writing.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li>Children <b>aged 7–13</b></li><li>Beginners, or children with some Chinese who want a solid programme</li></ul></section><section><h4>After the course, your child can</h4><ul><li>Balanced <b>listening, speaking, reading and writing</b></li><li>Read pinyin, recognise and write <b>Chinese characters</b></li><li>Talk about everyday topics</li><li>A foundation for <b>YCT / HSK</b> exams when needed</li></ul></section><section><h4>A typical lesson</h4><ul><li>Quick review games</li><li>New words and sentence patterns by topic</li><li>Pair and group conversation practice</li><li>Reading, character writing and light homework</li></ul></section><section><h4>Class format</h4><ul><li>Small groups, <b>max 6 children</b></li><li>Placed by level after the trial lesson</li><li>Parents receive <b>personal feedback</b> after lessons</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>My child studied elsewhere. Which class fits?</summary><p>Join a trial lesson; the teacher checks the level and places your child.</p></details><details><summary>Is there homework?</summary><p>Yes, light and manageable, just enough to review.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
 
       <article class="prog work reveal" id="work">
@@ -1268,7 +1343,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">For professionals and business owners working with Chinese partners, suppliers and customers.</p>
         <div class="focus"><span>Price negotiation</span><span>Sourcing</span><span>Sales</span><span>Work messages &amp; email</span><span>Real estate</span><span>Industry terms</span></div>
         <p class="copy">Learn the words and phrases you use every day: <strong>discussing prices, placing orders, handling shipments and keeping good partner relationships.</strong></p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li>Professionals and business owners</li><li>Working with <b>Chinese partners, suppliers or customers</b></li></ul></section><section><h4>After the course, you can</h4><ul><li><b>Negotiate prices</b>, place and track orders</li><li>Write work messages and emails in Chinese</li><li>Use the <b>right terms</b> for your industry</li><li>Speak confidently on calls and in meetings</li></ul></section><section><h4>A typical lesson</h4><ul><li>Built around <b>real situations</b> in your work</li><li>Industry vocabulary and key phrases</li><li>Role-play: negotiating, closing deals, solving problems</li></ul></section><section><h4>Class format</h4><ul><li>Small groups or <b>one-to-one</b></li><li>Content adapted to your industry</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>I have no Chinese at all. Can I join?</summary><p>Yes. The teacher starts with the basics, then moves into business Chinese.</p></details><details><summary>How soon can I use it at work?</summary><p>It depends on your level and goals; the teacher suggests a plan after the first session.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
 
       <article class="prog custom reveal" id="custom">
@@ -1279,7 +1356,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">One-to-one or small-group lessons built around the learner’s goals, level and schedule.</p>
         <div class="focus"><span>One-to-one</span><span>Small groups</span><span>Flexible schedule</span><span>Custom content</span><span>Specific goals</span></div>
         <p class="copy">You don’t always need a full textbook. Sometimes you just need <strong>the right Chinese for what you do.</strong> Your teacher talks with you first to understand your goals, then builds the lessons.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li>Learners with <b>specific goals</b>: study abroad, work, exams, urgent conversation…</li><li>Busy people who need a <b>flexible schedule</b></li><li>Children who need one-to-one support</li></ul></section><section><h4>After the course, you can</h4><ul><li>Reach <b>the goal you set</b></li><li>Progress at your own pace</li></ul></section><section><h4>A typical lesson</h4><ul><li>The teacher first talks with you about your goals</li><li><b>Custom content</b> for each learner</li><li>Progress checks and adjustments along the way</li></ul></section><section><h4>Class format</h4><ul><li><b>One-to-one</b> or a small group of your choice</li><li>Schedule agreed around your time</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>Can I learn online?</summary><p>Yes. Message SunMoon to arrange it.</p></details><details><summary>Can I choose my teacher?</summary><p>SunMoon suggests a teacher who fits your goals, and you can try a lesson first.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
 
       <article class="prog comm reveal" id="comm">
@@ -1290,7 +1369,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">For anyone who wants to use Chinese in daily life, travel and work.</p>
         <div class="focus"><span>Correct pronunciation</span><span>Listening</span><span>Speaking reflexes</span><span>Everyday phrases</span><span>Real situations</span></div>
         <p class="copy">Learn through real situations: greetings, shopping, getting around, ordering food, talking about work. The goal is <strong>to speak naturally and confidently</strong>, not just memorise words.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li><b>Teens and adults</b></li><li>Wanting to speak Chinese in daily life, travel and work</li></ul></section><section><h4>After the course, you can</h4><ul><li><b>Correct pronunciation</b>; understand slow native speech</li><li>Greetings, directions, shopping, ordering food</li><li>Introduce yourself; talk about work and hobbies</li><li>Faster <b>speaking reflexes</b>, less hesitation</li></ul></section><section><h4>A typical lesson</h4><ul><li>Phrases built around real situations</li><li>Pair practice and role-play</li><li>Individual pronunciation correction</li></ul></section><section><h4>Class format</h4><ul><li>Small groups so everyone speaks a lot</li><li>Try a lesson before you enrol</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>I only want to speak, not write. Is that OK?</summary><p>Yes. The class focuses on listening and speaking; characters only as needed.</p></details><details><summary>I have forgotten most of my Chinese.</summary><p>Join a trial lesson and the teacher will place you in the right group.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
 
       <article class="prog hsk reveal" id="hsk">
@@ -1309,7 +1390,9 @@ body.has-float{padding-bottom:0}
           <div class="step" style="--i:6"><i></i><b>HSK 6</b><small>Fluent communication</small></div>
         </div>
         <p class="copy">From learning Chinese <strong>to using Chinese with confidence.</strong> Each level has clear learning objectives and measurable progress.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li><b>Teens and adults</b> who need an HSK certificate</li><li>Preparing for study abroad, scholarships or jobs</li></ul></section><section><h4>After the course, you can</h4><ul><li>Solid <b>vocabulary and grammar</b> for your level</li><li>Familiar with the <b>exam format</b> and timing</li><li>Ready to sit <b>HSK 1 → HSK 6</b></li></ul></section><section><h4>A typical lesson</h4><ul><li>Lessons following the HSK syllabus</li><li>Practice tests by skill: listening, reading, writing</li><li>Error review and common-mistake coaching</li></ul></section><section><h4>Class format</h4><ul><li>Small groups by level</li><li>Free placement check at your trial lesson</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>Which HSK level should I take?</summary><p>It depends on your goal; the teacher advises you at the trial lesson.</p></details><details><summary>Do you prepare for HSKK (speaking)?</summary><p>It can be combined. Message SunMoon for advice.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
     </div>
 
@@ -1322,7 +1405,7 @@ body.has-float{padding-bottom:0}
         <p class="lede">The same way of teaching: age-appropriate, small classes, learning through play and real interaction.</p>
       </div>
       <div class="extra-grid">
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="math">
         <figure class="ph shot xshot" data-photo="class-math" role="img" aria-label="A Logical Maths session"><span class="cap">A Logical Maths session</span></figure>
         <span class="glyph" aria-hidden="true">数</span>
         <div class="top"><span class="age">Ages 3–6</span></div>
@@ -1330,10 +1413,12 @@ body.has-float{padding-bottom:0}
         <p class="tagline">Think before you count.</p>
         <div class="focus"><span>Numbers & quantity</span><span>Shapes</span><span>Patterns</span><span>Logic</span><span>Thinking games</span></div>
         <p class="copy">Not memorising sums. Children meet numbers, shapes and patterns through real objects and games, and <strong>build logical thinking</strong> early.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li>Children <b>aged 3–6</b></li><li>Building thinking skills before primary school</li></ul></section><section><h4>After the course, your child can</h4><ul><li>Understand <b>numbers and quantity</b>, not just counting</li><li>Recognise <b>shapes and patterns</b></li><li>Reason and solve simple puzzles</li><li>Better focus and patience</li></ul></section><section><h4>A typical lesson</h4><ul><li>Learning with <b>real objects</b> and models</li><li>Logic games and puzzles</li><li>Real-life situations: sharing sweets, building shapes…</li></ul></section><section><h4>Class format</h4><ul><li>Small groups, <b>max 6 children</b></li><li>Parents receive <b>personal feedback</b> after lessons</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>How is this different from school maths?</summary><p>Children learn how to think through objects and games, not by memorising tables.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
       
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="writing">
         <figure class="ph shot xshot" data-photo="class-writing" role="img" aria-label="Practising every stroke"><span class="cap">Practising every stroke</span></figure>
         <span class="glyph" aria-hidden="true">书</span>
         <div class="top"><span class="age">Ages 5–7</span></div>
@@ -1341,16 +1426,20 @@ body.has-float{padding-bottom:0}
         <p class="tagline">Neat hand, calm mind.</p>
         <div class="focus"><span>Pencil grip</span><span>Posture</span><span>Basic strokes</span><span>Even & clean writing</span></div>
         <p class="copy">From how to hold a pencil and sit, to every basic stroke. Handwriting improves week by week, and so does <strong>patience</strong>.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li>Children <b>aged 5–7</b></li><li>Getting ready for, or already in, Grade 1</li></ul></section><section><h4>After the course, your child can</h4><ul><li><b>Correct pen grip</b> and sitting posture</li><li>Neat <b>basic strokes</b> and even handwriting</li><li>More patience and care</li></ul></section><section><h4>A typical lesson</h4><ul><li>Hand warm-ups and posture practice</li><li>Stroke-by-stroke practice with the teacher</li><li>Individual praise and correction</li></ul></section><section><h4>Class format</h4><ul><li>Small groups; the teacher guides each child by hand</li><li>Parents receive <b>personal feedback</b> after lessons</li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>Vietnamese or Chinese handwriting?</summary><p>Message SunMoon and we will suggest the right content for your child.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
-      <article class="xprog reveal" style="padding-top:1.8rem">
+      <article class="xprog reveal" id="camp" style="padding-top:1.8rem">
         <span class="glyph" aria-hidden="true">营</span>
         <div class="top"><span class="age">Summer · Winter · Spring</span></div>
         <h3 class="name">SunMoon Camps</h3>
         <p class="tagline">Learning that feels like play.</p>
         <div class="focus"><span>Summer Camp</span><span>Winter Camp</span><span>Spring Camp</span><span>Chinese culture</span><span>Creative activities</span></div>
         <p class="copy">Short seasonal programmes combining Chinese with games, crafts and cultural experiences. Dates and content for each season <strong>are announced before registration opens</strong>.</p>
+        <button type="button" class="more-btn">See class details <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">Book a trial class <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>Right for</h4><ul><li>Children who want a <b>holiday experience</b> in summer, winter or spring</li><li>Open to beginners and children already learning Chinese</li></ul></section><section><h4>After the course, your child can</h4><ul><li>Use Chinese through <b>real activities</b></li><li>Learn more about <b>Chinese culture</b></li><li>Make friends and grow confident in teams</li></ul></section><section><h4>A typical lesson</h4><ul><li>A new theme each day</li><li>Games, crafts, cooking, performances…</li><li>A wrap-up so parents can see what their child did</li></ul></section><section><h4>Class format</h4><ul><li>Short seasonal programmes</li><li>Dates and content <b>announced before registration opens</b></li></ul></section></div><section class="more-faq"><h4>Parents often ask</h4><details><summary>When are the camps?</summary><p>SunMoon announces them on Facebook and Zalo before each season. Message us to hear first.</p></details></section><p class="more-note">Schedule and fees: SunMoon advises you personally based on age and level.</p></div>
       </article>
       </div>
     </div>
@@ -1500,7 +1589,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">适合刚开始接触中文的幼儿。 小班教学，每班最多 6 名孩子。</p>
         <div class="focus"><span>听</span><span>说</span><span>发音</span><span>词汇</span><span>讲故事</span><span>音乐与律动</span><span>创意活动</span></div>
         <p class="copy">在这个年龄，孩子不需要"更用功"。<strong>他们需要自然地体验语言。</strong>通过故事、儿歌、律动、游戏和创意活动，中文成为孩子喜欢的东西，而不是必须背下来的东西。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li><b>3–7 岁</b>、刚开始接触中文的孩子</li><li>不需要识字，不需要会拼音</li></ul></section><section><h4>学完后，孩子能够</h4><ul><li><b>听懂</b>并回应简单句子</li><li>说出<b>常用词汇</b>：颜色、动物、家人、食物……</li><li>用中文唱儿歌、复述小故事</li><li><b>喜欢</b>中文，敢于开口</li></ul></section><section><h4>一节课的安排</h4><ul><li>儿歌和律动热身</li><li>通过图卡和实物学新词</li><li>游戏和讲故事练口语</li><li>创意活动：涂色、画画、手工</li></ul></section><section><h4>班级形式</h4><ul><li>小班教学，<b>每班最多 6 名孩子</b></li><li>老师关注每一个孩子</li><li>课后家长会收到孩子的<b>个人点评</b></li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>孩子完全没学过中文可以吗？</summary><p>可以。本班从零开始。</p></details><details><summary>孩子比较内向怎么办？</summary><p>小班上课，老师会通过游戏帮助孩子慢慢适应。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
 
       <article class="prog kids reveal" id="kids">
@@ -1511,7 +1602,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">适合已有一定基础，或希望更系统学习中文的孩子。 小班教学，每班最多 6 名孩子。</p>
         <div class="focus"><span>听</span><span>说</span><span>读</span><span>写</span><span>词汇</span><span>语法</span><span>沟通</span><span>中华文化</span></div>
         <p class="copy">孩子长大，他们与语言的关系也在变化。少儿中文班从游戏式交流逐步过渡到<strong>更扎实的语言基础</strong>，帮助孩子在听、说、读、写各方面更加自信。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li><b>7–13 岁</b>的孩子</li><li>零基础或有一点基础、想系统学习的孩子</li></ul></section><section><h4>学完后，孩子能够</h4><ul><li><b>听说读写</b>全面发展</li><li>会拼音，认读并书写<b>汉字</b></li><li>能就日常话题交流</li><li>需要时可备考 <b>YCT / HSK</b></li></ul></section><section><h4>一节课的安排</h4><ul><li>游戏快速复习</li><li>按主题学习新词和句型</li><li>两人或小组会话练习</li><li>阅读、汉字书写，适量作业</li></ul></section><section><h4>班级形式</h4><ul><li>小班教学，<b>每班最多 6 名孩子</b></li><li>试听后按水平分班</li><li>课后家长会收到<b>个人点评</b></li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>孩子在别处学过，该上哪个班？</summary><p>先来试听一节，老师测评后安排合适的班级。</p></details><details><summary>有家庭作业吗？</summary><p>有，分量适中，帮助孩子复习。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
 
       <article class="prog work reveal" id="work">
@@ -1522,7 +1615,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">适合需要与中国伙伴、供应商和客户打交道的职场人士和企业主。</p>
         <div class="focus"><span>价格谈判</span><span>采购进货</span><span>销售</span><span>工作消息与邮件</span><span>房地产</span><span>行业术语</span></div>
         <p class="copy">学习每天真正用得到的词汇和句型：<strong>谈价格、下订单、跟进发货、维护合作关系。</strong></p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li>职场人士、企业主</li><li>需要与<b>中国伙伴、供应商、客户</b>打交道</li></ul></section><section><h4>学完后，您能够</h4><ul><li><b>谈价格</b>、下订单、跟进订单</li><li>用中文写工作消息和邮件</li><li>掌握本行业的<b>专业术语</b></li><li>自信地打电话、见客户</li></ul></section><section><h4>一节课的安排</h4><ul><li>围绕您工作中的<b>真实情境</b></li><li>行业词汇与常用句型</li><li>角色扮演：谈判、成交、处理问题</li></ul></section><section><h4>班级形式</h4><ul><li>小组或<b>一对一</b></li><li>内容根据您的行业调整</li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>我完全不会中文可以学吗？</summary><p>可以。老师会从基础开始，再进入商务中文。</p></details><details><summary>多久能在工作中用上？</summary><p>取决于水平和目标，第一次沟通后老师会给出学习路径。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
 
       <article class="prog custom reveal" id="custom">
@@ -1533,7 +1628,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">一对一或小组课，围绕学员的目标、水平和时间来设计。</p>
         <div class="focus"><span>一对一</span><span>小组课</span><span>时间灵活</span><span>专属内容</span><span>目标明确</span></div>
         <p class="copy">并不是每个人都需要一整套教材。有时你只需要<strong>和你的工作直接相关的那部分中文。</strong>老师会先与你沟通目标，再设计课程。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li>有<b>明确目标</b>的学员：留学、工作、考试、急需口语……</li><li>工作忙、需要<b>灵活时间</b>的人</li><li>需要一对一辅导的孩子</li></ul></section><section><h4>学完后，您能够</h4><ul><li>达成<b>您设定的目标</b></li><li>按自己的节奏进步</li></ul></section><section><h4>一节课的安排</h4><ul><li>老师先与您沟通目标</li><li>为每位学员设计<b>专属内容</b></li><li>阶段性评估并调整</li></ul></section><section><h4>班级形式</h4><ul><li><b>一对一</b>或自选小组</li><li>上课时间按您的安排协商</li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>可以线上上课吗？</summary><p>可以。请联系日月安排。</p></details><details><summary>可以选择老师吗？</summary><p>日月会推荐适合您目标的老师，您也可以先试听。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
 
       <article class="prog comm reveal" id="comm">
@@ -1544,7 +1641,9 @@ body.has-float{padding-bottom:0}
         <p class="vi">适合想在日常生活、旅行和工作中使用中文的学员。</p>
         <div class="focus"><span>正确发音</span><span>听力理解</span><span>口语反应</span><span>常用句型</span><span>真实情境</span></div>
         <p class="copy">在真实情境中学习：问候、购物、出行、点餐、谈工作。目标是<strong>自然、自信地说中文</strong>，而不只是背单词。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li><b>青少年与成人</b></li><li>想在生活、旅行、工作中说中文</li></ul></section><section><h4>学完后，您能够</h4><ul><li><b>发音正确</b>，听懂母语者慢速说话</li><li>问候、问路、购物、点餐</li><li>介绍自己，聊工作和爱好</li><li><b>口语反应</b>更快，不再怕开口</li></ul></section><section><h4>一节课的安排</h4><ul><li>按情境学习常用句型</li><li>两人练习、角色扮演</li><li>老师逐一纠正发音</li></ul></section><section><h4>班级形式</h4><ul><li>小组教学，每个人都有充分开口机会</li><li>报名前可先试听</li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>我只想学说，不学写可以吗？</summary><p>可以。本班以听说为主，汉字只学必要部分。</p></details><details><summary>我以前学过但都忘了怎么办？</summary><p>先试听一节，老师会安排合适的小组。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
 
       <article class="prog hsk reveal" id="hsk">
@@ -1563,7 +1662,9 @@ body.has-float{padding-bottom:0}
           <div class="step" style="--i:6"><i></i><b>HSK 6</b><small>熟练交流</small></div>
         </div>
         <p class="copy">从学中文，<strong>到自信地使用中文。</strong>每一级都有清晰的学习目标和可衡量的进步。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li>需要 HSK 证书的<b>青少年与成人</b></li><li>准备留学、申请奖学金或求职</li></ul></section><section><h4>学完后，您能够</h4><ul><li>掌握对应级别的<b>词汇与语法</b></li><li>熟悉<b>题型</b>和答题时间</li><li>自信参加 <b>HSK 1–6 级</b>考试</li></ul></section><section><h4>一节课的安排</h4><ul><li>按 HSK 大纲学习</li><li>分技能练题：听力、阅读、书写</li><li>讲评试卷，纠正常见错误</li></ul></section><section><h4>班级形式</h4><ul><li>按级别小组教学</li><li>试听时免费测评水平</li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>我应该考几级？</summary><p>取决于目标（留学、奖学金、工作），试听时老师会给建议。</p></details><details><summary>有 HSKK（口语考试）辅导吗？</summary><p>可以结合学习，请联系日月咨询。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
     </div>
 
@@ -1576,7 +1677,7 @@ body.has-float{padding-bottom:0}
         <p class="lede">同样的教学方式：因龄施教、小班教学、在游戏与真实互动中学习。</p>
       </div>
       <div class="extra-grid">
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="math">
         <figure class="ph shot xshot" data-photo="class-math" role="img" aria-label="思维数学课堂"><span class="cap">思维数学课堂</span></figure>
         <span class="glyph" aria-hidden="true">数</span>
         <div class="top"><span class="age">3–6 岁</span></div>
@@ -1584,10 +1685,12 @@ body.has-float{padding-bottom:0}
         <p class="tagline">先思考，再数数。</p>
         <div class="focus"><span>数与量</span><span>图形</span><span>规律</span><span>逻辑</span><span>思维游戏</span></div>
         <p class="copy">不是背加法表。孩子通过真实物品和游戏认识数字、图形和规律，<strong>从小建立逻辑思维</strong>。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li><b>3–6 岁</b>的孩子</li><li>为上小学打好思维基础</li></ul></section><section><h4>学完后，孩子能够</h4><ul><li>理解<b>数与量</b>，而不只是背数</li><li>认识<b>图形与规律</b></li><li>学会推理，解决简单谜题</li><li>更专注、更有耐心</li></ul></section><section><h4>一节课的安排</h4><ul><li>用<b>实物</b>和教具学习</li><li>思维游戏与谜题</li><li>生活情境：分糖果、拼图形……</li></ul></section><section><h4>班级形式</h4><ul><li>小班教学，<b>每班最多 6 名孩子</b></li><li>课后家长会收到<b>个人点评</b></li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>思维数学和学校数学有什么不同？</summary><p>孩子通过实物和游戏学会思考，而不是背算式。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
       
-      <article class="xprog reveal">
+      <article class="xprog reveal" id="writing">
         <figure class="ph shot xshot" data-photo="class-writing" role="img" aria-label="一笔一画地练习"><span class="cap">一笔一画地练习</span></figure>
         <span class="glyph" aria-hidden="true">书</span>
         <div class="top"><span class="age">5–7 岁</span></div>
@@ -1595,16 +1698,20 @@ body.has-float{padding-bottom:0}
         <p class="tagline">字如其人。</p>
         <div class="focus"><span>正确握笔</span><span>坐姿</span><span>基本笔画</span><span>工整清晰</span></div>
         <p class="copy">从握笔、坐姿到每一个基本笔画。孩子的字一周比一周好看，更重要的是<strong>更有耐心</strong>。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li><b>5–7 岁</b>的孩子</li><li>准备上小学或正在读一年级</li></ul></section><section><h4>学完后，孩子能够</h4><ul><li><b>正确握笔</b>，坐姿端正</li><li>写好<b>基本笔画</b>，字迹工整</li><li>更有耐心、更细心</li></ul></section><section><h4>一节课的安排</h4><ul><li>手部热身，练习坐姿</li><li>跟老师一笔一画练习</li><li>老师逐一表扬与纠正</li></ul></section><section><h4>班级形式</h4><ul><li>小班，老师手把手指导</li><li>课后家长会收到<b>个人点评</b></li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>练的是越南文还是中文书写？</summary><p>请联系日月，我们会根据孩子情况推荐合适内容。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
-      <article class="xprog reveal" style="padding-top:1.8rem">
+      <article class="xprog reveal" id="camp" style="padding-top:1.8rem">
         <span class="glyph" aria-hidden="true">营</span>
         <div class="top"><span class="age">夏 · 冬 · 春</span></div>
         <h3 class="name">营地课程</h3>
         <p class="tagline">像玩一样地学习。</p>
         <div class="focus"><span>夏令营</span><span>冬令营</span><span>春令营</span><span>中华文化</span><span>创意活动</span></div>
         <p class="copy">按季节开设的短期课程，把中文与游戏、手工和文化体验结合在一起。每季的时间和内容<strong>会在开放报名前公布</strong>。</p>
+        <button type="button" class="more-btn">查看课程详情 <span aria-hidden="true">+</span></button>
         <a class="link" href="lien-he.html#trial">预约试听课 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <div class="more" hidden><div class="more-grid"><section><h4>适合</h4><ul><li>想在暑假、寒假、春假<b>体验</b>学习的孩子</li><li>零基础或已学过中文的孩子都可参加</li></ul></section><section><h4>学完后，孩子能够</h4><ul><li>在<b>真实活动</b>中使用中文</li><li>了解<b>中华文化</b></li><li>结交朋友，学会团队合作</li></ul></section><section><h4>一节课的安排</h4><ul><li>每天一个主题</li><li>游戏、手工、烹饪、表演……</li><li>结营展示，家长可看到孩子的成果</li></ul></section><section><h4>班级形式</h4><ul><li>按季节开设的短期营</li><li>时间和内容<b>在开放报名前公布</b></li></ul></section></div><section class="more-faq"><h4>家长常问</h4><details><summary>什么时候有营地课程？</summary><p>每季开营前会在 Facebook 和 Zalo 公布，欢迎留言提前获取通知。</p></details></section><p class="more-note">上课时间与学费：日月会根据孩子的年龄和水平单独为您介绍。</p></div>
       </article>
       </div>
     </div>
@@ -1841,6 +1948,62 @@ body.has-float{padding-bottom:0}
       box.addEventListener('click', kill); d.addEventListener('keydown', onk);
       requestAnimationFrame(function(){ box.classList.add('on'); });
     }
+
+
+    /* class detail popup + quick trial sign-up */
+    var DT={
+      vi:{close:'Đóng',reg:'Đăng ký học thử lớp này',name:'Tên phụ huynh / học viên',phone:'Số điện thoại / Zalo',age:'Tuổi của con (nếu có)',send:'Gửi đăng ký qua Zalo',
+          need:'Vui lòng nhập tên và số điện thoại',ask:'Nhắn Zalo hỏi thêm',
+          msg:function(c,x){return 'Xin chào SunMoon, tôi muốn đăng ký học thử lớp '+c+'.\n- Họ tên: '+x.n+'\n- SĐT/Zalo: '+x.p+(x.a?'\n- Tuổi của con: '+x.a:'');}},
+      en:{close:'Close',reg:'Book a trial for this class',name:'Parent / learner name',phone:'Phone / Zalo',age:"Child's age (if any)",send:'Send via Zalo',
+          need:'Please enter your name and phone number',ask:'Ask us on Zalo',
+          msg:function(c,x){return 'Hello SunMoon, I would like to book a trial for '+c+'.\n- Name: '+x.n+'\n- Phone/Zalo: '+x.p+(x.a?"\n- Child's age: "+x.a:'');}},
+      zh:{close:'关闭',reg:'预约本课程试听',name:'家长 / 学员姓名',phone:'电话 / Zalo',age:'孩子年龄（如有）',send:'通过 Zalo 发送',
+          need:'请填写姓名和电话',ask:'Zalo 咨询',
+          msg:function(c,x){return '您好日月，我想预约'+c+'的试听课。\n- 姓名：'+x.n+'\n- 电话/Zalo：'+x.p+(x.a?'\n- 孩子年龄：'+x.a:'');}}
+    };
+    function openDetail(card){
+      var t=DT[lang], more=card.querySelector('.more'); if(!more) return;
+      var nameEl=card.querySelector('.name'); var clone=nameEl.cloneNode(true); var sm=clone.querySelector('small'); var kicker=sm?sm.textContent:''; if(sm) sm.remove();
+      var cname=clone.textContent.trim(), age=(card.querySelector('.age')||{}).textContent||'';
+      var box=d.createElement('div'); box.className='detail'; box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true'); box.setAttribute('aria-label',cname);
+      box.innerHTML='<div class="detail-panel"><button type="button" class="detail-x" aria-label="'+t.close+'">×</button>'
+        +'<p class="detail-kicker">'+esc(age)+(kicker&&kicker!==cname?' · '+esc(kicker):'')+'</p><h3 class="detail-title">'+esc(cname)+'</h3>'
+        +'<div class="detail-body">'+more.innerHTML+'</div>'
+        +'<form class="detail-form" novalidate><h4>'+t.reg+'</h4>'
+        +'<input name="n" placeholder="'+t.name+'" autocomplete="name"><input name="p" type="tel" inputmode="tel" placeholder="'+t.phone+'" autocomplete="tel"><input name="a" placeholder="'+t.age+'">'
+        +'<p class="detail-err" aria-live="polite"></p><div class="detail-actions"><button class="btn btn-primary" type="submit">'+t.send+'</button>'
+        +'<a class="btn btn-ghost" target="_blank" rel="noopener" href="'+ZALO+'">'+t.ask+'</a></div><div class="detail-done"></div></form></div>';
+      d.body.appendChild(box); d.body.style.overflow='hidden';
+      function kill(){ box.remove(); d.body.style.overflow=''; d.removeEventListener('keydown',onk); if(location.hash==='#'+card.id) history.replaceState(null,'',location.pathname+location.search); }
+      function onk(e){ if(e.key==='Escape') kill(); }
+      box.addEventListener('click', function(e){ if(e.target===box) kill(); });
+      box.querySelector('.detail-x').addEventListener('click', kill); d.addEventListener('keydown', onk);
+      var f=box.querySelector('form');
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        var x={n:f.n.value.trim(),p:f.p.value.trim(),a:f.a.value.trim()};
+        if(!x.n||!x.p){ f.querySelector('.detail-err').textContent=t.need; (x.n?f.p:f.n).focus(); return; }
+        var text=t.msg(cname,x); f.querySelector('.detail-err').textContent='';
+        var done=f.querySelector('.detail-done');
+        done.innerHTML='<b>'+MSG[lang].title+'</b><pre class="msg">'+esc(text)+'</pre><p class="hint-line">'+MSG[lang].hint+'</p>'
+          +'<div class="detail-actions"><a class="btn btn-primary" target="_blank" rel="noopener" href="'+ZALO+'">'+MSG[lang].go+'</a><button type="button" class="btn btn-ghost copy">'+MSG[lang].copy+'</button></div><p class="copied" aria-live="polite"></p>';
+        var flag=done.querySelector('.copied');
+        function copy(){ try{ navigator.clipboard.writeText(text).then(function(){ flag.textContent=MSG[lang].copied; }); }catch(err){} }
+        done.querySelector('.copy').addEventListener('click', copy); copy();
+        done.scrollIntoView({behavior: reduce?'auto':'smooth', block:'nearest'});
+        if(FORM_ENDPOINT){ fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({parent:x.n,phone:x.p,age:x.a,group:cname,lang:lang,submitted_at:new Date().toISOString()})}).catch(function(){}); }
+      });
+      requestAnimationFrame(function(){ box.classList.add('on'); });
+      if(card.id && location.hash!=='#'+card.id) history.replaceState(null,'','#'+card.id);
+    }
+    [].forEach.call(d.querySelectorAll('.prog, .xprog'), function(card){
+      if(!card.querySelector('.more')) return;
+      card.classList.add('has-more');
+      card.addEventListener('click', function(e){ if(e.target.closest('a')) return; openDetail(card); });
+    });
+    var hid=(location.hash||'').slice(1);
+    if(hid && /^[a-z]+$/.test(hid)){ var hc=d.getElementById(hid); if(hc && hc.querySelector('.more') && !d.querySelector('.detail')){ hc.scrollIntoView({block:'center'}); openDetail(hc); } }
 
     /* trial form */
     if(form){
