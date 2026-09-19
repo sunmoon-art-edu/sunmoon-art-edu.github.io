@@ -562,10 +562,11 @@ p{margin:0}
 .form.sent .row,.form.sent .foot,.form.sent .field{display:none}
 
 /* ---------- compact contact links ---------- */
-.clinks{display:flex;flex-wrap:wrap;gap:.5rem}
-.clinks a{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .85rem;border:1px solid var(--line-strong);border-radius:999px;background:var(--ivory);color:var(--ink);font-size:.9rem;line-height:1;white-space:nowrap;transition:border-color .2s,color .2s}
-.clinks a:hover{border-color:var(--vermilion);color:var(--vermilion)}
-.clinks a svg{flex:0 0 auto}
+.clinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+@media (min-width:900px){.clinks.page{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.clinks a{display:flex;align-items:center;gap:.65rem;padding:.55rem .7rem;border-radius:12px;background:var(--ivory);color:var(--ink);font-size:.9rem;line-height:1.2;box-shadow:0 1px 0 var(--line),0 6px 16px -12px rgba(60,40,20,.35);transition:transform .2s,box-shadow .2s,color .2s;min-width:0}
+.clinks a:hover{transform:translateY(-2px);color:var(--vermilion);box-shadow:0 1px 0 var(--line),0 12px 22px -14px rgba(60,40,20,.45)}
+.clinks a svg{flex:0 0 auto;box-sizing:content-box;padding:7px;border-radius:50%;background:color-mix(in srgb,var(--vermilion) 12%,var(--ivory));color:var(--vermilion)}
 .clinks.page{border-top:1px solid var(--line);padding-top:1.6rem}
 /* ---------- class detail popup ---------- */
 .has-more{cursor:pointer}

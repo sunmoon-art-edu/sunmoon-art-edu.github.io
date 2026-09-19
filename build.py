@@ -416,15 +416,22 @@ def build_head(lang, page):
 .pagehead .h2{{margin-top:.8rem}}
 .pagehead .lede{{margin-top:1.2rem}}
 .pagehead + .section{{padding-top:clamp(3rem,6vw,4.5rem)}}
-.homeclasses .grid{{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:2.5rem}}
+.homeclasses .grid{{display:grid;gap:1rem;margin-top:2.5rem}}
 @media (min-width:640px){{.homeclasses .grid{{grid-template-columns:1fr 1fr}}}}
 @media (min-width:1000px){{.homeclasses .grid{{grid-template-columns:repeat(3,1fr)}}}}
-.hc{{background:var(--ivory);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;min-height:11rem;transition:background .3s ease}}
-.hc:hover{{background:var(--ivory-2)}}
-.hc .age{{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}}
-.hc h3{{font-size:1.35rem;line-height:1.1}}
-.hc p{{font-size:.94rem;color:var(--ink-2);line-height:1.5}}
-.hc .sc{{margin-top:auto;color:var(--vermilion);font-size:1.1rem}}
+.hc{{--tint:var(--sun);--tp:22%;position:relative;overflow:hidden;background:color-mix(in srgb,var(--tint) var(--tp),var(--ivory));border-radius:16px;padding:1.6rem 1.4rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;min-height:12rem;transition:transform .25s ease,box-shadow .25s ease}}
+.hc:hover{{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(60,40,20,.35)}}
+.hc .age{{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vermilion);font-weight:600}}
+.hc h3{{font-size:1.35rem;line-height:1.1;position:relative}}
+.hc p{{font-size:.94rem;color:var(--ink-2);line-height:1.5;position:relative;max-width:30ch}}
+.hc .sc{{position:absolute;right:.6rem;bottom:-.9rem;font-size:5.5rem;line-height:1;color:var(--tint);opacity:.35;pointer-events:none}}
+.hc[href$="#little"]{{--tint:var(--sun);--tp:55%}}
+.hc[href$="#kids"]{{--tint:var(--vermilion);--tp:24%}}
+.hc[href$="#hsk"],.hc[href$="#work"],.hc[href$="#math"]{{--tint:var(--moon);--tp:30%}}
+.hc[href$="#comm"],.hc[href$="#camp"]{{--tint:var(--vermilion);--tp:12%}}
+.hc[href$="#custom"],.hc[href$="#writing"]{{--tint:var(--sun);--tp:25%}}
+.hc[href$="#little"] .sc,.hc[href$="#kids"] .sc{{opacity:.45;color:var(--vermilion)}}
+.hc[href$="#little"] h3,.hc[href$="#kids"] h3{{font-size:1.55rem}}
 .homeclasses .more-link{{margin-top:2rem;display:inline-flex}}
 :root[data-lang="zh"] .pagehead .h2{{font-weight:600}}
 </style>'''
