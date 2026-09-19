@@ -58,10 +58,10 @@ ANCHOR_PAGE = {
     'programs': CLASSES, 'math': CLASSES, 'writing': CLASSES, 'camp': CLASSES, 'little': CLASSES, 'kids': CLASSES, 'hsk': CLASSES, 'custom': CLASSES, 'comm': CLASSES,
     'work': CLASSES, 'more': CLASSES, 'journey': CLASSES,
     'parents': PARENTS, 'stories': PARENTS, 'guide': PARENTS,
-    'faq': FAQ, 'contact': CONTACT, 'trial': CONTACT,
+    'faq': PARENTS, 'contact': CONTACT, 'trial': CONTACT,
 }
 NAV = [(HOME, 'home'), (ABOUT, 'about'), (CLASSES, 'classes'), (PARENTS, 'parents'),
-       (FAQ, 'faq'), (CONTACT, 'contact')]
+       (CONTACT, 'contact')]   # 19/09: bỏ trang Hỏi đáp (chị Linh) — câu hỏi gộp vào Dành cho ba mẹ
 
 L = {
  'vi': dict(nav=dict(home='Trang chủ', about='Giới thiệu', classes='Các lớp học',
@@ -97,8 +97,7 @@ PAGES = {
     HOME:    ['hero', 'about', 'homeclasses', 'why', 'inside', 'trial', 'final'],
     ABOUT:   ['about', 'approach', 'teachers', 'inside', 'final'],
     CLASSES: ['programs', 'journey', 'trial', 'final'],
-    PARENTS: ['parents', 'stories', 'guide', 'trial', 'final'],
-    FAQ:     ['faq', 'final'],
+    PARENTS: ['parents', 'stories', 'guide', 'faq', 'trial', 'final'],
     CONTACT: ['contact', 'final'],
 }
 
@@ -109,7 +108,7 @@ def rewrite_links(html, page):
         target = ANCHOR_PAGE.get(anchor)
         if anchor == 'top' or target is None or target == page:
             return f'href="#{anchor}"'
-        return f'href="{target}#{anchor}"' if anchor not in ('faq',) else f'href="{target}"'
+        return f'href="{target}#{anchor}"'
     return re.sub(r'href="#([a-z]+)"', sub, html)
 
 def fill_photos(html):
