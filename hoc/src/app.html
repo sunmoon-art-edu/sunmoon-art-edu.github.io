@@ -196,6 +196,7 @@ main{padding-block:18px 110px}
 .tiles3 b{display:block;font:600 26px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
 .tiles3 span{font:600 11px/1.2 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
 .finish .btn{width:100%}
+.tiles3 b span{font:inherit;color:inherit;letter-spacing:0;text-transform:none}
 
 /* word sheet */
 .modal{position:fixed;inset:0;z-index:25;background:rgba(10,14,40,.5);display:flex;align-items:flex-end;justify-content:center}
@@ -238,6 +239,27 @@ a.btn{display:block;text-align:center;text-decoration:none}
 .lead .p{font-weight:600;color:var(--moon)}
 .lead .v{font:600 19px/1.3 var(--f-display)}
 .lead .d{color:var(--ink-2);margin-top:4px;text-wrap:balance}
+svg .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+svg .rays{transform-origin:50px 50px;animation:pulse 2.4s ease-in-out infinite}
+.next>svg,.pw svg.m,.prompt>svg{animation:hop 2.6s ease-in-out infinite}
+.finish svg.m{animation:hop 1s ease-in-out infinite}
+.finish h1{animation:pop .5s ease-out both}
+.tiles3 div{animation:pop .5s ease-out both}
+.tiles3 div:nth-child(2){animation-delay:.12s}.tiles3 div:nth-child(3){animation-delay:.24s}
+.bump{animation:pop .45s ease-out}
+.sheet.ok .ttl svg{animation:pop .4s ease-out}
+.sheet.bad .ttl{animation:shake .35s}
+.lxp{display:flex;align-items:center;gap:4px;font:600 17px/1 var(--f-body);color:var(--sun-2);font-variant-numeric:tabular-nums}
+.lxp svg{width:22px;height:22px}
+.plus{position:fixed;z-index:55;pointer-events:none;font:600 22px/1 var(--f-display);color:var(--sun-2);text-shadow:0 1px 0 #fff;animation:floatup 1s ease-out forwards}
+.spark{position:fixed;z-index:55;pointer-events:none;width:14px;height:14px;animation:spark .7s ease-out forwards}
+.confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+@keyframes hop{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-10px) rotate(-5deg)}50%{transform:translateY(0) rotate(0)}70%{transform:translateY(-4px) rotate(4deg)}}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+@keyframes pulse{50%{transform:scale(1.1)}}
+@keyframes pop{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}
+@keyframes floatup{0%{transform:translate(-50%,0) scale(.6);opacity:0}20%{opacity:1;transform:translate(-50%,-12px) scale(1.15)}100%{transform:translate(-50%,-80px) scale(1);opacity:0}}
+@keyframes spark{0%{transform:translate(0,0) scale(.4) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1) rotate(160deg);opacity:0}}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--bg);font-weight:500;padding:10px 16px;border-radius:12px;max-width:calc(100% - 32px);text-align:center}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -265,6 +287,7 @@ a.btn{display:block;text-align:center;text-decoration:none}
   <div class="wrap lhead">
     <button class="x" id="quit" aria-label="Thoát bài"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <div class="bar"><i id="barFill"></i></div>
+    <div class="lxp" id="lxpBox"><svg viewBox="0 0 24 24"><path fill="var(--sun)" d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7Z"/></svg><span id="lxp">0</span></div>
     <div class="hearts"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11Z"/></svg><span id="hearts">5</span></div>
   </div>
   <div class="lbody"><div class="wrap" id="stage"></div></div>
@@ -288,56 +311,8 @@ a.btn{display:block;text-align:center;text-decoration:none}
 <script>const STROKES = /*STROKES*/{};</script>
 <script>const AUDIO = /*AUDIO*/{};</script>
 <script>
-/* ================== GIÁO TRÌNH YCT 1 — 80 từ chính thức, chia theo 12 bài của sách YCT 标准教程 1 ================== */
-const LESSONS = [
- {zh:"你好！", vi:"Xin chào!", words:[
-   ["你","nǐ","bạn"],["好","hǎo","tốt, khoẻ"],["我","wǒ","mình, tôi"],["老师","lǎoshī","thầy giáo, cô giáo"],["谢谢","xièxie","cảm ơn"],["再见","zàijiàn","tạm biệt"]],
-  sents:[{t:["你","好"],z:"你好！",p:"Nǐ hǎo!",v:"Xin chào!"},{t:["老师","好"],z:"老师好！",p:"Lǎoshī hǎo!",v:"Con chào thầy cô ạ!"},{t:["谢谢","老师"],z:"谢谢老师！",p:"Xièxie lǎoshī!",v:"Con cảm ơn thầy cô!"},{t:["老师","再见"],z:"老师再见！",p:"Lǎoshī zàijiàn!",v:"Con chào tạm biệt thầy cô!"}],
-  write:["你","好"]},
- {zh:"你叫什么？", vi:"Bạn tên là gì?", words:[
-   ["叫","jiào","tên là, gọi"],["什么","shénme","cái gì"],["是","shì","là"],["不","bù","không"],["中国人","Zhōngguó rén","người Trung Quốc"],["吗","ma","… không? (để hỏi)"]],
-  sents:[{t:["你","叫","什么"],z:"你叫什么？",p:"Nǐ jiào shénme?",v:"Bạn tên là gì?"},{t:["我","叫","明明"],z:"我叫明明。",p:"Wǒ jiào Míngming.",v:"Mình tên là Minh Minh."},{t:["你","是","中国人","吗"],z:"你是中国人吗？",p:"Nǐ shì Zhōngguó rén ma?",v:"Bạn là người Trung Quốc à?"},{t:["我","不","是","中国人"],z:"我不是中国人。",p:"Wǒ bú shì Zhōngguó rén.",v:"Mình không phải người Trung Quốc."}],
-  write:["不","中"]},
- {zh:"他是谁？", vi:"Bạn ấy là ai?", words:[
-   ["他","tā","bạn ấy, anh ấy (con trai)"],["她","tā","bạn ấy, cô ấy (con gái)"],["谁","shéi","ai"],["爸爸","bàba","bố"],["妈妈","māma","mẹ"],["哥哥","gēge","anh trai"],["姐姐","jiějie","chị gái"],["认识","rènshi","quen, biết (ai đó)"]],
-  sents:[{t:["他","是","谁"],z:"他是谁？",p:"Tā shì shéi?",v:"Bạn ấy là ai?"},{t:["他","是","我","爸爸"],z:"他是我爸爸。",p:"Tā shì wǒ bàba.",v:"Đó là bố mình."},{t:["你","认识","她","吗"],z:"你认识她吗？",p:"Nǐ rènshi tā ma?",v:"Bạn có quen bạn ấy không?"}],
-  write:["他","她"]},
- {zh:"我家有四口人。", vi:"Nhà mình có bốn người.", words:[
-   ["一","yī","số 1"],["二","èr","số 2"],["三","sān","số 3"],["四","sì","số 4"],["五","wǔ","số 5"],
-   ["家","jiā","nhà, gia đình"],["有","yǒu","có"],["口","kǒu","cái miệng; (đếm người trong nhà)"],["和","hé","và"],["我们","wǒmen","chúng mình"],["几","jǐ","mấy"]],
-  sents:[{t:["你","家","有","几","口","人"],z:"你家有几口人？",p:"Nǐ jiā yǒu jǐ kǒu rén?",v:"Nhà bạn có mấy người?"},{t:["我","家","有","四","口","人"],z:"我家有四口人。",p:"Wǒ jiā yǒu sì kǒu rén.",v:"Nhà mình có bốn người."},{t:["爸爸","妈妈","和","我"],z:"爸爸、妈妈和我。",p:"Bàba, māma hé wǒ.",v:"Bố, mẹ và mình."}],
-  write:["口","五"]},
- {zh:"我6岁。", vi:"Mình 6 tuổi.", words:[
-   ["六","liù","số 6"],["七","qī","số 7"],["八","bā","số 8"],["九","jiǔ","số 9"],["十","shí","số 10"],["岁","suì","tuổi"],["多","duō","nhiều"]],
-  sents:[{t:["你","几","岁"],z:"你几岁？",p:"Nǐ jǐ suì?",v:"Bạn mấy tuổi?"},{t:["我","六","岁"],z:"我六岁。",p:"Wǒ liù suì.",v:"Mình 6 tuổi."},{t:["哥哥","十","岁"],z:"哥哥十岁。",p:"Gēge shí suì.",v:"Anh trai 10 tuổi."}],
-  write:["六","八"]},
- {zh:"你的个子真高！", vi:"Bạn cao thật đấy!", words:[
-   ["个子","gèzi","dáng người, chiều cao"],["高","gāo","cao"],["的","de","của"],["很","hěn","rất"],["手","shǒu","tay"],["眼睛","yǎnjing","mắt"],["头发","tóufa","tóc"],["耳朵","ěrduo","tai"],["鼻子","bízi","mũi"],["长","cháng","dài"],["大","dà","to, lớn"],["小","xiǎo","nhỏ, bé"]],
-  sents:[{t:["哥哥","的","个子","很","高"],z:"哥哥的个子很高。",p:"Gēge de gèzi hěn gāo.",v:"Anh trai rất cao."},{t:["爸爸","的","手","大"],z:"爸爸的手大。",p:"Bàba de shǒu dà.",v:"Tay bố to."},{t:["姐姐","的","头发","很","长"],z:"姐姐的头发很长。",p:"Jiějie de tóufa hěn cháng.",v:"Tóc chị gái rất dài."}],
-  write:["手","小"]},
- {zh:"这是谁的狗？", vi:"Đây là chó của ai?", words:[
-   ["这","zhè","này, đây"],["那","nà","kia, đó"],["猫","māo","con mèo"],["狗","gǒu","con chó"],["鸟","niǎo","con chim"],["鱼","yú","con cá"],["个","gè","cái, con (để đếm)"],["喜欢","xǐhuan","thích"]],
-  sents:[{t:["这","是","谁","的","狗"],z:"这是谁的狗？",p:"Zhè shì shéi de gǒu?",v:"Đây là chó của ai?"},{t:["这","是","猫","不","是","小","狗"],z:"这是猫，不是小狗。",p:"Zhè shì māo, bú shì xiǎo gǒu.",v:"Đây là mèo, không phải cún con."},{t:["我","喜欢","小","鸟"],z:"我喜欢小鸟。",p:"Wǒ xǐhuan xiǎo niǎo.",v:"Mình thích chú chim nhỏ."}],
-  write:["鸟","鱼"]},
- {zh:"我去商店。", vi:"Mình đi cửa hàng.", words:[
-   ["去","qù","đi (đến)"],["商店","shāngdiàn","cửa hàng"],["学校","xuéxiào","trường học"],["在","zài","ở, tại"],["哪","nǎ","nào"],["哪儿","nǎr","ở đâu"],["这儿","zhèr","ở đây"],["那儿","nàr","ở đó"]],
-  sents:[{t:["你","去","哪儿"],z:"你去哪儿？",p:"Nǐ qù nǎr?",v:"Bạn đi đâu thế?"},{t:["我","去","商店"],z:"我去商店。",p:"Wǒ qù shāngdiàn.",v:"Mình đi cửa hàng."},{t:["老师","在","学校"],z:"老师在学校。",p:"Lǎoshī zài xuéxiào.",v:"Cô giáo ở trường."}],
-  write:["去","在"]},
- {zh:"今天星期几？", vi:"Hôm nay thứ mấy?", words:[
-   ["今天","jīntiān","hôm nay"],["明天","míngtiān","ngày mai"],["星期","xīngqī","tuần, thứ"],["月","yuè","tháng"],["号","hào","ngày (trong tháng)"],["高兴","gāoxìng","vui"]],
-  sents:[{t:["今天","星期","几"],z:"今天星期几？",p:"Jīntiān xīngqī jǐ?",v:"Hôm nay thứ mấy?"},{t:["明天","星期","四"],z:"明天星期四。",p:"Míngtiān xīngqīsì.",v:"Ngày mai thứ Năm."},{t:["今天","八","月","七","号"],z:"今天八月七号。",p:"Jīntiān bā yuè qī hào.",v:"Hôm nay ngày 7 tháng 8."}],
-  write:["月","天"]},
- {zh:"现在几点？", vi:"Bây giờ mấy giờ?", words:[
-   ["现在","xiànzài","bây giờ"],["点","diǎn","giờ"],["看","kàn","xem, nhìn"]],
-  sents:[{t:["现在","几","点"],z:"现在几点？",p:"Xiànzài jǐ diǎn?",v:"Bây giờ mấy giờ?"},{t:["现在","四","点"],z:"现在四点。",p:"Xiànzài sì diǎn.",v:"Bây giờ là 4 giờ."},{t:["姐姐","很","高兴"],z:"姐姐很高兴。",p:"Jiějie hěn gāoxìng.",v:"Chị gái rất vui."}],
-  write:["看","点"]},
- {zh:"你吃什么？", vi:"Bạn ăn gì?", words:[
-   ["吃","chī","ăn"],["喝","hē","uống"],["水","shuǐ","nước"],["牛奶","niúnǎi","sữa bò"],["米饭","mǐfàn","cơm"],["面条","miàntiáo","mì sợi"],["苹果","píngguǒ","quả táo"],["爱","ài","yêu, thích"]],
-  sents:[{t:["你","吃","什么"],z:"你吃什么？",p:"Nǐ chī shénme?",v:"Bạn ăn gì?"},{t:["我","爱","吃","面条"],z:"我爱吃面条。",p:"Wǒ ài chī miàntiáo.",v:"Mình thích ăn mì."},{t:["她","喝","牛奶"],z:"她喝牛奶。",p:"Tā hē niúnǎi.",v:"Bạn ấy uống sữa."},{t:["我","有","一","个","苹果"],z:"我有一个苹果。",p:"Wǒ yǒu yí ge píngguǒ.",v:"Mình có một quả táo."}],
-  write:["水","吃"]},
- {zh:"复习", vi:"Ôn tập cả sách", review:true, words:[], sents:[], write:[]}
-];
-const EXTRA_PY = { "人": "rén", "明明": "Míngming" };
+/*DATA*/
+const PRIOR_PY = /*PRIOR*/{};
 
 /* ================== helpers ================== */
 const $ = s => document.querySelector(s);
@@ -347,7 +322,7 @@ const PARTICLES = new Set(["吗","的","个"]);
 
 LESSONS.forEach((L, i) => { L.i = i; L.W = L.words.map(([h, p, v]) => ({ h, p, v, l: i })); });
 const ALL = LESSONS.flatMap(L => L.W);
-const PY = { ...EXTRA_PY, ...Object.fromEntries(ALL.map(w => [w.h, w.p])) };
+const PY = { ...PRIOR_PY, ...EXTRA_PY, ...Object.fromEntries(ALL.map(w => [w.h, w.p])) };
 LESSONS.forEach((L, i) => L.sents.forEach(s => s.l = i));
 const ALL_SENTS = LESSONS.flatMap(L => L.sents);
 const sentZh = s => s.z;
@@ -409,7 +384,7 @@ const save = () => { try { localStorage.setItem(KEY, JSON.stringify(P)); } catch
 const unlocked = n => n.intro || P.all || NODES.indexOf(n) === 0 || !!P.done[NODES[NODES.indexOf(n) - 1].id];
 
 /* ================== tài khoản & mở khoá ================== */
-const API = "";               // link máy chủ Lịch toàn năng SunMoon — điền khi nối xong
+const API = "https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";   // máy chủ Lịch toàn năng SunMoon
 const FREE_LESSONS = 1, PRICE = 99000, ZALO = "https://zalo.me/0396308188";
 const UKEY = "sunmoon-user";
 let U = null; try { U = JSON.parse(localStorage.getItem(UKEY)); } catch (e) {}
@@ -449,8 +424,8 @@ function openLogin() {
     if (!API) { err.textContent = "Trung tâm đang nối hệ thống đăng nhập. Con quay lại sau nhé!"; return; }
     $("#loginGo").disabled = true; err.textContent = "";
     try {
-      const r = await callApi({ app: "dangnhap", u, m });
-      if (r && r.ok) { U = { u, m, ten: r.ten || u }; saveU(); closeModal(); renderAcct(); renderHome(); toast(`Chào ${U.ten}!`); }
+      const r = await callApi({ app: "dangnhap", u, m, giaoTrinh: "YCT1" });
+      if (r && r.ok) { U = { u, m, ten: r.ten || u }; saveU(); (r.tienDo || []).forEach(id => P.done[id] = true); save(); closeModal(); renderAcct(); renderHome(); toast(`Chào ${U.ten}!`); }
       else err.textContent = (r && r.loi) || "Tên đăng nhập hoặc mã chưa đúng";
     } catch (e) { err.textContent = "Chưa kết nối được. Con kiểm tra mạng rồi thử lại nhé"; }
     $("#loginGo") && ($("#loginGo").disabled = false);
@@ -476,12 +451,28 @@ function openPay(finished) {
     <h2>${finished ? "Con học xong Bài 1 rồi, giỏi quá!" : "Bài này dành cho học viên"}</h2>
     <ul><li><b>Còn ${LESSONS.length - FREE_LESSONS} bài nữa</b>, có cả bài ôn tập cả sách</li><li><b>Mỗi bài có từ mới, tập viết, luyện câu</b></li></ul>
     <div class="choice"><h3>Đã có mã học viên SunMoon</h3><button class="btn wide" id="goLogin">Đăng nhập</button></div>
-    <div class="choice"><h3>Mua trọn bộ YCT 1</h3><div class="price">${PRICE.toLocaleString("vi-VN")}đ<span>cả 12 bài</span></div>
+    <div class="choice"><h3>Mua trọn bộ YCT 1</h3><div class="price">${PRICE.toLocaleString("vi-VN")}đ<span>cả ${LESSONS.length} bài</span></div>
       <label class="field">Số điện thoại phụ huynh<input id="payPhone" inputmode="tel" placeholder="0912 345 678"></label>
+      <label class="field">Tên bé<input id="payName" placeholder="VD: An Nhiên"></label>
       <div class="qr" id="qr"></div>
       <div class="bankinfo">VPBank · <b>272727888888</b><br>PHAN THÙY LINH<br>Nội dung: <b id="payMsg"></b></div>
-      <a class="btn wide" href="${ZALO}" target="_blank" rel="noopener">Chuyển xong · Nhắn Zalo nhận mã</a>
-      <small>Trung tâm gửi tên đăng nhập và mã qua Zalo khi nhận được tiền</small></div></div>`);
+      <p class="err" id="payErr"></p>
+      <button class="btn wide" id="payDone">Tôi đã chuyển khoản</button>
+      <small>Trung tâm kiểm tra tiền về rồi gửi tên đăng nhập và mã qua Zalo số điện thoại trên</small></div></div>`);
+  $("#payDone").onclick = async () => {
+    const phone = ($("#payPhone").value.match(/\d/g) || []).join("");
+    if (phone.length < 9) { $("#payErr").textContent = "Ba mẹ điền số điện thoại để trung tâm gửi mã nhé"; $("#payPhone").focus(); return; }
+    $("#payDone").disabled = true; $("#payErr").textContent = "";
+    try {
+      const r = await callApi({ app: "muaapp", sdt: phone, tenBe: $("#payName").value.trim(), giaoTrinh: "YCT1" });
+      if (!r || !r.ok) throw new Error((r && r.loi) || "");
+      openPanel(`<div class="pw">${mascot("happy", "m")}<h2>Trung tâm đã nhận thông tin!</h2>
+        <ul><li><b>SunMoon kiểm tra tiền về</b> rồi gửi tên đăng nhập và mã qua Zalo số <b>${esc(phone)}</b></li><li><b>Trong giờ làm việc</b> thường chỉ mất vài phút</li></ul>
+        <a class="btn wide" href="${ZALO}" target="_blank" rel="noopener">Nhắn Zalo trung tâm</a>
+        <button class="btn ghost wide" data-close2>Học lại Bài 1 trong lúc chờ</button></div>`);
+      $("[data-close2]").onclick = closeModal;
+    } catch (e) { $("#payErr").textContent = e.message || "Chưa gửi được. Ba mẹ kiểm tra mạng rồi bấm lại, hoặc nhắn Zalo trung tâm nhé"; $("#payDone").disabled = false; }
+  };
   const draw = () => {
     const phone = ($("#payPhone").value.match(/\d/g) || []).join("").slice(0, 11);
     const msg = ("SUNMOON YCT1 " + phone).trim();
@@ -527,10 +518,10 @@ function mascot(mood = "happy", cls = "") {
     : mood === "wow" ? '<ellipse cx="50" cy="68" rx="6" ry="7" fill="#2B2622"/>'
     : '<path d="M38 63q12 12 24 0" fill="#2B2622"/><path d="M43 67q7 4 14 0" fill="#E0464B"/>';
   const rays = [120, 150, 180, 210, 240].map(a => { const r = a * Math.PI / 180, x1 = 50 + 40 * Math.cos(r), y1 = 50 + 40 * Math.sin(r), x2 = 50 + 49 * Math.cos(r), y2 = 50 + 49 * Math.sin(r); return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`; }).join("");
-  return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true"><g stroke="#F2BE55" stroke-width="6" stroke-linecap="round">${rays}</g>
+  return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true"><g class="rays" stroke="#F2BE55" stroke-width="6" stroke-linecap="round">${rays}</g>
   <circle cx="50" cy="50" r="34" fill="#F2BE55"/><path d="M50 16a34 34 0 0 1 0 68z" fill="#4E8F91"/>
   <path d="M80 18l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#F2BE55"/><circle cx="90" cy="40" r="2.5" fill="#F2BE55"/>
-  <ellipse cx="38" cy="48" rx="4.5" ry="6" fill="#2B2622"/><ellipse cx="62" cy="48" rx="4.5" ry="6" fill="#fff"/>
+  <ellipse class="eye" cx="38" cy="48" rx="4.5" ry="6" fill="#2B2622"/><ellipse class="eye" cx="62" cy="48" rx="4.5" ry="6" fill="#fff"/>
   <circle cx="30" cy="59" r="4" fill="#FF8A5B" opacity=".7"/><circle cx="70" cy="59" r="4" fill="#8FA2FF" opacity=".6"/>${mouth}</svg>`;
 }
 
@@ -545,7 +536,7 @@ function renderHome() {
     const L = LESSONS[cur.lesson];
     h += paid(cur)
       ? `<section class="next">${mascot(doneCount ? "happy" : "wow")}<div><div class="t1">${doneCount ? "Học tiếp nào" : "Bắt đầu thôi"}</div><div class="t2">Bài ${cur.lesson + 1} · ${cur.label}</div></div><button class="btn" data-go="${cur.id}">Học</button></section>`
-      : `<section class="next">${mascot("happy")}<div><div class="t1">Xong bài học thử</div><div class="t2">Mở khoá 11 bài còn lại</div></div><button class="btn" data-pay>Mở khoá</button></section>`;
+      : `<section class="next">${mascot("happy")}<div><div class="t1">Xong bài học thử</div><div class="t2">Mở khoá ${LESSONS.length - FREE_LESSONS} bài còn lại</div></div><button class="btn" data-pay>Mở khoá</button></section>`;
   } else {
     h += `<section class="next">${mascot()}<div><div class="t1">Hoàn thành</div><div class="t2">Con đã học hết YCT 1!</div></div></section>`;
   }
@@ -719,7 +710,8 @@ function startNode(node) {
     : node.type === "o" ? STROKE_RULES.filter(r => STROKES[r.c]).flatMap(r => [{ t: "rule", r }, { t: "write", c: r.c }])
     : node.type === "w" ? exWords(node) : node.type === "r" ? exReview()
     : node.type === "v" ? exWrite(node) : exSents(L.review ? reviewLesson() : L);
-  S = { node, q, i: 0, hearts: 5, right: 0, wrong: 0 };
+  S = { node, q, i: 0, hearts: 5, right: 0, wrong: 0, xp: 0 };
+  $("#lxp").textContent = "0";
   $("#lesson").hidden = false; document.body.style.overflow = "hidden";
   renderEx();
 }
@@ -895,10 +887,56 @@ document.addEventListener("keydown", e => {
 });
 
 const PRAISE = ["Giỏi lắm!", "Tuyệt vời!", "Chính xác!", "Siêu quá!", "Đúng rồi!"];
+const XP_CAU = 2, XP_THUONG = 5;   // mỗi câu đúng +2 · không sai câu nào thưởng +5
+const calm = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+function countUp(el, from, to, ms = 700) {
+  if (!el) return; if (calm() || from === to) { el.textContent = to; return; }
+  const t0 = performance.now();
+  const step = t => { const k = Math.min(1, (t - t0) / ms), v = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3))); el.textContent = v; if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+  el.parentElement && (el.parentElement.classList.remove("bump"), void el.parentElement.offsetWidth, el.parentElement.classList.add("bump"));
+}
+function floatPlus(text, x, y) {
+  if (calm()) return;
+  const d = document.createElement("div"); d.className = "plus"; d.textContent = text; d.style.left = x + "px"; d.style.top = y + "px";
+  document.body.appendChild(d); setTimeout(() => d.remove(), 1000);
+}
+function sparks(x, y, n = 10) {
+  if (calm()) return;
+  const cols = ["#F2BE55", "#4E8F91", "#D2693F", "#8AA671", "#9C6B8E"];
+  for (let i = 0; i < n; i++) {
+    const a = Math.PI * 2 * i / n + Math.random() * .5, r = 50 + Math.random() * 50, sp = document.createElement("div");
+    sp.className = "spark"; sp.style.left = (x - 7) + "px"; sp.style.top = (y - 7) + "px";
+    sp.style.setProperty("--dx", Math.cos(a) * r + "px"); sp.style.setProperty("--dy", Math.sin(a) * r + "px");
+    sp.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14"><path fill="${cols[i % cols.length]}" d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7Z"/></svg>`;
+    document.body.appendChild(sp); setTimeout(() => sp.remove(), 750);
+  }
+}
+function confetti(n = 110) {
+  if (calm()) return;
+  const cv = document.createElement("canvas"); cv.className = "confetti"; document.body.appendChild(cv);
+  const dpr = devicePixelRatio || 1, W = cv.width = innerWidth * dpr, H = cv.height = innerHeight * dpr, x = cv.getContext("2d");
+  const cols = ["#F2BE55", "#4E8F91", "#D2693F", "#8AA671", "#6C8CB5", "#9C6B8E"];
+  const ps = Array.from({ length: n }, (_, i) => ({ x: W / 2 + (Math.random() - .5) * W * .25, y: H * .3, vx: (Math.random() - .5) * 16 * dpr, vy: (-Math.random() * 15 - 5) * dpr,
+    w: (6 + Math.random() * 6) * dpr, h: (4 + Math.random() * 4) * dpr, a: Math.random() * 6, va: (Math.random() - .5) * .3, c: cols[i % cols.length] }));
+  const t0 = performance.now();
+  const step = t => {
+    x.clearRect(0, 0, W, H);
+    ps.forEach(p => { p.vy += .45 * dpr; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va; x.save(); x.translate(p.x, p.y); x.rotate(p.a); x.fillStyle = p.c; x.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); x.restore(); });
+    if (t - t0 < 2600) requestAnimationFrame(step); else cv.remove();
+  };
+  requestAnimationFrame(step);
+}
 function feedback(ok, sol, soft) {
   const ex = S.q[S.i];
   S.mode = "shown"; S.key = undefined;
-  if (ok) S.right++;
+  if (ok) {
+    S.right++;
+    if (!soft || S.q[S.i].t === "write" || S.q[S.i].t === "match") {
+      const old = S.xp; S.xp += XP_CAU; countUp($("#lxp"), old, S.xp, 400);
+      requestAnimationFrame(() => { const b = $("#sheetTtl").getBoundingClientRect(); sparks(b.left + 24, b.top + 20); floatPlus("+" + XP_CAU, b.left + 60, b.top - 6); });
+    }
+  }
   else if (!soft) { S.wrong++; S.hearts--; $("#hearts").textContent = S.hearts; if (!ex.retry) S.q.push({ ...ex, retry: true }); }
   $("#foot").hidden = true;
   const sh = $("#sheet"); sh.className = "sheet " + (ok ? "ok" : "bad"); sh.hidden = false;
@@ -917,8 +955,9 @@ function finish(win) {
   const total = S.right + S.wrong, acc = total ? Math.round(S.right / total * 100) : 100;
   let body;
   if (win) {
-    const xp = 10 + (S.wrong === 0 ? 5 : 0);
+    const xp = S.xp + (S.wrong === 0 ? XP_THUONG : 0);
     const first = !P.done[S.node.id];
+    S.xpTruoc = P.xp;
     P.done[S.node.id] = true; P.xp += xp;
     report(S.node, acc, xp);
     const t = today(), y = today(new Date(Date.now() - 864e5));
@@ -926,15 +965,17 @@ function finish(win) {
     save();
     const where = S.node.intro ? "Học cách viết chữ" : `Bài ${S.node.lesson + 1}`;
     body = `${mascot("happy", "m")}<h1>${S.wrong === 0 ? "Hoàn hảo!" : "Xong bài rồi!"}</h1><p>${where} · ${esc(S.node.label)}${first ? "" : " (ôn lại)"}</p>
-      <div class="tiles3"><div><b>+${xp}</b><span>Điểm XP</span></div><div><b>${acc}%</b><span>Chính xác</span></div><div><b>${P.streak}</b><span>Ngày liên tiếp</span></div></div>
+      <div class="tiles3"><div><b>+<span id="fXp">0</span></b><span>Điểm XP${S.wrong === 0 ? " · có thưởng" : ""}</span></div><div><b><span id="fAcc">0</span>%</b><span>Chính xác</span></div><div><b>${P.streak}</b><span>Ngày liên tiếp</span></div></div>
       <button class="btn" id="fDone">Tiếp tục</button>`;
   } else {
     body = `${mascot("sad", "m")}<h1>Hết tim rồi!</h1><p>Không sao cả, mình làm lại nhé.</p><button class="btn" id="fRetry">Làm lại</button><button class="btn ghost" id="fDone">Về trang chính</button>`;
   }
   $("#finishBody").innerHTML = body; $("#finish").hidden = false; $("#lesson").hidden = true;
+  if (win) { confetti(); setTimeout(() => { countUp($("#fXp"), 0, P.xp - S.xpTruoc, 900); countUp($("#fAcc"), 0, acc, 900); }, 350); }
+  const xpTruoc = S.xpTruoc, xpSau = P.xp;
   const node = S.node;
   const showPay = win && !U && !P.all && LESSONS[FREE_LESSONS - 1].nodes.every(n => P.done[n.id]) && node.lesson === FREE_LESSONS - 1;
-  $("#fDone").onclick = () => { $("#finish").hidden = true; quitLesson(); if (showPay) openPay(true); requestAnimationFrame(() => { const c = document.querySelector(".node.cur"); c && c.scrollIntoView({ block: "center" }); }); };
+  $("#fDone").onclick = () => { $("#finish").hidden = true; quitLesson(); if (win) countUp($("#xp"), xpTruoc, xpSau, 900); if (showPay) openPay(true); requestAnimationFrame(() => { const c = document.querySelector(".node.cur"); c && c.scrollIntoView({ block: "center" }); }); };
   const r = $("#fRetry"); if (r) r.onclick = () => { $("#finish").hidden = true; startNode(node); };
 }
 

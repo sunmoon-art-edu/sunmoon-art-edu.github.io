@@ -1,0 +1,107 @@
+/* ================== GIÁO TRÌNH YCT 4 — 301 từ mới (298 mục từ YCT4 không có ở YCT3; 不但…而且…, 既…又…, 如果…那么… tách đôi), 15 bài theo tên bài sách YCT 标准教程 5–6 ================== */
+const LESSONS = [
+ {zh:"你对中国功夫感兴趣吗？", vi:"Bạn có thích võ Trung Quốc không?", words:[
+   ["感兴趣","gǎn xìngqù","thích, hứng thú (với)"],["功夫","gōngfu","võ thuật, kung fu"],["表演","biǎoyǎn","biểu diễn"],["节目","jiémù","tiết mục, chương trình"],["弹钢琴","tán gāngqín","chơi đàn piano"],["乒乓球","pīngpāngqiú","bóng bàn"],
+   ["网球","wǎngqiú","quần vợt"],["排球","páiqiú","bóng chuyền"],["游戏","yóuxì","trò chơi"],["玩具","wánjù","đồ chơi"],["比赛","bǐsài","cuộc thi, trận đấu"],["参加","cānjiā","tham gia"],
+   ["骑马","qímǎ","cưỡi ngựa"],["爬山","páshān","leo núi"],["照相","zhàoxiàng","chụp ảnh"],["散步","sànbù","đi dạo"],["聊天儿","liáotiānr","tán gẫu, trò chuyện"],["有名","yǒumíng","nổi tiếng"],
+   ["厉害","lìhai","giỏi ghê, lợi hại"],["特别","tèbié","đặc biệt"],["非常","fēicháng","rất, vô cùng"]],
+  sents:[{t:["你","对","功夫","感兴趣","吗"],z:"你对功夫感兴趣吗？",p:"Nǐ duì gōngfu gǎn xìngqù ma?",v:"Bạn có thích võ thuật không?"},{t:["我","对","弹钢琴","非常","感兴趣"],z:"我对弹钢琴非常感兴趣。",p:"Wǒ duì tán gāngqín fēicháng gǎn xìngqù.",v:"Mình rất thích chơi đàn piano."},{t:["哥哥","参加","了","乒乓球","比赛"],z:"哥哥参加了乒乓球比赛。",p:"Gēge cānjiā le pīngpāngqiú bǐsài.",v:"Anh trai đã tham gia thi bóng bàn."},{t:["她","的","功夫","表演","真","厉害"],z:"她的功夫表演真厉害！",p:"Tā de gōngfu biǎoyǎn zhēn lìhai!",v:"Bạn ấy biểu diễn võ giỏi thật!"}],
+  write:["功","球"]},
+ {zh:"兔子更可爱。", vi:"Thỏ còn đáng yêu hơn.", words:[
+   ["兔子","tùzi","con thỏ"],["大象","dàxiàng","con voi"],["蝴蝶","húdié","con bướm"],["虫子","chóngzi","con sâu, côn trùng"],["更","gèng","hơn, càng"],["一样","yíyàng","giống nhau"],
+   ["极","jí","cực kỳ (… 极了: … quá)"],["花","huā","hoa; tiêu (tiền)"],["草地","cǎodì","bãi cỏ"],["聪明","cōngming","thông minh"],["矮","ǎi","thấp"],["短","duǎn","ngắn"],
+   ["圆","yuán","tròn"],["脸","liǎn","khuôn mặt"],["腿","tuǐ","chân (cẳng chân)"],["肚子","dùzi","cái bụng"],["好像","hǎoxiàng","hình như, giống như"],["种","zhǒng","loại"],
+   ["其他","qítā","khác"],["另外","lìngwài","ngoài ra, khác"]],
+  sents:[{t:["猫","很","可爱","兔子","更","可爱"],z:"猫很可爱，兔子更可爱。",p:"Māo hěn kě'ài, tùzi gèng kě'ài.",v:"Mèo đáng yêu, thỏ còn đáng yêu hơn."},{t:["大象","的","腿","很","长","鼻子","也","很","长"],z:"大象的腿很长，鼻子也很长。",p:"Dàxiàng de tuǐ hěn cháng, bízi yě hěn cháng.",v:"Voi có chân dài, vòi cũng dài."},{t:["熊猫","的","脸","圆","极","了"],z:"熊猫的脸圆极了！",p:"Xióngmāo de liǎn yuán jí le!",v:"Mặt gấu trúc tròn ơi là tròn!"},{t:["这","两","只","兔子","好像","不","一样"],z:"这两只兔子好像不一样。",p:"Zhè liǎng zhī tùzi hǎoxiàng bù yíyàng.",v:"Hai chú thỏ này hình như không giống nhau."}],
+  write:["兔","更"]},
+ {zh:"电梯坏了。", vi:"Thang máy hỏng rồi.", words:[
+   ["电梯","diàntī","thang máy"],["楼","lóu","toà nhà, tầng lầu"],["层","céng","tầng"],["电灯","diàndēng","đèn điện"],["空调","kōngtiáo","điều hoà"],["冰箱","bīngxiāng","tủ lạnh"],
+   ["沙发","shāfā","ghế sô pha"],["床","chuáng","cái giường"],["窗户","chuānghu","cửa sổ"],["门口","ménkǒu","cửa ra vào, trước cửa"],["钥匙","yàoshi","chìa khoá"],["搬","bān","chuyển, dọn (nhà)"],
+   ["邻居","línjū","hàng xóm"],["住","zhù","sống, ở"],["附近","fùjìn","gần đây, xung quanh"],["中间","zhōngjiān","ở giữa"],["挂","guà","treo"],["放","fàng","đặt, để"],
+   ["盒子","hézi","cái hộp"],["干净","gānjìng","sạch sẽ"],["安静","ānjìng","yên tĩnh"]],
+  sents:[{t:["我","家","住","在","十","层","电梯","坏","了"],z:"我家住在十层，电梯坏了。",p:"Wǒ jiā zhù zài shí céng, diàntī huài le.",v:"Nhà mình ở tầng 10, thang máy hỏng rồi."},{t:["我","的","钥匙","放","在","哪儿","了"],z:"我的钥匙放在哪儿了？",p:"Wǒ de yàoshi fàng zài nǎr le?",v:"Chìa khoá của mình để đâu rồi nhỉ?"},{t:["猫","在","沙发","和","椅子","中间"],z:"猫在沙发和椅子中间。",p:"Māo zài shāfā hé yǐzi zhōngjiān.",v:"Con mèo ở giữa ghế sô pha và cái ghế."},{t:["我们","的","邻居","住","在","学校","附近"],z:"我们的邻居住在学校附近。",p:"Wǒmen de línjū zhù zài xuéxiào fùjìn.",v:"Hàng xóm nhà mình sống gần trường."}],
+  write:["楼","住"]},
+ {zh:"每个人都有自己的习惯。", vi:"Ai cũng có thói quen riêng.", words:[
+   ["习惯","xíguàn","thói quen; quen"],["刷牙","shuāyá","đánh răng"],["醒","xǐng","tỉnh dậy, thức dậy"],["经常","jīngcháng","thường xuyên"],["洗手间","xǐshǒujiān","nhà vệ sinh"],["打扫","dǎsǎo","quét dọn"],
+   ["躺","tǎng","nằm"],["脱","tuō","cởi (áo, giày)"],["戴","dài","đeo, đội"],["眼镜","yǎnjìng","kính mắt"],["手表","shǒubiǎo","đồng hồ đeo tay"],["一直","yìzhí","luôn, suốt"],
+   ["已经","yǐjīng","đã, rồi"],["先","xiān","trước (tiên)"],["然后","ránhòu","sau đó"],["以前","yǐqián","trước đây"],["刚才","gāngcái","vừa nãy"],["马上","mǎshàng","ngay lập tức"],
+   ["一会儿","yíhuìr","một lát"],["准时","zhǔnshí","đúng giờ"],["等","děng","đợi"],["生活","shēnghuó","cuộc sống; sống"]],
+  sents:[{t:["我","早上","先","刷牙","然后","喝","牛奶"],z:"我早上先刷牙，然后喝牛奶。",p:"Wǒ zǎoshang xiān shuāyá, ránhòu hē niúnǎi.",v:"Buổi sáng mình đánh răng trước, rồi uống sữa."},{t:["爷爷","看","电视","的","时候","戴","眼镜"],z:"爷爷看电视的时候戴眼镜。",p:"Yéye kàn diànshì de shíhou dài yǎnjìng.",v:"Ông đeo kính khi xem tivi."},{t:["我","已经","习惯","早上","六","点","起床","了"],z:"我已经习惯早上六点起床了。",p:"Wǒ yǐjīng xíguàn zǎoshang liù diǎn qǐchuáng le.",v:"Mình đã quen dậy lúc 6 giờ sáng rồi."},{t:["请","等","一会儿","妈妈","马上","回","来"],z:"请等一会儿，妈妈马上回来。",p:"Qǐng děng yíhuìr, māma mǎshàng huílai.",v:"Đợi một lát nhé, mẹ về ngay."}],
+  write:["习","刷"]},
+ {zh:"他们多么年轻啊！", vi:"Họ trẻ quá!", words:[
+   ["多么","duōme","biết bao, thật là"],["啊","a","(cuối câu cảm thán) quá, nhỉ"],["年轻","niánqīng","trẻ"],["老","lǎo","già"],["阿姨","āyí","cô, dì"],["叔叔","shūshu","chú"],
+   ["儿子","érzi","con trai"],["女儿","nǚ'ér","con gái"],["孙子","sūnzi","cháu trai (nội)"],["孩子","háizi","đứa trẻ, con"],["俩","liǎ","hai (người)"],["大家","dàjiā","mọi người"],
+   ["别人","biérén","người khác"],["照片","zhàopiàn","bức ảnh"],["幸福","xìngfú","hạnh phúc"],["照顾","zhàogù","chăm sóc"],["互相","hùxiāng","lẫn nhau"],["介绍","jièshào","giới thiệu"],
+   ["一下儿","yíxiàr","một chút, thử (làm gì đó)"],["见面","jiànmiàn","gặp mặt"],["熟悉","shúxī","quen thuộc"],["礼貌","lǐmào","lễ phép"]],
+  sents:[{t:["你","看","爷爷","奶奶","多么","年轻","啊"],z:"你看，爷爷奶奶多么年轻啊！",p:"Nǐ kàn, yéye nǎinai duōme niánqīng a!",v:"Bạn xem, ông bà trẻ quá!"},{t:["我","来","介绍","一下儿","这","是","我","叔叔"],z:"我来介绍一下儿，这是我叔叔。",p:"Wǒ lái jièshào yíxiàr, zhè shì wǒ shūshu.",v:"Để mình giới thiệu, đây là chú mình."},{t:["阿姨","有","一","个","儿子","和","一","个","女儿"],z:"阿姨有一个儿子和一个女儿。",p:"Āyí yǒu yí ge érzi hé yí ge nǚ'ér.",v:"Cô ấy có một con trai và một con gái."},{t:["我们","俩","要","互相","照顾"],z:"我们俩要互相照顾。",p:"Wǒmen liǎ yào hùxiāng zhàogù.",v:"Hai đứa mình phải chăm sóc lẫn nhau."}],
+  write:["孩","俩"]},
+ {zh:"我经常去体育馆锻炼身体。", vi:"Mình thường đến nhà thi đấu tập thể dục.", words:[
+   ["体育馆","tǐyùguǎn","nhà thi đấu, phòng thể thao"],["锻炼","duànliàn","rèn luyện, tập thể dục"],["健康","jiànkāng","khoẻ mạnh"],["坚持","jiānchí","kiên trì"],["流汗","liúhàn","đổ mồ hôi"],["渴","kě","khát"],
+   ["发烧","fāshāo","sốt"],["打针","dǎzhēn","tiêm"],["护士","hùshi","y tá"],["受不了","shòubuliǎo","không chịu nổi"],["应该","yīnggāi","nên"],["必须","bìxū","phải, bắt buộc"],
+   ["努力","nǔlì","cố gắng"],["开始","kāishǐ","bắt đầu"],["停","tíng","dừng"],["站","zhàn","đứng; trạm"],["起来","qǐlai","(đứng) dậy, lên"],["勇敢","yǒnggǎn","dũng cảm"],
+   ["敢","gǎn","dám"],["害怕","hàipà","sợ"]],
+  sents:[{t:["我","经常","去","体育馆","锻炼","身体"],z:"我经常去体育馆锻炼身体。",p:"Wǒ jīngcháng qù tǐyùguǎn duànliàn shēntǐ.",v:"Mình thường đến nhà thi đấu tập thể dục."},{t:["锻炼","身体","要","坚持","不","能","停"],z:"锻炼身体要坚持，不能停。",p:"Duànliàn shēntǐ yào jiānchí, bù néng tíng.",v:"Tập thể dục phải kiên trì, không được bỏ."},{t:["弟弟","发烧","了","护士","给","他","打针"],z:"弟弟发烧了，护士给他打针。",p:"Dìdi fāshāo le, hùshi gěi tā dǎzhēn.",v:"Em trai bị sốt, y tá tiêm cho em."},{t:["他","很","勇敢","打针","的","时候","不","害怕"],z:"他很勇敢，打针的时候不害怕。",p:"Tā hěn yǒnggǎn, dǎzhēn de shíhou bú hàipà.",v:"Em rất dũng cảm, lúc tiêm không hề sợ."}],
+  write:["体","汗"]},
+ {zh:"北京一共有四个季节。", vi:"Bắc Kinh có bốn mùa.", words:[
+   ["春季","chūnjì","mùa xuân"],["夏","xià","mùa hè"],["秋","qiū","mùa thu"],["冬","dōng","mùa đông"],["晴","qíng","trời nắng, quang đãng"],["云","yún","mây"],
+   ["凉快","liángkuai","mát mẻ"],["暖和","nuǎnhuo","ấm áp"],["变化","biànhuà","thay đổi"],["东","dōng","phía đông"],["南","nán","phía nam"],["西","xī","phía tây"],
+   ["北方","běifāng","phương bắc, miền bắc"],["大概","dàgài","khoảng, chắc là"],["可能","kěnéng","có thể"],["一定","yídìng","nhất định, chắc chắn"],["最近","zuìjìn","gần đây, dạo này"],["听说","tīngshuō","nghe nói"],
+   ["到处","dàochù","khắp nơi"],["星星","xīngxing","ngôi sao"]],
+  sents:[{t:["我","最","喜欢","春季","天气","很","暖和"],z:"我最喜欢春季，天气很暖和。",p:"Wǒ zuì xǐhuan chūnjì, tiānqì hěn nuǎnhuo.",v:"Mình thích nhất mùa xuân, trời ấm áp."},{t:["听说","北京","最近","很","冷"],z:"听说北京最近很冷。",p:"Tīngshuō Běijīng zuìjìn hěn lěng.",v:"Nghe nói dạo này Bắc Kinh rất lạnh."},{t:["今天","天气","晴","没有","云"],z:"今天天气晴，没有云。",p:"Jīntiān tiānqì qíng, méiyǒu yún.",v:"Hôm nay trời nắng, không có mây."},{t:["今天","晚上","一定","能","看","星星"],z:"今天晚上一定能看星星。",p:"Jīntiān wǎnshang yídìng néng kàn xīngxing.",v:"Tối nay chắc chắn ngắm được sao."}],
+  write:["春","冬"]},
+ {zh:"冰激凌既好吃又便宜。", vi:"Kem vừa ngon vừa rẻ.", words:[
+   ["冰激凌","bīngjīlíng","kem"],["既","jì","vừa… (既…又…: vừa… vừa…)"],["又","yòu","lại, vừa"],["便宜","piányi","rẻ"],["贵","guì","đắt"],["超市","chāoshì","siêu thị"],
+   ["元","yuán","đồng (tệ)"],["一共","yígòng","tổng cộng"],["公斤","gōngjīn","ki-lô-gam"],["双","shuāng","đôi"],["条","tiáo","chiếc (quần, váy, cá…)"],["张","zhāng","tờ, tấm"],
+   ["合适","héshì","vừa, hợp"],["换","huàn","đổi"],["够","gòu","đủ"],["万","wàn","vạn (mười nghìn)"],["饼干","bǐnggān","bánh quy"],["巧克力","qiǎokèlì","sô-cô-la"],
+   ["糖","táng","kẹo, đường"],["选择","xuǎnzé","chọn, lựa chọn"],["加","jiā","cộng, thêm"],["减","jiǎn","trừ, bớt"]],
+  sents:[{t:["这","个","冰激凌","既","好吃","又","便宜"],z:"这个冰激凌既好吃又便宜。",p:"Zhège bīngjīlíng jì hǎochī yòu piányi.",v:"Cây kem này vừa ngon vừa rẻ."},{t:["这","双","鞋","不","合适","我","想","换","一","双"],z:"这双鞋不合适，我想换一双。",p:"Zhè shuāng xié bù héshì, wǒ xiǎng huàn yì shuāng.",v:"Đôi giày này không vừa, mình muốn đổi đôi khác."},{t:["饼干","和","巧克力","一共","二","十","元"],z:"饼干和巧克力一共二十元。",p:"Bǐnggān hé qiǎokèlì yígòng èrshí yuán.",v:"Bánh quy và sô-cô-la tổng cộng 20 tệ."},{t:["我","的","钱","不","够","买","这","条","裙子"],z:"我的钱不够买这条裙子。",p:"Wǒ de qián bú gòu mǎi zhè tiáo qúnzi.",v:"Mình không đủ tiền mua chiếc váy này."}],
+  write:["换","双"]},
+ {zh:"来一盘羊肉饺子。", vi:"Cho một đĩa sủi cảo thịt dê.", words:[
+   ["盘子","pánzi","cái đĩa"],["羊肉","yángròu","thịt dê, thịt cừu"],["烤鸭","kǎoyā","vịt quay"],["汤","tāng","canh, súp"],["筷子","kuàizi","đôi đũa"],["服务员","fúwùyuán","nhân viên phục vụ"],
+   ["辣","là","cay"],["甜","tián","ngọt"],["尝","cháng","nếm"],["梨","lí","quả lê"],["桃","táo","quả đào"],["葡萄","pútao","quả nho"],
+   ["西红柿","xīhóngshì","cà chua"],["饮料","yǐnliào","đồ uống"],["一点儿","yìdiǎnr","một chút"],["还是","háishi","hay là; vẫn"],["用","yòng","dùng"],["除了","chúle","ngoài… ra"],
+   ["行","xíng","được, ổn"]],
+  sents:[{t:["服务员","请","给","我们","一","个","盘子"],z:"服务员，请给我们一个盘子。",p:"Fúwùyuán, qǐng gěi wǒmen yí ge pánzi.",v:"Anh phục vụ ơi, cho chúng tôi một cái đĩa."},{t:["你","要","羊肉","饺子","还是","烤鸭"],z:"你要羊肉饺子还是烤鸭？",p:"Nǐ yào yángròu jiǎozi háishi kǎoyā?",v:"Bạn muốn sủi cảo thịt dê hay vịt quay?"},{t:["这","个","汤","有","一点儿","辣","你","尝","一下儿"],z:"这个汤有一点儿辣，你尝一下儿。",p:"Zhège tāng yǒu yìdiǎnr là, nǐ cháng yíxiàr.",v:"Canh này hơi cay, bạn nếm thử xem."},{t:["除了","葡萄","我","还","喜欢","吃","桃"],z:"除了葡萄，我还喜欢吃桃。",p:"Chúle pútao, wǒ hái xǐhuan chī táo.",v:"Ngoài nho, mình còn thích ăn đào."}],
+  write:["汤","甜"]},
+ {zh:"坐飞机或者坐火车都可以。", vi:"Đi máy bay hay tàu hoả đều được.", words:[
+   ["或者","huòzhě","hoặc"],["火车","huǒchē","tàu hoả"],["地铁","dìtiě","tàu điện ngầm"],["辆","liàng","chiếc (xe)"],["公里","gōnglǐ","ki-lô-mét, cây số"],["售票员","shòupiàoyuán","người bán vé"],
+   ["排队","páiduì","xếp hàng"],["出发","chūfā","xuất phát"],["桥","qiáo","cây cầu"],["迷路","mílù","lạc đường"],["地图","dìtú","bản đồ"],["离","lí","cách (xa)"],
+   ["离开","líkāi","rời khỏi"],["向","xiàng","về phía, hướng"],["从","cóng","từ"],["方便","fāngbiàn","tiện"],["带","dài","mang, dẫn"],["接","jiē","đón"],
+   ["来得及","láidejí","kịp"],["安全","ānquán","an toàn"]],
+  sents:[{t:["坐","飞机","或者","坐","火车","都","可以"],z:"坐飞机或者坐火车都可以。",p:"Zuò fēijī huòzhě zuò huǒchē dōu kěyǐ.",v:"Đi máy bay hay tàu hoả đều được."},{t:["学校","离","我","家","两","公里"],z:"学校离我家两公里。",p:"Xuéxiào lí wǒ jiā liǎng gōnglǐ.",v:"Trường cách nhà mình 2 cây số."},{t:["从","我","家","坐","地铁","很","方便"],z:"从我家坐地铁很方便。",p:"Cóng wǒ jiā zuò dìtiě hěn fāngbiàn.",v:"Từ nhà mình đi tàu điện ngầm rất tiện."},{t:["有","地图","就","不","会","迷路","了"],z:"有地图就不会迷路了。",p:"Yǒu dìtú jiù bú huì mílù le.",v:"Có bản đồ thì sẽ không lạc đường."}],
+  write:["火","离"]},
+ {zh:"你的汉语会越来越好。", vi:"Tiếng Trung của bạn sẽ ngày càng giỏi.", words:[
+   ["越来越","yuèláiyuè","càng ngày càng"],["考试","kǎoshì","thi, kỳ thi"],["复习","fùxí","ôn tập"],["练习","liànxí","luyện tập"],["成绩","chéngjì","thành tích, điểm số"],["词典","cídiǎn","từ điển"],
+   ["句子","jùzi","câu"],["页","yè","trang"],["作业","zuòyè","bài tập về nhà"],["讲","jiǎng","giảng, kể"],["教","jiāo","dạy"],["明白","míngbai","hiểu"],
+   ["清楚","qīngchu","rõ ràng"],["认真","rènzhēn","chăm chỉ, nghiêm túc"],["地","de","(trợ từ, đứng trước động từ)"],["错","cuò","sai"],["马虎","mǎhu","cẩu thả, ẩu"],["初中","chūzhōng","trung học cơ sở (cấp 2)"],
+   ["毕业","bìyè","tốt nghiệp"],["知识","zhīshi","kiến thức"],["图书馆","túshūguǎn","thư viện"],["校园","xiàoyuán","sân trường, khuôn viên trường"],["讨论","tǎolùn","thảo luận"],["借","jiè","mượn"]],
+  sents:[{t:["你","的","汉语","会","越来越","好"],z:"你的汉语会越来越好。",p:"Nǐ de Hànyǔ huì yuèláiyuè hǎo.",v:"Tiếng Trung của bạn sẽ ngày càng giỏi."},{t:["明天","考试","我们","一起","复习","吧"],z:"明天考试，我们一起复习吧。",p:"Míngtiān kǎoshì, wǒmen yìqǐ fùxí ba.",v:"Mai thi rồi, mình cùng ôn bài nhé."},{t:["老师","讲","得","很","清楚","我","明白","了"],z:"老师讲得很清楚，我明白了。",p:"Lǎoshī jiǎng de hěn qīngchu, wǒ míngbai le.",v:"Cô giảng rất rõ, con hiểu rồi."},{t:["他","在","图书馆","认真","地","写","作业"],z:"他在图书馆认真地写作业。",p:"Tā zài túshūguǎn rènzhēn de xiě zuòyè.",v:"Bạn ấy chăm chỉ làm bài tập ở thư viện."}],
+  write:["考","词"]},
+ {zh:"我打算去中国旅游。", vi:"Mình định đi du lịch Trung Quốc.", words:[
+   ["打算","dǎsuàn","định, dự định"],["旅游","lǚyóu","du lịch"],["长城","Chángchéng","Vạn Lý Trường Thành"],["上海","Shànghǎi","Thượng Hải"],["参观","cānguān","tham quan"],["公园","gōngyuán","công viên"],
+   ["大海","dàhǎi","biển"],["放假","fàngjià","được nghỉ (lễ, học)"],["寒假","hánjià","kỳ nghỉ đông"],["暑假","shǔjià","kỳ nghỉ hè"],["周末","zhōumò","cuối tuần"],["节日","jiérì","ngày lễ"],
+   ["准备","zhǔnbèi","chuẩn bị"],["决定","juédìng","quyết định"],["将来","jiānglái","tương lai, sau này"],["希望","xīwàng","hy vọng, mong"],["为了","wèile","để, vì"],["国家","guójiā","đất nước"],
+   ["工作","gōngzuò","làm việc; công việc"],["祝贺","zhùhè","chúc mừng"],["同意","tóngyì","đồng ý"]],
+  sents:[{t:["暑假","我","打算","去","北京","旅游"],z:"暑假我打算去北京旅游。",p:"Shǔjià wǒ dǎsuàn qù Běijīng lǚyóu.",v:"Nghỉ hè mình định đi du lịch Bắc Kinh."},{t:["我们","想","去","参观","长城"],z:"我们想去参观长城。",p:"Wǒmen xiǎng qù cānguān Chángchéng.",v:"Chúng mình muốn đi thăm Vạn Lý Trường Thành."},{t:["周末","我们","去","公园","还是","去","大海"],z:"周末我们去公园还是去大海？",p:"Zhōumò wǒmen qù gōngyuán háishi qù dàhǎi?",v:"Cuối tuần mình đi công viên hay đi biển?"},{t:["我","希望","将来","去","很","多","国家"],z:"我希望将来去很多国家。",p:"Wǒ xīwàng jiānglái qù hěn duō guójiā.",v:"Mình mong sau này được đi nhiều nước."}],
+  write:["旅","游"]},
+ {zh:"小鸟正在唱歌。", vi:"Chim non đang hót.", words:[
+   ["正在","zhèngzài","đang"],["着","zhe","(đang) … (sau động từ)"],["一边","yìbiān","vừa… (一边…一边…: vừa… vừa…)"],["心情","xīnqíng","tâm trạng"],["生气","shēngqì","tức giận"],["难过","nánguò","buồn"],
+   ["担心","dānxīn","lo lắng"],["紧张","jǐnzhāng","hồi hộp, căng thẳng"],["讨厌","tǎoyàn","ghét"],["奇怪","qíguài","lạ, kỳ lạ"],["突然","tūrán","đột nhiên"],["声音","shēngyīn","âm thanh, giọng nói"],
+   ["响","xiǎng","kêu, reo"],["哈","hā","ha (tiếng cười)"],["猜","cāi","đoán"],["告诉","gàosu","nói cho biết"],["打扰","dǎrǎo","làm phiền"]],
+  sents:[{t:["你","听","小","鸟","正在","唱歌"],z:"你听，小鸟正在唱歌。",p:"Nǐ tīng, xiǎo niǎo zhèngzài chànggē.",v:"Nghe kìa, chim non đang hót."},{t:["妹妹","一边","唱歌","一边","跳舞"],z:"妹妹一边唱歌一边跳舞。",p:"Mèimei yìbiān chànggē yìbiān tiàowǔ.",v:"Em gái vừa hát vừa nhảy."},{t:["他","今天","心情","不","好","别","打扰","他"],z:"他今天心情不好，别打扰他。",p:"Tā jīntiān xīnqíng bù hǎo, bié dǎrǎo tā.",v:"Hôm nay bạn ấy không vui, đừng làm phiền nhé."},{t:["窗户","开","着","外面","的","声音","很","大"],z:"窗户开着，外面的声音很大。",p:"Chuānghu kāizhe, wàimiàn de shēngyīn hěn dà.",v:"Cửa sổ đang mở, tiếng bên ngoài to lắm."}],
+  write:["正","气"]},
+ {zh:"小鱼被小猫吃了。", vi:"Chú cá nhỏ bị mèo con ăn mất.", words:[
+   ["被","bèi","bị, được"],["不但","búdàn","không những"],["而且","érqiě","mà còn"],["虽然","suīrán","tuy, mặc dù"],["如果","rúguǒ","nếu"],["那么","nàme","thì, vậy thì"],
+   ["无论","wúlùn","bất kể, dù"],["关于","guānyú","về (chủ đề)"],["旧","jiù","cũ"],["刻","kè","15 phút (một khắc)"],["破","pò","rách, vỡ"],["以为","yǐwéi","tưởng (là)"],
+   ["只要","zhǐyào","chỉ cần"],["容易","róngyì","dễ"],["记得","jìde","nhớ"],["忘记","wàngjì","quên"]],
+  sents:[{t:["小","鱼","被","小","猫","吃","了"],z:"小鱼被小猫吃了。",p:"Xiǎo yú bèi xiǎo māo chī le.",v:"Chú cá nhỏ bị mèo con ăn mất."},{t:["我","的","旧","书包","被","弟弟","拿","走","了"],z:"我的旧书包被弟弟拿走了。",p:"Wǒ de jiù shūbāo bèi dìdi ná zǒu le.",v:"Cặp cũ của mình bị em trai lấy mất rồi."},{t:["她","不但","聪明","而且","很","努力"],z:"她不但聪明，而且很努力。",p:"Tā búdàn cōngming, érqiě hěn nǔlì.",v:"Bạn ấy không những thông minh mà còn rất chăm chỉ."},{t:["虽然","汉语","很","难","但是","我","很","喜欢"],z:"虽然汉语很难，但是我很喜欢。",p:"Suīrán Hànyǔ hěn nán, dànshì wǒ hěn xǐhuan.",v:"Tuy tiếng Trung khó nhưng mình rất thích."}],
+  write:["被","旧"]},
+ {zh:"以后要注意。", vi:"Lần sau phải chú ý nhé.", words:[
+   ["小心","xiǎoxīn","cẩn thận"],["注意","zhùyì","chú ý"],["危险","wēixiǎn","nguy hiểm"],["重要","zhòngyào","quan trọng"],["办法","bànfǎ","cách, biện pháp"],["上班","shàngbān","đi làm"],
+   ["开会","kāihuì","họp"],["警察","jǐngchá","cảnh sát"],["新闻","xīnwén","tin tức"],["报纸","bàozhǐ","báo"],["杂志","zázhì","tạp chí"],["电子邮件","diànzǐ yóujiàn","thư điện tử, email"],
+   ["信封","xìnfēng","phong bì"],["地址","dìzhǐ","địa chỉ"],["号码","hàomǎ","số (điện thoại, nhà…)"],["联系","liánxì","liên lạc"]],
+  sents:[{t:["这儿","很","危险","要","小心"],z:"这儿很危险，要小心！",p:"Zhèr hěn wēixiǎn, yào xiǎoxīn!",v:"Chỗ này nguy hiểm lắm, phải cẩn thận!"},{t:["考试","的","时候","要","注意","别","马虎"],z:"考试的时候要注意，别马虎。",p:"Kǎoshì de shíhou yào zhùyì, bié mǎhu.",v:"Lúc thi phải chú ý, đừng cẩu thả."},{t:["你","家","的","地址","是","什么"],z:"你家的地址是什么？",p:"Nǐ jiā de dìzhǐ shì shénme?",v:"Địa chỉ nhà bạn là gì?"},{t:["有","问题","可以","找","警察"],z:"有问题可以找警察。",p:"Yǒu wèntí kěyǐ zhǎo jǐngchá.",v:"Gặp chuyện thì có thể tìm cảnh sát."}],
+  write:["注","意"]},
+ {zh:"复习", vi:"Ôn tập cả sách", review:true, words:[], sents:[], write:[]}
+];
+const EXTRA_PY = {};
