@@ -148,6 +148,17 @@ def detail_html(cid, lang):
     x = c[lang]
     ul = lambda items: '<ul>' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>'
     para = lambda k, cls: f'<p class="{cls}">{x[k]}</p>' if x.get(k) else ''
+    # bớt in đậm (chị Linh 19/09): mỗi popup chỉ giữ tối đa 2 chỗ đậm — 1 ở "Sau khoá", 1 ở "Lớp học"
+    plain = lambda s: re.sub(r'</?b>', '', s)
+    def keep_one(items, last=False):
+        idx = [i for i, s in enumerate(items) if '<b>' in s]
+        pick = (idx[-1] if last else idx[0]) if idx else None
+        out = [s if i == pick else plain(s) for i, s in enumerate(items)]
+        if pick is not None:
+            out[pick] = re.sub(r'(<b>.*?</b>)(.*)', lambda m: m.group(1) + plain(m.group(2)), out[pick], count=1)
+        return out
+    x = dict(x, fit=[plain(s) for s in x['fit']], how=[plain(s) for s in x['how']],
+             out=keep_one(x['out'], last=(cid == 'little')), cls=keep_one(x['cls']))
     t_out = x.get('t_out') or (h['out_adult'] if c['adult'] else h['out'])
     faq = ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in x['faq'])
     tag = ('<p class="more-tag">' + '<br>'.join(x['tag']) + '</p>') if x.get('tag') else ''
