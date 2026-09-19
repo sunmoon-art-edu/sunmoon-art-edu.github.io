@@ -672,7 +672,7 @@ p{margin:0}
 .player .player-dl{font-size:.9rem}
 .docs-src{font-size:.85rem;color:var(--ink-3);font-style:italic;max-width:48rem}
 .gate{max-width:460px}
-.modes{background:var(--ivory-2)}
+.hinhthuc{background:var(--ivory-2)}
 .mgrid{display:grid;gap:1.2rem;margin-top:2.6rem}
 @media (min-width:900px){.mgrid{grid-template-columns:repeat(3,1fr)}}
 .mcard{background:var(--ivory);border:1px solid var(--line);border-radius:18px;padding:1.6rem 1.5rem 1.7rem;display:flex;flex-direction:column;gap:1.1rem;box-shadow:0 10px 30px rgba(60,40,20,.06)}
@@ -705,6 +705,9 @@ p{margin:0}
 .final .btn-fill:hover{background:#A32E21;border-color:#A32E21;color:#fff}
 .chips input:checked + span{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
 .nav .lang:hover{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.vcard.vwide{grid-column:1/-1;background:var(--sun-wash)}
+.vcard.vwide:hover{background:var(--sun-soft)}
+.vcard.vwide p{max-width:40ch}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -880,6 +883,7 @@ body.has-float{padding-bottom:0}
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Học online & offline</h3><p>Học tại P1, L6 Vinhomes Central Park hoặc học online tại nhà.</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Học bù, bảo lưu linh hoạt</h3><p>Nghỉ có báo trước, SunMoon xếp buổi bù hoặc bảo lưu buổi học.</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>Lộ trình rõ ràng</h3><p>Từ 3 tuổi đến HSK 6: PreChinese → ChineseKids → HSK.</p></div>
+      <div class="vcard vwide"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="36" height="23" rx="2"/><path d="M2 40h44"/><path d="M27 18a6 6 0 1 0 5 9 5 5 0 0 1-5-9z"/><path d="M16 21v.01M13 27v.01M19 28v.01"/></svg><h3>Hoạt động thú vị online mỗi tối</h3><p>Con luyện thêm tiếng Trung tại nhà qua các hoạt động vui mỗi tối.</p></div>
     </div>
   </div>
 </section>
@@ -979,8 +983,8 @@ body.has-float{padding-bottom:0}
   <div class="wrap">
     <div class="head reveal">
       <div>
-        <p class="eyebrow"><span class="sc">教室</span> Trải nghiệm lớp học</p>
-        <h2 class="h2">Bên trong SunMoon</h2>
+        <p class="eyebrow"><span class="sc">教室</span> Lớp học SunMoon</p>
+        <h2 class="h2">Trải nghiệm thực tế</h2>
       </div>
       <p class="caption">Học<span>·</span>Chơi<span>·</span>Sáng tạo<span>·</span>Giao tiếp</p>
     </div>
@@ -1115,6 +1119,7 @@ body.has-float{padding-bottom:0}
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Học online & offline</h3><p>Học tại P1, L6 Vinhomes Central Park hoặc học online tại nhà.</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Học bù, bảo lưu linh hoạt</h3><p>Nghỉ có báo trước, SunMoon xếp buổi bù hoặc bảo lưu buổi học.</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>Lộ trình rõ ràng</h3><p>Từ 3 tuổi đến HSK 6: PreChinese → ChineseKids → HSK.</p></div>
+      <div class="vcard vwide"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="36" height="23" rx="2"/><path d="M2 40h44"/><path d="M27 18a6 6 0 1 0 5 9 5 5 0 0 1-5-9z"/><path d="M16 21v.01M13 27v.01M19 28v.01"/></svg><h3>Hoạt động thú vị online mỗi tối</h3><p>Con luyện thêm tiếng Trung tại nhà qua các hoạt động vui mỗi tối.</p></div>
     </div>
   </div>
 </section>
@@ -1214,8 +1219,8 @@ body.has-float{padding-bottom:0}
   <div class="wrap">
     <div class="head reveal">
       <div>
-        <p class="eyebrow"><span class="sc">教室</span> Trải nghiệm lớp học</p>
-        <h2 class="h2">Bên trong SunMoon</h2>
+        <p class="eyebrow"><span class="sc">教室</span> Lớp học SunMoon</p>
+        <h2 class="h2">Trải nghiệm thực tế</h2>
       </div>
       <p class="caption">Học<span>·</span>Chơi<span>·</span>Sáng tạo<span>·</span>Giao tiếp</p>
     </div>
@@ -1350,6 +1355,7 @@ body.has-float{padding-bottom:0}
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>Online & in person</h3><p>Learn at P1 or L6, Vinhomes Central Park, or online from home.</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>Flexible make-ups</h3><p>Tell us in advance and SunMoon arranges a make-up lesson or saves it for later.</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>A clear pathway</h3><p>From age 3 to HSK 6: PreChinese → ChineseKids → HSK.</p></div>
+      <div class="vcard vwide"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="36" height="23" rx="2"/><path d="M2 40h44"/><path d="M27 18a6 6 0 1 0 5 9 5 5 0 0 1-5-9z"/><path d="M16 21v.01M13 27v.01M19 28v.01"/></svg><h3>Fun online activities every evening</h3><p>Extra Chinese practice at home through fun activities each evening.</p></div>
     </div>
   </div>
 </section>
@@ -1449,8 +1455,8 @@ body.has-float{padding-bottom:0}
   <div class="wrap">
     <div class="head reveal">
       <div>
-        <p class="eyebrow"><span class="sc">教室</span> Classroom Experience</p>
-        <h2 class="h2">Inside SunMoon</h2>
+        <p class="eyebrow"><span class="sc">教室</span> SunMoon classes</p>
+        <h2 class="h2">Real classroom moments</h2>
       </div>
       <p class="caption">Learn<span>·</span>Play<span>·</span>Create<span>·</span>Communicate</p>
     </div>
@@ -1585,6 +1591,7 @@ body.has-float{padding-bottom:0}
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="24" height="17" rx="2"/><path d="M12 33h12M18 27v6"/><path d="M34 14h8v25H30v-8"/><path d="M36 35h2"/></svg><h3>线上与线下</h3><p>在 Vinhomes Central Park 的 P1、L6 上课，或在家线上学习。</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 6v8M33 6v8"/><path d="M18 30l4 4 8-8"/></svg><h3>灵活补课与保留</h3><p>提前告知，日月会安排补课或保留课时。</p></div>
       <div class="vcard"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40h8V30h8V20h8V10h8"/><circle cx="40" cy="10" r="2.5"/><path d="M8 40h32"/></svg><h3>清晰的学习路径</h3><p>从 3 岁到 HSK 6：PreChinese → ChineseKids → HSK。</p></div>
+      <div class="vcard vwide"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="36" height="23" rx="2"/><path d="M2 40h44"/><path d="M27 18a6 6 0 1 0 5 9 5 5 0 0 1-5-9z"/><path d="M16 21v.01M13 27v.01M19 28v.01"/></svg><h3>每晚线上趣味活动</h3><p>每天晚上在家通过有趣的活动练习中文。</p></div>
     </div>
   </div>
 </section>
@@ -1684,8 +1691,8 @@ body.has-float{padding-bottom:0}
   <div class="wrap">
     <div class="head reveal">
       <div>
-        <p class="eyebrow"><span class="sc">教室</span> 课堂体验</p>
-        <h2 class="h2">走进日月</h2>
+        <p class="eyebrow"><span class="sc">教室</span> 日月课堂</p>
+        <h2 class="h2">真实课堂体验</h2>
       </div>
       <p class="caption">学<span>·</span>玩<span>·</span>创<span>·</span>说</p>
     </div>

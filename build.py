@@ -317,9 +317,9 @@ def modes_section(lang):
         <ul>{''.join(f'<li>{CHECK}<span>{x}</span></li>' for x in items)}</ul>
         <a class="btn btn-primary" href="#trial">{t['cta']}</a>
       </article>""" for i, (title, sub, items) in enumerate(t['cards']))
-    return f"""<section class="section modes" id="modes">
+    return f"""<section class="section hinhthuc" id="modes">
   <div class="wrap">
-    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> {t['eyebrow']}</p><h2 class="h2">{t['h']}</h2></div>
+    <div class="reveal why-head"><p class="eyebrow"><span class="sc">形式</span> {t['eyebrow']}</p><h2 class="h2">{t['h']}</h2><p class="why-sub">{' · '.join(c[0] for c in t['cards'])}</p></div>
     <div class="mgrid reveal">{cards}
     </div>
   </div>
