@@ -97,7 +97,7 @@ L = {
 }
 
 PAGES = {
-    HOME:    ['hero', 'why', 'homeclasses', 'approach', 'inside', 'trial', 'final'],
+    HOME:    ['hero', 'why', 'homeclasses', 'journey', 'approach', 'inside', 'trial', 'final'],
     ABOUT:   ['about', 'approach', 'teachers', 'inside', 'final'],
     CLASSES: ['programs', 'modes', 'journey', 'trial', 'final'],
     PARENTS: ['parents', 'stories', 'guide', 'faq', 'trial', 'final'],
