@@ -26,7 +26,17 @@ toks=set(sum([re.findall(r'"([^"]+)"',t) for t in re.findall(r't:\[([^\]]+)\]',j
 miss=sorted(t for t in toks if t not in vocab and t not in prior and t not in extra)
 if miss: print('!! token chưa có pinyin:', ' '.join(miss))
 chars={c for c in ''.join(vocab) if '\u4e00'<=c<='\u9fff'}
-texts=set(vocab)|set(sents)|toks|chars
+nd={}
+ndf=f'{KIND}{LV}-nd.js'
+if os.path.exists(ndf):
+    o=subprocess.run(['node','-e',"const fs=require('fs'),vm=require('vm');const c=vm.createContext({});vm.runInContext(fs.readFileSync(process.argv[1],'utf8')+';globalThis.__N=ND;',c);process.stdout.write(JSON.stringify(c.__N))",ndf],capture_output=True,text=True)
+    if o.returncode==0: nd=json.loads(o.stdout)
+    else: print('!! lỗi', ndf, o.stderr[:200])
+ndTexts=set()
+for v in nd.values():
+    for l in (v.get('dl') or {}).get('lines',[]): ndTexts.add(l['z'])
+    if v.get('rd'): ndTexts.add(v['rd']['z'])
+texts=set(vocab)|set(sents)|toks|chars|ndTexts
 SUB={"长":"常"}  # đọc đúng cháng
 audio={}; web={}; dung=set()
 os.makedirs('audio',exist_ok=True)
@@ -78,6 +88,7 @@ if os.path.exists('songs.js'):
     out=subprocess.run(['node','-e',"const fs=require('fs'),vm=require('vm');const c=vm.createContext({});vm.runInContext(fs.readFileSync('songs.js','utf8')+';globalThis.__S=SONGS;',c);process.stdout.write(JSON.stringify(c.__S))"],capture_output=True,text=True)
     if out.returncode==0: songs=json.loads(out.stdout).get(f'{KU}{LV}', {})
     else: print('!! songs.js lỗi:', out.stderr[:200])
+s=s.replace('/*ND*/{}',json.dumps(nd,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*SONGS*/{}',json.dumps({f'{KU}{LV}': songs},ensure_ascii=False))
 sw=s.replace('/*AUDIO*/{}',json.dumps(web,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*AUDIO*/{}',json.dumps(audio,ensure_ascii=False,separators=(',',':')))

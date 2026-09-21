@@ -92,8 +92,15 @@ function veDs() {
       <div class="body">${L.song ? `<div class="song">Bài hát: <span class="h">${esc(L.song[0])}</span> · ${esc(L.song[1])} · <a href="https://www.youtube.com/watch?v=${esc(L.song[2])}" target="_blank" rel="noopener">xem trên YouTube</a></div>` : ""}
       <h3>Từ mới</h3><div class="tw"><table>${L.w.map(rowW).join("")}</table></div>
       <h3>Câu mẫu</h3><div class="tw"><table>${L.s.map(rowS).join("")}</table></div>
+      ${L.nd && L.nd.dl ? `<h3>Hội thoại (Nghe · Nói)</h3><div class="tw"><table>${L.nd.dl.lines.map((l, j) => `<tr><td style="width:1%;font-weight:600;color:var(--ink-2)">${esc(l.r)}</td><td><div class="h" style="font-size:18px">${esc(l.z)}</div><div style="color:var(--acc);font-weight:600">${esc(l.p)}</div><div>${esc(l.v)}</div></td><td class="x">${DB ? `<button class="bao${daBao.has("Hội thoại|" + l.z) ? " co" : ""}" data-bao="Hội thoại|${L.i}|${j}">Báo sai</button>` : ""}</td></tr>`).join("")}${qsHtml(L.nd.dl.qs, "Câu hỏi nghe", L.i)}</table></div>` : ""}
+      ${L.nd && L.nd.rd ? `<h3>Bài đọc (Đọc)</h3><div class="tw"><table><tr><td><div class="h" style="font-size:18px">${esc(L.nd.rd.z)}</div><div style="color:var(--acc);font-weight:600">${esc(L.nd.rd.p)}</div><div>${esc(L.nd.rd.v)}</div></td><td class="x">${DB ? `<button class="bao${daBao.has("Bài đọc|" + L.nd.rd.z) ? " co" : ""}" data-bao="Bài đọc|${L.i}|0">Báo sai</button>` : ""}</td></tr>${qsHtml(L.nd.rd.qs, "Câu hỏi đọc", L.i)}</table></div>` : ""}
       ${DB ? `<div class="chan"><button class="btn ${OK[bk] ? "ghost" : "okb"}" data-ok="${L.i}">${OK[bk] ? "Bỏ đánh dấu đã duyệt" : "Duyệt xong bài này"}</button></div>` : ""}</div></details>`;
   }).join("");
+}
+function qsHtml(qs, loai, bai) {
+  return qs.map((q, j) => `<tr><td colspan="2"><div class="hint">${loai} ${j + 1}</div><div class="h" style="font-size:17px">${esc(q.q)}</div><div>${esc(q.v)}</div>
+    <div style="margin-top:4px">${q.o.map((o, k) => `<span class="h" style="display:inline-block;margin:2px 10px 2px 0;${k === q.a ? "color:var(--ok);font-weight:600" : "color:var(--ink-2)"}">${k === q.a ? "✓ " : ""}${esc(o)}</span>`).join("")}</div></td>
+    <td class="x">${DB ? `<button class="bao" data-bao="${loai}|${bai}|${j}">Báo sai</button>` : ""}</td></tr>`).join("");
 }
 function veGy() {
   const cho = GY.filter(g => g.trangThai !== "Đã sửa");
@@ -118,7 +125,11 @@ document.getElementById("ds").addEventListener("click", async e => {
   const bao = e.target.closest("[data-bao]");
   if (bao) {
     const tr = bao.closest("tr"); if (tr.nextElementSibling && tr.nextElementSibling.classList.contains("form")) { tr.nextElementSibling.remove(); return; }
-    const [loai, bai, j] = bao.dataset.bao.split("|"), L = DATA[cur].lessons.find(x => x.i === +bai), it = loai === "Từ" ? L.w[+j] : L.s[+j];
+    const [loai, bai, j] = bao.dataset.bao.split("|"), L = DATA[cur].lessons.find(x => x.i === +bai);
+    const it = loai === "Từ" ? L.w[+j] : loai === "Câu" ? L.s[+j]
+      : loai === "Hội thoại" ? [L.nd.dl.lines[+j].z, L.nd.dl.lines[+j].p, L.nd.dl.lines[+j].v]
+      : loai === "Bài đọc" ? [L.nd.rd.z, L.nd.rd.p, L.nd.rd.v]
+      : (q => [q.q, q.o.join(" / "), "Đáp án: " + q.o[q.a]])((loai === "Câu hỏi nghe" ? L.nd.dl : L.nd.rd).qs[+j]);
     const cols = tr.children.length;
     tr.insertAdjacentHTML("afterend", `<tr class="form"><td colspan="${cols}"><textarea placeholder="Sai ở đâu, sửa thế nào? VD: pinyin đúng là …, nghĩa nên là …"></textarea><div class="row"><button class="btn ghost" data-huy>Huỷ</button><button class="btn" data-gui>Gửi góp ý</button></div></td></tr>`);
     const f = tr.nextElementSibling, ta = f.querySelector("textarea"); ta.focus();

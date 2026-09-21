@@ -19,13 +19,18 @@ for name, f, key in FILES:
     o = subprocess.run(['node', '-e', JS, f], capture_output=True, text=True)
     L = json.loads(o.stdout)
     sg = songs.get(name.replace(' ', ''), {})
+    nd = {}
+    ndf = key + '-nd.js'
+    if os.path.exists(ndf):
+        o2 = subprocess.run(['node', '-e', JS.replace('__L=LESSONS', '__L=ND'), ndf], capture_output=True, text=True)
+        nd = json.loads(o2.stdout) if o2.returncode == 0 else {}
     ls = []
     for i, x in enumerate(L):
         if x.get('review'):
             continue
         s = sg.get(str(i))
         ls.append({'i': i + 1, 'zh': x['zh'], 'vi': x['vi'], 'w': x['words'], 's': [[z['z'], z['p'], z['v']] for z in x['sents']],
-                   'song': [s['t'], s['v'], s['id']] if s else None})
+                   'song': [s['t'], s['v'], s['id']] if s else None, 'nd': nd.get(str(i))})
     data.append({'name': name, 'key': key, 'lessons': ls})
 
 tong_tu = sum(len(l['w']) for d in data for l in d['lessons'])
