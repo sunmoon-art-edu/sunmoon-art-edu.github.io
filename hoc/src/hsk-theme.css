@@ -1,4 +1,4 @@
-/* Màu riêng cho app HSK: xanh mực + vàng đồng (YCT dùng xanh ngọc + vàng nghệ) */
-:root{--sun:#2F4B7C;--sun-2:#1F3560;--sun-soft:#E1E7F1;--on-sun:#FFFFFF;--moon:#9A6B1C;--moon-2:#7A5314;--moon-soft:#F5EAD5;--on-moon:#FFFFFF;--bg:#F6F4EF;--line:#E4DED2}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sun:#7C9BD6;--sun-2:#5676B3;--sun-soft:#23304A;--on-sun:#101828;--moon:#D9A948;--moon-2:#B0852C;--moon-soft:#3A2E17;--bg:#16171C;--surface:#21232B;--line:#353846}}
-:root[data-theme="dark"]{--sun:#7C9BD6;--sun-2:#5676B3;--sun-soft:#23304A;--on-sun:#101828;--moon:#D9A948;--moon-2:#B0852C;--moon-soft:#3A2E17;--bg:#16171C;--surface:#21232B;--line:#353846}
+/* Màu riêng cho app HSK: đỏ son + vàng (cùng tông web SunMoon) · YCT dùng xanh ngọc + vàng nghệ */
+:root{--sun:#C8453A;--sun-2:#A2342B;--sun-soft:#F9E3DF;--on-sun:#FFFFFF;--moon:#B7862B;--moon-2:#94691C;--moon-soft:#F7EDD8;--on-moon:#FFFFFF;--bad:#8E4A9E;--bad-2:#713A7E;--bad-soft:#F1E4F4;--bg:#FAF6EF;--line:#EADFD0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sun:#E0695D;--sun-2:#B84B40;--sun-soft:#40211E;--on-sun:#1A0E0C;--moon:#E0B354;--moon-2:#B98E33;--moon-soft:#3B2F17;--bad:#C58BD3;--bad-2:#9C64AA;--bad-soft:#3A2440;--bg:#1C1816;--surface:#28221F;--line:#3D3430}}
+:root[data-theme="dark"]{--sun:#E0695D;--sun-2:#B84B40;--sun-soft:#40211E;--on-sun:#1A0E0C;--moon:#E0B354;--moon-2:#B98E33;--moon-soft:#3B2F17;--bad:#C58BD3;--bad-2:#9C64AA;--bad-soft:#3A2440;--bg:#1C1816;--surface:#28221F;--line:#3D3430}

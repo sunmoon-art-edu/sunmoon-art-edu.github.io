@@ -6,7 +6,7 @@ if KIND=='hsk': args=args[1:]
 LV=int(args[0]) if args else 1
 KU=KIND.upper()   # YCT / HSK
 YCT_COLORS='const COLORS = [["#E9B44C","#C99532","#2B2622"],["#5B9A9B","#467D7E","#fff"],["#D2693F","#B0522C","#fff"],["#8AA671","#6F8A58","#fff"],["#6C8CB5","#557396","#fff"],["#9C6B8E","#7E5373","#fff"]];'
-HSK_COLORS='const COLORS = [["#2F4B7C","#1F3560","#fff"],["#B5832A","#8E6519","#fff"],["#3F8A73","#2E6B58","#fff"],["#A94B3A","#843829","#fff"],["#5E6C84","#465267","#fff"],["#7D5A7A","#62455F","#fff"]];'
+HSK_COLORS='const COLORS = [["#C8453A","#A2342B","#fff"],["#E0A73A","#BD8A22","#2B2622"],["#D9735A","#B75A43","#fff"],["#B7862B","#94691C","#fff"],["#9E3B45","#7E2C35","#fff"],["#E8B64C","#C49631","#2B2622"]];'
 src=lambda n: (f'hsk{n}.js' if KIND=='hsk' else ('yct.js' if n==1 else f'yct{n}.js'))
 js=open(src(LV),encoding='utf-8').read()
 WRE=r'\[\s*"([^"]+)","([^"]+)","([^"]+)"\s*\]'
@@ -62,7 +62,7 @@ if KIND=='hsk':   # học viên HSK là thiếu niên / người lớn: xưng "b
         s=s.replace(a,b)
     s=s.replace('</style>', open('hsk-theme.css',encoding='utf-8').read()+'</style>', 1)
     s=s.replace(YCT_COLORS, HSK_COLORS)
-    s=s.replace('--c:#4E8F91;--c2:#3C7375;--onc:#fff','--c:#5E6C84;--c2:#465267;--onc:#fff')
+    s=s.replace('--c:#4E8F91;--c2:#3C7375;--onc:#fff','--c:#B7862B;--c2:#94691C;--onc:#fff')
 s=s.replace('/*DATA*/',js).replace('/*PRIOR*/{}',json.dumps(prior,ensure_ascii=False))
 s=s.replace('/*STROKES*/{}',json.dumps(need,ensure_ascii=False,separators=(',',':')))
 # bộ thủ + cách ghép chữ (makemeahanzi, cùng nguồn với nét chữ)
@@ -87,7 +87,7 @@ for m in sorted(dung):
     d='../'+m
     if not os.path.exists(d) or os.path.getmtime(m)>os.path.getmtime(d): shutil.copy2(m,d)
 open(f'../{KIND}{LV}-artifact.html','w',encoding='utf-8').write(s)
-THEME='#2F4B7C' if KIND=='hsk' else '#4E8F91'
+THEME='#C8453A' if KIND=='hsk' else '#4E8F91'
 page=('<!doctype html>\n<html lang="vi">\n<head>\n<meta charset="utf-8">\n'
       '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
       '<meta name="theme-color" content="'+THEME+'">\n'
