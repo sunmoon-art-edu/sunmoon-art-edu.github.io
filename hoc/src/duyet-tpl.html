@@ -1,0 +1,153 @@
+<title>Duyệt bài app SunMoon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Noto+Sans+SC:wght@400&display=swap">
+<style>
+:root{--bg:#FAF7F0;--surface:#FFFFFF;--ink:#2B2622;--ink-2:#6E655C;--line:#E8E0D0;--acc:#4E8F91;--acc-soft:#E1EEEE;--ok:#5E9E5A;--ok-soft:#E6F0E1;--warn:#C8453A;--warn-soft:#F9E3DF;
+  --fb:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;--fh:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1E1B18;--surface:#2A2622;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D372F;--acc:#6FAEB0;--acc-soft:#24393A;--ok:#7DBA77;--ok-soft:#22331F;--warn:#E0695D;--warn-soft:#40211E}}
+:root[data-theme="dark"]{--bg:#1E1B18;--surface:#2A2622;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D372F;--acc:#6FAEB0;--acc-soft:#24393A;--ok:#7DBA77;--ok-soft:#22331F;--warn:#E0695D;--warn-soft:#40211E}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--fb)}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:22px 80px}
+h1{font:600 28px/1.15 var(--fb);margin:0 0 8px}
+.intro{margin:0 0 14px;padding-left:20px}.intro li{margin:3px 0}.intro i{color:var(--ink-2)}
+.sum{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+.sum div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.sum b{display:block;font:600 22px/1.1 var(--fb);font-variant-numeric:tabular-nums}.sum span{font-size:12px;color:var(--ink-2)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:8px;z-index:2}
+.tabs button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 13px;font:600 14px/1 var(--fb);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+.tabs .n{font-weight:400;opacity:.8;margin-left:4px}
+details.bai{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+details.bai>summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details.bai>summary::-webkit-details-marker{display:none}
+.no{font-weight:600;color:var(--ink-2);font-size:13px}
+.zh,.h{font-family:var(--fh)}
+.zh{font-size:19px}
+.chip{font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;margin-left:auto;white-space:nowrap}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}.chip.gy{background:var(--warn-soft);color:var(--warn)}.chip.cho{background:var(--acc-soft);color:var(--acc)}
+.body{padding:0 14px 14px}
+h3{font:600 14px/1 var(--fb);color:var(--ink-2);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.06em}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+td{padding:7px 6px;border-top:1px solid var(--line);vertical-align:top}
+td.h{font-size:21px;white-space:nowrap}td.p{color:var(--acc);font-weight:600;white-space:nowrap}
+td.x{width:1%;white-space:nowrap;text-align:right}
+.bao{border:1px solid var(--line);background:transparent;color:var(--ink-2);border-radius:8px;padding:4px 9px;font:500 12px/1.2 var(--fb);cursor:pointer}
+.bao:hover{border-color:var(--warn);color:var(--warn)}
+.bao.co{border-color:var(--warn);background:var(--warn-soft);color:var(--warn)}
+.form td{background:var(--warn-soft)}
+.form textarea{width:100%;min-height:60px;border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit;background:var(--surface);color:var(--ink)}
+.row{display:flex;gap:6px;justify-content:flex-end;margin-top:6px}
+.btn{border:0;border-radius:10px;padding:8px 14px;font:600 14px/1 var(--fb);cursor:pointer;background:var(--acc);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink-2);border:1px solid var(--line)}
+.btn.okb{background:var(--ok)}
+.song{font-size:14px;color:var(--ink-2);margin-top:4px}.song a{color:var(--acc)}
+.chan{display:flex;justify-content:flex-end;margin-top:12px}
+.gy-list{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 14px;margin-bottom:10px}
+.gy{padding:9px 0;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.gy:first-child{border-top:0}
+.gy .t{flex:1;min-width:0}.gy .m{font-size:13px;color:var(--ink-2)}
+.gy .note{white-space:pre-wrap}
+.empty{color:var(--ink-2);padding:10px 0}
+.hint{font-size:13px;color:var(--ink-2)}
+button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+<div class="wrap">
+  <h1>Duyệt bài app SunMoon</h1>
+  <ul class="intro">
+    <li><b>Chọn app ở thanh trên</b>, bấm từng bài để mở</li>
+    <li><b>Thấy chỗ nào sai</b> (chữ, pinyin, nghĩa, câu) thì bấm <b>Báo sai</b>, ghi ngắn cách sửa</li>
+    <li><b>Xem xong bài</b> thì bấm <b>Duyệt xong bài này</b></li>
+    <li><i>Câu hỏi trong app được máy tạo từ bảng từ và câu mẫu dưới đây, sửa từ/câu là câu hỏi đổi theo</i></li>
+  </ul>
+  <div class="sum"><div><b>{{SO_APP}}</b><span>app</span></div><div><b>{{TONG_TU}}</b><span>từ</span></div><div><b>{{TONG_CAU}}</b><span>câu mẫu</span></div><div><b id="sGy">0</b><span>góp ý chờ sửa</span></div><div><b id="sOk">0</b><span>bài đã duyệt</span></div></div>
+  <p class="hint" id="dbNote"></p>
+  <details id="gyBox"><summary><b>Góp ý đã gửi</b> <span class="hint" id="gyCount"></span></summary><div class="gy-list" id="gyList"><div class="empty">Chưa có góp ý nào.</div></div></details>
+  <nav class="tabs" id="tabs" aria-label="Chọn app"></nav>
+  <main id="ds"></main>
+</div>
+<script>
+const DATA = /*DATA*/[];
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let cur = 0; try { cur = Math.min(+localStorage.getItem("duyet-app") || 0, DATA.length - 1); } catch (e) {}
+let DB = null, GY = [], OK = {}, mo = {};
+const baiKey = (k, i) => k + "-" + i;
+
+function veTabs() {
+  document.getElementById("tabs").innerHTML = DATA.map((d, i) => {
+    const n = GY.filter(g => g.key === d.key && g.trangThai !== "Đã sửa").length;
+    return `<button aria-pressed="${i === cur}" data-t="${i}">${esc(d.name)}${n ? `<span class="n">· ${n} góp ý</span>` : ""}</button>`;
+  }).join("");
+}
+function veDs() {
+  const d = DATA[cur];
+  document.getElementById("ds").innerHTML = d.lessons.map(L => {
+    const bk = baiKey(d.key, L.i), gyBai = GY.filter(g => g.key === d.key && g.bai === L.i && g.trangThai !== "Đã sửa");
+    const daBao = new Set(gyBai.map(g => g.loai + "|" + g.muc));
+    const chip = gyBai.length ? `<span class="chip gy">${gyBai.length} góp ý</span>` : OK[bk] ? `<span class="chip ok">Đã duyệt</span>` : `<span class="chip cho">Chưa duyệt</span>`;
+    const rowW = (w, j) => `<tr><td class="h">${esc(w[0])}</td><td class="p">${esc(w[1])}</td><td>${esc(w[2])}</td><td class="x">${DB ? `<button class="bao${daBao.has("Từ|" + w[0]) ? " co" : ""}" data-bao="Từ|${L.i}|${j}">Báo sai</button>` : ""}</td></tr>`;
+    const rowS = (s, j) => `<tr><td><div class="h" style="font-size:19px">${esc(s[0])}</div><div class="p" style="color:var(--acc);font-weight:600">${esc(s[1])}</div><div>${esc(s[2])}</div></td><td class="x">${DB ? `<button class="bao${daBao.has("Câu|" + s[0]) ? " co" : ""}" data-bao="Câu|${L.i}|${j}">Báo sai</button>` : ""}</td></tr>`;
+    return `<details class="bai" data-b="${L.i}"${mo[bk] ? " open" : ""}><summary><span class="no">Bài ${L.i}</span><span class="zh">${esc(L.zh)}</span><span>${esc(L.vi)}</span><span class="hint">${L.w.length} từ · ${L.s.length} câu</span>${chip}</summary>
+      <div class="body">${L.song ? `<div class="song">Bài hát: <span class="h">${esc(L.song[0])}</span> · ${esc(L.song[1])} · <a href="https://www.youtube.com/watch?v=${esc(L.song[2])}" target="_blank" rel="noopener">xem trên YouTube</a></div>` : ""}
+      <h3>Từ mới</h3><div class="tw"><table>${L.w.map(rowW).join("")}</table></div>
+      <h3>Câu mẫu</h3><div class="tw"><table>${L.s.map(rowS).join("")}</table></div>
+      ${DB ? `<div class="chan"><button class="btn ${OK[bk] ? "ghost" : "okb"}" data-ok="${L.i}">${OK[bk] ? "Bỏ đánh dấu đã duyệt" : "Duyệt xong bài này"}</button></div>` : ""}</div></details>`;
+  }).join("");
+}
+function veGy() {
+  const cho = GY.filter(g => g.trangThai !== "Đã sửa");
+  document.getElementById("sGy").textContent = cho.length;
+  document.getElementById("sOk").textContent = Object.values(OK).filter(Boolean).length;
+  document.getElementById("gyCount").textContent = GY.length ? `· ${cho.length} chờ sửa / ${GY.length}` : "";
+  document.getElementById("gyList").innerHTML = GY.length ? GY.map(g => `<div class="gy"><div class="t"><div class="m">${esc(g.cap)} · Bài ${g.bai} · ${esc(g.loai)} · ${esc((g.luc || "").slice(0, 16).replace("T", " "))}</div>
+    <div><span class="h" style="font-size:18px">${esc(g.muc)}</span> ${esc(g.pinyin || "")} · ${esc(g.nghia || "")}</div><div class="note">→ ${esc(g.ghiChu)}</div></div>
+    <span class="chip ${g.trangThai === "Đã sửa" ? "ok" : "gy"}">${esc(g.trangThai || "Mới")}</span></div>`).join("") : `<div class="empty">Chưa có góp ý nào.</div>`;
+}
+function veTatCa() { veTabs(); veDs(); veGy(); }
+
+document.getElementById("tabs").addEventListener("click", e => {
+  const b = e.target.closest("[data-t]"); if (!b) return;
+  cur = +b.dataset.t; try { localStorage.setItem("duyet-app", cur); } catch (x) {}
+  veTabs(); veDs();
+});
+document.getElementById("ds").addEventListener("toggle", e => {
+  const d = e.target.closest("details.bai"); if (d) mo[baiKey(DATA[cur].key, +d.dataset.b)] = d.open;
+}, true);
+document.getElementById("ds").addEventListener("click", async e => {
+  const bao = e.target.closest("[data-bao]");
+  if (bao) {
+    const tr = bao.closest("tr"); if (tr.nextElementSibling && tr.nextElementSibling.classList.contains("form")) { tr.nextElementSibling.remove(); return; }
+    const [loai, bai, j] = bao.dataset.bao.split("|"), L = DATA[cur].lessons.find(x => x.i === +bai), it = loai === "Từ" ? L.w[+j] : L.s[+j];
+    const cols = tr.children.length;
+    tr.insertAdjacentHTML("afterend", `<tr class="form"><td colspan="${cols}"><textarea placeholder="Sai ở đâu, sửa thế nào? VD: pinyin đúng là …, nghĩa nên là …"></textarea><div class="row"><button class="btn ghost" data-huy>Huỷ</button><button class="btn" data-gui>Gửi góp ý</button></div></td></tr>`);
+    const f = tr.nextElementSibling, ta = f.querySelector("textarea"); ta.focus();
+    f.querySelector("[data-huy]").onclick = () => f.remove();
+    f.querySelector("[data-gui]").onclick = async ev => {
+      const note = ta.value.trim(); if (!note) { ta.focus(); return; }
+      ev.target.disabled = true;
+      const d = DATA[cur];
+      try {
+        await DB.collection("gopy").add({ cap: d.name, key: d.key, bai: +bai, loai, muc: it[0], pinyin: it[1], nghia: it[2], ghiChu: note.slice(0, 1000), luc: new Date().toISOString(), trangThai: "Mới" });
+        f.remove();
+      } catch (x) { ev.target.disabled = false; alert("Chưa gửi được góp ý, chị thử lại giúp em."); }
+    };
+    return;
+  }
+  const ok = e.target.closest("[data-ok]");
+  if (ok && DB) {
+    const bk = baiKey(DATA[cur].key, +ok.dataset.ok), v = !OK[bk];
+    ok.disabled = true;
+    try { await DB.doc("duyet/" + bk).set({ ok: v, luc: new Date().toISOString() }); } catch (x) { ok.disabled = false; }
+  }
+});
+
+veTatCa();
+(async () => {
+  const db = window.claude && window.claude.use ? await window.claude.use("db") : null;
+  if (!db) { document.getElementById("dbNote").textContent = "Trang đang ở chế độ chỉ xem: mở trên claude.ai để gửi góp ý và đánh dấu đã duyệt."; return; }
+  DB = db; veDs();
+  db.collection("gopy").orderBy("luc", "desc").limit(500).onSnapshot(s => { GY = s.docs.map(x => x.data()); veTatCa(); }, () => {});
+  db.collection("duyet").onSnapshot(s => { OK = {}; s.docs.forEach(x => { OK[x.id] = !!(x.data() || {}).ok; }); veDs(); veGy(); }, () => {});
+})();
+</script>
