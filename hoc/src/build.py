@@ -1,7 +1,13 @@
-# Dựng app học YCT: python3 build.py 1   (hoặc 2, 3, 4; không ghi = 1)
+# Dựng app học: python3 build.py 1 (YCT 1…4)  ·  python3 build.py hsk 1 (HSK 1…4)
 import re,json,urllib.request,urllib.parse,os,subprocess,base64,hashlib,sys,shutil
-LV=int(sys.argv[1]) if len(sys.argv)>1 else 1
-src=lambda n: 'yct.js' if n==1 else f'yct{n}.js'
+args=[a for a in sys.argv[1:]]
+KIND='hsk' if args and args[0].lower()=='hsk' else 'yct'
+if KIND=='hsk': args=args[1:]
+LV=int(args[0]) if args else 1
+KU=KIND.upper()   # YCT / HSK
+YCT_COLORS='const COLORS = [["#E9B44C","#C99532","#2B2622"],["#5B9A9B","#467D7E","#fff"],["#D2693F","#B0522C","#fff"],["#8AA671","#6F8A58","#fff"],["#6C8CB5","#557396","#fff"],["#9C6B8E","#7E5373","#fff"]];'
+HSK_COLORS='const COLORS = [["#2F4B7C","#1F3560","#fff"],["#B5832A","#8E6519","#fff"],["#3F8A73","#2E6B58","#fff"],["#A94B3A","#843829","#fff"],["#5E6C84","#465267","#fff"],["#7D5A7A","#62455F","#fff"]];'
+src=lambda n: (f'hsk{n}.js' if KIND=='hsk' else ('yct.js' if n==1 else f'yct{n}.js'))
 js=open(src(LV),encoding='utf-8').read()
 WRE=r'\[\s*"([^"]+)","([^"]+)","([^"]+)"\s*\]'
 def words_of(text):
@@ -46,7 +52,17 @@ for c in sorted(wchars):
     need[c]=data[c]
 json.dump(data,open(cache,'w',encoding='utf-8'),ensure_ascii=False)
 s=open('app.html',encoding='utf-8').read()
-s=s.replace('YCT 1',f'YCT {LV}').replace('YCT1',f'YCT{LV}').replace('yct1',f'yct{LV}')
+s=s.replace('YCT 1',f'{KU} {LV}').replace('YCT1',f'{KU}{LV}').replace('yct1',f'{KIND}{LV}')
+if KIND=='hsk':   # học viên HSK là thiếu niên / người lớn: xưng "bạn"
+    for a,b in [("Con điền","Bạn điền"),("Con quay lại","Bạn quay lại"),("Con kiểm tra","Bạn kiểm tra"),("Con học xong","Bạn học xong"),
+                ("Số điện thoại phụ huynh","Số điện thoại"),(">Tên bé<",">Họ tên<"),("Ba mẹ điền","Bạn điền"),("Đơn của ba mẹ","Đơn của bạn"),
+                ("Con có muốn","Bạn có muốn"),("Con mở lại","Bạn mở lại"),("Con đã học hết","Bạn đã học hết"),("Con nghe mẫu","Bạn nghe mẫu"),
+                ("Con đọc giống","Tôi đọc giống"),("con nghe mẫu","bạn nghe mẫu"),("Con cho phép","Bạn cho phép"),("con thử lại","bạn thử lại"),
+                ("Con trả lời","Bạn trả lời"),("VD: An Nhiên","VD: Minh Anh"),("gửi tên đăng nhập và mã qua Zalo số","gửi tên đăng nhập và mã qua Zalo số")]:
+        s=s.replace(a,b)
+    s=s.replace('</style>', open('hsk-theme.css',encoding='utf-8').read()+'</style>', 1)
+    s=s.replace(YCT_COLORS, HSK_COLORS)
+    s=s.replace('--c:#4E8F91;--c2:#3C7375;--onc:#fff','--c:#5E6C84;--c2:#465267;--onc:#fff')
 s=s.replace('/*DATA*/',js).replace('/*PRIOR*/{}',json.dumps(prior,ensure_ascii=False))
 s=s.replace('/*STROKES*/{}',json.dumps(need,ensure_ascii=False,separators=(',',':')))
 # bộ thủ + cách ghép chữ (makemeahanzi, cùng nguồn với nét chữ)
@@ -60,9 +76,9 @@ s=s.replace('/*RAD*/{}',json.dumps(rad,ensure_ascii=False,separators=(',',':')))
 songs={}
 if os.path.exists('songs.js'):
     out=subprocess.run(['node','-e',"const fs=require('fs'),vm=require('vm');const c=vm.createContext({});vm.runInContext(fs.readFileSync('songs.js','utf8')+';globalThis.__S=SONGS;',c);process.stdout.write(JSON.stringify(c.__S))"],capture_output=True,text=True)
-    if out.returncode==0: songs=json.loads(out.stdout).get(f'YCT{LV}', {})
+    if out.returncode==0: songs=json.loads(out.stdout).get(f'{KU}{LV}', {})
     else: print('!! songs.js lỗi:', out.stderr[:200])
-s=s.replace('/*SONGS*/{}',json.dumps({f'YCT{LV}': songs},ensure_ascii=False))
+s=s.replace('/*SONGS*/{}',json.dumps({f'{KU}{LV}': songs},ensure_ascii=False))
 sw=s.replace('/*AUDIO*/{}',json.dumps(web,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*AUDIO*/{}',json.dumps(audio,ensure_ascii=False,separators=(',',':')))
 # bản web: tiếng đọc để file riêng trong hoc/audio/, mở tới đâu tải tới đó
@@ -70,11 +86,12 @@ os.makedirs('../audio',exist_ok=True)
 for m in sorted(dung):
     d='../'+m
     if not os.path.exists(d) or os.path.getmtime(m)>os.path.getmtime(d): shutil.copy2(m,d)
-open(f'../yct{LV}-artifact.html','w',encoding='utf-8').write(s)
+open(f'../{KIND}{LV}-artifact.html','w',encoding='utf-8').write(s)
+THEME='#2F4B7C' if KIND=='hsk' else '#4E8F91'
 page=('<!doctype html>\n<html lang="vi">\n<head>\n<meta charset="utf-8">\n'
       '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-      '<meta name="theme-color" content="#4E8F91">\n'
+      '<meta name="theme-color" content="'+THEME+'">\n'
       '<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>\n'
       + sw.replace('</style>', '</style>\n</head>\n<body>', 1) + '\n</body>\n</html>\n')
-open(f'../yct{LV}.html','w',encoding='utf-8').write(page)
-print(f'YCT{LV}: {len(vocab)} từ, {len(sents)} câu, {len(audio)} tiếng đọc, {len(need)} chữ viết · trang web {len(page.encode())//1024} KB + tiếng {sum(os.path.getsize(m) for m in dung)//1024} KB')
+open(f'../{KIND}{LV}.html','w',encoding='utf-8').write(page)
+print(f'{KU}{LV}: {len(vocab)} từ, {len(sents)} câu, {len(audio)} tiếng đọc, {len(need)} chữ viết · trang web {len(page.encode())//1024} KB + tiếng {sum(os.path.getsize(m) for m in dung)//1024} KB')
