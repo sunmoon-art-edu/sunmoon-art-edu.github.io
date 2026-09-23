@@ -582,7 +582,12 @@ const UKEY = "sunmoon-user";
 let U = null; try { U = JSON.parse(localStorage.getItem(UKEY)); } catch (e) {}
 const saveU = () => { try { U ? localStorage.setItem(UKEY, JSON.stringify(U)) : localStorage.removeItem(UKEY); } catch (e) {} };
 const TEACHER = /thu-sm/.test(location.hash);   // thầy cô xem thử: thêm #thu-sm vào cuối link
-const paid = n => n.intro || n.free || P.all || (n.adv ? !!(U && U.nc) : !!U || n.lesson < FREE_LESSONS);
+const HOC_THU = (() => {   // học thử miễn phí: nửa đầu phần cơ bản của Bài 1
+  const b = (LESSONS[0].nodes || []).filter(n => !n.adv && !n.free);
+  return new Set(b.slice(0, Math.max(1, Math.ceil(b.length / 2))).map(n => n.id));
+})();
+const xongHocThu = () => [...HOC_THU].every(id => P.done[id]);
+const paid = n => n.intro || n.free || P.all || (n.adv ? !!(U && U.nc) : !!U || HOC_THU.has(n.id));
 const PRICE_NC_NGOAI = 199000;
 const khongDau = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D");
 
@@ -670,7 +675,7 @@ function thanksPanel(li) {
 function openPay(finished, li, pkg0) {
   let pkg = pkg0 || "HSK3";
   openPanel(`<div class="pw">${mascot(finished ? "happy" : "wow", "m")}
-    <h2>${finished ? `Bạn học xong Bài ${(li || 0) + 1} rồi, giỏi quá!` : pkg0 ? "Phần này dành cho bản nâng cao" : "Học tiếp cần mã học viên"}</h2>
+    <h2>${finished ? "Con học thử xong rồi, giỏi quá!" : pkg0 ? "Phần này dành cho bản nâng cao" : "Học tiếp cần mã học viên"}</h2>
     <div class="choice"><h3>Học viên SunMoon</h3><small>Trung tâm cấp mã học bản cơ bản miễn phí cho học viên</small><button class="btn wide" id="goLogin">Đăng nhập</button></div>
     <div class="choice"><h3>Mua app HSK 3</h3>
       <div class="pkg"><button data-pkg="HSK3">Bản cơ bản<b>${PRICE.toLocaleString("vi-VN")}đ</b>Cả ${LESSONS.length} bài: từ mới, tập viết, luyện câu</button><button data-pkg="HSK3+">Cơ bản + nâng cao<b>${PRICE_NC_NGOAI.toLocaleString("vi-VN")}đ</b>Thêm bộ thủ, trò chơi, thử thách</button></div>
@@ -793,7 +798,7 @@ function renderHome() {
     const L = LESSONS[cur.lesson];
     h += paid(cur)
       ? `<section class="next">${mascot(doneCount ? "happy" : "wow")}<div><div class="t1">${doneCount ? "Học tiếp nào" : "Bắt đầu thôi"}</div><div class="t2">Bài ${cur.lesson + 1} · ${cur.label}</div></div><button class="btn" data-go="${cur.id}">Học</button></section>`
-      : `<section class="next">${mascot("happy")}<div><div class="t1">Xong bài học thử</div><div class="t2">Mở khoá ${LESSONS.length - FREE_LESSONS} bài còn lại</div></div><button class="btn" data-pay>Mở khoá</button></section>`;
+      : `<section class="next">${mascot("happy")}<div><div class="t1">Xong phần học thử</div><div class="t2">Mở khoá cả ${LESSONS.length} bài</div></div><button class="btn" data-pay>Mở khoá</button></section>`;
   } else {
     h += `<section class="next">${mascot()}<div><div class="t1">Hoàn thành</div><div class="t2">Bạn đã học hết HSK 3!</div></div></section>`;
   }
@@ -1537,8 +1542,9 @@ function finish(win) {
   if (win) { confetti(); sfx("win"); setTimeout(() => { countUp($("#fXp"), 0, P.xp - S.xpTruoc, 900); countUp($("#fAcc"), 0, acc, 900); }, 350); }
   const xpTruoc = S.xpTruoc, xpSau = P.xp;
   const node = S.node;
-  const xongCoBan = win && !P.all && !node.adv && !node.intro && node.lesson != null && basicDone(node.lesson);
-  const moi = xongCoBan ? (!U ? () => openPay(true, node.lesson) : !U.nc ? () => openAdv(node.lesson, true) : null) : null;
+  const moi = !P.all && win && !node.adv && !node.intro && node.lesson != null
+    ? (!U ? (HOC_THU.has(node.id) && xongHocThu() ? () => openPay(true, node.lesson) : null)
+      : !U.nc && basicDone(node.lesson) ? () => openAdv(node.lesson, true) : null) : null;
   $("#fDone").onclick = () => { $("#finish").hidden = true; quitLesson(); if (win) countUp($("#xp"), xpTruoc, xpSau, 900); if (moi) setTimeout(moi, 350); requestAnimationFrame(() => { const c = document.querySelector(".node.cur"); c && c.scrollIntoView({ block: "center" }); }); };
   const r = $("#fRetry"); if (r) r.onclick = () => { $("#finish").hidden = true; startNode(node); };
 }

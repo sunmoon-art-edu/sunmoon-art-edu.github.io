@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4E8F91">
+<title>Đăng nhập học viên · SunMoon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=LXGW+WenKai+TC&display=swap">
+<style>
+:root{--bg:#FAF7F0;--surface:#FFFFFF;--ink:#2B2622;--ink-2:#6E655C;--line:#E8E0D0;--sun:#F2BE55;--sun-2:#D49E35;--on-sun:#2B2622;
+  --moon:#4E8F91;--moon-2:#3C7375;--moon-soft:#E1EEEE;--bad:#D9582F;--ok:#5E9E5A;--ok-soft:#E6F0E1;
+  --fb:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;--fh:"LXGW WenKai TC","Noto Sans SC",serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1E1B18;--surface:#2A2622;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D372F;--moon:#6FAEB0;--moon-soft:#24393A;--ok:#7DBA77;--ok-soft:#22331F}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--fb);padding:max(20px,env(safe-area-inset-top)) 16px 60px}
+.wrap{max-width:560px;margin:0 auto}
+header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+header img{height:46px;width:auto}
+header b{font:600 22px/1 var(--fb)}
+header span{display:block;font-size:13px;color:var(--ink-2)}
+h1{font:600 26px/1.2 var(--fb);margin:0 0 6px;text-wrap:balance}
+.lead{color:var(--ink-2);margin:0 0 18px}
+.the{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+label{display:block;font-size:14px;color:var(--ink-2);margin-bottom:6px}
+input{width:100%;font:500 17px/1.2 var(--fb);padding:13px 14px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin-bottom:12px}
+input:focus{outline:none;border-color:var(--moon)}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:14px;padding:14px;font:600 16px/1.25 var(--fb);background:var(--sun);color:var(--on-sun);border-bottom:5px solid var(--sun-2);cursor:pointer}
+.btn.ghost{background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-bottom-width:3px}
+.btn+.btn{margin-top:10px}
+.loi{color:var(--bad);font-size:14px;min-height:1.3em;margin:0 0 8px}
+.hang{display:flex;align-items:center;gap:12px}
+.hang .t{flex:1;min-width:0}
+.ten{font-weight:600}
+.phu{font-size:14px;color:var(--ink-2)}
+.chip{font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;background:var(--moon-soft);color:var(--moon)}
+.chip.nc{background:var(--ok-soft);color:var(--ok)}
+.hoc{background:var(--moon);color:#fff;border:0;border-radius:12px;padding:10px 16px;font:600 15px/1 var(--fb);text-decoration:none;cursor:pointer;white-space:nowrap}
+.khoa{opacity:.55}
+.zalo{color:var(--moon);font-weight:600;text-decoration:none}
+footer{margin-top:24px;font-size:13px;color:var(--ink-2);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="../assets/logo-mark-web.png" alt=""><div><b>SunMoon</b><span>Art &amp; Education</span></div></header>
+  <main id="ds"></main>
+  <footer>Chưa có mã? <a class="zalo" href="https://zalo.me/0396308188" target="_blank" rel="noopener">Nhắn Zalo trung tâm 0396 308 188</a></footer>
+</div>
+<script>
+const API = "https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";
+const APPS = [["YCT1", "YCT 1", "yct1"], ["YCT2", "YCT 2", "yct2"], ["YCT3", "YCT 3", "yct3"], ["YCT4", "YCT 4", "yct4"],
+              ["HSK1", "HSK 1", "hsk1"], ["HSK2", "HSK 2", "hsk2"], ["HSK3", "HSK 3", "hsk3"], ["HSK4", "HSK 4", "hsk4"]];
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const khongDau = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D");
+let U = null; try { U = JSON.parse(localStorage.getItem("sunmoon-user")); } catch (e) {}
+
+function tienDo(key) {   // đọc tiến độ app đã lưu trên máy này
+  try {
+    const p = JSON.parse(localStorage.getItem("sunmoon-" + key + "-v1") || "{}");
+    const n = Object.values(p.done || {}).filter(Boolean).length;
+    return n ? n + " phần đã xong" : "";
+  } catch (e) { return ""; }
+}
+function veDangNhap(loi) {
+  $("#ds").innerHTML = `<h1>Đăng nhập học viên</h1>
+    <p class="lead">Nhập tên đăng nhập và mã trung tâm cấp để mở các app đã đăng ký.</p>
+    <div class="the">
+      <label for="u">Tên đăng nhập</label><input id="u" autocapitalize="characters" autocomplete="username" placeholder="VD: ANNHIEN">
+      <label for="m">Mã</label><input id="m" inputmode="numeric" autocomplete="current-password" placeholder="Mã 4 số">
+      <p class="loi" id="loi">${esc(loi || "")}</p>
+      <button class="btn" id="vao">Đăng nhập</button>
+    </div>
+    <div class="the"><div class="ten" style="margin-bottom:6px">Chưa có tài khoản?</div>
+      <p class="phu" style="margin:0 0 12px">Học thử miễn phí phần đầu, thích thì mua bản cơ bản 99.000đ hoặc bản nâng cao.</p>
+      <a class="btn ghost" href="yct1.html">Học thử YCT 1 (cho học sinh tiểu học)</a>
+      <a class="btn ghost" href="hsk1.html">Học thử HSK 1 (cho người lớn)</a></div>`;
+  const vao = async () => {
+    const u = khongDau($("#u").value).toUpperCase().replace(/[^A-Z0-9]/g, ""), m = $("#m").value.trim();
+    if (!u || !m) { $("#loi").textContent = "Bạn điền đủ tên đăng nhập và mã nhé"; return; }
+    $("#vao").disabled = true; $("#loi").textContent = "";
+    try {
+      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ app: "dangnhap", u, m }) }).then(x => x.json());
+      if (r && r.ok) {
+        U = { u, m, ten: r.ten || u, mo: r.giaoTrinh || [] };
+        try { localStorage.setItem("sunmoon-user", JSON.stringify({ u, m, ten: U.ten })); } catch (e) {}
+        veTrang();
+      } else { $("#loi").textContent = (r && r.loi) || "Tên đăng nhập hoặc mã chưa đúng"; $("#vao").disabled = false; }
+    } catch (e) { $("#loi").textContent = "Chưa kết nối được. Bạn kiểm tra mạng rồi thử lại nhé"; $("#vao").disabled = false; }
+  };
+  $("#vao").onclick = vao;
+  $("#m").onkeydown = e => { if (e.key === "Enter") vao(); };
+}
+function veDaVao() {
+  const mo = U.mo || [];
+  const co = g => mo.indexOf(g) >= 0 || mo.indexOf(g + "+") >= 0;
+  const nc = g => mo.indexOf(g + "+") >= 0;
+  $("#ds").innerHTML = `<h1>Chào ${esc(U.ten)}!</h1><p class="lead">Chọn giáo trình để học tiếp. Bài đang dở sẽ tự mở đúng chỗ.</p>` +
+    APPS.map(([g, ten, file]) => {
+      const mở = co(g), td = tienDo(file);
+      return `<div class="the hang${mở ? "" : " khoa"}"><div class="t"><div class="ten">${esc(ten)} ${mở ? `<span class="chip${nc(g) ? " nc" : ""}">${nc(g) ? "Nâng cao" : "Cơ bản"}</span>` : ""}</div>
+        <div class="phu">${mở ? (td || "Chưa học phần nào") : "Chưa mở · nhắn Zalo trung tâm để mở"}</div></div>
+        ${mở ? `<a class="hoc" href="${file}.html">Học tiếp</a>` : `<a class="hoc" style="background:var(--line);color:var(--ink-2)" href="${file}.html">Học thử</a>`}</div>`;
+    }).join("") +
+    `<button class="btn ghost" id="ra">Đăng xuất</button>`;
+  $("#ra").onclick = () => { U = null; try { localStorage.removeItem("sunmoon-user"); } catch (e) {} veDangNhap(); };
+}
+async function veTrang() {
+  if (!U) return veDangNhap();
+  if (!U.mo) {   // đã đăng nhập ở app khác: hỏi lại máy chủ xem mở những giáo trình nào
+    $("#ds").innerHTML = `<h1>Đang mở tài khoản…</h1>`;
+    try {
+      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ app: "dangnhap", u: U.u, m: U.m }) }).then(x => x.json());
+      if (r && r.ok) { U.mo = r.giaoTrinh || []; U.ten = r.ten || U.ten; }
+      else { try { localStorage.removeItem("sunmoon-user"); } catch (e) {} U = null; return veDangNhap(r && r.loi); }
+    } catch (e) { U.mo = []; }
+  }
+  veDaVao();
+}
+veTrang();
+</script>
+</body>
+</html>

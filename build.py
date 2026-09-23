@@ -229,7 +229,7 @@ DOCS_T = {
             bt='Bài tập SunMoon tự soạn', bt_d='Có tranh, pinyin, luyện chữ — làm ở lớp và ở nhà.', bt_alt='Phiếu bài tập SunMoon', pre='Giáo trình SunMoon PreChinese', pre_d='Giáo trình trung tâm tự soạn cho bé 3–7 tuổi. Bản xem thử sắp có.',
             comm='Tài liệu Giao tiếp', comm_d='Bộ mẫu câu giao tiếp theo tình huống do SunMoon biên soạn. Sắp có.',
             paid='Sách bài tập online', paid_d='Bài tập luyện thêm YCT · HSK · Giao tiếp, có đáp án. Có phí.', soon='Sắp ra mắt', ask='Nhắn Zalo để được báo sớm',
-            app_new='Mới · Học thử miễn phí Bài 1', app_h='App học YCT 1 – 4', app_d='Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game. Học thử Bài 1 miễn phí · bản cơ bản 99.000đ · có bản nâng cao với bộ thủ, trò chơi, thử thách.', app_cta='Học ngay', apph_h='App học HSK 1 – 4', apph_d='Từ vựng, nghe, xếp câu, tập viết chữ theo giáo trình HSK chuẩn. Học thử Bài 1 miễn phí · bản cơ bản 99.000đ · bản nâng cao có bộ thủ, trò chơi, luyện nói.',
+            app_new='Mới · Có phần học thử miễn phí', app_h='App học YCT 1 – 4', app_d='Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game. Học thử miễn phí · bản cơ bản 99.000đ · có bản nâng cao với bộ thủ, trò chơi, thử thách.', app_cta='Học ngay', apph_h='App học HSK 1 – 4', apph_d='Từ vựng, nghe, xếp câu, tập viết chữ theo giáo trình HSK chuẩn. Học thử miễn phí · bản cơ bản 99.000đ · bản nâng cao có bộ thủ, trò chơi, luyện nói.',
             src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
  'en': dict(badge='Free · Official materials · Leave your number once to download everything',
             yct='YCT — Youth Chinese Test', yct_sub='The international Chinese test for primary and secondary students. 4 levels.',
@@ -240,7 +240,7 @@ DOCS_T = {
             bt='SunMoon\'s own worksheets', bt_d='Pictures, pinyin and character practice — for class and home.', bt_alt='SunMoon worksheet', pre='SunMoon PreChinese course book', pre_d='Our own course book for ages 3–7. Preview pages coming soon.',
             comm='Conversation materials', comm_d='Situational phrase sets written by SunMoon. Coming soon.',
             paid='Online workbooks', paid_d='Extra YCT · HSK · conversation practice with answers. Paid.', soon='Coming soon', ask='Message us on Zalo to hear first',
-            app_new='New · Lesson 1 free', app_h='YCT 1 – 4 learning app', app_d='Listening, matching, sentence building and character writing — like a game. Lesson 1 free · basic 99,000đ · advanced adds radicals, games and challenges.', app_cta='Start learning', apph_h='HSK 1 – 4 learning app', apph_d='Vocabulary, listening, sentence building and character writing following the HSK Standard Course. Lesson 1 free · basic 99,000đ · advanced adds radicals, games and speaking.',
+            app_new='New · Free trial', app_h='YCT 1 – 4 learning app', app_d='Listening, matching, sentence building and character writing — like a game. Free trial · basic 99,000đ · advanced adds radicals, games and challenges.', app_cta='Start learning', apph_h='HSK 1 – 4 learning app', apph_d='Vocabulary, listening, sentence building and character writing following the HSK Standard Course. Free trial · basic 99,000đ · advanced adds radicals, games and speaking.',
             src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
  'zh': dict(badge='免费 · 官方资料 · 留一次电话即可下载全部',
             yct='YCT — 中小学生汉语考试', yct_sub='面向中小学生的国际标准化中文考试，共 4 级。',
@@ -251,7 +251,7 @@ DOCS_T = {
             bt='日月自编练习', bt_d='配图、拼音、写字练习——课堂和家里都能用。', bt_alt='日月练习单', pre='日月 PreChinese 教材', pre_d='中心自编的 3–7 岁教材，试读页即将上线。',
             comm='口语交际资料', comm_d='日月编写的情境句型资料，即将上线。',
             paid='线上练习册', paid_d='YCT · HSK · 口语额外练习，附答案，收费。', soon='即将推出', ask='Zalo 留言，第一时间通知您',
-            app_new='全新 · 第 1 课免费试学', app_h='YCT 1–4 学习 App', app_d='听力、配对、连词成句、写汉字——像玩游戏一样学习。第 1 课免费 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和挑战。', app_cta='开始学习', apph_h='HSK 1–4 学习 App', apph_d='按 HSK 标准教程学习词汇、听力、连词成句和写汉字。第 1 课免费 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和口语。',
+            app_new='全新 · 免费试学', app_h='YCT 1–4 学习 App', app_d='听力、配对、连词成句、写汉字——像玩游戏一样学习。免费试学 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和挑战。', app_cta='开始学习', apph_h='HSK 1–4 学习 App', apph_d='按 HSK 标准教程学习词汇、听力、连词成句和写汉字。免费试学 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和口语。',
             src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
 }
 YCT_INFO = [(1, 80, 32, 11), (2, 150, 39, 15), (3, 300, 47, 21), (4, 600, 50, 30)]
