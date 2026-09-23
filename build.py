@@ -281,7 +281,6 @@ def docs_section(lang):
     <p class="docs-badge reveal">{t['badge']}</p>
 
     <div class="docs-group reveal" id="app"><p class="docs-kicker">01</p><h3 class="h3">{t['s_app']}</h3><p class="lede">{t['s_app_d']}</p>
-      <p class="docs-login">{t['lg_q']} <a href="hoc/dang-nhap.html">{t['lg_a']}</a></p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>{t['app_new']}</small><strong>{t['app_h']}</strong><span>{t['app_d']}</span></span>
         <span class="app-lv">{''.join(f'<a class="btn btn-primary" href="hoc/yct{n}.html" target="_blank" rel="noopener">YCT {n}</a>' for n in (1, 2, 3, 4))}</span></div>
