@@ -29,6 +29,7 @@ for name, f, key in FILES:
         continue
     L = load(f)
     nd = load(key + '-nd.js', 'ND') or {} if os.path.exists(key + '-nd.js') else {}
+    gp = load(key + '-nguphap.js', 'NGUPHAP') or {} if os.path.exists(key + '-nguphap.js') else {}
     ls = []
     for i, x in enumerate(L):
         if x.get('review'):
@@ -60,7 +61,7 @@ for name, f, key in FILES:
         v = nd.get(str(i)) or {}
         ls.append({'i': i + 1, 'zh': x['zh'], 'vi': x['vi'], 'w': words, 's': [[z['z'], z['p'], z['v']] for z in sents],
                    'fill': fill, 'ghep': ghep, 'viet': viet, 'bothu': bothu[:4],
-                   'dl': v.get('dl'), 'rd': v.get('rd')})
+                   'dl': v.get('dl'), 'rd': v.get('rd'), 'gp': gp.get(str(i)) or []})
     data.append({'name': name, 'key': key, 'lessons': ls})
 
 tpl = open('nganhang-tpl.html', encoding='utf-8').read()

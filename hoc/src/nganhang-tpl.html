@@ -75,6 +75,9 @@ function veDs() {
     kho.push(["Đọc câu chọn nghĩa · Nghe chọn câu", L.s.map(s => [`<span class="h">${esc(s[0])}</span>`, esc(s[2])])]);
     if (L.viet.length) kho.push(["Nghe rồi viết chữ", L.viet.map(w => [`nghe “${esc(w[1])}” <span class="mini">${esc(w[2])}</span>`, `<span class="h">${esc(w[0])}</span>`])]);
     if (L.bothu.length) kho.push(["Bộ thủ (nâng cao)", L.bothu.map(b => [`<span class="h">${esc(b[0])}</span> thuộc bộ nào? ${b[4] ? `· ghép <span class="h">${esc(b[4])}</span>` : ""}`, `<span class="h">${esc(b[1])}</span> bộ ${esc(b[2])} · ${esc(b[3])}`])]);
+    if (L.gp && L.gp.length) kho.push(["Ngữ pháp", L.gp.map(g => [
+      `<span class="mini">${g.k === "dien" ? "Chọn từ đúng" : g.k === "xep" ? "Sắp xếp" : "Chọn câu đúng"}</span><br><span class="h">${esc(g.q)}</span>${g.v ? `<br><span class="mini">${esc(g.v)}</span>` : ""}<br><span class="mini">${g.o.map(o => esc(o)).join(" · ")}</span>`,
+      `<span class="h">${esc(g.o[g.a])}</span><div class="mini" style="color:var(--ink-2);font-weight:400">${esc(g.g || "")}</div>`])]);
     if (L.dl) {
       kho.push(["Nghe hội thoại rồi trả lời", L.dl.qs.map(q => [`<span class="h">${esc(q.q)}</span> <span class="mini">${esc(q.v)}</span><br><span class="mini">${q.o.map(o => esc(o)).join(" · ")}</span>`, `<span class="h">${esc(q.o[q.a])}</span>`])]);
     }
