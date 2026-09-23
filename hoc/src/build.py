@@ -96,6 +96,13 @@ if os.path.exists(hf):
     if o.returncode==0:
         x=json.loads(o.stdout); hinh={k:(x.get(k) or {}) for k in ('w','s','dl','rd')}
     else: print('!! lỗi', hf, o.stderr[:200])
+ngphap={}
+gf=f'{KIND}{LV}-nguphap.js'
+if os.path.exists(gf):
+    o=subprocess.run(['node','-e',"const fs=require('fs'),vm=require('vm');const c=vm.createContext({});vm.runInContext(fs.readFileSync(process.argv[1],'utf8')+';globalThis.__G=NGUPHAP;',c);process.stdout.write(JSON.stringify(c.__G))",gf],capture_output=True,text=True)
+    if o.returncode==0: ngphap=json.loads(o.stdout)
+    else: print('!! lỗi', gf, o.stderr[:200])
+s=s.replace('/*NGUPHAP*/{}',json.dumps(ngphap,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*HINH*/{ w: {}, s: {}, dl: {}, rd: {} }',json.dumps(hinh,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*ND*/{}',json.dumps(nd,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*SONGS*/{}',json.dumps({f'{KU}{LV}': songs},ensure_ascii=False))

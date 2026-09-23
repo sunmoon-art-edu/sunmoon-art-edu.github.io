@@ -326,6 +326,7 @@ svg .rays{transform-origin:50px 50px;animation:pulse 2.4s ease-in-out infinite}
 .anh.to{font-size:76px;margin:0 auto 10px}
 .prompt>.anh{width:auto;font-size:38px;white-space:nowrap;max-width:45%}
 @media (max-width:400px){.anh{font-size:46px}.anh.to{font-size:64px}}
+.onchip{display:inline-block;vertical-align:middle;font:600 12px/1 var(--f-body);letter-spacing:.04em;text-transform:uppercase;background:var(--moon-soft);color:var(--moon);padding:5px 9px;border-radius:999px;margin-left:6px}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--bg);font-weight:500;padding:10px 16px;border-radius:12px;max-width:calc(100% - 32px);text-align:center}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -380,6 +381,7 @@ svg .rays{transform-origin:50px 50px;animation:pulse 2.4s ease-in-out infinite}
 <script>const SONGS = /*SONGS*/{};</script>
 <script>const ND = /*ND*/{};</script>
 <script>const HINH = /*HINH*/{ w: {}, s: {}, dl: {}, rd: {} };</script>
+<script>const NGUPHAP = /*NGUPHAP*/{};</script>
 <script>
 /*DATA*/
 const PRIOR_PY = /*PRIOR*/{};
@@ -839,6 +841,24 @@ function distract(w, key, n = 3, ok = () => true) {
   return out;
 }
 const canListen = w => !PARTICLES.has(w.h);
+// ---- ôn lại bài trước (khoảng 20–30% mỗi phần) ----
+function tuTruoc(li, n) {            // từ của các bài trước, ưu tiên bài gần đây
+  const pool = ALL.filter(w => w.l < li);
+  if (!pool.length) return [];
+  const gan = pool.filter(w => w.l >= li - 3);
+  return shuffle(gan.length >= n ? gan : pool).slice(0, n);
+}
+function cauTruoc(li, n) {
+  const pool = ALL_SENTS.filter(x => x.l < li);
+  return pool.length ? shuffle(pool).slice(0, n) : [];
+}
+function chuTruoc(li, n) {
+  const pool = [...new Set(ALL.filter(w => w.l < li).flatMap(w => [...w.h]))].filter(c => STROKES[c]);
+  return pool.length ? shuffle(pool).slice(0, n) : [];
+}
+function onTu(li, n) {               // câu hỏi ôn: chọn nghĩa / nghe chọn chữ / chọn pinyin
+  return tuTruoc(li, n).map((w, i) => ({ t: i % 3 === 0 ? "meaning" : i % 3 === 1 && canListen(w) ? "listen" : "pinyin", w, on: true }));
+}
 function exWords(node) {
   const W = node.words, q = [];
   for (let i = 0; i < W.length; i += 2) {
@@ -852,6 +872,7 @@ function exWords(node) {
   q.push({ t: "reverse", w: r[0] });
   if (r[1]) q.push({ t: "pinyin", w: r[1] });
   const lw = shuffle(W.filter(canListen))[0]; if (lw) q.push({ t: "listen", w: lw });
+  q.push(...onTu(node.lesson, 3));                       // ôn bài trước (~20–25%)
   return q;
 }
 // từ cùng nhóm thay vào vẫn thành câu đúng → không dùng làm đáp án nhiễu
@@ -895,7 +916,9 @@ function exTest(L) {
   ss.slice(0, 2).forEach(s => q.push({ t: "fill", s, k: blankOf(s), hard: true }));
   ss.slice(0, 2).forEach(s => q.push({ t: "arrange", s, hard: true }));
   if (ss[1]) q.push({ t: "hearsent", s: ss[1] });
-  return shuffle(q).slice(0, 10);
+  q.push(...onTu(L.i, 2));
+  cauTruoc(L.i, 1).forEach(x => q.push({ t: "fill", s: x, k: blankOf(x), on: true }));
+  return shuffle(q).slice(0, 12);
 }
 // NGHE: nghe chọn từ, nghe xếp câu, nghe hội thoại trả lời câu hỏi, nghe chọn câu
 function exNghe(L) {
@@ -905,6 +928,8 @@ function exNghe(L) {
   if (ss[0]) q.push({ t: "listenArr", s: ss[0] });
   if (ss[1]) q.push({ t: "hearsent", s: ss[1] });
   if (nd.dl) nd.dl.qs.forEach((x, k) => q.push({ t: "dlq", dl: nd.dl, qi: k }));
+  q.push(...onTu(L.i, 1));
+  cauTruoc(L.i, 1).forEach(x => q.push({ t: "hearsent", s: x, on: true }));
   return q;
 }
 // NÓI: đọc theo từ, đọc theo câu, đóng vai trong hội thoại
@@ -915,13 +940,17 @@ function exNoiCB(L) {
   if (nd.dl) nd.dl.lines.forEach((l, k) => { if (k > 0 && l.r === "B" && q.length < 6) q.push({ t: "noi", zh: l.z, p: l.p, v: l.v, ctx: nd.dl.lines[k - 1] }); });
   return q;
 }
-// ĐỌC: đọc hiểu câu, điền từ, nối pinyin, đọc đoạn văn trả lời câu hỏi
+// ĐỌC: đọc mẫu câu → ngữ pháp → đọc hiểu đoạn văn
 function exDoc(L) {
-  const q = [], nd = ND[L.i] || {}, ss = shuffle(L.sents);
+  const q = [], nd = ND[L.i] || {}, gp = NGUPHAP[L.i] || [];
+  L.sents.forEach(s => q.push({ t: "maucau", s }));                    // đọc mẫu câu
+  gp.forEach(g => q.push({ t: "gram", g }));                           // ngữ pháp có giải thích
+  const ss = shuffle(L.sents);
   if (ss[0]) q.push({ t: "read", s: ss[0] });
-  ss.slice(1, 3).forEach(s => q.push({ t: "fill", s, k: blankOf(s) }));
-  if (L.W.length >= 3) q.push({ t: "match", ws: shuffle(L.W).slice(0, 5), py: true });
+  if (ss[1]) q.push({ t: "fill", s: ss[1], k: blankOf(ss[1]) });
   if (nd.rd) nd.rd.qs.forEach((x, k) => q.push({ t: "rdq", rd: nd.rd, qi: k }));
+  cauTruoc(L.i, 2).forEach((x, k) => q.push(k ? { t: "fill", s: x, k: blankOf(x), on: true } : { t: "read", s: x, on: true }));
+  (NGUPHAP[L.i - 1] || []).slice(0, 1).forEach(g => q.push({ t: "gram", g, on: true }));
   return q;
 }
 // VIẾT CÂU: ghép chữ thành từ, ghép câu (dịch sang tiếng Trung), nghe viết chữ
@@ -930,6 +959,8 @@ function exViet(L) {
   shuffle(L.W.filter(w => w.h.length > 1 && [...w.h].every(c => /[\u4e00-\u9fff]/.test(c)))).slice(0, 3).forEach(w => q.push({ t: "wordbuild", w }));
   shuffle(L.sents).slice(0, 2).forEach(s => q.push({ t: "arrange", s }));
   shuffle(L.W.filter(w => w.h.length === 1 && STROKES[w.h] && canListen(w))).slice(0, 2).forEach(w => q.push({ t: "write", c: w.h, memory: true, dict: true }));
+  cauTruoc(L.i, 1).forEach(x => q.push({ t: "arrange", s: x, on: true }));
+  tuTruoc(L.i, 1).filter(w => w.h.length > 1).forEach(w => q.push({ t: "wordbuild", w, on: true }));
   return q;
 }
 function exRad(node) {
@@ -952,7 +983,8 @@ function reviewLesson() {
 function exWrite(node) {
   const chars = node.review ? shuffle([...new Set(ALL.flatMap(w => [...w.h]))].filter(c => STROKES[c])).slice(0, 8) : node.chars;
   if (node.review) return chars.map(c => ({ t: "write", c, memory: true }));
-  return [...chars.map(c => ({ t: "write", c, demo: true })), ...shuffle(chars).map(c => ({ t: "write", c, memory: true }))];
+  return [...chars.map(c => ({ t: "write", c, demo: true })), ...shuffle(chars).map(c => ({ t: "write", c, memory: true })),
+    ...chuTruoc(node.lesson, 2).map(c => ({ t: "write", c, memory: true, on: true }))];
 }
 
 /* session */
@@ -999,6 +1031,11 @@ function renderEx() {
   S.mode = "check"; S.ans = null; S.checker = null; S.sol = "";
   $(".lbody").scrollTop = 0;
   R[ex.t](ex);
+  if (ex.on) {   // câu ôn lại bài trước
+    const nhan = stage.querySelector(".ask");
+    const li = ex.w ? ex.w.l : ex.s ? ex.s.l : ex.g ? null : null;
+    if (nhan) nhan.insertAdjacentHTML("beforeend", ` <span class="onchip">Ôn lại${li != null ? " Bài " + (li + 1) : ""}</span>`);
+  }
 }
 const wordSol = w => `<span class="h">${esc(w.h)}</span> · ${esc(w.p)} · ${esc(w.v)}`;
 const sentSol = s => `<span class="h">${esc(sentZh(s))}</span><br>${esc(s.p)}<br>${esc(s.v)}`;
@@ -1102,6 +1139,27 @@ const R = {
     S.sol = sentSol(s); S.after = () => say(zh);
   },
   listenArr(ex) { R.arrange(ex, true); },
+  maucau(ex) {
+    const s = ex.s;
+    S.mode = "intro"; checkBtn.disabled = false; checkBtn.textContent = "Tiếp tục";
+    stage.innerHTML = `<div class="ask">Đọc mẫu câu</div><div class="card">${hS(s) ? anh(hS(s)) : ""}
+      <div class="p">${esc(s.p)}</div><div class="h" style="font-size:${sentZh(s).length > 8 ? 28 : 36}px">${esc(sentZh(s))}</div><div class="v">${esc(s.v)}</div>
+      <div class="row2"><button class="spk" data-say aria-label="Nghe">${IC.spk}</button><button class="spk slow" data-slow aria-label="Nghe chậm">${IC.turtle}</button></div></div>`;
+    stage.querySelector("[data-say]").onclick = () => speak(sentZh(s));
+    stage.querySelector("[data-slow]").onclick = () => speak(sentZh(s), true);
+    speak(sentZh(s));
+  },
+  gram(ex) {
+    const g = ex.g, k = g.k || "cau";
+    const de = k === "dien" ? `<div class="qbox"><div class="h">${esc(g.q)}</div>${g.v ? `<div class="v">${esc(g.v)}</div>` : ""}</div>`
+      : k === "xep" ? `<div class="qbox"><div class="v" style="color:var(--ink)">${esc(g.q)}</div></div>`
+      : `<div class="qbox"><div class="v" style="color:var(--ink)">${esc(g.q || "Câu nào đúng?")}</div></div>`;
+    stage.innerHTML = `<div class="ask">Ngữ pháp · ${k === "dien" ? "chọn từ đúng" : k === "xep" ? "sắp xếp đúng thứ tự" : "chọn câu đúng"}</div>${de}` +
+      optionsHtml(g.o.map((o, i) => ({ k: String(i), html: `<span class="h" style="font-size:${o.length > 10 ? 19 : 23}px">${esc(o)}</span>` })), k === "dien");
+    bindOptions(); S.checker = () => S.ans === String(g.a); S.key = String(g.a);
+    S.sol = `<span class="h">${esc(g.o[g.a])}</span>${g.g ? `<br><span style="font-weight:500">${esc(g.g)}</span>` : ""}`;
+    S.after = () => speak(String(g.o[g.a]).replace(/[＿_]/g, ""));
+  },
   dlq(ex) {
     const dl = ex.dl, qq = dl.qs[ex.qi];
     const hDl = (HINH.dl || {})[ex.dl.li != null ? ex.dl.li : S.node.lesson] || "";
