@@ -1,8 +1,8 @@
 <title>Ngân hàng câu hỏi SunMoon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Noto+Sans+SC:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=LXGW+WenKai+TC&family=Noto+Sans+SC:wght@400&display=swap">
 <style>
-:root{--bg:#FAF7F0;--surface:#FFFFFF;--ink:#2B2622;--ink-2:#6E655C;--line:#E8E0D0;--acc:#4E8F91;--acc-soft:#E1EEEE;--ok:#3F7D3A;--fb:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;--fh:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+:root{--bg:#FAF7F0;--surface:#FFFFFF;--ink:#2B2622;--ink-2:#6E655C;--line:#E8E0D0;--acc:#4E8F91;--acc-soft:#E1EEEE;--ok:#3F7D3A;--fb:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;--fh:"LXGW WenKai TC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1E1B18;--surface:#2A2622;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D372F;--acc:#6FAEB0;--acc-soft:#24393A;--ok:#7DBA77}}
 :root[data-theme="dark"]{--bg:#1E1B18;--surface:#2A2622;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D372F;--acc:#6FAEB0;--acc-soft:#24393A;--ok:#7DBA77}
 *{box-sizing:border-box}
@@ -16,24 +16,31 @@ h1{font:600 28px/1.15 var(--fb);margin:0 0 6px}
 .tools{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
 .btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font:600 14px/1 var(--fb);cursor:pointer}
 .btn.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.bai{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:12px 0;padding:14px;break-inside:avoid}
-.bai>h2{font:600 19px/1.3 var(--fb);margin:0 0 2px}
-.bai>h2 .zh{font-family:var(--fh)}
-.bai>h2 .no{color:var(--ink-2);font-size:13px;font-weight:600;margin-right:8px}
-.bai>.vi{color:var(--ink-2);margin-bottom:8px}
-h3{font:600 13px/1 var(--fb);color:var(--acc);margin:16px 0 6px;text-transform:uppercase;letter-spacing:.06em}
-table{width:100%;border-collapse:collapse}
-td{padding:6px 6px;border-top:1px solid var(--line);vertical-align:top}
-tr:first-child td{border-top:0}
+.bai{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin:14px 0;padding:16px 16px 6px;break-inside:avoid}
+.bai>h2{font:600 21px/1.3 var(--fb);margin:0 0 2px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.bai>h2 .zh{font-family:var(--fh);font-size:24px}
+.bai>h2 .no{color:#fff;background:var(--acc);font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px}
+.bai>.vi{color:var(--ink-2);margin-bottom:10px}
+h3{font:600 13px/1 var(--fb);color:var(--ink-2);margin:20px 0 8px;text-transform:uppercase;letter-spacing:.07em;border-top:2px solid var(--line);padding-top:12px}
+h3 b{color:var(--acc)}
+table{width:100%;border-collapse:separate;border-spacing:0 6px}
+td{padding:10px 12px;vertical-align:middle;background:var(--bg)}
+td.q{border-radius:12px 0 0 12px;width:56%}
+td.a{border-radius:0 12px 12px 0;color:var(--ink);font-weight:600;border-left:3px solid var(--acc)}
 .h{font-family:var(--fh)}
-td.q .h{font-size:19px}
-td.a{color:var(--ok);font-weight:600;width:42%}
-td.a .h{font-size:19px}
-.p{color:var(--acc);font-weight:500}
-.mini{color:var(--ink-2);font-size:13px}
+td.q .h{font-size:22px;line-height:1.5}
+td.a .h{font-size:24px;line-height:1.4}
+.p{color:var(--ink-2);font-weight:500}
+.mini{color:var(--ink-2);font-size:13px;font-weight:400}
+.dl{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.dl .ln{max-width:88%;background:var(--bg);border-radius:14px;padding:8px 12px}
+.dl .ln.b{align-self:flex-end;background:var(--acc-soft)}
+.dl .ln .h{font-size:21px}
+.doan{background:var(--bg);border-radius:14px;padding:12px}
+.doan .h{font-size:21px;line-height:1.7}
 .dap{display:none}
-body.hien .dap{display:block}
-@media print{.tabs,.tools,.hint{display:none}.bai{border:0;border-bottom:1px solid #ccc;border-radius:0;padding:8px 0}body{background:#fff;color:#000}}
+body.hien .dap{display:table-cell}
+@media print{.tabs,.tools,.hint{display:none}.bai{border:0;border-bottom:1px solid #ccc;border-radius:0;padding:8px 0}td{background:none}body{background:#fff;color:#000}}
 </style>
 <div class="wrap">
   <h1>Ngân hàng câu hỏi</h1>
@@ -76,9 +83,9 @@ function veDs() {
     }
     const dem = kho.reduce((n, k) => n + k[1].length, 0);
     return `<section class="bai"><h2><span class="no">Bài ${L.i}</span><span class="zh">${esc(L.zh)}</span></h2><div class="vi">${esc(L.vi)} · ${dem} câu hỏi</div>
-      ${L.dl ? `<h3>Hội thoại (bài nghe)</h3><div>${L.dl.lines.map(l => `<div style="margin-bottom:6px"><b class="mini">${esc(l.r)}</b> <span class="h">${esc(l.z)}</span><div class="p" style="margin-left:18px">${esc(l.p)}</div><div class="mini" style="margin-left:18px">${esc(l.v)}</div></div>`).join("")}</div>` : ""}
-      ${L.rd ? `<h3>Đoạn văn (bài đọc)</h3><div><span class="h">${esc(L.rd.z)}</span><div class="p">${esc(L.rd.p)}</div><div class="mini">${esc(L.rd.v)}</div></div>` : ""}
-      ${kho.map(k => `<h3>${esc(k[0])} · ${k[1].length} câu</h3>${rows(k[1])}`).join("")}</section>`;
+      ${L.dl ? `<h3>Hội thoại · bài nghe</h3><div class="dl">${L.dl.lines.map(l => `<div class="ln${l.r === "B" ? " b" : ""}"><span class="h">${esc(l.z)}</span><div class="p">${esc(l.p)}</div><div class="mini">${esc(l.v)}</div></div>`).join("")}</div>` : ""}
+      ${L.rd ? `<h3>Đoạn văn · bài đọc</h3><div class="doan"><span class="h">${esc(L.rd.z)}</span><div class="p">${esc(L.rd.p)}</div><div class="mini">${esc(L.rd.v)}</div></div>` : ""}
+      ${kho.map(k => `<h3>${esc(k[0])} · <b>${k[1].length} câu</b></h3>${rows(k[1])}`).join("")}</section>`;
   }).join("");
 }
 document.getElementById("tabs").addEventListener("click", e => {
