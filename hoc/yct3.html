@@ -757,6 +757,7 @@ const IC = {
   badC: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="var(--bad)"/><path d="M14 14l12 12M26 14 14 26" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>'
 };
 /* mascot: half sun, half moon */
+const PY_MAC = true;   // YCT 3–3: mở sẵn pinyin ở bài đọc
 const LOGO_SRC = (document.querySelector(".brand .lm") || {}).src || "";
 function mascot(mood = "happy", cls = "") {   // dùng logo SunMoon (hình chồng sách) làm linh vật
   return `<img class="mascot ${cls}" src="${LOGO_SRC}" alt="" aria-hidden="true">`;
@@ -1180,10 +1181,11 @@ const R = {
   rdq(ex) {
     const rd = ex.rd, qq = rd.qs[ex.qi];
     stage.innerHTML = `<div class="ask">Đọc đoạn văn rồi trả lời</div>
-      <div class="passage"><div class="h">${esc(rd.z)}</div><div class="pp" id="rdP" hidden>${esc(rd.p)}</div><div class="pv" id="rdV" hidden>${esc(rd.v)}</div>
+      <div class="passage"><div class="h">${esc(rd.z)}</div><div class="pp" id="rdP"${PY_MAC ? "" : " hidden"}>${esc(rd.p)}</div><div class="pv" id="rdV" hidden>${esc(rd.v)}</div>
         <div class="wtools" style="justify-content:flex-start;margin-top:10px"><button class="btn ghost" id="rdPy">Hiện pinyin</button><button class="btn ghost" id="rdSay">Nghe</button></div></div>
       <div class="qbox"><div class="h">${esc(qq.q)}</div><div class="v">${esc(qq.v)}</div></div>` +
       optionsHtml(qq.o.map((o, i) => ({ k: String(i), html: `<span class="h" style="font-size:22px">${esc(o)}</span>` })));
+    $("#rdPy").textContent = PY_MAC ? "Ẩn pinyin" : "Hiện pinyin";
     $("#rdPy").onclick = () => { const p = $("#rdP"); p.hidden = !p.hidden; $("#rdPy").textContent = p.hidden ? "Hiện pinyin" : "Ẩn pinyin"; };
     $("#rdSay").onclick = () => speak(rd.z);
     bindOptions(); S.checker = () => S.ans === String(qq.a); S.key = String(qq.a);

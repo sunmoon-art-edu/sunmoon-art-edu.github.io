@@ -1,0 +1,96 @@
+<title>Ngân hàng câu hỏi SunMoon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Noto+Sans+SC:wght@400&display=swap">
+<style>
+:root{--bg:#FAF7F0;--surface:#FFFFFF;--ink:#2B2622;--ink-2:#6E655C;--line:#E8E0D0;--acc:#4E8F91;--acc-soft:#E1EEEE;--ok:#3F7D3A;--fb:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;--fh:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1E1B18;--surface:#2A2622;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D372F;--acc:#6FAEB0;--acc-soft:#24393A;--ok:#7DBA77}}
+:root[data-theme="dark"]{--bg:#1E1B18;--surface:#2A2622;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D372F;--acc:#6FAEB0;--acc-soft:#24393A;--ok:#7DBA77}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--fb)}
+.wrap{max-width:900px;margin:0 auto;padding-inline:16px;padding-block:22px 70px}
+h1{font:600 28px/1.15 var(--fb);margin:0 0 6px}
+.lead{color:var(--ink-2);margin:0 0 14px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:8px;z-index:2}
+.tabs button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 13px;font:600 14px/1 var(--fb);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font:600 14px/1 var(--fb);cursor:pointer}
+.btn.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.bai{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:12px 0;padding:14px;break-inside:avoid}
+.bai>h2{font:600 19px/1.3 var(--fb);margin:0 0 2px}
+.bai>h2 .zh{font-family:var(--fh)}
+.bai>h2 .no{color:var(--ink-2);font-size:13px;font-weight:600;margin-right:8px}
+.bai>.vi{color:var(--ink-2);margin-bottom:8px}
+h3{font:600 13px/1 var(--fb);color:var(--acc);margin:16px 0 6px;text-transform:uppercase;letter-spacing:.06em}
+table{width:100%;border-collapse:collapse}
+td{padding:6px 6px;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:0}
+.h{font-family:var(--fh)}
+td.q .h{font-size:19px}
+td.a{color:var(--ok);font-weight:600;width:42%}
+td.a .h{font-size:19px}
+.p{color:var(--acc);font-weight:500}
+.mini{color:var(--ink-2);font-size:13px}
+.dap{display:none}
+body.hien .dap{display:block}
+@media print{.tabs,.tools,.hint{display:none}.bai{border:0;border-bottom:1px solid #ccc;border-radius:0;padding:8px 0}body{background:#fff;color:#000}}
+</style>
+<div class="wrap">
+  <h1>Ngân hàng câu hỏi</h1>
+  <p class="lead">Toàn bộ câu hỏi app sẽ hỏi và đáp án đúng, theo từng bài. <span class="hint">App hỏi ngẫu nhiên trong kho này, mỗi lần học một ít.</span></p>
+  <nav class="tabs" id="tabs"></nav>
+  <div class="tools">
+    <button class="btn on" id="tgl">Đang hiện đáp án</button>
+    <button class="btn" id="inra">In / Lưu PDF</button>
+  </div>
+  <main id="ds"></main>
+</div>
+<script>
+const DATA = /*DATA*/[];
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let cur = 0; try { cur = Math.min(+localStorage.getItem("nh-app") || 0, DATA.length - 1); } catch (e) {}
+document.body.classList.add("hien");
+
+const rows = list => `<table>${list.map(r => `<tr><td class="q">${r[0]}</td><td class="a dap">${r[1]}</td></tr>`).join("")}</table>`;
+function veTabs() {
+  document.getElementById("tabs").innerHTML = DATA.map((d, i) => `<button aria-pressed="${i === cur}" data-t="${i}">${esc(d.name)}</button>`).join("");
+}
+function veDs() {
+  const d = DATA[cur];
+  document.getElementById("ds").innerHTML = d.lessons.map(L => {
+    const kho = [];
+    kho.push(["Chọn nghĩa của từ", L.w.map(w => [`<span class="h">${esc(w[0])}</span> <span class="mini">${esc(w[1])}</span>`, esc(w[2])])]);
+    kho.push(["Chọn pinyin", L.w.map(w => [`<span class="h">${esc(w[0])}</span>`, esc(w[1])])]);
+    kho.push(["Nghe rồi chọn chữ · Nhìn nghĩa chọn chữ", L.w.map(w => [`nghe “${esc(w[1])}” / nghĩa “${esc(w[2])}”`, `<span class="h">${esc(w[0])}</span>`])]);
+    if (L.ghep.length) kho.push(["Ghép chữ thành từ", L.ghep.map(w => [`${esc(w[2])} <span class="mini">${esc(w[1])}</span>`, `<span class="h">${esc(w[0])}</span>`])]);
+    kho.push(["Xếp câu · Dịch sang tiếng Trung", L.s.map(s => [esc(s[2]), `<span class="h">${esc(s[0])}</span> <span class="mini">${esc(s[1])}</span>`])]);
+    if (L.fill.length) kho.push(["Điền từ còn thiếu", L.fill.map(x => [`<span class="h">${esc(x[0])}</span> <span class="mini">${esc(x[2])}</span>`, `<span class="h">${esc(x[1])}</span>`])]);
+    kho.push(["Đọc câu chọn nghĩa · Nghe chọn câu", L.s.map(s => [`<span class="h">${esc(s[0])}</span>`, esc(s[2])])]);
+    if (L.viet.length) kho.push(["Nghe rồi viết chữ", L.viet.map(w => [`nghe “${esc(w[1])}” <span class="mini">${esc(w[2])}</span>`, `<span class="h">${esc(w[0])}</span>`])]);
+    if (L.bothu.length) kho.push(["Bộ thủ (nâng cao)", L.bothu.map(b => [`<span class="h">${esc(b[0])}</span> thuộc bộ nào? ${b[4] ? `· ghép <span class="h">${esc(b[4])}</span>` : ""}`, `<span class="h">${esc(b[1])}</span> bộ ${esc(b[2])} · ${esc(b[3])}`])]);
+    if (L.dl) {
+      kho.push(["Nghe hội thoại rồi trả lời", L.dl.qs.map(q => [`<span class="h">${esc(q.q)}</span> <span class="mini">${esc(q.v)}</span><br><span class="mini">${q.o.map(o => esc(o)).join(" · ")}</span>`, `<span class="h">${esc(q.o[q.a])}</span>`])]);
+    }
+    if (L.rd) {
+      kho.push(["Đọc đoạn văn rồi trả lời", L.rd.qs.map(q => [`<span class="h">${esc(q.q)}</span> <span class="mini">${esc(q.v)}</span><br><span class="mini">${q.o.map(o => esc(o)).join(" · ")}</span>`, `<span class="h">${esc(q.o[q.a])}</span>`])]);
+    }
+    const dem = kho.reduce((n, k) => n + k[1].length, 0);
+    return `<section class="bai"><h2><span class="no">Bài ${L.i}</span><span class="zh">${esc(L.zh)}</span></h2><div class="vi">${esc(L.vi)} · ${dem} câu hỏi</div>
+      ${L.dl ? `<h3>Hội thoại (bài nghe)</h3><div>${L.dl.lines.map(l => `<div style="margin-bottom:6px"><b class="mini">${esc(l.r)}</b> <span class="h">${esc(l.z)}</span><div class="p" style="margin-left:18px">${esc(l.p)}</div><div class="mini" style="margin-left:18px">${esc(l.v)}</div></div>`).join("")}</div>` : ""}
+      ${L.rd ? `<h3>Đoạn văn (bài đọc)</h3><div><span class="h">${esc(L.rd.z)}</span><div class="p">${esc(L.rd.p)}</div><div class="mini">${esc(L.rd.v)}</div></div>` : ""}
+      ${kho.map(k => `<h3>${esc(k[0])} · ${k[1].length} câu</h3>${rows(k[1])}`).join("")}</section>`;
+  }).join("");
+}
+document.getElementById("tabs").addEventListener("click", e => {
+  const b = e.target.closest("[data-t]"); if (!b) return;
+  cur = +b.dataset.t; try { localStorage.setItem("nh-app", cur); } catch (x) {}
+  veTabs(); veDs(); window.scrollTo(0, 0);
+});
+document.getElementById("tgl").onclick = () => {
+  const on = document.body.classList.toggle("hien");
+  document.getElementById("tgl").textContent = on ? "Đang hiện đáp án" : "Đang ẩn đáp án";
+  document.getElementById("tgl").classList.toggle("on", on);
+};
+document.getElementById("inra").onclick = () => window.print();
+veTabs(); veDs();
+</script>

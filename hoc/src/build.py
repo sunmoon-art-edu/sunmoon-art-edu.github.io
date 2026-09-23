@@ -88,6 +88,7 @@ if os.path.exists('songs.js'):
     out=subprocess.run(['node','-e',"const fs=require('fs'),vm=require('vm');const c=vm.createContext({});vm.runInContext(fs.readFileSync('songs.js','utf8')+';globalThis.__S=SONGS;',c);process.stdout.write(JSON.stringify(c.__S))"],capture_output=True,text=True)
     if out.returncode==0: songs=json.loads(out.stdout).get(f'{KU}{LV}', {})
     else: print('!! songs.js lỗi:', out.stderr[:200])
+s=s.replace('/*PYMAC*/false', 'true' if (KIND=='yct' and LV<=3) else 'false')
 s=s.replace('/*ND*/{}',json.dumps(nd,ensure_ascii=False,separators=(',',':')))
 s=s.replace('/*SONGS*/{}',json.dumps({f'{KU}{LV}': songs},ensure_ascii=False))
 sw=s.replace('/*AUDIO*/{}',json.dumps(web,ensure_ascii=False,separators=(',',':')))
