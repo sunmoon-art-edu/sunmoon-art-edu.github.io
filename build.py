@@ -220,7 +220,7 @@ def add_details(html, lang):
 
 # ------------------------------------------------------------ trang Tài liệu (19/09)
 DOCS_T = {
- 'vi': dict(badge='Miễn phí · Tài liệu chính thức · Để lại SĐT 1 lần là tải được tất cả',
+ 'vi': dict(badge='Miễn phí · Tài liệu chính thức',
             yct='YCT — Thi tiếng Trung cho học sinh', yct_sub='Kỳ thi chuẩn quốc tế dành cho học sinh tiểu học, THCS. 4 cấp.',
             hsk='HSK — Thi năng lực tiếng Trung', hsk_sub='Chứng chỉ dùng cho du học, học bổng, xin việc. 6 cấp.',
             lvl='Cấp', words='từ', pages='trang', mins='phút',
@@ -231,7 +231,7 @@ DOCS_T = {
             paid='Sách bài tập online', paid_d='Bài tập luyện thêm YCT · HSK · Giao tiếp, có đáp án. Có phí.', soon='Sắp ra mắt', ask='Nhắn Zalo để được báo sớm',
             app_new='Mới · Có phần học thử miễn phí', app_h='App học YCT 1 – 4', app_d='Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game. Học thử miễn phí · bản cơ bản 99.000đ · có bản nâng cao với bộ thủ, trò chơi, thử thách.', app_cta='Học ngay', apph_h='App học HSK 1 – 4', apph_d='Từ vựng, nghe, xếp câu, tập viết chữ theo giáo trình HSK chuẩn. Học thử miễn phí · bản cơ bản 99.000đ · bản nâng cao có bộ thủ, trò chơi, luyện nói.',
             s_de='Đề thi', s_de_d='Đề mẫu, đề cương và file nghe chính thức của YCT và HSK. Tải miễn phí.', s_app='App học online', s_app_d='Học trên điện thoại như chơi game: nghe, ghép từ, xếp câu, tập viết chữ.', s_gt='Giáo trình tự học', s_gt_d='Học liệu do SunMoon biên soạn để học thêm ở nhà.', lg_q='Học viên SunMoon đã có mã?', lg_a='Đăng nhập để học tiếp', src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
- 'en': dict(badge='Free · Official materials · Leave your number once to download everything',
+ 'en': dict(badge='Free · Official materials',
             yct='YCT — Youth Chinese Test', yct_sub='The international Chinese test for primary and secondary students. 4 levels.',
             hsk='HSK — Chinese Proficiency Test', hsk_sub='The certificate for study abroad, scholarships and jobs. 6 levels.',
             lvl='Level', words='words', pages='pages', mins='min',
@@ -242,7 +242,7 @@ DOCS_T = {
             paid='Online workbooks', paid_d='Extra YCT · HSK · conversation practice with answers. Paid.', soon='Coming soon', ask='Message us on Zalo to hear first',
             app_new='New · Free trial', app_h='YCT 1 – 4 learning app', app_d='Listening, matching, sentence building and character writing — like a game. Free trial · basic 99,000đ · advanced adds radicals, games and challenges.', app_cta='Start learning', apph_h='HSK 1 – 4 learning app', apph_d='Vocabulary, listening, sentence building and character writing following the HSK Standard Course. Free trial · basic 99,000đ · advanced adds radicals, games and speaking.',
             s_de='Test papers', s_de_d='Official YCT and HSK sample papers, syllabuses and audio. Free to download.', s_app='Learning apps', s_app_d='Learn on your phone like a game: listening, matching, sentence building, character writing.', s_gt='Self-study materials', s_gt_d='Materials written by SunMoon for studying at home.', lg_q='Already have a SunMoon code?', lg_a='Log in to continue', src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
- 'zh': dict(badge='免费 · 官方资料 · 留一次电话即可下载全部',
+ 'zh': dict(badge='免费 · 官方资料',
             yct='YCT — 中小学生汉语考试', yct_sub='面向中小学生的国际标准化中文考试，共 4 级。',
             hsk='HSK — 汉语水平考试', hsk_sub='用于留学、奖学金和求职的证书，共 6 级。',
             lvl='级', words='词', pages='页', mins='分钟',
