@@ -280,14 +280,7 @@ def docs_section(lang):
   <div class="wrap">
     <p class="docs-badge reveal">{t['badge']}</p>
 
-    <div class="docs-group reveal"><p class="docs-kicker">01</p><h3 class="h3">{t['s_de']}</h3><p class="lede">{t['s_de_d']}</p>
-      <h4 class="docs-sub">{t['yct']}</h4><p class="docs-sub-d">{t['yct_sub']}</p>
-      <div class="docs-list">{yct}</div>
-      <h4 class="docs-sub">{t['hsk']}</h4><p class="docs-sub-d">{t['hsk_sub']}</p>
-      <div class="docs-list">{hsk}</div>
-      <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
-
-    <div class="docs-group reveal" id="app"><p class="docs-kicker">02</p><h3 class="h3">{t['s_app']}</h3><p class="lede">{t['s_app_d']}</p>
+    <div class="docs-group reveal" id="app"><p class="docs-kicker">01</p><h3 class="h3">{t['s_app']}</h3><p class="lede">{t['s_app_d']}</p>
       <p class="docs-login">{t['lg_q']} <a href="hoc/dang-nhap.html">{t['lg_a']}</a></p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>{t['app_new']}</small><strong>{t['app_h']}</strong><span>{t['app_d']}</span></span>
@@ -296,12 +289,19 @@ def docs_section(lang):
         <span class="app-txt"><small>{t['app_new']}</small><strong>{t['apph_h']}</strong><span>{t['apph_d']}</span></span>
         <span class="app-lv">{''.join(f'<a class="btn btn-primary" href="hoc/hsk{n}.html" target="_blank" rel="noopener">HSK {n}</a>' for n in (1, 2, 3, 4))}</span></div></div>
 
-    <div class="docs-group reveal"><p class="docs-kicker">03</p><h3 class="h3">{t['s_gt']}</h3><p class="lede">{t['s_gt_d']}</p>
+    <div class="docs-group reveal"><p class="docs-kicker">02</p><h3 class="h3">{t['s_gt']}</h3><p class="lede">{t['s_gt_d']}</p>
       <h4 class="docs-sub">{t['bt']}</h4><p class="docs-sub-d">{t['bt_d']}</p>
       <div class="bt-strip">{''.join(f'<img src="{photo_src(f"baitap-{i}.jpg")}" alt="{t["bt_alt"]}" loading="lazy">' for i in (1, 2, 3))}</div>
       <div class="docs-grid">
       {soon(t['pre'], t['pre_d'])}{soon(t['comm'], t['comm_d'])}{soon(t['paid'], t['paid_d'], f'<a class="link" href="https://zalo.me/0396308188" target="_blank" rel="noopener">{t["ask"]}</a>')}
     </div></div>
+
+    <div class="docs-group reveal"><p class="docs-kicker">03</p><h3 class="h3">{t['s_de']}</h3><p class="lede">{t['s_de_d']}</p>
+      <h4 class="docs-sub">{t['yct']}</h4><p class="docs-sub-d">{t['yct_sub']}</p>
+      <div class="docs-list">{yct}</div>
+      <h4 class="docs-sub">{t['hsk']}</h4><p class="docs-sub-d">{t['hsk_sub']}</p>
+      <div class="docs-list">{hsk}</div>
+      <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
     <p class="docs-src">{t['src']}</p>
   </div>
 </section>"""
