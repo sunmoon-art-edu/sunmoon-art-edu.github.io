@@ -263,15 +263,17 @@ def docs_section(lang):
     t = DOCS_T[lang]
     dl = lambda href, ic, label, meta, lvl: (f'<a class="dl" href="{href}" data-lvl="{lvl}" target="_blank" rel="noopener">'
                                             f'{ic}<span>{label}</span><small>{meta}</small></a>')
-    yct = ''.join(f'<article class="doc"><h4>YCT {n}</h4><p class="doc-meta">~{w} {t["words"]}</p>'
+    yct = ''.join(f'<details class="doc"><summary><span class="doc-h">YCT {n}</span>'
+                  f'<span class="doc-meta">~{w} {t["words"]}</span><span class="ic"></span></summary><div class="doc-files">'
                   + dl(f'tailieu/yct/YCT{n}-de-cuong-tu-vung-de-mau.pdf', IC_PDF, t['f_yct'], f'{p} {t["pages"]}', f'YCT{n}')
                   + dl(f'tailieu/yct/YCT{n}-file-nghe.m4a', IC_AUD, t['f_nghe'], f'{m} {t["mins"]}', f'YCT{n}')
-                  + '</article>' for n, w, p, m in YCT_INFO)
-    hsk = ''.join(f'<article class="doc"><h4>HSK {n}</h4><p class="doc-meta">{"≥" if n == 6 else "~"}{w} {t["words"]}</p>'
+                  + '</div></details>' for n, w, p, m in YCT_INFO)
+    hsk = ''.join(f'<details class="doc"><summary><span class="doc-h">HSK {n}</span>'
+                  f'<span class="doc-meta">{"≥" if n == 6 else "~"}{w} {t["words"]}</span><span class="ic"></span></summary><div class="doc-files">'
                   + dl(f'tailieu/hsk/HSK{n}-de-thi-mau.pdf', IC_PDF, t['f_mau'], f'{p} {t["pages"]}', f'HSK{n}')
                   + dl(f'tailieu/hsk/HSK{n}-file-nghe.m4a', IC_AUD, t['f_nghe'], f'{m} {t["mins"]}', f'HSK{n}')
                   + dl(f'tailieu/hsk/HSK{n}-de-cuong-tu-vung.pdf', IC_PDF, t['f_dc'], f'{pd} {t["pages"]}', f'HSK{n}')
-                  + '</article>' for n, w, p, pd, m in HSK_INFO)
+                  + '</div></details>' for n, w, p, pd, m in HSK_INFO)
     soon = lambda title, desc, extra='': (f'<article class="doc doc-soon"><span class="soon">{t["soon"]}</span><h4>{title}</h4>'
                                           f'<p class="doc-meta">{desc}</p>{extra}</article>')
     return f"""<section class="section docs" id="docs">
@@ -280,9 +282,9 @@ def docs_section(lang):
 
     <div class="docs-group reveal"><p class="docs-kicker">01</p><h3 class="h3">{t['s_de']}</h3><p class="lede">{t['s_de_d']}</p>
       <h4 class="docs-sub">{t['yct']}</h4><p class="docs-sub-d">{t['yct_sub']}</p>
-      <div class="docs-grid">{yct}</div>
+      <div class="docs-list">{yct}</div>
       <h4 class="docs-sub">{t['hsk']}</h4><p class="docs-sub-d">{t['hsk_sub']}</p>
-      <div class="docs-grid">{hsk}</div>
+      <div class="docs-list">{hsk}</div>
       <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
 
     <div class="docs-group reveal" id="app"><p class="docs-kicker">02</p><h3 class="h3">{t['s_app']}</h3><p class="lede">{t['s_app_d']}</p>
