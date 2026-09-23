@@ -230,7 +230,7 @@ DOCS_T = {
             comm='Tài liệu Giao tiếp', comm_d='Bộ mẫu câu giao tiếp theo tình huống do SunMoon biên soạn. Sắp có.',
             paid='Sách bài tập online', paid_d='Bài tập luyện thêm YCT · HSK · Giao tiếp, có đáp án. Có phí.', soon='Sắp ra mắt', ask='Nhắn Zalo để được báo sớm',
             app_new='Mới · Có phần học thử miễn phí', app_h='App học YCT 1 – 4', app_d='Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game. Học thử miễn phí · bản cơ bản 99.000đ · có bản nâng cao với bộ thủ, trò chơi, thử thách.', app_cta='Học ngay', apph_h='App học HSK 1 – 4', apph_d='Từ vựng, nghe, xếp câu, tập viết chữ theo giáo trình HSK chuẩn. Học thử miễn phí · bản cơ bản 99.000đ · bản nâng cao có bộ thủ, trò chơi, luyện nói.',
-            lg_q='Học viên SunMoon đã có mã?', lg_a='Đăng nhập để học tiếp', src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
+            s_de='Đề thi', s_de_d='Đề mẫu, đề cương và file nghe chính thức của YCT và HSK. Tải miễn phí.', s_app='App học online', s_app_d='Học trên điện thoại như chơi game: nghe, ghép từ, xếp câu, tập viết chữ.', s_gt='Giáo trình tự học', s_gt_d='Học liệu do SunMoon biên soạn để học thêm ở nhà.', lg_q='Học viên SunMoon đã có mã?', lg_a='Đăng nhập để học tiếp', src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
  'en': dict(badge='Free · Official materials · Leave your number once to download everything',
             yct='YCT — Youth Chinese Test', yct_sub='The international Chinese test for primary and secondary students. 4 levels.',
             hsk='HSK — Chinese Proficiency Test', hsk_sub='The certificate for study abroad, scholarships and jobs. 6 levels.',
@@ -241,7 +241,7 @@ DOCS_T = {
             comm='Conversation materials', comm_d='Situational phrase sets written by SunMoon. Coming soon.',
             paid='Online workbooks', paid_d='Extra YCT · HSK · conversation practice with answers. Paid.', soon='Coming soon', ask='Message us on Zalo to hear first',
             app_new='New · Free trial', app_h='YCT 1 – 4 learning app', app_d='Listening, matching, sentence building and character writing — like a game. Free trial · basic 99,000đ · advanced adds radicals, games and challenges.', app_cta='Start learning', apph_h='HSK 1 – 4 learning app', apph_d='Vocabulary, listening, sentence building and character writing following the HSK Standard Course. Free trial · basic 99,000đ · advanced adds radicals, games and speaking.',
-            lg_q='Already have a SunMoon code?', lg_a='Log in to continue', src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
+            s_de='Test papers', s_de_d='Official YCT and HSK sample papers, syllabuses and audio. Free to download.', s_app='Learning apps', s_app_d='Learn on your phone like a game: listening, matching, sentence building, character writing.', s_gt='Self-study materials', s_gt_d='Materials written by SunMoon for studying at home.', lg_q='Already have a SunMoon code?', lg_a='Log in to continue', src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
  'zh': dict(badge='免费 · 官方资料 · 留一次电话即可下载全部',
             yct='YCT — 中小学生汉语考试', yct_sub='面向中小学生的国际标准化中文考试，共 4 级。',
             hsk='HSK — 汉语水平考试', hsk_sub='用于留学、奖学金和求职的证书，共 6 级。',
@@ -252,7 +252,7 @@ DOCS_T = {
             comm='口语交际资料', comm_d='日月编写的情境句型资料，即将上线。',
             paid='线上练习册', paid_d='YCT · HSK · 口语额外练习，附答案，收费。', soon='即将推出', ask='Zalo 留言，第一时间通知您',
             app_new='全新 · 免费试学', app_h='YCT 1–4 学习 App', app_d='听力、配对、连词成句、写汉字——像玩游戏一样学习。免费试学 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和挑战。', app_cta='开始学习', apph_h='HSK 1–4 学习 App', apph_d='按 HSK 标准教程学习词汇、听力、连词成句和写汉字。免费试学 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和口语。',
-            lg_q='已有日月学号？', lg_a='登录继续学习', src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
+            s_de='考试真题', s_de_d='YCT 和 HSK 官方样卷、大纲与听力音频，免费下载。', s_app='学习 App', s_app_d='在手机上像玩游戏一样学：听力、配对、连词成句、写汉字。', s_gt='自学教材', s_gt_d='日月自编的学习资料，在家也能学。', lg_q='已有日月学号？', lg_a='登录继续学习', src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
 }
 YCT_INFO = [(1, 80, 32, 11), (2, 150, 39, 15), (3, 300, 47, 21), (4, 600, 50, 30)]
 HSK_INFO = [(1, 150, 14, 25, 15), (2, 300, 18, 32, 26), (3, 600, 22, 33, 36), (4, 1200, 24, 35, 31), (5, 2500, 25, 36, 30), (6, 5000, 30, 41, 36)]
@@ -277,19 +277,25 @@ def docs_section(lang):
     return f"""<section class="section docs" id="docs">
   <div class="wrap">
     <p class="docs-badge reveal">{t['badge']}</p>
-    <p class="docs-login reveal">{t['lg_q']} <a href="hoc/dang-nhap.html">{t['lg_a']}</a></p>
-    <div class="docs-group reveal"><h3 class="h3">{t['yct']}</h3><p class="lede">{t['yct_sub']}</p>
+
+    <div class="docs-group reveal"><p class="docs-kicker">01</p><h3 class="h3">{t['s_de']}</h3><p class="lede">{t['s_de_d']}</p>
+      <h4 class="docs-sub">{t['yct']}</h4><p class="docs-sub-d">{t['yct_sub']}</p>
+      <div class="docs-grid">{yct}</div>
+      <h4 class="docs-sub">{t['hsk']}</h4><p class="docs-sub-d">{t['hsk_sub']}</p>
+      <div class="docs-grid">{hsk}</div>
+      <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
+
+    <div class="docs-group reveal" id="app"><p class="docs-kicker">02</p><h3 class="h3">{t['s_app']}</h3><p class="lede">{t['s_app_d']}</p>
+      <p class="docs-login">{t['lg_q']} <a href="hoc/dang-nhap.html">{t['lg_a']}</a></p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>{t['app_new']}</small><strong>{t['app_h']}</strong><span>{t['app_d']}</span></span>
         <span class="app-lv">{''.join(f'<a class="btn btn-primary" href="hoc/yct{n}.html" target="_blank" rel="noopener">YCT {n}</a>' for n in (1, 2, 3, 4))}</span></div>
-      <div class="docs-grid">{yct}</div></div>
-    <div class="docs-group reveal"><h3 class="h3">{t['hsk']}</h3><p class="lede">{t['hsk_sub']}</p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">考</span>
         <span class="app-txt"><small>{t['app_new']}</small><strong>{t['apph_h']}</strong><span>{t['apph_d']}</span></span>
-        <span class="app-lv">{''.join(f'<a class="btn btn-primary" href="hoc/hsk{n}.html" target="_blank" rel="noopener">HSK {n}</a>' for n in (1, 2, 3, 4))}</span></div>
-      <div class="docs-grid">{hsk}</div>
-      <p class="docs-extra">{dl('tailieu/hsk/HSK-tu-vung-1-6.xlsx', IC_PDF, t['vocab_all'], 'Excel', 'HSK')}</p></div>
-    <div class="docs-group reveal"><h3 class="h3">{t['bt']}</h3><p class="lede">{t['bt_d']}</p>
+        <span class="app-lv">{''.join(f'<a class="btn btn-primary" href="hoc/hsk{n}.html" target="_blank" rel="noopener">HSK {n}</a>' for n in (1, 2, 3, 4))}</span></div></div>
+
+    <div class="docs-group reveal"><p class="docs-kicker">03</p><h3 class="h3">{t['s_gt']}</h3><p class="lede">{t['s_gt_d']}</p>
+      <h4 class="docs-sub">{t['bt']}</h4><p class="docs-sub-d">{t['bt_d']}</p>
       <div class="bt-strip">{''.join(f'<img src="{photo_src(f"baitap-{i}.jpg")}" alt="{t["bt_alt"]}" loading="lazy">' for i in (1, 2, 3))}</div>
       <div class="docs-grid">
       {soon(t['pre'], t['pre_d'])}{soon(t['comm'], t['comm_d'])}{soon(t['paid'], t['paid_d'], f'<a class="link" href="https://zalo.me/0396308188" target="_blank" rel="noopener">{t["ask"]}</a>')}
