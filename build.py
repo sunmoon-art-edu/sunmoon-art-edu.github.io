@@ -61,11 +61,11 @@ ANCHOR_PAGE = {
     'faq': PARENTS, 'docs': DOCS, 'modes': CLASSES, 'contact': CONTACT, 'trial': CONTACT,
 }
 NAV = [(HOME, 'home'), (ABOUT, 'about'), (CLASSES, 'classes'), (PARENTS, 'parents'),
-       (DOCS, 'docs'), (CONTACT, 'contact')]   # 19/09: bỏ trang Hỏi đáp (chị Linh) — câu hỏi gộp vào Dành cho ba mẹ
+       (DOCS, 'docs'), (CONTACT, 'contact'), ('hoc/dang-nhap.html', 'login')]   # 19/09: bỏ trang Hỏi đáp (chị Linh) — câu hỏi gộp vào Dành cho ba mẹ
 
 L = {
  'vi': dict(nav=dict(home='Trang chủ', about='Giới thiệu', classes='Các lớp học',
-                     parents='Dành cho ba mẹ', faq='Hỏi đáp', docs='Tài liệu', contact='Liên hệ'),
+                     parents='Dành cho ba mẹ', faq='Hỏi đáp', docs='Tài liệu', contact='Liên hệ', login='Đăng nhập'),
             cta='Đăng ký học thử', menu='Điều hướng chính', home_label='SunMoon Art & Education — trang chủ',
             strap='Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành',
             titles={ABOUT: ('Giới thiệu', 'Về SunMoon', 'Một trung tâm tiếng Trung được xây quanh cách trẻ thật sự học một ngôn ngữ.'),
@@ -75,7 +75,7 @@ L = {
                     DOCS: ('Tài liệu', 'Tài liệu học miễn phí', 'Đề thi mẫu, từ vựng và file nghe YCT, HSK chính thức. Để lại số điện thoại 1 lần là tải được tất cả.'),
                     CONTACT: ('Liên hệ', 'Đăng ký học thử', 'Kể cho SunMoon một chút về con, chúng tôi sẽ gợi ý lớp phù hợp và hẹn buổi học thử.')}),
  'en': dict(nav=dict(home='Home', about='About', classes='Classes',
-                     parents='For parents', faq='FAQ', docs='Resources', contact='Contact'),
+                     parents='For parents', faq='FAQ', docs='Resources', contact='Contact', login='Log in'),
             cta='Book a trial class', menu='Primary', home_label='SunMoon Art & Education — home',
             strap='Chinese Language · Culture · Creativity · Growth',
             titles={ABOUT: ('About', 'About SunMoon', 'A Chinese language centre built around the way children actually learn a language.'),
@@ -85,7 +85,7 @@ L = {
                     DOCS: ('Resources', 'Free learning resources', 'Official YCT and HSK sample tests, vocabulary and audio. Leave your phone number once to download everything.'),
                     CONTACT: ('Contact', 'Book a trial class', 'Tell us a little about your child. We will suggest a programme and arrange a trial.')}),
  'zh': dict(nav=dict(home='首页', about='关于日月', classes='课程',
-                     parents='家长须知', faq='常见问题', docs='学习资料', contact='联系我们'),
+                     parents='家长须知', faq='常见问题', docs='学习资料', contact='联系我们', login='登录'),
             cta='预约试听课', menu='主导航', home_label='SunMoon Art & Education — 首页',
             strap='中文语言 · 文化 · 创造力 · 成长',
             titles={ABOUT: ('关于日月', '关于日月', '一所围绕孩子真实学习方式而建立的中文学习中心。'),
@@ -230,7 +230,7 @@ DOCS_T = {
             comm='Tài liệu Giao tiếp', comm_d='Bộ mẫu câu giao tiếp theo tình huống do SunMoon biên soạn. Sắp có.',
             paid='Sách bài tập online', paid_d='Bài tập luyện thêm YCT · HSK · Giao tiếp, có đáp án. Có phí.', soon='Sắp ra mắt', ask='Nhắn Zalo để được báo sớm',
             app_new='Mới · Có phần học thử miễn phí', app_h='App học YCT 1 – 4', app_d='Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game. Học thử miễn phí · bản cơ bản 99.000đ · có bản nâng cao với bộ thủ, trò chơi, thử thách.', app_cta='Học ngay', apph_h='App học HSK 1 – 4', apph_d='Từ vựng, nghe, xếp câu, tập viết chữ theo giáo trình HSK chuẩn. Học thử miễn phí · bản cơ bản 99.000đ · bản nâng cao có bộ thủ, trò chơi, luyện nói.',
-            src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
+            lg_q='Học viên SunMoon đã có mã?', lg_a='Đăng nhập để học tiếp', src='Nguồn: tài liệu chính thức, miễn phí do Chinese Testing International (chinesetest.cn) phát hành. SunMoon sắp xếp lại và thêm hướng dẫn tiếng Việt.'),
  'en': dict(badge='Free · Official materials · Leave your number once to download everything',
             yct='YCT — Youth Chinese Test', yct_sub='The international Chinese test for primary and secondary students. 4 levels.',
             hsk='HSK — Chinese Proficiency Test', hsk_sub='The certificate for study abroad, scholarships and jobs. 6 levels.',
@@ -241,7 +241,7 @@ DOCS_T = {
             comm='Conversation materials', comm_d='Situational phrase sets written by SunMoon. Coming soon.',
             paid='Online workbooks', paid_d='Extra YCT · HSK · conversation practice with answers. Paid.', soon='Coming soon', ask='Message us on Zalo to hear first',
             app_new='New · Free trial', app_h='YCT 1 – 4 learning app', app_d='Listening, matching, sentence building and character writing — like a game. Free trial · basic 99,000đ · advanced adds radicals, games and challenges.', app_cta='Start learning', apph_h='HSK 1 – 4 learning app', apph_d='Vocabulary, listening, sentence building and character writing following the HSK Standard Course. Free trial · basic 99,000đ · advanced adds radicals, games and speaking.',
-            src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
+            lg_q='Already have a SunMoon code?', lg_a='Log in to continue', src='Source: official free materials published by Chinese Testing International (chinesetest.cn). Organised by SunMoon with Vietnamese guidance.'),
  'zh': dict(badge='免费 · 官方资料 · 留一次电话即可下载全部',
             yct='YCT — 中小学生汉语考试', yct_sub='面向中小学生的国际标准化中文考试，共 4 级。',
             hsk='HSK — 汉语水平考试', hsk_sub='用于留学、奖学金和求职的证书，共 6 级。',
@@ -252,7 +252,7 @@ DOCS_T = {
             comm='口语交际资料', comm_d='日月编写的情境句型资料，即将上线。',
             paid='线上练习册', paid_d='YCT · HSK · 口语额外练习，附答案，收费。', soon='即将推出', ask='Zalo 留言，第一时间通知您',
             app_new='全新 · 免费试学', app_h='YCT 1–4 学习 App', app_d='听力、配对、连词成句、写汉字——像玩游戏一样学习。免费试学 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和挑战。', app_cta='开始学习', apph_h='HSK 1–4 学习 App', apph_d='按 HSK 标准教程学习词汇、听力、连词成句和写汉字。免费试学 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和口语。',
-            src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
+            lg_q='已有日月学号？', lg_a='登录继续学习', src='来源：Chinese Testing International（chinesetest.cn）免费发布的官方资料，由日月整理并附越南语说明。'),
 }
 YCT_INFO = [(1, 80, 32, 11), (2, 150, 39, 15), (3, 300, 47, 21), (4, 600, 50, 30)]
 HSK_INFO = [(1, 150, 14, 25, 15), (2, 300, 18, 32, 26), (3, 600, 22, 33, 36), (4, 1200, 24, 35, 31), (5, 2500, 25, 36, 30), (6, 5000, 30, 41, 36)]
@@ -277,6 +277,7 @@ def docs_section(lang):
     return f"""<section class="section docs" id="docs">
   <div class="wrap">
     <p class="docs-badge reveal">{t['badge']}</p>
+    <p class="docs-login reveal">{t['lg_q']} <a href="hoc/dang-nhap.html">{t['lg_a']}</a></p>
     <div class="docs-group reveal"><h3 class="h3">{t['yct']}</h3><p class="lede">{t['yct_sub']}</p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>{t['app_new']}</small><strong>{t['app_h']}</strong><span>{t['app_d']}</span></span>

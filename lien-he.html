@@ -726,6 +726,12 @@ p{margin:0}
 @media (min-width:900px){.chips{grid-template-columns:repeat(3,1fr)}}
 .chips label{display:block}
 .chips span{display:flex;align-items:center;justify-content:center;text-align:center;height:100%;min-height:3.1rem;padding:.6rem .7rem;border-radius:14px;letter-spacing:.05em;line-height:1.25;font-size:.76rem}
+.nav a[href$="dang-nhap.html"],.drawer a[href$="dang-nhap.html"]{color:var(--vermilion)}
+.nav a[href$="dang-nhap.html"]{border:1px solid var(--vermilion);border-radius:999px;padding:.3rem .8rem}
+.nav a[href$="dang-nhap.html"]::after{display:none}
+.nav a[href$="dang-nhap.html"]:hover{background:var(--vermilion);color:#fff}
+.docs-login{margin:-1.2rem 0 2rem;font-size:.95rem;color:var(--ink-2)}
+.docs-login a{color:var(--vermilion);font-weight:600;text-underline-offset:.3em;text-decoration:underline}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -861,6 +867,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">Dành cho ba mẹ</a>
       <a href="tai-lieu.html">Tài liệu</a>
       <a href="lien-he.html" class="is-here" aria-current="page">Liên hệ</a>
+      <a href="hoc/dang-nhap.html">Đăng nhập</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">Đăng ký học thử</a>
@@ -868,7 +875,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a>
+  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a><a class="item" href="hoc/dang-nhap.html">Đăng nhập</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Đăng ký học thử</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành</p>
@@ -965,7 +972,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Khám phá</h4>
-        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="tai-lieu.html">Tài liệu</a></li></ul>
+        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="tai-lieu.html">Tài liệu</a></li><li><a href="hoc/dang-nhap.html">Đăng nhập</a></li></ul>
       </div>
       <div>
         <h4>Liên hệ</h4>
@@ -1003,6 +1010,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">Dành cho ba mẹ</a>
       <a href="tai-lieu.html">Tài liệu</a>
       <a href="lien-he.html" class="is-here" aria-current="page">Liên hệ</a>
+      <a href="hoc/dang-nhap.html">Đăng nhập</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">Đăng ký học thử</a>
@@ -1010,7 +1018,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a>
+  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a><a class="item" href="hoc/dang-nhap.html">Đăng nhập</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Đăng ký học thử</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành</p>
@@ -1107,7 +1115,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Khám phá</h4>
-        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="tai-lieu.html">Tài liệu</a></li></ul>
+        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="tai-lieu.html">Tài liệu</a></li><li><a href="hoc/dang-nhap.html">Đăng nhập</a></li></ul>
       </div>
       <div>
         <h4>Liên hệ</h4>
@@ -1145,6 +1153,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">For parents</a>
       <a href="tai-lieu.html">Resources</a>
       <a href="lien-he.html" class="is-here" aria-current="page">Contact</a>
+      <a href="hoc/dang-nhap.html">Log in</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">Book a trial class</a>
@@ -1152,7 +1161,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Home</a><a class="item" href="gioi-thieu.html">About</a><a class="item" href="lop-hoc.html">Classes</a><a class="item" href="ba-me.html">For parents</a><a class="item" href="tai-lieu.html">Resources</a><a class="item" href="lien-he.html">Contact</a>
+  <a class="item" href="index.html">Home</a><a class="item" href="gioi-thieu.html">About</a><a class="item" href="lop-hoc.html">Classes</a><a class="item" href="ba-me.html">For parents</a><a class="item" href="tai-lieu.html">Resources</a><a class="item" href="lien-he.html">Contact</a><a class="item" href="hoc/dang-nhap.html">Log in</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Book a trial class</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Chinese Language · Culture · Creativity · Growth</p>
@@ -1249,7 +1258,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Explore</h4>
-        <ul><li><a href="index.html">Home</a></li><li><a href="gioi-thieu.html">About</a></li><li><a href="lop-hoc.html">Classes</a></li><li><a href="ba-me.html">For parents</a></li><li><a href="tai-lieu.html">Resources</a></li></ul>
+        <ul><li><a href="index.html">Home</a></li><li><a href="gioi-thieu.html">About</a></li><li><a href="lop-hoc.html">Classes</a></li><li><a href="ba-me.html">For parents</a></li><li><a href="tai-lieu.html">Resources</a></li><li><a href="hoc/dang-nhap.html">Log in</a></li></ul>
       </div>
       <div>
         <h4>Contact</h4>
@@ -1287,6 +1296,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">家长须知</a>
       <a href="tai-lieu.html">学习资料</a>
       <a href="lien-he.html" class="is-here" aria-current="page">联系我们</a>
+      <a href="hoc/dang-nhap.html">登录</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">预约试听课</a>
@@ -1294,7 +1304,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">首页</a><a class="item" href="gioi-thieu.html">关于日月</a><a class="item" href="lop-hoc.html">课程</a><a class="item" href="ba-me.html">家长须知</a><a class="item" href="tai-lieu.html">学习资料</a><a class="item" href="lien-he.html">联系我们</a>
+  <a class="item" href="index.html">首页</a><a class="item" href="gioi-thieu.html">关于日月</a><a class="item" href="lop-hoc.html">课程</a><a class="item" href="ba-me.html">家长须知</a><a class="item" href="tai-lieu.html">学习资料</a><a class="item" href="lien-he.html">联系我们</a><a class="item" href="hoc/dang-nhap.html">登录</a>
   <a class="btn btn-primary" href="lien-he.html#trial">预约试听课</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">中文语言 · 文化 · 创造力 · 成长</p>
@@ -1391,7 +1401,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>探索</h4>
-        <ul><li><a href="index.html">首页</a></li><li><a href="gioi-thieu.html">关于日月</a></li><li><a href="lop-hoc.html">课程</a></li><li><a href="ba-me.html">家长须知</a></li><li><a href="tai-lieu.html">学习资料</a></li></ul>
+        <ul><li><a href="index.html">首页</a></li><li><a href="gioi-thieu.html">关于日月</a></li><li><a href="lop-hoc.html">课程</a></li><li><a href="ba-me.html">家长须知</a></li><li><a href="tai-lieu.html">学习资料</a></li><li><a href="hoc/dang-nhap.html">登录</a></li></ul>
       </div>
       <div>
         <h4>联系方式</h4>

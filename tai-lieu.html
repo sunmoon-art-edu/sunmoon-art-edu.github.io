@@ -726,6 +726,12 @@ p{margin:0}
 @media (min-width:900px){.chips{grid-template-columns:repeat(3,1fr)}}
 .chips label{display:block}
 .chips span{display:flex;align-items:center;justify-content:center;text-align:center;height:100%;min-height:3.1rem;padding:.6rem .7rem;border-radius:14px;letter-spacing:.05em;line-height:1.25;font-size:.76rem}
+.nav a[href$="dang-nhap.html"],.drawer a[href$="dang-nhap.html"]{color:var(--vermilion)}
+.nav a[href$="dang-nhap.html"]{border:1px solid var(--vermilion);border-radius:999px;padding:.3rem .8rem}
+.nav a[href$="dang-nhap.html"]::after{display:none}
+.nav a[href$="dang-nhap.html"]:hover{background:var(--vermilion);color:#fff}
+.docs-login{margin:-1.2rem 0 2rem;font-size:.95rem;color:var(--ink-2)}
+.docs-login a{color:var(--vermilion);font-weight:600;text-underline-offset:.3em;text-decoration:underline}
 /* ---------- footer ---------- */
 .footer{background:var(--ivory-2);color:var(--ink);padding-block:3.5rem 1.6rem;border-top:1px solid var(--line)}
 .footer .top{display:grid;gap:2.2rem 3rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line)}
@@ -861,6 +867,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">Dành cho ba mẹ</a>
       <a href="tai-lieu.html" class="is-here" aria-current="page">Tài liệu</a>
       <a href="lien-he.html">Liên hệ</a>
+      <a href="hoc/dang-nhap.html">Đăng nhập</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">Đăng ký học thử</a>
@@ -868,7 +875,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a>
+  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a><a class="item" href="hoc/dang-nhap.html">Đăng nhập</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Đăng ký học thử</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành</p>
@@ -884,6 +891,7 @@ body.has-float{padding-bottom:0}
 <section class="section docs" id="docs">
   <div class="wrap">
     <p class="docs-badge reveal">Miễn phí · Tài liệu chính thức · Để lại SĐT 1 lần là tải được tất cả</p>
+    <p class="docs-login reveal">Học viên SunMoon đã có mã? <a href="hoc/dang-nhap.html">Đăng nhập để học tiếp</a></p>
     <div class="docs-group reveal"><h3 class="h3">YCT — Thi tiếng Trung cho học sinh</h3><p class="lede">Kỳ thi chuẩn quốc tế dành cho học sinh tiểu học, THCS. 4 cấp.</p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>Mới · Có phần học thử miễn phí</small><strong>App học YCT 1 – 4</strong><span>Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game. Học thử miễn phí · bản cơ bản 99.000đ · có bản nâng cao với bộ thủ, trò chơi, thử thách.</span></span>
@@ -929,7 +937,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Khám phá</h4>
-        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="lien-he.html">Liên hệ</a></li></ul>
+        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="lien-he.html">Liên hệ</a></li><li><a href="hoc/dang-nhap.html">Đăng nhập</a></li></ul>
       </div>
       <div>
         <h4>Liên hệ</h4>
@@ -967,6 +975,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">Dành cho ba mẹ</a>
       <a href="tai-lieu.html" class="is-here" aria-current="page">Tài liệu</a>
       <a href="lien-he.html">Liên hệ</a>
+      <a href="hoc/dang-nhap.html">Đăng nhập</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">Đăng ký học thử</a>
@@ -974,7 +983,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a>
+  <a class="item" href="index.html">Trang chủ</a><a class="item" href="gioi-thieu.html">Giới thiệu</a><a class="item" href="lop-hoc.html">Các lớp học</a><a class="item" href="ba-me.html">Dành cho ba mẹ</a><a class="item" href="tai-lieu.html">Tài liệu</a><a class="item" href="lien-he.html">Liên hệ</a><a class="item" href="hoc/dang-nhap.html">Đăng nhập</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Đăng ký học thử</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Tiếng Trung · Văn hoá · Sáng tạo · Trưởng thành</p>
@@ -990,6 +999,7 @@ body.has-float{padding-bottom:0}
 <section class="section docs" id="docs">
   <div class="wrap">
     <p class="docs-badge reveal">Miễn phí · Tài liệu chính thức · Để lại SĐT 1 lần là tải được tất cả</p>
+    <p class="docs-login reveal">Học viên SunMoon đã có mã? <a href="hoc/dang-nhap.html">Đăng nhập để học tiếp</a></p>
     <div class="docs-group reveal"><h3 class="h3">YCT — Thi tiếng Trung cho học sinh</h3><p class="lede">Kỳ thi chuẩn quốc tế dành cho học sinh tiểu học, THCS. 4 cấp.</p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>Mới · Có phần học thử miễn phí</small><strong>App học YCT 1 – 4</strong><span>Nghe, ghép từ, xếp câu, tập viết chữ — học như chơi game. Học thử miễn phí · bản cơ bản 99.000đ · có bản nâng cao với bộ thủ, trò chơi, thử thách.</span></span>
@@ -1035,7 +1045,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Khám phá</h4>
-        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="lien-he.html">Liên hệ</a></li></ul>
+        <ul><li><a href="index.html">Trang chủ</a></li><li><a href="gioi-thieu.html">Giới thiệu</a></li><li><a href="lop-hoc.html">Các lớp học</a></li><li><a href="ba-me.html">Dành cho ba mẹ</a></li><li><a href="lien-he.html">Liên hệ</a></li><li><a href="hoc/dang-nhap.html">Đăng nhập</a></li></ul>
       </div>
       <div>
         <h4>Liên hệ</h4>
@@ -1073,6 +1083,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">For parents</a>
       <a href="tai-lieu.html" class="is-here" aria-current="page">Resources</a>
       <a href="lien-he.html">Contact</a>
+      <a href="hoc/dang-nhap.html">Log in</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">Book a trial class</a>
@@ -1080,7 +1091,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">Home</a><a class="item" href="gioi-thieu.html">About</a><a class="item" href="lop-hoc.html">Classes</a><a class="item" href="ba-me.html">For parents</a><a class="item" href="tai-lieu.html">Resources</a><a class="item" href="lien-he.html">Contact</a>
+  <a class="item" href="index.html">Home</a><a class="item" href="gioi-thieu.html">About</a><a class="item" href="lop-hoc.html">Classes</a><a class="item" href="ba-me.html">For parents</a><a class="item" href="tai-lieu.html">Resources</a><a class="item" href="lien-he.html">Contact</a><a class="item" href="hoc/dang-nhap.html">Log in</a>
   <a class="btn btn-primary" href="lien-he.html#trial">Book a trial class</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">Chinese Language · Culture · Creativity · Growth</p>
@@ -1096,6 +1107,7 @@ body.has-float{padding-bottom:0}
 <section class="section docs" id="docs">
   <div class="wrap">
     <p class="docs-badge reveal">Free · Official materials · Leave your number once to download everything</p>
+    <p class="docs-login reveal">Already have a SunMoon code? <a href="hoc/dang-nhap.html">Log in to continue</a></p>
     <div class="docs-group reveal"><h3 class="h3">YCT — Youth Chinese Test</h3><p class="lede">The international Chinese test for primary and secondary students. 4 levels.</p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>New · Free trial</small><strong>YCT 1 – 4 learning app</strong><span>Listening, matching, sentence building and character writing — like a game. Free trial · basic 99,000đ · advanced adds radicals, games and challenges.</span></span>
@@ -1141,7 +1153,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>Explore</h4>
-        <ul><li><a href="index.html">Home</a></li><li><a href="gioi-thieu.html">About</a></li><li><a href="lop-hoc.html">Classes</a></li><li><a href="ba-me.html">For parents</a></li><li><a href="lien-he.html">Contact</a></li></ul>
+        <ul><li><a href="index.html">Home</a></li><li><a href="gioi-thieu.html">About</a></li><li><a href="lop-hoc.html">Classes</a></li><li><a href="ba-me.html">For parents</a></li><li><a href="lien-he.html">Contact</a></li><li><a href="hoc/dang-nhap.html">Log in</a></li></ul>
       </div>
       <div>
         <h4>Contact</h4>
@@ -1179,6 +1191,7 @@ body.has-float{padding-bottom:0}
       <a href="ba-me.html">家长须知</a>
       <a href="tai-lieu.html" class="is-here" aria-current="page">学习资料</a>
       <a href="lien-he.html">联系我们</a>
+      <a href="hoc/dang-nhap.html">登录</a>
     </nav>
     <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
     <a class="btn btn-primary cta-desktop" href="lien-he.html#trial">预约试听课</a>
@@ -1186,7 +1199,7 @@ body.has-float{padding-bottom:0}
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a class="item" href="index.html">首页</a><a class="item" href="gioi-thieu.html">关于日月</a><a class="item" href="lop-hoc.html">课程</a><a class="item" href="ba-me.html">家长须知</a><a class="item" href="tai-lieu.html">学习资料</a><a class="item" href="lien-he.html">联系我们</a>
+  <a class="item" href="index.html">首页</a><a class="item" href="gioi-thieu.html">关于日月</a><a class="item" href="lop-hoc.html">课程</a><a class="item" href="ba-me.html">家长须知</a><a class="item" href="tai-lieu.html">学习资料</a><a class="item" href="lien-he.html">联系我们</a><a class="item" href="hoc/dang-nhap.html">登录</a>
   <a class="btn btn-primary" href="lien-he.html#trial">预约试听课</a>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="vi" lang="vi">VI</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="zh" lang="zh">中文</button></div>
   <p class="fine">中文语言 · 文化 · 创造力 · 成长</p>
@@ -1202,6 +1215,7 @@ body.has-float{padding-bottom:0}
 <section class="section docs" id="docs">
   <div class="wrap">
     <p class="docs-badge reveal">免费 · 官方资料 · 留一次电话即可下载全部</p>
+    <p class="docs-login reveal">已有日月学号？ <a href="hoc/dang-nhap.html">登录继续学习</a></p>
     <div class="docs-group reveal"><h3 class="h3">YCT — 中小学生汉语考试</h3><p class="lede">面向中小学生的国际标准化中文考试，共 4 级。</p>
       <div class="app-card"><span class="app-glyph" aria-hidden="true">学</span>
         <span class="app-txt"><small>全新 · 免费试学</small><strong>YCT 1–4 学习 App</strong><span>听力、配对、连词成句、写汉字——像玩游戏一样学习。免费试学 · 基础版 99,000 越盾 · 进阶版增加部首、游戏和挑战。</span></span>
@@ -1247,7 +1261,7 @@ body.has-float{padding-bottom:0}
       </div>
       <div class="explore">
         <h4>探索</h4>
-        <ul><li><a href="index.html">首页</a></li><li><a href="gioi-thieu.html">关于日月</a></li><li><a href="lop-hoc.html">课程</a></li><li><a href="ba-me.html">家长须知</a></li><li><a href="lien-he.html">联系我们</a></li></ul>
+        <ul><li><a href="index.html">首页</a></li><li><a href="gioi-thieu.html">关于日月</a></li><li><a href="lop-hoc.html">课程</a></li><li><a href="ba-me.html">家长须知</a></li><li><a href="lien-he.html">联系我们</a></li><li><a href="hoc/dang-nhap.html">登录</a></li></ul>
       </div>
       <div>
         <h4>联系方式</h4>
