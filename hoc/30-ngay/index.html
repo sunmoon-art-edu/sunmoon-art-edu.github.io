@@ -256,6 +256,10 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .whob i{font-style:normal;font-weight:300;color:var(--ink-2);font-size:14px}
 .whob.on{border-color:var(--sun);background:var(--sun-soft)}
 .whob.on b{color:var(--sun-2)}
+.step{align-self:flex-start;font:700 11px/1 var(--tx);letter-spacing:.1em;text-transform:uppercase;color:var(--sun-2);background:var(--sun-soft);padding:5px 9px;border-radius:999px}
+.goiy{margin:0;line-height:1.55}
+.outline li.hop{color:var(--ink);font-weight:600}
+.outline li.hop::after{content:" ★";color:var(--sun)}
 .dlg{display:flex;flex-direction:column;gap:10px}
 .ln{display:flex;gap:10px;align-items:flex-start;text-align:left;background:none;border:0;padding:0;width:100%}
 .ln .who{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--tx);background:var(--sun);color:var(--on-sun)}
@@ -376,27 +380,34 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <p class="sub">Lộ trình 30 ngày cho người mới bắt đầu — không cần biết tiếng Trung trước.</p>
     <div class="price"><s>299.000đ</s><b id="giaNay">99.000đ</b><i id="giaGhi">Giá ưu đãi · đến hết 24/10/2026</i></div>
   </header>
-  <section class="card"><h2>Bạn muốn học theo cách nào?</h2>
+  <section class="card" id="chon"><h2>Bạn muốn học theo cách nào?</h2>
     <div class="who"><button class="whob" data-who="adult"><b>Tôi tự học</b><i>người lớn, bắt đầu từ số 0</i></button><button class="whob" data-who="kid"><b>Ba mẹ dạy con</b><i>ba mẹ cùng con học tại nhà</i></button></div></section>
   <section class="card" id="gKid" hidden><h2>Khoá “Ba mẹ dạy con” đang được soạn</h2>
     <p class="note" style="font-style:normal">SunMoon đang soạn lộ trình riêng để ba mẹ cùng con học tiếng Trung tại nhà — sắp ra mắt. Ba mẹ nhắn Zalo để SunMoon báo ngay khi mở khoá, hoặc tư vấn lớp phù hợp cho bé:</p>
     <div class="zalos zaloBox"></div></section>
   <div id="gAdult" class="gate" hidden>
-  <section class="card"><h2>Bạn nhận được</h2>
-    <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán bằng hình ảnh</b> — nhìn hình, liên tưởng và nhớ nghĩa</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li><li><b>Học trên mọi máy</b> — điện thoại, máy tính</li></ul></section>
-  <section class="card"><h2>Lộ trình 30 ngày</h2><ul class="outline" id="outline"></ul></section>
-  <section class="card" id="dangKy"><h2>Đăng ký khoá học</h2>
-    <p class="note" style="font-style:normal">Trả lời 6 câu để SunMoon hiểu bạn hơn, rồi chuyển khoản để nhận mã học.</p>
-    <div class="fq"><label for="kTen">1 · Họ tên, email và số điện thoại (Zalo)</label><input type="text" id="kTen" placeholder="Họ tên" autocomplete="name"><input type="email" id="kEmail" placeholder="Email — SunMoon gửi mã học về đây" autocomplete="email" inputmode="email"><input type="tel" id="kSdt" placeholder="Số điện thoại có Zalo" autocomplete="tel" inputmode="tel"></div>
-    <div class="fq"><p>2 · Bạn học tiếng Trung để làm gì? <small class="note">(chọn nhiều)</small></p><div class="chs" data-k="mucDich" data-multi="1"><button class="ch">Công việc</button><button class="ch">Du lịch</button><button class="ch">Du học</button><button class="ch">Thi HSK</button><button class="ch">Phim ảnh, sở thích</button><button class="ch">Nói chuyện với người thân</button><button class="ch">Khác</button></div><input type="text" id="kMucDichKhac" class="khac" placeholder="Bạn ghi rõ lý do khác…" hidden></div>
-    <div class="fq"><p>3 · Trình độ hiện tại?</p><div class="chs" data-k="trinhDo"><button class="ch">Chưa biết gì</button><button class="ch">Biết pinyin</button><button class="ch">Đã học vài tháng</button><button class="ch">HSK 1 trở lên</button></div></div>
-    <div class="fq"><p>4 · Mỗi ngày bạn học được bao lâu?</p><div class="chs" data-k="thoiGian"><button class="ch">10–15 phút</button><button class="ch">20–30 phút</button><button class="ch">Trên 30 phút</button></div></div>
+  <section class="card" id="dangKy"><span class="step">Bước 1/3</span><h2>Vì sao bạn muốn học tiếng Trung?</h2>
+    <p class="note" style="font-style:normal">5 câu ngắn — SunMoon dựa vào đây để gợi ý lộ trình cho bạn.</p>
+    <div class="fq"><p>1 · Bạn học tiếng Trung để làm gì? <small class="note">(chọn nhiều)</small></p><div class="chs" data-k="mucDich" data-multi="1"><button class="ch">Công việc</button><button class="ch">Du lịch</button><button class="ch">Du học</button><button class="ch">Thi HSK</button><button class="ch">Phim ảnh, sở thích</button><button class="ch">Nói chuyện với người thân</button><button class="ch">Khác</button></div><input type="text" id="kMucDichKhac" class="khac" placeholder="Bạn ghi rõ lý do khác…" hidden></div>
+    <div class="fq"><p>2 · Trình độ hiện tại?</p><div class="chs" data-k="trinhDo"><button class="ch">Chưa biết gì</button><button class="ch">Biết pinyin</button><button class="ch">Đã học vài tháng</button><button class="ch">HSK 1 trở lên</button></div></div>
+    <div class="fq"><p>3 · Mỗi ngày bạn học được bao lâu?</p><div class="chs" data-k="thoiGian"><button class="ch">10–15 phút</button><button class="ch">20–30 phút</button><button class="ch">Trên 30 phút</button></div></div>
+    <div class="fq"><label for="kMucTieu">4 · Sau khoá học, bạn muốn đạt được điều gì?</label><textarea id="kMucTieu" placeholder="VD: tự giới thiệu được bằng tiếng Trung, đi du lịch hỏi đường được…"></textarea></div>
     <div class="fq"><p>5 · Bạn biết SunMoon qua đâu?</p><div class="chs" data-k="bietQua"><button class="ch">Facebook</button><button class="ch">TikTok</button><button class="ch">Bạn bè</button><button class="ch">Google</button><button class="ch">Khác</button></div><input type="text" id="kBietQuaKhac" class="khac" placeholder="Bạn biết SunMoon qua đâu?" hidden></div>
-    <div class="fq"><label for="kMucTieu">6 · Sau khoá học, bạn muốn đạt được điều gì?</label><textarea id="kMucTieu" placeholder="VD: tự giới thiệu được bằng tiếng Trung, đi du lịch hỏi đường được…"></textarea></div>
+    <p class="err" id="kErr1"></p>
+    <button class="btn main" id="kTiep">Xem lộ trình dành cho bạn →</button>
+  </section>
+  <div id="step2" class="gate" hidden>
+  <section class="card"><span class="step">Bước 2/3</span><h2>Lộ trình 30 ngày dành cho bạn</h2><p class="goiy" id="goiY"></p><ul class="outline" id="outline"></ul></section>
+  <section class="card"><h2>Bạn nhận được</h2>
+    <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán bằng hình ảnh</b> — nhìn hình, liên tưởng và nhớ nghĩa</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Luyện nói có chấm phát âm</b> — đọc to, máy chấm từng chữ</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li></ul></section>
+  <section class="card" id="thanhToan"><span class="step">Bước 3/3</span><h2>Nhận mã học</h2>
+    <div class="price"><s>299.000đ</s><b class="giaNay2">99.000đ</b><i class="giaGhi2">Giá ưu đãi · đến hết 24/10/2026</i></div>
+    <div class="fq"><label for="kTen">Họ tên, email và số điện thoại (Zalo)</label><input type="text" id="kTen" placeholder="Họ tên" autocomplete="name"><input type="email" id="kEmail" placeholder="Email — SunMoon gửi mã học về đây" autocomplete="email" inputmode="email"><input type="tel" id="kSdt" placeholder="Số điện thoại có Zalo" autocomplete="tel" inputmode="tel"></div>
     <p class="err" id="kErr"></p>
     <button class="btn main" id="kGui">Đăng ký &amp; nhận mã QR chuyển khoản</button>
     <div id="kQR" hidden></div>
   </section>
+  </div>
   </div>
   <section class="card"><h2>Đã có mã học?</h2>
     <div class="fq"><input type="text" id="lU" placeholder="Tên đăng nhập" autocapitalize="characters" autocomplete="username"><input type="tel" id="lM" placeholder="Mã 4 số" inputmode="numeric" autocomplete="current-password"></div>
@@ -899,26 +910,45 @@ function showGate(){
   const nay=new Date().toLocaleDateString("sv-SE",{timeZone:"Asia/Ho_Chi_Minh"});
   if(nay>UU_DAI_DEN){document.getElementById("giaNay").textContent="299.000đ";g.querySelector(".price s").hidden=true;document.getElementById("giaGhi").textContent=""}
   else document.getElementById("giaGhi").textContent="Giá ưu đãi · đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
-  document.getElementById("outline").innerHTML=L.map((d,i)=>`<li><b>${i+1}</b>${esc(d.t)}</li>`).join("");
+  if(nay>UU_DAI_DEN){g.querySelectorAll(".giaNay2").forEach(e=>e.textContent="299.000đ");g.querySelectorAll("#thanhToan .price s").forEach(e=>e.hidden=true);g.querySelectorAll(".giaGhi2").forEach(e=>e.textContent="")}
+  if(location.hash==="#chon")setTimeout(()=>document.getElementById("chon").scrollIntoView({block:"start"}),50);
+  if(location.hash==="#dangky")setTimeout(()=>{pickWho("adult");document.getElementById("dangKy").scrollIntoView({block:"start"})},50);
   g.querySelectorAll(".zaloBox").forEach(z=>z.innerHTML=zaloHtml());bindChs(g);
   const pickWho=w=>{g.querySelectorAll(".whob").forEach(b=>b.classList.toggle("on",b.dataset.who===w));document.getElementById("gAdult").hidden=w!=="adult";document.getElementById("gKid").hidden=w!=="kid";try{localStorage.setItem("tt30-who",w)}catch(e){}};
   g.querySelectorAll(".whob").forEach(b=>b.onclick=()=>{pickWho(b.dataset.who);(b.dataset.who==="adult"?document.getElementById("gAdult"):document.getElementById("gKid")).scrollIntoView({behavior:"smooth",block:"start"})});
   let w0=null;try{w0=localStorage.getItem("tt30-who")}catch(e){}if(w0)pickWho(w0);
   [["mucDich","kMucDichKhac"],["bietQua","kBietQuaKhac"]].forEach(([k,id])=>g.querySelector(`[data-k="${k}"]`).addEventListener("change",e=>{const on=[...e.currentTarget.querySelectorAll(".ch.on")].some(b=>b.textContent==="Khác");const inp=document.getElementById(id);inp.hidden=!on;if(on)inp.focus()}));
+  const HOP={"Công việc":[6,12,13,22,28],"Du lịch":[14,15,16,17,18,21,29],"Du học":[6,11,12,16,22],"Thi HSK":[5,7,9,13,24,25,26,27],"Phim ảnh, sở thích":[7,19,25,26],"Nói chuyện với người thân":[4,5,8,9,10]};
+  let KB=null;
+  const readKB=()=>{const kb={};g.querySelectorAll("#dangKy .chs").forEach(b=>{const v=chsVal(b);kb[b.dataset.k]=Array.isArray(v)?v.join(", "):v});kb.mucTieu=document.getElementById("kMucTieu").value.trim();return kb};
+  const khac=(kb,k,id)=>{const t=document.getElementById(id).value.trim();if(kb[k].includes("Khác")){if(!t)return false;kb[k]=kb[k].replace("Khác","Khác: "+t)}return true};
+  const kErr1=document.getElementById("kErr1");
+  document.getElementById("kTiep").onclick=()=>{
+    const kb=readKB();
+    if(!kb.mucDich)return kErr1.textContent="Bạn chọn ít nhất 1 lý do học nhé";
+    if(!khac(kb,"mucDich","kMucDichKhac"))return kErr1.textContent="Bạn ghi rõ lý do “Khác” ở câu 1 nhé";
+    if(!kb.trinhDo||!kb.thoiGian)return kErr1.textContent="Bạn trả lời câu 2 và 3 nhé";
+    if(!kb.mucTieu)return kErr1.textContent="Bạn trả lời câu 4: sau khoá học muốn đạt được điều gì nhé";
+    if(!kb.bietQua)return kErr1.textContent="Bạn trả lời câu 5 nhé";
+    if(!khac(kb,"bietQua","kBietQuaKhac"))return kErr1.textContent="Bạn ghi rõ “Khác” ở câu 5 nhé";
+    kErr1.textContent="";KB=kb;
+    const md=chsVal(g.querySelector('[data-k="mucDich"]')),hop=new Set(md.flatMap(m=>HOP[m]||[]));
+    document.getElementById("outline").innerHTML=L.map((d,i)=>`<li class="${hop.has(i+1)?"hop":""}"><b>${i+1}</b>${esc(d.t)}</li>`).join("");
+    let gy=`Bạn học để <b>${esc(md.map(x=>x==="Khác"?"mục tiêu riêng":x).join(", ").toLowerCase())}</b>, mục tiêu “<i>${esc(kb.mucTieu)}</i>”. `;
+    gy+=kb.trinhDo==="HSK 1 trở lên"?"Khoá này tương đương HSK 1 — với bạn là bài ôn nền vững chắc; cần khoá cao hơn, nhắn Zalo SunMoon để được tư vấn. ":"Khoá bắt đầu từ số 0, rất vừa với bạn. ";
+    gy+=kb.thoiGian==="10–15 phút"?"Mỗi bài khoảng 20 phút — bạn có thể chia làm 2 lần trong ngày. ":"Mỗi ngày 1 bài khoảng 20 phút là vừa đủ. ";
+    if(hop.size)gy+="Các bài có dấu <b style=\"color:var(--sun)\">★</b> dùng ngay được cho mục đích của bạn.";
+    document.getElementById("goiY").innerHTML=gy;
+    const st=document.getElementById("step2");st.hidden=false;st.scrollIntoView({behavior:"smooth",block:"start"});
+  };
   const kErr=document.getElementById("kErr"),kGui=document.getElementById("kGui");
   kGui.onclick=async()=>{
     const ten=document.getElementById("kTen").value.trim(),sdt=document.getElementById("kSdt").value.replace(/[^\d]/g,"");
-    const kb={};g.querySelectorAll("#dangKy .chs").forEach(b=>{const v=chsVal(b);kb[b.dataset.k]=Array.isArray(v)?v.join(", "):v});
-    const khac=(k,id)=>{const t=document.getElementById(id).value.trim();if(kb[k].includes("Khác")){if(!t)return false;kb[k]=kb[k].replace("Khác","Khác: "+t)}return true};
-    kb.mucTieu=document.getElementById("kMucTieu").value.trim();
+    const kb=KB;if(!kb)return kErr.textContent="Bạn trả lời Bước 1 trước nhé";
     if(!ten)return kErr.textContent="Bạn điền họ tên nhé";
     const email=document.getElementById("kEmail").value.trim().toLowerCase();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return kErr.textContent="Bạn điền email đúng để nhận mã học nhé";
     if(sdt.length<9)return kErr.textContent="Số điện thoại chưa đúng";
-    if(!kb.mucDich||!kb.trinhDo||!kb.thoiGian||!kb.bietQua)return kErr.textContent="Bạn trả lời đủ các câu nhé";
-    if(!khac("mucDich","kMucDichKhac"))return kErr.textContent="Bạn ghi rõ lý do “Khác” ở câu 2 nhé";
-    if(!khac("bietQua","kBietQuaKhac"))return kErr.textContent="Bạn ghi rõ “Khác” ở câu 5 nhé";
-    if(!kb.mucTieu)return kErr.textContent="Bạn trả lời câu 6: sau khoá học muốn đạt được điều gì nhé";
     kErr.textContent="";kGui.disabled=true;kGui.textContent="Đang gửi…";
     try{const r=await callApi({app:"muaapp",giaoTrinh:GT,sdt,email,tenBe:ten,khaiBao:kb});
       if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
