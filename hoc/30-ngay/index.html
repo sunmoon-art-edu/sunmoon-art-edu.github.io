@@ -360,12 +360,13 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 <div class="wrap gate" id="gate" hidden>
   <header class="hero">
     <span class="pill">Khoá học online · SunMoon</span>
-    <h1>30 ngày tự học tiếng Trung <span class="hzi">学中文</span></h1>
-    <p class="sub">Cho người mới bắt đầu — mỗi ngày 1 bài, 20 phút</p>
-    <div class="price"><s>299.000đ</s><b id="giaNay">99.000đ</b><i id="giaGhi">ưu đãi tháng đầu mở khoá học</i></div>
+    <h1>Muốn học tiếng Trung nhưng cứ… để mai?</h1>
+    <p class="sub" style="font-style:normal;font-weight:600;color:var(--sun);font-size:18px">Vậy bắt đầu 20 phút/ngày nhé.</p>
+    <p class="sub">Lộ trình 30 ngày cho người mới bắt đầu — không cần biết tiếng Trung trước.</p>
+    <div class="price"><s>299.000đ</s><b id="giaNay">99.000đ</b><i id="giaGhi">Giá ưu đãi · đến hết 24/10/2026</i></div>
   </header>
   <section class="card"><h2>Bạn nhận được</h2>
-    <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán tượng hình</b> — nhìn hình đoán nghĩa, học đâu nhớ đó</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li><li><b>Học trên mọi máy</b> — điện thoại, máy tính</li></ul></section>
+    <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán bằng hình ảnh</b> — nhìn hình, liên tưởng và nhớ nghĩa</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li><li><b>Học trên mọi máy</b> — điện thoại, máy tính</li></ul></section>
   <section class="card"><h2>Lộ trình 30 ngày</h2><ul class="outline" id="outline"></ul></section>
   <section class="card" id="dangKy"><h2>Đăng ký khoá học</h2>
     <p class="note" style="font-style:normal">Trả lời 6 câu để SunMoon hiểu bạn hơn, rồi chuyển khoản để nhận mã học.</p>
@@ -878,7 +879,7 @@ function showGate(){
   document.getElementById("course").hidden=true;const g=document.getElementById("gate");g.hidden=false;
   const nay=new Date().toLocaleDateString("sv-SE",{timeZone:"Asia/Ho_Chi_Minh"});
   if(nay>UU_DAI_DEN){document.getElementById("giaNay").textContent="299.000đ";g.querySelector(".price s").hidden=true;document.getElementById("giaGhi").textContent=""}
-  else document.getElementById("giaGhi").textContent="ưu đãi tháng đầu, đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
+  else document.getElementById("giaGhi").textContent="Giá ưu đãi · đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
   document.getElementById("outline").innerHTML=L.map((d,i)=>`<li><b>${i+1}</b>${esc(d.t)}</li>`).join("");
   g.querySelectorAll(".zaloBox").forEach(z=>z.innerHTML=zaloHtml());bindChs(g);
   [["mucDich","kMucDichKhac"],["bietQua","kBietQuaKhac"]].forEach(([k,id])=>g.querySelector(`[data-k="${k}"]`).addEventListener("change",e=>{const on=[...e.currentTarget.querySelectorAll(".ch.on")].some(b=>b.textContent==="Khác");const inp=document.getElementById(id);inp.hidden=!on;if(on)inp.focus()}));
