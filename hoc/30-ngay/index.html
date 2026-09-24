@@ -249,6 +249,13 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .hero-ph img{width:100%;aspect-ratio:16/8;object-fit:cover;display:block}
 .hero-ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 14px 10px;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;font-weight:600;font-size:15px;line-height:1.35}
 .hero-ph figcaption a{display:block;color:rgba(255,255,255,.75);font-weight:300;font-size:11px;text-decoration:none}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.who{grid-template-columns:1fr}}
+.whob{display:flex;flex-direction:column;gap:2px;align-items:flex-start;text-align:left;padding:16px;border:2px solid var(--line);border-bottom-width:5px;border-radius:18px;background:var(--surface)}
+.whob b{font-size:17px}
+.whob i{font-style:normal;font-weight:300;color:var(--ink-2);font-size:14px}
+.whob.on{border-color:var(--sun);background:var(--sun-soft)}
+.whob.on b{color:var(--sun-2)}
 .dlg{display:flex;flex-direction:column;gap:10px}
 .ln{display:flex;gap:10px;align-items:flex-start;text-align:left;background:none;border:0;padding:0;width:100%}
 .ln .who{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--tx);background:var(--sun);color:var(--on-sun)}
@@ -369,6 +376,12 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <p class="sub">Lộ trình 30 ngày cho người mới bắt đầu — không cần biết tiếng Trung trước.</p>
     <div class="price"><s>299.000đ</s><b id="giaNay">99.000đ</b><i id="giaGhi">Giá ưu đãi · đến hết 24/10/2026</i></div>
   </header>
+  <section class="card"><h2>Bạn muốn học theo cách nào?</h2>
+    <div class="who"><button class="whob" data-who="adult"><b>Tôi tự học</b><i>người lớn, bắt đầu từ số 0</i></button><button class="whob" data-who="kid"><b>Ba mẹ dạy con</b><i>ba mẹ cùng con học tại nhà</i></button></div></section>
+  <section class="card" id="gKid" hidden><h2>Khoá “Ba mẹ dạy con” đang được soạn</h2>
+    <p class="note" style="font-style:normal">SunMoon đang soạn lộ trình riêng để ba mẹ cùng con học tiếng Trung tại nhà — sắp ra mắt. Ba mẹ nhắn Zalo để SunMoon báo ngay khi mở khoá, hoặc tư vấn lớp phù hợp cho bé:</p>
+    <div class="zalos zaloBox"></div></section>
+  <div id="gAdult" class="gate" hidden>
   <section class="card"><h2>Bạn nhận được</h2>
     <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán bằng hình ảnh</b> — nhìn hình, liên tưởng và nhớ nghĩa</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li><li><b>Học trên mọi máy</b> — điện thoại, máy tính</li></ul></section>
   <section class="card"><h2>Lộ trình 30 ngày</h2><ul class="outline" id="outline"></ul></section>
@@ -384,6 +397,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <button class="btn main" id="kGui">Đăng ký &amp; nhận mã QR chuyển khoản</button>
     <div id="kQR" hidden></div>
   </section>
+  </div>
   <section class="card"><h2>Đã có mã học?</h2>
     <div class="fq"><input type="text" id="lU" placeholder="Tên đăng nhập" autocapitalize="characters" autocomplete="username"><input type="tel" id="lM" placeholder="Mã 4 số" inputmode="numeric" autocomplete="current-password"></div>
     <p class="err" id="lErr"></p><button class="btn main" id="lGo">Vào học</button></section>
@@ -887,6 +901,9 @@ function showGate(){
   else document.getElementById("giaGhi").textContent="Giá ưu đãi · đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
   document.getElementById("outline").innerHTML=L.map((d,i)=>`<li><b>${i+1}</b>${esc(d.t)}</li>`).join("");
   g.querySelectorAll(".zaloBox").forEach(z=>z.innerHTML=zaloHtml());bindChs(g);
+  const pickWho=w=>{g.querySelectorAll(".whob").forEach(b=>b.classList.toggle("on",b.dataset.who===w));document.getElementById("gAdult").hidden=w!=="adult";document.getElementById("gKid").hidden=w!=="kid";try{localStorage.setItem("tt30-who",w)}catch(e){}};
+  g.querySelectorAll(".whob").forEach(b=>b.onclick=()=>{pickWho(b.dataset.who);(b.dataset.who==="adult"?document.getElementById("gAdult"):document.getElementById("gKid")).scrollIntoView({behavior:"smooth",block:"start"})});
+  let w0=null;try{w0=localStorage.getItem("tt30-who")}catch(e){}if(w0)pickWho(w0);
   [["mucDich","kMucDichKhac"],["bietQua","kBietQuaKhac"]].forEach(([k,id])=>g.querySelector(`[data-k="${k}"]`).addEventListener("change",e=>{const on=[...e.currentTarget.querySelectorAll(".ch.on")].some(b=>b.textContent==="Khác");const inp=document.getElementById(id);inp.hidden=!on;if(on)inp.focus()}));
   const kErr=document.getElementById("kErr"),kGui=document.getElementById("kGui");
   kGui.onclick=async()=>{
