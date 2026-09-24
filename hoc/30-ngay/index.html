@@ -245,6 +245,9 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .sp .res b{font-size:16px}
 .sp .heard{font-family:var(--hz);font-weight:700}
 .fq .khac{margin-top:2px}
+.fq .chs{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.fq .chs .ch{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:8px 12px;border-radius:14px;line-height:1.3}
+@media (max-width:420px){.fq .chs{grid-template-columns:1fr 1fr}}
 .hero-ph{margin:0;border-radius:18px;overflow:hidden;position:relative;background:var(--soft)}
 .hero-ph img{width:100%;aspect-ratio:16/8;object-fit:cover;display:block}
 .hero-ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 14px 10px;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;font-weight:600;font-size:15px;line-height:1.35}
@@ -391,7 +394,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <div class="fq"><p>1 · Bạn học tiếng Trung để làm gì? <small class="note">(chọn nhiều)</small></p><div class="chs" data-k="mucDich" data-multi="1"><button class="ch">Công việc</button><button class="ch">Du lịch</button><button class="ch">Du học</button><button class="ch">Thi HSK</button><button class="ch">Phim ảnh, sở thích</button><button class="ch">Nói chuyện với người thân</button><button class="ch">Khác</button></div><input type="text" id="kMucDichKhac" class="khac" placeholder="Bạn ghi rõ lý do khác…" hidden></div>
     <div class="fq"><p>2 · Trình độ hiện tại?</p><div class="chs" data-k="trinhDo"><button class="ch">Chưa biết gì</button><button class="ch">Biết pinyin</button><button class="ch">Đã học vài tháng</button><button class="ch">HSK 1 trở lên</button></div></div>
     <div class="fq"><p>3 · Mỗi ngày bạn học được bao lâu?</p><div class="chs" data-k="thoiGian"><button class="ch">10–15 phút</button><button class="ch">20–30 phút</button><button class="ch">Trên 30 phút</button></div></div>
-    <div class="fq"><label for="kMucTieu">4 · Sau khoá học, bạn muốn đạt được điều gì?</label><textarea id="kMucTieu" placeholder="VD: tự giới thiệu được bằng tiếng Trung, đi du lịch hỏi đường được…"></textarea></div>
+    <div class="fq"><p>4 · Sau khoá học, bạn muốn đạt được điều gì? <small class="note">(chọn nhiều)</small></p><div class="chs" data-k="mucTieu" data-multi="1"><button class="ch">Tự giới thiệu bản thân</button><button class="ch">Giao tiếp cơ bản hằng ngày</button><button class="ch">Du lịch tự hỏi đường, mua sắm</button><button class="ch">Đọc được chữ Hán cơ bản</button><button class="ch">Phát âm chuẩn</button><button class="ch">Chuẩn bị thi HSK 1</button><button class="ch">Nói chuyện với đối tác, đồng nghiệp</button><button class="ch">Khác</button></div><input type="text" id="kMucTieuKhac" class="khac" placeholder="Bạn muốn đạt được điều gì khác?" hidden></div>
     <div class="fq"><p>5 · Bạn biết SunMoon qua đâu?</p><div class="chs" data-k="bietQua"><button class="ch">Facebook</button><button class="ch">TikTok</button><button class="ch">Bạn bè</button><button class="ch">Google</button><button class="ch">Khác</button></div><input type="text" id="kBietQuaKhac" class="khac" placeholder="Bạn biết SunMoon qua đâu?" hidden></div>
     <p class="err" id="kErr1"></p>
     <button class="btn main" id="kTiep">Xem lộ trình dành cho bạn →</button>
@@ -917,10 +920,10 @@ function showGate(){
   const pickWho=w=>{g.querySelectorAll(".whob").forEach(b=>b.classList.toggle("on",b.dataset.who===w));document.getElementById("gAdult").hidden=w!=="adult";document.getElementById("gKid").hidden=w!=="kid";try{localStorage.setItem("tt30-who",w)}catch(e){}};
   g.querySelectorAll(".whob").forEach(b=>b.onclick=()=>{pickWho(b.dataset.who);(b.dataset.who==="adult"?document.getElementById("gAdult"):document.getElementById("gKid")).scrollIntoView({behavior:"smooth",block:"start"})});
   let w0=null;try{w0=localStorage.getItem("tt30-who")}catch(e){}if(w0)pickWho(w0);
-  [["mucDich","kMucDichKhac"],["bietQua","kBietQuaKhac"]].forEach(([k,id])=>g.querySelector(`[data-k="${k}"]`).addEventListener("change",e=>{const on=[...e.currentTarget.querySelectorAll(".ch.on")].some(b=>b.textContent==="Khác");const inp=document.getElementById(id);inp.hidden=!on;if(on)inp.focus()}));
+  [["mucDich","kMucDichKhac"],["mucTieu","kMucTieuKhac"],["bietQua","kBietQuaKhac"]].forEach(([k,id])=>g.querySelector(`[data-k="${k}"]`).addEventListener("change",e=>{const on=[...e.currentTarget.querySelectorAll(".ch.on")].some(b=>b.textContent==="Khác");const inp=document.getElementById(id);inp.hidden=!on;if(on)inp.focus()}));
   const HOP={"Công việc":[6,12,13,22,28],"Du lịch":[14,15,16,17,18,21,29],"Du học":[6,11,12,16,22],"Thi HSK":[5,7,9,13,24,25,26,27],"Phim ảnh, sở thích":[7,19,25,26],"Nói chuyện với người thân":[4,5,8,9,10]};
   let KB=null;
-  const readKB=()=>{const kb={};g.querySelectorAll("#dangKy .chs").forEach(b=>{const v=chsVal(b);kb[b.dataset.k]=Array.isArray(v)?v.join(", "):v});kb.mucTieu=document.getElementById("kMucTieu").value.trim();return kb};
+  const readKB=()=>{const kb={};g.querySelectorAll("#dangKy .chs").forEach(b=>{const v=chsVal(b);kb[b.dataset.k]=Array.isArray(v)?v.join(", "):v});return kb};
   const khac=(kb,k,id)=>{const t=document.getElementById(id).value.trim();if(kb[k].includes("Khác")){if(!t)return false;kb[k]=kb[k].replace("Khác","Khác: "+t)}return true};
   const kErr1=document.getElementById("kErr1");
   document.getElementById("kTiep").onclick=()=>{
@@ -928,13 +931,14 @@ function showGate(){
     if(!kb.mucDich)return kErr1.textContent="Bạn chọn ít nhất 1 lý do học nhé";
     if(!khac(kb,"mucDich","kMucDichKhac"))return kErr1.textContent="Bạn ghi rõ lý do “Khác” ở câu 1 nhé";
     if(!kb.trinhDo||!kb.thoiGian)return kErr1.textContent="Bạn trả lời câu 2 và 3 nhé";
-    if(!kb.mucTieu)return kErr1.textContent="Bạn trả lời câu 4: sau khoá học muốn đạt được điều gì nhé";
+    if(!kb.mucTieu)return kErr1.textContent="Bạn chọn ở câu 4: sau khoá học muốn đạt được điều gì nhé";
+    if(!khac(kb,"mucTieu","kMucTieuKhac"))return kErr1.textContent="Bạn ghi rõ “Khác” ở câu 4 nhé";
     if(!kb.bietQua)return kErr1.textContent="Bạn trả lời câu 5 nhé";
     if(!khac(kb,"bietQua","kBietQuaKhac"))return kErr1.textContent="Bạn ghi rõ “Khác” ở câu 5 nhé";
     kErr1.textContent="";KB=kb;
     const md=chsVal(g.querySelector('[data-k="mucDich"]')),hop=new Set(md.flatMap(m=>HOP[m]||[]));
     document.getElementById("outline").innerHTML=L.map((d,i)=>`<li class="${hop.has(i+1)?"hop":""}"><b>${i+1}</b>${esc(d.t)}</li>`).join("");
-    let gy=`Bạn học để <b>${esc(md.map(x=>x==="Khác"?"mục tiêu riêng":x).join(", ").toLowerCase())}</b>, mục tiêu “<i>${esc(kb.mucTieu)}</i>”. `;
+    let gy=`Bạn học để <b>${esc(md.map(x=>x==="Khác"?"mục tiêu riêng":x).join(", ").toLowerCase())}</b>, mục tiêu: <b>${esc(kb.mucTieu.toLowerCase())}</b>. `;
     gy+=kb.trinhDo==="HSK 1 trở lên"?"Khoá này tương đương HSK 1 — với bạn là bài ôn nền vững chắc; cần khoá cao hơn, nhắn Zalo SunMoon để được tư vấn. ":"Khoá bắt đầu từ số 0, rất vừa với bạn. ";
     gy+=kb.thoiGian==="10–15 phút"?"Mỗi bài khoảng 20 phút — bạn có thể chia làm 2 lần trong ngày. ":"Mỗi ngày 1 bài khoảng 20 phút là vừa đủ. ";
     if(hop.size)gy+="Các bài có dấu <b style=\"color:var(--sun)\">★</b> dùng ngay được cho mục đích của bạn.";
