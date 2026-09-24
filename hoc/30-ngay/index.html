@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Khoá 30 ngày tự học tiếng Trung cho người mới bắt đầu của SunMoon — bài giảng nghe, chữ Hán tượng hình, bộ thủ, tập viết nét, hội thoại, văn hoá.">
+<meta name="theme-color" content="#C8453A">
+<link rel="icon" href="mark2.png">
+<title>30 ngày tự học tiếng Trung · SunMoon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=LXGW+WenKai+TC&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans:wght@400;500&display=swap">
+<style>
+/* Giao diện theo app học HSK của SunMoon: đỏ son + vàng, nền trắng */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --soft:#FBF7F0; --ink:#2B2622; --ink-2:#6E655C; --line:#EADFD0;
+  --sun:#C8453A; --sun-2:#A2342B; --sun-soft:#F9E3DF; --on-sun:#FFFFFF;
+  --moon:#C8453A; --moon-2:#A2342B; --moon-soft:#FCF1EF; --on-moon:#FFFFFF;
+  --ok:#5E9E5A; --ok-2:#4A8047; --ok-soft:#E6F0E1;
+  --bad:#D9582F; --bad-soft:#FBE6DC;
+  --t1:#CC3B33; --t2:#C9820F; --t3:#34874A; --t4:#2C68B0; --t5:#9A918A;
+  --logo-filter:none;
+  --hz:"LXGW WenKai TC","Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",serif;
+  --py:"Noto Sans","Helvetica Neue",Arial,sans-serif;
+  --tx:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#1C1816; --surface:#28221F; --soft:#221D1A; --ink:#F3EEE6; --ink-2:#B9AFA2; --line:#3D3430;
+    --sun:#E0695D; --sun-2:#B84B40; --sun-soft:#40211E; --on-sun:#1A0E0C;
+    --moon:#E0695D; --moon-2:#E88A80; --moon-soft:#2E1F1C; --on-moon:#1A140A;
+    --ok:#7DBA77; --ok-2:#5E9E5A; --ok-soft:#22331F; --bad:#E8744C; --bad-soft:#3E2419;
+    --t1:#F07068; --t2:#E8A93F; --t3:#6CC381; --t4:#6FA4E8; --t5:#8E8780;
+    --logo-filter:invert(1);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#1C1816; --surface:#28221F; --soft:#221D1A; --ink:#F3EEE6; --ink-2:#B9AFA2; --line:#3D3430;
+  --sun:#E0695D; --sun-2:#B84B40; --sun-soft:#40211E; --on-sun:#1A0E0C;
+  --moon:#E0695D; --moon-2:#E88A80; --moon-soft:#2E1F1C; --on-moon:#1A140A;
+  --ok:#7DBA77; --ok-2:#5E9E5A; --ok-soft:#22331F; --bad:#E8744C; --bad-soft:#3E2419;
+  --t1:#F07068; --t2:#E8A93F; --t3:#6CC381; --t4:#6FA4E8; --t5:#8E8780;
+  --logo-filter:invert(1);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--tx);-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--moon);outline-offset:2px}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:20px 64px;display:flex;flex-direction:column;gap:22px}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--bg);border-bottom:2px solid var(--line)}
+.top .in{max-width:640px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:8px;min-width:0}
+.brand .lm{height:38px;width:auto}
+.brand .lw{height:20px;width:auto;filter:var(--logo-filter)}
+.lvl{font:600 12px/1 var(--tx);letter-spacing:.06em;background:var(--moon);color:var(--on-moon);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.chips-top{margin-left:auto;display:flex;gap:6px}
+.chip.fire svg{color:#E8672A}
+.chip{display:flex;align-items:center;gap:5px;font:600 15px/1 var(--tx);padding:6px 10px;border-radius:999px;background:var(--surface);border:2px solid var(--line);font-variant-numeric:tabular-nums}
+.chip svg{width:17px;height:17px;color:var(--moon)}
+@media (max-width:380px){.brand .lm{display:none}}
+
+/* intro card */
+.hero{background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:22px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:12px}
+.hero .pill{align-self:flex-start;font:600 11px/1 var(--tx);letter-spacing:.1em;text-transform:uppercase;background:var(--sun-soft);color:var(--sun-2);padding:6px 10px;border-radius:999px}
+.hero h1{margin:0;font:700 clamp(22px,5.6vw,28px)/1.2 var(--tx);text-wrap:balance}
+.hero h1 .hzi{font-family:var(--hz);font-weight:400;color:var(--sun)}
+.hero .sub{margin:0;color:var(--ink-2);font-weight:300;font-style:italic}
+.howto{margin:4px 0 0;padding:14px 0 0;border-top:2px dashed var(--line);list-style:none;display:grid;gap:8px;font-size:15px;counter-reset:st}
+.howto li{display:flex;align-items:baseline;gap:10px}
+.howto li::before{counter-increment:st;content:counter(st);flex:none;width:22px;height:22px;border-radius:50%;background:var(--sun);color:var(--on-sun);font:600 12px/22px var(--tx);text-align:center;transform:translateY(-1px)}
+.howto b{font-weight:600}
+.howto i{font-weight:300;color:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 8px;font-size:13px;color:var(--ink-2)}
+.legend span{border:2px solid var(--line);border-radius:999px;padding:3px 10px}
+.legend span b{font:500 15px var(--py)}
+
+/* day map */
+.map{display:flex;flex-direction:column;gap:12px}
+.progress{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink-2)}
+.bar{flex:1;height:12px;background:var(--line);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:999px;width:0;transition:width .3s}
+.week{display:flex;flex-direction:column;gap:8px}
+.week .lbl{font:600 12px/1.2 var(--tx);letter-spacing:.08em;text-transform:uppercase;color:var(--moon-2)}
+.week .lbl b{letter-spacing:0;text-transform:none;color:var(--ink-2);font-weight:500;margin-left:6px;font-size:13px}
+.days{display:flex;flex-wrap:wrap;gap:8px}
+.day{width:44px;height:44px;border-radius:14px;border:2px solid var(--line);border-bottom-width:4px;background:var(--surface);font:600 15px/1 var(--tx);font-variant-numeric:tabular-nums;position:relative;transition:transform .06s}
+.day:active{transform:translateY(2px)}
+.day.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok-2)}
+.day.done::after{content:"";position:absolute;right:-5px;top:-5px;width:14px;height:14px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/9px no-repeat}
+.day.cur{background:var(--sun);border-color:var(--sun-2);color:var(--on-sun)}
+
+/* lesson */
+article{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:clamp(16px,4vw,26px);display:flex;flex-direction:column;gap:26px}
+.lhead{display:flex;gap:14px;align-items:center}
+.dnum{flex:none;width:64px;height:64px;border-radius:18px;background:var(--sun);border-bottom:5px solid var(--sun-2);color:var(--on-sun);display:grid;place-items:center;font:700 26px/1 var(--tx);font-variant-numeric:tabular-nums}
+.lhead h2{margin:0;font:700 clamp(21px,4.6vw,26px)/1.2 var(--tx);text-wrap:balance}
+.goal{margin:2px 0 0;color:var(--ink-2);font-style:italic;font-weight:300}
+.eyebrow{margin:0 0 2px;font:600 12px/1 var(--tx);letter-spacing:.08em;text-transform:uppercase;color:var(--moon-2)}
+section h3{margin:0 0 12px;font:700 17px/1.3 var(--tx);display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px}
+section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
+
+.vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.w{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:12px 12px 10px;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;background:var(--surface);position:relative;transition:transform .06s}
+.w:active{transform:translateY(2px)}
+.w .hz{font:400 30px/1.15 var(--hz)}
+.w .pyw{font:500 15px var(--py)}
+.w .vi{font-weight:600;font-size:14px;line-height:1.35}
+.w .spk{position:absolute;right:10px;top:10px;color:var(--moon)}
+.w.playing{border-color:var(--moon);background:var(--moon-soft)}
+
+.sents{display:flex;flex-direction:column;gap:10px}
+.s{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;padding:12px;border:2px solid var(--line);border-radius:16px;text-align:left;background:var(--surface);width:100%}
+.s .play{width:40px;height:40px;border-radius:50%;background:var(--moon-soft);color:var(--moon-2);display:grid;place-items:center}
+.s .hz{font:400 22px/1.4 var(--hz)}
+.s .pys{font:400 15px/1.5 var(--py)}
+.s .vi{font-style:italic;font-weight:300;color:var(--ink-2);font-size:15px}
+.s.playing{border-color:var(--moon);background:var(--moon-soft)}
+.s.playing .play{background:var(--moon);color:var(--on-moon)}
+
+.hanz{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.hc{display:flex;gap:14px;align-items:flex-start;text-align:left;padding:14px;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;background:var(--surface)}
+.hc .big{flex:none;width:64px;height:64px;border-radius:14px;background:var(--sun-soft);color:var(--sun);display:grid;place-items:center;font:400 42px/1 var(--hz)}
+.hc b{display:block;font-weight:600;line-height:1.4}
+.hc i{display:block;margin-top:4px;color:var(--ink-2);font-weight:300;font-size:15px;line-height:1.4}
+.hc.playing{border-color:var(--sun);background:var(--sun-soft)}
+.wr{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+@media (max-width:520px){.wr{grid-template-columns:1fr;justify-items:center}}
+.pad{width:220px;height:220px;border:2px solid var(--sun);border-radius:16px;background:var(--surface);position:relative;
+ background-image:linear-gradient(var(--line),var(--line)),linear-gradient(var(--line),var(--line)),linear-gradient(45deg,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px)),linear-gradient(-45deg,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px));
+ background-size:100% 1px,1px 100%,100% 100%,100% 100%;background-position:center,center,center,center;background-repeat:no-repeat}
+.wside{display:flex;flex-direction:column;gap:10px;min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip2{width:44px;height:44px;border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;background:var(--surface);font:400 24px/1 var(--hz)}
+.chip2.on{border-color:var(--sun);background:var(--sun-soft);color:var(--sun)}
+.winfo{margin:0;font-size:14px;color:var(--ink-2)}
+.winfo b{color:var(--ink)}
+.wbtns{display:flex;flex-wrap:wrap;gap:8px}
+.wbtns .btn{padding:8px 12px;font-size:14px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.ph{margin:0;border:2px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
+.ph img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--soft)}
+.ph figcaption{padding:8px 10px;font-weight:600;font-size:14px;line-height:1.35}
+.ph figcaption a{display:block;font-weight:300;font-size:11px;color:var(--ink-2);text-decoration:none;margin-top:2px}
+.yt{display:flex;align-items:center;gap:12px;padding:12px 14px;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;text-decoration:none;color:var(--ink);background:var(--surface)}
+.yt .ico{flex:none;width:44px;height:32px;border-radius:9px;background:#E62117;display:grid;place-items:center}
+.yt b{display:block;font-weight:600}
+.yt i{display:block;font-weight:300;font-size:13px;color:var(--ink-2)}
+.gate{display:flex;flex-direction:column;gap:18px}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.card h2{margin:0;font:700 19px/1.3 var(--tx)}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price s{color:var(--ink-2);font-size:16px}
+.price b{font:700 30px/1 var(--tx);color:var(--sun)}
+.price i{font-weight:300;font-size:14px;color:var(--ink-2)}
+.feat{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.feat li{padding-left:22px;position:relative}
+.feat li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.outline{margin:0;padding:0;list-style:none;columns:2 240px;column-gap:16px;font-size:14px}
+.outline li{break-inside:avoid;padding:3px 0;color:var(--ink-2)}
+.outline b{color:var(--ink);font-variant-numeric:tabular-nums;margin-right:6px}
+.fq{display:flex;flex-direction:column;gap:8px}
+.fq>label,.fq>p{font-weight:600;margin:0}
+.fq input[type=text],.fq input[type=tel],.fq textarea{font:inherit;padding:11px 12px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);width:100%}
+.fq textarea{min-height:70px;resize:vertical}
+.chs{display:flex;flex-wrap:wrap;gap:6px}
+.ch{padding:7px 12px;border:2px solid var(--line);border-radius:999px;background:var(--surface);font-size:14px}
+.ch.on{border-color:var(--sun);background:var(--sun-soft);color:var(--sun-2);font-weight:600}
+.err{color:var(--bad);font-size:14px;margin:0;min-height:1.2em}
+.qrbox{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.qrbox .qr{width:180px;height:180px;background:#fff;border-radius:12px;padding:6px}
+.qrbox .qr svg{width:100%;height:100%}
+.bank{line-height:1.7}
+.zalos{display:flex;flex-wrap:wrap;gap:8px}
+.zl{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:14px;background:#0068FF;color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+.sv{display:flex;flex-direction:column;gap:14px}
+.sv .fq>p .n{color:var(--ink-2);font-weight:400;margin-right:6px}
+.day{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;line-height:1}
+.day .st{font-size:8px;letter-spacing:-1px;color:var(--moon)}
+.day.locked{background:var(--soft);color:var(--ink-2);opacity:.55}
+.day.locked::before{content:"";width:10px;height:10px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10V7a5 5 0 0 1 10 0v3h1v12H6V10zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10V7a5 5 0 0 1 10 0v3h1v12H6V10zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/contain no-repeat}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.bdg{display:inline-flex;align-items:center;gap:6px;padding:5px 10px 5px 6px;border-radius:999px;border:2px solid var(--line);font-size:12px;font-weight:600;color:var(--ink-2);background:var(--surface)}
+.bdg i{width:20px;height:20px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-style:normal;font-size:11px;color:#fff}
+.bdg.on{border-color:var(--moon);color:var(--ink)}
+.bdg.on i{background:var(--moon)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:14px;font-weight:600;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none;animation:tin .25s ease}
+.xpop{position:fixed;z-index:50;pointer-events:none;font:800 18px var(--tx);color:var(--moon);animation:up .9s ease forwards}
+@keyframes up{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-40px)}}
+@keyframes tin{from{opacity:0;transform:translate(-50%,10px)}}
+.celeb{position:fixed;inset:0;z-index:60;background:rgba(20,16,14,.55);display:grid;place-items:center;padding:16px}
+.celeb .box{background:var(--surface);border-radius:24px;padding:24px 20px;max-width:380px;width:100%;text-align:center;display:flex;flex-direction:column;gap:10px;animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.8);opacity:0}}
+.celeb .stars{font-size:44px;letter-spacing:6px;color:var(--moon)}
+.celeb .stars .off{color:var(--line)}
+.celeb h2{margin:0;font:800 24px/1.2 var(--tx)}
+.celeb .stat{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.celeb .stat span{padding:6px 12px;border-radius:999px;background:var(--sun-soft);color:var(--sun-2);font-weight:700;font-size:14px}
+.celeb .nb{padding:10px;border:2px dashed var(--moon);border-radius:14px;font-weight:600}
+.celeb .tease{font-size:14px;color:var(--ink-2)}
+.celeb .btn{width:100%}
+#confetti{position:fixed;inset:0;z-index:61;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.xpop,.celeb .box,.toast{animation:none}}
+.ytl{position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:0;padding:0;background:#000;cursor:pointer}
+.ytl img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.ytl .pb{position:absolute;inset:0;margin:auto;width:68px;height:48px;border-radius:14px;background:#E62117;display:grid;place-items:center}
+.ytl iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ytmeta{margin:8px 0 0;font-size:14px}
+.ytmeta b{display:block}
+.ytmeta i{color:var(--ink-2);font-weight:300}
+.rads{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.rad{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:var(--sun-soft)}
+.rad .rc{flex:none;width:56px;height:56px;border-radius:14px;background:var(--surface);color:var(--sun);display:grid;place-items:center;font:400 34px/1 var(--hz)}
+.rad b{display:block;font-weight:700}
+.rad i{display:block;font-style:normal;font-size:14px;color:var(--ink-2)}
+.rad .ex{font-family:var(--hz);font-size:18px;color:var(--ink);letter-spacing:.15em}
+.mm{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:12px;border:2px dashed var(--line);border-radius:16px}
+.nd{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:62px;padding:8px 10px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;background:var(--surface)}
+.nd .c{font:400 32px/1.1 var(--hz)}
+.nd .m{font-size:12px;color:var(--ink-2);text-align:center;line-height:1.25}
+.nd.base{border-color:var(--sun);background:var(--sun-soft)}
+.nd.base .c{color:var(--sun)}
+.ar2{display:flex;flex-direction:column;align-items:center;font-size:12px;color:var(--sun-2);font-weight:700;padding:0 2px}
+.ar2 .pl{font-family:var(--hz);font-size:15px;white-space:nowrap}
+.ar2 svg{width:26px;height:12px}
+.fan{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;padding:12px;border:2px dashed var(--line);border-radius:16px}
+.fan .br{display:flex;flex-direction:column;gap:6px}
+.fan .row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+@media (max-width:420px){.fan{grid-template-columns:1fr}}
+.dlg{display:flex;flex-direction:column;gap:10px}
+.ln{display:flex;gap:10px;align-items:flex-start;text-align:left;background:none;border:0;padding:0;width:100%}
+.ln .who{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--tx);background:var(--sun);color:var(--on-sun)}
+.ln.B .who{background:var(--ink-2);color:var(--surface)}
+.ln .bub{flex:1;min-width:0;padding:10px 14px;border:2px solid var(--line);border-radius:4px 16px 16px 16px;background:var(--surface)}
+.ln.B{flex-direction:row-reverse}
+.ln.B .bub{border-radius:16px 4px 16px 16px;background:var(--soft)}
+.ln .hz{display:block;font:400 21px/1.4 var(--hz)}
+.ln .pys{display:block;font:400 14px/1.5 var(--py)}
+.ln .vi{display:block;font-style:italic;font-weight:300;color:var(--ink-2);font-size:14px}
+.ln.playing .bub{border-color:var(--sun);background:var(--sun-soft)}
+.fact{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:16px;border:2px dashed var(--sun);background:var(--surface)}
+.fact .ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--sun-soft);color:var(--sun);display:grid;place-items:center;font:400 22px/1 var(--hz)}
+.fact p{margin:0;line-height:1.45}
+.fact p b{font-weight:600}
+.fact p i{display:block;color:var(--ink-2);font-weight:300;font-size:15px;margin-top:2px}
+.fact.playing{background:var(--sun-soft)}
+.origin{border:2px solid var(--line);border-radius:22px;background:var(--surface);padding:18px;display:flex;flex-direction:column;gap:12px}
+.ohead{display:flex;gap:12px;align-items:center}
+.ohead .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--sun-soft);color:var(--sun);display:grid;place-items:center;font:400 24px/1 var(--hz)}
+.ohead b{display:block;font:700 19px/1.25 var(--tx)}
+.osub{margin:6px 0 0;font:700 16px/1.3 var(--tx)}
+.teacher.intro{position:static}
+.cult{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.cult li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:2px solid var(--line);border-radius:14px}
+.cult .hzi{flex:none;min-width:40px;height:40px;padding:0 6px;border-radius:10px;background:var(--sun-soft);color:var(--sun);display:grid;place-items:center;font-size:18px}
+.cult b{font-weight:600;display:block;line-height:1.35}
+.cult i{display:block;color:var(--ink-2);font-weight:300;font-size:14px}
+.tl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
+.tl li{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:10px 0;border-top:2px dashed var(--line)}
+.tl .yr{font:700 14px/1.3 var(--tx);color:var(--sun);font-variant-numeric:tabular-nums}
+.tl b{font-weight:600}
+.tl i{display:block;color:var(--ink-2);font-weight:300;font-size:15px}
+.hv{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.hv button{border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;background:var(--surface);padding:6px 10px;text-align:left;line-height:1.3}
+.hv button b{font:400 18px var(--hz);margin-right:6px}
+.hv button span{font-size:14px;color:var(--ink-2)}
+.facts{display:flex;flex-direction:column;gap:10px}
+.ex{display:flex;flex-direction:column;gap:14px}
+.ex h4{margin:0;font:600 15px/1.3 var(--tx);color:var(--sun-2)}
+.lis{display:flex;flex-direction:column;gap:12px}
+.li{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.li .pl{flex:none;width:42px;height:42px;border-radius:50%;border:0;border-bottom:3px solid var(--sun-2);background:var(--sun);color:var(--on-sun);display:grid;place-items:center}
+.ar{display:flex;flex-direction:column;gap:8px;padding:12px;border:2px solid var(--line);border-radius:16px}
+.ar .vi{font-style:italic;font-weight:300;color:var(--ink-2);margin:0}
+.ar .ans{min-height:50px;display:flex;flex-wrap:wrap;gap:6px;padding:6px;border-bottom:2px dashed var(--line)}
+.ar .pool{display:flex;flex-wrap:wrap;gap:6px}
+.tile{border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;background:var(--surface);padding:6px 12px;font:400 20px/1.2 var(--hz)}
+.ar.ok .ans{border-color:var(--ok);background:var(--ok-soft)}
+.ar.no .ans{border-color:var(--bad);background:var(--bad-soft)}
+.ar .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px}
+.ar .row .btn{padding:8px 14px;font-size:14px}
+.tips{margin:0;padding:14px 16px;list-style:none;display:flex;flex-direction:column;gap:10px;background:var(--moon-soft);border-radius:16px}
+.tips li{padding-left:20px;position:relative;line-height:1.45}
+.tips li::before{content:"";position:absolute;left:2px;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--moon)}
+.tips b{font-weight:600}
+.tips i{display:block;color:var(--ink-2);font-weight:300;font-size:15px}
+.hzi{font-family:var(--hz);font-style:normal}
+
+.quiz{display:flex;flex-direction:column;gap:18px}
+.q p{margin:0 0 8px;font-weight:600}
+.q p .n{color:var(--ink-2);font-weight:400;margin-right:6px;font-variant-numeric:tabular-nums}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{padding:9px 14px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;background:var(--surface);font-size:15px;line-height:1.35;text-align:left}
+.opt .hzi{font-size:18px}
+.opt:hover:not(:disabled){border-color:var(--moon)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok-2);font-weight:600}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.score{font-size:15px;color:var(--ink-2);min-height:1.5em;margin:0}
+.score b{color:var(--ink)}
+
+.foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border-top:2px solid var(--line);padding-top:20px}
+.nav{display:flex;gap:8px}
+.btn{border:2px solid var(--line);border-bottom-width:5px;border-radius:16px;padding:11px 16px;font:600 15px/1.25 var(--tx);background:var(--surface);transition:transform .06s}
+.btn:active:not(:disabled){transform:translateY(2px)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.main{background:var(--sun);border-color:var(--sun-2);color:var(--on-sun);border-width:0 0 5px}
+.btn.main.is-done{background:var(--ok);border-color:var(--ok-2);color:#fff}
+.note{font-size:13px;color:var(--ink-2);font-style:italic;font-weight:300;margin:0}
+.warn{font-size:14px;background:var(--bad-soft);color:var(--bad);padding:8px 12px;border-radius:12px;margin:0}
+
+.teacher{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:5;padding:12px;border-radius:18px;background:var(--sun-soft);border:2px solid var(--sun);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+.tplay{width:50px;height:50px;border-radius:50%;border:0;border-bottom:4px solid var(--sun-2);background:var(--sun);color:var(--on-sun);display:grid;place-items:center}
+.tmid{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tmid b{font-weight:700;font-size:15px;line-height:1.2}
+.tmid b i{font-weight:400;font-style:normal;color:var(--ink-2);font-size:13px;font-variant-numeric:tabular-nums;margin-left:4px}
+.tbar{width:100%;accent-color:var(--sun);margin:0;height:18px}
+.tspeed{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:6px 8px;font:600 13px var(--tx);font-variant-numeric:tabular-nums}
+
+.tone1{color:var(--t1)}.tone2{color:var(--t2)}.tone3{color:var(--t3)}.tone4{color:var(--t4)}.tone5{color:var(--t5)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<div class="top"><div class="in">
+  <div class="brand"><img class="lm" src="mark2.png" alt=""><img class="lw" src="word2.png" alt="SunMoon"><span class="lvl">30 NGÀY</span></div>
+  <div class="chips-top"><div class="chip fire" title="Chuỗi ngày học liên tiếp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c1 3.5 5 5.5 5 11a5 5 0 0 1-10 0c0-2.2 1-3.8 2.2-5 .2 1.8 1 2.8 2 3.2-.6-3.6.2-6.6.8-9.2z"/></svg><span id="streakTxt">0</span></div>
+  <div class="chip" title="Điểm kinh nghiệm (XP)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9L22 9.6l-5.4 4.8L18.2 22 12 18.3 5.8 22l1.6-7.6L2 9.6l7.1-.7z"/></svg><span id="chipTxt">0</span></div></div>
+</div></div>
+
+<div class="wrap gate" id="gate" hidden>
+  <header class="hero">
+    <span class="pill">Khoá học online · SunMoon</span>
+    <h1>30 ngày tự học tiếng Trung <span class="hzi">学中文</span></h1>
+    <p class="sub">Cho người mới bắt đầu — mỗi ngày 1 bài, 20 phút</p>
+    <div class="price"><s>299.000đ</s><b id="giaNay">99.000đ</b><i id="giaGhi">ưu đãi tháng đầu mở khoá học</i></div>
+  </header>
+  <section class="card"><h2>Bạn nhận được</h2>
+    <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán tượng hình</b> — nhìn hình đoán nghĩa, học đâu nhớ đó</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li><li><b>Học trên mọi máy</b> — điện thoại, máy tính</li></ul></section>
+  <section class="card"><h2>Lộ trình 30 ngày</h2><ul class="outline" id="outline"></ul></section>
+  <section class="card" id="dangKy"><h2>Đăng ký khoá học</h2>
+    <p class="note" style="font-style:normal">Trả lời 5 câu để SunMoon hiểu bạn hơn, rồi chuyển khoản để nhận mã học.</p>
+    <div class="fq"><label for="kTen">1 · Họ tên và số điện thoại (Zalo)</label><input type="text" id="kTen" placeholder="Họ tên" autocomplete="name"><input type="tel" id="kSdt" placeholder="Số điện thoại có Zalo" autocomplete="tel" inputmode="tel"></div>
+    <div class="fq"><p>2 · Bạn học tiếng Trung để làm gì? <small class="note">(chọn nhiều)</small></p><div class="chs" data-k="mucDich" data-multi="1"><button class="ch">Công việc</button><button class="ch">Du lịch</button><button class="ch">Du học</button><button class="ch">Thi HSK</button><button class="ch">Phim ảnh, sở thích</button><button class="ch">Nói chuyện với người thân</button><button class="ch">Khác</button></div></div>
+    <div class="fq"><p>3 · Trình độ hiện tại?</p><div class="chs" data-k="trinhDo"><button class="ch">Chưa biết gì</button><button class="ch">Biết pinyin</button><button class="ch">Đã học vài tháng</button><button class="ch">HSK 1 trở lên</button></div></div>
+    <div class="fq"><p>4 · Mỗi ngày bạn học được bao lâu?</p><div class="chs" data-k="thoiGian"><button class="ch">10–15 phút</button><button class="ch">20–30 phút</button><button class="ch">Trên 30 phút</button></div></div>
+    <div class="fq"><p>5 · Bạn biết SunMoon qua đâu?</p><div class="chs" data-k="bietQua"><button class="ch">Facebook</button><button class="ch">TikTok</button><button class="ch">Bạn bè</button><button class="ch">Google</button><button class="ch">Khác</button></div></div>
+    <p class="err" id="kErr"></p>
+    <button class="btn main" id="kGui">Đăng ký &amp; nhận mã QR chuyển khoản</button>
+    <div id="kQR" hidden></div>
+  </section>
+  <section class="card"><h2>Đã có mã học?</h2>
+    <div class="fq"><input type="text" id="lU" placeholder="Tên đăng nhập" autocapitalize="characters" autocomplete="username"><input type="tel" id="lM" placeholder="Mã 4 số" inputmode="numeric" autocomplete="current-password"></div>
+    <p class="err" id="lErr"></p><button class="btn main" id="lGo">Vào học</button></section>
+  <section class="card"><h2>Cần hỗ trợ?</h2><p class="note" style="font-style:normal">Mọi phản hồi về app học, bạn nhắn Zalo SunMoon nhé:</p><div class="zalos zaloBox"></div></section>
+</div>
+
+<div class="wrap" id="course">
+  <header class="hero">
+    <span class="pill">Tự học tại nhà</span>
+    <h1>30 ngày tự học tiếng Trung <span class="hzi">学中文</span></h1>
+    <p class="sub">Cho người mới bắt đầu — mỗi ngày 1 bài, 20 phút</p>
+    <ul class="howto">
+      <li><span><b>Nghe giảng bài</b> <i>— khoảng 4 phút</i></span></li>
+      <li><span><b>Đọc to theo</b> <i>— bấm từng từ để nghe lại</i></span></li>
+      <li><span><b>Làm bài tự kiểm tra</b> <i>— rồi bấm “Xong bài”</i></span></li>
+    </ul>
+  </header>
+
+  <div class="legend" aria-label="Màu thanh điệu">
+    <span><b class="tone1">mā</b> thanh 1</span>
+    <span><b class="tone2">má</b> thanh 2</span>
+    <span><b class="tone3">mǎ</b> thanh 3</span>
+    <span><b class="tone4">mà</b> thanh 4</span>
+    <span><b class="tone5">ma</b> thanh nhẹ</span>
+  </div>
+
+  <section class="origin" id="origin" aria-labelledby="introTitle">
+    <div class="ohead"><span class="ic" aria-hidden="true">源</span><span><span class="eyebrow">Bài mở đầu · 第零天</span><b id="introTitle">Làm quen tiếng Trung &amp; văn hoá Trung Hoa</b></span></div>
+    <div class="teacher intro" id="introPlayer" hidden><button class="tplay" id="iPlay" aria-label="Nghe giới thiệu">▶</button><div class="tmid"><b>Nghe giới thiệu <i id="iTime">0:00</i></b><input type="range" class="tbar" id="iBar" min="0" max="1" step="0.1" value="0" aria-label="Tua bài giới thiệu"></div><span></span></div>
+    <h3 class="osub">Tiếng Trung từ đâu mà có?</h3>
+    <ul class="tl">
+      <li><span class="yr">3.300 năm trước</span><span><b>Chữ Hán đầu tiên: Giáp cốt văn</b><i>khắc trên mai rùa, xương thú để bói toán</i></span></li>
+      <li><span class="yr">221 TCN</span><span><b>Tần Thuỷ Hoàng thống nhất chữ viết</b><i>cả nước dùng chung một kiểu chữ</i></span></li>
+      <li><span class="yr">Hơn 2.000 năm</span><span><b>Chữ Hán sang Việt Nam, Hàn Quốc, Nhật Bản</b><i>ông cha ta viết chữ Hán, rồi sáng tạo ra chữ Nôm</i></span></li>
+      <li><span class="yr">1956 · 1958</span><span><b>Chữ giản thể ra đời, rồi đến Pinyin</b><i>chữ bớt nét cho dễ viết; Pinyin ghi cách đọc bằng chữ cái La-tinh</i></span></li>
+      <li><span class="yr">Ngày nay</span><span><b>Tiếng Phổ thông, dựa trên giọng Bắc Kinh</b><i>khoảng 1 tỷ người nói</i></span></li>
+      <li><span class="yr">Tin vui</span><span><b>Khoảng 60% từ tiếng Việt có gốc Hán</b><i>bấm nghe — bạn sẽ thấy rất quen:</i>
+        <span class="hv"><button data-say="学生"><b>学生</b><span>học sinh</span></button><button data-say="注意"><b>注意</b><span>chú ý</span></button><button data-say="问题"><b>问题</b><span>vấn đề</span></button><button data-say="国家"><b>国家</b><span>quốc gia</span></button><button data-say="家庭"><b>家庭</b><span>gia đình</span></button></span></span></li>
+    </ul>
+    <h3 class="osub">Văn hoá Trung Hoa</h3>
+    <ul class="cult">
+      <li><span class="hzi">春节</span><span><b>Tết Nguyên đán — lễ lớn nhất năm</b><i>về quê đoàn tụ, lì xì bằng bao đỏ 红包</i></span></li>
+      <li><span class="hzi">红</span><span><b>Màu đỏ là may mắn</b><i>cưới hỏi, ngày Tết đều rực đỏ; màu trắng dùng cho tang lễ</i></span></li>
+      <li><span class="hzi">兔</span><span><b>12 con giáp giống Việt Nam</b><i>chỉ khác: năm Mão ở Trung Quốc là con thỏ, không phải con mèo</i></span></li>
+      <li><span class="hzi">孔子</span><span><b>Khổng Tử — hơn 2.500 năm trước</b><i>dạy hiếu thảo, lễ nghĩa, hiếu học — ảnh hưởng sâu đến Việt Nam</i></span></li>
+      <li><span class="hzi">纸</span><span><b>Bốn phát minh lớn</b><i>giấy, la bàn, thuốc súng, kỹ thuật in</i></span></li>
+      <li><span class="hzi">茶</span><span><b>Văn hoá trà hàng nghìn năm</b><i>chữ “trà” tiếng Việt cũng từ tiếng Trung mà ra</i></span></li>
+      <li><span class="hzi">菜</span><span><b>Ẩm thực: 8 trường phái lớn</b><i>nổi tiếng nhất: Tứ Xuyên cay nồng, Quảng Đông thanh nhẹ</i></span></li>
+      <li><span class="hzi">月</span><span><b>Tết Trung thu</b><i>ăn bánh, ngắm trăng — rất giống Việt Nam</i></span></li>
+    </ul>
+    <h3 class="osub">Hình ảnh Trung Hoa</h3>
+    <div class="gal">
+      <figure class="ph"><img src="img/giapcot.jpg" alt="Giáp cốt văn — chữ khắc trên xương, hơn 3.000 năm tuổi" loading="lazy"><figcaption>Giáp cốt văn — chữ khắc trên xương, hơn 3.000 năm tuổi<a href="https://commons.wikimedia.org/wiki/File:Ancient_Chinese_Writing_on_Ox_Bone,_Shang_Dynasty.jpg" target="_blank" rel="noopener">Ảnh: Gary Todd · CC0</a></figcaption></figure>
+      <figure class="ph"><img src="img/binhmagiong.jpg" alt="Đội quân đất nung thời Tần Thuỷ Hoàng" loading="lazy"><figcaption>Đội quân đất nung thời Tần Thuỷ Hoàng<a href="https://commons.wikimedia.org/wiki/File:51714-Terracota-Army.jpg" target="_blank" rel="noopener">Ảnh: xiquinhosilva · CC BY 2.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/truongthanh.jpg" alt="Vạn Lý Trường Thành" loading="lazy"><figcaption>Vạn Lý Trường Thành<a href="https://commons.wikimedia.org/wiki/File:Great_Wall_of_China_July_2006.JPG" target="_blank" rel="noopener">Ảnh: Velatrix · CC0</a></figcaption></figure>
+      <figure class="ph"><img src="img/tucam.jpg" alt="Tử Cấm Thành, Bắc Kinh" loading="lazy"><figcaption>Tử Cấm Thành, Bắc Kinh<a href="https://commons.wikimedia.org/wiki/File:Hall_of_Supreme_Harmony_(Forbidden_City),_Beijing_-_Jan_2016.jpg" target="_blank" rel="noopener">Ảnh: 超 沈 · CC BY 3.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/khongtu.jpg" alt="Tượng Khổng Tử ở Bắc Kinh" loading="lazy"><figcaption>Tượng Khổng Tử ở Bắc Kinh<a href="https://commons.wikimedia.org/wiki/File:Statue_of_Confucius_at_Beijing_temple.JPG" target="_blank" rel="noopener">Ảnh: Mx. Granger · CC0</a></figcaption></figure>
+      <figure class="ph"><img src="img/thuphap.jpg" alt="Viết thư pháp bằng nước trên nền đá" loading="lazy"><figcaption>Viết thư pháp bằng nước trên nền đá<a href="https://commons.wikimedia.org/wiki/File:Chinesecalligraphywater1.jpg" target="_blank" rel="noopener">Ảnh: Marc Smith · CC BY 2.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/tet.jpg" alt="Đèn lồng đỏ ngày Tết" loading="lazy"><figcaption>Đèn lồng đỏ ngày Tết<a href="https://commons.wikimedia.org/wiki/File:Red_Lanterns_for_Chinese_New_Year_KK.jpg" target="_blank" rel="noopener">Ảnh: Dcubillas · CC BY-SA 3.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/tra.jpg" alt="Bộ ấm chén trà Trung Hoa" loading="lazy"><figcaption>Bộ ấm chén trà Trung Hoa<a href="https://commons.wikimedia.org/wiki/File:Chinese_tea_set_and_three_gaiwan_(cropped).jpg" target="_blank" rel="noopener">Ảnh: Gary Stevens · CC BY 2.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/banhtrungthu.jpg" alt="Bánh trung thu" loading="lazy"><figcaption>Bánh trung thu<a href="https://commons.wikimedia.org/wiki/File:Mid_autumn_festival.jpg" target="_blank" rel="noopener">Ảnh: Nowforever · CC BY-SA 4.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/vitquay.jpg" alt="Vịt quay Bắc Kinh" loading="lazy"><figcaption>Vịt quay Bắc Kinh<a href="https://commons.wikimedia.org/wiki/File:Roast_Peking_Duck_(32014843160).jpg" target="_blank" rel="noopener">Ảnh: Willis Lam · CC BY-SA 2.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/sui.jpg" alt="Sủi cảo — món ăn ngày Tết miền Bắc" loading="lazy"><figcaption>Sủi cảo — món ăn ngày Tết miền Bắc<a href="https://commons.wikimedia.org/wiki/File:Jiaozi_GS_CN.jpg" target="_blank" rel="noopener">Ảnh: Emcc83 · CC BY-SA 4.0</a></figcaption></figure>
+      <figure class="ph"><img src="img/gautruc.jpg" alt="Gấu trúc — quốc bảo của Trung Quốc" loading="lazy"><figcaption>Gấu trúc — quốc bảo của Trung Quốc<a href="https://commons.wikimedia.org/wiki/File:Giant_panda_eating_bamboo_Taipei_Zoo.jpg" target="_blank" rel="noopener">Ảnh: KQuhen · CC BY-SA 4.0</a></figcaption></figure>
+    </div>
+    <h3 class="osub">Clip xem thêm</h3>
+    <div id="introYT"></div>
+  </section>
+
+  <nav class="map" aria-label="Chọn ngày">
+    <div class="progress"><span id="progTxt">0/30 bài</span><div class="bar"><i id="progBar"></i></div></div>
+    <div class="badges" id="badges"></div>
+    <div id="weeks"></div>
+  </nav>
+
+  <article id="lesson" aria-live="polite"></article>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="giang/cues.js"></script>
+<script>
+const L = [
+{t:"Thanh điệu & câu chào đầu tiên",g:"Nghe 4 thanh — và nói được xin chào, cảm ơn, tạm biệt ngay hôm nay",
+ w:["妈|mā|mẹ","麻|má|cây gai","马|mǎ|con ngựa","骂|mà|mắng","你好|nǐ hǎo|xin chào","谢谢|xièxie|cảm ơn","再见|zàijiàn|tạm biệt","老师|lǎoshī|thầy / cô giáo"],
+ h:["马|Hình con ngựa đứng nghiêng|nét trên là đầu và bờm, nét dưới là thân và chân", "妈|女 người phụ nữ + 马 (đọc là mā)|người phụ nữ mình gọi “mā” = mẹ", "你|亻 người đứng + 尔 (ngươi)|người đứng trước mặt mình = bạn"],
+ r:["女|Nữ|con gái, phụ nữ|妈 好 她 姐 妹", "马|Mã|con ngựa|妈 吗 骑"],m:["fan:马|con ngựa*女|妈|mẹ*口|吗|… không?*奇|骑|cưỡi"],
+ s:["你好！|Nǐ hǎo!|Xin chào!","老师好！|Lǎoshī hǎo!|Em chào thầy ạ!","谢谢老师！|Xièxie lǎoshī!|Em cảm ơn thầy!","再见！|Zàijiàn!|Tạm biệt!","妈妈骂马吗？|Māma mà mǎ ma?|Mẹ mắng ngựa à? (câu luyện thanh)"],
+ tip:["Thanh 1 — ngang, cao, đều|như hát một nốt cao","Thanh 2 — đi lên|gần dấu sắc tiếng Việt","Thanh 3 — trầm xuống rồi lên|gần dấu hỏi","Thanh 4 — rơi mạnh, dứt khoát|như ra lệnh","Hai thanh 3 liền nhau → chữ đầu đọc thanh 2|你好 đọc thực tế là ní hǎo","Chào ai: chức danh + 好|老师好, 妈妈好"],
+ d:["A|你好！|Nǐ hǎo!|Chào em!", "B|老师好！|Lǎoshī hǎo!|Em chào thầy ạ!", "A|再见！|Zàijiàn!|Tạm biệt em!", "B|谢谢老师，再见！|Xièxie lǎoshī, zàijiàn!|Em cảm ơn thầy, chào thầy!"],c:"Người Trung Quốc chào nhau bằng 你好, không cúi người|gật đầu, cười hoặc bắt tay là đủ",c2:"Tiếng Trung có 4 thanh, tiếng Quảng Đông có tới 6–9 thanh|tiếng Việt có 6 thanh — nên người Việt học thanh điệu nhanh hơn người phương Tây",
+ q:[["mǎ nghĩa là?",["con ngựa","mẹ","mắng"],0],["Thanh nào gần dấu sắc?",["thanh 2","thanh 1","thanh 4"],0],["“Tạm biệt” là?",["再见","谢谢","你好"],0],["Chào thầy giáo?",["老师好！","好老师！","你老师！"],0]]},
+
+{t:"Số đếm & âm khó",g:"Đếm 1–10 và sửa các âm người Việt hay đọc sai",
+ w:["一|yī|1","二|èr|2","三|sān|3","四|sì|4","五|wǔ|5","六|liù|6","七|qī|7","八|bā|8","九|jiǔ|9","十|shí|10"],
+ h:["三|Que tính: 一 một vạch, 二 hai vạch, 三 ba vạch|số nhỏ đếm bằng vạch, dễ như đếm que", "八|Hai nét tách sang hai bên|như bẻ đôi — nghĩa gốc là “chia”", "十|Một ngang, một sổ cắt nhau|như dấu cộng — đủ cả mười phương"],
+ r:["一|Nhất|một · nét ngang|二 三 王"],m:["chain:一|một>一|二|hai>一|三|ba>丨|王|vua"],
+ s:["三加五是八。|Sān jiā wǔ shì bā.|3 cộng 5 là 8.","十减四是六。|Shí jiǎn sì shì liù.|10 trừ 4 là 6.","四是四，十是十。|Sì shì sì, shí shì shí.|Bốn là bốn, mười là mười. (câu luyện lưỡi)"],
+ tip:["四 sì — lưỡi thẳng, chạm răng|đọc gần “xư”","十 shí — uốn lưỡi lên|đọc gần “sư” cong lưỡi","七 qī — miệng cười, bật hơi|đọc gần “chi” bật hơi","Đếm tay kiểu Trung Quốc|6 = ngón cái + út, 8 = ngón cái + trỏ","Người Trung thích số 8, kiêng số 4|八 bā gần “phát”, 四 sì gần “chết”"],
+ d:["A|一，二，三！|Yī, èr, sān!|Một, hai, ba!", "B|四，五，六！|Sì, wǔ, liù!|Bốn, năm, sáu!", "A|七，八，九……|Qī, bā, jiǔ……|Bảy, tám, chín…", "B|十！谢谢！|Shí! Xièxie!|Mười! Cảm ơn!"],c:"Thế vận hội Bắc Kinh khai mạc lúc 8 giờ 8 phút tối ngày 8 tháng 8 năm 2008|biển số xe, số điện thoại nhiều số 8 bán được giá rất cao",c2:"Trên hoá đơn, người Trung viết số bằng chữ “kép” để khỏi bị sửa|一 viết thành 壹, 二 thành 贰",
+ q:[["八 là số?",["8","6","9"],0],["七 đọc là?",["qī","jiǔ","liù"],0],["五 + 四 = ?",["九","六","十"],0],["Số người Trung Quốc kiêng?",["四","八","六"],0]]},
+
+{t:"Chữ Hán là những bức tranh",g:"Nhận mặt 8 chữ tượng hình — và biết SunMoon viết thế nào",
+ w:["人|rén|người","口|kǒu|miệng","日|rì|mặt trời","月|yuè|mặt trăng","山|shān|núi","水|shuǐ|nước","火|huǒ|lửa","木|mù|cây"],
+ h:["休|亻 người + 木 cây|người dựa gốc cây = nghỉ ngơi", "明|日 mặt trời + 月 mặt trăng|cả hai cùng chiếu = sáng", "森|Ba chữ 木 cây|nhiều cây = rừng rậm"],
+ r:["人|Nhân|người|大 天 从", "木|Mộc|cây|林 森 休"],m:["chain:人|người>一|大|to>一|天|trời", "chain:木|cây>木|林|rừng thưa>木|森|rừng rậm"],
+ s:["日月|rì yuè|Mặt trời, mặt trăng — chính là Sun Moon!","明天见！|Míngtiān jiàn!|Mai gặp nhé!","我好！|Wǒ hǎo!|Tôi khỏe!"],
+ tip:["Chữ Hán vẽ lại sự vật|山 là 3 ngọn núi, 人 là người đang bước","日 + 月 = 明 (sáng)|mặt trời + mặt trăng thì sáng nhất","木 + 木 = 林 (rừng nhỏ)|3 cây 森 là rừng rậm","女 (con gái) + 子 (con trai) = 好 (tốt)|có nếp có tẻ là tốt","Viết: ngang trước sổ sau, trên trước dưới sau|trái trước phải sau"],
+ d:["A|山！|Shān!|Núi!", "B|水！|Shuǐ!|Nước!", "A|日月！|Rì yuè!|Mặt trời, mặt trăng!", "B|明天见！|Míngtiān jiàn!|Mai gặp nhé!"],c:"Chỉ cần khoảng 2.500 chữ là đọc được gần hết báo chí|nhiều chữ ghép từ chữ nhỏ — học 1 chữ mở ra nhiều chữ",c2:"Chữ Hán cổ nhất khắc trên mai rùa, xương thú, hơn 3.000 năm trước|gọi là Giáp cốt văn, dùng để bói toán",
+ q:[["山 là?",["núi","nước","lửa"],0],["日 + 月 = ?",["明","林","好"],0],["火 nghĩa là?",["lửa","cây","người"],0],["“Sun Moon” viết là?",["日月","山水","木火"],0]]},
+
+{t:"Chào hỏi",g:"Chào, cảm ơn, xin lỗi, tạm biệt",
+ w:["您好|nín hǎo|chào (lịch sự)","谢谢|xièxie|cảm ơn","不客气|bú kèqi|không có gì","对不起|duìbuqǐ|xin lỗi","没关系|méi guānxi|không sao","再见|zàijiàn|tạm biệt","老师|lǎoshī|thầy / cô giáo"],
+ h:["您|你 bạn + 心 trái tim|gọi “bạn” bằng cả tấm lòng = ngài, lịch sự", "谢|讠 lời nói + 射|chữ có bộ 讠 thường liên quan đến lời nói: 谢 cảm ơn, 说 nói", "见|Phồn thể 見: con mắt 目 trên đôi chân 儿|đi đến tận nơi để nhìn = gặp"],
+ r:["讠|Ngôn|lời nói|谢 说 话 请", "心|Tâm|trái tim|您 想"],m:["fan:讠|lời nói*射|谢|cảm ơn*兑|说|nói*舌|话|lời nói*青|请|mời"],
+ s:["老师好！|Lǎoshī hǎo!|Em chào cô ạ!","谢谢你！— 不客气。|Xièxie nǐ! — Bú kèqi.|Cảm ơn bạn! — Không có gì.","对不起！— 没关系。|Duìbuqǐ! — Méi guānxi.|Xin lỗi! — Không sao."],
+ tip:["Chào ai: chức danh / tên + 好|老师好, 妈妈好","您 lịch sự hơn 你|dùng với người lớn, khách","不 trước thanh 4 đọc thành bú|不客气 bú kèqi"],
+ d:["A|对不起！|Duìbuqǐ!|Xin lỗi!", "B|没关系。|Méi guānxi.|Không sao.", "A|谢谢您！|Xièxie nín!|Cảm ơn bác ạ!", "B|不客气。再见！|Bú kèqi. Zàijiàn!|Không có gì. Tạm biệt!"],c:"Với bạn thân, cảm ơn nhiều quá lại thành khách sáo|người Trung hay nói 不用谢 — khỏi cảm ơn",c2:"Người Trung ít khi nói “anh yêu em” trực tiếp|họ quan tâm bằng câu 多穿点！ — mặc ấm vào!",
+ q:[["Người ta nói 谢谢, bạn đáp?",["不客气","再见","对不起"],0],["对不起 nghĩa là?",["xin lỗi","không sao","tạm biệt"],0],["Chào người lớn lịch sự?",["您好","你好","再见"],0]]},
+
+{t:"Tôi, bạn, anh ấy",g:"Đại từ và động từ 是 (là)",
+ w:["我|wǒ|tôi","你|nǐ|bạn","他|tā|anh ấy","她|tā|cô ấy","我们|wǒmen|chúng tôi","他们|tāmen|họ","是|shì|là","学生|xuésheng|học sinh"],
+ h:["们|亻 người + 门 cánh cổng|nhiều người đứng trước cổng = số nhiều", "她|女 phụ nữ + 也|so với 他 (亻 người): đổi bộ là đổi nam thành nữ", "我|Hình cây giáo có răng cưa|xưa là vũ khí, sau mượn nghĩa là “tôi”"],
+ r:["亻|Nhân đứng|người|你 他 们 休"],m:["fan:亻|người*尔|你|bạn*也|他|anh ấy*门|们|số nhiều*木|休|nghỉ ngơi"],
+ s:["我是学生。|Wǒ shì xuésheng.|Tôi là học sinh.","她是老师。|Tā shì lǎoshī.|Cô ấy là giáo viên.","他们是我朋友。|Tāmen shì wǒ péngyou.|Họ là bạn tôi."],
+ tip:["Số nhiều: thêm 们|我 → 我们, 你 → 你们","他 và 她 đọc giống nhau: tā|chỉ khác chữ viết","是 chỉ nối hai danh từ|KHÔNG nói 我是很好 — nói 我很好"],
+ d:["A|我是老师。你们是……|Wǒ shì lǎoshī. Nǐmen shì……|Tôi là giáo viên. Các em là…", "B|我们是学生。|Wǒmen shì xuésheng.|Chúng em là học sinh.", "A|他是……|Tā shì……|Còn bạn ấy là…", "B|他是我朋友。|Tā shì wǒ péngyou.|Bạn ấy là bạn em."],c:"Chữ 她 (cô ấy) mới có khoảng 100 năm nay|trước đó chỉ dùng 他 cho cả nam lẫn nữ",c2:"Tiếng Trung không chia động từ theo ngôi hay thì|我是, 你是, 他是 — đều là 是, giống tiếng Việt",
+ q:[["我们 nghĩa là?",["chúng tôi","tôi","các bạn"],0],["“Cô ấy” viết là?",["她","他","你"],0],["Câu nào đúng?",["我很好","我是很好","我好是"],0]]},
+
+{t:"Tên và quốc tịch",g:"Hỏi tên, nói mình là người nước nào",
+ w:["叫|jiào|tên là","名字|míngzi|tên","什么|shénme|gì","哪|nǎ|nào","人|rén|người","越南|Yuènán|Việt Nam","中国|Zhōngguó|Trung Quốc"],
+ h:["名|夕 buổi tối + 口 cái miệng|trời tối không nhìn rõ mặt, phải gọi tên", "中|Một nét xuyên qua giữa ô vuông|trúng ngay giữa = ở giữa; 中国 = nước ở giữa", "国|囗 đường biên bao quanh + 玉 ngọc|giữ ngọc quý trong biên cương = đất nước"],
+ r:["口|Khẩu|cái miệng|吃 叫 名 吗", "囗|Vi|vây quanh|国 回 四"],m:["chain:玉|ngọc>囗|国|đất nước", "fan:口|miệng*乞|吃|ăn*丩|叫|gọi*夕|名|tên"],
+ s:["你叫什么名字？|Nǐ jiào shénme míngzi?|Bạn tên là gì?","我叫小玲。|Wǒ jiào Xiǎo Líng.|Tôi tên Tiểu Linh.","你是哪国人？|Nǐ shì nǎ guó rén?|Bạn là người nước nào?","我是越南人。|Wǒ shì Yuènán rén.|Tôi là người Việt Nam."],
+ tip:["Tên nước + 人 = người nước đó|越南人, 中国人","Câu hỏi giữ nguyên trật tự câu|chỉ thay chỗ cần hỏi bằng 什么 / 哪"],
+ d:["A|你好！你叫什么名字？|Nǐ hǎo! Nǐ jiào shénme míngzi?|Chào bạn! Bạn tên gì?", "B|我叫小玲。|Wǒ jiào Xiǎo Líng.|Mình tên Tiểu Linh.", "A|你是哪国人？|Nǐ shì nǎ guó rén?|Bạn là người nước nào?", "B|我是越南人。|Wǒ shì Yuènán rén.|Mình là người Việt Nam."],c:"Tên người Trung: họ trước, tên sau — giống người Việt|nhưng thường chỉ 2–3 chữ, ít khi có tên đệm",c2:"Ba họ Vương 王, Lý 李, Trương 张 chiếm khoảng 1/5 dân số|hơn 270 triệu người mang 3 họ này",
+ q:[["什么 nghĩa là?",["gì","nào","ai"],0],["“Người Việt Nam”?",["越南人","越南国","人越南"],0],["Câu hỏi tên?",["你叫什么名字？","你是哪国人？","你好吗？"],0]]},
+
+{t:"Hỏi có / không",g:"Dùng 吗, 不, 也, 呢",
+ w:["好|hǎo|tốt, khỏe","很|hěn|rất","吗|ma|… không?","不|bù|không","也|yě|cũng","忙|máng|bận","累|lèi|mệt"],
+ h:["吗|口 cái miệng + 马 (đọc là mǎ)|tiếng hỏi “ma” phát ra từ miệng", "忙|忄 trái tim + 亡 mất|bận đến mức mất cả tâm trí", "不|Hình con chim bay vút lên trời|bay đi không trở lại = không"],
+ r:["忄|Tâm đứng|trái tim, tâm trạng|忙 快 慢"],m:["fan:忄|trái tim*亡|忙|bận*夬|快|nhanh, vui*曼|慢|chậm"],
+ s:["你好吗？|Nǐ hǎo ma?|Bạn khỏe không?","我很好，你呢？|Wǒ hěn hǎo, nǐ ne?|Tôi khỏe, còn bạn?","我不忙，也不累。|Wǒ bù máng, yě bù lèi.|Tôi không bận, cũng không mệt."],
+ tip:["Câu kể + 吗 = câu hỏi có/không|你忙 → 你忙吗？","不 đứng trước động từ / tính từ|不忙, 不是","Tính từ thường đi với 很|我很忙 — 很 ở đây gần như không nghĩa “rất”","呢 = “còn … thì sao?”|你呢？"],
+ d:["A|你好吗？|Nǐ hǎo ma?|Bạn khỏe không?", "B|我很好。你呢？|Wǒ hěn hǎo. Nǐ ne?|Mình khỏe. Còn bạn?", "A|我也很好。你忙吗？|Wǒ yě hěn hǎo. Nǐ máng ma?|Mình cũng khỏe. Bạn có bận không?", "B|不忙，也不累。|Bù máng, yě bú lèi.|Không bận, cũng không mệt."],c:"Người quen ít khi hỏi 你好吗|họ hỏi 吃了吗？ — ăn chưa? — y như người Việt",c2:"Câu hỏi có/không, người Trung trả lời bằng cách lặp lại động từ|忙吗？— 忙。 hoặc 不忙。",
+ q:[["Biến “他是老师” thành câu hỏi?",["他是老师吗？","他吗是老师？","吗他是老师？"],0],["“Tôi không mệt”?",["我不累","我累不","不我累"],0],["你呢？ nghĩa là?",["còn bạn thì sao?","bạn à?","bạn ở đâu?"],0]]},
+
+{t:"Gia đình",g:"Nói về người trong nhà",
+ w:["家|jiā|nhà, gia đình","爸爸|bàba|bố","妈妈|māma|mẹ","哥哥|gēge|anh trai","姐姐|jiějie|chị gái","弟弟|dìdi|em trai","妹妹|mèimei|em gái","没有|méiyǒu|không có"],
+ h:["家|宀 mái nhà + 豕 con lợn|nhà xưa nuôi lợn dưới mái = nhà, gia đình", "爸|父 người cha + 巴 (đọc là bā)|chữ nào có 父 đều liên quan đến cha", "口|Hình cái miệng há ra|đếm người trong nhà như đếm “miệng ăn”"],
+ r:["宀|Miên|mái nhà|家 字 安", "父|Phụ|người cha|爸 爷"],m:["fan:宀|mái nhà*豕|家|nhà*子|字|chữ*女|安|bình an"],
+ s:["你家有几口人？|Nǐ jiā yǒu jǐ kǒu rén?|Nhà bạn có mấy người?","我家有四口人。|Wǒ jiā yǒu sì kǒu rén.|Nhà tôi có 4 người.","我没有哥哥。|Wǒ méiyǒu gēge.|Tôi không có anh trai."],
+ tip:["Phủ định của 有 là 没有|KHÔNG nói 不有","Đếm người trong nhà dùng 口|几口人","Chữ lặp: chữ sau đọc nhẹ|bàba, māma"],
+ d:["A|你家有几口人？|Nǐ jiā yǒu jǐ kǒu rén?|Nhà bạn có mấy người?", "B|四口人：爸爸、妈妈、姐姐和我。|Sì kǒu rén: bàba, māma, jiějie hé wǒ.|4 người: bố, mẹ, chị gái và mình.", "A|你有哥哥吗？|Nǐ yǒu gēge ma?|Bạn có anh trai không?", "B|我没有哥哥。|Wǒ méiyǒu gēge.|Mình không có anh trai."],c:"Họ hàng bên nội, bên ngoại gọi khác hẳn nhau|bà nội là 奶奶, bà ngoại là 外婆",c2:"Chính sách một con kéo dài từ năm 1980 đến 2015|nhiều bạn trẻ Trung Quốc không có anh chị em ruột",
+ q:[["“Không có” nói là?",["没有","不有"],0],["妹妹 là?",["em gái","chị gái","em trai"],0],["你家有几口人？ hỏi gì?",["nhà mấy người","nhà ở đâu","mấy tuổi"],0]]},
+
+{t:"Số lớn và tuổi",g:"Đếm đến 100, hỏi tuổi",
+ w:["十一|shíyī|11","二十|èrshí|20","九十九|jiǔshíjiǔ|99","一百|yìbǎi|100","两|liǎng|hai (đi với lượng từ)","岁|suì|tuổi","多大|duō dà|bao nhiêu tuổi"],
+ h:["大|Người dang rộng hai tay|ôm hết cả vòng tay = to, lớn", "多|Hai chữ 夕 (buổi tối) chồng lên nhau|nhiều buổi tối nối tiếp = nhiều", "百|一 một + 白|một trăm"],
+ r:["夕|Tịch|buổi tối|多 名 岁"],m:["chain:夕|buổi tối>夕|多|nhiều", "chain:大|to>丶|太|quá"],
+ s:["你今年多大？|Nǐ jīnnián duō dà?|Năm nay bạn bao nhiêu tuổi?","我二十五岁。|Wǒ èrshíwǔ suì.|Tôi 25 tuổi.","你女儿几岁？— 她九岁。|Nǐ nǚ'ér jǐ suì? — Tā jiǔ suì.|Con gái chị mấy tuổi? — 9 tuổi."],
+ tip:["Ghép số như tiếng Việt|二十五 = hai mươi lăm","Hỏi trẻ em: 几岁 · người lớn: 多大|người già: 多大年纪","2 + lượng từ đọc 两|两个人 — không nói 二个人"],
+ d:["A|你今年多大？|Nǐ jīnnián duō dà?|Năm nay chị bao nhiêu tuổi?", "B|我三十五岁。|Wǒ sānshíwǔ suì.|Chị 35 tuổi.", "A|你女儿几岁？|Nǐ nǚ'ér jǐ suì?|Con gái chị mấy tuổi?", "B|她九岁。|Tā jiǔ suì.|Con bé 9 tuổi."],c:"Lần đầu gặp mà hỏi tuổi phụ nữ là hơi bất lịch sự|hỏi tuổi trẻ con thì thoải mái",c2:"Người Trung cũng tính “tuổi mụ” như người Việt|mới sinh đã 1 tuổi, qua Tết thêm 1 tuổi",
+ q:[["36 viết là?",["三十六","三六","六十三"],0],["Hỏi tuổi bé 5 tuổi?",["几岁","多大","多少"],0],["“Hai người”?",["两个人","二个人"],0]]},
+
+{t:"Ôn tập tuần 1–2",g:"Tự giới thiệu 5 câu",
+ w:["认识|rènshi|quen biết","高兴|gāoxìng|vui","今年|jīnnián|năm nay","朋友|péngyou|bạn bè"],
+ h:["朋|Hai chữ 月 đứng cạnh nhau|hai người sánh vai = bạn bè", "高|Hình ngôi lầu nhiều tầng|mái, tầng, cổng chồng lên = cao"],
+ r:["月|Nguyệt|mặt trăng|朋 明 有"],m:["chain:月|mặt trăng>月|朋|bạn bè", "chain:日|mặt trời>月|明|sáng"],
+ s:["你好！我叫小玲。|Nǐ hǎo! Wǒ jiào Xiǎo Líng.|Xin chào! Tôi tên Tiểu Linh.","我是越南人。|Wǒ shì Yuènán rén.|Tôi là người Việt Nam.","我今年二十五岁。|Wǒ jīnnián èrshíwǔ suì.|Năm nay tôi 25 tuổi.","我家有四口人。|Wǒ jiā yǒu sì kǒu rén.|Nhà tôi có 4 người.","认识你很高兴！|Rènshi nǐ hěn gāoxìng!|Rất vui được biết bạn!"],
+ tip:["Đọc to đoạn tự giới thiệu 3 lần|thay tên, tuổi, số người của mình","Chép 10 chữ khó nhất|mỗi chữ 5 lần, vừa viết vừa đọc"],
+ d:["A|你好！我叫小玲。|Nǐ hǎo! Wǒ jiào Xiǎo Líng.|Chào bạn! Mình tên Tiểu Linh.", "B|你好！我叫大明。认识你很高兴！|Nǐ hǎo! Wǒ jiào Dàmíng. Rènshi nǐ hěn gāoxìng!|Chào bạn! Mình là Đại Minh. Rất vui được làm quen!", "A|我也很高兴。你是中国人吗？|Wǒ yě hěn gāoxìng. Nǐ shì Zhōngguó rén ma?|Mình cũng rất vui. Bạn là người Trung Quốc à?", "B|是，我是中国人。|Shì, wǒ shì Zhōngguó rén.|Ừ, mình là người Trung Quốc."],c:"Gặp lần đầu, người Trung trao danh thiếp bằng hai tay|nhận cũng bằng hai tay, đọc qua rồi mới cất",c2:"Tiếng Phổ thông là ngôn ngữ có nhiều người nói tiếng mẹ đẻ nhất thế giới|khoảng 1 tỷ người",
+ q:[["认识你很高兴 nghĩa là?",["rất vui được biết bạn","bạn rất vui"],0],["我家有四口人?",["nhà tôi có 4 người","nhà tôi ở số 4"],0],["“Tôi không có anh trai”?",["我没有哥哥","我不有哥哥"],0],["“Người Trung Quốc”?",["中国人","人中国"],0]]},
+
+{t:"Ngày tháng",g:"Hỏi hôm nay ngày mấy, thứ mấy",
+ w:["今天|jīntiān|hôm nay","明天|míngtiān|ngày mai","昨天|zuótiān|hôm qua","年|nián|năm","月|yuè|tháng","号|hào|ngày","星期|xīngqī|tuần, thứ","生日|shēngrì|sinh nhật"],
+ h:["星|日 ánh sáng + 生 sinh ra|đốm sáng sinh ra trên trời = ngôi sao", "年|Hình người vác bó lúa|mỗi mùa gặt là một năm", "月|Hình trăng khuyết|trăng tròn rồi khuyết = một tháng"],
+ r:["日|Nhật|mặt trời, ngày|星 早 明 是"],m:["fan:日|mặt trời*生|星|ngôi sao*十|早|sớm*月|明|sáng*免|晚|tối"],
+ s:["今天几月几号？|Jīntiān jǐ yuè jǐ hào?|Hôm nay ngày mấy tháng mấy?","今天九月二十三号。|Jīntiān jiǔ yuè èrshísān hào.|Hôm nay 23 tháng 9.","明天星期几？— 星期四。|Míngtiān xīngqī jǐ? — Xīngqīsì.|Mai thứ mấy? — Thứ Năm."],
+ tip:["Thứ tự: năm → tháng → ngày → thứ|ngược tiếng Việt","星期一 là THỨ HAI|số = thứ trừ 1; Chủ nhật = 星期天","Nói dùng 号, viết dùng 日|九月二十三日"],
+ d:["A|今天几月几号？|Jīntiān jǐ yuè jǐ hào?|Hôm nay ngày mấy nhỉ?", "B|九月二十三号。|Jiǔ yuè èrshísān hào.|23 tháng 9.", "A|明天是我的生日！|Míngtiān shì wǒ de shēngrì!|Mai là sinh nhật mình!", "B|是吗？生日快乐！|Shì ma? Shēngrì kuàilè!|Thật à? Chúc mừng sinh nhật!"],c:"Sinh nhật người Trung hay ăn mì trường thọ|sợi mì dài là mong sống lâu — không được cắn đứt",c2:"Tết Nguyên đán là lễ lớn nhất, được nghỉ khoảng 7 ngày|hàng trăm triệu người về quê — cuộc di cư lớn nhất hành tinh",
+ q:[["Thứ Hai là?",["星期一","星期二","星期天"],0],["昨天 là?",["hôm qua","hôm nay","ngày mai"],0],["Chủ nhật là?",["星期天","星期七","星期八"],0]]},
+
+{t:"Giờ giấc",g:"Hỏi giờ, nói lịch trong ngày",
+ w:["现在|xiànzài|bây giờ","点|diǎn|giờ","分|fēn|phút","半|bàn|rưỡi","早上|zǎoshang|buổi sáng","晚上|wǎnshang|buổi tối","起床|qǐchuáng|thức dậy","上课|shàngkè|vào học"],
+ h:["早|日 mặt trời trên 十|mặt trời vừa nhô lên = sáng sớm", "晚|日 mặt trời + 免 (tránh đi)|mặt trời đi mất = buổi tối", "点|占 + 灬 bốn chấm lửa|một chấm nhỏ = điểm, giờ"],
+ r:["灬|Hoả (4 chấm)|lửa|点 热 照"],m:["fan:灬|lửa*占|点|điểm, giờ*执|热|nóng*昭|照|chiếu, chụp"],
+ s:["现在几点？|Xiànzài jǐ diǎn?|Bây giờ mấy giờ?","现在两点半。|Xiànzài liǎng diǎn bàn.|Bây giờ 2 giờ rưỡi.","我晚上七点上课。|Wǒ wǎnshang qī diǎn shàngkè.|Tôi học lúc 7 giờ tối."],
+ tip:["2 giờ = 两点|không nói 二点","Thời gian đứng TRƯỚC động từ|我七点起床 — không nói 我起床七点"],
+ d:["A|现在几点？|Xiànzài jǐ diǎn?|Bây giờ mấy giờ rồi?", "B|六点半。|Liù diǎn bàn.|6 rưỡi.", "A|我七点上课！|Wǒ qī diǎn shàngkè!|7 giờ mình vào học!", "B|快去吧！|Kuài qù ba!|Đi nhanh lên!"],c:"Cả nước Trung Quốc chỉ dùng một múi giờ: giờ Bắc Kinh|ở Tân Cương, 10 giờ sáng trời mới sáng rõ",c2:"Người Trung kiêng tặng đồng hồ|送钟 (tặng đồng hồ) đọc giống 送终 (lo việc tang)",
+ q:[["3 giờ rưỡi?",["三点半","半三点","三半点"],0],["Câu nào đúng?",["我晚上七点上课","我上课晚上七点"],0],["现在 là?",["bây giờ","buổi sáng","hôm nay"],0]]},
+
+{t:"Cái này, cái kia",g:"Lượng từ và chữ 的 (của)",
+ w:["这|zhè|này","那|nà|kia","个|gè|cái (chung)","本|běn|cuốn","杯|bēi|cốc, ly","书|shū|sách","手机|shǒujī|điện thoại","谁|shéi|ai"],
+ h:["本|木 cây + một vạch ở gốc|chỉ vào gốc cây = gốc; dùng đếm cuốn sách", "杯|木 gỗ + 不|cốc chén xưa làm bằng gỗ", "手|Hình bàn tay xoè năm ngón|手机 = máy cầm tay = điện thoại"],
+ r:["木|Mộc|cây, gỗ|本 杯 林 校"],m:["chain:木|cây>一 ở gốc|本|gốc · cuốn", "fan:木|gỗ*不|杯|cốc*交|校|trường*木|林|rừng"],
+ s:["这是什么？|Zhè shì shénme?|Đây là cái gì?","那是我的手机。|Nà shì wǒ de shǒujī.|Kia là điện thoại của tôi.","我有三本书。|Wǒ yǒu sān běn shū.|Tôi có 3 cuốn sách."],
+ tip:["Số + lượng từ + danh từ|三本书, 一杯茶, 两个人","Không biết lượng từ nào → dùng 个|an toàn nhất","的 = của|我的手机, 老师的书"],
+ d:["A|这是什么？|Zhè shì shénme?|Đây là cái gì?", "B|这是我的书。|Zhè shì wǒ de shū.|Đây là sách của mình.", "A|那是谁的手机？|Nà shì shéi de shǒujī?|Kia là điện thoại của ai?", "B|那是老师的。|Nà shì lǎoshī de.|Của thầy đấy."],c:"Tiếng Trung có hơn 100 lượng từ|nhưng chỉ cần khoảng 10 cái hay dùng là đủ nói chuyện",c2:"的 là chữ xuất hiện nhiều nhất trong tiếng Trung|cứ khoảng 25 chữ lại có 1 chữ 的",
+ q:[["“Một cuốn sách”?",["一本书","一个书","一书"],0],["那 là?",["kia","này","ai"],0],["“Điện thoại của tôi”?",["我的手机","我手机的"],0]]},
+
+{t:"Ăn uống",g:"Nói muốn ăn, uống gì",
+ w:["吃|chī|ăn","喝|hē|uống","想|xiǎng|muốn","米饭|mǐfàn|cơm","面条|miàntiáo|mì","茶|chá|trà","水|shuǐ|nước","咖啡|kāfēi|cà phê"],
+ h:["吃|口 cái miệng + 乞|việc của miệng = ăn", "水|Dòng nước ở giữa, bọt nước bắn hai bên|chữ có 氵 (ba chấm nước) đều liên quan đến nước", "饭|饣 đồ ăn + 反 (đọc là fǎn)|chữ có 饣 thường là món ăn"],
+ r:["饣|Thực|đồ ăn|饭 饿 饺", "氵|Thuỷ (3 chấm)|nước|没 洗 汉"],m:["fan:饣|đồ ăn*反|饭|cơm*我|饿|đói*交|饺|sủi cảo"],
+ s:["你想吃什么？|Nǐ xiǎng chī shénme?|Bạn muốn ăn gì?","我想喝一杯咖啡。|Wǒ xiǎng hē yì bēi kāfēi.|Tôi muốn uống một ly cà phê.","我不喝茶。|Wǒ bù hē chá.|Tôi không uống trà."],
+ tip:["想 + động từ = muốn làm gì|我想吃, 我想去","喝 hē (uống) ≠ 和 hé (và)|chỉ khác thanh"],
+ d:["A|你想吃什么？|Nǐ xiǎng chī shénme?|Bạn muốn ăn gì?", "B|我想吃面条。你呢？|Wǒ xiǎng chī miàntiáo. Nǐ ne?|Mình ăn mì. Còn bạn?", "A|我想吃米饭。喝什么？|Wǒ xiǎng chī mǐfàn. Hē shénme?|Mình ăn cơm. Uống gì nhỉ?", "B|我喝茶。|Wǒ hē chá.|Mình uống trà."],c:"Miền Bắc Trung Quốc ăn mì, bánh bao; miền Nam ăn cơm|vì miền Bắc trồng lúa mì, miền Nam trồng lúa gạo",c2:"Được rót trà, người Trung gõ nhẹ 2 ngón tay xuống bàn thay lời cảm ơn|thói quen có từ thời vua Càn Long",
+ q:[["“Tôi muốn ăn cơm”?",["我想吃米饭","我吃想米饭"],0],["喝 nghĩa là?",["uống","ăn","muốn"],0],["咖啡 là?",["cà phê","trà","nước"],0]]},
+
+{t:"Mua sắm",g:"Hỏi giá, mặc cả",
+ w:["买|mǎi|mua","卖|mài|bán","多少|duōshao|bao nhiêu","钱|qián|tiền","块|kuài|đồng (tệ)","贵|guì|đắt","便宜|piányi|rẻ"],
+ h:["贵|Có 贝 (vỏ sò) ở dưới|người xưa dùng vỏ sò làm tiền → chữ có 贝 liên quan đến tiền: 贵 đắt, 货 hàng hoá", "卖|买 mua + thêm 十 ở trên|có thêm hàng thì đem bán đi = bán", "钱|钅 kim loại + 戋|tiền xưa đúc bằng kim loại"],
+ r:["贝|Bối|vỏ sò — tiền xưa|贵 货 财", "钅|Kim|kim loại|钱 银 错"],m:["chain:买|mua>十|卖|bán", "fan:贝|vỏ sò, tiền*中一|贵|đắt*化|货|hàng hoá*才|财|tiền của"],
+ s:["这个多少钱？|Zhège duōshao qián?|Cái này bao nhiêu tiền?","三十块。|Sānshí kuài.|30 tệ.","太贵了！便宜一点儿吧。|Tài guì le! Piányi yìdiǎnr ba.|Đắt quá! Rẻ chút đi."],
+ tip:["买 mǎi mua ≠ 卖 mài bán|sai thanh là thành người bán!","太 + tính từ + 了 = … quá|太好了! tuyệt quá","多少 hỏi số lớn, 几 hỏi số nhỏ|多少钱, 几岁"],
+ d:["A|这个多少钱？|Zhège duōshao qián?|Cái này bao nhiêu tiền?", "B|八十块。|Bāshí kuài.|80 tệ.", "A|太贵了！五十块，好吗？|Tài guì le! Wǔshí kuài, hǎo ma?|Đắt quá! 50 tệ được không?", "B|好吧，六十块。|Hǎo ba, liùshí kuài.|Thôi được, 60 tệ nhé."],c:"Ở Trung Quốc gần như không ai dùng tiền mặt|quét mã WeChat Pay, Alipay — kể cả hàng rong",c2:"Ngày 11/11 là “Ngày độc thân” — ngày mua sắm online lớn nhất thế giới|4 số 1 giống 4 người đứng một mình",
+ q:[["卖 là?",["bán","mua"],0],["“Đắt quá!”",["太贵了！","很贵太！","贵太了！"],0],["Hỏi giá?",["多少钱？","几岁？","什么？"],0]]},
+
+{t:"Ở đâu?",g:"Hỏi và chỉ nơi chốn",
+ w:["在|zài|ở","哪儿|nǎr|ở đâu","这儿|zhèr|ở đây","那儿|nàr|ở đó","学校|xuéxiào|trường học","医院|yīyuàn|bệnh viện","商店|shāngdiàn|cửa hàng","洗手间|xǐshǒujiān|nhà vệ sinh"],
+ h:["学|Mái nhà ở trên, đứa trẻ 子 ở dưới|trẻ con ngồi học dưới mái trường", "店|广 mái hiên + 占|nơi có mái hiên bày hàng = cửa hàng", "门|Hình cánh cổng hai cánh|门 cổng, 们 người trước cổng"],
+ r:["子|Tử|con, trẻ em|学 字 好", "门|Môn|cánh cổng|们 问 间"],m:["fan:门|cổng*亻|们|số nhiều*口|问|hỏi*日|间|khoảng, gian"],
+ s:["你在哪儿？|Nǐ zài nǎr?|Bạn đang ở đâu?","我在学校。|Wǒ zài xuéxiào.|Tôi ở trường.","洗手间在哪儿？— 在那儿。|Xǐshǒujiān zài nǎr? — Zài nàr.|Nhà vệ sinh ở đâu? — Ở đằng kia."],
+ tip:["Người / vật + 在 + nơi chốn|我在家","儿 cuối từ: uốn lưỡi, không đọc thành tiếng riêng|miền Nam TQ hay nói 哪里 nǎlǐ"],
+ d:["A|请问，洗手间在哪儿？|Qǐngwèn, xǐshǒujiān zài nǎr?|Xin hỏi, nhà vệ sinh ở đâu?", "B|在那儿。|Zài nàr.|Ở đằng kia.", "A|谢谢！|Xièxie!|Cảm ơn!", "B|不客气。|Bú kèqi.|Không có gì."],c:"Hỏi người lạ, mở đầu bằng 请问 — xin hỏi|người ta sẽ nhiệt tình hơn hẳn",c2:"Nhà vệ sinh công cộng nhiều nơi không có sẵn giấy|đi du lịch nhớ mang theo khăn giấy",
+ q:[["“Tôi ở nhà”?",["我在家","在我家","我家在"],0],["洗手间 là?",["nhà vệ sinh","nhà bếp","phòng ngủ"],0],["“Ở đâu” là?",["哪儿","这儿","那儿"],0]]},
+
+{t:"Trước, sau, trái, phải",g:"Chỉ đường, tả vị trí",
+ w:["前面|qiánmiàn|phía trước","后面|hòumiàn|phía sau","左边|zuǒbian|bên trái","右边|yòubian|bên phải","上|shàng|trên","下|xià|dưới","里|lǐ|trong","旁边|pángbiān|bên cạnh"],
+ h:["上|Vạch nhỏ nằm trên đường ngang|chỉ lên trên = trên", "下|Vạch nhỏ nằm dưới đường ngang|chỉ xuống dưới = dưới", "右|Có 口 cái miệng|tay phải đưa đồ ăn lên miệng = bên phải; 左 có 工 cây thước"],
+ r:["一|Nhất|mặt đất (nét ngang)|上 下"],m:["chain:一|mặt đất>卜 bên trên|上|trên", "chain:一|mặt đất>卜 bên dưới|下|dưới"],
+ s:["银行在学校旁边。|Yínháng zài xuéxiào pángbiān.|Ngân hàng ở cạnh trường.","书在桌子上。|Shū zài zhuōzi shang.|Sách ở trên bàn.","往左走。|Wǎng zuǒ zǒu.|Đi về bên trái."],
+ tip:["Mốc đứng trước, hướng đứng sau|学校旁边 = cạnh trường (ngược tiếng Việt)","左 zuǒ trái · 右 yòu phải|右 có chữ 口 — tay phải đưa đồ ăn vào miệng"],
+ d:["A|银行在哪儿？|Yínháng zài nǎr?|Ngân hàng ở đâu ạ?", "B|在学校旁边。|Zài xuéxiào pángbiān.|Ở cạnh trường học.", "A|学校在哪儿？|Xuéxiào zài nǎr?|Trường học ở đâu ạ?", "B|往左走，在右边。|Wǎng zuǒ zǒu, zài yòubian.|Rẽ trái, ở bên tay phải."],c:"Người Bắc Kinh chỉ đường bằng Đông Tây Nam Bắc|người miền Nam thì nói trái, phải — giống mình",c2:"Theo phong thuỷ, cửa chính đẹp nhất là quay về hướng Nam|Tử Cấm Thành ở Bắc Kinh cũng quay mặt về hướng Nam",
+ q:[["“Trên bàn”?",["桌子上","上桌子"],0],["右边 là?",["bên phải","bên trái","phía sau"],0],["“Cạnh trường”?",["学校旁边","旁边学校"],0]]},
+
+{t:"Đi lại",g:"Nói đi đâu, bằng gì",
+ w:["去|qù|đi (đến)","来|lái|đến (phía mình)","坐|zuò|ngồi, đi (xe)","怎么|zěnme|bằng cách nào","出租车|chūzūchē|taxi","地铁|dìtiě|tàu điện ngầm","飞机|fēijī|máy bay","骑|qí|đi (xe máy, xe đạp)"],
+ h:["车|Hình chiếc xe nhìn từ trên xuống|trục xe và hai bánh (phồn thể 車 rõ hơn)", "走|Người đang sải bước chân|đi bộ", "飞|Hình cánh chim đang bay|飞机 = máy bay"],
+ r:["车|Xa|chiếc xe|转 军 辆", "马|Mã|con ngựa|骑 驾"],m:["chain:马|ngựa>奇|骑|cưỡi (xe máy, xe đạp)", "fan:车|xe*专|转|chuyển*两|辆|chiếc (xe)"],
+ s:["你怎么去学校？|Nǐ zěnme qù xuéxiào?|Bạn đến trường bằng gì?","我坐地铁去。|Wǒ zuò dìtiě qù.|Tôi đi tàu điện ngầm.","明天我坐飞机去北京。|Míngtiān wǒ zuò fēijī qù Běijīng.|Mai tôi bay đi Bắc Kinh."],
+ tip:["坐 + phương tiện + 去 + nơi|phương tiện đứng trước","Xe máy, xe đạp dùng 骑 (cưỡi)|骑摩托车 qí mótuōchē"],
+ d:["A|你怎么去学校？|Nǐ zěnme qù xuéxiào?|Bạn đến trường bằng gì?", "B|我坐地铁去。你呢？|Wǒ zuò dìtiě qù. Nǐ ne?|Mình đi tàu điện. Còn bạn?", "A|我骑摩托车。|Wǒ qí mótuōchē.|Mình đi xe máy.", "B|越南人很喜欢骑摩托车！|Yuènán rén hěn xǐhuan qí mótuōchē!|Người Việt thích đi xe máy ghê!"],c:"Tàu cao tốc Trung Quốc chạy tới 350 km một giờ|Bắc Kinh đi Thượng Hải hơn 1.300 km chỉ mất khoảng 4 tiếng rưỡi",c2:"Trung Quốc từng được gọi là “vương quốc xe đạp”|nay có xe đạp công cộng quét mã khắp nơi",
+ q:[["“Tôi đi taxi đến trường”?",["我坐出租车去学校","我去学校坐出租车"],0],["飞机 là?",["máy bay","tàu","taxi"],0],["Đi xe máy dùng động từ?",["骑","坐","开"],0]]},
+
+{t:"Sở thích",g:"Nói mình thích làm gì",
+ w:["喜欢|xǐhuan|thích","听音乐|tīng yīnyuè|nghe nhạc","唱歌|chàng gē|hát","跳舞|tiào wǔ|nhảy","画画|huà huà|vẽ tranh","看书|kàn shū|đọc sách","看电影|kàn diànyǐng|xem phim","运动|yùndòng|thể thao"],
+ h:["看|手 bàn tay che trên 目 con mắt|lấy tay che nắng nhìn xa = xem, nhìn", "喜|Cái trống 壴 + 口 cái miệng|đánh trống, cười vui = vui, thích", "歌|哥 + 欠 (há miệng)|há miệng cất tiếng = hát, bài hát"],
+ r:["目|Mục|con mắt|看 睡 眼"],m:["chain:手|bàn tay>目|看|nhìn", "fan:目|mắt*垂|睡|ngủ*艮|眼|mắt"],
+ s:["你喜欢做什么？|Nǐ xǐhuan zuò shénme?|Bạn thích làm gì?","我喜欢听音乐和唱歌。|Wǒ xǐhuan tīng yīnyuè hé chàng gē.|Tôi thích nghe nhạc và hát.","她很喜欢跳舞。|Tā hěn xǐhuan tiào wǔ.|Cô ấy rất thích nhảy."],
+ tip:["喜欢 + động từ = thích làm gì|我喜欢看书","和 = và — chỉ nối từ, không nối câu|我和你"],
+ d:["A|你喜欢做什么？|Nǐ xǐhuan zuò shénme?|Bạn thích làm gì?", "B|我喜欢唱歌。你呢？|Wǒ xǐhuan chàng gē. Nǐ ne?|Mình thích hát. Còn bạn?", "A|我喜欢看电影。|Wǒ xǐhuan kàn diànyǐng.|Mình thích xem phim.", "B|我们一起去看电影吧！|Wǒmen yìqǐ qù kàn diànyǐng ba!|Mình cùng đi xem phim nhé!"],c:"Tối tối ở công viên, các cô các bác nhảy “nhảy quảng trường”|có khi cả trăm người cùng nhảy một bài",c2:"Mạt chược 麻将 là trò chơi được yêu thích nhất|cả nhà hay ngồi chơi mạt chược dịp Tết",
+ q:[["跳舞 là?",["nhảy","hát","vẽ"],0],["“Tôi thích xem phim”?",["我喜欢看电影","我看电影喜欢"],0],["和 nghĩa là?",["và","uống","hoặc"],0]]},
+
+{t:"Ôn tập tuần 3",g:"Kể một ngày của mình",
+ w:["东西|dōngxi|đồ, đồ vật","星期六|xīngqīliù|thứ Bảy","周末|zhōumò|cuối tuần"],
+ h:["东|Phồn thể 東: mặt trời 日 mọc sau cây 木|mặt trời lên sau rặng cây = phía đông", "西|Hình chim về tổ|chim về tổ lúc mặt trời lặn = phía tây"],
+ r:["木|Mộc|cây|东 本 林"],m:["chain:木|cây>日 sau cây|東 → 东|phía đông"],
+ s:["今天星期六。|Jīntiān xīngqīliù.|Hôm nay thứ Bảy.","我早上八点起床。|Wǒ zǎoshang bā diǎn qǐchuáng.|Tôi dậy lúc 8 giờ sáng.","我坐地铁去商店买东西。|Wǒ zuò dìtiě qù shāngdiàn mǎi dōngxi.|Tôi đi tàu điện đến cửa hàng mua đồ.","我想买一本书。|Wǒ xiǎng mǎi yì běn shū.|Tôi muốn mua một cuốn sách."],
+ tip:["Kể lại ngày hôm nay bằng 4 câu|thời gian → phương tiện → nơi → việc","Thu âm giọng mình, nghe lại|so với bản mẫu, sửa thanh sai"],
+ d:["A|周末你做什么？|Zhōumò nǐ zuò shénme?|Cuối tuần bạn làm gì?", "B|我去商店买东西。|Wǒ qù shāngdiàn mǎi dōngxi.|Mình đi cửa hàng mua đồ.", "A|你想买什么？|Nǐ xiǎng mǎi shénme?|Bạn muốn mua gì?", "B|我想买一本书。|Wǒ xiǎng mǎi yì běn shū.|Mình muốn mua một cuốn sách."],c:"东西 nghĩa gốc là phía Đông và phía Tây|xưa đi chợ Đông, chợ Tây để mua đồ — nên thành “đồ vật”",c2:"Chợ đêm là nét văn hoá ăn uống đặc sắc|xiên nướng, đồ ăn vặt, trà sữa — mở đến khuya",
+ q:[["Thứ Bảy là?",["星期六","星期七"],0],["东西 (dōngxi) là?",["đồ vật","phía đông"],0],["“Đi tàu điện đến cửa hàng”?",["坐地铁去商店","去商店坐地铁"],0],["“8 giờ sáng”?",["早上八点","八点早上"],0]]},
+
+{t:"Thời tiết",g:"Hỏi và tả thời tiết",
+ w:["天气|tiānqì|thời tiết","热|rè|nóng","冷|lěng|lạnh","下雨|xià yǔ|mưa","怎么样|zěnmeyàng|thế nào","有点儿|yǒudiǎnr|hơi","非常|fēicháng|vô cùng"],
+ h:["雨|Mây ở trên, giọt mưa rơi bên dưới|chữ có 雨 ở trên liên quan thời tiết: 雪 tuyết", "冷|冫 hai chấm băng + 令|có băng = lạnh", "热|灬 bốn chấm lửa ở dưới|lửa đốt bên dưới = nóng"],
+ r:["雨|Vũ|mưa|雪 雷 零", "冫|Băng|băng giá|冷 冰"],m:["fan:雨|mưa*彐|雪|tuyết*田|雷|sấm*令|零|số không"],
+ s:["今天天气怎么样？|Jīntiān tiānqì zěnmeyàng?|Hôm nay thời tiết thế nào?","今天有点儿冷。|Jīntiān yǒudiǎnr lěng.|Hôm nay hơi lạnh.","胡志明市非常热。|Húzhìmíng Shì fēicháng rè.|TP. Hồ Chí Minh rất nóng."],
+ tip:["有点儿 + tính từ = hơi …|thường cho điều không thích: 有点儿贵","怎么样 hỏi ý kiến, tình hình|这个怎么样？"],
+ d:["A|今天天气怎么样？|Jīntiān tiānqì zěnmeyàng?|Hôm nay trời thế nào?", "B|有点儿冷。|Yǒudiǎnr lěng.|Hơi lạnh.", "A|下雨吗？|Xià yǔ ma?|Có mưa không?", "B|不下雨，是晴天。|Bú xià yǔ, shì qíngtiān.|Không mưa, trời nắng."],c:"Mùa đông ở Bắc Kinh có thể xuống âm 10 độ|còn Quảng Châu nóng ẩm quanh năm, giống Sài Gòn",c2:"Người xưa chia năm thành 24 tiết khí để làm nông|lập xuân, thanh minh, đông chí — Việt Nam cũng dùng",
+ q:[["冷 là?",["lạnh","nóng","mưa"],0],["“Hơi đắt”?",["有点儿贵","贵有点儿"],0],["“Thời tiết thế nào?”",["天气怎么样？","天气什么？"],0]]},
+
+{t:"Công việc",g:"Hỏi nghề, nói nơi làm việc",
+ w:["工作|gōngzuò|công việc","做|zuò|làm","医生|yīshēng|bác sĩ","公司|gōngsī|công ty","老板|lǎobǎn|sếp, chủ","员工|yuángōng|nhân viên","设计师|shèjìshī|nhà thiết kế"],
+ h:["工|Hình cây thước của thợ|thợ cầm thước làm việc = công việc", "生|Mầm cây mọc lên từ mặt đất|sinh ra, sống; 学生 = người đang học", "医|匚 cái hộp + 矢 mũi tên|lấy mũi tên ra khỏi người, cất vào hộp = chữa bệnh"],
+ r:["工|Công|thước thợ · công việc|左 功 空"],m:["chain:生|sinh ra>日|星|ngôi sao", "fan:工|thước thợ*力|功|công lao*𠂇|左|bên trái"],
+ s:["你做什么工作？|Nǐ zuò shénme gōngzuò?|Bạn làm nghề gì?","我是设计师。|Wǒ shì shèjìshī.|Tôi là nhà thiết kế.","我在一家公司工作。|Wǒ zài yì jiā gōngsī gōngzuò.|Tôi làm ở một công ty."],
+ tip:["在 + nơi + động từ|我在公司工作 — nơi chốn đứng trước","Lượng từ cho công ty, cửa hàng: 家|一家商店"],
+ d:["A|你做什么工作？|Nǐ zuò shénme gōngzuò?|Bạn làm nghề gì?", "B|我是设计师。你呢？|Wǒ shì shèjìshī. Nǐ ne?|Mình là nhà thiết kế. Còn bạn?", "A|我是医生。你在哪儿工作？|Wǒ shì yīshēng. Nǐ zài nǎr gōngzuò?|Mình là bác sĩ. Bạn làm ở đâu?", "B|我在一家公司工作。|Wǒ zài yì jiā gōngsī gōngzuò.|Mình làm ở một công ty."],c:"Người Trung hay hỏi thẳng lương bao nhiêu|đó là tò mò thân thiện, em có thể cười và nói 还可以 — cũng tạm",c2:"Đầu năm, sếp phát lì xì 红包 cho nhân viên|giờ còn lì xì online qua WeChat",
+ q:[["“Tôi làm ở công ty”?",["我在公司工作","我工作在公司"],0],["医生 là?",["bác sĩ","giáo viên","sếp"],0],["Hỏi nghề?",["你做什么工作？","你工作哪儿？"],0]]},
+
+{t:"Biết, có thể, được phép",g:"Phân biệt 会 · 能 · 可以",
+ w:["会|huì|biết (học mới biết)","能|néng|có thể","可以|kěyǐ|được phép","说|shuō|nói","汉语|Hànyǔ|tiếng Trung","游泳|yóuyǒng|bơi","拍照|pāizhào|chụp ảnh"],
+ h:["说|讠 lời nói + 兑|lại là bộ lời nói: nói", "泳|氵 nước + 永 mãi mãi|ở trong nước thật lâu = bơi", "可|口 cái miệng + 丁|miệng nói “được” = có thể"],
+ r:["讠|Ngôn|lời nói|说 语 话", "氵|Thuỷ|nước|泳 游 洗"],m:["fan:氵|nước*永|泳|bơi*先|洗|rửa*每|海|biển"],
+ s:["你会说汉语吗？|Nǐ huì shuō Hànyǔ ma?|Bạn biết nói tiếng Trung không?","我会说一点儿。|Wǒ huì shuō yìdiǎnr.|Tôi biết nói một chút.","这儿可以拍照吗？|Zhèr kěyǐ pāizhào ma?|Ở đây chụp ảnh được không?"],
+ tip:["会 — kỹ năng phải học|我会游泳","能 — đủ điều kiện, khả năng|我今天能来","可以 — xin phép|我可以进来吗？"],
+ d:["A|你会说汉语吗？|Nǐ huì shuō Hànyǔ ma?|Bạn biết nói tiếng Trung không?", "B|会说一点儿。|Huì shuō yìdiǎnr.|Biết một chút.", "A|太好了！这儿可以拍照吗？|Tài hǎo le! Zhèr kěyǐ pāizhào ma?|Tuyệt quá! Ở đây chụp ảnh được không?", "B|可以，没问题。|Kěyǐ, méi wèntí.|Được, không vấn đề gì."],c:"Người Trung rất vui khi người nước ngoài nói tiếng Trung|chỉ cần nói 你好 là được khen “tiếng Trung giỏi quá!”",c2:"Trung Quốc có rất nhiều phương ngữ: Quảng Đông, Mân Nam, Thượng Hải…|nói tiếng địa phương, người hai miền có thể không hiểu nhau",
+ q:[["“Tôi biết bơi”?",["我会游泳","我可以游泳"],0],["Xin phép chụp ảnh?",["可以拍照吗？","会拍照吗？"],0],["汉语 là?",["tiếng Trung","tiếng Việt","tiếng Anh"],0]]},
+
+{t:"Đã … rồi",g:"Dùng 了 và 没",
+ w:["了|le|rồi","已经|yǐjīng|đã","没|méi|chưa, không (đã qua)","还|hái|vẫn, còn","到|dào|đến nơi","吃饭|chī fàn|ăn cơm"],
+ h:["到|至 mũi tên cắm xuống đất + 刂|mũi tên đã chạm đích = đến nơi", "没|氵 nước + 殳|chìm mất trong nước = không có, chưa"],
+ r:["刂|Đao đứng|con dao|到 别 刻"],m:["chain:至|đến>刂|到|đến nơi"],
+ s:["我吃饭了。|Wǒ chī fàn le.|Tôi ăn cơm rồi.","他已经到了。|Tā yǐjīng dào le.|Anh ấy đến rồi.","我还没吃饭。|Wǒ hái méi chī fàn.|Tôi vẫn chưa ăn cơm."],
+ tip:["Động từ + 了 = việc đã xong|我买了","Phủ định: 没 + động từ, BỎ 了|我没吃 — không nói 我没吃了","已经 … 了 = đã … rồi|nhấn mạnh hơn"],
+ d:["A|你吃饭了吗？|Nǐ chī fàn le ma?|Bạn ăn cơm chưa?", "B|我还没吃。你呢？|Wǒ hái méi chī. Nǐ ne?|Mình chưa ăn. Còn bạn?", "A|我已经吃了。|Wǒ yǐjīng chī le.|Mình ăn rồi.", "B|好，我去吃饭了！|Hǎo, wǒ qù chī fàn le!|Ừ, mình đi ăn đây!"],c:"你吃饭了吗？ là câu chào, không phải lời mời ăn|giống người Việt hỏi “ăn cơm chưa?”",c2:"Không cắm đũa thẳng đứng vào bát cơm|giống thắp hương cho người đã mất — người Việt cũng kiêng",
+ q:[["“Tôi chưa ăn”?",["我没吃","我不吃了","我没吃了"],0],["他到了 nghĩa là?",["anh ấy đến rồi","anh ấy sẽ đến"],0],["已经 là?",["đã","đang","sẽ"],0]]},
+
+{t:"Đang làm gì",g:"Dùng 在 / 正在 … 呢",
+ w:["正在|zhèngzài|đang","呢|ne|(đang, cuối câu)","学习|xuéxí|học","做饭|zuò fàn|nấu cơm","睡觉|shuìjiào|ngủ","打电话|dǎ diànhuà|gọi điện","洗澡|xǐzǎo|tắm"],
+ h:["睡|目 con mắt + 垂 rủ xuống|mắt rủ xuống = ngủ", "洗|氵 nước + 先|dùng nước = rửa, tắm", "电|Tia chớp loé ra từ đám mây|tia chớp = điện"],
+ r:["目|Mục|con mắt|睡 看", "雨|Vũ|mưa, mây|电 (電) 雪"],m:["chain:目|mắt>垂 rủ xuống|睡|ngủ"],
+ s:["你在做什么呢？|Nǐ zài zuò shénme ne?|Bạn đang làm gì thế?","我在学习汉语呢。|Wǒ zài xuéxí Hànyǔ ne.|Tôi đang học tiếng Trung.","妈妈正在做饭。|Māma zhèngzài zuò fàn.|Mẹ đang nấu cơm."],
+ tip:["在 / 正在 + động từ (+ 呢) = đang|呢 làm câu mềm hơn","Phủ định: 没在 + động từ|我没在睡觉"],
+ d:["A|喂，你在做什么呢？|Wéi, nǐ zài zuò shénme ne?|Alô, bạn đang làm gì thế?", "B|我在学习汉语呢。|Wǒ zài xuéxí Hànyǔ ne.|Mình đang học tiếng Trung.", "A|你妈妈呢？|Nǐ māma ne?|Mẹ bạn đâu?", "B|她正在做饭。|Tā zhèngzài zuò fàn.|Mẹ đang nấu cơm."],c:"Nghe điện thoại, người Trung nói 喂 — alô|đọc lên giọng cho thân thiện, đọc xuống giọng nghe như đang bực",c2:"WeChat là “siêu ứng dụng”: nhắn tin, trả tiền, gọi xe, đặt đồ ăn|gần như ai cũng dùng mỗi ngày",
+ q:[["“Tôi đang ngủ”?",["我在睡觉","我睡觉在"],0],["学习 là?",["học","ngủ","tắm"],0],["“Mẹ đang nấu cơm”?",["妈妈正在做饭","妈妈做饭了"],0]]},
+
+{t:"Đã từng",g:"Kể trải nghiệm với 过",
+ w:["过|guo|đã từng","北京|Běijīng|Bắc Kinh","上海|Shànghǎi|Thượng Hải","次|cì|lần","旅游|lǚyóu|du lịch","烤鸭|kǎoyā|vịt quay"],
+ h:["北|Hai người quay lưng vào nhau|quay lưng về hướng gió lạnh = phía bắc", "京|Ngôi nhà cao trên gò đất|nơi có nhà cao nhất = kinh đô", "鸭|甲 + 鸟 con chim|chữ có 鸟 là các loài chim: 鸭 vịt"],
+ r:["鸟|Điểu|con chim|鸭 鸡"],m:["chain:人|người>人|从|theo sau>人|众|đám đông", "chain:鸟|chim>甲|鸭|vịt"],
+ s:["你去过中国吗？|Nǐ qùguo Zhōngguó ma?|Bạn từng đến Trung Quốc chưa?","我去过两次北京。|Wǒ qùguo liǎng cì Běijīng.|Tôi đã đến Bắc Kinh 2 lần.","我没吃过北京烤鸭。|Wǒ méi chīguo Běijīng kǎoyā.|Tôi chưa từng ăn vịt quay Bắc Kinh."],
+ tip:["过 = từng trải qua|了 = việc vừa xong","Phủ định: 没 + động từ + 过 (giữ 过)|我没去过"],
+ d:["A|你去过中国吗？|Nǐ qùguo Zhōngguó ma?|Bạn từng đến Trung Quốc chưa?", "B|去过，我去过两次北京。|Qùguo, wǒ qùguo liǎng cì Běijīng.|Rồi, mình đến Bắc Kinh 2 lần rồi.", "A|你吃过北京烤鸭吗？|Nǐ chīguo Běijīng kǎoyā ma?|Bạn ăn vịt quay Bắc Kinh chưa?", "B|吃过，非常好吃！|Chīguo, fēicháng hǎochī!|Ăn rồi, ngon cực!"],c:"Vịt quay Bắc Kinh cuốn bánh mỏng với hành, dưa leo, tương ngọt|món này có từ hơn 600 năm trước",c2:"Vạn Lý Trường Thành dài hơn 21.000 km|nhưng không nhìn thấy được từ Mặt Trăng bằng mắt thường như lời đồn",
+ q:[["“Tôi chưa từng đi Thượng Hải”?",["我没去过上海","我不去过上海","我没去上海过"],0],["去过两次 nghĩa là?",["đã đi 2 lần","sẽ đi 2 lần"],0],["过 khác 了 thế nào?",["过 = từng trải qua","过 = đang làm"],0]]},
+
+{t:"So sánh",g:"Dùng 比 và 没有",
+ w:["比|bǐ|hơn, so với","高|gāo|cao","矮|ǎi|thấp","大|dà|to, lớn","小|xiǎo|nhỏ","一样|yíyàng|giống nhau"],
+ h:["比|Hai người đứng cạnh nhau cùng một hướng|đứng cạnh để so = so sánh", "小|Một nét ở giữa, hai chấm nhỏ hai bên|chia nhỏ ra = nhỏ", "样|木 + 羊|dáng vẻ, kiểu: 一样 = cùng một kiểu = giống nhau"],
+ r:["小|Tiểu|nhỏ|少 尖"],m:["chain:小|nhỏ>大 bên dưới|尖|nhọn", "chain:小|nhỏ>丿|少|ít"],
+ s:["姐姐比妹妹高。|Jiějie bǐ mèimei gāo.|Chị cao hơn em.","今天比昨天冷一点儿。|Jīntiān bǐ zuótiān lěng yìdiǎnr.|Hôm nay lạnh hơn hôm qua một chút.","我没有他高。|Wǒ méiyǒu tā gāo.|Tôi không cao bằng anh ấy."],
+ tip:["A 比 B + tính từ|KHÔNG thêm 很: không nói 比他很高","Hơn nhiều: tính từ + 多了|他比我高多了","A 没有 B + tính từ = A không bằng B|我没有他高"],
+ d:["A|你姐姐比你高吗？|Nǐ jiějie bǐ nǐ gāo ma?|Chị bạn cao hơn bạn không?", "B|对，她比我高一点儿。|Duì, tā bǐ wǒ gāo yìdiǎnr.|Có, chị cao hơn mình một chút.", "A|我没有我妹妹高！|Wǒ méiyǒu wǒ mèimei gāo!|Mình còn không cao bằng em gái mình!", "B|哈哈，没关系！|Hāha, méi guānxi!|Haha, không sao!"],c:"Người Trung hay nhận xét thẳng: “bạn béo lên rồi”|đó là quan tâm, không phải chê",c2:"Gấu trúc là “quốc bảo” của Trung Quốc|Trung Quốc cho các nước mượn gấu trúc làm quà ngoại giao",
+ q:[["“Tôi cao hơn em gái”?",["我比妹妹高","我比妹妹很高","我高比妹妹"],0],["我没有他高 nghĩa là?",["tôi không cao bằng anh ấy","tôi cao hơn anh ấy"],0],["一样 là?",["giống nhau","khác nhau","hơn"],0]]},
+
+{t:"Hẹn gặp",g:"Xin số điện thoại, rủ đi chơi",
+ w:["电话|diànhuà|điện thoại","号码|hàomǎ|số","有空|yǒu kòng|rảnh","一起|yìqǐ|cùng nhau","见面|jiànmiàn|gặp mặt","吧|ba|nhé (rủ rê)","没问题|méi wèntí|không vấn đề"],
+ h:["话|讠 lời nói + 舌 cái lưỡi|lưỡi và lời = câu nói; 电话 = lời nói đi bằng điện", "空|穴 cái hang + 工|trong hang trống rỗng = trống, rảnh", "面|Hình khuôn mặt có đường viền|见面 = nhìn thấy mặt = gặp mặt"],
+ r:["穴|Huyệt|cái hang|空 穿 窗", "讠|Ngôn|lời nói|话 语"],m:["chain:穴|hang>工|空|trống, rảnh"],
+ s:["你的电话号码是多少？|Nǐ de diànhuà hàomǎ shì duōshao?|Số điện thoại của bạn là gì?","周末你有空吗？|Zhōumò nǐ yǒu kòng ma?|Cuối tuần bạn rảnh không?","我们一起喝咖啡吧！|Wǒmen yìqǐ hē kāfēi ba!|Mình cùng đi cà phê nhé!"],
+ tip:["Đọc số điện thoại: 1 đọc là yāo|để khỏi nhầm với 7 qī","吧 cuối câu = rủ rê, đề nghị|走吧! đi thôi"],
+ d:["A|周末你有空吗？|Zhōumò nǐ yǒu kòng ma?|Cuối tuần bạn rảnh không?", "B|有空。怎么了？|Yǒu kòng. Zěnme le?|Rảnh. Sao thế?", "A|我们一起喝咖啡吧！|Wǒmen yìqǐ hē kāfēi ba!|Mình đi cà phê nhé!", "B|好啊！你的电话号码是多少？|Hǎo a! Nǐ de diànhuà hàomǎ shì duōshao?|Được! Số điện thoại bạn là gì?"],c:"Ở Trung Quốc, người ta xin WeChat thay cho số điện thoại|加个微信吧！ — kết bạn WeChat nhé!",c2:"Giới trẻ nhắn tin bằng số: 666 là “đỉnh quá”, 520 là “anh yêu em”|vì 520 wǔ èr líng đọc gần 我爱你",
+ q:[["Số 1 trong số điện thoại đọc là?",["yāo","yī"],0],["“Mình cùng đi nhé”?",["我们一起去吧","我们去一起吧"],0],["有空 là?",["rảnh","bận","có tiền"],0]]},
+
+{t:"Ở nhà hàng",g:"Gọi món, tính tiền",
+ w:["服务员|fúwùyuán|phục vụ","菜单|càidān|thực đơn","点菜|diǎn cài|gọi món","好吃|hǎochī|ngon","辣|là|cay","买单|mǎidān|tính tiền","给|gěi|cho, đưa","请|qǐng|mời, xin"],
+ h:["菜|艹 cỏ cây + 采 hái|rau hái về nấu = món ăn", "辣|辛 cay đắng + 束|vị cay xé lưỡi = cay", "请|讠 lời nói + 青|lời nói nhẹ nhàng = mời, xin"],
+ r:["艹|Thảo|cỏ cây|菜 茶 花 草"],m:["fan:艹|cỏ cây*采|菜|rau, món*人木|茶|trà*化|花|hoa*早|草|cỏ"],
+ s:["服务员，请给我菜单。|Fúwùyuán, qǐng gěi wǒ càidān.|Em ơi, cho chị xin thực đơn.","这个菜辣不辣？|Zhège cài là bu là?|Món này có cay không?","太好吃了！买单！|Tài hǎochī le! Mǎidān!|Ngon quá! Tính tiền nhé!"],
+ tip:["A 不 A = câu hỏi có/không|辣不辣? — không cần thêm 吗","Không ăn cay: 不要辣|bú yào là"],
+ d:["A|服务员，我们点菜！|Fúwùyuán, wǒmen diǎn cài!|Em ơi, bọn chị gọi món!", "B|好的，这是菜单。|Hǎo de, zhè shì càidān.|Vâng, thực đơn đây ạ.", "A|这个菜辣不辣？|Zhège cài là bu là?|Món này có cay không em?", "B|有点儿辣。|Yǒudiǎnr là.|Hơi cay ạ."],c:"Ăn xong, người Trung thường tranh nhau trả tiền|để lại chút thức ăn trên đĩa nghĩa là chủ nhà mời đủ no",c2:"Đi ăn nhóm, thường gọi số món bằng số người, thêm 1 món canh|mọi người ăn chung, không chia suất riêng",
+ q:[["“Tính tiền!”",["买单！","点菜！","菜单！"],0],["辣不辣？ nghĩa là?",["có cay không?","cay quá!"],0],["Câu nào SAI?",["辣不辣吗？","辣不辣？","辣吗？"],0]]},
+
+{t:"Về đích",g:"Tự giới thiệu 1 phút",
+ w:["学|xué|học","希望|xīwàng|hy vọng","继续|jìxù|tiếp tục","加油|jiāyóu|cố lên"],
+ h:["汉|氵 nước + 又|sông Hán → người Hán → 汉语 tiếng Hán", "加|力 sức + 口 miệng|vừa dùng sức vừa hô = thêm vào; 加油 = đổ thêm dầu = cố lên!"],
+ r:["力|Lực|sức lực|加 男 动"],m:["fan:力|sức*口|加|thêm*田|男|đàn ông*云|动|động"],
+ s:["我叫小玲，我是越南人。|Wǒ jiào Xiǎo Líng, wǒ shì Yuènán rén.|Tôi tên Tiểu Linh, người Việt Nam.","我在胡志明市工作。|Wǒ zài Húzhìmíng Shì gōngzuò.|Tôi làm việc ở TP. Hồ Chí Minh.","我学汉语一个月了。|Wǒ xué Hànyǔ yí ge yuè le.|Tôi học tiếng Trung được một tháng rồi.","我希望能去中国旅游。|Wǒ xīwàng néng qù Zhōngguó lǚyóu.|Tôi mong được đi du lịch Trung Quốc.","加油！|Jiāyóu!|Cố lên!"],
+ tip:["Quay video tự giới thiệu 1 phút|so với ngày 1 — sẽ thấy mình tiến bộ","Bước tiếp: HSK 1 → HSK 2|vẫn mỗi ngày 15 phút"],
+ d:["A|你学汉语多长时间了？|Nǐ xué Hànyǔ duō cháng shíjiān le?|Bạn học tiếng Trung bao lâu rồi?", "B|一个月了。|Yí ge yuè le.|Được một tháng rồi.", "A|你的汉语很好！|Nǐ de Hànyǔ hěn hǎo!|Tiếng Trung của bạn tốt lắm!", "B|哪里哪里！谢谢！|Nǎlǐ nǎlǐ! Xièxie!|Đâu có đâu! Cảm ơn!"],c:"Được khen, người Trung hay đáp 哪里哪里 — đâu có, đâu có|khiêm tốn là phép lịch sự",c2:"Khoảng 60% từ vựng tiếng Việt có gốc Hán — gọi là từ Hán Việt|học tiếng Trung, người Việt có lợi thế rất lớn",
+ q:[["“Tôi từng đến Bắc Kinh”?",["我去过北京","我在去北京"],0],["“Tôi đang học”?",["我在学习","我学习过"],0],["“Chị cao hơn em”?",["姐姐比妹妹高","姐姐比妹妹很高"],0],["“Biết nói tiếng Trung”?",["会说汉语","可以说汉语"],0]]}
+];
+
+const YT={"0": ["kXegHGYpNIg", "Đất nước Trung Quốc và những điều thú vị có thể bạn chưa biết", "BLV Hải Thanh Story", "12:17"], "1": ["PWkXDSO8urE", "Đọc chuẩn 4 thanh tiếng Trung trong 2 phút", "Noong's World", "2:45"], "2": ["N-AY5dH3T3U", "Số đếm — bài học cơ bản cho người mới bắt đầu", "Tiếng Trung Diệu Hồ", "1:14"], "3": ["9fc-JBGl1Cc", "Lịch sử hình thành và phát triển chữ Hán tượng hình", "Họa Thuyết Hán Ngữ", "6:17"], "4": ["fwtEopTZK8M", "Tiếng Trung giao tiếp sơ cấp — Bài 1: Chào hỏi", "Khoai Tây yêu tiếng Trung", "13:23"], "5": ["WAkTo2pULCM", "Tổng hợp đại từ nhân xưng tiếng Trung — ngữ pháp HSK1", "Tiếng Trung Quỳnh Anh", "5:55"], "6": ["JvBIgnc9-Dw", "Cách giới thiệu tên và quốc tịch bằng tiếng Trung — 你叫什么名字？", "WAN CHINESE", "4:58"], "7": ["UVRuUzWJF4o", "Ngữ pháp HSK1: câu phủ định với 不", "Học Tiếng Trung cùng Pipo", "2:43"], "8": ["cNDhoF-4j70", "Giới thiệu về gia đình bằng tiếng Trung — HSK1", "Panda Studio", "3:47"], "9": ["f0KwbY3_Eo0", "Cách hỏi tuổi bằng tiếng Trung", "WAN CHINESE", "3:08"], "10": ["FPv517dZmsE", "Luyện nói shadowing — Bài 1: Giới thiệu bản thân", "Tiếng Trung Sunny Ruan", "3:31"], "11": ["VEJze_0TpFI", "Cách nói giờ, thứ, ngày, tháng, năm trong tiếng Trung", "Panda Studio", "8:11"], "12": ["-ojV-EGVyOY", "Giờ… phút… trong tiếng Trung", "Sweden Chinese Center", "6:40"], "13": ["qXru7ifI7Uk", "Lượng từ là gì? Những lưu ý khi dùng lượng từ", "Yangdexin", "13:00"], "14": ["qMR55_l8YWM", "Luyện nghe hội thoại: Đi ăn với bạn", "Panda Studio", "6:56"], "15": ["5RZTEGAnrmA", "Tiếng Trung giao tiếp: Mua bán, mặc cả", "Tiếng Trung Ánh Dương", "9:47"], "16": ["Apu5gD1KLOE", "Hỏi “ở đâu” với 哪儿 — ngữ pháp HSK1", "Tiếng Trung Quỳnh Anh", "2:24"], "17": ["AJVcM1ioU38", "Trên dưới, trước sau, trong ngoài — phương vị từ HSK1", "Tiếng Trung Quỳnh Anh", "6:39"], "18": ["MkFb21yyUIU", "Tiếng Trung giao tiếp chủ đề: Phương tiện giao thông", "Tiếng Trung Chinese – ILC", "4:07"], "19": ["4rdahquBMrA", "Từ vựng sở thích — 你的爱好是什么？", "Tiếng Trung Tiểu Bảo Bối", "5:02"], "20": ["FjF8beCbN-E", "Nói về một ngày của bản thân bằng tiếng Trung — HSK1", "Panda Studio", "3:58"], "21": ["7ZOECFzqVw8", "Từ vựng thời tiết — 今天天气怎么样？", "Tiếng Trung Tiểu Bảo Bối", "1:28"], "22": ["dvtJMBYzn9Y", "Tiếng Trung giao tiếp chủ đề nghề nghiệp", "Panda Studio", "4:10"], "23": ["wAavRHIKA5U", "Cách phân biệt 会、能、可以 siêu dễ", "Tiếng Hoa H.A.H.A", "3:06"], "24": ["YDyC68pD_eA", "Ngữ pháp: trợ từ ngữ khí 了", "Tiếng Trung TCT", "5:19"], "25": ["NUJqVcFmo0Q", "Ngữ pháp HSK1: đang làm gì — 正在 / 在 / 正…呢", "Ms Liên Bắc Ngữ", "1:43"], "26": ["g7p4UGgde5g", "Ngữ pháp: trợ từ động thái 过 (đã từng)", "WAN CHINESE", "4:04"], "27": ["miTLFQQZzUg", "5 phút tổng hợp câu so sánh cơ bản", "Khoai Tây yêu tiếng Trung", "6:39"], "28": ["qCFXILY2T40", "Chủ đề gọi điện thoại 打电话", "Sweden Chinese Center", "6:54"], "29": ["ieEIoFLcJtI", "Luyện nghe hội thoại: Đi nhà hàng — 去餐厅", "Panda Studio", "3:56"], "30": ["EI2UvLKvlEU", "Luyện nghe HSK1 — 100 câu cơ bản, đọc chậm", "Panda Chinese Listening", "22:34"]};
+const IMG={"tet": {"cap": "Đèn lồng đỏ ngày Tết", "by": "Dcubillas · CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Red_Lanterns_for_Chinese_New_Year_KK.jpg"}, "giapcot": {"cap": "Giáp cốt văn — chữ khắc trên xương, hơn 3.000 năm tuổi", "by": "Gary Todd · CC0", "url": "https://commons.wikimedia.org/wiki/File:Ancient_Chinese_Writing_on_Ox_Bone,_Shang_Dynasty.jpg"}, "binhmagiong": {"cap": "Đội quân đất nung thời Tần Thuỷ Hoàng", "by": "xiquinhosilva · CC BY 2.0", "url": "https://commons.wikimedia.org/wiki/File:51714-Terracota-Army.jpg"}, "truongthanh": {"cap": "Vạn Lý Trường Thành", "by": "Velatrix · CC0", "url": "https://commons.wikimedia.org/wiki/File:Great_Wall_of_China_July_2006.JPG"}, "tucam": {"cap": "Tử Cấm Thành, Bắc Kinh", "by": "超 沈 · CC BY 3.0", "url": "https://commons.wikimedia.org/wiki/File:Hall_of_Supreme_Harmony_(Forbidden_City),_Beijing_-_Jan_2016.jpg"}, "khongtu": {"cap": "Tượng Khổng Tử ở Bắc Kinh", "by": "Mx. Granger · CC0", "url": "https://commons.wikimedia.org/wiki/File:Statue_of_Confucius_at_Beijing_temple.JPG"}, "thuphap": {"cap": "Viết thư pháp bằng nước trên nền đá", "by": "Marc Smith · CC BY 2.0", "url": "https://commons.wikimedia.org/wiki/File:Chinesecalligraphywater1.jpg"}, "tra": {"cap": "Bộ ấm chén trà Trung Hoa", "by": "Gary Stevens · CC BY 2.0", "url": "https://commons.wikimedia.org/wiki/File:Chinese_tea_set_and_three_gaiwan_(cropped).jpg"}, "banhtrungthu": {"cap": "Bánh trung thu", "by": "Nowforever · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Mid_autumn_festival.jpg"}, "vitquay": {"cap": "Vịt quay Bắc Kinh", "by": "Willis Lam · CC BY-SA 2.0", "url": "https://commons.wikimedia.org/wiki/File:Roast_Peking_Duck_(32014843160).jpg"}, "sui": {"cap": "Sủi cảo — món ăn ngày Tết miền Bắc", "by": "Emcc83 · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Jiaozi_GS_CN.jpg"}, "gautruc": {"cap": "Gấu trúc — quốc bảo của Trung Quốc", "by": "KQuhen · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Giant_panda_eating_bamboo_Taipei_Zoo.jpg"}};
+const LIMG={3:["giapcot"],11:["tet"],14:["tra"],17:["tucam"],26:["vitquay","truongthanh"],27:["gautruc"],29:["sui"],30:["khongtu"]};
+const WEEKS=[["Tuần 1","Phát âm · chào hỏi",1,7],["Tuần 2","Gia đình · thời gian",8,14],["Tuần 3","Mua sắm · đi lại",15,21],["Tuần 4","Công việc · ngữ pháp",22,28],["Về đích","Nhà hàng · tổng ôn",29,30]];
+const CN="一二三四五六七八九十";
+const cnNum=n=>n<=10?CN[n-1]:n<20?"十"+CN[n-11]:n%10===0?CN[n/10-1]+"十":CN[Math.floor(n/10)-1]+"十"+CN[n%10-1];
+
+/* ---------- storage (optional) ---------- */
+const KEY="tt30-done";
+let done=new Set();
+try{done=new Set(JSON.parse(localStorage.getItem(KEY)||"[]"))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify([...done]))}catch(e){}};
+
+/* ---------- pinyin tone colouring ---------- */
+const TONES={"āēīōūǖ":1,"áéíóúǘ":2,"ǎěǐǒǔǚ":3,"àèìòùǜ":4};
+const BASE={"ā":"a","á":"a","ǎ":"a","à":"a","ē":"e","é":"e","ě":"e","è":"e","ī":"i","í":"i","ǐ":"i","ì":"i","ō":"o","ó":"o","ǒ":"o","ò":"o","ū":"u","ú":"u","ǔ":"u","ù":"u","ǖ":"v","ǘ":"v","ǚ":"v","ǜ":"v","ü":"v"};
+const toneOf=ch=>{for(const k in TONES)if(k.includes(ch))return TONES[k];return 0};
+const SYL=/^(zh|ch|sh|[bpmfdtnlgkhjqxrzcsyw])?(iang|iong|uang|ang|eng|ing|ong|uai|ian|iao|uan|van|ue|ve|ai|ei|ao|ou|an|en|er|in|ia|ie|iu|ua|uo|ui|un|vn|a|o|e|i|u|v)(?![aeiouv])/;
+function syllables(word){
+  const out=[];let i=0;const low=[...word].map(c=>{const l=c.toLowerCase();return BASE[l]||l}).join("");const chars=[...word];
+  while(i<chars.length){
+    const rest=low.slice(i);let m=rest.match(SYL);
+    if(m&&m[0].endsWith("n")&&/^[aeiouv]/.test(rest.slice(m[0].length))){ // n belongs to next syllable
+      const alt=rest.slice(0,m[0].length-1).match(SYL);if(alt&&alt[0].length===m[0].length-1)m=alt;
+    }
+    if(m&&m[0].endsWith("g")&&/^[aeiouv]/.test(rest.slice(m[0].length))){
+      const alt=rest.slice(0,m[0].length-1).match(SYL);if(alt&&alt[0].length===m[0].length-1)m=alt;
+    }
+    let len=m?m[0].length:1;
+    if(m&&rest[len]==="r"&&!SYL.test(rest.slice(len)))len++; // erhua
+    const seg=chars.slice(i,i+len).join("");
+    let t=0;for(const c of seg){const x=toneOf(c.toLowerCase());if(x)t=x}
+    out.push({seg,t:m?(t||5):0});i+=len;
+  }
+  return out;
+}
+function colorPinyin(py){
+  return py.split(/([\s—\-!?,.’'’]+)/).map(tok=>{
+    if(!/[a-zA-Zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]/.test(tok))return esc(tok);
+    return syllables(tok).map(s=>s.t?`<span class="tone${s.t}">${esc(s.seg)}</span>`:esc(s.seg)).join("");
+  }).join("");
+}
+function colorHanzi(hz,py){
+  const hs=[...hz];const syl=py.split(/[\s']+/).flatMap(w=>syllables(w)).filter(s=>s.t);
+  if(hs.length!==syl.length)return `<span>${esc(hz)}</span>`;
+  return hs.map((h,i)=>`<span class="tone${syl[i].t}">${h}</span>`).join("");
+}
+function chunks(hz,py){
+  const hs=[...hz].filter(c=>/[\u3400-\u9fff]/.test(c));
+  const words=py.replace(/[—.,!?;:…“”]/g," ").split(/\s+/).filter(Boolean);
+  const out=[];let k=0;
+  for(const w of words){const n=w.split("'").flatMap(x=>syllables(x)).filter(s=>s.t).length;if(!n)return null;out.push(hs.slice(k,k+n).join(""));k+=n}
+  return k===hs.length?out:null;
+}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+const hzWrap=s=>esc(s).replace(/([㐀-鿿！-？、。]+)/g,'<span class="hzi">$1</span>');
+
+/* ---------- speech ---------- */
+const canSpeak="speechSynthesis" in window;
+let zhVoice=null;
+function pickVoice(){if(!canSpeak)return;const v=speechSynthesis.getVoices();zhVoice=v.find(x=>/zh[-_]CN/i.test(x.lang))||v.find(x=>/^zh/i.test(x.lang))||null}
+if(canSpeak){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function speak(text,el){
+  if(!canSpeak)return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text.replace(/—/g,"，"));
+  u.lang="zh-CN";u.rate=.8;if(zhVoice)u.voice=zhVoice;
+  document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));
+  if(el){el.classList.add("playing");u.onend=u.onerror=()=>el.classList.remove("playing")}
+  speechSynthesis.speak(u);
+}
+const SPK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+
+/* ---------- teacher audio ---------- */
+const PLAY='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
+const PAUSE='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>';
+const fmt=t=>{t=Math.max(0,Math.round(t));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")};
+let audio=null,speed=1;
+function stopTeacher(pauseOnly){if(!audio)return;audio.pause();if(!pauseOnly){audio.removeAttribute("src");audio.load();audio=null}}
+function setupTeacher(G){
+  audio=new Audio(G.f);audio.preload="metadata";audio.playbackRate=speed;
+  const btn=document.getElementById("tPlay"),bar=document.getElementById("tBar"),tm=document.getElementById("tTime"),sp=document.getElementById("tSpeed");
+  let lastCue;
+  const cueAt=t=>{let c=null;for(const [s,id] of G.c){if(s<=t)c=id;else break}return c};
+  const sync=()=>{
+    bar.value=audio.currentTime;tm.textContent=fmt(audio.currentTime)+" / "+fmt(G.d);
+    const c=cueAt(audio.currentTime);
+    if(c!==lastCue){lastCue=c;document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));
+      if(c&&!audio.paused){const e=document.querySelector(`[data-cue="${c}"]`);if(e){e.classList.add("playing");e.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}}}
+  };
+  const a=audio;
+  a.ontimeupdate=sync;
+  a.onplay=()=>{btn.innerHTML=PAUSE;btn.setAttribute("aria-label","Tạm dừng");lastCue=undefined;sync()};
+  a.onpause=a.onended=()=>{btn.innerHTML=PLAY;btn.setAttribute("aria-label","Nghe giảng bài");document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"))};
+  btn.onclick=()=>{if(canSpeak)speechSynthesis.cancel();window.pauseIntro&&window.pauseIntro();a.paused?a.play().catch(()=>{}):a.pause()};
+  bar.oninput=()=>{a.currentTime=+bar.value;sync()};
+  const SPEEDS=[1,1.25,1.5,0.8],lab=v=>String(v).replace(".",",")+"×";
+  sp.textContent=lab(speed);
+  sp.onclick=()=>{speed=SPEEDS[(SPEEDS.indexOf(speed)+1)%SPEEDS.length];a.playbackRate=speed;sp.textContent=lab(speed)};
+}
+
+/* ---------- stroke order ---------- */
+let STROKES=null;const strokesReady=fetch("strokes.json").then(r=>r.json()).then(d=>STROKES=d).catch(()=>{});
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+let writer=null;
+function setupWriter(chars){
+  const pad=document.getElementById("pad"),info=document.getElementById("winfo");
+  if(!pad||!chars.length)return;
+  if(typeof HanziWriter==="undefined"){info.textContent="Chưa tải được phần tập viết — kiểm tra mạng rồi tải lại trang.";return}
+  const show=c=>{
+    pad.innerHTML="";document.querySelectorAll(".chip2").forEach(b=>b.classList.toggle("on",b.dataset.c===c));
+    writer=HanziWriter.create(pad,c,{width:216,height:216,padding:14,showOutline:true,showCharacter:false,strokeAnimationSpeed:.9,delayBetweenStrokes:280,
+      strokeColor:css("--ink"),outlineColor:css("--line"),radicalColor:css("--sun"),highlightColor:css("--sun"),drawingColor:css("--sun"),drawingWidth:14,
+      charDataLoader:(ch,done,fail)=>strokesReady.then(()=>STROKES&&STROKES[ch]?done(STROKES[ch]):fail())});
+    strokesReady.then(()=>{const n=STROKES&&STROKES[c]?STROKES[c].strokes.length:"?";info.innerHTML=`<b style="font-family:var(--hz);font-size:18px">${c}</b> · <b>${n}</b> nét — xem hình viết từng nét theo đúng thứ tự`;writer.animateCharacter()});
+    document.getElementById("wSay").onclick=()=>{stopTeacher(true);speak(c,null)};
+  };
+  document.getElementById("wchips").onclick=e=>{const b=e.target.closest(".chip2");if(b)show(b.dataset.c)};
+  document.getElementById("wAnim").onclick=()=>{writer&&(writer.cancelQuiz(),writer.hideCharacter(),writer.animateCharacter())};
+  document.getElementById("wQuiz").onclick=()=>{if(!writer)return;writer.hideCharacter();info.innerHTML="Viết từng nét vào ô theo đúng thứ tự. Viết sai 3 lần, ô sẽ gợi ý nét đúng.";
+    writer.quiz({showHintAfterMisses:3,onComplete:r=>{info.innerHTML=r.totalMistakes?`Xong! Sai <b>${r.totalMistakes}</b> lần — thử lại để nhớ hơn nhé.`:"<b>Tuyệt vời!</b> Viết đúng hết các nét."}})};
+  show(chars[0]);
+}
+
+/* ---------- bán khoá · đăng nhập · góp ý (chỉ chạy trên web SunMoon) ---------- */
+const API="https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";
+const SITE=/chinesekidsvn\.com$|github\.io$|^localhost$|^127\./.test(location.hostname);
+const GT="TT30", UU_DAI_DEN="2026-10-24";
+const ZALOS=[["039 630 8188","https://zalo.me/0396308188"],["039 400 9488","https://zalo.me/0394009488"]];
+const zaloHtml=()=>ZALOS.map(z=>`<a class="zl" href="${z[1]}" target="_blank" rel="noopener">Zalo ${z[0]}</a>`).join("");
+let U=null;try{U=JSON.parse(localStorage.getItem("sunmoon-user"))}catch(e){}
+const saveU=()=>{try{U?localStorage.setItem("sunmoon-user",JSON.stringify({u:U.u,m:U.m,ten:U.ten})):localStorage.removeItem("sunmoon-user")}catch(e){}};
+const callApi=b=>fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(b)}).then(r=>r.json());
+const khongDau=x=>String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D");
+function tlv(id,v){return id+String(v.length).padStart(2,"0")+v}
+function crc16(x){let c=0xFFFF;for(let i=0;i<x.length;i++){c^=x.charCodeAt(i)<<8;for(let j=0;j<8;j++)c=(c&0x8000)?((c<<1)^0x1021)&0xFFFF:(c<<1)&0xFFFF}return c.toString(16).toUpperCase().padStart(4,"0")}
+function vietQR(amount,msg){const acc=tlv("00","A000000727")+tlv("01",tlv("00","970432")+tlv("01","272727888888"))+tlv("02","QRIBFTTA");const x=tlv("00","01")+tlv("01","12")+tlv("38",acc)+tlv("53","704")+tlv("54",String(amount))+tlv("58","VN")+tlv("62",tlv("08",msg))+"6304";return x+crc16(x)}
+const tien=n=>Number(n).toLocaleString("vi-VN")+"đ";
+function chsVal(box){const on=[...box.querySelectorAll(".ch.on")].map(b=>b.textContent);return box.dataset.multi?on:(on[0]||"")}
+function bindChs(root){root.querySelectorAll(".chs").forEach(box=>box.onclick=e=>{const b=e.target.closest(".ch");if(!b)return;if(!box.dataset.multi)box.querySelectorAll(".ch").forEach(x=>x!==b&&x.classList.remove("on"));b.classList.toggle("on");box.dispatchEvent(new Event("change"))})}
+function showCourse(){document.getElementById("gate").hidden=true;document.getElementById("course").hidden=false}
+function showGate(){
+  document.getElementById("course").hidden=true;const g=document.getElementById("gate");g.hidden=false;
+  const nay=new Date().toLocaleDateString("sv-SE",{timeZone:"Asia/Ho_Chi_Minh"});
+  if(nay>UU_DAI_DEN){document.getElementById("giaNay").textContent="299.000đ";g.querySelector(".price s").hidden=true;document.getElementById("giaGhi").textContent=""}
+  else document.getElementById("giaGhi").textContent="ưu đãi tháng đầu, đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
+  document.getElementById("outline").innerHTML=L.map((d,i)=>`<li><b>${i+1}</b>${esc(d.t)}</li>`).join("");
+  g.querySelectorAll(".zaloBox").forEach(z=>z.innerHTML=zaloHtml());bindChs(g);
+  const kErr=document.getElementById("kErr"),kGui=document.getElementById("kGui");
+  kGui.onclick=async()=>{
+    const ten=document.getElementById("kTen").value.trim(),sdt=document.getElementById("kSdt").value.replace(/[^\d]/g,"");
+    const kb={};g.querySelectorAll("#dangKy .chs").forEach(b=>{const v=chsVal(b);kb[b.dataset.k]=Array.isArray(v)?v.join(", "):v});
+    if(!ten)return kErr.textContent="Bạn điền họ tên nhé";
+    if(sdt.length<9)return kErr.textContent="Số điện thoại chưa đúng";
+    if(!kb.mucDich||!kb.trinhDo||!kb.thoiGian||!kb.bietQua)return kErr.textContent="Bạn trả lời đủ 5 câu nhé";
+    kErr.textContent="";kGui.disabled=true;kGui.textContent="Đang gửi…";
+    try{const r=await callApi({app:"muaapp",giaoTrinh:GT,sdt,tenBe:ten,khaiBao:kb});
+      if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
+      const so=r.soTien||99000,nd=r.noiDung||("SM TT30 "+sdt),box=document.getElementById("kQR");box.hidden=false;
+      box.innerHTML=`<h2>Chuyển khoản để nhận mã</h2><div class="qrbox"><div class="qr" id="qrImg"></div><div class="bank">VPBank · <b>272727888888</b><br>PHAN THÙY LINH<br>Số tiền: <b>${tien(so)}</b><br>Nội dung: <b>${esc(nd)}</b></div></div><p class="note" style="font-style:normal">Chuyển khoản xong, SunMoon nhắn <b>tên đăng nhập + mã</b> qua Zalo số ${esc(sdt)} (trong giờ làm việc thường chỉ vài phút). Cần gấp, bạn nhắn Zalo:</p><div class="zalos">${zaloHtml()}</div>`;
+      if(window.qrcode){const q=qrcode(0,"M");q.addData(vietQR(so,nd));q.make();document.getElementById("qrImg").innerHTML=q.createSvgTag(4,2)}
+      kGui.hidden=true;box.scrollIntoView({behavior:"smooth",block:"start"});
+    }catch(e){kErr.textContent=e.message==="Failed to fetch"?"Chưa kết nối được — kiểm tra mạng rồi thử lại nhé":e.message;kGui.disabled=false;kGui.textContent="Đăng ký & nhận mã QR chuyển khoản"}
+  };
+  const lErr=document.getElementById("lErr"),lGo=document.getElementById("lGo");
+  const login=async()=>{const u=khongDau(document.getElementById("lU").value).toUpperCase().replace(/[^A-Z0-9]/g,""),m=document.getElementById("lM").value.trim();
+    if(!u||!m)return lErr.textContent="Bạn điền đủ tên đăng nhập và mã nhé";
+    lGo.disabled=true;lErr.textContent="";
+    try{const r=await callApi({app:"dangnhap",u,m,giaoTrinh:GT});if(r&&r.ok){U={u,m,ten:r.ten||u};saveU();mergeTD(r.tienDo);showCourse();start()}else lErr.textContent=(r&&r.loi)||"Tên đăng nhập hoặc mã chưa đúng"}
+    catch(e){lErr.textContent="Chưa kết nối được — kiểm tra mạng rồi thử lại nhé"}
+    lGo.disabled=false};
+  lGo.onclick=login;document.getElementById("lM").onkeydown=e=>{if(e.key==="Enter")login()};
+}
+const SV=[["kho","Bài hôm nay với bạn thế nào?",["Rất dễ","Vừa sức","Hơi khó","Quá khó"]],["thoiGian","Bạn học bài này mất bao lâu?",["Dưới 15 phút","15–25 phút","25–40 phút","Trên 40 phút"]],["tocDo","Tốc độ giọng giảng?",["Chậm quá","Vừa","Nhanh quá"]],["thich","Phần bạn thích nhất? (chọn nhiều)",["Bài giảng nghe","Chữ Hán liên tưởng","Tập viết nét","Hội thoại","Văn hoá","Bài tập"],1],["khoNhat","Phần khó nhất?",["Phát âm, thanh điệu","Nhớ mặt chữ","Ngữ pháp","Nghe hội thoại","Không có"]],["noiDuoc","Sau bài này bạn tự nói được mấy câu?",["0–1","2–3","4–5","Trên 5"]],["hocTiep","Bạn có học tiếp bài sau không?",["Chắc chắn","Có lẽ","Chưa chắc"]],["lienHe","Bạn muốn học cùng giáo viên SunMoon không?",["Có, liên hệ tôi","Để sau","Không"]]];
+function svDone(){try{return JSON.parse(localStorage.getItem("tt30-gopy")||"[]")}catch(e){return[]}}
+function surveyHtml(){
+  if(svDone().includes(cur))return `<p class="note" style="font-style:normal"><b>Cảm ơn bạn đã góp ý bài này!</b></p><p class="note" style="font-style:normal">Phản hồi thêm về app học, bạn nhắn Zalo SunMoon:</p><div class="zalos">${zaloHtml()}</div>`;
+  return `<div class="sv">${SV.map((q,i)=>`<div class="fq"><p><span class="n">${i+1}.</span>${q[1]}</p><div class="chs" data-k="${q[0]}"${q[3]?' data-multi="1"':""}>${q[2].map(o=>`<button class="ch">${o}</button>`).join("")}</div></div>`).join("")}
+    <div class="fq" id="svLH" hidden><input type="text" id="svTen" placeholder="Tên của bạn" value="${esc(U&&U.ten||"")}"><input type="tel" id="svSdt" placeholder="Số điện thoại / Zalo" inputmode="tel"></div>
+    <div class="fq"><label for="svGY">Góp ý thêm <small class="note">(không bắt buộc)</small></label><textarea id="svGY" placeholder="Điều bạn muốn SunMoon sửa hoặc thêm…"></textarea></div>
+    <p class="err" id="svErr"></p><button class="btn main" id="svGui">Gửi góp ý · +20 XP</button>
+    <p class="note" style="font-style:normal">Phản hồi về app học, bạn nhắn Zalo SunMoon:</p><div class="zalos">${zaloHtml()}</div></div>`;
+}
+function setupSurvey(){
+  const box=document.getElementById("survey");if(!box)return;const btn=document.getElementById("svGui");if(!btn)return;
+  bindChs(box);
+  box.querySelector('[data-k="lienHe"]').addEventListener("change",e=>{document.getElementById("svLH").hidden=chsVal(e.currentTarget)!=="Có, liên hệ tôi"});
+  if(!SITE){btn.disabled=true;document.getElementById("svErr").textContent="Bản xem thử: góp ý chỉ gửi được trên web chinesekidsvn.com.";return}
+  btn.onclick=async()=>{
+    const a={};box.querySelectorAll(".chs").forEach(b=>a[b.dataset.k]=chsVal(b));
+    const thieu=SV.filter(q=>!(q[3]?a[q[0]].length:a[q[0]])).length,err=document.getElementById("svErr");
+    if(thieu)return err.textContent=`Bạn trả lời nốt ${thieu} câu nhé`;
+    a.gopY=document.getElementById("svGY").value.trim();
+    if(a.lienHe==="Có, liên hệ tôi"){a.tenLH=document.getElementById("svTen").value.trim();a.sdtLH=document.getElementById("svSdt").value.trim();if(a.sdtLH.replace(/\D/g,"").length<9)return err.textContent="Bạn để lại số điện thoại để SunMoon liên hệ nhé"}
+    if(!U)return err.textContent="Bạn đăng nhập lại giúp SunMoon nhé";
+    btn.disabled=true;btn.textContent="Đang gửi…";err.textContent="";
+    try{const r=await callApi({app:"gopy",u:U.u,m:U.m,bai:cur,traLoi:a});if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
+      const dn=svDone();dn.push(cur);try{localStorage.setItem("tt30-gopy",JSON.stringify(dn))}catch(e){}
+      GM.xp+=20;saveGM();updChips();ding();toast("+20 XP — cảm ơn góp ý của bạn!");
+      box.innerHTML=`<h2>Cảm ơn bạn!</h2>`+surveyHtml();}
+    catch(e){err.textContent=e.message==="Failed to fetch"?"Chưa kết nối được — kiểm tra mạng rồi thử lại nhé":e.message;btn.disabled=false;btn.textContent="Gửi góp ý"}
+  };
+}
+
+/* ---------- game: XP · chuỗi ngày · sao · huy hiệu · mở khoá dần ---------- */
+const GKEY="tt30-game";let GM={xp:0,stars:{},days:[],badges:[]};
+try{GM=Object.assign(GM,JSON.parse(localStorage.getItem(GKEY)||"{}"))}catch(e){}
+const saveGM=()=>{try{localStorage.setItem(GKEY,JSON.stringify(GM))}catch(e){}};
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const today=()=>ymd(new Date());
+function streak(){const s=new Set(GM.days),d=new Date();if(!s.has(ymd(d)))d.setDate(d.getDate()-1);let n=0;while(s.has(ymd(d))){n++;d.setDate(d.getDate()-1)}return n}
+const BADGES=[["b1","Khởi đầu","1",()=>done.size>=1],["s3","3 ngày liền","3",()=>streak()>=3],["s7","7 ngày liền","7",()=>streak()>=7],["h15","Nửa chặng","15",()=>done.size>=15],["x1k","1.000 XP","1k",()=>GM.xp>=1000],["b30","Về đích","30",()=>done.size>=30]];
+function newBadges(){const nb=BADGES.filter(b=>!GM.badges.includes(b[0])&&b[3]());nb.forEach(b=>GM.badges.push(b[0]));saveGM();return nb}
+const unlocked=n=>!SITE||n<=1||done.has(n)||done.has(n-1);
+let actx=null;function tone(fs,dur=.12,type="sine",vol=.12){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+dur);t+=dur*.8})}catch(e){}}
+const ding=()=>tone([880,1320]),buzz=()=>tone([180],.18,"square",.05),fanfare=()=>tone([523,659,784,1047],.16,"triangle",.15);
+function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+function xpop(el,txt){const r=el.getBoundingClientRect(),x=document.createElement("div");x.className="xpop";x.textContent=txt;x.style.left=(r.left+r.width/2-20)+"px";x.style.top=(r.top-6)+"px";document.body.appendChild(x);setTimeout(()=>x.remove(),900)}
+let LS={ok:0,tot:0};
+function award(ok,el){LS.tot++;if(ok){LS.ok++;GM.xp+=10;saveGM();ding();el&&xpop(el,"+10 XP");updChips()}else buzz()}
+function updChips(){document.getElementById("chipTxt").textContent=GM.xp.toLocaleString("vi-VN");document.getElementById("streakTxt").textContent=streak()}
+function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const c=document.createElement("canvas");c.id="confetti";document.body.appendChild(c);const x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+  const col=["#C8453A","#B7862B","#E4B342","#5E9E5A","#2C68B0"],P=Array.from({length:140},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,r:Math.random()*6,a:Math.random()*6,c:col[Math.floor(Math.random()*5)]}));
+  let f=0;(function tick(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-4,-2,8,4+p.r);x.restore()});if(++f<150)requestAnimationFrame(tick);else c.remove()})()}
+function completeLesson(){
+  if(done.has(cur))return go(cur+1);
+  const acc=LS.tot?LS.ok/LS.tot:0,st=!LS.tot?1:acc>=.9?3:acc>=.7?2:1,gain=50+20*st;
+  if(!LS.tot&&!confirmOnce())return;
+  done.add(cur);save();GM.stars[cur]=Math.max(GM.stars[cur]||0,st);GM.xp+=gain;if(!GM.days.includes(today()))GM.days.push(today());saveGM();
+  if(SITE&&U)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:GT,phan:"b"+cur,ten:"Bài "+cur+" · "+L[cur-1].t,dung:Math.round(acc*100),xp:GM.xp}).catch(()=>{});
+  const nb=newBadges(),nx=cur<30?L[cur]:null;updChips();renderMap();renderLesson();
+  const o=document.createElement("div");o.className="celeb";o.innerHTML=`<div class="box" role="dialog" aria-label="Hoàn thành bài">
+    <div class="stars">${[1,2,3].map(i=>`<span class="${i<=st?"":"off"}">★</span>`).join("")}</div>
+    <h2>Xong ngày ${cur}!</h2>
+    <div class="stat"><span>+${gain} XP</span><span>🔥 ${streak()} ngày liên tiếp</span>${LS.tot?`<span>Đúng ${Math.round(acc*100)}%</span>`:""}</div>
+    ${nb.map(b=>`<div class="nb">Huy hiệu mới: ${b[1]}</div>`).join("")}
+    ${st<3&&LS.tot?`<p class="tease">Làm lại bài tập đúng trên 90% để được 3 sao nhé!</p>`:""}
+    ${nx?`<p class="tease">Ngày mai: <b>${esc(nx.t)}</b> — ${esc(nx.g)}</p><button class="btn main" id="cNext">Học tiếp ngày ${cur+1}</button><button class="btn" id="cClose">Để mai học tiếp</button>`:`<p class="tease"><b>Bạn đã hoàn thành cả khoá 30 ngày!</b></p><button class="btn main" id="cClose">Tuyệt vời!</button>`}</div>`;
+  document.body.appendChild(o);fanfare();confetti();
+  o.querySelector("#cClose").onclick=()=>o.remove();const n=o.querySelector("#cNext");if(n)n.onclick=()=>{o.remove();go(cur+1)};
+  o.onclick=e=>{if(e.target===o)o.remove()};
+}
+let _cf=0;function confirmOnce(){if(_cf++)return true;toast("Làm bài tập bên trên để lấy sao và XP — bấm lần nữa nếu muốn bỏ qua");return false}
+
+function ytHtml(n){const v=YT[n];if(!v)return"";const[id,t,ch,len]=v;
+  if(SITE)return `<button class="ytl" data-yt="${id}" aria-label="Phát clip: ${esc(t)}"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span class="pb"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span></button><p class="ytmeta"><b>${esc(t)}</b><i>${esc(ch)} · ${len}</i></p>`;
+  return `<a class="yt" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span><b>${esc(t)}</b><i>${esc(ch)} · ${len} — mở YouTube</i></span></a>`}
+function bindYT(root){root.querySelectorAll(".ytl").forEach(b=>b.onclick=()=>{stopTeacher(true);window.pauseIntro&&window.pauseIntro();b.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0" title="Clip YouTube" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;b.onclick=null})}
+
+const RADS="亻忄讠氵灬饣钅宀艹冫刂囗匚丨丶丿𠂇卜彐";
+const ARW='<svg viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 6h22M18 1l5 5-5 5"/></svg>';
+function nd(c,m,base){const say=[...c].some(x=>/[\u3400-\u9fff]/.test(x)&&!RADS.includes(x));return `<button class="nd${base?" base":""}"${say?` data-say="${esc(c.replace(/[^\u3400-\u9fff]/g,"").slice(-1))}"`:""}><span class="c">${esc(c)}</span>${m?`<span class="m">${esc(m)}</span>`:""}</button>`}
+function arw(add){return `<span class="ar2"><span class="pl">+ ${esc(add)}</span>${ARW}</span>`}
+function mindMap(d){
+  const rads=(d.r||[]).map(x=>{const[c,ten,ng,ex]=x.split("|");return `<div class="rad"><span class="rc">${esc(c)}</span><span><b>Bộ ${esc(ten)}</b><i>${esc(ng)}</i><span class="ex">${esc(ex)}</span></span></div>`}).join("");
+  const maps=(d.m||[]).map(x=>{const[type,body]=[x.slice(0,x.indexOf(":")),x.slice(x.indexOf(":")+1)];
+    if(type==="chain"){const st=body.split(">");const[c0,m0]=st[0].split("|");return `<div class="flow">${nd(c0,m0,1)}${st.slice(1).map(t=>{const[add,c,m]=t.split("|");return arw(add)+nd(c,m)}).join("")}</div>`}
+    const it=body.split("*");const[c0,m0]=it[0].split("|");
+    return `<div class="fan">${nd(c0,m0,1)}<div class="br">${it.slice(1).map(t=>{const[add,c,m]=t.split("|");return `<div class="row">${arw(add)}${nd(c,m)}</div>`}).join("")}</div></div>`}).join("");
+  return rads||maps?`<div class="rads">${rads}</div><div class="mm">${maps}</div>`:"";
+}
+
+/* ---------- render ---------- */
+let cur=1;
+function firstUndone(){for(let i=1;i<=30;i++)if(!done.has(i))return i;return 30}
+function renderMap(){
+  document.getElementById("weeks").innerHTML=WEEKS.map(([a,b,from,to])=>{
+    let d="";for(let i=from;i<=to;i++){const lk=!unlocked(i),st=GM.stars[i]||0;d+=`<button class="day${done.has(i)?" done":""}${i===cur?" cur":""}${lk?" locked":""}" data-day="${i}" aria-label="Ngày ${i}${done.has(i)?", đã xong":lk?", chưa mở":""}"${i===cur?' aria-current="page"':""}>${lk?"":i}${st?`<span class="st">${"★".repeat(st)}</span>`:""}</button>`}
+    return `<div class="week"><div class="lbl">${a}<b>${b}</b></div><div class="days">${d}</div></div>`;
+  }).join("");
+  document.getElementById("progTxt").textContent=`${done.size}/30 bài`;document.getElementById("chipTxt").textContent=done.size;
+  document.getElementById("progBar").style.width=(done.size/30*100)+"%";
+  document.getElementById("badges").innerHTML=BADGES.map(b=>`<span class="bdg${GM.badges.includes(b[0])?" on":""}" title="${b[1]}"><i>${b[2]}</i>${b[1]}</span>`).join("");
+  updChips();
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function renderLesson(){
+  const d=L[cur-1];const el=document.getElementById("lesson");const G=(window.GIANG||{})[cur];stopTeacher();LS={ok:0,tot:0};_cf=0;
+  const words=d.w.map((x,i)=>{const[hz,py,vi]=x.split("|");return `<button class="w" data-cue="w${i}" data-say="${esc(hz)}"><span class="spk">${SPK}</span><span class="hz">${colorHanzi(hz,py)}</span><span class="pyw">${colorPinyin(py)}</span><span class="vi">${esc(vi)}</span></button>`}).join("");
+  const sents=d.s.map((x,i)=>{const[hz,py,vi]=x.split("|");return `<button class="s" data-cue="s${i}" data-say="${esc(hz)}"><span class="play">${SPK}</span><span><span class="hz" style="display:block">${esc(hz)}</span><span class="pys" style="display:block">${colorPinyin(py)}</span><span class="vi" style="display:block">${esc(vi)}</span></span></button>`}).join("");
+  const wchars=[...new Set([...(d.h||[]).map(x=>x.split("|")[0]),...d.w.map(x=>x.split("|")[0])].join("").replace(/[^\u3400-\u9fff]/g,""))].slice(0,14);
+  const hanz=(d.h||[]).map((x,i)=>{const[c,m,sub]=x.split("|");return `<button class="hc" data-cue="h${i}" data-say="${esc(c)}"><span class="big">${esc(c)}</span><span><b>${hzWrap(m)}</b><i>→ ${hzWrap(sub)}</i></span></button>`}).join("");
+  const dlg=(d.d||[]).map((x,i)=>{const[who,hz,py,vi]=x.split("|");return `<button class="ln ${who}" data-cue="d${i}" data-say="${esc(hz)}"><span class="who">${who}</span><span class="bub"><span class="hz">${esc(hz)}</span><span class="pys">${colorPinyin(py)}</span><span class="vi">${esc(vi)}</span></span></button>`}).join("");
+  const [cm,cs]=(d.c||"|").split("|");
+  const tips=d.tip.map(x=>{const[a,b]=x.split("|");return `<li><b>${hzWrap(a)}</b>${b?`<i>${hzWrap(b)}</i>`:""}</li>`}).join("");
+  const qs=d.q.map((q,qi)=>{const opts=shuffle(q[1].map((o,oi)=>({o,ok:oi===q[2]})));return `<div class="q" data-q="${qi}"><p><span class="n">${qi+1}.</span>${hzWrap(q[0])}</p><div class="opts">${opts.map(o=>`<button class="opt" data-ok="${o.ok?1:0}">${hzWrap(o.o)}</button>`).join("")}</div></div>`}).join("");
+  const W=d.w.map(x=>x.split("|"));
+  const lisItems=shuffle(W).slice(0,Math.min(4,W.length));
+  const lis=lisItems.map(([hz,py,vi])=>{const others=shuffle(W.filter(x=>x[2]!==vi)).slice(0,2).map(x=>x[2]);return `<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle([{o:vi,ok:1},...others.map(o=>({o,ok:0}))]).map(o=>`<button class="opt" data-ok="${o.ok}" data-reveal="${esc(hz)}">${esc(o.o)}</button>`).join("")}</div></div>`}).join("");
+  const arrSrc=shuffle([...d.s,...(d.d||[]).map(x=>x.split("|").slice(1).join("|"))].map(x=>{const[hz,py,vi]=x.split("|");return{hz,vi,ch:chunks(hz,py)}}).filter(x=>x.ch&&x.ch.length>=3&&x.ch.length<=7)).slice(0,2);
+  const arr=arrSrc.map((x,i)=>`<div class="ar" data-key="${esc(x.ch.join("|"))}" data-say="${esc(x.hz)}"><p class="vi">“${esc(x.vi)}”</p><div class="ans"></div><div class="pool">${shuffle(x.ch.map((c,j)=>({c,j}))).map(t=>`<button class="tile" data-c="${esc(t.c)}">${esc(t.c)}</button>`).join("")}</div><div class="row"><button class="btn chk">Kiểm tra</button><span class="res"></span></div></div>`).join("");
+  const isDone=done.has(cur);
+  el.innerHTML=`
+    <div class="lhead"><div class="dnum" aria-hidden="true">${cur}</div>
+      <div><p class="eyebrow">Ngày ${cur} / 30 · 第${cnNum(cur)}天</p><h2>${esc(d.t)}</h2><p class="goal">${esc(d.g)}</p></div></div>
+    ${G?`<div class="teacher"><button class="tplay" id="tPlay" aria-label="Nghe giảng bài">${PLAY}</button><div class="tmid"><b>Nghe giảng bài <i id="tTime">${fmt(0)} / ${fmt(G.d)}</i></b><input type="range" class="tbar" id="tBar" min="0" max="${G.d}" step="0.1" value="0" aria-label="Tua bài giảng"></div><button class="tspeed" id="tSpeed" aria-label="Tốc độ">1×</button></div>`:""}
+    ${canSpeak?"":'<p class="warn">Trình duyệt này không đọc được tiếng — mở bằng Chrome hoặc Safari để nghe.</p>'}
+    <section><h3>Từ mới <small>bấm để nghe</small></h3><div class="vocab">${words}</div></section>
+    ${hanz?`<section><h3>Chữ Hán hôm nay <small>nhìn hình — đoán nghĩa</small></h3><div class="hanz">${hanz}</div></section>`:""}
+    ${mindMap(d)?`<section><h3>Bộ thủ &amp; sơ đồ chữ <small>thêm nét, ghép bộ → ra chữ mới</small></h3>${mindMap(d)}</section>`:""}
+    <section><h3>Tập viết <small>xem thứ tự nét, rồi tự viết bằng ngón tay</small></h3>
+      <div class="wr"><div class="pad" id="pad"></div><div class="wside">
+        <div class="chips" id="wchips">${wchars.map((c,i)=>`<button class="chip2${i?"":" on"}" data-c="${c}">${c}</button>`).join("")}</div>
+        <p class="winfo" id="winfo"></p>
+        <div class="wbtns"><button class="btn" id="wAnim">▶ Xem lại nét</button><button class="btn main" id="wQuiz">✎ Tự viết</button><button class="btn" id="wSay">🔊 Nghe</button></div>
+        <p class="note">Quy tắc: ngang trước sổ sau · trên trước dưới sau · trái trước phải sau · ngoài trước trong sau.</p>
+      </div></div></section>
+    <section><h3>Mẫu câu <small>nghe → đọc to 3 lần</small></h3><div class="sents">${sents}</div></section>
+    ${dlg?`<section><h3>Hội thoại <small>bấm từng câu để nghe</small></h3><div class="dlg">${dlg}</div></section>`:""}
+    <section><h3>Ghi nhớ</h3><ul class="tips">${tips}</ul></section>
+    ${cm?`<section><h3>Văn hoá <small>chuyện thú vị về Trung Quốc</small></h3><div class="facts">${(LIMG[cur]||[]).length?`<div class="gal">${LIMG[cur].map(k=>`<figure class="ph"><img src="img/${k}.jpg" alt="${esc(IMG[k].cap)}" loading="lazy"><figcaption>${esc(IMG[k].cap)}<a href="${IMG[k].url}" target="_blank" rel="noopener">Ảnh: ${esc(IMG[k].by)}</a></figcaption></figure>`).join("")}</div>`:""}<div class="fact" data-cue="c"><span class="ic" aria-hidden="true">知</span><p><b>${hzWrap(cm)}</b><i>${hzWrap(cs)}</i></p></div>${d.c2?(()=>{const[a,b]=d.c2.split("|");return `<div class="fact" data-cue="c2"><span class="ic" aria-hidden="true">趣</span><p><b>${hzWrap(a)}</b><i>${hzWrap(b||"")}</i></p></div>`})():""}</div></section>`:""}
+    <section><h3>Clip xem thêm <small>video chọn sẵn cho bài này</small></h3>${ytHtml(cur)}</section>
+    <section><h3>Bài tập <small>3 phần — làm hết nhé</small></h3><div class="ex">
+      <h4>1 · Nghe và chọn nghĩa</h4><div class="lis">${lis}</div>
+      ${arr?`<h4>2 · Ghép câu <small style="font-weight:300;color:var(--ink-2)">bấm các ô theo đúng thứ tự</small></h4>${arr}`:""}
+      <h4>${arr?3:2} · Trắc nghiệm</h4><div class="quiz">${qs}</div><p class="score" id="score"></p></div></section>
+    <section class="card" id="survey"><h2>Góp ý bài ${cur} <small class="note">1 phút — giúp SunMoon làm bài tốt hơn</small></h2>${surveyHtml()}</section>
+    <div class="foot">
+      <div class="nav"><button class="btn" id="prev" ${cur===1?"disabled":""}>← Hôm trước</button><button class="btn" id="next" ${cur===30?"disabled":""}>Hôm sau →</button></div>
+      <button class="btn main${isDone?" is-done":""}" id="markDone">${isDone?"Đã xong — sang bài sau →":"Hoàn thành ngày "+cur+" ★"}</button>
+    </div>
+    <p class="note">Tiến độ lưu trên máy này. Bấm từng từ để nghe riêng từ đó.</p>`;
+  let right=0,answered=0;
+  el.querySelectorAll(".w,.s,.ln,.hc,.nd[data-say]").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
+  if(G)setupTeacher(G);
+  setupWriter(wchars);
+  setupSurvey();
+  bindYT(el);
+  el.querySelectorAll(".li").forEach(li=>{li.querySelector(".pl").onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
+  el.querySelectorAll(".ar").forEach(ar=>{const ans=ar.querySelector(".ans"),pool=ar.querySelector(".pool"),res=ar.querySelector(".res");
+    const move=t=>{ar.classList.remove("ok","no");res.textContent="";(t.parentElement===pool?ans:pool).appendChild(t)};
+    ar.querySelectorAll(".tile").forEach(t=>t.onclick=()=>move(t));
+    ar.querySelector(".chk").onclick=()=>{const got=[...ans.children].map(t=>t.dataset.c).join("|");const ok=got===ar.dataset.key;if(!pool.children.length&&!ar.dataset.tried){ar.dataset.tried=1;award(ok,ar.querySelector(".chk"))}else if(ok)ding();ar.classList.toggle("ok",ok);ar.classList.toggle("no",!ok);res.textContent=ok?"Chính xác!":(pool.children.length?"Chưa xếp hết các ô.":"Chưa đúng — bấm ô để đổi lại.");if(ok)speak(ar.dataset.say,null)}});
+  el.querySelectorAll(".q").forEach(q=>q.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{
+    const ok=o.dataset.ok==="1";answered++;if(ok)right++;award(ok,o);
+    q.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});
+    if(!ok)o.classList.add("wrong");
+    if(answered===d.q.length)document.getElementById("score").innerHTML=`Đúng <b>${right}/${d.q.length}</b> — ${right===d.q.length?"giỏi lắm, bấm “Xong bài hôm nay”!":"đọc lại phần Ghi nhớ rồi làm lại nhé."}`;
+  }));
+  document.getElementById("prev").onclick=()=>go(cur-1);
+  document.getElementById("next").onclick=()=>go(cur+1);
+  document.getElementById("markDone").onclick=completeLesson;
+}
+function go(n,scroll=true){
+  n=Math.min(30,Math.max(1,n));
+  if(!unlocked(n)){toast("Hoàn thành ngày "+(n-1)+" để mở khoá ngày "+n+" nhé");return}
+  cur=n;renderMap();renderLesson();
+  try{history.replaceState(null,"","#ngay"+cur)}catch(e){}
+  if(scroll)document.getElementById("lesson").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+}
+(function(){const G0=(window.GIANG||{})[0];if(!G0)return;
+  const box=document.getElementById("introPlayer"),btn=document.getElementById("iPlay"),bar=document.getElementById("iBar"),tm=document.getElementById("iTime");
+  box.hidden=false;bar.max=G0.d;btn.innerHTML=PLAY;tm.textContent="0:00 / "+fmt(G0.d);
+  const a=new Audio(G0.f);a.preload="metadata";
+  a.ontimeupdate=()=>{bar.value=a.currentTime;tm.textContent=fmt(a.currentTime)+" / "+fmt(G0.d)};
+  a.onplay=()=>{btn.innerHTML=PAUSE;stopTeacher(true);if(canSpeak)speechSynthesis.cancel()};
+  a.onpause=a.onended=()=>{btn.innerHTML=PLAY};
+  btn.onclick=()=>a.paused?a.play().catch(()=>{}):a.pause();
+  bar.oninput=()=>{a.currentTime=+bar.value};
+  window.pauseIntro=()=>a.pause();
+})();
+(function(){const b=document.getElementById("introYT");if(b){b.innerHTML=ytHtml(0);bindYT(b)}})();
+document.querySelectorAll(".hv button").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,null)});
+document.getElementById("weeks").addEventListener("click",e=>{const b=e.target.closest(".day");if(b)go(+b.dataset.day)});
+function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^b/,"");if(n>=1&&n<=30&&!done.has(n)){done.add(n);ch=1}});if(ch)save();return ch}
+function start(){const h=location.hash.match(/^#ngay(\d+)$/);go(h?+h[1]:firstUndone(),false)}
+if(!SITE)start();
+else if(!U){showGate()}
+else{start();callApi({app:"dangnhap",u:U.u,m:U.m,giaoTrinh:GT}).then(r=>{if(r&&r.ok&&mergeTD(r.tienDo)){renderMap()}if(!r||!r.ok){U=null;saveU();showGate();const e=document.getElementById("lErr");if(e&&r&&r.loi)e.textContent=r.loi}}).catch(()=>{})}
+</script>
+
+</body>
+</html>
