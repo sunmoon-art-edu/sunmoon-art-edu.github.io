@@ -245,6 +245,10 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .sp .res b{font-size:16px}
 .sp .heard{font-family:var(--hz);font-weight:700}
 .fq .khac{margin-top:2px}
+.bankq{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.bankb{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.bk{display:flex;align-items:center;justify-content:center;min-height:44px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;text-decoration:none;color:var(--ink);font-weight:700;font-size:14px;background:var(--surface)}
+#qrLuu{align-self:flex-start;text-decoration:none}
 .fq.thieu{outline:2px solid var(--bad);outline-offset:6px;border-radius:12px}
 #kErr1:not(:empty){background:var(--bad-soft);padding:10px 12px;border-radius:12px;font-weight:600}
 .fq .chs{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
@@ -415,7 +419,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
   </div>
   </div>
   <section class="card"><h2>Đã có mã học?</h2>
-    <div class="fq"><input type="text" id="lU" placeholder="Tên đăng nhập" autocapitalize="characters" autocomplete="username"><input type="tel" id="lM" placeholder="Mã 4 số" inputmode="numeric" autocomplete="current-password"></div>
+    <div class="fq"><input type="text" id="lU" placeholder="Email hoặc tên đăng nhập" autocapitalize="none" autocomplete="username" inputmode="email"><input type="tel" id="lM" placeholder="Mã 4 số" inputmode="numeric" autocomplete="current-password"></div>
     <p class="err" id="lErr"></p><button class="btn main" id="lGo">Vào học</button></section>
   <section class="card"><h2>Cần hỗ trợ?</h2><p class="note" style="font-style:normal">Mọi phản hồi về app học, bạn nhắn Zalo SunMoon nhé:</p><div class="zalos zaloBox"></div></section>
 </div>
@@ -906,6 +910,7 @@ const khongDau=x=>String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").repl
 function tlv(id,v){return id+String(v.length).padStart(2,"0")+v}
 function crc16(x){let c=0xFFFF;for(let i=0;i<x.length;i++){c^=x.charCodeAt(i)<<8;for(let j=0;j<8;j++)c=(c&0x8000)?((c<<1)^0x1021)&0xFFFF:(c<<1)&0xFFFF}return c.toString(16).toUpperCase().padStart(4,"0")}
 function vietQR(amount,msg){const acc=tlv("00","A000000727")+tlv("01",tlv("00","970432")+tlv("01","272727888888"))+tlv("02","QRIBFTTA");const x=tlv("00","01")+tlv("01","12")+tlv("38",acc)+tlv("53","704")+tlv("54",String(amount))+tlv("58","VN")+tlv("62",tlv("08",msg))+"6304";return x+crc16(x)}
+const BANKS=[["mb","MB Bank"],["icb","VietinBank"],["bidv","BIDV"],["acb","ACB"],["ocb","OCB"]];
 const tien=n=>Number(n).toLocaleString("vi-VN")+"đ";
 function chsVal(box){const on=[...box.querySelectorAll(".ch.on")].map(b=>b.textContent);return box.dataset.multi?on:(on[0]||"")}
 function bindChs(root){root.querySelectorAll(".chs").forEach(box=>box.onclick=e=>{const b=e.target.closest(".ch");if(!b)return;if(!box.dataset.multi)box.querySelectorAll(".ch").forEach(x=>x!==b&&x.classList.remove("on"));b.classList.toggle("on");box.dispatchEvent(new Event("change"))})}
@@ -962,14 +967,14 @@ function showGate(){
     try{const r=await callApi({app:"muaapp",giaoTrinh:GT,sdt,email,tenBe:ten,khaiBao:kb});
       if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
       const so=r.soTien||599000,nd=r.noiDung||("SM TT30 "+sdt),box=document.getElementById("kQR");box.hidden=false;
-      box.innerHTML=`<h2>Chuyển khoản để nhận mã</h2><div class="qrbox"><div class="qr" id="qrImg"></div><div class="bank">Mở app ngân hàng, <b>quét mã QR</b><br>Số tiền: <b>${tien(so)}</b><br>Nội dung: <b>${esc(nd)}</b></div></div><p class="note" style="font-style:normal">Chuyển khoản xong, SunMoon gửi <b>tên đăng nhập + mã</b> về email <b>${esc(email)}</b> (trong giờ làm việc thường chỉ vài phút — nhớ xem cả hộp thư Spam/Quảng cáo). Cần gấp, bạn nhắn Zalo:</p><div class="zalos">${zaloHtml()}</div>`;
-      if(window.qrcode){const q=qrcode(0,"M");q.addData(vietQR(so,nd));q.make();document.getElementById("qrImg").innerHTML=q.createSvgTag(4,2)}
+      box.innerHTML=`<h2>Chuyển khoản để nhận mã</h2><div class="qrbox"><div class="qr" id="qrImg"></div><div class="bank">Mở app ngân hàng, <b>quét mã QR</b><br>Số tiền: <b>${tien(so)}</b><br>Nội dung: <b>${esc(nd)}</b></div></div><div class="bankq"><p class="note" style="font-style:normal"><b>Đang dùng điện thoại?</b> Bấm ngân hàng của bạn — app mở ra, tự điền sẵn số tiền và nội dung:</p><div class="bankb">${BANKS.map(b=>`<a class="bk" href="https://dl.vietqr.io/pay?app=${b[0]}&ba=272727888888@vpb&am=${so}&tn=${encodeURIComponent(nd)}" target="_blank" rel="noopener">${b[1]}</a>`).join("")}</div><p class="note" style="font-style:normal">Ngân hàng khác: <b>lưu ảnh mã QR</b> → mở app ngân hàng → <b>Quét QR</b> → chọn ảnh vừa lưu.</p><a class="btn" id="qrLuu" download="ma-qr-sunmoon.gif" href="#">⬇ Lưu ảnh mã QR</a></div><p class="note" style="font-style:normal">Chuyển khoản xong, SunMoon gửi <b>tên đăng nhập + mã</b> về email <b>${esc(email)}</b> (trong giờ làm việc thường chỉ vài phút — nhớ xem cả hộp thư Spam/Quảng cáo). Cần gấp, bạn nhắn Zalo:</p><div class="zalos">${zaloHtml()}</div>`;
+      if(window.qrcode){const q=qrcode(0,"M");q.addData(vietQR(so,nd));q.make();const url=q.createDataURL(8,4);document.getElementById("qrImg").innerHTML=`<img src="${url}" alt="Mã QR chuyển khoản" style="width:100%;height:100%;image-rendering:pixelated">`;const sv=document.getElementById("qrLuu");if(sv)sv.href=url}
       kGui.hidden=true;box.scrollIntoView({behavior:"smooth",block:"start"});
     }catch(e){kErr.textContent=e.message==="Failed to fetch"?"Chưa kết nối được — kiểm tra mạng rồi thử lại nhé":e.message;kGui.disabled=false;kGui.textContent="Đăng ký & nhận mã QR chuyển khoản"}
   };
   const lErr=document.getElementById("lErr"),lGo=document.getElementById("lGo");
-  const login=async()=>{const u=khongDau(document.getElementById("lU").value).toUpperCase().replace(/[^A-Z0-9]/g,""),m=document.getElementById("lM").value.trim();
-    if(!u||!m)return lErr.textContent="Bạn điền đủ tên đăng nhập và mã nhé";
+  const login=async()=>{const raw=document.getElementById("lU").value.trim(),u=raw.includes("@")?raw.toLowerCase():khongDau(raw).toUpperCase().replace(/[^A-Z0-9]/g,""),m=document.getElementById("lM").value.trim();
+    if(!u||!m)return lErr.textContent="Bạn điền đủ email (hoặc tên đăng nhập) và mã nhé";
     lGo.disabled=true;lErr.textContent="";
     try{const r=await callApi({app:"dangnhap",u,m,giaoTrinh:GT});if(r&&r.ok){U={u,m,ten:r.ten||u};saveU();mergeTD(r.tienDo);showCourse();start()}else lErr.textContent=(r&&r.loi)||"Tên đăng nhập hoặc mã chưa đúng"}
     catch(e){lErr.textContent="Chưa kết nối được — kiểm tra mạng rồi thử lại nhé"}
