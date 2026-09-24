@@ -245,6 +245,8 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .sp .res b{font-size:16px}
 .sp .heard{font-family:var(--hz);font-weight:700}
 .fq .khac{margin-top:2px}
+.fq.thieu{outline:2px solid var(--bad);outline-offset:6px;border-radius:12px}
+#kErr1:not(:empty){background:var(--bad-soft);padding:10px 12px;border-radius:12px;font-weight:600}
 .fq .chs{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
 .fq .chs .ch{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:8px 12px;border-radius:14px;line-height:1.3}
 @media (max-width:420px){.fq .chs{grid-template-columns:1fr 1fr}}
@@ -926,15 +928,18 @@ function showGate(){
   const readKB=()=>{const kb={};g.querySelectorAll("#dangKy .chs").forEach(b=>{const v=chsVal(b);kb[b.dataset.k]=Array.isArray(v)?v.join(", "):v});return kb};
   const khac=(kb,k,id)=>{const t=document.getElementById(id).value.trim();if(kb[k].includes("Khác")){if(!t)return false;kb[k]=kb[k].replace("Khác","Khác: "+t)}return true};
   const kErr1=document.getElementById("kErr1");
+  const thieu=(k,msg)=>{g.querySelectorAll("#dangKy .fq.thieu").forEach(x=>x.classList.remove("thieu"));const fq=g.querySelector(`#dangKy [data-k="${k}"]`).closest(".fq");fq.classList.add("thieu");fq.scrollIntoView({behavior:"smooth",block:"center"});kErr1.textContent=msg;buzz();return false};
+  g.querySelectorAll("#dangKy .chs").forEach(b=>b.addEventListener("change",()=>b.closest(".fq").classList.remove("thieu")));
   document.getElementById("kTiep").onclick=()=>{
     const kb=readKB();
-    if(!kb.mucDich)return kErr1.textContent="Bạn chọn ít nhất 1 lý do học nhé";
-    if(!khac(kb,"mucDich","kMucDichKhac"))return kErr1.textContent="Bạn ghi rõ lý do “Khác” ở câu 1 nhé";
-    if(!kb.trinhDo||!kb.thoiGian)return kErr1.textContent="Bạn trả lời câu 2 và 3 nhé";
-    if(!kb.mucTieu)return kErr1.textContent="Bạn chọn ở câu 4: sau khoá học muốn đạt được điều gì nhé";
-    if(!khac(kb,"mucTieu","kMucTieuKhac"))return kErr1.textContent="Bạn ghi rõ “Khác” ở câu 4 nhé";
-    if(!kb.bietQua)return kErr1.textContent="Bạn trả lời câu 5 nhé";
-    if(!khac(kb,"bietQua","kBietQuaKhac"))return kErr1.textContent="Bạn ghi rõ “Khác” ở câu 5 nhé";
+    if(!kb.mucDich)return thieu("mucDich","Bạn chưa trả lời câu 1 — chọn ít nhất 1 lý do học nhé");
+    if(!khac(kb,"mucDich","kMucDichKhac"))return thieu("mucDich","Bạn ghi rõ lý do “Khác” ở câu 1 nhé");
+    if(!kb.trinhDo)return thieu("trinhDo","Bạn chưa trả lời câu 2 — trình độ hiện tại");
+    if(!kb.thoiGian)return thieu("thoiGian","Bạn chưa trả lời câu 3 — mỗi ngày học được bao lâu");
+    if(!kb.mucTieu)return thieu("mucTieu","Bạn chưa trả lời câu 4 — sau khoá học muốn đạt được điều gì");
+    if(!khac(kb,"mucTieu","kMucTieuKhac"))return thieu("mucTieu","Bạn ghi rõ “Khác” ở câu 4 nhé");
+    if(!kb.bietQua)return thieu("bietQua","Bạn chưa trả lời câu 5 — biết SunMoon qua đâu");
+    if(!khac(kb,"bietQua","kBietQuaKhac"))return thieu("bietQua","Bạn ghi rõ “Khác” ở câu 5 nhé");
     kErr1.textContent="";KB=kb;
     const md=chsVal(g.querySelector('[data-k="mucDich"]')),hop=new Set(md.flatMap(m=>HOP[m]||[]));
     document.getElementById("outline").innerHTML=L.map((d,i)=>`<li class="${hop.has(i+1)?"hop":""}"><b>${i+1}</b>${esc(d.t)}</li>`).join("");
