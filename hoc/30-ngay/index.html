@@ -244,6 +244,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .sp .res{font-size:14px;margin:0}
 .sp .res b{font-size:16px}
 .sp .heard{font-family:var(--hz);font-weight:700}
+.fq .khac{margin-top:2px}
 .dlg{display:flex;flex-direction:column;gap:10px}
 .ln{display:flex;gap:10px;align-items:flex-start;text-align:left;background:none;border:0;padding:0;width:100%}
 .ln .who{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--tx);background:var(--sun);color:var(--on-sun)}
@@ -367,12 +368,13 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán tượng hình</b> — nhìn hình đoán nghĩa, học đâu nhớ đó</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li><li><b>Học trên mọi máy</b> — điện thoại, máy tính</li></ul></section>
   <section class="card"><h2>Lộ trình 30 ngày</h2><ul class="outline" id="outline"></ul></section>
   <section class="card" id="dangKy"><h2>Đăng ký khoá học</h2>
-    <p class="note" style="font-style:normal">Trả lời 5 câu để SunMoon hiểu bạn hơn, rồi chuyển khoản để nhận mã học.</p>
+    <p class="note" style="font-style:normal">Trả lời 6 câu để SunMoon hiểu bạn hơn, rồi chuyển khoản để nhận mã học.</p>
     <div class="fq"><label for="kTen">1 · Họ tên và số điện thoại (Zalo)</label><input type="text" id="kTen" placeholder="Họ tên" autocomplete="name"><input type="tel" id="kSdt" placeholder="Số điện thoại có Zalo" autocomplete="tel" inputmode="tel"></div>
-    <div class="fq"><p>2 · Bạn học tiếng Trung để làm gì? <small class="note">(chọn nhiều)</small></p><div class="chs" data-k="mucDich" data-multi="1"><button class="ch">Công việc</button><button class="ch">Du lịch</button><button class="ch">Du học</button><button class="ch">Thi HSK</button><button class="ch">Phim ảnh, sở thích</button><button class="ch">Nói chuyện với người thân</button><button class="ch">Khác</button></div></div>
+    <div class="fq"><p>2 · Bạn học tiếng Trung để làm gì? <small class="note">(chọn nhiều)</small></p><div class="chs" data-k="mucDich" data-multi="1"><button class="ch">Công việc</button><button class="ch">Du lịch</button><button class="ch">Du học</button><button class="ch">Thi HSK</button><button class="ch">Phim ảnh, sở thích</button><button class="ch">Nói chuyện với người thân</button><button class="ch">Khác</button></div><input type="text" id="kMucDichKhac" class="khac" placeholder="Bạn ghi rõ lý do khác…" hidden></div>
     <div class="fq"><p>3 · Trình độ hiện tại?</p><div class="chs" data-k="trinhDo"><button class="ch">Chưa biết gì</button><button class="ch">Biết pinyin</button><button class="ch">Đã học vài tháng</button><button class="ch">HSK 1 trở lên</button></div></div>
     <div class="fq"><p>4 · Mỗi ngày bạn học được bao lâu?</p><div class="chs" data-k="thoiGian"><button class="ch">10–15 phút</button><button class="ch">20–30 phút</button><button class="ch">Trên 30 phút</button></div></div>
-    <div class="fq"><p>5 · Bạn biết SunMoon qua đâu?</p><div class="chs" data-k="bietQua"><button class="ch">Facebook</button><button class="ch">TikTok</button><button class="ch">Bạn bè</button><button class="ch">Google</button><button class="ch">Khác</button></div></div>
+    <div class="fq"><p>5 · Bạn biết SunMoon qua đâu?</p><div class="chs" data-k="bietQua"><button class="ch">Facebook</button><button class="ch">TikTok</button><button class="ch">Bạn bè</button><button class="ch">Google</button><button class="ch">Khác</button></div><input type="text" id="kBietQuaKhac" class="khac" placeholder="Bạn biết SunMoon qua đâu?" hidden></div>
+    <div class="fq"><label for="kMucTieu">6 · Sau khoá học, bạn muốn đạt được điều gì?</label><textarea id="kMucTieu" placeholder="VD: tự giới thiệu được bằng tiếng Trung, đi du lịch hỏi đường được…"></textarea></div>
     <p class="err" id="kErr"></p>
     <button class="btn main" id="kGui">Đăng ký &amp; nhận mã QR chuyển khoản</button>
     <div id="kQR" hidden></div>
@@ -879,13 +881,19 @@ function showGate(){
   else document.getElementById("giaGhi").textContent="ưu đãi tháng đầu, đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
   document.getElementById("outline").innerHTML=L.map((d,i)=>`<li><b>${i+1}</b>${esc(d.t)}</li>`).join("");
   g.querySelectorAll(".zaloBox").forEach(z=>z.innerHTML=zaloHtml());bindChs(g);
+  [["mucDich","kMucDichKhac"],["bietQua","kBietQuaKhac"]].forEach(([k,id])=>g.querySelector(`[data-k="${k}"]`).addEventListener("change",e=>{const on=[...e.currentTarget.querySelectorAll(".ch.on")].some(b=>b.textContent==="Khác");const inp=document.getElementById(id);inp.hidden=!on;if(on)inp.focus()}));
   const kErr=document.getElementById("kErr"),kGui=document.getElementById("kGui");
   kGui.onclick=async()=>{
     const ten=document.getElementById("kTen").value.trim(),sdt=document.getElementById("kSdt").value.replace(/[^\d]/g,"");
     const kb={};g.querySelectorAll("#dangKy .chs").forEach(b=>{const v=chsVal(b);kb[b.dataset.k]=Array.isArray(v)?v.join(", "):v});
+    const khac=(k,id)=>{const t=document.getElementById(id).value.trim();if(kb[k].includes("Khác")){if(!t)return false;kb[k]=kb[k].replace("Khác","Khác: "+t)}return true};
+    kb.mucTieu=document.getElementById("kMucTieu").value.trim();
     if(!ten)return kErr.textContent="Bạn điền họ tên nhé";
     if(sdt.length<9)return kErr.textContent="Số điện thoại chưa đúng";
-    if(!kb.mucDich||!kb.trinhDo||!kb.thoiGian||!kb.bietQua)return kErr.textContent="Bạn trả lời đủ 5 câu nhé";
+    if(!kb.mucDich||!kb.trinhDo||!kb.thoiGian||!kb.bietQua)return kErr.textContent="Bạn trả lời đủ các câu nhé";
+    if(!khac("mucDich","kMucDichKhac"))return kErr.textContent="Bạn ghi rõ lý do “Khác” ở câu 2 nhé";
+    if(!khac("bietQua","kBietQuaKhac"))return kErr.textContent="Bạn ghi rõ “Khác” ở câu 5 nhé";
+    if(!kb.mucTieu)return kErr.textContent="Bạn trả lời câu 6: sau khoá học muốn đạt được điều gì nhé";
     kErr.textContent="";kGui.disabled=true;kGui.textContent="Đang gửi…";
     try{const r=await callApi({app:"muaapp",giaoTrinh:GT,sdt,tenBe:ten,khaiBao:kb});
       if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
