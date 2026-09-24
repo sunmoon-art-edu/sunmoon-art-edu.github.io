@@ -378,7 +378,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <h1>Muốn học tiếng Trung nhưng cứ… để mai?</h1>
     <p class="sub" style="font-style:normal;font-weight:600;color:var(--sun);font-size:18px">Vậy bắt đầu 20 phút/ngày nhé.</p>
     <p class="sub">Lộ trình 30 ngày cho người mới bắt đầu — không cần biết tiếng Trung trước.</p>
-    <div class="price"><s>299.000đ</s><b id="giaNay">99.000đ</b><i id="giaGhi">Giá ưu đãi · đến hết 24/10/2026</i></div>
+    <div class="price"><s>999.000đ</s><b id="giaNay">599.000đ</b><i id="giaGhi">Giá ưu đãi · đến hết 24/10/2026</i></div>
   </header>
   <section class="card" id="chon"><h2>Bạn muốn học theo cách nào?</h2>
     <div class="who"><button class="whob" data-who="adult"><b>Tôi tự học</b><i>người lớn, bắt đầu từ số 0</i></button><button class="whob" data-who="kid"><b>Ba mẹ dạy con</b><i>ba mẹ cùng con học tại nhà</i></button></div></section>
@@ -401,7 +401,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
   <section class="card"><h2>Bạn nhận được</h2>
     <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán bằng hình ảnh</b> — nhìn hình, liên tưởng và nhớ nghĩa</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Luyện nói có chấm phát âm</b> — đọc to, máy chấm từng chữ</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li></ul></section>
   <section class="card" id="thanhToan"><span class="step">Bước 3/3</span><h2>Nhận mã học</h2>
-    <div class="price"><s>299.000đ</s><b class="giaNay2">99.000đ</b><i class="giaGhi2">Giá ưu đãi · đến hết 24/10/2026</i></div>
+    <div class="price"><s>999.000đ</s><b class="giaNay2">599.000đ</b><i class="giaGhi2">Giá ưu đãi · đến hết 24/10/2026</i></div>
     <div class="fq"><label for="kTen">Họ tên, email và số điện thoại (Zalo)</label><input type="text" id="kTen" placeholder="Họ tên" autocomplete="name"><input type="email" id="kEmail" placeholder="Email — SunMoon gửi mã học về đây" autocomplete="email" inputmode="email"><input type="tel" id="kSdt" placeholder="Số điện thoại có Zalo" autocomplete="tel" inputmode="tel"></div>
     <p class="err" id="kErr"></p>
     <button class="btn main" id="kGui">Đăng ký &amp; nhận mã QR chuyển khoản</button>
@@ -908,9 +908,9 @@ function showCourse(){document.getElementById("gate").hidden=true;document.getEl
 function showGate(){
   document.getElementById("course").hidden=true;const g=document.getElementById("gate");g.hidden=false;
   const nay=new Date().toLocaleDateString("sv-SE",{timeZone:"Asia/Ho_Chi_Minh"});
-  if(nay>UU_DAI_DEN){document.getElementById("giaNay").textContent="299.000đ";g.querySelector(".price s").hidden=true;document.getElementById("giaGhi").textContent=""}
+  if(nay>UU_DAI_DEN){document.getElementById("giaNay").textContent="999.000đ";g.querySelector(".price s").hidden=true;document.getElementById("giaGhi").textContent=""}
   else document.getElementById("giaGhi").textContent="Giá ưu đãi · đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
-  if(nay>UU_DAI_DEN){g.querySelectorAll(".giaNay2").forEach(e=>e.textContent="299.000đ");g.querySelectorAll("#thanhToan .price s").forEach(e=>e.hidden=true);g.querySelectorAll(".giaGhi2").forEach(e=>e.textContent="")}
+  if(nay>UU_DAI_DEN){g.querySelectorAll(".giaNay2").forEach(e=>e.textContent="999.000đ");g.querySelectorAll("#thanhToan .price s").forEach(e=>e.hidden=true);g.querySelectorAll(".giaGhi2").forEach(e=>e.textContent="")}
   if(location.hash==="#chon")setTimeout(()=>document.getElementById("chon").scrollIntoView({block:"start"}),50);
   if(location.hash==="#dangky")setTimeout(()=>{pickWho("adult");document.getElementById("dangKy").scrollIntoView({block:"start"})},50);
   g.querySelectorAll(".zaloBox").forEach(z=>z.innerHTML=zaloHtml());bindChs(g);
@@ -952,7 +952,7 @@ function showGate(){
     kErr.textContent="";kGui.disabled=true;kGui.textContent="Đang gửi…";
     try{const r=await callApi({app:"muaapp",giaoTrinh:GT,sdt,email,tenBe:ten,khaiBao:kb});
       if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
-      const so=r.soTien||99000,nd=r.noiDung||("SM TT30 "+sdt),box=document.getElementById("kQR");box.hidden=false;
+      const so=r.soTien||599000,nd=r.noiDung||("SM TT30 "+sdt),box=document.getElementById("kQR");box.hidden=false;
       box.innerHTML=`<h2>Chuyển khoản để nhận mã</h2><div class="qrbox"><div class="qr" id="qrImg"></div><div class="bank">VPBank · <b>272727888888</b><br>PHAN THÙY LINH<br>Số tiền: <b>${tien(so)}</b><br>Nội dung: <b>${esc(nd)}</b></div></div><p class="note" style="font-style:normal">Chuyển khoản xong, SunMoon gửi <b>tên đăng nhập + mã</b> về email <b>${esc(email)}</b> (trong giờ làm việc thường chỉ vài phút — nhớ xem cả hộp thư Spam/Quảng cáo). Cần gấp, bạn nhắn Zalo:</p><div class="zalos">${zaloHtml()}</div>`;
       if(window.qrcode){const q=qrcode(0,"M");q.addData(vietQR(so,nd));q.make();document.getElementById("qrImg").innerHTML=q.createSvgTag(4,2)}
       kGui.hidden=true;box.scrollIntoView({behavior:"smooth",block:"start"});
