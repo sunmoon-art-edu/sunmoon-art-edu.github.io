@@ -395,10 +395,11 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <p class="sub" style="font-style:normal;font-weight:600;color:var(--sun);font-size:18px">Vậy bắt đầu 20 phút/ngày nhé.</p>
     <p class="sub">Lộ trình 30 ngày cho người mới bắt đầu — không cần biết tiếng Trung trước.</p>
     <div class="price"><s>999.000đ</s><b id="giaNay">599.000đ</b><i id="giaGhi">Giá ưu đãi · đến hết 24/10/2026</i></div>
+    <p class="sub" id="gia20" style="font-style:normal;font-weight:700;color:var(--sun-2);margin:0">Chưa tới 20.000đ/ngày — rẻ hơn một ly trà sữa</p>
   </header>
   <section class="card" id="gKid" hidden><h2>Khoá 30 ngày · Ba mẹ dạy con</h2>
-    <div class="price"><b>599.000đ</b><i>mua 1 lần · học trọn 30 ngày</i></div>
-    <ul class="note" style="font-style:normal;margin:0;padding-left:20px"><li><b>Mở đầu + 4 chuyên đề</b> <i>— chào hỏi, số đếm, màu sắc, gia đình</i></li><li><b>Bé 3–7 tuổi · mỗi ngày 10 phút</b></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li></ul>
+    <div class="price"><b>599.000đ</b><i>mua 1 lần · chưa tới 20.000đ/ngày</i></div>
+    <ul class="note" style="font-style:normal;margin:0;padding-left:20px"><li><b>Mở đầu + 4 chuyên đề</b> <i>— chào hỏi, số đếm, màu sắc, gia đình</i></li><li><b>Bé 3–7 tuổi · mỗi ngày 10 phút</b></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi</b></li><li><b>Sau 30 ngày bé:</b> <i>chào hỏi, đếm 1–10, ~40 từ, 20 câu, 10 bài hát</i></li><li><b>🎁 Tặng bộ file in tô màu, tập tô chữ</b></li><li><b>📩 Email báo tiến độ của bé mỗi tuần</b></li></ul>
     <a class="btn" href="../bo-me-day-con/#cd1" style="align-self:flex-start;text-decoration:none">Xem & đăng ký cho bé →</a>
     <p class="note">Cần tư vấn, ba mẹ nhắn Zalo:</p><div class="zalos zaloBox"></div></section>
   <div id="gAdult" class="gate" hidden>
@@ -928,7 +929,7 @@ function showCourse(){document.getElementById("gate").hidden=true;document.getEl
 function showGate(){
   document.getElementById("course").hidden=true;const g=document.getElementById("gate");g.hidden=false;
   const nay=new Date().toLocaleDateString("sv-SE",{timeZone:"Asia/Ho_Chi_Minh"});
-  if(nay>UU_DAI_DEN){document.getElementById("giaNay").textContent="999.000đ";g.querySelector(".price s").hidden=true;document.getElementById("giaGhi").textContent=""}
+  if(nay>UU_DAI_DEN){document.getElementById("gia20").hidden=true;document.getElementById("giaNay").textContent="999.000đ";g.querySelector(".price s").hidden=true;document.getElementById("giaGhi").textContent=""}
   else document.getElementById("giaGhi").textContent="Giá ưu đãi · đến hết "+UU_DAI_DEN.split("-").reverse().join("/");
   if(nay>UU_DAI_DEN){g.querySelectorAll(".giaNay2").forEach(e=>e.textContent="999.000đ");g.querySelectorAll("#thanhToan .price s").forEach(e=>e.hidden=true);g.querySelectorAll(".giaGhi2").forEach(e=>e.textContent="")}
   if(location.hash==="#chon")setTimeout(()=>document.getElementById("chon").scrollIntoView({block:"start"}),50);
