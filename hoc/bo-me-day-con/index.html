@@ -512,6 +512,7 @@ h2 .ic img.fi{width:28px;height:28px}
 .pwb h3{margin:0;padding-right:40px;font:800 21px/1.3 var(--tx)}
 .pwb .lock{font-size:40px;line-height:1}.pwb .lock img{width:52px;height:52px}
 .pwb ul{margin:0;padding-left:20px}.pwb li{margin:2px 0}.pwb li i{font-weight:300;color:var(--ink-2)}
+.pgoi{margin:0;padding-left:20px;color:var(--sun-2)}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
 .pprice s{color:var(--ink-2)}.pprice b{font-size:28px;color:var(--sun)}.pprice i{font-weight:300;font-size:13px;color:var(--ink-2);flex-basis:100%}
 .ptabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--soft);padding:4px;border-radius:14px}
@@ -600,7 +601,7 @@ function home(){
     <ul class="steps"><li data-n="1"><span><b>Ba mẹ nghe cô hướng dẫn</b> <i>— 1 phút, biết cách đọc và cách dạy</i></span></li><li data-n="2"><span><b>Chơi cùng con 10 phút mỗi ngày</b> <i>— thẻ hình, bài hát, trò chơi</i></span></li><li data-n="3"><span><b>Nói tiếng Trung trong sinh hoạt</b> <i>— sáng dậy, ăn cơm, đi ngủ</i></span></li></ul></section>
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu ba mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng ba mẹ hãy dành cho con <b style="display:inline">10 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
   <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · mỗi chuyên đề học trong 1 tuần</small></h2>
-    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&SITE&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":SITE?"✓ Đã mở · Học ngay":"Học ngay"):n===0?`<span class="lk">🎁 Tặng kèm khi mua</span>`:`<span class="lk">🔒 ${g<GIA?`<s>${tien(GIA)}</s>`:""}${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
+    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&SITE&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":SITE?"✓ Đã mở · Học ngay":"Học ngay"):n===0?`<span class="lk">🎁 Tặng kèm khi mua</span>`:`<span class="lk">🔒 Gói ${goi(n)[0]}+${goi(n)[1]} · ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
   app.querySelectorAll(".tp[data-cd]:not(.soon)").forEach(b=>b.onclick=()=>go(+b.dataset.cd));
   sunIntro(document.getElementById("stage"));
 }
@@ -664,21 +665,22 @@ function crc16(x){let c=0xFFFF;for(let i=0;i<x.length;i++){c^=x.charCodeAt(i)<<8
 function vietQR(amount,msg){const acc=tlv("00","A000000727")+tlv("01",tlv("00","970432")+tlv("01","272727888888"))+tlv("02","QRIBFTTA");const x=tlv("00","01")+tlv("01","12")+tlv("38",acc)+tlv("53","704")+tlv("54",String(amount))+tlv("58","VN")+tlv("62",tlv("08",msg))+"6304";return x+crc16(x)}
 let U=store.get("bmdc-user",null);   // {u,m,ten,own:[1,2]}
 const OWN=()=>new Set((U&&U.own)||[]);
+const goi=n=>{const a=n%2?n:n-1;return[a,a+1]};   // 25/09 chị: gộp 2 chuyên đề = 1 gói 1 mức phí
 const coMo=n=>!SITE||(n===0?OWN().size>0:OWN().has(n));
 function accBar(){const b=document.getElementById("accBtn");if(!SITE){b.hidden=true;return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("bmdc-user",null),go(-1))):payPop(null,"dn")}
 function setOwn(r,u,m){U={u,m,ten:r.ten||u,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("bmdc-user",U);accBar()}
 function payPop(n,tab){
   document.querySelectorAll(".pw").forEach(x=>x.remove());
-  const sell=TOPICS.filter(([k])=>k>0&&ND[k]);if(n===0||n==null)n=null;
-  let pick=n||(sell[0]&&sell[0][0]),tuoi="",gia=giaNay();
+  const sell=TOPICS.filter(([k])=>k>0&&k%2&&ND[k]);if(n===0||n==null)n=null;
+  let pick=n?goi(n)[0]:(sell[0]&&sell[0][0]),tuoi="",gia=giaNay();
   const o=document.createElement("div");o.className="pw";
   const ten=k=>(TOPICS.find(t=>t[0]===k)||[])[1]||"";
   o.innerHTML=`<div class="pwb" role="dialog" aria-modal="true"><button class="x" aria-label="Đóng">✕</button>
     <span class="lock">${im("🔒")}</span>
-    <h3>${n?`Mở khoá chuyên đề ${n} · ${esc(ten(n))}`:"Mở khoá chương trình Ba mẹ dạy con"}</h3>
-    ${n?"":`<div class="pf"><label>Chọn chuyên đề muốn mua<span class="pchs" id="pPick">${sell.map(([k,t])=>`<button data-k="${k}" class="${k===pick?"on":""}">${k} · ${esc(t)}</button>`).join("")}</span></label></div>`}
-    <ul><li><b>Học trong 1 tuần</b> <i>— 10 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li><li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li></ul>
-    <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ chuyên đề</span>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
+    <h3>${n?`Mở khoá gói chuyên đề ${goi(n)[0]} + ${goi(n)[1]}`:"Mở khoá chương trình Ba mẹ dạy con"}</h3>
+    ${n?`<ul class="pgoi">${goi(n).map(k=>`<li><b>Chuyên đề ${k} · ${esc(ten(k))}</b>${ND[k]?"":" <i>— sắp có, mở ngay khi soạn xong</i>"}</li>`).join("")}</ul>`:`<div class="pf"><label>Chọn gói muốn mua<span class="pchs" id="pPick">${sell.map(([k,t])=>`<button data-k="${k}" class="${k===pick?"on":""}">Gói ${k} + ${k+1} · ${esc(t)}, ${esc(ten(k+1))}</button>`).join("")}</span></label></div>`}
+    <ul><li><b>1 gói = 2 chuyên đề, học trong 2 tuần</b> <i>— 10 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li><li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li></ul>
+    <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ gói 2 chuyên đề</span>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
     <div class="ptabs"><button data-t="mua">Đăng ký mua</button><button data-t="dn">Đã có mã? Đăng nhập</button></div>
     <div class="pf" id="pMua">
       ${U?`<p class="pnote">Đang đăng nhập: <b>${esc(U.ten||U.u)}</b> — chuyên đề mới sẽ mở thêm vào tài khoản này.</p>`:`
@@ -711,7 +713,7 @@ function payPop(n,tab){
       if(!tuoi)return pErr.textContent="Chọn tuổi của bé nhé";
       if(sdt.length<9)return pErr.textContent="Số điện thoại chưa đúng";
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return pErr.textContent="Điền email đúng để nhận mã học nhé";
-      Object.assign(b,{tenBe:ten,sdt,email,khaiBao:{ghi:`Ba mẹ dạy con · chuyên đề ${pick} · bé ${tuoi} tuổi`}})}
+      Object.assign(b,{tenBe:ten,sdt,email,khaiBao:{ghi:`Ba mẹ dạy con · gói chuyên đề ${pick} + ${pick+1} · bé ${tuoi} tuổi`}})}
     pErr.textContent="";pGui.disabled=true;pGui.textContent="Đang gửi…";
     try{const r=await callApi(b);if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
       const so=r.soTien||gia,nd=r.noiDung||("SM BM"+pick),box=$("#pQR");box.hidden=false;pGui.hidden=true;
