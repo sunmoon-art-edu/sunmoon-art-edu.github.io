@@ -327,7 +327,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offse
 .brand .lm{height:36px}.brand .lw{height:19px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand .lw{filter:invert(1)}}
 .brand{flex:1 1 auto;overflow:hidden}
-@media (max-width:430px){.lvl{display:none}}
+@media (max-width:560px){.lvl{display:none}}
 .lvl{font:700 11px/1 var(--tx);letter-spacing:.06em;background:var(--gold);color:#3A2A08;padding:5px 8px;border-radius:999px;white-space:nowrap}
 .back{white-space:nowrap;flex:none;margin-left:auto;border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-weight:600;font-size:14px}
 .wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:20px 72px;display:flex;flex-direction:column;gap:20px}
@@ -444,6 +444,16 @@ rt{font:500 .52em/1 var(--py);color:var(--sun-2);letter-spacing:0}
 .tnb{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
 .tnb button{border:2px solid var(--line);border-bottom-width:3px;border-radius:12px;background:var(--surface);padding:5px 9px;font:600 12px var(--tx)}
 .tnb button.zh{border-color:var(--sun);color:var(--sun-2)}
+.kes{display:flex;flex-direction:column;gap:12px}
+.ke{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:start;padding:14px;border:2px solid var(--line);border-radius:18px;background:var(--surface)}
+.ke>.e{font-size:56px;line-height:1}.ke>.e .fi{width:72px;height:72px}
+.ke h3{margin:0 0 6px;font:800 18px/1.3 var(--tx);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.kz{font:400 16px var(--tx);color:var(--sun-2);cursor:pointer;border-radius:8px;padding:0 4px}.kz.playing{background:var(--sun-soft)}
+.ke ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}.ke li{font-size:15px}
+.kbtn{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.kk{border:2px solid var(--sun);background:var(--sun-soft);color:var(--sun-2);font-weight:700;font-size:14px;border-radius:999px;padding:6px 14px}.kk.playing{background:var(--sun);color:var(--on-sun)}
+.kbtn .vbtn{margin:0;border:0;font-size:14px;padding:8px 14px}
+@media (max-width:420px){.ke{grid-template-columns:52px 1fr;gap:10px;padding:12px}.ke>.e .fi{width:52px;height:52px}}
 .vbtn{margin-top:8px;display:inline-block;background:#E62117;color:#fff;font:700 12px var(--tx);padding:6px 10px;border-radius:999px;cursor:pointer}
 .vmodal{position:fixed;inset:0;z-index:60;background:rgba(20,16,14,.7);display:grid;place-items:center;padding:16px}
 .vbox{background:var(--surface);border-radius:20px;padding:12px;width:min(820px,100%);display:flex;flex-direction:column;gap:8px}
@@ -602,7 +612,7 @@ function topic(n){
   <section class="card"><h2><span class="ic">${im("🎧")}</span>Ba mẹ chuẩn bị <small>nghe cô hướng dẫn trước khi dạy con</small></h2>
     <div class="player"><button class="pbtn" id="hdPlay" aria-label="Nghe hướng dẫn">${PLAY}</button><div><div class="ptxt">Cô hướng dẫn ba mẹ <i id="hdT">0:00</i></div><input type="range" class="pbar" id="hdBar" min="0" max="1" step=".1" value="0" aria-label="Tua"></div></div></section>
   ${c.ly?`<section class="card"><h2><span class="ic">${im("💛")}</span>Vì sao nên cho con học tiếng Trung?</h2><div class="lys">${c.ly.map(x=>`<div class="ly"><span class="li">${im(x[0])}</span><div><b>${esc(x[1])}</b><p>${hzw(x[2])}</p></div></div>`).join("")}</div></section>`:""}
-  ${c.vh?`<section class="card"><h2><span class="ic">${im("🏮")}</span>Văn hoá Trung Quốc cho bé <small>bấm để nghe tên tiếng Trung</small></h2><div class="cards">${c.vh.map((v,i)=>`<button class="fc vh" data-v="${i}"><span class="e">${im(v[0])}</span><span class="hz">${esc(v[1])}</span><span class="py">${tonePy(v[2])}</span><b style="font-size:14px">${esc(v[3])}</b><span class="vi">${esc(v[4])}</span>${v[5]?`<span class="vbtn" data-yt="${v[5][0]}" data-t="${esc(v[5][1])}" data-m="${esc(v[5][2]+" · "+v[5][3])}" role="button" tabindex="0">▶ Xem video ${v[5][3]}</span>`:""}</button>`).join("")}</div></section>`:""}
+  ${c.vh?`<section class="card"><h2><span class="ic">${im("🏮")}</span>Văn hoá Trung Quốc kể cho bé <small>ba mẹ bấm "Nghe cô kể" rồi xem video cùng con</small></h2><div class="kes">${c.vh.map((v,i)=>`<article class="ke" data-v="${i}"><span class="e">${im(v[0])}</span><div class="kb"><h3>${esc(v[3])} <span class="kz" role="button" tabindex="0" data-zh="${i}" aria-label="Nghe tên tiếng Trung">${hzw(v[1])} 🔊</span></h3><ul>${(Array.isArray(v[4])?v[4]:[v[4]]).map(x=>`<li>${hzw(x)}</li>`).join("")}</ul><div class="kbtn">${v[6]?`<button class="kk" data-k="${i}">🔊 Nghe cô kể</button>`:""}${v[5]?`<button class="vbtn" data-yt="${v[5][0]}" data-t="${esc(v[5][1])}" data-m="${esc(v[5][2]+" · "+v[5][3])}">▶ Xem video ${v[5][3]}</button>`:""}</div></div></article>`).join("")}</div></section>`:""}
   ${c.thanh?`<section class="card"><h2><span class="ic">${im("🎵")}</span>Thanh điệu tiếng Trung — giống tiếng Việt lắm! <small>bấm để nghe</small></h2><p class="note" style="font-style:normal">Tiếng Việt có 6 thanh · tiếng Trung có 4 thanh + 1 thanh nhẹ. Cùng một âm “ma”, đổi thanh là đổi nghĩa — y như tiếng Việt!</p><div class="tones">${c.thanh.map((t,i)=>`<div class="tn t${t[0]}"><span class="tno">${t[0]==="nhẹ"?"Thanh nhẹ":"Thanh "+t[0]}</span><span class="tmk">${t[2]}</span><span class="tpy">${t[1]}</span><b>${esc(t[3])}</b><span class="tvi">${esc(t[4])}</span><span class="tex">${hzw(t[5])}</span>${t[6]!=="—"?`<span class="tcmp">Tiếng Việt: “${esc(t[6])}”</span>`:""}<span class="tnb"><button class="zh" data-src="aud/c${n}-${i<4?"w"+(6+i):"t5"}.mp3">🔊 Tiếng Trung</button>${i<4?`<button data-src="aud/vi-ma${i+1}.mp3">🔊 Tiếng Việt</button><button data-both="${i}">So sánh</button>`:""}</span></div>`).join("")}</div></section>`:""}
   <section class="card"><h2><span class="ic">${im("📅")}</span>Lịch 7 ngày <small>tick khi làm xong</small></h2><div class="week">${c.tuan.map((t,i)=>`<label class="dy${tk[i]?" ok":""}"><input type="checkbox" data-d="${i}"${tk[i]?" checked":""}><b>Ngày ${i+1}</b><span>${hzw(t)}</span></label>`).join("")}</div></section>
   <section class="card"><h2><span class="ic">${im("🃏")}</span>Thẻ hình <small>bấm để nghe · trình chiếu cho bé xem</small></h2>
@@ -622,7 +632,7 @@ function topic(n){
   a.onplay=()=>btn.innerHTML=PAUSE;a.onpause=a.onended=()=>btn.innerHTML=PLAY;btn.onclick=()=>{try{cur&&cur.pause()}catch(e){}a.paused?a.play().catch(()=>{}):a.pause()};bar.oninput=()=>a.currentTime=+bar.value;window._hd=a;
   app.querySelectorAll(".dy input").forEach(i=>i.onchange=()=>{const t=store.get("bmdc-tuan-"+n,[]);t[+i.dataset.d]=i.checked;store.set("bmdc-tuan-"+n,t);i.closest(".dy").classList.toggle("ok",i.checked);if(i.checked){tone([660,990]);if(t.filter(Boolean).length===7){confetti();tone([523,659,784,1047],.16,"triangle",.15)}}});
   app.querySelectorAll(".fc[data-i]").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-w${b.dataset.i}.mp3`,b)});
-  app.querySelectorAll(".fc.vh").forEach(b=>b.onclick=e=>{a.pause();const vb=e.target.closest(".vbtn");if(vb){video(vb.dataset.yt,vb.dataset.t,vb.dataset.m);return}play(`aud/c${n}-v${b.dataset.v}.mp3`,b)});
+  app.querySelectorAll(".ke").forEach(b=>b.onclick=e=>{const t=e.target;a.pause();const vb=t.closest(".vbtn");if(vb){try{cur&&cur.pause()}catch(x){}video(vb.dataset.yt,vb.dataset.t,vb.dataset.m);return}const kk=t.closest(".kk");if(kk){play(`aud/c${n}-k${kk.dataset.k}.mp4`,kk);return}const kz=t.closest(".kz");if(kz)play(`aud/c${n}-v${kz.dataset.zh}.mp3`,kz)});
   app.querySelectorAll(".tnb button[data-src]").forEach(b=>b.onclick=()=>{a.pause();play(b.dataset.src,b.closest(".tn"))});
   app.querySelectorAll(".tnb button[data-both]").forEach(b=>b.onclick=()=>{a.pause();const i=+b.dataset.both,card=b.closest(".tn");const x=play(`aud/c${n}-w${6+i}.mp3`,card);x.onended=()=>{setTimeout(()=>play(`aud/vi-ma${i+1}.mp3`,card),350)}});
   app.querySelectorAll(".sn").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-s${b.dataset.i}.mp3`,b)});
