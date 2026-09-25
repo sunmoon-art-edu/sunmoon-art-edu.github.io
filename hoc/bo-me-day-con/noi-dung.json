@@ -808,6 +808,245 @@
     ],
     "Ngày xưa, các con vật chạy đua để được đặt tên cho các năm. Chú chuột thông minh nhảy lên lưng bò, gần tới đích thì nhảy xuống, và về nhất! Vì thế có mười hai con giáp, mỗi năm một con vật. Mười hai con giáp của Trung Quốc giống Việt Nam, chỉ khác một chút: năm Mão là con thỏ, năm Sửu là con bò. Năm hai nghìn không trăm hai mươi sáu là năm con Ngựa. Bé tuổi con gì nhỉ?"
    ]
-  ]
+  ],
+  "py": {
+   "gt": "Trước khi vào chuyên đề một, bố mẹ cùng bé làm quen phiên âm nhé. Phiên âm là những chữ cái ghi cách đọc chữ Hán. Trông giống chữ tiếng Việt, nhưng có vài âm đọc khác. Ví dụ: chữ b đọc gần như p nhẹ, chữ d đọc như t, chữ g đọc như c. Còn p, t, k thì bật hơi thật mạnh. Bố mẹ đặt tờ giấy trước miệng bé, đọc đúng thì tờ giấy sẽ bay lên! Mỗi ngày học vài âm thôi, vừa chỉ hình vừa đọc, bé sẽ nhớ rất nhanh.",
+   "van": [
+    [
+     "a",
+     "啊",
+     "ā",
+     "như “a” tiếng Việt",
+     "😮",
+     "há miệng thật to"
+    ],
+    [
+     "o",
+     "喔",
+     "ō",
+     "gần như “ô”",
+     "🐓",
+     "gà trống gáy ō ō"
+    ],
+    [
+     "e",
+     "鹅",
+     "é",
+     "gần như “ơ”",
+     "🦢",
+     "con ngỗng 鹅"
+    ],
+    [
+     "i",
+     "衣",
+     "yī",
+     "như “i”",
+     "👕",
+     "cái áo 衣"
+    ],
+    [
+     "u",
+     "乌",
+     "wū",
+     "như “u”",
+     "🐦",
+     "con quạ 乌鸦"
+    ],
+    [
+     "ü",
+     "鱼",
+     "yú",
+     "chụm môi như “u” rồi đọc “i”",
+     "🐟",
+     "con cá 鱼"
+    ]
+   ],
+   "thanh": [
+    [
+     "b",
+     "玻",
+     "bō",
+     "gần như “p” nhẹ",
+     "👨",
+     "爸爸",
+     "bàba",
+     "bố"
+    ],
+    [
+     "p",
+     "坡",
+     "pō",
+     "“p” bật hơi mạnh",
+     "🍎",
+     "苹果",
+     "píngguǒ",
+     "quả táo"
+    ],
+    [
+     "m",
+     "摸",
+     "mō",
+     "như “m”",
+     "👩",
+     "妈妈",
+     "māma",
+     "mẹ"
+    ],
+    [
+     "f",
+     "佛",
+     "fó",
+     "như “ph”",
+     "✈️",
+     "飞机",
+     "fēijī",
+     "máy bay"
+    ],
+    [
+     "d",
+     "得",
+     "dé",
+     "như “t”",
+     "🐘",
+     "大象",
+     "dàxiàng",
+     "con voi"
+    ],
+    [
+     "t",
+     "特",
+     "tè",
+     "“th” bật hơi",
+     "🐰",
+     "兔子",
+     "tùzi",
+     "con thỏ"
+    ],
+    [
+     "n",
+     "讷",
+     "nè",
+     "như “n”",
+     "🥛",
+     "牛奶",
+     "niúnǎi",
+     "sữa"
+    ],
+    [
+     "l",
+     "勒",
+     "lè",
+     "như “l”",
+     "🐯",
+     "老虎",
+     "lǎohǔ",
+     "con hổ"
+    ],
+    [
+     "g",
+     "哥",
+     "gē",
+     "như “c”",
+     "🐶",
+     "狗",
+     "gǒu",
+     "con chó"
+    ],
+    [
+     "k",
+     "科",
+     "kē",
+     "“kh” bật hơi",
+     "😭",
+     "哭",
+     "kū",
+     "khóc"
+    ],
+    [
+     "h",
+     "喝",
+     "hē",
+     "như “h”, hơi khàn",
+     "🌸",
+     "花",
+     "huā",
+     "bông hoa"
+    ],
+    [
+     "j",
+     "鸡",
+     "jī",
+     "như “ch”",
+     "🐔",
+     "鸡",
+     "jī",
+     "con gà"
+    ],
+    [
+     "q",
+     "七",
+     "qī",
+     "“ch” bật hơi",
+     "🚗",
+     "汽车",
+     "qìchē",
+     "ô tô"
+    ],
+    [
+     "x",
+     "西",
+     "xī",
+     "như “x”",
+     "🍉",
+     "西瓜",
+     "xīguā",
+     "dưa hấu"
+    ]
+   ],
+   "ghep": [
+    [
+     "b",
+     "a",
+     "bā",
+     "八",
+     "số 8"
+    ],
+    [
+     "m",
+     "a",
+     "mā",
+     "妈",
+     "mẹ"
+    ],
+    [
+     "d",
+     "a",
+     "dà",
+     "大",
+     "to"
+    ],
+    [
+     "t",
+     "a",
+     "tā",
+     "他",
+     "bạn ấy"
+    ],
+    [
+     "n",
+     "i",
+     "nǐ",
+     "你",
+     "bạn"
+    ],
+    [
+     "g",
+     "e",
+     "gē",
+     "哥",
+     "anh trai"
+    ]
+   ]
+  }
  }
 }
