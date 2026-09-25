@@ -176,7 +176,37 @@
    "Mẹo dạy con: mỗi ngày chỉ cần năm đến mười phút, nhưng hãy nói đi nói lại trong sinh hoạt. Sáng dậy nói chào buổi sáng, đi ngủ nói chúc ngủ ngon. Khi con nói đúng, bố mẹ khen con:",
    "zh:真棒！",
    "nghĩa là giỏi quá. Chúc bố mẹ và con học thật vui!"
-  ]
+  ],
+  "g": {
+   "w": [
+    "Đây là thẻ hình. Bố mẹ bấm vào từng thẻ để nghe cô đọc, rồi đọc theo cùng con. Ví dụ:",
+    "zh:你好",
+    "Là xin chào.",
+    "Sau đó bấm Trình chiếu cho bé: mỗi lần hiện một hình thật to, bé nhìn hình và nói to tiếng Trung.",
+    "Mỗi ngày ôn ba bốn thẻ thôi, đừng ép bé học hết một lúc nhé."
+   ],
+   "cau": [
+    "Đây là những câu bố mẹ nói với con trong sinh hoạt hằng ngày.",
+    "Ví dụ, lúc sáng con thức dậy, bố mẹ nói:",
+    "zh:早上好！",
+    "Nói đúng lúc, lặp lại mỗi ngày, dần dần bé sẽ tự nói theo."
+   ],
+   "song": [
+    "Mục bài hát: bố mẹ mở bài hát, vừa hát vừa làm động tác cùng con.",
+    "Nghe đi nghe lại nhiều lần, bé sẽ tự thuộc. Không cần hiểu hết lời, quan trọng là vui!"
+   ],
+   "game": [
+    "Mục trò chơi có ba trò. Bố mẹ đọc phần chuẩn bị, rồi chơi cùng con.",
+    "Trò đầu tiên là: Chú gấu đến chơi.",
+    "Mỗi ngày chơi một trò, năm phút là đủ. Bé làm đúng thì khen:",
+    "zh:真棒！"
+   ],
+   "st": [
+    "Mục sáng tạo: Con rối ngón tay biết chào.",
+    "Bố mẹ làm theo từng bước cùng con. Làm xong, bé cầm sản phẩm và nói tiếng Trung thật to.",
+    "Bố mẹ tải file tô màu, in khổ A4 để bé tô màu và tập tô chữ nhé."
+   ]
+  }
  },
  "2": {
   "t": "Số đếm 1–10",
@@ -356,7 +386,37 @@
    "Con đếm đúng, bố mẹ khen:",
    "zh:真棒！",
    "Chúc cả nhà học thật vui!"
-  ]
+  ],
+  "g": {
+   "w": [
+    "Đây là thẻ hình. Bố mẹ bấm vào từng thẻ để nghe cô đọc, rồi đọc theo cùng con. Ví dụ:",
+    "zh:一，二，三",
+    "Là một, hai, ba.",
+    "Sau đó bấm Trình chiếu cho bé: mỗi lần hiện một hình thật to, bé nhìn hình và nói to tiếng Trung.",
+    "Mỗi ngày ôn ba bốn thẻ thôi, đừng ép bé học hết một lúc nhé."
+   ],
+   "cau": [
+    "Đây là những câu bố mẹ nói với con trong sinh hoạt hằng ngày.",
+    "Ví dụ, lúc trước khi chạy, nhảy, đi ra ngoài, bố mẹ nói:",
+    "zh:一，二，三，走！",
+    "Nói đúng lúc, lặp lại mỗi ngày, dần dần bé sẽ tự nói theo."
+   ],
+   "song": [
+    "Mục bài hát: bố mẹ mở bài hát, vừa hát vừa làm động tác cùng con.",
+    "Nghe đi nghe lại nhiều lần, bé sẽ tự thuộc. Không cần hiểu hết lời, quan trọng là vui!"
+   ],
+   "game": [
+    "Mục trò chơi có ba trò. Bố mẹ đọc phần chuẩn bị, rồi chơi cùng con.",
+    "Trò đầu tiên là: Leo cầu thang đếm số.",
+    "Mỗi ngày chơi một trò, năm phút là đủ. Bé làm đúng thì khen:",
+    "zh:真棒！"
+   ],
+   "st": [
+    "Mục sáng tạo: Vòng hạt đếm số.",
+    "Bố mẹ làm theo từng bước cùng con. Làm xong, bé cầm sản phẩm và nói tiếng Trung thật to.",
+    "Bố mẹ tải file tô màu, in khổ A4 để bé tô màu và tập tô chữ nhé."
+   ]
+  }
  },
  "gioiThieu": [
   [
@@ -810,7 +870,6 @@
    ]
   ],
   "py": {
-   "gt": "Trước khi vào chuyên đề một, bố mẹ cùng bé làm quen phiên âm nhé. Phiên âm là những chữ cái ghi cách đọc chữ Hán. Trông giống chữ tiếng Việt, nhưng có vài âm đọc khác. Ví dụ: chữ b đọc gần như p nhẹ, chữ d đọc như t, chữ g đọc như c. Còn p, t, k thì bật hơi thật mạnh. Bố mẹ đặt tờ giấy trước miệng bé, đọc đúng thì tờ giấy sẽ bay lên! Mỗi ngày học vài âm thôi, vừa chỉ hình vừa đọc, bé sẽ nhớ rất nhanh.",
    "van": [
     [
      "a",
@@ -1047,6 +1106,84 @@
      "anh trai"
     ]
    ]
+  },
+  "g": {
+   "w": [
+    "Đây là thẻ hình. Bố mẹ bấm vào từng thẻ để nghe cô đọc, rồi đọc theo cùng con. Ví dụ:",
+    "zh:熊猫",
+    "Là con gấu trúc.",
+    "Sau đó bấm Trình chiếu cho bé: mỗi lần hiện một hình thật to, bé nhìn hình và nói to tiếng Trung.",
+    "Mỗi ngày ôn ba bốn thẻ thôi, đừng ép bé học hết một lúc nhé."
+   ],
+   "cau": [
+    "Đây là những câu bố mẹ nói với con trong sinh hoạt hằng ngày.",
+    "Ví dụ, lúc bắt đầu mỗi buổi học, bố mẹ nói:",
+    "zh:你好！",
+    "Nói đúng lúc, lặp lại mỗi ngày, dần dần bé sẽ tự nói theo."
+   ],
+   "song": [
+    "Mục bài hát: bố mẹ mở bài hát, vừa hát vừa làm động tác cùng con.",
+    "Nghe đi nghe lại nhiều lần, bé sẽ tự thuộc. Không cần hiểu hết lời, quan trọng là vui!"
+   ],
+   "game": [
+    "Mục trò chơi có ba trò. Bố mẹ đọc phần chuẩn bị, rồi chơi cùng con.",
+    "Trò đầu tiên là: Tay vẽ thanh điệu.",
+    "Mỗi ngày chơi một trò, năm phút là đủ. Bé làm đúng thì khen:",
+    "zh:真棒！"
+   ],
+   "st": [
+    "Mục sáng tạo: Đèn lồng đỏ tự làm.",
+    "Bố mẹ làm theo từng bước cùng con. Làm xong, bé cầm sản phẩm và nói tiếng Trung thật to.",
+    "Bố mẹ tải file tô màu, in khổ A4 để bé tô màu và tập tô chữ nhé."
+   ],
+   "ly": [
+    "Bố mẹ ơi, tiếng Anh bây giờ bé nào cũng học rồi. Cho con thêm ngoại ngữ thứ hai sẽ giúp con nổi bật hơn.",
+    "Tiếng Trung lại rất gần với mình: cùng ăn Tết, cùng dùng đôi đũa, cùng có mười hai con giáp. Khoảng sáu mươi phần trăm từ tiếng Việt có gốc Hán, nên bé học rất nhanh.",
+    "Và tuổi ba đến bảy là tuổi vàng để bé bắt âm. Mình bắt đầu thôi!"
+   ],
+   "vh": [
+    "Mục này, bố mẹ cùng con khám phá văn hoá Trung Quốc.",
+    "Mỗi thẻ là một câu chuyện nhỏ. Bố mẹ bấm Nghe cô kể, rồi xem video cùng con.",
+    "Vừa nghe vừa hỏi con: Tết của mình có giống không nhỉ? Bé sẽ nhớ lâu hơn đấy!"
+   ],
+   "thanh": [
+    "Tiếng Trung có bốn thanh điệu, giống tiếng Việt lắm.",
+    "Thanh một đi ngang, cao và kéo dài:",
+    "zh:妈",
+    "Thanh hai đi lên, giống dấu sắc:",
+    "zh:麻",
+    "Thanh ba trầm xuống rồi lên, giống dấu hỏi:",
+    "zh:马",
+    "Thanh bốn rơi mạnh, giống dấu huyền nhưng dứt khoát:",
+    "zh:骂",
+    "Bố mẹ bấm nút So sánh để nghe tiếng Trung và tiếng Việt cạnh nhau, rồi cùng con vẽ tay theo thanh điệu nhé."
+   ],
+   "py": [
+    "Trước khi vào chuyên đề một, bố mẹ cùng bé làm quen phiên âm nhé. Phiên âm là những chữ cái ghi cách đọc chữ Hán.",
+    "Trông giống chữ tiếng Việt, nhưng có vài âm đọc khác. Chữ b đọc gần như p nhẹ:",
+    "zh:爸爸",
+    "Chữ d đọc như t, chữ g đọc như c.",
+    "Còn p, t, k thì bật hơi thật mạnh. Bố mẹ đặt tờ giấy trước miệng bé, đọc đúng thì tờ giấy sẽ bay lên!",
+    "Mỗi ngày học vài âm thôi, vừa chỉ hình vừa đọc, bé sẽ nhớ rất nhanh."
+   ]
   }
+ },
+ "giang": {
+  "quiz": [
+   "Đây là trò Bé chơi: bé nghe tiếng Trung, rồi chạm vào hình đúng.",
+   "Có năm câu, đúng hết được ba ngôi sao. Bố mẹ ngồi cạnh, khen con thật nhiều nhé!"
+  ],
+  "khen": [
+   "Bố mẹ khen con bằng tiếng Trung nhé!",
+   "Giỏi quá:",
+   "zh:真棒！",
+   "Cố lên:",
+   "zh:加油！",
+   "Khen cụ thể việc con vừa làm được, bé sẽ càng thích học."
+  ],
+  "khoe": [
+   "Cuối tuần, bố mẹ quay mười lăm giây bé nói hoặc hát tiếng Trung, rồi gửi Zalo SunMoon.",
+   "Cô sẽ gửi lời khen riêng cho bé!"
+  ]
  }
 }
