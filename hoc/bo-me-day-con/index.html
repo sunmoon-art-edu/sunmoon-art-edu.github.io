@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Ba mẹ dạy con tiếng Trung tại nhà — bé 3–7 tuổi, mỗi ngày 10 phút: thẻ hình, bài hát, trò chơi, file in tô màu. Chương trình tự học của SunMoon.">
+<meta name="description" content="Ba mẹ dạy con tiếng Trung tại nhà — bé 3–7 tuổi, mỗi ngày 15 phút: thẻ hình, bài hát, trò chơi, file in tô màu. Chương trình tự học của SunMoon.">
 <meta name="theme-color" content="#C8453A">
 <link rel="icon" href="mark2.png">
 <title>Ba mẹ dạy con tiếng Trung · SunMoon</title>
@@ -599,10 +599,10 @@ function home(){
   app.innerHTML=`<section class="card stage" id="stage"><img class="moonpal floaty" src="${H["🌛"]||""}" alt="Ông Mặt Trăng"><button class="sunbtn" aria-label="Nghe Cô Mặt Trời nói">${SUNSVG}</button>
     <div><div class="bubble"><span class="who">Cô Mặt Trời</span><span class="txt">Xin chào các bạn nhỏ! Bấm vào cô để nghe cô nói nhé!</span></div>
     <div class="stagebar" style="margin-top:10px"><button class="big" id="gtPlay">▶ Nghe Cô Mặt Trời</button></div></div></section>
-  <section class="card hero">${[["☁️",64,4,48],["🎈",84,6,46]].map(([e,x,y,z])=>H[e]?`<img class="deco floaty" src="${H[e]}" alt="" style="left:${x}%;top:${y}%;width:${z}px;animation-delay:${x/30}s">`:"").join("")}<span class="emo">${im("👨‍👩‍👧")}</span><h1>Cùng con học tiếng Trung mỗi ngày 10 phút</h1>
+  <section class="card hero">${[["☁️",64,4,48],["🎈",84,6,46]].map(([e,x,y,z])=>H[e]?`<img class="deco floaty" src="${H[e]}" alt="" style="left:${x}%;top:${y}%;width:${z}px;animation-delay:${x/30}s">`:"").join("")}<span class="emo">${im("👨‍👩‍👧")}</span><h1>Cùng con học tiếng Trung mỗi ngày 15 phút</h1>
     <p class="sub">Cho bé 3–7 tuổi · ba mẹ không cần biết tiếng Trung — cô hướng dẫn từng bước.</p>
-    <ul class="steps"><li data-n="1"><span><b>Ba mẹ nghe cô hướng dẫn</b> <i>— 1 phút, biết cách đọc và cách dạy</i></span></li><li data-n="2"><span><b>Chơi cùng con 10 phút mỗi ngày</b> <i>— thẻ hình, bài hát, trò chơi</i></span></li><li data-n="3"><span><b>Nói tiếng Trung trong sinh hoạt</b> <i>— sáng dậy, ăn cơm, đi ngủ</i></span></li></ul></section>
-  <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu ba mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng ba mẹ hãy dành cho con <b style="display:inline">10 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
+    <ul class="steps"><li data-n="1"><span><b>Ba mẹ nghe cô hướng dẫn</b> <i>— 1 phút, biết cách đọc và cách dạy</i></span></li><li data-n="2"><span><b>Chơi cùng con 15 phút mỗi ngày</b> <i>— thẻ hình, bài hát, trò chơi</i></span></li><li data-n="3"><span><b>Nói tiếng Trung trong sinh hoạt</b> <i>— sáng dậy, ăn cơm, đi ngủ</i></span></li></ul></section>
+  <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu ba mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng ba mẹ hãy dành cho con <b style="display:inline">15 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
   <section class="card">${DAT}<p class="note" style="font-style:normal;margin:0"><b>Khoá 30 ngày · 599.000đ</b> <i>— chưa tới 20.000đ/ngày · tặng bộ file in · email báo tiến độ mỗi tuần</i></p></section>
   <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · khoá 30 ngày = Mở đầu + 4 chuyên đề</small></h2>
     <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 Khoá 30 ngày${soKhoa(n||1)>1?" số "+soKhoa(n||1):""} · ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
@@ -613,7 +613,7 @@ function home(){
 function topic(n){
   const c=ND[n];document.getElementById("backBtn").hidden=false;
   const tk=store.get("bmdc-tuan-"+n,[]);
-  app.innerHTML=`<section class="card hero">${[["☀️",82,5,52],["✨",70,8,28]].map(([e,x,y,z])=>H[e]?`<img class="deco floaty" src="${H[e]}" alt="" style="left:${x}%;top:${y}%;width:${z}px">`:"").join("")}<span class="emo">${im(c.icon)}</span><span class="note" style="font-style:normal;font-weight:700;color:var(--sun-2)">${n==0?"CHUYÊN ĐỀ MỞ ĐẦU":"CHUYÊN ĐỀ "+n}</span><h1>${esc(c.t)}</h1><p class="sub">${esc(c.muc)}</p><p class="note" style="font-style:normal">Bé 3–7 tuổi · 7 ngày · 10 phút mỗi ngày</p></section>
+  app.innerHTML=`<section class="card hero">${[["☀️",82,5,52],["✨",70,8,28]].map(([e,x,y,z])=>H[e]?`<img class="deco floaty" src="${H[e]}" alt="" style="left:${x}%;top:${y}%;width:${z}px">`:"").join("")}<span class="emo">${im(c.icon)}</span><span class="note" style="font-style:normal;font-weight:700;color:var(--sun-2)">${n==0?"CHUYÊN ĐỀ MỞ ĐẦU":"CHUYÊN ĐỀ "+n}</span><h1>${esc(c.t)}</h1><p class="sub">${esc(c.muc)}</p><p class="note" style="font-style:normal">Bé 3–7 tuổi · 7 ngày · 15 phút mỗi ngày</p></section>
   <section class="card"><h2><span class="ic">${im("🎧")}</span>Ba mẹ chuẩn bị <small>nghe cô hướng dẫn trước khi dạy con</small></h2>
     <div class="player"><button class="pbtn" id="hdPlay" aria-label="Nghe hướng dẫn">${PLAY}</button><div><div class="ptxt">Cô hướng dẫn ba mẹ <i id="hdT">0:00</i></div><input type="range" class="pbar" id="hdBar" min="0" max="1" step=".1" value="0" aria-label="Tua"></div></div></section>
   ${c.ly?`<section class="card"><h2><span class="ic">${im("💛")}</span>Vì sao nên cho con học tiếng Trung?</h2><div class="lys">${c.ly.map(x=>`<div class="ly"><span class="li">${im(x[0])}</span><div><b>${esc(x[1])}</b><p>${hzw(x[2])}</p></div></div>`).join("")}</div></section>`:""}
@@ -688,7 +688,7 @@ function payPop(n,tab){
     <span class="lock">${im("🔒")}</span>
     <h3>Khoá 30 ngày${soKhoa(n)>1?" số "+soKhoa(n):""} · Ba mẹ dạy con</h3>
     <ul class="pgoi">${pick===1?`<li><b>Mở đầu · ${esc(ten(0))}</b> <i>— tặng kèm</i></li>`:""}${goi(n).map(k=>`<li><b>Chuyên đề ${k} · ${esc(ten(k))}</b>${ND[k]?"":" <i>— sắp có, mở ngay khi soạn xong</i>"}</li>`).join("")}</ul>
-    <ul><li><b>30 ngày · 4 chuyên đề</b> <i>— 10 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li>${pick===1?`<li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li>`:""}</ul>
+    <ul><li><b>30 ngày · 4 chuyên đề</b> <i>— 15 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li>${pick===1?`<li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li>`:""}</ul>
     ${pick===1?DAT:""}<ul class="pqua"><li>🎁 <b>Tặng bộ file in</b> <i>— tô màu, tập tô chữ Hán</i></li><li>📩 <b>Email báo tiến độ của bé mỗi tuần</b></li></ul>
     <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ khoá 30 ngày</span><i style="font-style:normal;font-weight:700;color:var(--sun-2)">Chưa tới 20.000đ/ngày</i>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
     <div class="ptabs"><button data-t="mua">Đăng ký mua</button><button data-t="dn">Đã có mã? Đăng nhập</button></div>
@@ -698,7 +698,7 @@ function payPop(n,tab){
       <label>Bé mấy tuổi?<input id="pTuoi" type="number" inputmode="numeric" min="1" max="15" placeholder="VD: 4" style="max-width:120px"></label>
       <label>Số điện thoại / Zalo<input id="pSdt" inputmode="tel" autocomplete="tel" placeholder="09…"></label>
       <label>Email <small style="font-weight:300">(nhận mã học)</small><input id="pEmail" type="email" inputmode="email" autocomplete="email" placeholder="ten@gmail.com"></label>`}
-      <p class="pnote"><b>Lời nhắn nhỏ từ SunMoon 💛</b> Bé tiến bộ nhờ học đều mỗi ngày. Học không đều thì SunMoon không dám hứa chắc kết quả — chi phí nhỏ, nhưng ba mẹ dành cho con 10 phút mỗi ngày nhé!</p>
+      <p class="pnote"><b>Lời nhắn nhỏ từ SunMoon 💛</b> Bé tiến bộ nhờ học đều mỗi ngày. Học không đều thì SunMoon không dám hứa chắc kết quả — chi phí nhỏ, nhưng ba mẹ dành cho con 15 phút mỗi ngày nhé!</p>
       <p class="perr" id="pErr"></p><button class="big" id="pGui">Đăng ký & nhận mã QR chuyển khoản</button><div id="pQR" hidden></div></div>
     <div class="pf" id="pDn" hidden>
       <label>Email<input id="lU" type="email" inputmode="email" autocomplete="email" placeholder="Email đã đăng ký"></label>
