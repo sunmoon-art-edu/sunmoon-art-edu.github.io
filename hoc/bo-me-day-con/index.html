@@ -513,6 +513,10 @@ h2 .ic img.fi{width:28px;height:28px}
 .pwb .lock{font-size:40px;line-height:1}.pwb .lock img{width:52px;height:52px}
 .pwb ul{margin:0;padding-left:20px}.pwb li{margin:2px 0}.pwb li i{font-weight:300;color:var(--ink-2)}
 .dat{padding:12px 14px;border-radius:16px;background:var(--leaf-soft)}.dat ul,.pqua,.khoe ul{margin:6px 0 0;padding-left:20px}.dat li i,.pqua i,.khoe i{font-weight:300;color:var(--ink-2)}.pqua{list-style:none;padding-left:0}
+.zfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.zfab>button{width:52px;height:52px;border-radius:50%;border:0;background:#0068FF;color:#fff;font:800 13px/1 Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
+.zfab .zm{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #E6E0D8;border-radius:14px;padding:10px;box-shadow:0 6px 20px rgba(0,0,0,.15)}.zfab .zm[hidden]{display:none}
+.zfab .zm b{font:600 12px Arial,sans-serif;color:#6E655C}.zfab .zm a{font:700 14px Arial,sans-serif;color:#0068FF;text-decoration:none;padding:4px 2px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2)}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
 .pprice s{color:var(--ink-2)}.pprice b{font-size:28px;color:var(--sun)}.pprice i{font-weight:300;font-size:13px;color:var(--ink-2);flex-basis:100%}
@@ -544,6 +548,7 @@ h2 .ic img.fi{width:28px;height:28px}
 </div></div>
 <div class="wrap" id="app"></div>
 
+<div class="zfab"><div class="zm" id="zfabM" hidden><b>Cần hỗ trợ? Nhắn Zalo SunMoon</b><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a><a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></div><button type="button" aria-label="Nhắn Zalo SunMoon" onclick="var m=document.getElementById('zfabM');m.hidden=!m.hidden">Zalo</button></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 const TOPICS=[[0,"Làm quen tiếng Trung & thanh điệu","🐼"],[1,"Chào hỏi & lễ phép","👋"],[2,"Số đếm 1–10","🔢"],[3,"Màu sắc","🎨"],[4,"Gia đình","👨‍👩‍👧"],[5,"Cơ thể của bé","🧒"],[6,"Con vật","🐼"],[7,"Hoa quả","🍎"],[8,"Đồ ăn, đồ uống","🍜"],[9,"Đồ chơi","🧸"],[10,"Phương tiện giao thông","🚗"],[11,"Thời tiết & bốn mùa","☀️"],[12,"Cảm xúc","😊"]];
@@ -676,7 +681,7 @@ const coMo=n=>!KHOA||(n===0?OWN().size>0:OWN().has(n));
 function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=true;return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("bmdc-user",null),go(-1))):payPop(null,"dn")}
 // 25/09 — ghi tiến độ về bảng SunMoon để tối Chủ nhật tự email báo cáo tuần cho ba mẹ
 function ghiKQ(phan,ten,dung){if(KHOA&&U)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:"BMDC",phan,ten,dung}).catch(()=>{})}
-const DAT=`<div class="dat"><b>Sau 30 ngày, bé:</b><ul><li><b>Chào hỏi, cảm ơn, xin lỗi</b> bằng tiếng Trung</li><li><b>Đếm 1–10</b>, gọi tên màu sắc, người trong nhà</li><li><b>Khoảng 40 từ · 20 câu</b> <i>nói trong sinh hoạt hằng ngày</i></li><li><b>Hát 10 bài hát</b> tiếng Trung</li></ul></div>`;
+const DAT=`<div class="dat"><b>Sau 30 ngày, bé:</b><ul><li>Chào hỏi, cảm ơn, xin lỗi bằng tiếng Trung</li><li>Đếm 1–10, gọi tên màu sắc, người trong nhà</li><li>Khoảng 40 từ · 20 câu <i>— nói trong sinh hoạt</i></li><li>Hát 10 bài hát tiếng Trung</li></ul></div>`;
 function setOwn(r,u,m){U={u,m,ten:r.ten||u,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("bmdc-user",U);accBar()}
 function payPop(n,tab){
   document.querySelectorAll(".pw").forEach(x=>x.remove());
@@ -689,7 +694,7 @@ function payPop(n,tab){
     <h3>Khoá 30 ngày${soKhoa(n)>1?" số "+soKhoa(n):""} · Ba mẹ dạy con</h3>
     <ul class="pgoi">${pick===1?`<li><b>Mở đầu · ${esc(ten(0))}</b> <i>— tặng kèm</i></li>`:""}${goi(n).map(k=>`<li><b>Chuyên đề ${k} · ${esc(ten(k))}</b>${ND[k]?"":" <i>— sắp có, mở ngay khi soạn xong</i>"}</li>`).join("")}</ul>
     <ul><li><b>30 ngày · 4 chuyên đề</b> <i>— 15 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li>${pick===1?`<li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li>`:""}</ul>
-    ${pick===1?DAT:""}<ul class="pqua"><li>🎁 <b>Tặng bộ file in</b> <i>— tô màu, tập tô chữ Hán</i></li><li>📩 <b>Email báo tiến độ của bé mỗi tuần</b></li></ul>
+    ${pick===1?DAT:""}<ul class="pqua"><li>🎁 Tặng file in <i>— tô màu, tập tô chữ Hán</i></li><li>📩 Email báo tiến độ mỗi tuần</li></ul>
     <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ khoá 30 ngày</span><i style="font-style:normal;font-weight:700;color:var(--sun-2)">Chưa tới 20.000đ/ngày</i>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
     <div class="ptabs"><button data-t="mua">Đăng ký mua</button><button data-t="dn">Đã có mã? Đăng nhập</button></div>
     <div class="pf" id="pMua">
