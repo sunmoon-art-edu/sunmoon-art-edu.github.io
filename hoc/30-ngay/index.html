@@ -177,6 +177,8 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .qrbox .qr svg{width:100%;height:100%}
 .bank{line-height:1.7}
 .zalos{display:flex;flex-wrap:wrap;gap:8px}
+.tomtat{font-style:normal;margin:0;padding-left:20px}.tomtat li{margin:3px 0}.tomtat i{font-weight:300}
+.zfoot{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:12px;color:var(--ink-2)}.zfoot .zl{padding:5px 10px;font-size:12px;border-width:1.5px;border-bottom-width:2px;border-radius:10px}
 .zl{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:14px;background:var(--sun-soft);color:var(--sun-2);border:2px solid var(--sun);border-bottom-width:4px;text-decoration:none;font-weight:700;font-size:14px}
 .zl:active{transform:translateY(2px)}
 .sv{display:flex;flex-direction:column;gap:14px}
@@ -388,20 +390,21 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 
 <div class="wrap gate" id="gate" hidden>
   <section class="card" id="chon"><span class="pill" style="align-self:flex-start">Khoá 30 ngày tiếng Trung · SunMoon</span><h2>Bạn muốn học theo cách nào?</h2>
-    <div class="who"><button class="whob" data-who="adult"><b>Người lớn tự học</b><i>bắt đầu từ số 0 · 20 phút/ngày</i></button><button class="whob" data-who="kid"><b>Ba mẹ học cùng con</b><i>bé 3–7 tuổi · 10 phút/ngày</i></button></div></section>
+    <div class="who"><button class="whob" data-who="adult"><b>Người lớn tự học</b><i>bắt đầu từ số 0 · 25 phút/ngày</i></button><button class="whob" data-who="kid"><b>Ba mẹ học cùng con</b><i>bé 3–7 tuổi · 15 phút/ngày</i></button></div></section>
   <header class="hero" id="gHero" hidden>
     <span class="pill">Khoá học online · SunMoon</span>
     <h1>Muốn học tiếng Trung nhưng cứ… để mai?</h1>
-    <p class="sub" style="font-style:normal;font-weight:600;color:var(--sun);font-size:18px">Vậy bắt đầu 20 phút/ngày nhé.</p>
+    <p class="sub" style="font-style:normal;font-weight:600;color:var(--sun);font-size:18px">Vậy bắt đầu 25 phút/ngày nhé.</p>
     <p class="sub">Lộ trình 30 ngày cho người mới bắt đầu — không cần biết tiếng Trung trước.</p>
     <div class="price"><s>999.000đ</s><b id="giaNay">599.000đ</b><i id="giaGhi">Giá ưu đãi · đến hết 24/10/2026</i></div>
     <p class="sub" id="gia20" style="font-style:normal;font-weight:700;color:var(--sun-2);margin:0">Chưa tới 20.000đ/ngày — rẻ hơn một ly trà sữa</p>
+    <ul class="note tomtat"><li><b>30 bài · mỗi ngày 25 phút</b> <i>— bắt đầu từ số 0</i></li><li><b>Cô giảng bài như học với giáo viên</b></li><li><b>Chữ Hán bằng hình ảnh, bộ thủ, tập viết nét</b></li><li><b>Luyện nói có chấm điểm phát âm</b></li><li><b>Sau 30 ngày:</b> <i>~200 từ, 100 câu mẫu — chào hỏi, mua sắm, gọi món, hỏi đường, hẹn gặp (≈ HSK 1)</i></li><li><b>📩 Email báo tiến độ mỗi tuần</b></li></ul>
+    <a class="btn main" href="#dangKy" style="align-self:flex-start;text-decoration:none">Đăng ký ngay →</a>
   </header>
   <section class="card" id="gKid" hidden><h2>Khoá 30 ngày · Ba mẹ dạy con</h2>
     <div class="price"><b>599.000đ</b><i>mua 1 lần · chưa tới 20.000đ/ngày</i></div>
-    <ul class="note" style="font-style:normal;margin:0;padding-left:20px"><li><b>Mở đầu + 4 chuyên đề</b> <i>— chào hỏi, số đếm, màu sắc, gia đình</i></li><li><b>Bé 3–7 tuổi · mỗi ngày 10 phút</b></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi</b></li><li><b>Sau 30 ngày bé:</b> <i>chào hỏi, đếm 1–10, ~40 từ, 20 câu, 10 bài hát</i></li><li><b>🎁 Tặng bộ file in tô màu, tập tô chữ</b></li><li><b>📩 Email báo tiến độ của bé mỗi tuần</b></li></ul>
-    <a class="btn" href="../bo-me-day-con/#cd1" style="align-self:flex-start;text-decoration:none">Xem & đăng ký cho bé →</a>
-    <p class="note">Cần tư vấn, ba mẹ nhắn Zalo:</p><div class="zalos zaloBox"></div></section>
+    <ul class="note tomtat"><li><b>Mở đầu + 4 chuyên đề</b> <i>— chào hỏi, số đếm, màu sắc, gia đình</i></li><li><b>Bé 3–7 tuổi · mỗi ngày 15 phút</b></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi</b></li><li><b>Sau 30 ngày bé:</b> <i>chào hỏi, đếm 1–10, ~40 từ, 20 câu, 10 bài hát</i></li><li><b>🎁 Tặng bộ file in tô màu, tập tô chữ</b></li><li><b>📩 Email báo tiến độ của bé mỗi tuần</b></li></ul>
+    <a class="btn main" href="../bo-me-day-con/#cd1" style="align-self:flex-start;text-decoration:none">Xem & đăng ký cho bé →</a></section>
   <div id="gAdult" class="gate" hidden>
   <section class="card" id="dangKy"><span class="step">Bước 1/3</span><h2>Vì sao bạn muốn học tiếng Trung?</h2>
     <p class="note" style="font-style:normal">5 câu ngắn — SunMoon dựa vào đây để gợi ý lộ trình cho bạn.</p>
@@ -419,7 +422,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
     <ul class="feat"><li><b>31 bài giảng nghe</b> — giọng Hà Nội, tiếng Trung đọc chậm, rõ</li><li><b>Chữ Hán bằng hình ảnh</b> — nhìn hình, liên tưởng và nhớ nghĩa</li><li><b>Tập viết đúng thứ tự nét</b> — viết bằng ngón tay ngay trên điện thoại</li><li><b>Luyện nói có chấm phát âm</b> — đọc to, máy chấm từng chữ</li><li><b>Hội thoại, văn hoá, bài tập</b> — mỗi bài đều có</li></ul></section>
   <section class="card" id="thanhToan"><span class="step">Bước 3/3</span><h2>Nhận mã học</h2>
     <div class="price"><s>999.000đ</s><b class="giaNay2">599.000đ</b><i class="giaGhi2">Giá ưu đãi · đến hết 24/10/2026</i></div>
-    <div class="loinhan"><span style="font-size:26px">💛</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Kết quả phụ thuộc nhiều vào việc bạn học đều mỗi ngày. Nếu học không đều, SunMoon không dám hứa chắc kết quả bạn đạt được. Chi phí khoá học nhỏ, nhưng bạn hãy dành cho mình <b style="display:inline">20 phút mỗi ngày</b> để thấy tiến bộ thật sự nhé!</p></div></div>
+    <div class="loinhan"><span style="font-size:26px">💛</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Kết quả phụ thuộc nhiều vào việc bạn học đều mỗi ngày. Nếu học không đều, SunMoon không dám hứa chắc kết quả bạn đạt được. Chi phí khoá học nhỏ, nhưng bạn hãy dành cho mình <b style="display:inline">25 phút mỗi ngày</b> để thấy tiến bộ thật sự nhé!</p></div></div>
     <div class="fq"><label for="kTen">Họ tên, email và số điện thoại (Zalo)</label><input type="text" id="kTen" placeholder="Họ tên" autocomplete="name"><input type="email" id="kEmail" placeholder="Email — SunMoon gửi mã học về đây" autocomplete="email" inputmode="email"><input type="tel" id="kSdt" placeholder="Số điện thoại có Zalo" autocomplete="tel" inputmode="tel"></div>
     <p class="err" id="kErr"></p>
     <button class="btn main" id="kGui">Đăng ký &amp; nhận mã QR chuyển khoản</button>
@@ -430,14 +433,14 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
   <section class="card"><h2>Đã có mã học?</h2>
     <div class="fq"><input type="text" id="lU" placeholder="Email hoặc tên đăng nhập" autocapitalize="none" autocomplete="username" inputmode="email"><input type="tel" id="lM" placeholder="Mã 4 số" inputmode="numeric" autocomplete="current-password"></div>
     <p class="err" id="lErr"></p><button class="btn main" id="lGo">Vào học</button></section>
-  <section class="card"><h2>Cần hỗ trợ?</h2><p class="note" style="font-style:normal">Mọi phản hồi về app học, bạn nhắn Zalo SunMoon nhé:</p><div class="zalos zaloBox"></div></section>
+  <div class="zfoot"><span>Cần hỗ trợ? Nhắn Zalo</span><div class="zalos zaloBox"></div></div>
 </div>
 
 <div class="wrap" id="course">
   <header class="hero">
     <span class="pill">Tự học tại nhà</span>
     <h1>30 ngày tự học tiếng Trung <span class="hzi">学中文</span></h1>
-    <p class="sub">Cho người mới bắt đầu — mỗi ngày 1 bài, 20 phút</p>
+    <p class="sub">Cho người mới bắt đầu — mỗi ngày 1 bài, 25 phút</p>
     <ul class="howto">
       <li><span><b>Nghe giảng bài</b> <i>— khoảng 4 phút</i></span></li>
       <li><span><b>Đọc to theo</b> <i>— bấm từng từ để nghe lại</i></span></li>
@@ -961,7 +964,7 @@ function showGate(){
     document.getElementById("outline").innerHTML=L.map((d,i)=>`<li class="${hop.has(i+1)?"hop":""}"><b>${i+1}</b>${esc(d.t)}</li>`).join("");
     let gy=`Bạn học để <b>${esc(md.map(x=>x==="Khác"?"mục tiêu riêng":x).join(", ").toLowerCase())}</b>, mục tiêu: <b>${esc(kb.mucTieu.toLowerCase())}</b>. `;
     gy+=kb.trinhDo==="HSK 1 trở lên"?"Khoá này tương đương HSK 1 — với bạn là bài ôn nền vững chắc; cần khoá cao hơn, nhắn Zalo SunMoon để được tư vấn. ":"Khoá bắt đầu từ số 0, rất vừa với bạn. ";
-    gy+=kb.thoiGian==="10–15 phút"?"Mỗi bài khoảng 20 phút — bạn có thể chia làm 2 lần trong ngày. ":"Mỗi ngày 1 bài khoảng 20 phút là vừa đủ. ";
+    gy+=kb.thoiGian==="10–15 phút"?"Mỗi bài khoảng 25 phút — bạn có thể chia làm 2 lần trong ngày. ":"Mỗi ngày 1 bài khoảng 25 phút là vừa đủ. ";
     if(hop.size)gy+="Các bài có dấu <b style=\"color:var(--sun)\">★</b> dùng ngay được cho mục đích của bạn.";
     document.getElementById("goiY").innerHTML=gy;
     const st=document.getElementById("step2");st.hidden=false;st.scrollIntoView({behavior:"smooth",block:"start"});
