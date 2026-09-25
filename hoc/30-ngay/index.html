@@ -906,6 +906,8 @@ function setupWriter(chars){
 /* ---------- bán khoá · đăng nhập · góp ý (chỉ chạy trên web SunMoon) ---------- */
 const API="https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";
 const SITE=/chinesekidsvn\.com$|hoctiengtrungvn\.com$|github\.io$|^localhost$|^127\./.test(location.hostname);
+// 25/09 chị: chương trình tự học KHOÁ ở mọi nơi, trả phí mới học — chỉ mở sẵn trong bản xem thử riêng của chị trên Claude
+const KHOA=!/claudeusercontent\.com$|claude\.ai$|claude\.site$/.test(location.hostname);
 const GT="TT30", UU_DAI_DEN="2026-10-24";
 const ZALOS=[["039 630 8188","https://zalo.me/0396308188"],["039 400 9488","https://zalo.me/0394009488"]];
 const zaloHtml=()=>ZALOS.map(z=>`<a class="zl" href="${z[1]}" target="_blank" rel="noopener">Zalo ${z[0]}</a>`).join("");
@@ -1027,7 +1029,7 @@ const today=()=>ymd(new Date());
 function streak(){const s=new Set(GM.days),d=new Date();if(!s.has(ymd(d)))d.setDate(d.getDate()-1);let n=0;while(s.has(ymd(d))){n++;d.setDate(d.getDate()-1)}return n}
 const BADGES=[["b1","Khởi đầu","1",()=>done.size>=1],["s3","3 ngày liền","3",()=>streak()>=3],["s7","7 ngày liền","7",()=>streak()>=7],["h15","Nửa chặng","15",()=>done.size>=15],["x1k","1.000 XP","1k",()=>GM.xp>=1000],["b30","Về đích","30",()=>done.size>=30]];
 function newBadges(){const nb=BADGES.filter(b=>!GM.badges.includes(b[0])&&b[3]());nb.forEach(b=>GM.badges.push(b[0]));saveGM();return nb}
-const unlocked=n=>!SITE||n<=1||done.has(n)||done.has(n-1);
+const unlocked=n=>!KHOA||n<=1||done.has(n)||done.has(n-1);
 let actx=null;function tone(fs,dur=.12,type="sine",vol=.12){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+dur);t+=dur*.8})}catch(e){}}
 const ding=()=>tone([880,1320]),buzz=()=>tone([180],.18,"square",.05),fanfare=()=>tone([523,659,784,1047],.16,"triangle",.15);
 function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
@@ -1227,7 +1229,7 @@ document.querySelectorAll(".hv button").forEach(b=>b.onclick=()=>{stopTeacher(tr
 document.getElementById("weeks").addEventListener("click",e=>{const b=e.target.closest(".day");if(b)go(+b.dataset.day)});
 function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^b/,"");if(n>=1&&n<=30&&!done.has(n)){done.add(n);ch=1}});if(ch)save();return ch}
 function start(){const h=location.hash.match(/^#ngay(\d+)$/);go(h?+h[1]:firstUndone(),false)}
-if(!SITE)start();
+if(!KHOA)start();
 else if(!U){showGate()}
 else{start();callApi({app:"dangnhap",u:U.u,m:U.m,giaoTrinh:GT}).then(r=>{if(r&&r.ok&&mergeTD(r.tienDo)){renderMap()}if(!r||!r.ok){U=null;saveU();showGate();const e=document.getElementById("lErr");if(e&&r&&r.loi)e.textContent=r.loi}}).catch(()=>{})}
 </script>
