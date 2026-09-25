@@ -153,7 +153,7 @@
    "Ôn cả tuần: nói 6 câu mỗi ngày trong sinh hoạt"
   ],
   "hd": [
-   "Chào ba mẹ! Tuần này, ba mẹ cùng con học chuyên đề: chào hỏi và lễ phép. Ba mẹ không cần biết tiếng Trung, chỉ cần nghe và nói theo cô nhé.",
+   "Chào bố mẹ! Tuần này, bố mẹ cùng con học chuyên đề: chào hỏi và lễ phép. Bố mẹ không cần biết tiếng Trung, chỉ cần nghe và nói theo cô nhé.",
    "Câu đầu tiên là xin chào:",
    "zh:你好",
    "Hai chữ đều mang thanh ba, nên chữ đầu đọc lên giọng, nghe như: ní hảo.",
@@ -173,9 +173,9 @@
    "zh:晚安",
    "Và đến lớp, con chào cô giáo:",
    "zh:老师好",
-   "Mẹo dạy con: mỗi ngày chỉ cần năm đến mười phút, nhưng hãy nói đi nói lại trong sinh hoạt. Sáng dậy nói chào buổi sáng, đi ngủ nói chúc ngủ ngon. Khi con nói đúng, ba mẹ khen con:",
+   "Mẹo dạy con: mỗi ngày chỉ cần năm đến mười phút, nhưng hãy nói đi nói lại trong sinh hoạt. Sáng dậy nói chào buổi sáng, đi ngủ nói chúc ngủ ngon. Khi con nói đúng, bố mẹ khen con:",
    "zh:真棒！",
-   "nghĩa là giỏi quá. Chúc ba mẹ và con học thật vui!"
+   "nghĩa là giỏi quá. Chúc bố mẹ và con học thật vui!"
   ]
  },
  "2": {
@@ -339,7 +339,7 @@
    "Ôn cả tuần: đếm mọi thứ trong nhà"
   ],
   "hd": [
-   "Chào ba mẹ! Tuần này, mình cùng con đếm từ một đến mười bằng tiếng Trung. Ba mẹ nghe cô đếm một lượt nhé.",
+   "Chào bố mẹ! Tuần này, mình cùng con đếm từ một đến mười bằng tiếng Trung. Bố mẹ nghe cô đếm một lượt nhé.",
    "zh:一，二，三，四，五，六，七，八，九，十。",
    "Có ba số hay đọc sai. Số bốn:",
    "zh:四",
@@ -349,11 +349,11 @@
    "zh:七",
    "bật hơi ra, đọc gần như chi.",
    "Người Trung Quốc đếm bằng một bàn tay. Số sáu giơ ngón cái và ngón út. Số tám giơ ngón cái và ngón trỏ. Số mười bắt chéo hai ngón trỏ. Con sẽ rất thích trò này!",
-   "Trong ngày, ba mẹ cùng con đếm mọi thứ: bậc cầu thang, quả táo, đồ chơi. Hỏi con có mấy cái:",
+   "Trong ngày, bố mẹ cùng con đếm mọi thứ: bậc cầu thang, quả táo, đồ chơi. Hỏi con có mấy cái:",
    "zh:几个？",
    "Và trước khi chạy nhảy, cả nhà cùng hô:",
    "zh:一，二，三，走！",
-   "Con đếm đúng, ba mẹ khen:",
+   "Con đếm đúng, bố mẹ khen:",
    "zh:真棒！",
    "Chúc cả nhà học thật vui!"
   ]
@@ -424,7 +424,7 @@
  "0": {
   "t": "Làm quen tiếng Trung & thanh điệu",
   "icon": "🐼",
-  "muc": "Ba mẹ hiểu vì sao nên cho con học tiếng Trung — bé làm quen đất nước Trung Quốc và 4 thanh điệu, giống tiếng Việt lắm!",
+  "muc": "Bố mẹ hiểu vì sao nên cho con học tiếng Trung — bé làm quen đất nước Trung Quốc và 4 thanh điệu, giống tiếng Việt lắm!",
   "ly": [
    [
     "🏮",
@@ -631,7 +631,7 @@
    ]
   },
   "tuan": [
-   "Ba mẹ nghe cô hướng dẫn · đọc phần “Vì sao nên cho con học tiếng Trung”",
+   "Bố mẹ nghe cô hướng dẫn · đọc phần “Vì sao nên cho con học tiếng Trung”",
    "Xem thẻ hình đất nước Trung Quốc · chơi Thám hiểm Trung Quốc",
    "Học 4 thanh điệu với tiếng “ma” · chơi Tay vẽ thanh điệu",
    "Làm đèn lồng đỏ · tô màu chữ 中国",
@@ -640,7 +640,7 @@
    "Ôn cả tuần: gọi 妈妈, chào 你好 mỗi ngày"
   ],
   "hd": [
-   "Chào ba mẹ! Trước khi vào các chuyên đề, mình cùng làm quen với tiếng Trung nhé.",
+   "Chào bố mẹ! Trước khi vào các chuyên đề, mình cùng làm quen với tiếng Trung nhé.",
    "Vì sao nên cho con học tiếng Trung? Văn hoá Trung Quốc rất gần gũi với Việt Nam: mình cùng ăn Tết Nguyên đán, Tết Trung thu, cùng dùng đôi đũa, cùng có mười hai con giáp. Nhiều trường đã dạy ngoại ngữ thứ hai, và tiếng Trung là lựa chọn phổ biến. Hơn nữa, khoảng sáu mươi phần trăm từ tiếng Việt có gốc Hán, nên người Việt học tiếng Trung rất nhanh.",
    "Tuổi ba đến bảy là tuổi vàng để bé bắt âm. Và tin vui là: thanh điệu tiếng Trung giống tiếng Việt lắm!",
    "Tiếng Việt có sáu thanh, tiếng Trung có bốn thanh và một thanh nhẹ. Cùng nghe với âm ma nhé.",
@@ -653,7 +653,7 @@
    "là con ngựa. Thanh bốn, rơi mạnh, giống dấu huyền nhưng dứt khoát:",
    "zh:骂",
    "là mắng.",
-   "Ba mẹ cùng con vừa đọc vừa vẽ tay theo thanh điệu, bé sẽ nhớ rất nhanh. Chúc cả nhà học vui!"
+   "Bố mẹ cùng con vừa đọc vừa vẽ tay theo thanh điệu, bé sẽ nhớ rất nhanh. Chúc cả nhà học vui!"
   ],
   "vh": [
    [
