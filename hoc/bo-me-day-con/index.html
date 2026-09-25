@@ -602,8 +602,8 @@ function home(){
     <p class="sub">Cho bé 3–7 tuổi · ba mẹ không cần biết tiếng Trung — cô hướng dẫn từng bước.</p>
     <ul class="steps"><li data-n="1"><span><b>Ba mẹ nghe cô hướng dẫn</b> <i>— 1 phút, biết cách đọc và cách dạy</i></span></li><li data-n="2"><span><b>Chơi cùng con 10 phút mỗi ngày</b> <i>— thẻ hình, bài hát, trò chơi</i></span></li><li data-n="3"><span><b>Nói tiếng Trung trong sinh hoạt</b> <i>— sáng dậy, ăn cơm, đi ngủ</i></span></li></ul></section>
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu ba mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng ba mẹ hãy dành cho con <b style="display:inline">10 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
-  <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · mỗi chuyên đề học trong 1 tuần</small></h2>
-    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):n===0?`<span class="lk">🎁 Tặng kèm khi mua</span>`:`<span class="lk">🔒 Gói ${goi(n)[0]}+${goi(n)[1]} · ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
+  <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · khoá 30 ngày = Mở đầu + 4 chuyên đề</small></h2>
+    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 Khoá 30 ngày${soKhoa(n||1)>1?" số "+soKhoa(n||1):""} · ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
   app.querySelectorAll(".tp[data-cd]:not(.soon)").forEach(b=>b.onclick=()=>go(+b.dataset.cd));
   sunIntro(document.getElementById("stage"));
 }
@@ -656,7 +656,7 @@ function video(id,t,m){try{cur&&cur.pause()}catch(e){}
 
 /* ---------- 25/09 khoá trả phí: mua TỪNG chuyên đề (599k → 299k), mua chuyên đề nào cũng tặng Mở đầu · chỉ chạy trên web SunMoon ---------- */
 const API="https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";
-const GIA=599000,GIA_UD=299000,UD_DEN="2026-10-24";
+const GIA=599000,GIA_UD=599000,UD_DEN="2026-10-24";
 const giaNay=()=>new Date().toLocaleDateString("sv-SE",{timeZone:"Asia/Ho_Chi_Minh"})<=UD_DEN?GIA_UD:GIA;
 const tien=n=>Number(n).toLocaleString("vi-VN")+"đ";
 const ZALOS=[["039 630 8188","https://zalo.me/0396308188"],["039 400 9488","https://zalo.me/0394009488"]];
@@ -667,7 +667,8 @@ function crc16(x){let c=0xFFFF;for(let i=0;i<x.length;i++){c^=x.charCodeAt(i)<<8
 function vietQR(amount,msg){const acc=tlv("00","A000000727")+tlv("01",tlv("00","970432")+tlv("01","272727888888"))+tlv("02","QRIBFTTA");const x=tlv("00","01")+tlv("01","12")+tlv("38",acc)+tlv("53","704")+tlv("54",String(amount))+tlv("58","VN")+tlv("62",tlv("08",msg))+"6304";return x+crc16(x)}
 let U=store.get("bmdc-user",null);   // {u,m,ten,own:[1,2]}
 const OWN=()=>new Set((U&&U.own)||[]);
-const goi=n=>{const a=n%2?n:n-1;return[a,a+1]};   // 25/09 chị: gộp 2 chuyên đề = 1 gói 1 mức phí
+const goi=n=>{const a=Math.floor((n-1)/4)*4+1;return[a,a+1,a+2,a+3]};   // 25/09 chị: bán KHOÁ 30 NGÀY = 4 chuyên đề (khoá 1 = Mở đầu + 1–4), 599k
+const soKhoa=n=>(goi(n)[0]+3)/4;
 const coMo=n=>!KHOA||(n===0?OWN().size>0:OWN().has(n));
 function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=true;return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("bmdc-user",null),go(-1))):payPop(null,"dn")}
 function setOwn(r,u,m){U={u,m,ten:r.ten||u,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("bmdc-user",U);accBar()}
@@ -679,10 +680,10 @@ function payPop(n,tab){
   const ten=k=>(TOPICS.find(t=>t[0]===k)||[])[1]||"";
   o.innerHTML=`<div class="pwb" role="dialog" aria-modal="true"><button class="x" aria-label="Đóng">✕</button>
     <span class="lock">${im("🔒")}</span>
-    <h3>Mở khoá gói chuyên đề ${goi(n)[0]} + ${goi(n)[1]}</h3>
+    <h3>Khoá 30 ngày${soKhoa(n)>1?" số "+soKhoa(n):""} · Ba mẹ dạy con</h3>
     <ul class="pgoi">${pick===1?`<li><b>Mở đầu · ${esc(ten(0))}</b> <i>— tặng kèm</i></li>`:""}${goi(n).map(k=>`<li><b>Chuyên đề ${k} · ${esc(ten(k))}</b>${ND[k]?"":" <i>— sắp có, mở ngay khi soạn xong</i>"}</li>`).join("")}</ul>
-    <ul><li><b>1 gói = 2 chuyên đề, học trong 2 tuần</b> <i>— 10 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li><li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li></ul>
-    <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ gói 2 chuyên đề</span>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
+    <ul><li><b>30 ngày · 4 chuyên đề</b> <i>— 10 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li>${pick===1?`<li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li>`:""}</ul>
+    <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ khoá 30 ngày</span>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
     <div class="ptabs"><button data-t="mua">Đăng ký mua</button><button data-t="dn">Đã có mã? Đăng nhập</button></div>
     <div class="pf" id="pMua">
       ${U?`<p class="pnote">Đang đăng nhập: <b>${esc(U.ten||U.u)}</b> — chuyên đề mới sẽ mở thêm vào tài khoản này.</p>`:`
@@ -713,7 +714,7 @@ function payPop(n,tab){
       tuoi=$("#pTuoi").value.trim();if(!/^\d{1,2}$/.test(tuoi)||+tuoi<1)return pErr.textContent="Ba mẹ ghi số tuổi của bé nhé (VD: 4)";
       if(sdt.length<9)return pErr.textContent="Số điện thoại chưa đúng";
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return pErr.textContent="Điền email đúng để nhận mã học nhé";
-      Object.assign(b,{tenBe:ten,sdt,email,khaiBao:{ghi:`Ba mẹ dạy con · gói chuyên đề ${pick} + ${pick+1} · bé ${tuoi} tuổi`}})}
+      Object.assign(b,{tenBe:ten,sdt,email,khaiBao:{ghi:`Ba mẹ dạy con · khoá 30 ngày số ${soKhoa(pick)} (chuyên đề ${pick}–${pick+3}) · bé ${tuoi} tuổi`}})}
     pErr.textContent="";pGui.disabled=true;pGui.textContent="Đang gửi…";
     try{const r=await callApi(b);if(!r||!r.ok)throw new Error((r&&r.loi)||"Chưa gửi được");
       const so=r.soTien||gia,nd=r.noiDung||("SM BM"+pick),box=$("#pQR");box.hidden=false;pGui.hidden=true;
