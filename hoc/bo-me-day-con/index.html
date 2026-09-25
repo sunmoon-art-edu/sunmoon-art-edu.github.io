@@ -512,6 +512,7 @@ h2 .ic img.fi{width:28px;height:28px}
 .pwb h3{margin:0;padding-right:40px;font:800 21px/1.3 var(--tx)}
 .pwb .lock{font-size:40px;line-height:1}.pwb .lock img{width:52px;height:52px}
 .pwb ul{margin:0;padding-left:20px}.pwb li{margin:2px 0}.pwb li i{font-weight:300;color:var(--ink-2)}
+.dat{padding:12px 14px;border-radius:16px;background:var(--leaf-soft)}.dat ul,.pqua,.khoe ul{margin:6px 0 0;padding-left:20px}.dat li i,.pqua i,.khoe i{font-weight:300;color:var(--ink-2)}.pqua{list-style:none;padding-left:0}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2)}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
 .pprice s{color:var(--ink-2)}.pprice b{font-size:28px;color:var(--sun)}.pprice i{font-weight:300;font-size:13px;color:var(--ink-2);flex-basis:100%}
@@ -602,6 +603,7 @@ function home(){
     <p class="sub">Cho bé 3–7 tuổi · ba mẹ không cần biết tiếng Trung — cô hướng dẫn từng bước.</p>
     <ul class="steps"><li data-n="1"><span><b>Ba mẹ nghe cô hướng dẫn</b> <i>— 1 phút, biết cách đọc và cách dạy</i></span></li><li data-n="2"><span><b>Chơi cùng con 10 phút mỗi ngày</b> <i>— thẻ hình, bài hát, trò chơi</i></span></li><li data-n="3"><span><b>Nói tiếng Trung trong sinh hoạt</b> <i>— sáng dậy, ăn cơm, đi ngủ</i></span></li></ul></section>
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu ba mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng ba mẹ hãy dành cho con <b style="display:inline">10 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
+  <section class="card">${DAT}<p class="note" style="font-style:normal;margin:0"><b>Khoá 30 ngày · 599.000đ</b> <i>— chưa tới 20.000đ/ngày · tặng bộ file in · email báo tiến độ mỗi tuần</i></p></section>
   <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · khoá 30 ngày = Mở đầu + 4 chuyên đề</small></h2>
     <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 Khoá 30 ngày${soKhoa(n||1)>1?" số "+soKhoa(n||1):""} · ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
   app.querySelectorAll(".tp[data-cd]:not(.soon)").forEach(b=>b.onclick=()=>go(+b.dataset.cd));
@@ -628,12 +630,13 @@ function topic(n){
   <section class="card"><h2><span class="ic">${im("✂️")}</span>Sáng tạo: ${esc(c.st.ten)}</h2><p class="note" style="font-style:normal">Chuẩn bị: ${esc(c.st.can)}</p><ol class="stp">${c.st.buoc.map(b=>`<li>${hzw(b)}</li>`).join("")}</ol><div class="stagebar"><a class="big" href="in/to-mau-c${n}.pdf" target="_blank" rel="noopener" style="text-decoration:none">${im("🖨")} Tải file tô màu (PDF, in A4)</a><button class="btn2" id="printBtn">Xem nhanh trên màn hình</button></div><p class="note">File gồm trang tô màu chữ Hán có hình gợi ý + trang tập tô chữ theo nét mờ.</p></section>
   <section class="card"><h2><span class="ic">${im("⭐")}</span>Bé chơi: nghe và chạm <small>bé tự chơi, ba mẹ ngồi cạnh</small></h2><div class="quizbox" id="quiz"></div></section>
   <section class="card"><h2><span class="ic">${im("👏")}</span>Khen con bằng tiếng Trung</h2><div class="praise">${[["真棒！","zhēn bàng","giỏi quá!"],["很好！","hěn hǎo","tốt lắm!"],["再来一次！","zài lái yí cì","làm lại nào!"],["加油！","jiā yóu","cố lên!"]].map((p,i)=>`<button class="pr" data-k="${i}"><span class="hz">${p[0]}</span><span class="py">${tonePy(p[1])}</span><span class="vi">${p[2]}</span></button>`).join("")}</div>
-    <p class="note">${hzw("Bấm 真棒 để nghe mẫu. Khen cụ thể: “真棒！Con nói 谢谢 rất to!”")}</p></section>`;
+    <p class="note">${hzw("Bấm 真棒 để nghe mẫu. Khen cụ thể: “真棒！Con nói 谢谢 rất to!”")}</p></section>
+  <section class="card khoe"><h2><span class="ic">${im("🎉")}</span>Khoe thành quả của con</h2><ul><li><b>Quay 15 giây bé nói hoặc hát</b> <i>— câu bé thích nhất trong tuần</i></li><li><b>Gửi Zalo SunMoon</b> <i>— cô gửi lời khen riêng cho bé</i></li></ul><div class="pzl">${ZALOS.map(z=>`<a href="${z[1]}" target="_blank" rel="noopener">Zalo ${z[0]}</a>`).join("")}</div></section>`;
   // hướng dẫn
   const a=new Audio(`aud/c${n}-hd.mp4`),btn=document.getElementById("hdPlay"),bar=document.getElementById("hdBar"),tm=document.getElementById("hdT");const f=t=>Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0");
   a.onloadedmetadata=()=>{bar.max=a.duration;tm.textContent="0:00 / "+f(a.duration)};a.ontimeupdate=()=>{bar.value=a.currentTime;tm.textContent=f(a.currentTime)+(a.duration?" / "+f(a.duration):"")};
   a.onplay=()=>btn.innerHTML=PAUSE;a.onpause=a.onended=()=>btn.innerHTML=PLAY;btn.onclick=()=>{try{cur&&cur.pause()}catch(e){}a.paused?a.play().catch(()=>{}):a.pause()};bar.oninput=()=>a.currentTime=+bar.value;window._hd=a;
-  app.querySelectorAll(".dy input").forEach(i=>i.onchange=()=>{const t=store.get("bmdc-tuan-"+n,[]);t[+i.dataset.d]=i.checked;store.set("bmdc-tuan-"+n,t);i.closest(".dy").classList.toggle("ok",i.checked);if(i.checked){tone([660,990]);if(t.filter(Boolean).length===7){confetti();tone([523,659,784,1047],.16,"triangle",.15)}}});
+  app.querySelectorAll(".dy input").forEach(i=>i.onchange=()=>{const t=store.get("bmdc-tuan-"+n,[]);t[+i.dataset.d]=i.checked;store.set("bmdc-tuan-"+n,t);i.closest(".dy").classList.toggle("ok",i.checked);if(i.checked){ghiKQ(`c${n}-d${+i.dataset.d+1}`,`${n==0?"Mở đầu":"Chuyên đề "+n} · ngày ${+i.dataset.d+1}`,100);tone([660,990]);if(t.filter(Boolean).length===7){confetti();tone([523,659,784,1047],.16,"triangle",.15)}}});
   app.querySelectorAll(".fc[data-i]").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-w${b.dataset.i}.mp3`,b)});
   app.querySelectorAll(".ke").forEach(b=>b.onclick=e=>{const t=e.target;a.pause();const vb=t.closest(".vbtn");if(vb){try{cur&&cur.pause()}catch(x){}video(vb.dataset.yt,vb.dataset.t,vb.dataset.m);return}const kk=t.closest(".kk");if(kk){play(`aud/c${n}-k${kk.dataset.k}.mp4`,kk);return}const kz=t.closest(".kz");if(kz)play(`aud/c${n}-v${kz.dataset.zh}.mp3`,kz)});
   app.querySelectorAll(".tnb button[data-src]").forEach(b=>b.onclick=()=>{a.pause();play(b.dataset.src,b.closest(".tn"))});
@@ -671,6 +674,9 @@ const goi=n=>{const a=Math.floor((n-1)/4)*4+1;return[a,a+1,a+2,a+3]};   // 25/09
 const soKhoa=n=>(goi(n)[0]+3)/4;
 const coMo=n=>!KHOA||(n===0?OWN().size>0:OWN().has(n));
 function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=true;return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("bmdc-user",null),go(-1))):payPop(null,"dn")}
+// 25/09 — ghi tiến độ về bảng SunMoon để tối Chủ nhật tự email báo cáo tuần cho ba mẹ
+function ghiKQ(phan,ten,dung){if(KHOA&&U)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:"BMDC",phan,ten,dung}).catch(()=>{})}
+const DAT=`<div class="dat"><b>Sau 30 ngày, bé:</b><ul><li><b>Chào hỏi, cảm ơn, xin lỗi</b> bằng tiếng Trung</li><li><b>Đếm 1–10</b>, gọi tên màu sắc, người trong nhà</li><li><b>Khoảng 40 từ · 20 câu</b> <i>nói trong sinh hoạt hằng ngày</i></li><li><b>Hát 10 bài hát</b> tiếng Trung</li></ul></div>`;
 function setOwn(r,u,m){U={u,m,ten:r.ten||u,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("bmdc-user",U);accBar()}
 function payPop(n,tab){
   document.querySelectorAll(".pw").forEach(x=>x.remove());
@@ -683,7 +689,8 @@ function payPop(n,tab){
     <h3>Khoá 30 ngày${soKhoa(n)>1?" số "+soKhoa(n):""} · Ba mẹ dạy con</h3>
     <ul class="pgoi">${pick===1?`<li><b>Mở đầu · ${esc(ten(0))}</b> <i>— tặng kèm</i></li>`:""}${goi(n).map(k=>`<li><b>Chuyên đề ${k} · ${esc(ten(k))}</b>${ND[k]?"":" <i>— sắp có, mở ngay khi soạn xong</i>"}</li>`).join("")}</ul>
     <ul><li><b>30 ngày · 4 chuyên đề</b> <i>— 10 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li>${pick===1?`<li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li>`:""}</ul>
-    <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ khoá 30 ngày</span>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
+    ${pick===1?DAT:""}<ul class="pqua"><li>🎁 <b>Tặng bộ file in</b> <i>— tô màu, tập tô chữ Hán</i></li><li>📩 <b>Email báo tiến độ của bé mỗi tuần</b></li></ul>
+    <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ khoá 30 ngày</span><i style="font-style:normal;font-weight:700;color:var(--sun-2)">Chưa tới 20.000đ/ngày</i>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
     <div class="ptabs"><button data-t="mua">Đăng ký mua</button><button data-t="dn">Đã có mã? Đăng nhập</button></div>
     <div class="pf" id="pMua">
       ${U?`<p class="pnote">Đang đăng nhập: <b>${esc(U.ten||U.u)}</b> — chuyên đề mới sẽ mở thêm vào tài khoản này.</p>`:`
@@ -757,7 +764,7 @@ function quiz(n){
   const c=ND[n],box=document.getElementById("quiz"),R=5;let r=0,ok=0,ans=null,tried=false;
   const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
   const round=()=>{
-    if(r>=R){const s=ok>=5?3:ok>=3?2:1;box.innerHTML=`<div class="stars">${[1,2,3].map(i=>`<span class="${i<=s?"":"off"}">★</span>`).join("")}</div><b style="font-size:20px">${ok}/${R} — ${s===3?"Bé giỏi quá! 真棒！":"Chơi lại nhé!"}</b><button class="big" id="qa">Chơi lại</button>`;if(s===3){confetti();play("aud/khen.mp3")}box.querySelector("#qa").onclick=()=>{r=0;ok=0;round()};return}
+    if(r>=R){const s=ok>=5?3:ok>=3?2:1;ghiKQ(`c${n}-q`,`${n==0?"Mở đầu":"Chuyên đề "+n} · bé chơi`,ok*20);box.innerHTML=`<div class="stars">${[1,2,3].map(i=>`<span class="${i<=s?"":"off"}">★</span>`).join("")}</div><b style="font-size:20px">${ok}/${R} — ${s===3?"Bé giỏi quá! 真棒！":"Chơi lại nhé!"}</b><button class="big" id="qa">Chơi lại</button>`;if(s===3){confetti();play("aud/khen.mp3")}box.querySelector("#qa").onclick=()=>{r=0;ok=0;round()};return}
     const idx=sh([...c.w.keys()]).slice(0,4);ans=idx[Math.floor(Math.random()*4)];tried=false;
     box.innerHTML=`<p class="note" style="font-style:normal">Câu ${r+1}/${R} · bấm loa để nghe, rồi chạm hình đúng</p><button class="qhear" id="qh" aria-label="Nghe">🔊</button><div class="qopts">${idx.map(i=>{const e=c.w[i][3];return isNum(e)?`<button class="qo num" data-i="${i}">${im("🍎").repeat(+e)}<small>${e}</small></button>`:`<button class="qo" data-i="${i}">${im(e)}<small>${esc(c.w[i][2])}</small></button>`}).join("")}</div>`;
     const hear=()=>play(`aud/c${n}-w${ans}.mp3`);box.querySelector("#qh").onclick=hear;setTimeout(hear,300);
