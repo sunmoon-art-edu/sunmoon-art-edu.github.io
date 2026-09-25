@@ -673,14 +673,14 @@ function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=t
 function setOwn(r,u,m){U={u,m,ten:r.ten||u,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("bmdc-user",U);accBar()}
 function payPop(n,tab){
   document.querySelectorAll(".pw").forEach(x=>x.remove());
-  const sell=TOPICS.filter(([k])=>k>0&&k%2&&ND[k]);if(n===0||n==null)n=null;
-  let pick=n?goi(n)[0]:(sell[0]&&sell[0][0]),tuoi="",gia=giaNay();
+  const from=n;if(!n)n=1;   // 25/09 chị: không bắt chọn — bấm Mở đầu / Đăng nhập là gói đầu tiên
+  let pick=goi(n)[0],tuoi="",gia=giaNay();
   const o=document.createElement("div");o.className="pw";
   const ten=k=>(TOPICS.find(t=>t[0]===k)||[])[1]||"";
   o.innerHTML=`<div class="pwb" role="dialog" aria-modal="true"><button class="x" aria-label="Đóng">✕</button>
     <span class="lock">${im("🔒")}</span>
-    <h3>${n?`Mở khoá gói chuyên đề ${goi(n)[0]} + ${goi(n)[1]}`:"Mở khoá chương trình Ba mẹ dạy con"}</h3>
-    ${n?`<ul class="pgoi">${goi(n).map(k=>`<li><b>Chuyên đề ${k} · ${esc(ten(k))}</b>${ND[k]?"":" <i>— sắp có, mở ngay khi soạn xong</i>"}</li>`).join("")}</ul>`:`<div class="pf"><label>Chọn gói muốn mua<span class="pchs" id="pPick">${sell.map(([k,t])=>`<button data-k="${k}" class="${k===pick?"on":""}">Gói ${k} + ${k+1} · ${esc(t)}, ${esc(ten(k+1))}</button>`).join("")}</span></label></div>`}
+    <h3>Mở khoá gói chuyên đề ${goi(n)[0]} + ${goi(n)[1]}</h3>
+    <ul class="pgoi">${pick===1?`<li><b>Mở đầu · ${esc(ten(0))}</b> <i>— tặng kèm</i></li>`:""}${goi(n).map(k=>`<li><b>Chuyên đề ${k} · ${esc(ten(k))}</b>${ND[k]?"":" <i>— sắp có, mở ngay khi soạn xong</i>"}</li>`).join("")}</ul>
     <ul><li><b>1 gói = 2 chuyên đề, học trong 2 tuần</b> <i>— 10 phút mỗi ngày cùng con</i></li><li><b>Cô hướng dẫn ba mẹ từng bước</b> <i>— không cần biết tiếng Trung</i></li><li><b>Thẻ hình, bài hát, trò chơi, file in tô màu</b></li><li><b>🎁 Tặng kèm chuyên đề Mở đầu</b> <i>— nước Trung Quốc, văn hoá, thanh điệu</i></li></ul>
     <div class="pprice">${gia<GIA?`<s>${tien(GIA)}</s>`:""}<b>${tien(gia)}</b><span>/ gói 2 chuyên đề</span>${gia<GIA?`<i>Giá ưu đãi · đến hết ${UD_DEN.split("-").reverse().join("/")}</i>`:""}</div>
     <div class="ptabs"><button data-t="mua">Đăng ký mua</button><button data-t="dn">Đã có mã? Đăng nhập</button></div>
@@ -702,7 +702,6 @@ function payPop(n,tab){
   $(".x").onclick=close;o.onclick=e=>{if(e.target===o)close()};
   const tabTo=t=>{o.querySelectorAll(".ptabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));$("#pMua").hidden=t!=="mua";$("#pDn").hidden=t!=="dn"};
   o.querySelectorAll(".ptabs button").forEach(b=>b.onclick=()=>tabTo(b.dataset.t));tabTo(tab||"mua");
-  if($("#pPick"))$("#pPick").onclick=e=>{const b=e.target.closest("button");if(!b)return;pick=+b.dataset.k;o.querySelectorAll("#pPick button").forEach(x=>x.classList.toggle("on",x===b))};
   if($("#pTuoi"))$("#pTuoi").onclick=e=>{const b=e.target.closest("button");if(!b)return;e.preventDefault();tuoi=b.textContent;o.querySelectorAll("#pTuoi button").forEach(x=>x.classList.toggle("on",x===b))};
   const pErr=$("#pErr"),pGui=$("#pGui");
   pGui.onclick=async()=>{
@@ -732,7 +731,7 @@ function payPop(n,tab){
     if(!u||!m)return lErr.textContent="Điền đủ email và mã nhé";
     lGo.disabled=true;lErr.textContent="";
     try{const r=await callApi({app:"dangnhap",u,m,giaoTrinh:"BMDC"});
-      if(r&&r.ok){setOwn(r,u,m);close();const k=n!=null&&coMo(n)?n:null;k!=null?go(k):go(-1)}else lErr.textContent=(r&&r.loi)||"Email hoặc mã chưa đúng"}
+      if(r&&r.ok){setOwn(r,u,m);close();go(from&&coMo(from)?from:0)}else lErr.textContent=(r&&r.loi)||"Email hoặc mã chưa đúng"}
     catch(e){lErr.textContent="Chưa kết nối được — kiểm tra mạng rồi thử lại nhé"}
     lGo.disabled=false};
   lGo.onclick=login;$("#lM").onkeydown=e=>{if(e.key==="Enter")login()};
