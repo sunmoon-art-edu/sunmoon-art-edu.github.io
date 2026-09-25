@@ -531,7 +531,7 @@ h2 .ic img.fi{width:28px;height:28px}
 .pnote{margin:0;font-size:13px;font-weight:300;font-style:italic;color:var(--ink-2)}.pnote b{font-weight:700;font-style:normal;color:var(--ink)}
 .pwb .big{align-self:stretch;text-align:center}
 #pQR{display:flex;flex-direction:column;gap:10px}#pQR[hidden]{display:none}.pwb a.big{display:block;text-decoration:none}
-.tp .lk{white-space:nowrap}
+.tp .lk{white-space:nowrap}.tp .st{margin-top:auto;max-width:100%}
 .pqr{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}.pqr .qr{width:150px;height:150px;background:#fff;border-radius:12px;overflow:hidden}
 @media (max-width:420px){.pqr{grid-template-columns:1fr;justify-items:center;text-align:center}}
 .pbank{display:flex;flex-wrap:wrap;gap:6px}.pbank a{border:2px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:600;font-size:14px;color:var(--ink);text-decoration:none}
@@ -610,7 +610,7 @@ function home(){
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu ba mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng ba mẹ hãy dành cho con <b style="display:inline">15 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
   <section class="card">${DAT}<p class="note" style="font-style:normal;margin:0"><b>Khoá 30 ngày · 599.000đ</b> <i>— chưa tới 20.000đ/ngày · tặng bộ file in · email báo tiến độ mỗi tuần</i></p></section>
   <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · khoá 30 ngày = Mở đầu + 4 chuyên đề</small></h2>
-    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 Khoá 30 ngày${soKhoa(n||1)>1?" số "+soKhoa(n||1):""} · ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
+    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
   app.querySelectorAll(".tp[data-cd]:not(.soon)").forEach(b=>b.onclick=()=>go(+b.dataset.cd));
   sunIntro(document.getElementById("stage"));
 }
