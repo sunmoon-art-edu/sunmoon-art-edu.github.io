@@ -573,7 +573,7 @@ const TONE={"āēīōūǖ":1,"áéíóúǘ":2,"ǎěǐǒǔǚ":3,"àèìòùǜ":4}
 function tonePy(py){return esc(py).split(/(\s+)/).map(w=>{let t=0;for(const c of w)for(const k in TONE)if(k.includes(c.toLowerCase()))t=TONE[k];return /\S/.test(w)?`<span class="tone${t||5}">${w}</span>`:w}).join("")}
 const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 /* âm thanh */
-let cur=null;function play(src,el){try{cur&&cur.pause()}catch(e){}document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio(src);cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}a.play().catch(()=>{});return a}
+let cur=null;function play(src,el){try{cur&&cur.pause()}catch(e){}document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}RS(src).then(u=>{if(cur!==a)return;a.src=u;a.play().catch(()=>{})}).catch(()=>el&&el.classList.remove("playing"));return a}
 let actx=null;function tone(fs,d=.12,type="sine",v=.12){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+d);t+=d*.8})}catch(e){}}
 function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const c=document.createElement("canvas");c.id="confetti";document.body.appendChild(c);const x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;const col=["#C8453A","#E4B342","#5E9E5A","#5B8FB9"],P=Array.from({length:120},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,a:Math.random()*6,c:col[Math.floor(Math.random()*4)]}));let f=0;(function tk(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-4,-2,8,8);x.restore()});if(++f<140)requestAnimationFrame(tk);else c.remove()})()}
 const SPK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
@@ -619,7 +619,7 @@ function home(){
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu bố mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng bố mẹ hãy dành cho con <b style="display:inline">15 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
   <section class="card">${DAT}<p class="note" style="font-style:normal;margin:0"><b>Khoá 30 ngày · 599.000đ</b> <i>— chưa tới 20.000đ/ngày · tặng bộ file in · email báo tiến độ mỗi tuần</i></p></section>
   <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · khoá 30 ngày = Mở đầu + 4 chuyên đề</small></h2>
-    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=!!ND[n],mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
+    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=BUILT.includes(n),mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
   app.querySelectorAll(".tp[data-cd]:not(.soon)").forEach(b=>b.onclick=()=>go(+b.dataset.cd));
   sunIntro(document.getElementById("stage"));
 }
@@ -645,21 +645,22 @@ function topic(n){
     <div class="sents">${c.cau.map((s,i)=>`<button class="sn" data-i="${i}"><span class="pl">${SPK}</span><span><span class="hz">${esc(s[0])}</span><span class="py">${tonePy(s[1])}</span><span class="vi">${esc(s[2])}</span><span class="khi">${im("🕒")} ${esc(s[3])}</span></span></button>`).join("")}</div></section>
   <section class="card"><h2><span class="ic">${im("🎵")}</span>Bài hát <small>hát cùng con, vừa hát vừa vận động</small></h2><button class="gbtn" hidden data-g="aud/c${n}-g-song.mp4">🔊 Cô giảng mục này</button><div class="songs">${c.song.map(yt).join("")}</div></section>
   <section class="card"><h2><span class="ic">${im("🎲")}</span>Trò chơi cùng con</h2><button class="gbtn" hidden data-g="aud/c${n}-g-game.mp4">🔊 Cô giảng mục này</button><div class="games">${c.game.map(g=>`<div class="gm"><b>${esc(g[0])}</b><span class="can">Chuẩn bị: ${esc(g[1])}</span><p>${hzw(g[2])}</p></div>`).join("")}</div></section>
-  <section class="card"><h2><span class="ic">${im("✂️")}</span>Sáng tạo: ${esc(c.st.ten)}</h2><button class="gbtn" hidden data-g="aud/c${n}-g-st.mp4">🔊 Cô giảng mục này</button><p class="note" style="font-style:normal">Chuẩn bị: ${esc(c.st.can)}</p><ol class="stp">${c.st.buoc.map(b=>`<li>${hzw(b)}</li>`).join("")}</ol><div class="stagebar"><a class="big" href="in/to-mau-c${n}.pdf" target="_blank" rel="noopener" style="text-decoration:none">${im("🖨")} Tải file tô màu (PDF, in A4)</a><button class="btn2" id="printBtn">Xem nhanh trên màn hình</button></div><p class="note">File gồm trang tô màu chữ Hán có hình gợi ý + trang tập tô chữ theo nét mờ.</p></section>
+  <section class="card"><h2><span class="ic">${im("✂️")}</span>Sáng tạo: ${esc(c.st.ten)}</h2><button class="gbtn" hidden data-g="aud/c${n}-g-st.mp4">🔊 Cô giảng mục này</button><p class="note" style="font-style:normal">Chuẩn bị: ${esc(c.st.can)}</p><ol class="stp">${c.st.buoc.map(b=>`<li>${hzw(b)}</li>`).join("")}</ol><div class="stagebar"><a class="big" id="pdfBtn" href="in/to-mau-c${n}.pdf" target="_blank" rel="noopener" style="text-decoration:none">${im("🖨")} Tải file tô màu (PDF, in A4)</a><button class="btn2" id="printBtn">Xem nhanh trên màn hình</button></div><p class="note">File gồm trang tô màu chữ Hán có hình gợi ý + trang tập tô chữ theo nét mờ.</p></section>
   <section class="card"><h2><span class="ic">${im("⭐")}</span>Bé chơi: nghe và chạm <small>bé tự chơi, bố mẹ ngồi cạnh</small></h2><button class="gbtn" hidden data-g="aud/g-quiz.mp4">🔊 Cô giảng mục này</button><div class="quizbox" id="quiz"></div></section>
   <section class="card"><h2><span class="ic">${im("👏")}</span>Khen con bằng tiếng Trung</h2><button class="gbtn" hidden data-g="aud/g-khen.mp4">🔊 Cô giảng mục này</button><div class="praise">${[["真棒！","zhēn bàng","giỏi quá!"],["很好！","hěn hǎo","tốt lắm!"],["再来一次！","zài lái yí cì","làm lại nào!"],["加油！","jiā yóu","cố lên!"]].map((p,i)=>`<button class="pr" data-k="${i}"><span class="hz">${p[0]}</span><span class="py">${tonePy(p[1])}</span><span class="vi">${p[2]}</span></button>`).join("")}</div>
     <p class="note">${hzw("Bấm 真棒 để nghe mẫu. Khen cụ thể: “真棒！Con nói 谢谢 rất to!”")}</p></section>
   <section class="card khoe"><h2><span class="ic">${im("🎉")}</span>Khoe thành quả của con</h2><button class="gbtn" hidden data-g="aud/g-khoe.mp4">🔊 Cô giảng mục này</button><ul><li><b>Quay 15 giây bé nói hoặc hát</b> <i>— câu bé thích nhất trong tuần</i></li><li><b>Gửi Zalo SunMoon</b> <i>— cô gửi lời khen riêng cho bé</i></li></ul><div class="pzl">${ZALOS.map(z=>`<a href="${z[1]}" target="_blank" rel="noopener">Zalo ${z[0]}</a>`).join("")}</div></section>`;
   // hướng dẫn
-  const a=new Audio(`aud/c${n}-hd.mp4`),btn=document.getElementById("hdPlay"),bar=document.getElementById("hdBar"),tm=document.getElementById("hdT");const f=t=>Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0");
+  const a=new Audio();RS(`aud/c${n}-hd.mp4`).then(u=>{a.src=u}).catch(()=>{});const btn=document.getElementById("hdPlay"),bar=document.getElementById("hdBar"),tm=document.getElementById("hdT");const f=t=>Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0");
   a.onloadedmetadata=()=>{bar.max=a.duration;tm.textContent="0:00 / "+f(a.duration)};a.ontimeupdate=()=>{bar.value=a.currentTime;tm.textContent=f(a.currentTime)+(a.duration?" / "+f(a.duration):"")};
   a.onplay=()=>btn.innerHTML=PAUSE;a.onpause=a.onended=()=>btn.innerHTML=PLAY;btn.onclick=()=>{try{cur&&cur.pause()}catch(e){}a.paused?a.play().catch(()=>{}):a.pause()};bar.oninput=()=>a.currentTime=+bar.value;window._hd=a;
   {const hn=new Date().toLocaleDateString("sv-SE"),kk="bmdc-mo-"+n;if(store.get(kk,"")!==hn){store.set(kk,hn);ghiKQ(`c${n}-mo`,`${n==0?"Mở đầu":"Chuyên đề "+n} · vào học`,100)}}   // 25/09 chị bỏ lịch 7 ngày — ghi "vào học" mỗi ngày để email tiến độ tuần
   app.querySelectorAll(".fc[data-i]").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-w${b.dataset.i}.mp3`,b)});
   app.querySelectorAll(".ke").forEach(b=>b.onclick=e=>{const t=e.target;a.pause();const vb=t.closest(".vbtn");if(vb){try{cur&&cur.pause()}catch(x){}video(vb.dataset.yt,vb.dataset.t,vb.dataset.m);return}const kk=t.closest(".kk");if(kk){play(`aud/c${n}-k${kk.dataset.k}.mp4`,kk);return}const kz=t.closest(".kz");if(kz)play(`aud/c${n}-v${kz.dataset.zh}.mp3`,kz)});
+  {const pb=document.getElementById("pdfBtn");if(pb&&KHOA)pb.onclick=e=>{e.preventDefault();pb.style.opacity=.6;RS(`in/to-mau-c${n}.pdf`).then(u=>{const x=document.createElement("a");x.href=u;x.download=`SunMoon-to-mau-chuyen-de-${n}.pdf`;document.body.appendChild(x);x.click();x.remove();pb.style.opacity=1}).catch(()=>{pb.style.opacity=1;alert("Chưa mở được file — bố mẹ đăng nhập lại giúp SunMoon nhé")})}}
   app.querySelectorAll(".pyk").forEach(b=>b.onclick=()=>{a.pause();play(b.dataset.src,b)});
   // 25/09 chị: mục nào cũng có giọng cô giảng — nút chỉ hiện khi đã có file tiếng
-  app.querySelectorAll(".gbtn").forEach(g=>{const t=new Audio();t.preload="metadata";t.onloadedmetadata=()=>g.hidden=false;t.src=g.dataset.g;g.onclick=()=>{a.pause();play(g.dataset.g,g)}});
+  app.querySelectorAll(".gbtn").forEach(g=>{const t=new Audio();t.preload="metadata";t.onloadedmetadata=()=>g.hidden=false;RS(g.dataset.g).then(u=>t.src=u).catch(()=>{});g.onclick=()=>{a.pause();play(g.dataset.g,g)}});
   app.querySelectorAll(".tnb button[data-src]").forEach(b=>b.onclick=()=>{a.pause();play(b.dataset.src,b.closest(".tn"))});
   app.querySelectorAll(".tnb button[data-both]").forEach(b=>b.onclick=()=>{a.pause();const i=+b.dataset.both,card=b.closest(".tn");const x=play(`aud/c${n}-w${6+i}.mp3`,card);x.onended=()=>{setTimeout(()=>play(`aud/vi-ma${i+1}.mp3`,card),350)}});
   app.querySelectorAll(".sn").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-s${b.dataset.i}.mp3`,b)});
@@ -698,7 +699,7 @@ function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=t
 // 25/09 — ghi tiến độ về bảng SunMoon để tối Chủ nhật tự email báo cáo tuần cho bố mẹ
 function ghiKQ(phan,ten,dung){if(KHOA&&U)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:"BMDC",phan,ten,dung}).catch(()=>{})}
 const DAT=`<div class="dat"><b>Sau 30 ngày, bé:</b><ul><li>Chào hỏi, cảm ơn, xin lỗi bằng tiếng Trung</li><li>Đếm 1–10, gọi tên màu sắc, người trong nhà</li><li>Khoảng 40 từ · 20 câu <i>— nói trong sinh hoạt</i></li><li>Hát 10 bài hát tiếng Trung</li></ul></div>`;
-function setOwn(r,u,m){U={u,m,ten:r.ten||u,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("bmdc-user",U);accBar()}
+function setOwn(r,u,m){U={u,m,ten:r.ten||u,k:r.k||null,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("bmdc-user",U);accBar()}
 function payPop(n,tab){
   document.querySelectorAll(".pw").forEach(x=>x.remove());
   const from=n;if(!n)n=1;   // 25/09 chị: không bắt chọn — bấm Mở đầu / Đăng nhập là gói đầu tiên
@@ -764,6 +765,18 @@ function payPop(n,tab){
     lGo.disabled=false};
   lGo.onclick=login;$("#lM").onkeydown=e=>{if(e.key==="Enter")login()};
 }
+
+/* ---------- 25/09 chị: APP KHÉP KÍN — bài học trên web đã mã hoá (AES-GCM); chìa chỉ bảng SunMoon gửi cho tài khoản đã mua ---------- */
+let BUILT=[];
+const nhomCD=n=>n==0?1:Math.floor((n-1)/4)+1;
+const b64u8=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const CK={};
+async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw new Error("khong-co-chia");return CK[g]=await crypto.subtle.importKey("raw",b64u8(r),"AES-GCM",false,["decrypt"])}
+async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
+async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
+const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
+function RS(src){const m=/^(?:aud\/c(\d+)-|in\/to-mau-c(\d+)\.)/.exec(src);if(!KHOA||!m)return Promise.resolve(src);
+  if(!BLOB[src])BLOB[src]=giaiMa("enc/"+src+".bin",nhomCD(+(m[1]||m[2]))).then(d=>URL.createObjectURL(new Blob([d],{type:MIME[src.split(".").pop()]||""})));return BLOB[src]}
 /* trình chiếu thẻ hình cho bé */
 function slideshow(n,i){
   const c=ND[n],w=c.w,o=document.createElement("div");o.className="show";document.body.appendChild(o);
@@ -793,9 +806,9 @@ function quiz(n){
   };
   box.innerHTML=`<p style="margin:0;text-align:center">Nghe tiếng Trung, chạm đúng hình — ${R} câu, được sao thưởng!</p><button class="big" id="qs">Bắt đầu chơi</button>`;box.querySelector("#qs").onclick=round;
 }
-function go(n){try{window._hd&&window._hd.pause();window._gt&&window._gt.pause()}catch(e){}accBar();if(n>=0&&ND[n]&&!coMo(n)){history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0);payPop(n);return}if(n>=0&&ND[n]){history.replaceState(null,"","#cd"+n);topic(n)}else{history.replaceState(null,"",location.pathname+location.search);home()}scrollTo(0,0)}
+function go(n){try{window._hd&&window._hd.pause();window._gt&&window._gt.pause()}catch(e){}accBar();if(n>=0&&BUILT.includes(n)&&!coMo(n)){history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0);payPop(n);return}if(n>=0&&BUILT.includes(n)&&!ND[n]){app.innerHTML='<p class="card" style="text-align:center">Đang mở bài…</p>';moBai(n).then(()=>go(n)).catch(()=>{U&&(U.k=null);go(-1);payPop(n,"dn");const e=document.getElementById("lErr");if(e)e.textContent="Bố mẹ đăng nhập lại để mở bài nhé"});return}if(n>=0&&ND[n]){history.replaceState(null,"","#cd"+n);topic(n)}else{history.replaceState(null,"",location.pathname+location.search);home()}scrollTo(0,0)}
 document.getElementById("backBtn").onclick=()=>go(-1);document.getElementById("home").onclick=e=>{e.preventDefault();go(-1)};
-Promise.all([fetch("noi-dung.json").then(r=>r.json()),fetch("hinh.json").then(r=>r.json()).catch(()=>({})),fetch("pinyin.json").then(r=>r.json()).catch(()=>({}))]).then(([d,h,py])=>{ND=d;H=h;PY=py;const m=location.hash.match(/^#cd(\d+)$/);go(m?+m[1]:-1);
+Promise.all([KHOA?fetch("muc.json").then(r=>r.json()).then(m=>{BUILT=m.built;return {}}):fetch("noi-dung.json").then(r=>r.json()).then(d=>{BUILT=Object.keys(d).filter(k=>/^\d+$/.test(k)).map(Number);return d}),fetch("hinh.json").then(r=>r.json()).catch(()=>({})),fetch("pinyin.json").then(r=>r.json()).catch(()=>({}))]).then(([d,h,py])=>{ND=d;H=h;PY=py;const m=location.hash.match(/^#cd(\d+)$/);go(m?+m[1]:-1);
   if(KHOA&&U)callApi({app:"dangnhap",u:U.u,m:U.m,giaoTrinh:"BMDC"}).then(r=>{if(r&&r.ok){const a=JSON.stringify(U.own);setOwn(r,U.u,U.m);if(JSON.stringify(U.own)!==a)go(-1)}else if(r&&r.ok===false){U=null;store.set("bmdc-user",null);go(-1)}}).catch(()=>{})}).catch(()=>{app.innerHTML='<p class="card">Chưa tải được nội dung — kiểm tra mạng rồi tải lại trang.</p>'});
 </script>
 
