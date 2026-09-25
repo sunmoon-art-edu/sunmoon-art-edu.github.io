@@ -1,0 +1,765 @@
+{
+ "1": {
+  "t": "Chào hỏi & lễ phép",
+  "icon": "👋",
+  "muc": "Bé chào, cảm ơn, xin lỗi bằng tiếng Trung — và thích nói lời hay mỗi ngày",
+  "w": [
+   [
+    "你好",
+    "nǐ hǎo",
+    "xin chào",
+    "👋"
+   ],
+   [
+    "再见",
+    "zàijiàn",
+    "tạm biệt",
+    "🤚"
+   ],
+   [
+    "谢谢",
+    "xièxie",
+    "cảm ơn",
+    "🙏"
+   ],
+   [
+    "不客气",
+    "bú kèqi",
+    "không có gì",
+    "😊"
+   ],
+   [
+    "对不起",
+    "duìbuqǐ",
+    "xin lỗi",
+    "🥺"
+   ],
+   [
+    "没关系",
+    "méi guānxi",
+    "không sao đâu",
+    "🤗"
+   ],
+   [
+    "早上好",
+    "zǎoshang hǎo",
+    "chào buổi sáng",
+    "🌅"
+   ],
+   [
+    "晚安",
+    "wǎn'ān",
+    "chúc ngủ ngon",
+    "🌙"
+   ],
+   [
+    "老师好",
+    "lǎoshī hǎo",
+    "chào cô giáo",
+    "👩‍🏫"
+   ]
+  ],
+  "cau": [
+   [
+    "早上好！",
+    "Zǎoshang hǎo!",
+    "Chào buổi sáng!",
+    "Sáng con thức dậy"
+   ],
+   [
+    "再见！",
+    "Zàijiàn!",
+    "Tạm biệt!",
+    "Con đi học, bố mẹ đi làm"
+   ],
+   [
+    "谢谢妈妈！",
+    "Xièxie māma!",
+    "Con cảm ơn mẹ!",
+    "Con nhận quà, nhận đồ ăn"
+   ],
+   [
+    "不客气！",
+    "Bú kèqi!",
+    "Không có gì!",
+    "Khi con được cảm ơn"
+   ],
+   [
+    "对不起！— 没关系。",
+    "Duìbuqǐ! — Méi guānxi.",
+    "Xin lỗi! — Không sao đâu.",
+    "Lỡ làm rơi đồ, va vào nhau"
+   ],
+   [
+    "晚安！",
+    "Wǎn'ān!",
+    "Chúc ngủ ngon!",
+    "Trước khi đi ngủ"
+   ]
+  ],
+  "song": [
+   [
+    "m_rDIzj6DRE",
+    "Hello Song (你好歌)",
+    "Little Fox Chinese",
+    "0:59"
+   ],
+   [
+    "rS_BBHJ91nc",
+    "Good Morning, Good Evening (早上好, 晚上好)",
+    "Little Fox Chinese",
+    "1:39"
+   ]
+  ],
+  "game": [
+   [
+    "Chú gấu đến chơi",
+    "Một con thú bông",
+    "Bố mẹ cầm gấu “đi tới” — bé vẫy tay nói 你好. Gấu “đi về” — bé nói 再见. Đổi vai: bé cầm gấu, bố mẹ chào."
+   ],
+   [
+    "Cửa hàng lễ phép",
+    "Vài món đồ chơi, đồ ăn vặt",
+    "Bố mẹ làm người bán, đưa món đồ — bé nói 谢谢 mới nhận được. Bố mẹ đáp 不客气. Rồi đổi vai."
+   ],
+   [
+    "Mặt trời — mặt trăng",
+    "2 tờ giấy vẽ mặt trời, mặt trăng",
+    "Giơ mặt trời → bé nói 早上好 và vươn vai. Giơ mặt trăng → bé nói 晚安 và nằm “ngủ”. Giơ càng nhanh càng vui."
+   ]
+  ],
+  "st": {
+   "ten": "Con rối ngón tay biết chào",
+   "can": "Bút lông, giấy màu, băng dính",
+   "buoc": [
+    "Vẽ mặt cười nhỏ lên ngón tay (hoặc lên túi giấy)",
+    "Đặt tên cho rối, dán tóc bằng giấy màu",
+    "Rối chào bé 你好, bé chào lại — rối cảm ơn 谢谢, bé đáp 不客气",
+    "In trang tô màu chữ 你好 · 谢谢 để bé tô và dán lên tường"
+   ],
+   "in": [
+    "你好",
+    "谢谢",
+    "再见"
+   ]
+  },
+  "tuan": [
+   "Nghe cô hướng dẫn · xem thẻ hình 你好, 再见, 谢谢",
+   "Hát “Hello Song” · chơi Chú gấu đến chơi",
+   "Thẻ hình 不客气, 对不起, 没关系 · chơi Cửa hàng lễ phép",
+   "Làm con rối ngón tay · tô màu chữ 你好",
+   "Thẻ hình 早上好, 晚安 · chơi Mặt trời — mặt trăng",
+   "Hát lại 2 bài · bé chơi nghe — chạm hình",
+   "Ôn cả tuần: nói 6 câu mỗi ngày trong sinh hoạt"
+  ],
+  "hd": [
+   "Chào ba mẹ! Tuần này, ba mẹ cùng con học chuyên đề: chào hỏi và lễ phép. Ba mẹ không cần biết tiếng Trung, chỉ cần nghe và nói theo cô nhé.",
+   "Câu đầu tiên là xin chào:",
+   "zh:你好",
+   "Hai chữ đều mang thanh ba, nên chữ đầu đọc lên giọng, nghe như: ní hảo.",
+   "Tạm biệt là:",
+   "zh:再见",
+   "Cảm ơn là:",
+   "zh:谢谢",
+   "Khi được cảm ơn, con đáp là không có gì:",
+   "zh:不客气",
+   "Xin lỗi là:",
+   "zh:对不起",
+   "và đáp lại, không sao đâu:",
+   "zh:没关系",
+   "Buổi sáng, cả nhà chào nhau:",
+   "zh:早上好",
+   "Buổi tối, chúc ngủ ngon:",
+   "zh:晚安",
+   "Và đến lớp, con chào cô giáo:",
+   "zh:老师好",
+   "Mẹo dạy con: mỗi ngày chỉ cần năm đến mười phút, nhưng hãy nói đi nói lại trong sinh hoạt. Sáng dậy nói chào buổi sáng, đi ngủ nói chúc ngủ ngon. Khi con nói đúng, ba mẹ khen con:",
+   "zh:真棒！",
+   "nghĩa là giỏi quá. Chúc ba mẹ và con học thật vui!"
+  ]
+ },
+ "2": {
+  "t": "Số đếm 1–10",
+  "icon": "🔢",
+  "muc": "Bé đếm từ 1 đến 10, giơ tay ra số kiểu Trung Quốc và đếm mọi thứ quanh nhà",
+  "w": [
+   [
+    "一",
+    "yī",
+    "một",
+    "1"
+   ],
+   [
+    "二",
+    "èr",
+    "hai",
+    "2"
+   ],
+   [
+    "三",
+    "sān",
+    "ba",
+    "3"
+   ],
+   [
+    "四",
+    "sì",
+    "bốn",
+    "4"
+   ],
+   [
+    "五",
+    "wǔ",
+    "năm",
+    "5"
+   ],
+   [
+    "六",
+    "liù",
+    "sáu",
+    "6"
+   ],
+   [
+    "七",
+    "qī",
+    "bảy",
+    "7"
+   ],
+   [
+    "八",
+    "bā",
+    "tám",
+    "8"
+   ],
+   [
+    "九",
+    "jiǔ",
+    "chín",
+    "9"
+   ],
+   [
+    "十",
+    "shí",
+    "mười",
+    "10"
+   ]
+  ],
+  "cau": [
+   [
+    "一，二，三，走！",
+    "Yī, èr, sān, zǒu!",
+    "Một, hai, ba, đi nào!",
+    "Trước khi chạy, nhảy, đi ra ngoài"
+   ],
+   [
+    "几个？",
+    "Jǐ ge?",
+    "Mấy cái?",
+    "Hỏi con đếm đồ vật"
+   ],
+   [
+    "三个苹果。",
+    "Sān ge píngguǒ.",
+    "Ba quả táo.",
+    "Đếm hoa quả trên bàn"
+   ],
+   [
+    "我三岁。",
+    "Wǒ sān suì.",
+    "Con 3 tuổi.",
+    "Khi được hỏi tuổi (thay số tuổi của bé)"
+   ],
+   [
+    "再来一次！",
+    "Zài lái yí cì!",
+    "Làm lại lần nữa nào!",
+    "Khi chơi vui muốn chơi tiếp"
+   ]
+  ],
+  "song": [
+   [
+    "NcLNmRgCpAE",
+    "Number Song (数字歌)",
+    "Little Fox Chinese",
+    "0:56"
+   ],
+   [
+    "senrx67q0-k",
+    "Ten Little Dinosaurs (十只小恐龙)",
+    "Little Fox Chinese",
+    "2:22"
+   ]
+  ],
+  "game": [
+   [
+    "Leo cầu thang đếm số",
+    "Cầu thang trong nhà hoặc vạch phấn trên sàn",
+    "Mỗi bước bé đọc to một số: 一，二，三… Lên tới 十 thì cả nhà vỗ tay 真棒！"
+   ],
+   [
+    "Bàn tay ra số",
+    "Không cần gì",
+    "Bố mẹ nói số, bé giơ tay kiểu Trung Quốc: 6 = ngón cái + út, 8 = ngón cái + trỏ, 10 = bắt chéo 2 ngón trỏ. Rồi bé nói, bố mẹ giơ tay."
+   ],
+   [
+    "Đi chợ đếm quả",
+    "Hoa quả hoặc đồ chơi nhỏ",
+    "Bố mẹ hỏi 几个？ — bé đếm to và bỏ đúng số quả vào rổ. Đếm đúng được “mua” 1 quả thật để ăn."
+   ]
+  ],
+  "st": {
+   "ten": "Vòng hạt đếm số",
+   "can": "Dây len, 10 hạt nhựa hoặc ống hút cắt khúc",
+   "buoc": [
+    "Bé xâu từng hạt vào dây, xâu tới đâu đếm tới đó: 一，二，三…",
+    "Buộc thành vòng tay 10 hạt",
+    "Mỗi tối đếm lại vòng hạt trước khi ngủ",
+    "In trang tô màu các chữ số để bé tô và dán lên tường"
+   ],
+   "in": [
+    "一",
+    "二",
+    "三",
+    "四",
+    "五",
+    "六",
+    "七",
+    "八",
+    "九",
+    "十"
+   ]
+  },
+  "tuan": [
+   "Nghe cô hướng dẫn · thẻ hình 1–5",
+   "Hát “Number Song” · chơi Leo cầu thang đếm số",
+   "Thẻ hình 6–10 · chơi Bàn tay ra số",
+   "Làm vòng hạt đếm số",
+   "Chơi Đi chợ đếm quả · hỏi 几个？",
+   "Hát lại 2 bài · bé chơi nghe — chạm số",
+   "Ôn cả tuần: đếm mọi thứ trong nhà"
+  ],
+  "hd": [
+   "Chào ba mẹ! Tuần này, mình cùng con đếm từ một đến mười bằng tiếng Trung. Ba mẹ nghe cô đếm một lượt nhé.",
+   "zh:一，二，三，四，五，六，七，八，九，十。",
+   "Có ba số hay đọc sai. Số bốn:",
+   "zh:四",
+   "lưỡi để thẳng, đọc gần như xư. Số mười:",
+   "zh:十",
+   "cong lưỡi lên, đọc gần như sư. Số bảy:",
+   "zh:七",
+   "bật hơi ra, đọc gần như chi.",
+   "Người Trung Quốc đếm bằng một bàn tay. Số sáu giơ ngón cái và ngón út. Số tám giơ ngón cái và ngón trỏ. Số mười bắt chéo hai ngón trỏ. Con sẽ rất thích trò này!",
+   "Trong ngày, ba mẹ cùng con đếm mọi thứ: bậc cầu thang, quả táo, đồ chơi. Hỏi con có mấy cái:",
+   "zh:几个？",
+   "Và trước khi chạy nhảy, cả nhà cùng hô:",
+   "zh:一，二，三，走！",
+   "Con đếm đúng, ba mẹ khen:",
+   "zh:真棒！",
+   "Chúc cả nhà học thật vui!"
+  ]
+ },
+ "gioiThieu": [
+  [
+   "Xin chào các bạn nhỏ! Cô là Cô Mặt Trời đây!",
+   0
+  ],
+  [
+   "Mỗi sáng, cô thức dậy thật sớm và chào các bạn bằng tiếng Trung:",
+   0
+  ],
+  [
+   "zh:你好！",
+   0
+  ],
+  [
+   "Các bạn nói theo cô nhé!",
+   0,
+   2.2
+  ],
+  [
+   "zh:你好！",
+   0
+  ],
+  [
+   "Giỏi quá! Tiếng Trung khen là:",
+   0
+  ],
+  [
+   "zh:真棒！",
+   0
+  ],
+  [
+   "Cô có một người bạn thân, là Ông Mặt Trăng.",
+   1
+  ],
+  [
+   "Mặt trời, tiếng Trung là:",
+   1
+  ],
+  [
+   "zh:太阳",
+   1
+  ],
+  [
+   "Mặt trăng là:",
+   1
+  ],
+  [
+   "zh:月亮",
+   1
+  ],
+  [
+   "Cô và Ông Mặt Trăng sẽ cùng các bạn hát, chơi trò chơi, và xem thật nhiều hình vẽ.",
+   1
+  ],
+  [
+   "Mỗi ngày chỉ mười phút, học cùng bố mẹ. Nào, mình bắt đầu thôi!",
+   1
+  ],
+  [
+   "zh:一，二，三，走！",
+   1
+  ]
+ ],
+ "0": {
+  "t": "Làm quen tiếng Trung & thanh điệu",
+  "icon": "🐼",
+  "muc": "Ba mẹ hiểu vì sao nên cho con học tiếng Trung — bé làm quen đất nước Trung Quốc và 4 thanh điệu, giống tiếng Việt lắm!",
+  "ly": [
+   [
+    "🏮",
+    "Văn hoá Trung Quốc rất gần gũi với Việt Nam",
+    "cùng ăn Tết Nguyên đán, Tết Trung thu, dùng đôi đũa, có 12 con giáp — bé học mà thấy quen ngay"
+   ],
+   [
+    "🏫",
+    "Nhiều trường đã dạy ngoại ngữ thứ hai",
+    "tiếng Trung là lựa chọn phổ biến — con làm quen sớm sẽ tự tin hơn"
+   ],
+   [
+    "🧩",
+    "Khoảng 60% từ tiếng Việt có gốc Hán",
+    "học sinh → 学生 xuésheng, chú ý → 注意 zhùyì — người Việt học tiếng Trung rất nhanh"
+   ],
+   [
+    "👂",
+    "Tuổi 3–7 là tuổi vàng bắt âm",
+    "bé bắt thanh điệu tự nhiên như chơi, không cần học thuộc"
+   ]
+  ],
+  "w": [
+   [
+    "中国",
+    "Zhōngguó",
+    "Trung Quốc",
+    "🌏"
+   ],
+   [
+    "熊猫",
+    "xióngmāo",
+    "gấu trúc",
+    "🐼"
+   ],
+   [
+    "灯笼",
+    "dēnglong",
+    "đèn lồng",
+    "🏮"
+   ],
+   [
+    "饺子",
+    "jiǎozi",
+    "sủi cảo",
+    "🥟"
+   ],
+   [
+    "龙",
+    "lóng",
+    "con rồng",
+    "🐉"
+   ],
+   [
+    "筷子",
+    "kuàizi",
+    "đôi đũa",
+    "🥢"
+   ],
+   [
+    "妈",
+    "mā",
+    "mẹ (thanh 1)",
+    "👩"
+   ],
+   [
+    "麻",
+    "má",
+    "cây gai (thanh 2)",
+    "🌿"
+   ],
+   [
+    "马",
+    "mǎ",
+    "con ngựa (thanh 3)",
+    "🐴"
+   ],
+   [
+    "骂",
+    "mà",
+    "mắng (thanh 4)",
+    "😠"
+   ]
+  ],
+  "thanh": [
+   [
+    "1",
+    "ā",
+    "—",
+    "Ngang, cao, kéo dài",
+    "Giống thanh ngang (không dấu) nhưng CAO hơn",
+    "mā · 妈 · mẹ",
+    "ma"
+   ],
+   [
+    "2",
+    "á",
+    "↗",
+    "Đi lên",
+    "Giống dấu SẮC",
+    "má · 麻 · cây gai",
+    "má"
+   ],
+   [
+    "3",
+    "ǎ",
+    "↘↗",
+    "Trầm xuống rồi lên",
+    "Giống dấu HỎI",
+    "mǎ · 马 · con ngựa",
+    "mả"
+   ],
+   [
+    "4",
+    "à",
+    "↘",
+    "Rơi mạnh, dứt khoát",
+    "Giống dấu HUYỀN nhưng rơi nhanh, mạnh",
+    "mà · 骂 · mắng",
+    "mà"
+   ],
+   [
+    "nhẹ",
+    "a",
+    "·",
+    "Đọc nhẹ, ngắn",
+    "Giống đọc lướt, không nhấn",
+    "māma · 妈妈 · mẹ (chữ sau đọc nhẹ)",
+    "—"
+   ]
+  ],
+  "cau": [
+   [
+    "你好！",
+    "Nǐ hǎo!",
+    "Xin chào!",
+    "Bắt đầu mỗi buổi học"
+   ],
+   [
+    "熊猫！",
+    "Xióngmāo!",
+    "Gấu trúc!",
+    "Chỉ vào gấu trúc trong tranh, trong sở thú"
+   ],
+   [
+    "妈妈！",
+    "Māma!",
+    "Mẹ ơi!",
+    "Bé gọi mẹ bằng tiếng Trung"
+   ],
+   [
+    "我爱中文！",
+    "Wǒ ài Zhōngwén!",
+    "Con yêu tiếng Trung!",
+    "Cuối buổi học, cả nhà cùng hô"
+   ]
+  ],
+  "song": [
+   [
+    "96ZzzwPdNhM",
+    "Hello! (你好！)",
+    "Little Fox Chinese",
+    "1:03"
+   ],
+   [
+    "g3D0Bd0Fwxo",
+    "Head and Shoulders (头和肩膀)",
+    "Little Fox Chinese",
+    "0:57"
+   ]
+  ],
+  "game": [
+   [
+    "Tay vẽ thanh điệu",
+    "Không cần gì",
+    "Bố mẹ đọc mā — cả nhà đưa tay NGANG. má — tay ĐI LÊN. mǎ — tay chúc XUỐNG rồi LÊN. mà — tay CHÉM xuống. Rồi bé tự đọc và vẽ tay."
+   ],
+   [
+    "Đoán “ma” nào",
+    "4 tranh: mẹ, cây gai, con ngựa, bé bị mắng",
+    "Bố mẹ đọc 1 trong 4 tiếng mā / má / mǎ / mà — bé chạy tới chỉ đúng tranh. Đúng thì bố mẹ khen 真棒！"
+   ],
+   [
+    "Thám hiểm Trung Quốc",
+    "Tranh gấu trúc, đèn lồng, đôi đũa (hoặc đồ thật)",
+    "Bố mẹ giấu tranh quanh nhà. Bé tìm thấy thì nói to tên tiếng Trung: 熊猫！灯笼！筷子！"
+   ]
+  ],
+  "st": {
+   "ten": "Đèn lồng đỏ tự làm",
+   "can": "Giấy màu đỏ, kéo, keo dán, dây",
+   "buoc": [
+    "Gấp đôi tờ giấy đỏ theo chiều dài, cắt các đường song song từ nếp gấp (không cắt đứt)",
+    "Mở ra, cuộn thành ống, dán mép lại",
+    "Dán thêm quai giấy — bé treo đèn lồng và nói 灯笼！",
+    "In trang tô màu chữ 中国 · 熊猫 · 你好 để bé tô"
+   ],
+   "in": [
+    "中国",
+    "熊猫",
+    "你好",
+    "妈",
+    "马"
+   ]
+  },
+  "tuan": [
+   "Ba mẹ nghe cô hướng dẫn · đọc phần “Vì sao nên cho con học tiếng Trung”",
+   "Xem thẻ hình đất nước Trung Quốc · chơi Thám hiểm Trung Quốc",
+   "Học 4 thanh điệu với tiếng “ma” · chơi Tay vẽ thanh điệu",
+   "Làm đèn lồng đỏ · tô màu chữ 中国",
+   "Hát “Hello” · chơi Đoán “ma” nào",
+   "Bé chơi nghe — chạm hình",
+   "Ôn cả tuần: gọi 妈妈, chào 你好 mỗi ngày"
+  ],
+  "hd": [
+   "Chào ba mẹ! Trước khi vào các chuyên đề, mình cùng làm quen với tiếng Trung nhé.",
+   "Vì sao nên cho con học tiếng Trung? Văn hoá Trung Quốc rất gần gũi với Việt Nam: mình cùng ăn Tết Nguyên đán, Tết Trung thu, cùng dùng đôi đũa, cùng có mười hai con giáp. Nhiều trường đã dạy ngoại ngữ thứ hai, và tiếng Trung là lựa chọn phổ biến. Hơn nữa, khoảng sáu mươi phần trăm từ tiếng Việt có gốc Hán, nên người Việt học tiếng Trung rất nhanh.",
+   "Tuổi ba đến bảy là tuổi vàng để bé bắt âm. Và tin vui là: thanh điệu tiếng Trung giống tiếng Việt lắm!",
+   "Tiếng Việt có sáu thanh, tiếng Trung có bốn thanh và một thanh nhẹ. Cùng nghe với âm ma nhé.",
+   "Thanh một, ngang và cao, giống thanh không dấu:",
+   "zh:妈",
+   "nghĩa là mẹ. Thanh hai, đi lên, giống dấu sắc:",
+   "zh:麻",
+   "Thanh ba, trầm xuống rồi lên, giống dấu hỏi:",
+   "zh:马",
+   "là con ngựa. Thanh bốn, rơi mạnh, giống dấu huyền nhưng dứt khoát:",
+   "zh:骂",
+   "là mắng.",
+   "Ba mẹ cùng con vừa đọc vừa vẽ tay theo thanh điệu, bé sẽ nhớ rất nhanh. Chúc cả nhà học vui!"
+  ],
+  "vh": [
+   [
+    "🧧",
+    "春节",
+    "Chūnjié",
+    "Tết Nguyên đán",
+    "Cả nhà sum họp, trẻ con được lì xì bao đỏ — giống Tết Việt Nam",
+    [
+     "_AmgwWcJEGs",
+     "Bé học tiếng Trung chủ đề Ngày Tết",
+     "Dino Chinese",
+     "10:02"
+    ]
+   ],
+   [
+    "🥮",
+    "中秋节",
+    "Zhōngqiūjié",
+    "Tết Trung thu",
+    "Ăn bánh trung thu, rước đèn, ngắm trăng tròn",
+    [
+     "Zwr5ryPtXGg",
+     "Sự tích chú Cuội cung trăng",
+     "Kể Bé Nghe",
+     "5:26"
+    ]
+   ],
+   [
+    "🏮",
+    "灯笼",
+    "dēnglong",
+    "Đèn lồng đỏ",
+    "Màu đỏ mang may mắn, treo khắp phố ngày lễ",
+    [
+     "4nYNLYabWVM",
+     "Lễ hội đèn lồng Nguyên tiêu cho bé",
+     "Little Story House",
+     "5:08"
+    ]
+   ],
+   [
+    "🐼",
+    "熊猫",
+    "xióngmāo",
+    "Gấu trúc",
+    "“Quốc bảo” của Trung Quốc, thích ăn trúc",
+    [
+     "QaEK3kXVLd4",
+     "Gấu trúc Kiki thích ăn rau",
+     "BabyBus",
+     "4:09"
+    ]
+   ],
+   [
+    "🐉",
+    "龙",
+    "lóng",
+    "Con rồng",
+    "Múa rồng, múa lân ngày Tết cho may mắn",
+    [
+     "sNFp_KRhLE0",
+     "Thùng thình thùng thình — múa lân",
+     "VnKids",
+     "4:03"
+    ]
+   ],
+   [
+    "🥢",
+    "筷子",
+    "kuàizi",
+    "Đôi đũa",
+    "Người Trung Quốc và Việt Nam đều ăn bằng đũa",
+    [
+     "Xe9pgXjsnTc",
+     "Dạy bé kỹ năng cầm đũa",
+     "Mầm non Anh Vũ",
+     "4:44"
+    ]
+   ],
+   [
+    "🍵",
+    "茶",
+    "chá",
+    "Trà",
+    "Uống trà là thói quen hàng nghìn năm",
+    [
+     "viFPBJp5eTc",
+     "Chinese for Kids – Tea 茶",
+     "Little Chinese Learners",
+     "3:11"
+    ]
+   ],
+   [
+    "🐭",
+    "十二生肖",
+    "shí'èr shēngxiào",
+    "12 con giáp",
+    "Giống Việt Nam — chỉ khác: năm Mão là con thỏ, không phải con mèo",
+    [
+     "rfRkjZxwMnE",
+     "Sự tích 12 con giáp",
+     "Tổ Tíu Tít",
+     "3:57"
+    ]
+   ]
+  ]
+ }
+}
