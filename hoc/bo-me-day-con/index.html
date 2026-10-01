@@ -526,6 +526,31 @@ h2 .ic img.fi{width:28px;height:28px}
 .zfab>button{width:52px;height:52px;border-radius:50%;border:0;border-bottom:4px solid #A2342B;background:#C8453A;color:#fff;font:800 13px/1 Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 .zfab .zm{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #E6E0D8;border-radius:14px;padding:10px;box-shadow:0 6px 20px rgba(0,0,0,.15)}.zfab .zm[hidden]{display:none}
 .zfab .zm b{font:600 12px Arial,sans-serif;color:#6E655C}.zfab .zm a{font:700 14px Arial,sans-serif;color:#A2342B;text-decoration:none;padding:4px 2px}
+.streak{display:inline-flex;align-items:center;gap:4px;flex:none;border:2px solid #FFD8A8;background:#FFF5E6;border-radius:999px;padding:3px 10px 3px 6px;font:800 15px var(--tx);color:#C2560C}
+.streak img{width:24px;height:24px}.streak.off{filter:grayscale(1);opacity:.6}
+.banner{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:#FFF5E6;border:2px solid #FFD8A8}
+.banner img{width:46px;height:46px;flex:none}.banner b{display:block;font-size:17px}.banner i{font-weight:300;color:var(--ink-2)}
+.path{display:flex;flex-direction:column;align-items:center;gap:22px;padding:8px 0 4px;position:relative}
+.stn.cur{margin-top:22px}
+.stn{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;padding:0;transform:translateX(var(--x,0));position:relative;max-width:220px}
+.stn .node{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:#fff;border:4px solid var(--line);box-shadow:0 6px 0 var(--line);transition:transform .15s}
+.stn:not([disabled]):active .node{transform:translateY(4px);box-shadow:0 2px 0 var(--line)}
+.stn .node img{width:46px;height:46px}.stn .node .chk{font:800 34px/1 var(--tx);color:#fff}
+.stn .lb{text-align:center;line-height:1.25}.stn .lb b{display:block;font-size:15px}.stn .lb i{font-size:12.5px;font-weight:300;color:var(--ink-2)}
+.stn.done .node{background:#FFC83D;border-color:#E9A400;box-shadow:0 6px 0 #C98C00}
+.stn.cur .node{background:var(--sun);border-color:var(--sun-2);box-shadow:0 6px 0 var(--sun-2);animation:ring 1.6s ease-out infinite}
+.stn.open .node{border-color:var(--sun)}
+.stn.lock .node,.stn.soon .node{background:#F1EEEA;filter:grayscale(.6)}
+.stn.soon{opacity:.6}
+.stn .bat{position:absolute;top:-30px;left:50%;transform:translateX(-50%);background:#fff;border:2px solid var(--sun);color:var(--sun-2);font:800 12px var(--tx);letter-spacing:.06em;border-radius:10px;padding:3px 9px;white-space:nowrap;animation:bob 1.4s ease-in-out infinite}
+.chest{display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateX(var(--x,0));border:0;background:none;padding:0}
+.chest img{width:64px;height:64px}.chest.locked img{filter:grayscale(1);opacity:.55}.chest i{font-size:12.5px;font-weight:300;color:var(--ink-2)}
+@keyframes ring{0%{box-shadow:0 6px 0 var(--sun-2),0 0 0 0 rgba(200,69,58,.45)}100%{box-shadow:0 6px 0 var(--sun-2),0 0 0 16px rgba(200,69,58,0)}}
+@keyframes bob{50%{transform:translate(-50%,-4px)}}
+.mung{position:fixed;inset:0;z-index:70;display:grid;place-items:center;background:rgba(20,16,14,.45);padding:16px}
+.mung .bx{background:#fff;border-radius:24px;padding:22px 20px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;width:min(360px,100%);animation:pop .5s ease}
+.mung .bx img{width:96px;height:96px}.mung .so{font:800 44px/1 var(--tx);color:#E8590C}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.05)}100%{transform:none;opacity:1}}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
 .pprice s{color:var(--ink-2)}.pprice b{font-size:28px;color:var(--sun)}.pprice i{font-weight:300;font-size:13px;color:var(--ink-2);flex-basis:100%}
@@ -553,6 +578,7 @@ h2 .ic img.fi{width:28px;height:28px}
 <div class="top"><div class="in">
   <a class="brand" href="#" id="home"><img class="lm" src="mark2.png" alt=""><img class="lw" src="word2.png" alt="SunMoon"><span class="lvl">BỐ MẸ DẠY CON</span></a>
   <button class="back" id="backBtn" hidden>← Chuyên đề</button>
+  <span class="streak" id="streakChip" hidden aria-label="Chuỗi ngày học"></span>
   <button class="acc" id="accBtn" hidden>Đăng nhập</button>
 </div></div>
 <div class="wrap" id="app"></div>
@@ -618,9 +644,20 @@ function home(){
     <ul class="steps"><li data-n="1"><span><b>Bố mẹ nghe cô hướng dẫn</b> <i>— 1 phút, biết cách đọc và cách dạy</i></span></li><li data-n="2"><span><b>Chơi cùng con 15 phút mỗi ngày</b> <i>— thẻ hình, bài hát, trò chơi</i></span></li><li data-n="3"><span><b>Nói tiếng Trung trong sinh hoạt</b> <i>— sáng dậy, ăn cơm, đi ngủ</i></span></li></ul></section>
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Bé tiến bộ nhờ được học đều mỗi ngày. Nếu bố mẹ và bé học không đều, SunMoon không dám hứa chắc kết quả đạt được. Chi phí chương trình nhỏ, nhưng bố mẹ hãy dành cho con <b style="display:inline">15 phút mỗi ngày</b> để thấy hiệu quả nhé!</p></div></div>
   <section class="card">${DAT}<p class="note" style="font-style:normal;margin:0"><b>Khoá 30 ngày · 599.000đ</b> <i>— chưa tới 20.000đ/ngày · tặng bộ file in · email báo tiến độ mỗi tuần</i></p></section>
-  <section class="card"><h2><span class="ic">${im("📚")}</span>Chuyên đề <small>bắt đầu từ bài Mở đầu · khoá 30 ngày = Mở đầu + 4 chuyên đề</small></h2>
-    <div class="topics">${TOPICS.map(([n,t,e])=>{const ok=BUILT.includes(n),mo=coMo(n),g=giaNay();return `<button class="tp${ok?"":" soon"}${ok&&KHOA&&mo?" own":""}" data-cd="${n}"${ok?"":" disabled"}><span class="e">${im(e,t)}</span><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><span class="st">${!ok?"Sắp có":mo?(n===0?"Bắt đầu ở đây":KHOA?"✓ Đã mở · Học ngay":"Học ngay"):`<span class="lk">🔒 ${tien(g)}</span>`}</span></button>`}).join("")}</div></section>`;
-  app.querySelectorAll(".tp[data-cd]:not(.soon)").forEach(b=>b.onclick=()=>go(+b.dataset.cd));
+  ${(()=>{const n=chuoi(),hn=ngayHoc().includes(homNay());if(KHOA&&!U)return "";
+    return `<div class="banner"><img src="${H["🔥"]||""}" alt=""><div><b>${hn?`Hôm nay bé đã học ✓ · ${n} ngày liền`:n?`Học hôm nay để giữ lửa ${n} ngày!`:ngayHoc().length?"Gấu trúc nhớ bé lắm — học lại nhé!":"Bắt đầu ngày học đầu tiên nào!"}</b><i>${hn?"Mai quay lại để chuỗi dài thêm":"Chỉ 15 phút thôi"}</i></div></div>`})()}
+  <section class="card"><h2><span class="ic">${im("🗺")}</span>Hành trình của bé <small>mỗi trạm là một chuyên đề · đi lần lượt nhé</small></h2>
+    <div class="path">${(()=>{const X=daXong(),OFF=[0,52,84,52,0,-52,-84,-52];let k=0,h="",cur=-1;
+      for(const [n] of TOPICS)if(BUILT.includes(n)&&coMo(n)&&!X.has(n)){cur=n;break}
+      for(const [n,t,e] of TOPICS){const ok=BUILT.includes(n),mo=coMo(n),x=OFF[k++%8];
+        const cls=!ok?"soon":!mo?"lock":X.has(n)?"done":n===cur?"cur":"open";
+        const sub=!ok?"Sắp có":!mo?`🔒 ${tien(giaNay())}`:X.has(n)?"Đã xong ⭐":n===cur?"Học tiếp":"Đã mở";
+        h+=`<button class="stn ${cls}" data-cd="${n}" style="--x:${x}px"${ok?"":" disabled"} aria-label="${n===0?"Mở đầu":"Chuyên đề "+n}: ${esc(t)} — ${sub}">${n===cur?`<span class="bat">BẮT ĐẦU</span>`:""}<span class="node">${X.has(n)?`<span class="chk">✓</span>`:im(e,t)}</span><span class="lb"><b>${n===0?"Mở đầu":n} · ${esc(t)}</b><i>${sub}</i></span></button>`;
+        if(n&&n%4===0){const all=[...Array(4)].every((_,q)=>X.has(n-q))&&X.has(n-3);h+=`<div class="chest${all?"":" locked"}" style="--x:${OFF[k++%8]}px"><img src="${H["🎁"]||""}" alt=""><i>${all?"Quà khoá "+(n/4)+" — bé giỏi quá!":"Quà cuối khoá "+(n/4)}</i></div>`}}
+      return h})()}</div></section>`;
+  app.querySelectorAll(".stn[data-cd]:not([disabled])").forEach(b=>b.onclick=()=>{tone([660,990],.08);go(+b.dataset.cd)});
+  app.querySelectorAll(".chest:not(.locked)").forEach(b=>b.onclick=()=>mung("🎁",null,"Mở quà!","Bé đã học xong cả khoá — 真棒 zhēn bàng!"));
+  veChuoi();
   sunIntro(document.getElementById("stage"));
 }
 /* 1 chuyên đề */
@@ -654,6 +691,7 @@ function topic(n){
   const a=new Audio();RS(`aud/c${n}-hd.mp4`).then(u=>{a.src=u}).catch(()=>{});const btn=document.getElementById("hdPlay"),bar=document.getElementById("hdBar"),tm=document.getElementById("hdT");const f=t=>Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0");
   a.onloadedmetadata=()=>{bar.max=a.duration;tm.textContent="0:00 / "+f(a.duration)};a.ontimeupdate=()=>{bar.value=a.currentTime;tm.textContent=f(a.currentTime)+(a.duration?" / "+f(a.duration):"")};
   a.onplay=()=>btn.innerHTML=PAUSE;a.onpause=a.onended=()=>btn.innerHTML=PLAY;btn.onclick=()=>{try{cur&&cur.pause()}catch(e){}a.paused?a.play().catch(()=>{}):a.pause()};bar.oninput=()=>a.currentTime=+bar.value;window._hd=a;
+  if(danhDauHoc()){const c=chuoi();setTimeout(()=>mung("🔥",c,c>1?`${c} ngày học liền!`:"Ngày học đầu tiên!",c>1?"Giữ lửa mỗi ngày nhé, bé giỏi quá!":"Mai học tiếp để có chuỗi 2 ngày nhé!"),600)}veChuoi();
   {const hn=new Date().toLocaleDateString("sv-SE"),kk="bmdc-mo-"+n;if(store.get(kk,"")!==hn){store.set(kk,hn);ghiKQ(`c${n}-mo`,`${n==0?"Mở đầu":"Chuyên đề "+n} · vào học`,100)}}   // 25/09 chị bỏ lịch 7 ngày — ghi "vào học" mỗi ngày để email tiến độ tuần
   app.querySelectorAll(".fc[data-i]").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-w${b.dataset.i}.mp3`,b)});
   app.querySelectorAll(".ke").forEach(b=>b.onclick=e=>{const t=e.target;a.pause();const vb=t.closest(".vbtn");if(vb){try{cur&&cur.pause()}catch(x){}video(vb.dataset.yt,vb.dataset.t,vb.dataset.m);return}const kk=t.closest(".kk");if(kk){play(`aud/c${n}-k${kk.dataset.k}.mp4`,kk);return}const kz=t.closest(".kz");if(kz)play(`aud/c${n}-v${kz.dataset.zh}.mp3`,kz)});
@@ -777,6 +815,19 @@ async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
 function RS(src){const m=/^(?:aud\/c(\d+)-|in\/to-mau-c(\d+)\.)/.exec(src);if(!KHOA||!m)return Promise.resolve(src);
   if(!BLOB[src])BLOB[src]=giaiMa("enc/"+src+".bin",nhomCD(+(m[1]||m[2]))).then(d=>URL.createObjectURL(new Blob([d],{type:MIME[src.split(".").pop()]||""})));return BLOB[src]}
+/* ---------- 01/10 chị: CHUỖI NGÀY 🔥 · PHÁO GIẤY + ÂM THANH · BẢN ĐỒ CON ĐƯỜNG (học theo Duolingo) ---------- */
+const homNay=()=>new Date().toLocaleDateString("sv-SE");
+const ngayHoc=()=>store.get("bmdc-ngay",[]);
+function chuoi(){const S=new Set(ngayHoc());let n=0;const d=new Date();if(!S.has(homNay()))d.setDate(d.getDate()-1);while(S.has(d.toLocaleDateString("sv-SE"))){n++;d.setDate(d.getDate()-1)}return n}
+function danhDauHoc(){const L=ngayHoc(),t=homNay();if(L.includes(t))return false;L.push(t);store.set("bmdc-ngay",L.slice(-400));return true}
+const daXong=()=>new Set(store.get("bmdc-xong",[]));
+function xongCD(n){const X=daXong();if(X.has(n))return false;X.add(n);store.set("bmdc-xong",[...X]);return true}
+function keng(){tone([523,659,784,1047],.13,"triangle",.14)}
+function mung(anh,so,dong1,dong2){keng();confetti();setTimeout(()=>play("aud/khen.mp3"),500);
+  const o=document.createElement("div");o.className="mung";o.innerHTML=`<div class="bx" role="dialog" aria-modal="true"><img src="${H[anh]||""}" alt="">${so!=null?`<div class="so">${so}</div>`:""}<b style="font-size:20px">${dong1}</b><i style="font-weight:300;color:var(--ink-2)">${dong2||""}</i><button class="big" style="align-self:center">Tuyệt quá!</button></div>`;
+  document.body.appendChild(o);o.querySelector("button").onclick=()=>o.remove();o.onclick=e=>{if(e.target===o)o.remove()}}
+function veChuoi(){const el=document.getElementById("streakChip");if(!el)return;const n=chuoi(),hn=ngayHoc().includes(homNay());
+  el.hidden=!(KHOA?U:true);el.classList.toggle("off",!hn);el.innerHTML=`<img src="${H["🔥"]||""}" alt="">${n}`;el.title=`${n} ngày học liền`}
 /* trình chiếu thẻ hình cho bé */
 function slideshow(n,i){
   const c=ND[n],w=c.w,o=document.createElement("div");o.className="show";document.body.appendChild(o);
@@ -798,7 +849,7 @@ function quiz(n){
   const c=ND[n],box=document.getElementById("quiz"),R=5;let r=0,ok=0,ans=null,tried=false;
   const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
   const round=()=>{
-    if(r>=R){const s=ok>=5?3:ok>=3?2:1;ghiKQ(`c${n}-q`,`${n==0?"Mở đầu":"Chuyên đề "+n} · bé chơi`,ok*20);box.innerHTML=`<div class="stars">${[1,2,3].map(i=>`<span class="${i<=s?"":"off"}">★</span>`).join("")}</div><b style="font-size:20px">${ok}/${R} — ${s===3?"Bé giỏi quá! 真棒！":"Chơi lại nhé!"}</b><button class="big" id="qa">Chơi lại</button>`;if(s===3){confetti();play("aud/khen.mp3")}box.querySelector("#qa").onclick=()=>{r=0;ok=0;round()};return}
+    if(r>=R){const s=ok>=5?3:ok>=3?2:1;ghiKQ(`c${n}-q`,`${n==0?"Mở đầu":"Chuyên đề "+n} · bé chơi`,ok*20);box.innerHTML=`<div class="stars">${[1,2,3].map(i=>`<span class="${i<=s?"":"off"}">★</span>`).join("")}</div><b style="font-size:20px">${ok}/${R} — ${s===3?"Bé giỏi quá! 真棒！":"Chơi lại nhé!"}</b><button class="big" id="qa">Chơi lại</button>`;keng();confetti();setTimeout(()=>play("aud/khen.mp3"),400);if(ok>=3&&xongCD(n))setTimeout(()=>mung("🏆",null,`Xong ${n==0?"chuyên đề Mở đầu":"chuyên đề "+n}!`,"Trạm tiếp theo trên bản đồ đã mở"),1600);box.querySelector("#qa").onclick=()=>{r=0;ok=0;round()};return}
     const idx=sh([...c.w.keys()]).slice(0,4);ans=idx[Math.floor(Math.random()*4)];tried=false;
     box.innerHTML=`<p class="note" style="font-style:normal">Câu ${r+1}/${R} · bấm loa để nghe, rồi chạm hình đúng</p><button class="qhear" id="qh" aria-label="Nghe">🔊</button><div class="qopts">${idx.map(i=>{const e=c.w[i][3];return isNum(e)?`<button class="qo num" data-i="${i}">${im("🍎").repeat(+e)}<small>${e}</small></button>`:`<button class="qo" data-i="${i}">${im(e)}<small>${esc(c.w[i][2])}</small></button>`}).join("")}</div>`;
     const hear=()=>play(`aud/c${n}-w${ans}.mp3`);box.querySelector("#qh").onclick=hear;setTimeout(hear,300);
