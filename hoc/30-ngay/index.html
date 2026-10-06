@@ -212,7 +212,12 @@ body:not(.inles) #lesson{display:none}
 #lesson [data-off]{display:none!important}
 .kq{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--ok-soft);border:2px solid var(--ok);animation:kqin .3s ease-out}
 .kq.mid{background:#FBF0D5;border-color:#E4B342}.kq.low{background:var(--bad-soft);border-color:var(--bad)}
-.linhvat{flex:none;animation:lvin .5s cubic-bezier(.2,1.5,.4,1)}
+.linhvat{position:relative;display:inline-block;width:var(--lv);height:var(--lv);flex:none;line-height:1}
+.linhvat .lv1{display:block;font-size:calc(var(--lv)*.86);line-height:var(--lv);text-align:center;filter:drop-shadow(0 4px 6px rgba(200,100,30,.25))}
+.linhvat .lv2{position:absolute;right:-6%;bottom:-4%;font-size:calc(var(--lv)*.42)}
+.lv-gioi .lv2{right:auto;left:-4%;top:-6%;bottom:auto}
+.lv-lua .lv2{right:auto;left:50%;top:-30%;bottom:auto;transform:translateX(-50%)}
+.linhvat{animation:lvin .5s cubic-bezier(.2,1.5,.4,1)}
 @keyframes lvin{from{transform:scale(.3) rotate(-20deg);opacity:0}}
 .lv-gioi,.lv-cup{animation:lvin .5s cubic-bezier(.2,1.5,.4,1),lvnay 1.4s .5s ease-in-out 2}
 @keyframes lvnay{50%{transform:translateY(-6px)}}
@@ -220,7 +225,7 @@ body:not(.inles) #lesson{display:none}
 .kq .d{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--surface);font:800 22px/1 var(--tx);color:var(--ok-2)}
 .kq.mid .d{color:#8A6416}.kq.low .d{color:var(--bad)}
 .kq .d small{display:block;font-size:11px;font-weight:600;color:var(--ink-2);text-align:center}
-.kq b{display:block;font-size:16px}.kq i{font-size:14px;font-weight:300;color:var(--ink-2)}
+.kq b{display:block;font-size:16px}.kq .dd{font-size:26px;font-weight:800;color:var(--ok-2)}.kq.mid .dd{color:#8A6416}.kq.low .dd{color:var(--bad)}.kq i{font-size:14px;font-weight:300;color:var(--ink-2)}
 .kq .sao{color:#E4B342;font-size:18px;letter-spacing:2px}
 @keyframes kqin{from{transform:scale(.95);opacity:0}}
 .pyblk .sp .tg{font-size:30px}
@@ -1401,22 +1406,9 @@ const PYD={
   ["biến điệu","你好吗|nǐ hǎo ma|Bạn khoẻ không","你好！我很好。|nǐ hǎo wǒ hěn hǎo|Chào bạn! Mình rất khoẻ.","这不是我的书，|zhè bú shì wǒ de shū|Đây không phải sách của mình,","我有一本，|wǒ yǒu yì běn|mình có một quyển,","他有一个。|tā yǒu yí gè|bạn ấy có một cái."]]}};
 Object.assign(YT,{py1:["_nEnY71pTrU","Vần đơn a o e i u ü","HuiChinese会中文","5:31"],py2:["rs8OV0FL10I","Phát âm 21 phụ âm đầu","HuiChinese会中文","1:22"]});
 PYD[1].yt="py1";
-/* Linh vật SunMoon — bé Mặt Trời (SunMoon tự vẽ, 06/10/2026). linhVat(tâm trạng, cỡ px)
-   tâm trạng: gioi (điểm cao) · kha (khá) · colen (động viên) · cup (xong bài) · lua (chuỗi ngày) · chao (chào) */
-function linhVat(m,px){m=m||"kha";px=px||72;
-  const rays=Array.from({length:12},(_,i)=>{const a=i*30*Math.PI/180,x=60+47*Math.cos(a),y=62+47*Math.sin(a);return `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="11" ry="8" transform="rotate(${i*30} ${x.toFixed(1)} ${y.toFixed(1)})" fill="${i%2?"#F2994A":"#E0603F"}"/>`}).join("");
-  const happy=m==="gioi"||m==="cup"||m==="lua"||m==="chao";
-  const eyes=happy?`<path d="M42 58q6-8 12 0M66 58q6-8 12 0" stroke="#2B2622" stroke-width="4.5" fill="none" stroke-linecap="round"/>`
-    :`<ellipse cx="48" cy="57" rx="5" ry="6.5" fill="#2B2622"/><ellipse cx="72" cy="57" rx="5" ry="6.5" fill="#2B2622"/><circle cx="50" cy="54.5" r="1.8" fill="#fff"/><circle cx="74" cy="54.5" r="1.8" fill="#fff"/>`;
-  const mouth=happy?`<path d="M47 70q13 16 26 0z" fill="#B3362B"/><path d="M53 76q7 4 14 0" fill="#F28B82"/>`
-    :m==="colen"?`<path d="M52 73q8 5 16 0" stroke="#B3362B" stroke-width="4" fill="none" stroke-linecap="round"/>`
-    :`<path d="M49 70q11 11 22 0" stroke="#B3362B" stroke-width="4.5" fill="none" stroke-linecap="round"/>`;
-  const extra={gioi:`<g fill="#FFD84D"><path d="M14 22l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path d="M104 14l2.5 5.5 5.5 2.5-5.5 2.5-2.5 5.5-2.5-5.5-5.5-2.5 5.5-2.5z"/></g>`,
-    cup:`<g transform="translate(78 78)"><path d="M6 4h22v8a11 11 0 0 1-22 0z" fill="#FFC23C" stroke="#B9831A" stroke-width="2"/><path d="M6 7H1a6 6 0 0 0 6 7M28 7h5a6 6 0 0 1-6 7" stroke="#B9831A" stroke-width="2.5" fill="none"/><rect x="14" y="23" width="6" height="6" fill="#B9831A"/><rect x="9" y="29" width="16" height="5" rx="2" fill="#C8453A"/></g>`,
-    lua:`<path d="M60 0c8 10 14 16 8 26 6-2 8-8 7-12 6 8 6 22-6 26H51c-12-4-12-18-4-26 0 6 3 10 7 11-5-10 0-17 6-25z" fill="#FF7A2F" transform="translate(0 -6) scale(.9) translate(6 0)"/>`,
-    colen:`<path d="M90 30c3 6 6 9 6 13a6 6 0 0 1-12 0c0-4 3-7 6-13z" fill="#7CC4F2"/>`,
-    chao:`<path d="M96 70q10-14 4-26" stroke="#E0603F" stroke-width="7" fill="none" stroke-linecap="round"/>`}[m]||"";
-  return `<svg class="linhvat lv-${m}" width="${px}" height="${px}" viewBox="0 0 120 124" role="img" aria-label="Bé Mặt Trời SunMoon">${rays}<circle cx="60" cy="62" r="38" fill="#FFC93C"/><circle cx="60" cy="62" r="38" fill="url(#lvg)" opacity=".5"/><defs><radialGradient id="lvg" cx=".35" cy=".3"><stop offset="0" stop-color="#FFF3B0"/><stop offset="1" stop-color="#FFC93C" stop-opacity="0"/></radialGradient></defs><circle cx="38" cy="68" r="6" fill="#F7A08A" opacity=".8"/><circle cx="82" cy="68" r="6" fill="#F7A08A" opacity=".8"/>${eyes}${mouth}${extra}</svg>`}
+/* Linh vật khen thưởng: mặt trời 🌞 (chị duyệt) + biểu tượng nhỏ theo lúc. linhVat(tâm trạng, cỡ px) */
+function linhVat(m,px){m=m||"kha";px=px||72;const nho={gioi:"✨",cup:"🏆",lua:"🔥",colen:"💪",chao:"👋"}[m]||"";
+  return `<span class="linhvat lv-${m}" style="--lv:${px}px" role="img" aria-label="Mặt trời SunMoon"><span class="lv1">🌞</span>${nho?`<span class="lv2">${nho}</span>`:""}</span>`}
 const EMO={"妈": "👩", "麻": "🌶️", "马": "🐴", "骂": "😠", "吗": "❓", "八": "8️⃣", "哦": "😮", "饿": "😋", "一": "1️⃣", "五": "5️⃣", "鱼": "🐟", "爸": "👨", "怕": "😨", "米": "🍚", "饭": "🍛", "大": "🐘", "他": "🧑", "你": "👉", "来": "🚶", "哥": "👦", "看": "👀", "好": "👍", "家": "🏠", "七": "7️⃣", "谢": "🙏", "中": "🇨🇳", "吃": "🥢", "是": "✅", "人": "🧍", "在": "📍", "菜": "🥬", "三": "3️⃣", "也": "➕", "月": "🌙", "元": "💰", "音": "🎵", "云": "☁️", "英": "🇬🇧", "爱": "❤️", "黑": "⚫", "对": "✔️", "狗": "🐶", "六": "6️⃣", "花": "🌸", "我": "🙋", "小": "🐣", "快": "⚡", "二": "2️⃣", "您": "🤝", "春": "🌱", "天": "☀️", "晚": "🌃", "忙": "🏃", "冷": "🥶", "听": "👂", "东": "🌅", "想": "💭", "王": "👑", "用": "🛠️", "你好": "👋", "不是": "🙅", "一个": "☝️", "一天": "📅"};
 const TQ=[["Vần đơn","单韵母","#C8453A","a o e i u ü"],["Phụ âm","声母","#2C68B0","b p m f d t n l g k h j q x zh ch sh r z c s y w"],["Vần ghép","复韵母","#C77A12","ai ei ui ao ou iu ie üe er"],["Vần mũi trước","前鼻韵母","#7B4FB0","an en in un ün"],["Vần mũi sau","后鼻韵母","#C2457E","ang eng ing ong"],["Âm tiết đọc nguyên","整体认读音节","#3E8A4A","zhi chi shi ri zi ci si yi wu yu ye yue yuan yin yun ying"]];
 const TQS=Object.fromEntries(PYFULL.flatMap(x=>x[1].split(" ").map(c=>c.split("|"))).concat([["üe","月"]]));
@@ -1490,7 +1482,7 @@ function setupSteps(el){
     const dung=it.filter(q=>!q.querySelector(".opt.wrong")).length,diem=Math.round(dung/it.length*100)/10,sao=diem>=9?3:diem>=7?2:1,xp=dung===it.length?20:0;
     if(xp){GM.xp+=xp;saveGM();updChips();fanfare()}
     const k=document.createElement("div");k.className="kq"+(diem>=8?"":diem>=5?" mid":" low");
-    k.innerHTML=`${linhVat(diem>=8?"gioi":diem>=5?"kha":"colen",68)}<span class="d">${String(diem).replace(".",",")}<small>/10</small></span><span style="flex:1"><span class="sao">${"★".repeat(sao)}${"☆".repeat(3-sao)}</span><b>Đúng ${dung}/${it.length} câu</b><i>${xp?"Tuyệt vời! +"+xp+" XP thưởng":diem>=5?"Khá lắm — nghe lại câu sai nhé":"Xem lại bảng âm rồi làm lại bài sau nhé"}</i></span>`;
+    k.innerHTML=`${linhVat(diem>=8?"gioi":diem>=5?"kha":"colen",60)}<span style="flex:1;min-width:0"><span class="sao">${"★".repeat(sao)}${"☆".repeat(3-sao)}</span><b><span class="dd">${String(diem).replace(".",",")}</span>/10 điểm · đúng ${dung}/${it.length}</b><i>${xp?"Tuyệt vời! +"+xp+" XP thưởng":diem>=5?"Khá lắm — nghe lại câu sai nhé":"Xem lại bảng âm rồi làm lại nhé"}</i></span>`;
     x.appendChild(k);k.scrollIntoView({block:"nearest",behavior:"smooth"})};
   const upd=()=>{ketQua(slides[i]);const nb=nav.querySelector("[data-n]"),ok=okOf(slides[i]);nb.disabled=!ok;nb.textContent=ok?"Tiếp tục →":"Làm xong bài tập nhé"};
   el.addEventListener("click",()=>setTimeout(upd,0));
