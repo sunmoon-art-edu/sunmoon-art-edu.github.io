@@ -1788,7 +1788,7 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
 })();
 
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261006154905";
+const BAN_SO="20261006155644";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
