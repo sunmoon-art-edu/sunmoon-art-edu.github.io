@@ -1185,8 +1185,8 @@ const BUOI=[
   {ten:"Bài 1 · Chơi · Viết · Kiểm tra",ic:"🏆",xong:[1],ch:[{k:"trang",n:1,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]}];
 const buoiXong=()=>new Set(store.get("yct1-buoi",[]));
 const buoiHT=()=>{const X=buoiXong(),b=BUOI.findIndex((_,i)=>!X.has(i));return b<0?BUOI.length-1:b};
-function khoaBuoi(b){const X=buoiXong();if(b===0||X.has(b))return "";if(!X.has(b-1))return `Học xong Buổi ${b} để mở`;const L=MO3().filter(x=>typeof x==="string");if(!L.includes("b"+b)&&L.length>=3)return "Hôm nay con học 3 buổi rồi — mai học tiếp nhé!";return ""}
-function ghiMoBuoi(b){if(buoiXong().has(b))return;const L=MO3();if(!L.includes("b"+b)){L.push("b"+b);store.set("yct1-mo3",{d:homNay(),ds:L})}}
+function khoaBuoi(b){const X=buoiXong();if(b>0&&!X.has(b)&&!X.has(b-1))return `Học xong Buổi ${b} để mở`;   /* 06/10 tối chị: học lại được, nhưng 1 ngày tối đa 3 buổi (tính cả học lại) */const L=MO3().filter(x=>typeof x==="string");if(!L.includes("b"+b)&&L.length>=3)return "Hôm nay con học 3 buổi rồi — mai học tiếp nhé!";return ""}
+function ghiMoBuoi(b){const L=MO3();if(!L.includes("b"+b)){L.push("b"+b);store.set("yct1-mo3",{d:homNay(),ds:L})}}
 function veBuoiDS(){const X=buoiXong(),hn=buoiHT();
   return `<section class="card buoiDS"><h2><span class="ic">${im("📅")}</span>Các buổi học <small>mỗi buổi ~10 phút</small></h2><div class="bDS">${BUOI.map((B,b)=>{const k=khoaBuoi(b),xg=X.has(b),la=b===hn&&!xg;
     return `<button class="bCard${xg?" da":la&&!k?" cur":" khoa"}" data-b="${b}"${k&&!xg?" disabled":""}><span class="bSo">${xg?"✓":b+1}</span><span class="bTx"><b>Buổi ${b+1}</b><i>${esc(B.ten)}</i>${k&&!xg&&la?`<em>🔒 ${esc(k)}</em>`:""}</span>${la&&!k?`<span class="go">HỌC</span>`:k&&!xg?`<span class="bKh">🔒</span>`:""}</button>`}).join("")}</div></section>`}
@@ -1414,7 +1414,7 @@ function dnTK(){document.querySelectorAll(".tkPop").forEach(x=>x.remove());const
       if(r&&r.ok){const chu=localStorage.getItem("yct1-chu");
         if(chu&&chu!==u){if(U_CU&&U_CU.u===chu){U=U_CU;luuTD()}xoaMay()}   /* 06/10 tối chị: "đăng nhập load chậm" → cất bài bạn trước CHẠY NGẦM (ảnh chụp lấy ngay lúc gọi) */   /* bạn khác vào: cất bài bạn trước lên tài khoản rồi xoá khỏi máy */
         localStorage.setItem("yct1-chu",u);U={u,m,ten:r.ten||u,tk:1};U_CU=null;store.set("yct1-user",U);try{sessionStorage.setItem("yct1-vao",1)}catch(e){}
-        try{const L=JSON.parse(localStorage.getItem("sm-tk-ds")||"[]").filter(x=>x.u!==u);L.unshift({u,ten:U.ten});localStorage.setItem("sm-tk-ds",JSON.stringify(L.slice(0,6)))}catch(e){}const nap=r.snap&&napTD(r.snap);o.remove();if(!nap)luuTD();accBar();go(-1);   /* không tải lại trang, không chờ lưu — vào học ngay */
+        try{const L=JSON.parse(localStorage.getItem("sm-tk-ds")||"[]").filter(x=>x.u!==u);L.unshift({u,ten:U.ten});localStorage.setItem("sm-tk-ds",JSON.stringify(L.slice(0,6)))}catch(e){}const nap=r.snap&&napTD(r.snap);o.remove();if(!nap)luuTD();accBar();go(-1);setTimeout(taiXH,2500);   /* không tải lại trang, không chờ lưu — vào học ngay */
         if(!localStorage.getItem("yct1-avt"))return hoSo(1);mung("👋",null,`Chào ${esc(U.ten)}!`,"Bài học của con sẽ tự lưu nhé")}
       else{$("#tkE").textContent=(r&&r.loi)||"Email hoặc mã chưa đúng";go.disabled=false}}
     catch(e){$("#tkE").textContent="Chưa kết nối được — kiểm tra mạng rồi thử lại nhé";go.disabled=false}};
@@ -1487,11 +1487,14 @@ function nhiemVu(){if(!(U&&U.tk))return dnTK();trangPhu("#nv");
   veTab("nv")}
 /* 06/10 chị gửi mẫu iSMART: BẢNG XẾP HẠNG — 💎 kim cương (tổng) + 👑 XP tuần này; cả SunMoon · lớp của con · nhóm thi đua (≤10 bạn, mã 6 chữ) */
 let XH_PV="tat";
-async function xepHang(){if(!(U&&U.tk))return dnTK();trangPhu("#xh");veTab("xh");
-  app.innerHTML=`<section class="card nvTop"><b>🏆 Xếp hạng</b><span>Đang tải bảng xếp hạng…</span></section>`;
-  try{await Promise.race([Promise.resolve(luuTD()),new Promise(z=>setTimeout(z,4000))])}catch(e){}
-  let r=null;try{r=await callApi({app:"xephang",u:U.u,m:U.m,giaoTrinh:GT_TK,tuan:tuanNay()})}catch(e){}
+const xhCache=()=>{try{return JSON.parse(localStorage.getItem("sm-xh-"+(U&&U.u))||"null")}catch(e){return null}};
+function taiXH(){if(!(U&&U.tk))return Promise.resolve(null);return callApi({app:"xephang",u:U.u,m:U.m,giaoTrinh:GT_TK,tuan:tuanNay()}).then(r=>{if(r&&r.ok)try{localStorage.setItem("sm-xh-"+U.u,JSON.stringify(r))}catch(e){}return r}).catch(()=>null)}
+async function xepHang(){if(!(U&&U.tk))return dnTK();trangPhu("#xh");veTab("xh");   /* 06/10 tối chị: "bảng xếp hạng sao lâu ra thế" → hiện NGAY bảng lần trước, bảng mới tải ngầm */
+  const c=xhCache();if(c){window._XH=c;veXH()}else app.innerHTML=`<section class="card nvTop"><b>🏆 Xếp hạng</b><span>Đang tải bảng xếp hạng…</span></section>`;
+  luuTD();const r=await taiXH();
   if(location.hash!=="#xh")return;
+  if(r&&r.ok){const dg=document.activeElement;if(c&&dg&&app.contains(dg)&&dg.tagName==="INPUT")return;window._XH=r;return veXH()}
+  if(c)return;
   if(!r||!r.ok){app.innerHTML=`<section class="card nvTop"><b>🏆 Xếp hạng</b><span>Chưa tải được — kiểm tra mạng rồi thử lại nhé</span><button class="big" id="xhLai">Thử lại</button></section>`;app.querySelector("#xhLai").onclick=xepHang;return}
   window._XH=r;veXH()}
 function veXH(){const r=window._XH,L=XH_PV==="tat"?r.tat:XH_PV==="lop"?r.lop:r.nhom;
@@ -1594,7 +1597,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610062010";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610062013";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -1642,9 +1645,9 @@ const BO_QUA=".hz,.hzi,ruby,svg,.lsZ,.lt,.ltTu,.py,.hhT,.tnBang,.khenZh,script,s
 function phienAm(root){if(!root||!root.querySelectorAll)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>/[\u3400-\u9fff]/.test(t.nodeValue)&&!t.parentElement.closest(BO_QUA)?1:3});const L=[];while(w.nextNode())L.push(w.currentNode);
   L.forEach(t=>{const sp=document.createElement("span");sp.innerHTML=hzw(t.nodeValue);t.replaceWith(sp)})}
 new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(nd=>{if(nd.nodeType!==1)return;const r=nd.matches&&nd.matches(".mung,.ls,.lsFoot,.htMe,.ltOk,.lsHint")?nd:nd.closest&&nd.closest(".mung,.ls");if(r)phienAm(r)}))).observe(document.body,{childList:true,subtree:true});
-function mung(anh,so,dong1,dong2,them){keng();confetti();setTimeout(()=>play("aud/khen.mp3"),500);
+function mung(anh,so,dong1,dong2,them){keng();confetti();if(anh!=="🔒")setTimeout(()=>{if(document.querySelector(".vidCo"))return;try{const k=new Audio("aud/khen.mp3?v="+AV);k.play().catch(()=>{})}catch(e){}},400);   /* 06/10 tối: khen không làm dừng tiếng đang phát (trước làm dừng bài cô giảng đảo sau) */
   const o=document.createElement("div");o.className="mung";o.innerHTML=`<div class="bx" role="dialog" aria-modal="true">${coMT(anh)}${so!=null?`<div class="so">${so}</div>`:""}<b style="font-size:20px">${dong1}</b><i style="font-weight:300;color:var(--ink-2)">${dong2||""}</i><p class="khenZh"><span class="kz1">真棒！</span><span class="kz2">zhēn bàng</span><span class="kz3">giỏi quá!</span></p>${them||""}<button class="big" style="align-self:center">Tuyệt quá!</button></div>`;
-  document.body.appendChild(o);o.querySelector("button").onclick=()=>o.remove();o.onclick=e=>{if(e.target===o)o.remove()}}
+  document.body.appendChild(o);o.querySelector("button").onclick=()=>o.remove();o.onclick=()=>o.remove();if(anh!=="🔒"&&anh!=="👋")setTimeout(()=>o.remove(),2600)}   /* 06/10 tối chị: "các bạn nhỏ muốn nhanh" — tự đóng sau 2,6 giây, chạm đâu cũng đóng */
 function veChuoi(){try{veXP()}catch(e){}const el=document.getElementById("streakChip");if(!el)return;const n=chuoi(),hn=ngayHoc().includes(homNay());
   el.hidden=!(KHOA?U:true);el.classList.toggle("off",!hn);el.innerHTML=`<img src="${H["🔥"]||""}" alt="">${n}`;el.title=`${n} ngày học liền`}
 /* ---------- 01/10 chị: học xong bài → 10 phút nói với cô giáo thật (Google Meet) ---------- */
@@ -1717,11 +1720,11 @@ function chayDua(n,W0,XONG,T){T=T||{};const W=W0||mucBai(n),PYM=n==0&&!!ND[0].py
       <div class="cdHoi">${kieu==="nghe"?`<button class="cdLoa" id="cdLoa">🔊</button><span class="cdDe">Nghe và chọn đúng!</span>`:`<span class="cdDe">Chữ này là hình nào?</span><span class="cdHz">${esc(W[i][0])}</span>`}</div>
       <div class="cdOp">${op.map((x,k)=>`<button class="cdO" data-x="${x}" style="--m:${MAU[k]}"><span class="cdK">${"ABCD"[k]}</span>${hinhO(x)}<span class="cdT">${kieu==="nhin"?"":`${/[㐀-鿿]/.test(W[x][0])?`<span class="cdZ">${esc(W[x][0])}</span>`:""}`}${tonePy(W[x][1])}</span></button>`).join("")}</div>`;
     o.querySelector(".cdX").onclick=()=>{if(q===0||confirm("Bé muốn dừng cuộc đua à?"))dong()};
-    const L=o.querySelector("#cdLoa");if(L){L.onclick=()=>play(au(i),L);setTimeout(()=>{if(document.body.contains(L))L.click()},350)}
+    const L=o.querySelector("#cdLoa");if(L){L.onclick=()=>play(au(i),L);setTimeout(()=>{if(document.body.contains(L))L.click()},200)}
     o.querySelectorAll(".cdO").forEach(b=>b.onclick=()=>{if(o.dataset.khoa)return;lan++;
       if(+b.dataset.x===i){o.dataset.khoa=1;b.classList.add("dung");if(lan===1){dung++;sao+=2}else dung+=.5;tone([880,1320]);
         ban=ban.map(v=>Math.min(N,v+.55+Math.random()*.5));o.querySelectorAll(".cdNv").forEach((x,k)=>x.style.left=`${(k?ban[k-1]:dung)/N*86}%`);
-        setTimeout(()=>{delete o.dataset.khoa;if(++q<N)ve();else xong()},1300)}
+        setTimeout(()=>{delete o.dataset.khoa;if(++q<N)ve();else xong()},900)}
       else{b.classList.add("sai");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("sai"),450);if(L){clearTimeout(o._doc);o._doc=setTimeout(()=>{if(document.body.contains(L)&&!o.dataset.khoa)L.click()},1300)}}})}
   const dh=setInterval(()=>{const e=o.querySelector("#cdTg"),g=Math.floor((Date.now()-t0)/1000);if(e)e.textContent=`${Math.floor(g/60)}:${String(g%60).padStart(2,"0")}`},500);
   function xong(){clearInterval(dh);const hang=1+ban.filter(v=>v>dung).length;keng();confetti();themXP(sao,"Chạy đua");ghiKQ(`c${n}-cd`,`${n==0?"Mở đầu":"Bài "+n} · Chạy đua (về thứ ${hang})`,Math.round(100*dung/N));
@@ -1907,9 +1910,9 @@ function troChoiNhom(ds,xong,LOAI,OPT){OPT=OPT||{};const sh=a=>a.map(x=>[Math.ra
         <div class="cdOp">${sh(ds).slice(0,Math.max(4,Math.min(6,ds.length))).concat(ds.length<4?[]:[]).map((y,k)=>`<button class="cdO bbG" data-i="${ds.indexOf(y)}" style="--m:${MAU[k%5]}">${hinhB(y)}<span class="cdT"><span class="cdZ">${esc(y.hz)}</span>${tonePy(y.py)}</span></button>`).join("")}</div>`;
       if(![...o.querySelectorAll("[data-i]")].some(b=>+b.dataset.i===ds.indexOf(x))){const b=o.querySelector("[data-i]");b.dataset.i=ds.indexOf(x);b.innerHTML=`${hinhB(x)}<span class="cdT"><span class="cdZ">${esc(x.hz)}</span>${tonePy(x.py)}</span>`}}
     o.querySelector(".cdX").onclick=()=>{dong();xong()};
-    const L=o.querySelector("#bbL");L.onclick=()=>play(x.au,L);setTimeout(()=>L.click(),300);
+    const L=o.querySelector("#bbL");L.onclick=()=>play(x.au,L);setTimeout(()=>L.click(),180);
     o.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{if(o.dataset.k)return;lan++;
-      if(+b.dataset.i===ds.indexOf(x)){o.dataset.k=1;b.classList.add("no");if(lan===1)dung++;tone([880,1320]);if(loai==="trai")chemTrai(b);if(loai==="lego"){o._thap.push(b.style.getPropertyValue("--m"));o._moi=1;b.classList.add("bay")}setTimeout(()=>{delete o.dataset.k;if(++q<thu.length)ve();else ket()},900)}
+      if(+b.dataset.i===ds.indexOf(x)){o.dataset.k=1;b.classList.add("no");if(lan===1)dung++;tone([880,1320]);if(loai==="trai")chemTrai(b);if(loai==="lego"){o._thap.push(b.style.getPropertyValue("--m"));o._moi=1;b.classList.add("bay")}setTimeout(()=>{delete o.dataset.k;if(++q<thu.length)ve();else ket()},650)}
       else{b.classList.add("sai");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("sai"),450);clearTimeout(o._doc);o._doc=setTimeout(()=>{if(document.body.contains(L)&&!o.dataset.k)play(x.au,L)},1300)}})}
   function ket(){keng();confetti();themXP(dung*2,(TRO[loai]||["","Trò chơi"])[1]);
     o.innerHTML=`<div class="cdKet">${im("🏆")}<b>${loai==="bong"?"Nổ hết bóng rồi! 🎈":loai==="chuot"?"Đập trúng hết rồi! 🐭":loai==="trai"?"Chém hết trái cây rồi! 🍉":loai==="lego"?"Xây xong tháp lego! 🧱":"BINGO! 🎉"}</b>${loai==="lego"?`<div class="lgThap lgKet">${o._thap.map(c=>`<i class="lgV" style="--m:${c}"></i>`).join("")}</div>`:""}${thongKe(dung*2,(Date.now()-t0)/1000,Math.round(100*dung/thu.length))}<div class="cdNut"><button class="big" id="bbXong">Học tiếp →</button></div></div>`;
@@ -1940,7 +1943,7 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
       box.innerHTML=`<div class="ltTu">${NH.map((x,t)=>{const xg=x.ds.every(z=>DA.has(z)),mo=xg||t===gi;return `<button class="${t===gi?"on":xg?"da":"khoa"}" data-g="${t}"${mo?"":" disabled"}>${xg&&t!==gi?"✓ ":""}${esc(x.ten)}</button>`}).join("")}</div>
         <div class="ltBuoc"><b>${q+1}/${Q.length}</b>${PHA.map((t,z)=>`<span class="${z===ph?"on":z<ph?"qua":""}">${t}</span>`).join("")}</div><div class="ltBar"><i style="width:${Math.round(q/Q.length*100)}%"></i></div><div id="ltQ"></div>`;
       box.querySelectorAll(".ltTu [data-g]:not([disabled])").forEach(b=>b.onclick=()=>{gi=+b.dataset.g;lam()});
-      const Z=box.querySelector("#ltQ"),$=x=>box.querySelector(x),tiep=(t=900)=>{tone([880,1320]);setTimeout(()=>{q++;ve();box.scrollIntoView({behavior:"smooth",block:"start"})},t)};
+      const Z=box.querySelector("#ltQ"),$=x=>box.querySelector(x),tiep=(t=600)=>{tone([880,1320]);setTimeout(()=>{q++;ve();box.scrollIntoView({behavior:"smooth",block:"start"})},t)};
       const sai=b=>{saiN++;b.classList.add("wrong");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("wrong"),450)};
       if(ph===0){const so=g.ds.indexOf(k)+1;Z.innerHTML=`<p class="ltDe">Từ mới ${so}/${g.ds.length}</p><div class="ltW"><div class="ltPic">${hinh(k)}</div><div><span class="hz">${esc(w[0])}</span><span class="py">${tonePy(w[1])}</span><span class="vi">${esc(w[2])}</span></div><button class="qhear" id="ltH">🔊</button></div><button class="big" id="ltOk">${so<g.ds.length?"Nhớ rồi — từ tiếp →":"Nhớ hết rồi — luyện ngay →"}</button>`;
         const H1=()=>play(nho(k),$("#ltH"));$("#ltH").onclick=H1;setTimeout(H1,300);$("#ltOk").onclick=()=>{q++;ve()};return}
@@ -1960,7 +1963,7 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
           catch(e){$("#ltMh").innerHTML=e&&e.name==="NotAllowedError"?"Máy đang chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy này chưa thu âm được — con nói to theo cô rồi bấm ✓";$("#ltNoiOk").disabled=false}};
         $("#ltNoiOk").onclick=()=>tiep(300);return}
       if(ph===3){Z.innerHTML=`<p class="ltDe">📖 Đọc — chữ nào là “${esc(w[2])}”?</p><div class="ltPic ltPicC">${hinh(k)}</div><div class="ltOpt">${ba(k).map(x=>`<button class="lsO lsZ" data-k="${x}">${esc(W[x][0])}</button>`).join("")}</div>`;
-        Z.querySelectorAll(".lsO").forEach(b=>b.onclick=()=>{if(+b.dataset.k===k){b.classList.add("right");play(nho(k));tiep(1100)}else sai(b)});return}
+        Z.querySelectorAll(".lsO").forEach(b=>b.onclick=()=>{if(+b.dataset.k===k){b.classList.add("right");play(nho(k));tiep(800)}else sai(b)});return}
       if(ph===4){const CHs=[...w[0].replace(/[^㐀-鿿]/g,"")];let cq=0;Z.innerHTML=`<p class="ltDe">✍️ Viết — tô từng nét chữ “${esc(w[0])}”</p><div class="ltViet" id="ltViet"></div><p class="ltOk" id="ltVh">Xem bảng thứ tự nét, cô viết mẫu, rồi con tô theo nét đang nhấp nháy</p>`;
         napHW().then(()=>{const vt=$("#ltViet");const mot=()=>{const chr=CHs[cq];vt.innerHTML=`<div class="tnBang" id="ltBang"></div><div class="tnO"><svg class="mi" viewBox="0 0 100 100"><path d="M0 0L100 100M100 0L0 100M50 0V100M0 50H100" stroke="#CBE7E7" stroke-dasharray="3 3" fill="none"/></svg><div id="ltHW"></div></div><button class="btn2" id="ltXem">▶ Xem cô viết lại</button>`;
           const Zw=Math.min(240,(box.clientWidth||320)-40),hw=vt.querySelector("#ltHW");hw.style.width=hw.style.height=Zw+"px";hw.parentElement.style.width=hw.parentElement.style.height=Zw+"px";
@@ -2127,7 +2130,7 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
         if(bt.dataset.o===cq.dataset.py){bt.classList.add("right");cq.classList.add("xong");tone([880,1320]);if(lan===1)dung++;if(++xong===Q.length)xongTro(Z,dung,Q.length,"Giải mã xong! 🔓")}
         else{bt.classList.add("wrong");tone([180],.18,"triangle",.07);setTimeout(()=>bt.classList.remove("wrong"),450)}})})}
     // 06/10 chị: trang kiến thức mới PHẢI CÓ CÔ GIẢNG — vào nhóm là mở lớp học, cô giảng cả nhóm (aud/c0-nh*.mp4, _gen_nhom.py); giảng xong → luyện tập
-    const giangNhom=()=>{const au=play(`aud/c0-nh${g.nh}.mp4`);au.addEventListener("ended",()=>setTimeout(()=>{const x=document.querySelector(".vidCo .vcX");if(x)x.click()},1200));moVideo(au,`aud/c0-nh${g.nh}.json`)};
+    const giangNhom=()=>{const au=play(`aud/c0-nh${g.nh}.mp4`);au.addEventListener("ended",()=>setTimeout(()=>{const x=document.querySelector(".vidCo .vcX");if(x)x.click()},500));moVideo(au,`aud/c0-nh${g.nh}.json`)};
     function ve(){if(buoc>1)coDan("py"+Math.min(buoc,4)+"-"+gi);   /* 06/10 chị: trò chơi cô ĐỌC LUÔN, bé chỉ chạm — không phát lời dặn "bấm loa" đè lên đề */
       if(buoc===0){khung(`<button class="btn2 pyCoG" id="pyCoG">▶ Nghe cô giảng lại</button><div class="pyg2">${g.ds.map(k=>IT[k].bd?`<button class="pyc2 bd" data-k="${k}">${bdHinh(IT[k].bi)}</button>`:`<button class="pyc2" data-k="${k}"><span class="big2">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(IT[k].lab)?tonePy(IT[k].lab):esc(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span><span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
         box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;box.querySelector("#pyCoG").onclick=giangNhom;giangNhom();return}
