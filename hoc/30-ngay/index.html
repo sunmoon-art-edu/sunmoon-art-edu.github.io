@@ -166,8 +166,16 @@ details.full[open] summary{margin-bottom:6px}
 
 .pyblk{display:flex;flex-direction:column;gap:14px;padding:16px;border:2px solid var(--sun-soft);border-radius:20px;background:var(--moon-soft)}
 .pyblk>h3{margin:0}
-.pylis .opt{font-size:21px;font-weight:600;padding:10px 16px;min-width:66px;text-align:center}
-.pylis .li .pl{width:48px;height:48px}
+.pylis{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.pylis .li{flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:12px;padding:16px 14px 14px;border:2px solid var(--line);border-bottom-width:4px;border-radius:20px;background:var(--surface)}
+.pylis .li .pl{align-self:center;width:58px;height:58px}
+.pylis .li .pl svg{width:24px;height:24px}
+.pylis .opts{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px}
+.pylis .opt{font-size:21px;font-weight:600;padding:12px 2px;min-width:0;text-align:center;color:var(--ink)}
+.pylis .opt .tone5{color:var(--ink)}
+.mtop{display:flex;align-items:center;justify-content:center;gap:14px;min-height:58px}
+.mtop .em{font-size:40px;line-height:1}
+.mtop .hzq{font:400 46px/1 var(--hz);color:var(--ink)}
 .pyblk .lis{margin-top:4px}
 .ghep{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:var(--surface);border:2px solid var(--line)}
 .ghep p{margin:0}
@@ -185,8 +193,6 @@ body:not(.inles) #lesson{display:none}
 
 .pystep{display:flex;flex-direction:column;gap:12px}
 .pystep[hidden]{display:none}
-.memq{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.memq .hzq{flex:none;width:68px;height:68px;display:grid;place-items:center;border-radius:16px;background:var(--surface);border:2px solid var(--line);font:400 40px/1 var(--hz)}
 .stepbar{display:flex;gap:4px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .stepbar::-webkit-scrollbar{display:none}
 .stepbar button{flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;padding:0;font:inherit;color:var(--ink-2)}
@@ -1344,11 +1350,11 @@ const GHEP=`<div class="ghep"><p><b>Tiếng Trung ghép vần giống tiếng Vi
 function pyBlock(n){const d=PYD[n];if(!d)return"";
   const liHtml=(hz,ok,opts)=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
   const pick=(a,k)=>shuffle(a).slice(0,Math.min(k,a.length));
-  const memHtml=(hz,ok,opts)=>`<div class="li memq"><span class="hzq">${esc(hz)}</span>${EMO[hz]?`<span style="font-size:34px" aria-hidden="true">${EMO[hz]}</span>`:""}<div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
+  const memHtml=(hz,ok,opts)=>`<div class="li memq"><div class="mtop">${EMO[hz]?`<span class="em" aria-hidden="true">${EMO[hz]}</span>`:""}<span class="hzq">${esc(hz)}</span></div><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
   const spHtml=([lab,hz,py,vn])=>SITE?`<div class="sp" data-hz="${esc(hz)}"><div class="tg">${esc(hz)}</div><div class="pys">${colorPinyin(py)}</div><div class="bt"><button class="btn" data-say="${esc(hz)}">🔊 Nghe mẫu</button><button class="btn main mic">🎤 Đọc &amp; chấm</button><button class="btn rb">⏺ Thu &amp; nghe lại</button></div><p class="res"></p></div>`:"";
   const grids=d.grp.map(([name,hint,cells],gi)=>{
     const labs=cells.map(c=>c[0]),pys=cells.map(c=>c[2]);
-    const ex=pick(cells,3).map(([lab,hz])=>liHtml(hz,lab,[lab,...pick(labs.filter(x=>x!==lab),3)]));
+    const ex=pick(cells,3).map(([lab,hz,py])=>liHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),3)]));
     const mem=pick(cells,3).map(([lab,hz,py])=>memHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),2)]));
     const sp=pick(cells,2).map(spHtml).join("");
     return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>`<button class="pyc" data-say="${esc(hz)}">${EMO[hz]?`<span class="emo" aria-hidden="true">${EMO[hz]}</span>`:""}<span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
