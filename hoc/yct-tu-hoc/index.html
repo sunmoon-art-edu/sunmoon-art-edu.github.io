@@ -1045,6 +1045,28 @@ section.dangLam>h2{display:none!important}
 .avMoi{display:flex;flex-direction:column;align-items:center;gap:4px;margin:6px 0}.avMoi span{display:flex;gap:8px}.avMoi img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid #F2A93B}.avMoi i{font-size:13px;color:var(--ink-2)}
 @media (max-width:440px){.hsAv{width:84px;height:84px}.hsO b{font-size:19px;padding:4px 8px}.hsO small{font-size:11.5px}}
 .hsNut .big{align-self:center}
+/* 06/10 lộ trình 2 cột kiểu VioEdu */
+.ltW2{display:grid;grid-template-columns:minmax(220px,36%) 1fr;gap:14px;align-items:start}
+.ltTrai{display:flex;flex-direction:column;gap:6px;border-right:2px dashed #E9E2D8;padding-right:10px;max-height:680px;overflow:auto}
+.ltChg{margin:8px 0 2px;padding:6px 10px;border-radius:12px;background:#FFF3C4}.ltChg b{display:block;font-size:14px}.ltChg span{font-size:12px;color:var(--ink-2)}.ltChg.lock{opacity:.55}
+.ltBai{display:flex;gap:10px;align-items:center;text-align:left;border:2px solid transparent;background:none;border-radius:14px;padding:8px 10px;font:inherit;color:inherit;cursor:pointer}
+.ltBai.on{background:#DDF1FB;border-color:#9FD3EE}.ltBai[disabled]{opacity:.5;cursor:default}
+.ltDot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid #9BB7C7;display:flex;align-items:center;justify-content:center;font-size:11px;color:#22AFB1;background:#fff}
+.ltBai.xong .ltDot{background:#3DBE7A;border-color:#3DBE7A;color:#fff}.ltBai.on .ltDot{border-color:#22AFB1}
+.ltTx{min-width:0}.ltTx b{display:block;font-size:15px}.ltTx i{font-size:12.5px;color:var(--ink-2)}
+.ltKt{border:2px dashed #E9C46A;background:#FFFBEA;border-radius:14px;padding:8px 10px;font:700 14px/1.3 inherit;text-align:left;cursor:pointer;color:inherit}.ltKt i{display:block;font-weight:500;font-size:12px;font-style:normal;color:var(--ink-2)}.ltKt[disabled]{opacity:.55;cursor:default}
+.ltDau{display:flex;gap:12px;align-items:center;background:#F2F8FF;border-radius:18px;padding:12px 14px;margin-bottom:10px}.ltDau>img{width:48px;height:48px}.ltDau b{font-size:18px}
+.ltSo{display:flex;gap:22px;margin-top:6px}.ltSo small{display:block;font-size:11.5px;color:var(--ink-2);font-weight:700}.ltSo b{font-size:20px;color:#3B8C3B}
+.ltBuoi{display:flex;gap:12px;align-items:flex-start;border:2px solid #E9E2D8;border-radius:18px;padding:12px;margin-bottom:10px;background:#fff}
+.ltBuoi.cur{border-color:#22AFB1;box-shadow:0 4px 0 #22AFB1}.ltBuoi.da{border-color:#BFE8C9;background:#F6FCF7}.ltBuoi.khoa{opacity:.6}
+.ltIc{flex:0 0 54px;height:54px;border-radius:50%;background:#E6F4FF;display:flex;align-items:center;justify-content:center;font-size:22px}.ltIc img{width:36px;height:36px}
+.ltBuoi.cur .ltIc{background:#22AFB1}.ltBuoi.da .ltIc{background:#C9F0D6}
+.ltBx{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}.ltBx b{font-size:16.5px}.ltBx>i{font-size:13px;color:var(--ink-2)}.ltBx em{font-size:13px;font-style:normal;color:#C4392A}
+.ltBar{height:6px;border-radius:3px;background:#EEE7DC;overflow:hidden}.ltBar i{display:block;height:100%;background:#3DBE7A;border-radius:3px}
+.ltGo{align-self:flex-start;margin-top:4px;padding:8px 16px!important;font-size:15px!important;min-height:0!important}
+.ltSap{color:var(--ink-2);text-align:center;padding:30px 10px}
+@media (max-width:699px){.ltW2{grid-template-columns:1fr}.ltTrai{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:2px dashed #E9E2D8;padding:0 0 10px;max-height:none}.ltChg{display:none}.ltBai{flex:0 0 auto;max-width:210px;border-color:#E9E2D8;background:#fff}.ltBai.on{background:#DDF1FB;border-color:#22AFB1}.ltKt{flex:0 0 auto;max-width:200px}}
+.ltTrai>*{flex-shrink:0}
 </style>
 
 <div class="top"><div class="in">
@@ -1092,6 +1114,23 @@ function ghiMoBuoi(b){if(buoiXong().has(b))return;const L=MO3();if(!L.includes("
 function veBuoiDS(){const X=buoiXong(),hn=buoiHT();
   return `<section class="card buoiDS"><h2><span class="ic">${im("📅")}</span>Các buổi học <small>mỗi buổi ~10 phút</small></h2><div class="bDS">${BUOI.map((B,b)=>{const k=khoaBuoi(b),xg=X.has(b),la=b===hn&&!xg;
     return `<button class="bCard${xg?" da":la&&!k?" cur":" khoa"}" data-b="${b}"${k&&!xg?" disabled":""}><span class="bSo">${xg?"✓":b+1}</span><span class="bTx"><b>Buổi ${b+1}</b><i>${esc(B.ten)}</i>${k&&!xg&&la?`<em>🔒 ${esc(k)}</em>`:""}</span>${la&&!k?`<span class="go">HỌC</span>`:k&&!xg?`<span class="bKh">🔒</span>`:""}</button>`}).join("")}</div></section>`}
+/* 06/10 chị gửi mẫu VioEdu "Toàn bộ chủ đề": BÊN TRÁI lộ trình các bài · BÊN PHẢI các buổi để xong 1 bài (kèm % đã học) */
+let LT_BAI=null;
+const buoiCuaBai=n=>BUOI.map((B,b)=>[B,b]).filter(([B])=>(B.bai||1)===n);
+function ptBuoi(b){const B=BUOI[b];if(buoiXong().has(b))return 100;const T=B.ch[0];if(T.k==="trang"){const TT=store.get("yct1-phan-"+T.n+"-b"+b,{da:[]});return Math.round(100*(TT.da||[]).filter(k=>T.p.includes(k)).length/T.p.length)}const DC=new Set(store.get("yct1-bch",[]));return Math.round(100*B.ch.filter((_,i)=>DC.has(b+"."+i)).length/B.ch.length)}
+function veLoTrinh(){const BX=buoiXong(),bh=buoiHT();if(LT_BAI==null)LT_BAI=(BUOI[bh]&&BUOI[bh].bai)||1;const moC=c=>c===0||quaChang(c-1);let trai="";
+  CHANG.forEach(([ten,mo,ds],c)=>{const mc=moC(c);trai+=`<div class="ltChg${mc?"":" lock"}"><b>${ten}</b><span>${esc(mo)}</span></div>`;
+    ds.filter(n=>n>0).forEach(n=>{const [,t]=TOPICS.find(x=>x[0]===n),Bs=buoiCuaBai(n),co=Bs.length>0,xg=co&&Bs.every(([,b])=>BX.has(b)),dang=Bs.some(([,b])=>b===bh&&!BX.has(b));
+      trai+=`<button class="ltBai${n===LT_BAI?" on":""}${xg?" xong":""}" data-n="${n}"${co?"":" disabled"}><span class="ltDot">${xg?"✓":dang?"▶":""}</span><span class="ltTx"><b>Bài ${n} · ${esc(t)}</b><i>${co?`${Bs.length} buổi · 1 bài kiểm tra`:"Sắp có"}</i></span></button>`});
+    const xh=ds.filter(n=>BUILT.includes(n)).every(n=>daXong().has(n))&&ds.some(n=>BUILT.includes(n)&&n>0)&&mc,qc=quaChang(c);
+    trai+=`<button class="ltKt${qc?" qua":""}" data-kt="${c}"${xh?"":" disabled"}>🏁 Kiểm tra ${ten}<i>${qc?"Đã qua ✓":xh?"Đạt 70% để mở chặng sau":"Học xong các bài để mở"}</i></button>`});
+  const n=LT_BAI,tp=TOPICS.find(x=>x[0]===n)||[],Bs=buoiCuaBai(n),dx=Bs.filter(([,b])=>BX.has(b)).length,kt=Bs.length&&BX.has(Bs[Bs.length-1][1])?1:0;
+  const phai=`<div class="ltDau">${im(tp[2]||"📘")}<div><b>Bài ${n} · ${esc(tp[1]||"")}</b><div class="ltSo"><span><small>BUỔI</small><b>${dx}/${Bs.length}</b></span><span><small>KIỂM TRA</small><b>${kt}/1</b></span></div></div></div>
+    ${Bs.length?Bs.map(([B,b])=>{const kb=khoaBuoi(b),xg=BX.has(b),pt=ptBuoi(b),la=b===bh&&!xg;return `<div class="ltBuoi${xg?" da":la&&!kb?" cur":kb?" khoa":""}"><span class="ltIc">${kb&&!xg?"🔒":im(B.ic||"📘")}</span><div class="ltBx"><b>Buổi ${b+1}. ${esc(B.ten.replace(/^Bài \d+ · /,""))}</b><i>${B.ch.map(x=>esc(x.ten)).join(" · ")} · ⏱ 10 phút · ${pt}%</i><span class="ltBar"><i style="width:${pt}%"></i></span>${kb&&!xg?`<em>🔒 ${esc(kb)}</em>`:`<button class="${la?"big":"btn2"} ltGo" data-b="${b}">${xg?"↺ Học lại":pt?"▶ Học tiếp":"▶ Bắt đầu"}</button>`}</div></div>`}).join(""):`<p class="ltSap">Bài này sắp có — con học các bài trước nhé!</p>`}`;
+  return `<section class="card ltCard"><h2><span class="ic">${im("🗺")}</span>Lộ trình YCT 1 <small>mỗi buổi 10 phút</small></h2><div class="ltW2"><div class="ltTrai">${trai}</div><div class="ltPhai" id="ltPhai">${phai}</div></div></section>`}
+function ganLoTrinh(){app.querySelectorAll(".ltBai:not([disabled])").forEach(b=>b.onclick=()=>{LT_BAI=+b.dataset.n;const c=app.querySelector(".ltCard");c.outerHTML=veLoTrinh();ganLoTrinh();if(innerWidth<700)app.querySelector("#ltPhai").scrollIntoView({behavior:"smooth",block:"start"})});
+  app.querySelectorAll(".ltGo[data-b]").forEach(b=>b.onclick=()=>{tone([660,990],.08);moBuoi(+b.dataset.b)});
+  app.querySelectorAll(".ltKt[data-kt]:not([disabled])").forEach(b=>b.onclick=()=>kiemTraChang(+b.dataset.kt))}
 function moBuoi(b){try{window._hd&&window._hd.pause();window._gt&&window._gt.pause();cur&&cur.pause()}catch(e){}window.BUOI_P=null;
   const B=BUOI[b],ve0=()=>{history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0)};if(!B)return ve0();
   if(!(U&&U.tk)){ve0();dnTK();return}
@@ -1174,25 +1213,8 @@ function home(){
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Con tiến bộ nhờ học đều mỗi ngày. Nếu học không đều, SunMoon không dám hứa chắc kết quả. Mỗi ngày chỉ cần <b style="display:inline">1–2 buổi, mỗi buổi 10 phút</b> thôi nhé!</p></div></div>
   ${(()=>{const n=chuoi(),hn=ngayHoc().includes(homNay());if(KHOA&&!U)return "";
     return `<div class="banner"><img src="${H["🔥"]||""}" alt=""><div><b>${hn?`Hôm nay bé đã học ✓ · ${n} ngày liền`:n?`Học hôm nay để giữ lửa ${n} ngày!`:ngayHoc().length?"Gấu trúc nhớ bé lắm — học lại nhé!":"Bắt đầu ngày học đầu tiên nào!"}</b><i>${hn?"Mai quay lại để chuỗi dài thêm":"Chỉ 10 phút thôi"}</i></div></div>`})()}
-  <section class="card"><h2><span class="ic">${im("🗺")}</span>Hành trình YCT 1 <small>mỗi điểm = 1 buổi 10 phút</small></h2>
-    <div class="path">${(()=>{const OFF=[0,52,84,52,0,-52,-84,-52];let k=0,h="",cur=-1;
-      const moC=c=>c===0||quaChang(c-1);
-      for(const [c,ch] of CHANG.entries()){if(!moC(c))continue;for(const n of ch[2])if(BUILT.includes(n)&&capBai(n)<1){cur=n;break}if(cur>=0)break}
-      const BB=new Set(BUOI.flatMap(B=>B.ch.map(x=>x.n||0))),BX=buoiXong(),bh=buoiHT();   /* 06/10 chị: bản đồ = các BUỔI 10 phút */
-      CHANG.forEach(([ten,mo,ds],c)=>{const mc=moC(c);let daB=false;
-        h+=`<div class="chg${mc?"":" lock"}"><b>${ten}</b><span>${esc(mo)}</span>${mc?"":`<i>🔒 Qua bài kiểm tra ${CHANG[c-1][0]} để mở</i>`}</div>`;
-        for(const n of ds){if(BB.has(n)){if(!daB){daB=true;BUOI.forEach((B,b)=>{const kb=khoaBuoi(b),xg=BX.has(b),la=b===bh&&!xg,ok=mc&&(xg||!kb),x=OFF[k++%8];
-            h+=`<button class="stn ${!ok?"lock":xg?"done cap1":la?"cur":"open"}" data-b="${b}" style="--x:${x}px"${ok?"":" disabled"} aria-label="Buổi ${b+1}: ${esc(B.ten)}">${la&&ok?`<span class="bat">BẮT ĐẦU</span>`:""}<span class="node">${im(B.ic||"📘")}${xg?`<span class="crn">✓</span>`:""}</span><span class="lb"><b>Buổi ${b+1} · ${esc(B.ten)}</b><i>${xg?"Đã học ✓":la&&ok?"Học tiếp · 10 phút":kb?"🔒 "+kb:"Đã mở"}</i></span></button>`})}continue}
-          const [,t,e]=TOPICS.find(x=>x[0]===n),seq=khoaThuTu(n),ok=BUILT.includes(n)&&mc&&!seq,cp=capBai(n),x=OFF[k++%8];
-          const cls=!ok?(mc?"soon":"lock"):cp>=5?"done cap5":cp>=3?"done cap3":cp>=1?"done cap1":n===cur?"cur":"open";
-          const sub=!mc?"🔒":!BUILT.includes(n)?"Sắp có":seq?"🔒 "+seq:cp?capHTML(cp):n===cur?"Học tiếp":"Đã mở";
-          h+=`<button class="stn ${cls}" data-cd="${n}" style="--x:${x}px"${ok?"":" disabled"} aria-label="${n===0?"Mở đầu":"Bài "+n}: ${esc(t)} — cấp ${cp}/5">${n===cur?`<span class="bat">BẮT ĐẦU</span>`:""}<span class="node">${im(e,t)}${cp?`<span class="crn">${cp}</span>`:""}</span><span class="lb"><b>${n===0?"Mở đầu":"Bài "+n} · ${esc(t)}</b><i>${sub}</i></span></button>`}
-        const xongHet=ds.filter(n=>BUILT.includes(n)).every(n=>BB.has(n)?daXong().has(n):capBai(n)>=1)&&ds.some(n=>BUILT.includes(n)&&n>0),qc=quaChang(c);
-        h+=`<button class="kt${qc?" qua":xongHet&&mc?"":" lock"}" data-kt="${c}" style="--x:${OFF[k++%8]}px"${xongHet&&mc?"":" disabled"}><img src="${H["🏁"]||H["🏆"]||""}" alt=""><b>Kiểm tra ${ten}</b><i>${qc?"Đã qua ✓":xongHet&&mc?"Đạt 70% để mở chặng sau":"Học xong các bài trong chặng để mở"}</i></button>`});
-      return h})()}</div></section>`;
-  app.querySelectorAll(".stn[data-cd]:not([disabled])").forEach(b=>b.onclick=()=>{tone([660,990],.08);go(+b.dataset.cd)});
-  app.querySelectorAll(".kt[data-kt]:not([disabled])").forEach(b=>b.onclick=()=>kiemTraChang(+b.dataset.kt));
-  app.querySelectorAll(".stn[data-b]:not([disabled]),.bCard[data-b]:not([disabled])").forEach(b=>b.onclick=()=>{tone([660,990],.08);moBuoi(+b.dataset.b)});
+  ${veLoTrinh()}`;
+  ganLoTrinh();
   veChuoi();veXP();
   sunIntro(document.getElementById("stage"));
 }
@@ -1427,7 +1449,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061919";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061921";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
