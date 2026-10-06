@@ -1406,7 +1406,7 @@ const PYD={
  rd:[["an en ang eng ing","月亮船|yuè liang chuán|Thuyền trăng","弯弯的月亮像小船，|wān wān de yuè liang xiàng xiǎo chuán|Trăng cong cong như thuyền nhỏ,","我坐船上看星星。|wǒ zuò chuán shang kàn xīng xing|con ngồi trên thuyền ngắm sao.","风儿轻轻唱，|fēng ér qīng qīng chàng|Gió khẽ khàng hát,","天上亮晶晶。|tiān shàng liàng jīng jīng|bầu trời lấp lánh."],
   ["biến điệu","你好吗|nǐ hǎo ma|Bạn khoẻ không","你好！我很好。|nǐ hǎo wǒ hěn hǎo|Chào bạn! Mình rất khoẻ.","这不是我的书，|zhè bú shì wǒ de shū|Đây không phải sách của mình,","我有一本，|wǒ yǒu yì běn|mình có một quyển,","他有一个。|tā yǒu yí gè|bạn ấy có một cái."]]}};
 Object.assign(YT,{py1:["_nEnY71pTrU","Vần đơn a o e i u ü","HuiChinese会中文","5:31"],py2:["rs8OV0FL10I","Phát âm 21 phụ âm đầu","HuiChinese会中文","1:22"]});
-PYD[1].yt="py1";
+PYD[1].yt="py1";PYD[1].yts={0:"py1t"};YT.py1t=YT[1];
 /* Linh vật khen thưởng SunMoon (tự vẽ, 06/10/2026): mặt trời · mặt trăng · ngôi sao, kiểu dễ thương.
    linhVat(tâm trạng, cỡ px): gioi (mặt trời + sao lấp lánh) · kha (mặt trời) · cup (mặt trời + cúp) · lua (mặt trời + lửa) · colen (mặt trăng ngủ) · sao (ngôi sao) */
 function linhVat(m,px){m=m||"kha";px=px||72;
@@ -1451,7 +1451,7 @@ function pyBlock(n){const d=PYD[n];if(!d)return"";
     const ex=pick(cells,3).map(([lab,hz,py])=>liHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),3)]));
     const mem=pick(cells,3).map(([lab,hz,py])=>memHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),2)]));
     const sp=pick(cells,2).map(spHtml).join("");
-    return `<div class="pystep">${d.yt&&gi===(d.intro?1:0)?ytHtml(d.yt):""}<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
+    return `<div class="pystep">${d.yts&&d.yts[gi]?ytHtml(d.yts[gi]):d.yt&&gi===(d.intro?1:0)?ytHtml(d.yt):""}<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
     </div><div class="pystep"><h4 class="pyh" style="font-size:18px">✎ Bài tập · ${esc(name)}</h4>
     <h4 class="pyh">1 · Nghe và chọn<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>
     ${sp?`<h4 class="pyh">🎤 2 · Đọc lại<i>nghe mẫu → bấm Đọc &amp; chấm → đọc to</i></h4><div class="spk-list">${sp}</div>`:""}
