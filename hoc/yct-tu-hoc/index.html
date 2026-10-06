@@ -930,6 +930,7 @@ section.dangLam>h2{display:none!important}
 .btXep{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:70px;width:100%;padding:10px;border-radius:16px;border:2px dashed var(--line)}.btXep.kho{border:0}.btXep .btI{min-width:60px}
 .tvG{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:8px}.tvO{border-radius:14px;border:2px solid var(--line);border-bottom-width:4px;background:#fff;font:inherit;color:inherit;padding:8px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center}.tvO .hz{font-size:30px}.tvO .py{font-size:13px}.tvO.done{border-color:#8CCB7E;background:#EEF7EA}
 .tvK{position:relative;border:2px solid #E7A39B;border-radius:8px;background:#fff}.tvK .tvL,.tvK #tvW{position:absolute;inset:0;width:100%;height:100%}
+.dangTai{text-align:center;padding:60px 20px;font:600 18px/1.5 system-ui,sans-serif;color:#5A4300}
 </style>
 
 <div class="top"><div class="in">
@@ -939,11 +940,14 @@ section.dangLam>h2{display:none!important}
   <button class="xpC" id="xpChip" hidden aria-label="Thang bậc"></button>
   <button class="acc" id="accBtn" hidden>Đăng nhập</button>
 </div></div>
-<div class="wrap" id="app"></div>
+<div class="wrap" id="app"><p class="dangTai" id="dangTai">☀️ Đang mở bài học…</p></div>
 
 <div class="hfab"><div class="hbox" id="hBox" hidden><b>Con đang băn khoăn điều gì?</b><i>Bài khó, chỗ chưa hiểu, lỗi trang… — gửi thẳng cho cô SunMoon, cô trả lời qua email của bố mẹ</i><textarea id="hTxt" maxlength="2000" placeholder="VD: Bài 1 con chưa phân biệt được nǐ và nǐ hǎo…"></textarea><span class="msg" id="hMsg"></span><div class="row"><button class="btn2" id="hClose">Đóng</button><button class="big" id="hSend">Gửi</button></div></div><button type="button" id="hOpen" aria-label="Hỏi hoặc góp ý">💬 Hỏi / góp ý</button></div>
 <div class="zfab"><div class="zm" id="zfabM" hidden><b>Cần hỗ trợ? Nhắn Zalo SunMoon</b><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a><a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></div><button type="button" aria-label="Nhắn Zalo SunMoon" onclick="var m=document.getElementById('zfabM');m.hidden=!m.hidden">Zalo</button></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>/* 06/10 chị: học viên hay mở qua Zalo / máy cũ — nếu sau 9 giây chưa mở được thì hiện hướng dẫn (viết kiểu cũ để máy nào cũng chạy) */
+(function(){var loi="";window.onerror=function(m){loi=String(m||"");};setTimeout(function(){var d=document.getElementById("dangTai");if(!d)return;var zalo=/Zalo/i.test(navigator.userAgent);
+d.innerHTML="Máy chưa mở được bài học 😥<br><br>"+(zalo?"<b>Bấm dấu ⋯ (góc trên bên phải) → chọn \"Mở bằng trình duyệt\"</b> (Safari / Chrome) rồi vào lại nhé.":"Con thử <b>tải lại trang</b>, hoặc mở bằng <b>Safari / Chrome</b> nhé.")+"<br><br>Vẫn chưa được: nhắn Zalo SunMoon <b>039 630 8188</b>"+(loi?"<br><small style='color:#999'>"+loi.slice(0,80)+"</small>":"");},9000);})();</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 const TOPICS=[[0,"Phiên âm & thanh điệu","🔤"],[1,"你好！ Xin chào","👋"],[2,"你叫什么？ Bạn tên gì?","📛"],[3,"他是谁？ Bạn ấy là ai?","👦"],[4,"我家有四口人 Nhà mình","👨‍👩‍👧"],[5,"我6岁 Mình 6 tuổi","🎂"],[6,"你的个子真高！ Bạn cao quá","🦒"],[7,"这是谁的狗？ Con chó của ai?","🐶"],[8,"我去商店 Đi cửa hàng","🏪"],[9,"今天星期几？ Hôm nay thứ mấy?","📅"],[10,"现在几点？ Mấy giờ rồi?","⏰"],[11,"你吃什么？ Bạn ăn gì?","🍜"],[12,"复习 Ôn tập & thi thử","🏆"]];   // 02/10 chị: bám 12 bài YCT Standard Course 1 · nội dung SunMoon tự soạn
 const SITE=/chinesekidsvn\.com$|hoctiengtrungvn\.com$|github\.io$|^localhost$|^127\./.test(location.hostname);
@@ -956,7 +960,7 @@ const ruby=r=>{const p=PY[r];return p?[...r].map((c,i)=>`<ruby>${c}<rt>${p[i]||"
 const hzw=s=>esc(s).replace(/[㐀-鿿]+/g,r=>`<span class="hzi">${ruby(r)}</span>`);
 const TONE={"āēīōūǖ":1,"áéíóúǘ":2,"ǎěǐǒǔǚ":3,"àèìòùǜ":4};
 function tonePy(py){return esc(py).split(/(\s+)/).map(w=>{let t=0;for(const c of w)for(const k in TONE)if(k.includes(c.toLowerCase()))t=TONE[k];return /\S/.test(w)?`<span class="tone${t||5}">${w}</span>`:w}).join("")}
-const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(k!=="yct1-user"&&k!=="yct1-luc")henLuu()}};
+const store={get(k,d){try{return (function(v){return v==null?d:v})(JSON.parse(localStorage.getItem(k)))}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(k!=="yct1-user"&&k!=="yct1-luc")henLuu()}};
 /* âm thanh */
 let cur=null;function play(src,el){try{cur&&cur.pause()}catch(e){}document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}RS(src).then(u=>{if(cur!==a)return;a.src=u;if(/\.mp4/.test(src)){a.defaultPlaybackRate=a.playbackRate=1.05;a.addEventListener("loadedmetadata",()=>a.playbackRate=1.05)}a.play().catch(()=>{})})   /* 06/10 chị: lời cô đọc nhanh hơn 5% */.catch(()=>el&&el.classList.remove("playing"));return a}
 /* 06/10 chị: phản hồi sau mỗi câu trả lời — Đúng → "Giỏi quá!", Sai → "Mình thử lại nhé!" (chữ to + cô nói). Gắn vào tiếng "ting" (đúng) và "bụp" (sai) dùng chung mọi trò */
@@ -1217,7 +1221,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061620";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061622";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
