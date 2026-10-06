@@ -121,6 +121,10 @@ button:focus-visible{outline:3px solid var(--moon);outline-offset:2px}
 .node.rev{border-radius:20px}
 .node.cur{box-shadow:0 0 0 5px var(--bg),0 0 0 9px var(--sun-soft)}
 .node.cur.done{box-shadow:0 0 0 5px var(--bg),0 0 0 9px var(--ok-soft)}
+.cap{position:absolute;top:8px;width:min(140px,36vw);display:flex;flex-direction:column;gap:1px;font:600 14px/1.25 var(--tx);color:var(--ink);pointer-events:none}
+.cap small{font:700 11px/1.2 var(--tx);letter-spacing:.06em;text-transform:uppercase;color:var(--sun-2)}
+.cap.r{left:calc(50% + 43px);text-align:left}.cap.l{right:calc(50% + 43px);text-align:right}
+.nwrap.lk .cap{color:var(--ink-2);opacity:.75}
 .nwrap .st{font-size:12px;letter-spacing:1px;color:#E4B342;line-height:1;min-height:12px}
 .bub{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;max-width:230px;overflow:hidden;text-overflow:ellipsis;background:var(--surface);color:var(--sun-2);border:2px solid var(--line);border-radius:12px;padding:6px 10px;font:600 13px/1.2 var(--tx);pointer-events:none}
 .nwrap.has-bub{margin-top:40px}
@@ -451,6 +455,12 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .ohead .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--sun-soft);color:var(--sun);display:grid;place-items:center;font:400 24px/1 var(--hz)}
 .ohead b{display:block;font:700 19px/1.25 var(--tx)}
 .osub{margin:6px 0 0;font:700 16px/1.3 var(--tx)}
+.otabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.otabs button{padding:9px 4px;border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;background:var(--surface);font:600 13px/1.2 var(--tx);color:var(--ink-2)}
+.otabs button.on{background:var(--sun);border-color:var(--sun-2);color:var(--on-sun)}
+.origin [data-oh]{display:none!important}
+.origin.thu>*:not(.ohead):not(#introPlayer){display:none!important}
+.ohead .otog{margin-left:auto;flex:none;padding:6px 12px;border:2px solid var(--line);border-radius:999px;background:var(--surface);font:600 13px/1 var(--tx);color:var(--sun-2)}
 .teacher.intro{position:static}
 .cult{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
 .cult li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:2px solid var(--line);border-radius:14px}
@@ -1463,7 +1473,8 @@ function renderMap(){
       const c=isCur(it),dn=isDn(it),lk=isLk(it),x=ZZ[j%ZZ.length]*40;
       const t=L[it.day-1].t,lab="Ngày "+it.day,st=GM.stars[it.day]||0,rev=/Ôn tập|Về đích/.test(t);
       const face=lk?LOCK:(dn&&!c?"✓":it.day);
-      return `<div class="nwrap${c?" has-bub":""}" style="transform:translateX(${x}px)">${c?`<span class="bub">${dn?"Ôn lại":done.size?"Học tiếp":"Bắt đầu"} · ${lab}</span>`:""}<button class="node${dn?" done":""}${lk?" locked":""}${c?" cur":""}${rev?" rev":""}" data-day="${it.day}" title="${lab} · ${esc(t)}" aria-label="${lab}: ${esc(t)}${dn?", đã xong":lk?", chưa mở":""}"${c?' aria-current="step"':""}>${face}</button><span class="st">${st?"★".repeat(st):""}</span></div>`}).join("");
+      const side=x>0?"l":"r";
+      return `<div class="nwrap${c?" has-bub":""}${lk?" lk":""}" style="transform:translateX(${x}px)"><span class="cap ${side}" aria-hidden="true"><small>${lab}</small>${esc(t)}</span>${c?`<span class="bub">${dn?"Ôn lại":done.size?"Học tiếp":"Bắt đầu"} · ${lab}</span>`:""}<button class="node${dn?" done":""}${lk?" locked":""}${c?" cur":""}${rev?" rev":""}" data-day="${it.day}" title="${lab} · ${esc(t)}" aria-label="${lab}: ${esc(t)}${dn?", đã xong":lk?", chưa mở":""}"${c?' aria-current="step"':""}>${face}</button><span class="st">${st?"★".repeat(st):""}</span></div>`}).join("");
     return `<div class="unit${now?" now":""}${fin&&!now?" fin":""}"><button class="ubar" data-u="${ui}" aria-expanded="${open}"><span class="ut"><small>${u.a}</small><b>${u.b}</b></span><span class="uc">${fin?"✓ ":""}${nd}/${u.items.length}</span></button><div class="path"${open?"":" hidden"}>${nodes}</div></div>`;
   }).join("");
   document.getElementById("progTxt").textContent=`${done.size}/30 bài`;document.getElementById("chipTxt").textContent=done.size;
@@ -1580,6 +1591,19 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
       if(r&&r.ok){txt.value="";msg.textContent="Đã gửi! SunMoon sẽ trả lời qua email của bạn."}else{msg.className="msg err";msg.textContent=(r&&r.loi)||"Chưa gửi được, thử lại nhé"}}
     catch(e){msg.className="msg err";msg.textContent="Chưa gửi được, kiểm tra mạng rồi thử lại nhé"}
     send.disabled=false};
+})();
+
+/* bài mở đầu gọn: 4 nút, mỗi lần 1 mục; đã học rồi thì thu gọn */
+(function(){const o=document.getElementById("origin");if(!o)return;
+  const hs=[...o.querySelectorAll(":scope > h3.osub")],groups=hs.map(h=>{const g=[h];let n=h.nextElementSibling;while(n&&!n.matches("h3.osub")){g.push(n);n=n.nextElementSibling}return g});
+  const ten=["Nguồn gốc","Văn hoá","Hình ảnh","Clip"];
+  const bar=document.createElement("div");bar.className="otabs";bar.innerHTML=hs.map((h,i)=>`<button>${ten[i]||h.textContent}</button>`).join("");
+  hs[0].before(bar);
+  const show=k=>{groups.forEach((g,i)=>g.forEach(x=>x.toggleAttribute("data-oh",i!==k)));bar.querySelectorAll("button").forEach((b,i)=>b.classList.toggle("on",i===k))};
+  bar.onclick=e=>{const b=e.target.closest("button");if(b)show([...bar.children].indexOf(b))};show(0);
+  const tg=document.createElement("button");tg.className="otog";o.querySelector(".ohead").appendChild(tg);
+  const set=t=>{o.classList.toggle("thu",t);tg.textContent=t?"Xem ▾":"Thu gọn ▴";tg.setAttribute("aria-expanded",!t)};
+  tg.onclick=()=>set(!o.classList.contains("thu"));set(true);
 })();
 function start(){const h=location.hash.match(/^#ngay(\d+)$/);if(h)return go(+h[1],false);go(firstUndone(),"map")}
 if(!KHOA)start();
