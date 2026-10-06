@@ -1104,6 +1104,16 @@ body.coTab{padding-bottom:84px}body.coTab .hfab,body.coTab .zfab{bottom:calc(86p
 .xhMa{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;text-align:center;margin-bottom:12px;font-size:15px}.xhMa i{flex:1 0 100%;font-size:12.5px;color:var(--ink-2)}.xhMa .tkE{flex:1 0 100%;margin:0}.xhCode{letter-spacing:2px;color:#E8590C;font-size:18px}.xhRoi{font-size:13px!important;padding:4px 10px!important;min-height:0!important}
 .xhNhom{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}.xhNhom>b{font-size:18px}.xhNhom i{color:var(--ink-2)}.xhNR{display:flex;gap:8px;width:100%;max-width:480px}.xhNR .tkIn{flex:1;margin:0;min-width:0}.xhNR button{flex:0 0 auto;padding:10px 14px!important;font-size:15px!important;min-height:0!important}
 .xhH{font-size:22px!important}
+/* 06/10 cột nhiệm vụ bên trái trang buổi học */
+.bLayout{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.bChinh{min-width:0}
+@media (min-width:760px){.bLayout{grid-template-columns:230px minmax(0,1fr)}.nvBen{position:sticky;top:76px;align-self:start}}
+.nvBen{background:#fff;border-radius:20px;padding:12px;box-shadow:0 6px 18px -12px #0003;display:flex;flex-direction:column;gap:8px;border:2px solid #FFE58A}
+.nvBenT{display:flex;justify-content:space-between;align-items:center;font-size:16px}.nvBenT i{font-style:normal;color:#E8590C;font-weight:800}
+.nvB{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:8px;align-items:center}.nvBi{font-size:19px}.nvB b{display:block;font-size:13px;margin-bottom:3px}.nvB small{font-size:12px;font-weight:800;color:#E8590C;white-space:nowrap}
+.nvB .nvBar{height:12px}.nvB .nvBar em{font-size:10px;line-height:12px}
+.nvB.xong{background:#FFF8E6;border-radius:12px;padding:4px}
+.nvBn{border:0;background:#F2A93B;color:#fff;font-weight:800;font-size:12px;font-family:inherit;border-radius:10px;padding:6px 8px;cursor:pointer;animation:lac .9s ease-in-out infinite;white-space:nowrap}
+@media (max-width:759px){.nvBen{padding:8px 10px;gap:6px}.nvBenT{font-size:14px}}
 </style>
 
 <div class="top"><div class="in">
@@ -1177,7 +1187,7 @@ function moBuoi(b){try{window._hd&&window._hd.pause();window._gt&&window._gt.pau
   ghiMoBuoi(b);veTab(null);history.replaceState(null,"","#b"+(b+1));document.getElementById("backBtn").hidden=false;scrollTo(0,0);
   const T=B.ch[0];if(T.k==="trang"){window.BUOI_P={b,n:T.n,p:T.p};topic(T.n);return}
   const DC=new Set(store.get("yct1-bch",[])),id=i=>b+"."+i;let c=B.ch.findIndex((_,i)=>!DC.has(id(i)));if(c<0)c=0;
-  app.innerHTML=`<section class="card bTopC"><div class="bTop"><span class="bSo">${b+1}</span><span><b>Buổi ${b+1}</b><i>${esc(B.ten)} · ⏱ ~10 phút</i></span></div><div class="pyMap bMap" id="bMap"></div></section><section class="card bxSec"><div id="bxBox"></div></section>`;
+  app.innerHTML=`<div class="bLayout"><aside class="nvBen" id="nvBen"></aside><div class="bChinh"><section class="card bTopC"><div class="bTop"><span class="bSo">${b+1}</span><span><b>Buổi ${b+1}</b><i>${esc(B.ten)} · ⏱ ~10 phút</i></span></div><div class="pyMap bMap" id="bMap"></div></section><section class="card bxSec"><div id="bxBox"></div></section></div></div>`;clearInterval(window._nvBenT);window._nvBenT=setInterval(veNvBen,2500);veNvBen();
   const box=app.querySelector("#bxBox");
   const map=()=>{app.querySelector("#bMap").innerHTML=B.ch.map((x,i)=>`<span class="bDao"><span class="dao${DC.has(id(i))&&i!==c?" qua":i===c?" dang":""}">${i===c?im("🐼"):DC.has(id(i))?"⭐":im(x.k==="tu"?"💬":x.k==="on"?"🏁":"🔤")}<i>${i+1}</i></span><em>${esc(x.ten)}</em></span>`).join(`<b class="cau"></b>`)};
   const xongCh=tk=>{DC.add(id(c));store.set("yct1-bch",[...DC]);const stk=moQua();
@@ -1429,10 +1439,17 @@ function veTab(t){let b=document.getElementById("tabBar");
   const d1=b.querySelector('[data-t="nv"] .tbDot'),n1=U&&U.tk?nvSan():0;d1.hidden=!n1;d1.textContent=n1||"";
   const d2=b.querySelector('[data-t="tb"] .tbDot'),n2=U&&U.tk?tbMoi():0;d2.hidden=!n2;d2.textContent=n2||""}
 function trangPhu(h){try{window._hd&&window._hd.pause();window._gt&&window._gt.pause();cur&&cur.pause()}catch(e){}window.BUOI_P=null;history.replaceState(null,"",h);document.getElementById("backBtn").hidden=false;scrollTo(0,0)}
+function nhanNV(k){const x=NV.find(y=>y.k===k),c=nvCap(k),q=x.qua*c;if(x.lay()<nvTg(x,c))return;const C=store.get("yct1-nv",{});C[k]=c+1;store.set("yct1-nv",C);themKC(q);tbGhi("🎁",`Nhận quà "${x.ten}" cấp ${c}: +${q} 💎`);keng();confetti();mung("🎁",null,`+${q} 💎`,`"${x.ten}" lên cấp ${c+1}!`,avMoiHTML())}
+/* 06/10 chị: "bên trái có nhiệm vụ để khích lệ học thì tốt" → cột nhiệm vụ cạnh bài học (iPad), điện thoại 1 dòng; tự cập nhật, đạt là nhận quà ngay */
+function veNvBen(){const el=document.getElementById("nvBen");if(!el){clearInterval(window._nvBenT);return}
+  const L=NV.map(x=>{const c=nvCap(x.k),tg=nvTg(x,c),v=Math.min(x.lay(),tg);return {x,c,tg,v,q:x.qua*c,xg:x.lay()>=tg}}).sort((a,b)=>(b.xg-a.xg)||(b.v/b.tg-a.v/a.tg));
+  const h=`<b class="nvBenT">🎯 Nhiệm vụ <i>💎 ${KC()}</i></b>${L.slice(0,innerWidth<760?1:7).map(o=>`<div class="nvB${o.xg?" xong":""}"><span class="nvBi">${o.x.ic}</span><div><b>${o.x.ten}</b><span class="nvBar"><i style="width:${Math.round(100*o.v/o.tg)}%"></i><em>${o.v}/${o.tg}</em></span></div>${o.xg?`<button class="nvBn" data-k="${o.x.k}">🎁 +${o.q}</button>`:`<small>+${o.q}💎</small>`}</div>`).join("")}`;
+  if(el._h===h)return;el._h=h;el.innerHTML=h;
+  el.querySelectorAll(".nvBn").forEach(b=>b.onclick=()=>{nhanNV(b.dataset.k);el._h="";veNvBen()})}
 function nhiemVu(){if(!(U&&U.tk))return dnTK();trangPhu("#nv");
   app.innerHTML=`<section class="card nvTop"><b>🎯 Nhiệm vụ</b><span>Làm đủ là nhận quà · con đang có <b>💎 ${KC()}</b></span></section>
   <section class="card nvDs">${NV.map(x=>{const c=nvCap(x.k),tg=nvTg(x,c),v=Math.min(x.lay(),tg),xg=x.lay()>=tg,q=x.qua*c;return `<div class="nvO${xg?" xong":""}"><span class="nvRuong">${im("🎁")}<b>+${q} 💎</b></span><div class="nvTx"><b>${x.ic} ${x.ten} <small>(Cấp ${c})</small></b><i>${x.mo(tg)}</i><span class="nvBar"><i style="width:${Math.round(100*v/tg)}%"></i><em>${v}/${tg}</em></span></div>${xg?`<button class="big nvNhan" data-k="${x.k}">Nhận quà</button>`:""}</div>`}).join("")}</section>`;
-  app.querySelectorAll(".nvNhan").forEach(b=>b.onclick=()=>{const x=NV.find(y=>y.k===b.dataset.k),c=nvCap(x.k),q=x.qua*c,C=store.get("yct1-nv",{});C[x.k]=c+1;store.set("yct1-nv",C);themKC(q);tbGhi("🎁",`Nhận quà "${x.ten}" cấp ${c}: +${q} 💎`);keng();confetti();mung("🎁",null,`+${q} 💎`,`"${x.ten}" lên cấp ${c+1}!`,avMoiHTML());nhiemVu()});
+  app.querySelectorAll(".nvNhan").forEach(b=>b.onclick=()=>{nhanNV(b.dataset.k);nhiemVu()});
   veTab("nv")}
 /* 06/10 chị gửi mẫu iSMART: BẢNG XẾP HẠNG — 💎 kim cương (tổng) + 👑 XP tuần này; cả SunMoon · lớp của con · nhóm thi đua (≤10 bạn, mã 6 chữ) */
 let XH_PV="tat";
@@ -1543,7 +1560,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061943";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061951";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -1714,8 +1731,8 @@ function lamBai(n,k,kho){const t0=Date.now();
     if(s.t==="noi"){khung("Bé nói theo cô",`<button class="lsCard" id="lsC">${hinh(i,1)}<span class="hz">${esc(W[i][0])}</span><span class="py">${tonePy(W[i][1])}</span><span class="lsSpk">🔊 nghe cô đọc</span></button><button class="lsMic" id="lsM">🎤 <span>Bấm rồi nói — máy thu âm</span></button><p class="lsHint" id="lsMh">Bố mẹ nghe bé nói — đúng thì bấm “Bé nói được rồi”</p>`,`<button class="big" id="lsN">Bé nói được rồi 👍</button>`);
       const nghe=()=>play(nho(i),o.querySelector("#lsC"));o.querySelector("#lsC").onclick=nghe;setTimeout(nghe,250);o.querySelector("#lsN").onclick=()=>{tone([880,1320]);p++;buoc()};
       const m=o.querySelector("#lsM");m.onclick=async()=>{ // ghi âm bé nói rồi phát lại cho bé nghe — chỉ trong máy, không gửi đi đâu
-        try{try{cur&&cur.pause()}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true}),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
-          r.onstop=()=>{st.getTracks().forEach(t=>t.stop());const a=new Audio(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;a.onended=()=>setTimeout(()=>{o.querySelector("#lsMh").textContent="Giờ nghe cô đọc — so xem con giống cô chưa?";play(nho(i),o.querySelector("#lsC"))},400);a.play().catch(()=>{});m.classList.remove("rec");m.innerHTML="🎤 <span>Thu lại</span>";o.querySelector("#lsMh").textContent="Đây là tiếng con đó! Nghe kỹ nhé…"};
+        try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
+          r.onstop=()=>{henTatMic();const a=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;a.onended=()=>setTimeout(()=>{o.querySelector("#lsMh").textContent="Giờ nghe cô đọc — so xem con giống cô chưa?";play(nho(i),o.querySelector("#lsC"))},400);a.play().catch(()=>{});m.classList.remove("rec");m.innerHTML="🎤 <span>Thu lại</span>";o.querySelector("#lsMh").textContent="Đây là tiếng con đó! Nghe kỹ nhé…"};
           thuDem(r,m,4)}
         catch(e){o.querySelector("#lsMh").innerHTML=e&&e.name==="NotAllowedError"?"Máy đang chặn micro — bố mẹ bấm biểu tượng 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>, rồi bấm lại nhé":"Máy này chưa dùng được micro — bé cứ nói to, bố mẹ nghe nhé"}};return}
     if(["noiHinh","chu","to","toCu","lat"].includes(s.t))return buoc2(s,i);
@@ -1727,8 +1744,8 @@ function lamBai(n,k,kho){const t0=Date.now();
     if(s.t==="noiHinh"){khung(PYM?"Bé đọc to âm này nhé!":"Hình này tiếng Trung là gì? Bé nói to nhé!",`<div class="lsPic">${hinh(i,1)}</div><button class="lsMic" id="lsM2">🎤 <span>Bấm rồi nói — máy thu âm</span></button><p class="lsHint" id="lsMh2">Nói xong máy phát lại giọng con, rồi phát giọng cô để so</p><button class="lsS lsDap" id="lsD"><span>🔊</span><b>Nghe đáp án</b></button>`,`<div class="lsHai"><button class="btn2" id="lsL">Chưa đúng, nói lại</button><button class="big" id="lsN">Bé nói đúng 👍</button></div>`);
       const d=o.querySelector("#lsD");d.onclick=()=>{play(nho(i),d);d.querySelector("b").textContent=W[i][0]};
       /* 06/10 chị: bé nói PHẢI thu âm để so với giọng gốc */
-      const m2=o.querySelector("#lsM2"),h2=o.querySelector("#lsMh2");m2.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true}),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
-        r.onstop=()=>{st.getTracks().forEach(t=>t.stop());const a=new Audio(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;h2.textContent="Đây là giọng con…";a.onended=()=>setTimeout(()=>{h2.textContent="Giờ nghe cô — giống chưa nào?";d.querySelector("b").textContent=W[i][0];play(nho(i),d)},400);a.play().catch(()=>{});m2.classList.remove("rec");m2.innerHTML="🎤 <span>Thu lại</span>"};
+      const m2=o.querySelector("#lsM2"),h2=o.querySelector("#lsMh2");m2.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
+        r.onstop=()=>{henTatMic();const a=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;h2.textContent="Đây là giọng con…";a.onended=()=>setTimeout(()=>{h2.textContent="Giờ nghe cô — giống chưa nào?";d.querySelector("b").textContent=W[i][0];play(nho(i),d)},400);a.play().catch(()=>{});m2.classList.remove("rec");m2.innerHTML="🎤 <span>Thu lại</span>"};
         thuDem(r,m2,4)}catch(e){h2.innerHTML=e&&e.name==="NotAllowedError"?"Máy chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy chưa thu âm được — con nói to rồi bấm Nghe đáp án nhé"}};
       o.querySelector("#lsN").onclick=()=>{tone([880,1320]);p++;buoc()};o.querySelector("#lsL").onclick=()=>{if(!s.lai){s.lai=1;S.push({...s,lai:1});tong++}sai++;p++;buoc()};return}
     if(s.t==="chu"){const op=ba(i);khung("Chữ nào là hình này?",`<div class="lsPic">${hinh(i,1)}</div><div class="lsChu">${op.map(j=>`<button class="lsO lsZ" data-j="${j}">${esc(W[j][0])}</button>`).join("")}</div>`);
@@ -1887,8 +1904,8 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
         Z.querySelectorAll(".lsO").forEach(b=>b.onclick=()=>{if(+b.dataset.k===k){b.classList.add("right");tiep()}else{sai(b);H1()}});return}
       if(ph===2){Z.innerHTML=`<p class="ltDe">🗣 Nói — thu âm rồi so với cô</p><div class="ltW"><div class="ltPic">${hinh(k)}</div><div><span class="hz">${esc(w[0])}</span><span class="py">${tonePy(w[1])}</span></div><button class="qhear" id="ltH">🔊</button></div><div class="ltRow"><button class="lsMic" id="ltMic">🎤 <span>Bấm rồi nói “${esc(w[0])}”</span></button><button class="btn2" id="ltNoiOk" disabled>Con nói giống cô rồi ✓</button></div><p class="ltOk" id="ltMh">Máy thu 3 giây → phát lại tiếng con → phát giọng cô để so</p>`;
         $("#ltH").onclick=()=>play(nho(k),$("#ltH"));const mic=$("#ltMic");
-        mic.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true}),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
-          r.onstop=()=>{st.getTracks().forEach(t=>t.stop());const a=new Audio(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;$("#ltMh").textContent="Đây là tiếng con…";a.onended=()=>setTimeout(()=>{$("#ltMh").textContent="Giờ nghe cô — giống chưa nào?";const x=play(nho(k),$("#ltH"));x.addEventListener("ended",()=>{$("#ltNoiOk").disabled=false;$("#ltMh").textContent="Giống cô thì bấm ✓, chưa giống thì thu lại nhé"})},400);a.play().catch(()=>{});mic.classList.remove("rec");mic.innerHTML="🎤 <span>Thu lại</span>"};
+        mic.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
+          r.onstop=()=>{henTatMic();const a=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;$("#ltMh").textContent="Đây là tiếng con…";a.onended=()=>setTimeout(()=>{$("#ltMh").textContent="Giờ nghe cô — giống chưa nào?";const x=play(nho(k),$("#ltH"));x.addEventListener("ended",()=>{$("#ltNoiOk").disabled=false;$("#ltMh").textContent="Giống cô thì bấm ✓, chưa giống thì thu lại nhé"})},400);a.play().catch(()=>{});mic.classList.remove("rec");mic.innerHTML="🎤 <span>Thu lại</span>"};
           thuDem(r,mic,4)}
           catch(e){$("#ltMh").innerHTML=e&&e.name==="NotAllowedError"?"Máy đang chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy này chưa thu âm được — con nói to theo cô rồi bấm ✓";$("#ltNoiOk").disabled=false}};
         $("#ltNoiOk").onclick=()=>tiep(300);return}
@@ -2071,8 +2088,8 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
         return moTro()}
       if(buoc===2){const Q=pick(g.ds,2);let da=0;khung(`${Q.map(k=>`<div class="sp2" data-k="${k}"><div class="tg2">${esc(IT[k].hz)}</div><div class="pys2">${tonePy(IT[k].py)}</div><div class="bt2"><button class="btn2 sN">🔊 Nghe</button><button class="big sM">🎤 Đọc &amp; thu</button></div><p class="res2"></p></div>`).join("")}<button class="big" id="pyT">Tiếp →</button>`);
         box.querySelectorAll(".sp2").forEach(cd=>{const k=+cd.dataset.k,res=cd.querySelector(".res2"),m=cd.querySelector(".sM");cd.querySelector(".sN").onclick=e=>play(IT[k].au,e.currentTarget);
-          m.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true}),rr=new MediaRecorder(st),ch=[];rr.ondataavailable=e=>ch.push(e.data);
-            rr.onstop=()=>{st.getTracks().forEach(t=>t.stop());const au=new Audio(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=au;res.textContent="Tiếng con…";au.onended=()=>setTimeout(()=>{res.textContent="Giờ nghe cô — giống chưa?";play(IT[k].au)},400);au.play().catch(()=>{});m.classList.remove("rec");m.innerHTML="⏺ Thu lại";if(!cd.dataset.ok){cd.dataset.ok=1;da++}};
+          m.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),rr=new MediaRecorder(st),ch=[];rr.ondataavailable=e=>ch.push(e.data);
+            rr.onstop=()=>{henTatMic();const au=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=au;res.textContent="Tiếng con…";au.onended=()=>setTimeout(()=>{res.textContent="Giờ nghe cô — giống chưa?";play(IT[k].au)},400);au.play().catch(()=>{});m.classList.remove("rec");m.innerHTML="⏺ Thu lại";if(!cd.dataset.ok){cd.dataset.ok=1;da++}};
             thuDem(rr,m,4)}catch(e){res.innerHTML=e&&e.name==="NotAllowedError"?"Máy chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy chưa thu âm được — con đọc to theo cô nhé"}}});
         box.querySelector("#pyT").onclick=sang;return}
       if(buoc===3){if(O&&O.gon&&!g.ma){buoc=5;return ve()}return g.ma?maMau():noiCot()}   /* buổi 10 phút: bỏ bước Nối */
@@ -2084,11 +2101,18 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
       if(O&&O.xong)return O.xong(tk);const stk=moQua();if(gi<NH.length-1){mung("🎁",null,`Xong đảo ${gi+1}: ${g.ten}!`,`Đảo tiếp: ${NH[gi+1].ten}`,quaHTML(stk)+tk);gi++;lam()}else{mung("🏆",null,"Con đã học hết phiên âm!","Sang phần tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.style.display="";ps.click()}}}
     ve()}
   lam()}
-/* 06/10 chị: thu âm phải CÓ THỜI GIAN — đếm 3·2·1 rồi mới thu, thanh thời gian chạy, tự dừng */
-function thuDem(rec,btn,giay){const goc=btn.innerHTML;btn.disabled=true;let d=3;btn.classList.add("dem");
-  const dem=()=>{if(d>0){btn.innerHTML=`<span class="tdSo">${d}</span><span>Chuẩn bị nói…</span>`;tone([520],.08,"sine",.08);d--;setTimeout(dem,800);return}
+/* 06/10 tối chị: "mục thu âm bị khá lâu, mãi không ra" → đếm 1 nhịp rồi thu luôn, tối đa 3 giây, BẤM LẦN NỮA ĐỂ DỪNG; giữ micro mở 20 giây (khỏi xin lại);
+   loa phát lại tiếng bé được "mở khoá" ngay lúc bé bấm (iPhone chặn phát tiếng nếu không do bé bấm) */
+const SIL_AM="data:audio/wav;base64,UklGRrQBAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZABAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA";let AM_THU=null,MIC=null,MIC_T=0;
+function moiAmThu(){try{if(!AM_THU)AM_THU=new Audio();AM_THU.muted=true;AM_THU.src=SIL_AM;const p=AM_THU.play();if(p)p.then(()=>{AM_THU.pause();AM_THU.muted=false}).catch(()=>{AM_THU.muted=false});else AM_THU.muted=false}catch(e){}}
+function amThu(url){const a=AM_THU||new Audio();try{a.pause()}catch(e){}a.muted=false;a.onended=null;a.src=url;return a}
+async function layMic(){clearTimeout(MIC_T);if(MIC&&MIC.getTracks().every(t=>t.readyState==="live"))return MIC;MIC=await navigator.mediaDevices.getUserMedia({audio:true});return MIC}
+function henTatMic(){clearTimeout(MIC_T);MIC_T=setTimeout(()=>{try{MIC&&MIC.getTracks().forEach(t=>t.stop())}catch(e){}MIC=null},20000)}
+function thuDem(rec,btn,giay){giay=Math.min(giay||3,3);const goc=btn.innerHTML;btn.disabled=true;let d=1;btn.classList.add("dem");
+  const dem=()=>{if(d>0){btn.innerHTML=`<span class="tdSo">${d}</span><span>Chuẩn bị nói…</span>`;tone([520],.08,"sine",.08);d--;setTimeout(dem,500);return}
     rec.start();btn.classList.remove("dem");btn.classList.add("rec");const t0=Date.now();tone([880],.12,"sine",.1);
-    const chay=()=>{const con=Math.max(0,giay-(Date.now()-t0)/1000);btn.innerHTML=`⏺ <span>Nói đi! ${Math.ceil(con)} giây</span><i class="tdBar" style="width:${100*con/giay}%"></i>`;if(con>0&&rec.state==="recording")requestAnimationFrame(chay);else{if(rec.state!=="inactive")rec.stop();btn.disabled=false}};chay()};
+    const cu=btn.onclick;btn.disabled=false;btn.onclick=()=>{if(rec.state==="recording")rec.stop()};
+    const chay=()=>{const con=Math.max(0,giay-(Date.now()-t0)/1000);btn.innerHTML=`⏺ <span>Nói đi! ${Math.ceil(con)}s · bấm để dừng</span><i class="tdBar" style="width:${100*con/giay}%"></i>`;if(con>0&&rec.state==="recording")setTimeout(chay,100);else{if(rec.state!=="inactive")rec.stop();btn.onclick=cu;btn.disabled=false}};chay()};
   dem()}
 /* 06/10 chị: mỗi bước luyện có LỜI CÔ dặn (aud/buoc-*.mp4), mỗi bước nói 1 lần */
 let _coDanCu="";function coDan(k){if(_coDanCu===k)return;_coDanCu=k;setTimeout(()=>{try{coNoi(play(`aud/buoc-${k.split('-')[0]}.mp4`))}catch(e){}},350)}
@@ -2196,8 +2220,8 @@ function hoiThoai(n){const c=ND[n];if(!c.ht)return;
         if(vai&&H.l[+x.dataset.b][1]===vai){x.classList.add("turn");const m=document.createElement("p");m.className="htMe";m.innerHTML=`🎤 <b>Đến lượt con!</b> Nói thật to: <span class="hz">${esc(H.l[+x.dataset.b][2])}</span> <span class="htNut"><button class="big htThu">🎤 Nói &amp; thu</button><button class="btn2 htXong">Xong ✓</button></span><span class="htNghe2"></span>`;x.after(m);
           /* 06/10 chị: phần nói PHẢI THU giọng bé để bé nghe lại giọng mình */
           const thu=m.querySelector(".htThu"),ng=m.querySelector(".htNghe2");
-          thu.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true}),rr=new MediaRecorder(st),ch=[];rr.ondataavailable=e=>ch.push(e.data);
-            rr.onstop=()=>{st.getTracks().forEach(t=>t.stop());const url=URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"}));const au=new Audio(url);cur=au;au.play().catch(()=>{});thu.innerHTML="🎤 Thu lại";
+          thu.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),rr=new MediaRecorder(st),ch=[];rr.ondataavailable=e=>ch.push(e.data);
+            rr.onstop=()=>{henTatMic();const url=URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"}));const au=amThu(url);cur=au;au.play().catch(()=>{});thu.innerHTML="🎤 Thu lại";
               ng.innerHTML=`<button class="btn2">🔊 Nghe giọng con</button>`;ng.querySelector("button").onclick=()=>{const b=new Audio(url);cur=b;b.play().catch(()=>{})}};
             thuDem(rr,thu,4)}catch(e){ng.innerHTML=e&&e.name==="NotAllowedError"?"Máy chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy chưa thu âm được — con nói to theo nhé"}};
           m.querySelector(".htXong").onclick=()=>{m.remove();x.classList.remove("turn");tone([880,1320]);setTimeout(tiep,300)};return}
