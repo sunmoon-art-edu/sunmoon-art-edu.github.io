@@ -1133,7 +1133,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061229";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061230";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1397,7 +1397,7 @@ function luyenTu(n){const box=document.getElementById("luyenTu"),c=ND[n];if(!box
     const xongNhom2=()=>{
       const tk=thongKe(5*g.ds.length,(Date.now()-t0)/1000,Math.round(100*Math.max(0,Q.length-saiN)/Q.length));
       if(gi<NH.length-1){mung("🎉",null,`Xong nhóm ${g.ten}!`,`Giờ học nhóm tiếp: ${NH[gi+1].ten}`,tk);gi++;lam()}
-      else{mung("🏆",null,"Con đã học và luyện hết từ mới!","Sang trang tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.click()}}};
+      else{mung("🏆",null,"Con đã học và luyện hết từ mới!","Sang trang tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.style.display="";ps.click()}}};
     function ve(){if(q>=Q.length)return xongNhom();const [ph,k]=Q[q],w=W[k];coDan("tu"+ph+"-"+gi);
       box.innerHTML=`<div class="ltTu">${NH.map((x,t)=>{const xg=x.ds.every(z=>DA.has(z)),mo=xg||t===gi;return `<button class="${t===gi?"on":xg?"da":"khoa"}" data-g="${t}"${mo?"":" disabled"}>${xg&&t!==gi?"✓ ":""}${esc(x.ten)}</button>`}).join("")}</div>
         <div class="ltBuoc"><b>${q+1}/${Q.length}</b>${PHA.map((t,z)=>`<span class="${z===ph?"on":z<ph?"qua":""}">${t}</span>`).join("")}</div><div class="ltBar"><i style="width:${Math.round(q/Q.length*100)}%"></i></div><div id="ltQ"></div>`;
@@ -1552,7 +1552,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
           veChuCai(box.querySelector("#pyViet"),IT[k].lab,()=>{tone([880,1320]);box.querySelector("#pyVh").textContent="Tô đẹp quá! 真棒！";setTimeout(()=>{if(++q<vs.length)mot();else{buoc++;ve()}},900)})};mot();return}
       // xong nhóm
       g.ds.forEach(k=>DA.add(k));store.set(key,[...DA]);themXP(2*g.ds.length,"Luyện phiên âm");const tk=thongKe(2*g.ds.length,(Date.now()-t0)/1000,Math.round(100*tongD/Math.max(1,tongC)));
-      if(gi<NH.length-1){mung("🎉",null,`Xong ${g.ten}!`,`Giờ học tiếp: ${NH[gi+1].ten}`,tk);gi++;lam()}else{mung("🏆",null,"Con đã học hết phiên âm!","Sang phần tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.click()}}}
+      if(gi<NH.length-1){mung("🎉",null,`Xong ${g.ten}!`,`Giờ học tiếp: ${NH[gi+1].ten}`,tk);gi++;lam()}else{mung("🏆",null,"Con đã học hết phiên âm!","Sang phần tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.style.display="";ps.click()}}}
     ve()}
   lam()}
 /* 06/10 chị: thu âm phải CÓ THỜI GIAN — đếm 3·2·1 rồi mới thu, thanh thời gian chạy, tự dừng */
@@ -1601,7 +1601,7 @@ function boCuc(n){const hero=app.querySelector(".hero");if(!hero)return;chuHinh(
       if(cuoi){store.set(key,TT);veML();mung("🎉",null,"Xong cả bài rồi!","Ôn lại phần nào thì bấm số phần ở trên nhé");return}moTrang(t+1)};
     window._sangTrang=()=>nav.querySelector("#phS").click();
     {const lt=nhom[k][j].querySelector("#luyenTu"),ps=nav.querySelector("#phS");if(lt&&ND[n]&&ND[n].w){const da=new Set(store.get("yct1-tu-"+n,[]));if(ND[n].w.some((_,q)=>!da.has(q))){ps.disabled=true;ps.title="Luyện xong tất cả từ mới để đi tiếp";ps.innerHTML="🔒 Luyện xong các từ để đi tiếp"}}}
-    {const lp=nhom[k][j].querySelector("#luyenPy"),ps=nav.querySelector("#phS");if(lp&&n==0&&ND[0].py){const da=new Set(store.get("yct1-py",[])),tong=ND[0].py.van.length+ND[0].py.thanh.length+ND[0].py.ghep.length+4+(ND[0].bd||[]).length;if(da.size<tong){ps.disabled=true;ps.innerHTML="🔒 Học xong phiên âm để đi tiếp"}}}
+    {const lp=nhom[k][j].querySelector("#luyenPy"),ps=nav.querySelector("#phS");if(lp&&n==0&&ND[0].py){const da=new Set(store.get("yct1-py",[])),tong=ND[0].py.van.length+ND[0].py.thanh.length+ND[0].py.ghep.length+4+(ND[0].bd||[]).length;if(da.size<tong){ps.disabled=true;ps.style.display="none"}  /* 06/10 chị: 2 nút xanh dễ nhầm → đang học phiên âm thì ẨN nút "Tiếp" của trang */}}
     if(cuon)scrollTo({top:0,behavior:"smooth"})};
   moTrang(t0,false)}
 
