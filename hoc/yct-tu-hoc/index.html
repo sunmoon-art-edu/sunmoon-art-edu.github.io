@@ -1233,7 +1233,14 @@ const BUOI=[
   /* 06/10 tối chị: "áp làm hết YCT 1" — Bài 2 你叫什么 */
   {ten:"Bài 2 · Hỏi tên",ic:"📛",bai:2,ch:[{k:"tu",n:2,g:0,ten:"Tôi · bạn · bạn ấy",loai:"bong"},{k:"tu",n:2,g:1,ten:"Tên là · gì · tên",loai:"trai"}]},
   {ten:"Bài 2 · Hội thoại · Làm bài",ic:"🎭",bai:2,ch:[{k:"trang",n:2,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
-  {ten:"Bài 2 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:2,xong:[2],ch:[{k:"trang",n:2,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]}];
+  {ten:"Bài 2 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:2,xong:[2],ch:[{k:"trang",n:2,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 3 · Ai đây?",ic:"👦",bai:3,ch:[{k:"tu",n:3,g:0,ten:"Ai · là · bạn bè",loai:"lego"},{k:"tu",n:3,g:1,ten:"Bạn lớp · học sinh · bác sĩ",loai:"chuot"}]},
+  {ten:"Bài 3 · Hội thoại · Làm bài",ic:"🎭",bai:3,ch:[{k:"trang",n:3,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 3 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:3,xong:[3],ch:[{k:"trang",n:3,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 4 · Bố mẹ · anh chị em",ic:"👨‍👩‍👧",bai:4,ch:[{k:"tu",n:4,g:0,ten:"Bố · mẹ",loai:"bong"},{k:"tu",n:4,g:1,ten:"Anh chị em",loai:"trai"}]},
+  {ten:"Bài 4 · Nhà mình",ic:"🏠",bai:4,ch:[{k:"tu",n:4,g:2,ten:"Nhà · có · người",loai:"lego"}]},
+  {ten:"Bài 4 · Hội thoại · Làm bài",ic:"🎭",bai:4,ch:[{k:"trang",n:4,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 4 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:4,xong:[4],ch:[{k:"trang",n:4,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]}];
 const buoiXong=()=>new Set(store.get("yct1-buoi",[]));
 const buoiHT=()=>{const X=buoiXong(),b=BUOI.findIndex((_,i)=>!X.has(i));return b<0?BUOI.length-1:b};
 function khoaBuoi(b){const X=buoiXong();if(X.has(b))return "";if(b>0&&!X.has(b-1))return `Học xong Buổi ${b} để mở`;   /* 06/10 tối chị: học lại buổi cũ thoải mái; buổi MỚI tối đa 3 buổi/ngày */const L=MO3().filter(x=>typeof x==="string");   /* chỉ ghi buổi MỚI mở trong ngày (học lại không ghi) */if(!L.includes("b"+b)&&L.length>=3)return "Hôm nay con học 3 buổi mới rồi — mai học tiếp nhé! Buổi cũ vẫn học lại được";return ""}
@@ -1679,7 +1686,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610062104";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610062112";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
