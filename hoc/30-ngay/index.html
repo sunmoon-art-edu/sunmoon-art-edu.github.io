@@ -1570,7 +1570,7 @@ function motCau(box,auto){const it=[...box.children].filter(x=>x.matches(".li,.s
     else if(j<it.length-1){const b=document.createElement("button");b.className="btn cautiep";b.textContent="Câu tiếp →";b.onclick=()=>show(j+1);x.appendChild(b)}});
   show(0)}
 function bindPy(el){
-  const blk=el.querySelector(".pyblk");if(blk){bindSpeak(blk);blk.querySelectorAll(".pylis").forEach(b=>motCau(b,1));blk.querySelectorAll(".pysp").forEach(b=>motCau(b,0))}
+  const blk=el.querySelector(".pyblk");if(blk){bindSpeak(blk);}
   el.querySelectorAll(".pyc,.pdg button,.ftab button,.tqr button,.gab button,.ln2,.rdb .all").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
   el.querySelectorAll(".pylis .li").forEach(li=>{const pl=li.querySelector(".pl");if(pl)pl.onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
 }
@@ -1728,7 +1728,7 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
 })();
 
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261006092801";
+const BAN_SO="20261006092943";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
