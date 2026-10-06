@@ -770,7 +770,7 @@ button,a,.opt,.node{touch-action:manipulation}
 <script src="giang/cues.js"></script>
 <script>
 const L = [
-{t:"Thanh điệu — tập đọc 4 thanh",g:"Nghe, đọc to và phân biệt 4 thanh + thanh nhẹ — hôm nay chưa cần học từ mới",chiPA:1,
+{t:"Thanh điệu — tập đọc 4 thanh",g:"Nghe, đọc to và phân biệt 4 thanh + thanh nhẹ — hôm nay chưa cần học từ mới",chiPA:1,giangMoi:1,
  w:["妈|mā|mẹ","麻|má|tê","马|mǎ|con ngựa","骂|mà|mắng","八|bā|số 8","爸|bà|bố","一|yī|số 1","五|wǔ|số 5","鱼|yú|con cá","饿|è|đói"],
  h:[],r:[],m:[],
  s:["妈、麻、马、骂|mā, má, mǎ, mà|4 thanh với ma","八、拔、把、爸|bā, bá, bǎ, bà|4 thanh với ba","一、姨、椅、意|yī, yí, yǐ, yì|4 thanh với i","乌、无、五、雾|wū, wú, wǔ, wù|4 thanh với u","妈妈骂马吗？|Māma mà mǎ ma?|Mẹ mắng ngựa à? (câu luyện thanh)","你好、很好、雨伞|ní hǎo, hén hǎo, yú sǎn|3 + 3: chữ đầu đọc thanh 2"],
@@ -1737,7 +1737,7 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
 })();
 
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261006094130";
+const BAN_SO="20261006102216";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
