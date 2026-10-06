@@ -133,6 +133,8 @@ button:focus-visible{outline:3px solid var(--moon);outline-offset:2px}
 .pyc .big{font:800 36px/1.05 var(--tx);color:var(--ink)}
 .pyc .ex{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:18px;font-weight:600;color:var(--ink-2)}
 .pyc .ex .hzc{font:400 30px/1.1 var(--hz);color:var(--ink)}
+.pyc .emo{font-size:40px;line-height:1;margin-bottom:2px}
+.pyc .mn{font-size:16px;font-weight:700;color:var(--ink);text-align:center;line-height:1.3}
 .pyc .vn{font-size:15px;line-height:1.35;font-style:italic;font-weight:400;color:var(--sun-2);text-align:center}
 .pyh{margin:16px 0 8px;font:600 15px/1.3 var(--tx)}
 .pyh:first-child{margin-top:0}
@@ -1278,61 +1280,62 @@ function rdHtml(list){return (list||[]).map(r=>{const[grp,title,...lines]=r;cons
   return `<div class="rdb"><span class="grp">${esc(grp)}</span><button class="ln2 ttl" data-say="${esc(th)}">${rdRuby(th,tp)}</button><span class="vi">${esc(tv)}</span>${lines.map(l=>{const[h,p,v]=l.split("|");return `<button class="ln2" data-say="${esc(h)}">${rdRuby(h,p)}</button><span class="vi">${esc(v)}</span>`}).join("")}<button class="btn all" data-say="${esc(all)}">🔊 Nghe cả bài</button></div>`}).join("")}
 const PYD={
 1:{t:"4 thanh · 6 vần đơn",intro:1,
- grp:[["4 thanh + thanh nhẹ","cùng âm, khác thanh = khác nghĩa",[["mā","妈","mā","thanh 1 · ngang, cao"],["má","麻","má","thanh 2 ≈ dấu sắc"],["mǎ","马","mǎ","thanh 3 ≈ dấu hỏi"],["mà","骂","mà","thanh 4 · rơi mạnh"],["ma","吗","ma","thanh nhẹ · ngắn"]]],
-  ["6 vần đơn","nguyên âm gốc",[["a","啊","a","≈ a"],["o","哦","ó","≈ ua (tròn môi)"],["e","饿","è","≈ ưa / ơ"],["i","衣","yī","≈ i"],["u","乌","wū","≈ u"],["ü","鱼","yú","≈ uy (chu môi nói i)"]]]],
+ grp:[["4 thanh + thanh nhẹ","cùng âm, khác thanh = khác nghĩa",[["mā","妈","mā","thanh 1 · ngang, cao","mẹ"],["má","麻","má","thanh 2 ≈ dấu sắc","tê (麻辣 cay tê)"],["mǎ","马","mǎ","thanh 3 ≈ dấu hỏi","con ngựa"],["mà","骂","mà","thanh 4 · rơi mạnh","mắng"],["ma","吗","ma","thanh nhẹ · ngắn","… không? (câu hỏi)"]]],
+  ["6 vần đơn","nguyên âm gốc",[["a","八","bā","≈ a","số 8"],["o","哦","ó","≈ ua (tròn môi)","ồ! (thán từ)"],["e","饿","è","≈ ưa / ơ","đói"],["i","一","yī","≈ i","số 1"],["u","五","wǔ","≈ u","số 5"],["ü","鱼","yú","≈ uy (chu môi nói i)","con cá"]]]],
  tip:["ü = nói “i” rồi chu môi tròn|鱼 yú — tiếng Việt không có âm này","Dấu thanh đặt trên nguyên âm|mā, hǎo, xiè"],
  lis:[["妈","mā",["mā","má","mǎ","mà"]],["麻","má",["mā","má","mǎ","mà"]],["马","mǎ",["mā","má","mǎ","mà"]],["骂","mà",["mā","má","mǎ","mà"]],["鱼","yú",["yú","yí","wú"]],["饿","è",["è","à","ò"]]],
  rd:[["4 thanh","绕口令|rào kǒu lìng|Câu nói líu lưỡi","妈妈骑马，|mā ma qí mǎ|Mẹ cưỡi ngựa,","马慢，|mǎ màn|ngựa chậm,","妈妈骂马。|mā ma mà mǎ|mẹ mắng ngựa."]]},
 2:{t:"b p m f",yt:"py2",ga:["b","p","m","f"],
- grp:[["Âm môi","môi chạm môi / răng chạm môi",[["b","波","bō","≈ p (không bật hơi)"],["p","坡","pō","≈ p bật hơi mạnh"],["m","摸","mō","≈ m"],["f","佛","fó","≈ ph"]]]],
+ grp:[["Âm môi","môi chạm môi / răng chạm môi",[["b","爸","bà","≈ p (không bật hơi)","bố"],["p","怕","pà","≈ p bật hơi mạnh","sợ"],["m","米","mǐ","≈ m","gạo"],["f","饭","fàn","≈ ph","cơm"]]]],
  tip:["Bật hơi = để tờ giấy trước miệng, giấy phải bay|p bật hơi, b không"],
  lis:[["怕","pà",["pà","bà"]],["八","bā",["bā","pā"]],["米","mǐ",["mǐ","fǐ"]],["父","fù",["fù","pù","bù"]]],
  rd:[["b p m f","宝宝爬坡|bǎo bao pá pō|Em bé leo dốc","宝宝爬山坡，|bǎo bao pá shān pō|Em bé leo dốc núi,","爸爸在后面。|bà ba zài hòu miàn|bố đi phía sau.","妈妈拍拍手，|mā ma pāi pai shǒu|Mẹ vỗ vỗ tay,","宝宝不怕风。|bǎo bao bú pà fēng|em bé chẳng sợ gió."]]},
 3:{t:"d t n l",ga:["d","t","n","l"],
- grp:[["Đầu lưỡi","lưỡi chạm chân răng trên",[["d","得","dé","≈ t"],["t","特","tè","≈ th bật hơi"],["n","呢","ne","≈ n"],["l","乐","lè","≈ l"]]]],
+ grp:[["Đầu lưỡi","lưỡi chạm chân răng trên",[["d","大","dà","≈ t","to, lớn"],["t","他","tā","≈ th bật hơi","anh ấy"],["n","你","nǐ","≈ n","bạn"],["l","来","lái","≈ l","đến"]]]],
  tip:["d đọc gần “t” tiếng Việt — đừng đọc thành “đ”|大 dà ≈ “ta”","t bật hơi ≈ “th”|他 tā ≈ “tha”"],
  lis:[["他","tā",["tā","dā"]],["大","dà",["dà","tà"]],["你","nǐ",["nǐ","lǐ"]],["绿","lǜ",["lǜ","lù","nǜ"]]],
  rd:[["d t n l","打篮球|dǎ lán qiú|Chơi bóng rổ","弟弟打篮球，|dì di dǎ lán qiú|Em trai chơi bóng rổ,","一投就投进。|yì tóu jiù tóu jìn|ném một cái là vào.","老师拍拍手，|lǎo shī pāi pai shǒu|Thầy giáo vỗ tay,","大家都来了。|dà jiā dōu lái le|mọi người kéo đến xem."]]},
 4:{t:"g k h",ga:["g","k","h"],
- grp:[["Cuống lưỡi","âm từ trong họng",[["g","哥","gē","≈ c / k"],["k","科","kē","≈ kh bật hơi"],["h","喝","hē","≈ kh nhẹ"]]]],
+ grp:[["Cuống lưỡi","âm từ trong họng",[["g","哥","gē","≈ c / k","anh trai"],["k","看","kàn","≈ kh bật hơi","xem, nhìn"],["h","好","hǎo","≈ kh nhẹ","tốt, khoẻ"]]]],
  tip:["g ≈ “c”, k ≈ “kh” bật hơi|哥 gē ≈ “cưa”, 科 kē ≈ “khưa”","h đọc từ cổ họng, hơi khàn|喝 hē"],
  lis:[["哭","kū",["kū","gū"]],["哥","gē",["gē","kē","hē"]],["花","huā",["huā","guā"]],["国","guó",["guó","kuó","huó"]]],
  rd:[["g k h","喝花茶|hē huā chá|Uống trà hoa","哥哥口渴了，|gē ge kǒu kě le|Anh trai khát nước,","喝口热花茶。|hē kǒu rè huā chá|uống ngụm trà hoa nóng.","花茶好好喝，|huā chá hǎo hǎo hē|Trà hoa ngon quá,","哥哥笑哈哈。|gē ge xiào hā hā|anh cười ha ha."]]},
 5:{t:"j q x",ga:["j","q","x"],
- grp:[["Mặt lưỡi","miệng cười, lưỡi dẹt",[["j","鸡","jī","≈ chi"],["q","七","qī","≈ chi bật hơi"],["x","西","xī","≈ xi"]]]],
+ grp:[["Mặt lưỡi","miệng cười, lưỡi dẹt",[["j","家","jiā","≈ chi","nhà"],["q","七","qī","≈ chi bật hơi","số 7"],["x","谢","xiè","≈ xi","cảm ơn"]]]],
  tip:["j q x chỉ đi với i và ü","Sau j q x, ü bỏ hai chấm|ju qu xu vẫn đọc là ü"],
  lis:[["七","qī",["qī","jī","xī"]],["去","qù",["qù","jù","xù"]],["家","jiā",["jiā","qiā","xiā"]],["西","xī",["xī","qī"]]],
  rd:[["j q x","小鸡回家|xiǎo jī huí jiā|Gà con về nhà","小鸡叽叽叫，|xiǎo jī jī jī jiào|Gà con kêu chiếp chiếp,","下雨去哪里？|xià yǔ qù nǎ lǐ|trời mưa đi đâu đây?","快快回家去，|kuài kuai huí jiā qù|Mau mau về nhà thôi,","家里不下雨。|jiā lǐ bú xià yǔ|trong nhà không mưa."]]},
 6:{t:"zh ch sh r",ga:["zh","ch","sh","r"],
- grp:[["Uốn lưỡi","cong đầu lưỡi lên",[["zh","知","zhī","≈ tr"],["ch","吃","chī","≈ tr bật hơi"],["sh","诗","shī","≈ s cong lưỡi"],["r","日","rì","≈ r nhẹ"]]]],
+ grp:[["Uốn lưỡi","cong đầu lưỡi lên",[["zh","中","zhōng","≈ tr","Trung (中国)"],["ch","吃","chī","≈ tr bật hơi","ăn"],["sh","是","shì","≈ s cong lưỡi","là"],["r","人","rén","≈ r nhẹ","người"]]]],
  tip:["zh ch sh r — cong lưỡi lên vòm miệng","zhi chi shi ri — chữ i đọc ≈ “ư”|是 shì ≈ “sư”"],
  lis:[["知","zhī",["zhī","jī"]],["吃","chī",["chī","qī"]],["书","shū",["shū","xū"]],["热","rè",["rè","lè"]]],
  rd:[["zh ch sh r","猪猪吃饭|zhū zhu chī fàn|Heo con ăn cơm","小猪吃饭真开心，|xiǎo zhū chī fàn zhēn kāi xīn|Heo con ăn cơm vui ghê,","吃了十个热包子。|chī le shí ge rè bāo zi|ăn hết mười cái bánh bao nóng.","吃饱了，睡大觉，|chī bǎo le shuì dà jiào|No rồi, ngủ một giấc,","日出还在说梦话。|rì chū hái zài shuō mèng huà|mặt trời lên vẫn còn nói mớ."]]},
 7:{t:"z c s · 16 âm tiết đọc nguyên",ga:["z","c","s"],
- grp:[["Lưỡi thẳng","đầu lưỡi sau răng cửa, không cong",[["z","资","zī","≈ chư"],["c","词","cí","≈ txư bật hơi"],["s","思","sī","≈ xư"]]],
-  ["Âm tiết đọc nguyên","không cần ghép, đọc luôn cả khối",[["yi","衣","yī","≈ i"],["wu","乌","wū","≈ u"],["yu","鱼","yú","≈ uy"],["ye","耶","yē","≈ iê"],["yue","月","yuè","≈ uê"],["yuan","元","yuán","≈ uyên"],["yin","音","yīn","≈ in"],["yun","云","yún","≈ uyn"],["ying","英","yīng","≈ inh"]]]],
+ grp:[["Lưỡi thẳng","đầu lưỡi sau răng cửa, không cong",[["z","在","zài","≈ chư","ở"],["c","菜","cài","≈ txư bật hơi","món ăn"],["s","三","sān","≈ xư","số 3"]]],
+  ["Âm tiết đọc nguyên","không cần ghép, đọc luôn cả khối",[["yi","一","yī","≈ i","số 1"],["wu","五","wǔ","≈ u","số 5"],["yu","鱼","yú","≈ uy","con cá"],["ye","也","yě","≈ iê","cũng"],["yue","月","yuè","≈ uê","tháng, trăng"],["yuan","元","yuán","≈ uyên","đồng (tiền)"],["yin","音","yīn","≈ in","âm (音乐 âm nhạc)"],["yun","云","yún","≈ uyn","mây"],["ying","英","yīng","≈ inh","Anh (英语 tiếng Anh)"]]]],
  tip:["z c s lưỡi thẳng — zh ch sh cong lưỡi|四 sì ≠ 是 shì","i đứng đầu viết y, u đứng đầu viết w, ü đứng đầu viết yu"],
  lis:[["四","sì",["sì","shì","xì"]],["字","zì",["zì","zhì","jì"]],["错","cuò",["cuò","chuò"]],["月","yuè",["yuè","yè"]]],
  rd:[["z c s","小松鼠|xiǎo sōng shǔ|Sóc nhỏ","小松鼠，最聪明，|xiǎo sōng shǔ zuì cōng míng|Sóc nhỏ thông minh nhất,","早上出门采松子。|zǎo shang chū mén cǎi sōng zǐ|sáng ra ngoài hái hạt thông.","吃四个，存十个，|chī sì ge cún shí ge|Ăn bốn hạt, cất mười hạt,","冬天日日不用愁。|dōng tiān rì rì bú yòng chóu|mùa đông ngày nào cũng chẳng lo."]]},
 8:{t:"Vần ghép",
- grp:[["Vần ghép","2–3 nguyên âm đi liền",[["ai","爱","ài","≈ ai"],["ei","黑","hēi","≈ ây"],["ui","对","duì","≈ uây"],["ao","好","hǎo","≈ ao"],["ou","狗","gǒu","≈ âu"],["iu","六","liù","≈ iêu"],["ia","家","jiā","≈ ia"],["ie","谢","xiè","≈ iê"],["ua","花","huā","≈ oa"],["uo","我","wǒ","≈ ua / uô"],["üe","月","yuè","≈ uê"],["iao","小","xiǎo","≈ eo"],["uai","快","kuài","≈ oai"],["er","二","èr","≈ ơ + cong lưỡi"]]]],
+ grp:[["Vần ghép","2–3 nguyên âm đi liền",[["ai","爱","ài","≈ ai","yêu"],["ei","黑","hēi","≈ ây","đen"],["ui","对","duì","≈ uây","đúng"],["ao","好","hǎo","≈ ao","tốt"],["ou","狗","gǒu","≈ âu","con chó"],["iu","六","liù","≈ iêu","số 6"],["ia","家","jiā","≈ ia","nhà"],["ie","谢","xiè","≈ iê","cảm ơn"],["ua","花","huā","≈ oa","hoa"],["uo","我","wǒ","≈ ua / uô","tôi"],["üe","月","yuè","≈ uê","tháng, trăng"],["iao","小","xiǎo","≈ eo","nhỏ"],["uai","快","kuài","≈ oai","nhanh"],["er","二","èr","≈ ơ + cong lưỡi","số 2"]]]],
  tip:["Vần viết gọn|iou → iu, uei → ui","iu và ui: dấu thanh đặt ở chữ sau|liù, duì"],
  lis:[["狗","gǒu",["gǒu","gǎo"]],["黑","hēi",["hēi","hāi"]],["谢","xiè",["xiè","xià"]],["二","èr",["èr","è"]]],
  rd:[["ai ei ui · ao","下雪了|xià xuě le|Tuyết rơi rồi","外面雪花飞，|wài miàn xuě huā fēi|Ngoài trời tuyết bay,","小猫在睡觉。|xiǎo māo zài shuì jiào|mèo con đang ngủ.","我给爸爸倒杯水，|wǒ gěi bà ba dào bēi shuǐ|Con rót cho bố cốc nước,","爸爸说我真乖。|bà ba shuō wǒ zhēn guāi|bố khen con ngoan quá."]]},
 9:{t:"Vần mũi -n",
- grp:[["Vần mũi -n","cuối âm đầu lưỡi chạm chân răng",[["an","安","ān","≈ an"],["en","人","rén","≈ ân"],["in","您","nín","≈ in"],["un","春","chūn","≈ uân"],["ün","云","yún","≈ uyn"],["ian","天","tiān","≈ iên"],["uan","晚","wǎn","≈ oan"],["üan","元","yuán","≈ uyên"]]]],
+ grp:[["Vần mũi -n","cuối âm đầu lưỡi chạm chân răng",[["an","看","kàn","≈ an","xem"],["en","人","rén","≈ ân","người"],["in","您","nín","≈ in","ngài (lịch sự)"],["un","春","chūn","≈ uân","mùa xuân"],["ün","云","yún","≈ uyn","mây"],["ian","天","tiān","≈ iên","trời, ngày"],["uan","晚","wǎn","≈ oan","buổi tối"],["üan","元","yuán","≈ uyên","đồng (tiền)"]]]],
  tip:["ian đọc ≈ “iên”, không phải “ian”|天 tiān ≈ “thiên”","un thật ra là uen viết gọn|春 chūn ≈ “chuân”"],
  lis:[["天","tiān",["tiān","tān"]],["人","rén",["rén","rán"]],["晚","wǎn",["wǎn","wǎng"]],["云","yún",["yún","yín"]]],
  rd:[["an en in un","春天来了|chūn tiān lái le|Mùa xuân đến rồi","春天来了，|chūn tiān lái le|Mùa xuân đến rồi,","小燕子飞回来，|xiǎo yàn zi fēi huí lái|chim én nhỏ bay về,","人人都开心，|rén rén dōu kāi xīn|ai ai cũng vui,","我们一起看花。|wǒ men yì qǐ kàn huā|chúng mình cùng ngắm hoa."]]},
 10:{t:"Vần mũi -ng · biến điệu",full:1,
- grp:[["Vần mũi -ng","âm ra mũi, miệng mở",[["ang","忙","máng","≈ ang"],["eng","冷","lěng","≈ âng"],["ing","名","míng","≈ inh"],["ong","东","dōng","≈ ung"],["iang","想","xiǎng","≈ eng / iang"],["uang","王","wáng","≈ oang"],["iong","用","yòng","≈ iung"]]],
-  ["Biến điệu","đọc khác chữ viết",[["nǐ hǎo","你好","nǐ hǎo","3 + 3 → đọc ní hǎo"],["bú shì","不是","bú shì","不 + thanh 4 → bú"],["yí gè","一个","yí gè","一 + thanh 4 → yí"],["yì tiān","一天","yì tiān","一 + thanh 1·2·3 → yì"]]]],
+ grp:[["Vần mũi -ng","âm ra mũi, miệng mở",[["ang","忙","máng","≈ ang","bận"],["eng","冷","lěng","≈ âng","lạnh"],["ing","听","tīng","≈ inh","nghe"],["ong","东","dōng","≈ ung","phía đông"],["iang","想","xiǎng","≈ eng / iang","muốn, nhớ"],["uang","王","wáng","≈ oang","họ Vương"],["iong","用","yòng","≈ iung","dùng"]]],
+  ["Biến điệu","đọc khác chữ viết",[["nǐ hǎo","你好","nǐ hǎo","3 + 3 → đọc ní hǎo","xin chào"],["bú shì","不是","bú shì","不 + thanh 4 → bú","không phải"],["yí gè","一个","yí gè","一 + thanh 4 → yí","một cái"],["yì tiān","一天","yì tiān","一 + thanh 1·2·3 → yì","một ngày"]]]],
  tip:["-n đầu lưỡi · -ng cuống lưỡi, ra mũi|安 ān ≠ 昂 áng","Hai thanh 3 liền nhau → chữ đầu đọc thanh 2|你好 → ní hǎo"],
  lis:[["东","dōng",["dōng","dēng"]],["名","míng",["míng","mín"]],["王","wáng",["wáng","wán"]],["冷","lěng",["lěng","lǎng"]]],
  rd:[["an en ang eng ing","月亮船|yuè liang chuán|Thuyền trăng","弯弯的月亮像小船，|wān wān de yuè liang xiàng xiǎo chuán|Trăng cong cong như thuyền nhỏ,","我坐船上看星星。|wǒ zuò chuán shang kàn xīng xing|con ngồi trên thuyền ngắm sao.","风儿轻轻唱，|fēng ér qīng qīng chàng|Gió khẽ khàng hát,","天上亮晶晶。|tiān shàng liàng jīng jīng|bầu trời lấp lánh."],
   ["biến điệu","你好吗|nǐ hǎo ma|Bạn khoẻ không","你好！我很好。|nǐ hǎo wǒ hěn hǎo|Chào bạn! Mình rất khoẻ.","这不是我的书，|zhè bú shì wǒ de shū|Đây không phải sách của mình,","我有一本，|wǒ yǒu yì běn|mình có một quyển,","他有一个。|tā yǒu yí gè|bạn ấy có một cái."]]}};
 Object.assign(YT,{py1:["_nEnY71pTrU","Vần đơn a o e i u ü","HuiChinese会中文","5:31"],py2:["rs8OV0FL10I","Phát âm 21 phụ âm đầu","HuiChinese会中文","1:22"]});
 PYD[1].yt="py1";
+const EMO={"妈": "👩", "麻": "🌶️", "马": "🐴", "骂": "😠", "吗": "❓", "八": "8️⃣", "哦": "😮", "饿": "😋", "一": "1️⃣", "五": "5️⃣", "鱼": "🐟", "爸": "👨", "怕": "😨", "米": "🍚", "饭": "🍛", "大": "🐘", "他": "🧑", "你": "👉", "来": "🚶", "哥": "👦", "看": "👀", "好": "👍", "家": "🏠", "七": "7️⃣", "谢": "🙏", "中": "🇨🇳", "吃": "🥢", "是": "✅", "人": "🧍", "在": "📍", "菜": "🥬", "三": "3️⃣", "也": "➕", "月": "🌙", "元": "💰", "音": "🎵", "云": "☁️", "英": "🇬🇧", "爱": "❤️", "黑": "⚫", "对": "✔️", "狗": "🐶", "六": "6️⃣", "花": "🌸", "我": "🙋", "小": "🐣", "快": "⚡", "二": "2️⃣", "您": "🤝", "春": "🌱", "天": "☀️", "晚": "🌃", "忙": "🏃", "冷": "🥶", "听": "👂", "东": "🌅", "想": "💭", "王": "👑", "用": "🛠️", "你好": "👋", "不是": "🙅", "一个": "☝️", "一天": "📅"};
 const GHEP=`<div class="ghep"><p><b>Tiếng Trung ghép vần giống tiếng Việt</b></p>
  <div class="row"><span class="pa">m</span><em>+</em><span class="va">a</span><em>+</em><span class="th">dấu sắc</span><em>=</em><b>má</b></div><p class="lbl">tiếng Việt: phụ âm + vần + dấu</p>
  <div class="row"><span class="pa">m</span><em>+</em><span class="va">a</span><em>+</em><span class="th">thanh 1</span><em>=</em><b>${colorPinyin("mā")}</b><em>妈 mẹ</em></div><p class="lbl">tiếng Trung: phụ âm + vần + thanh</p>
@@ -1341,14 +1344,14 @@ const GHEP=`<div class="ghep"><p><b>Tiếng Trung ghép vần giống tiếng Vi
 function pyBlock(n){const d=PYD[n];if(!d)return"";
   const liHtml=(hz,ok,opts)=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
   const pick=(a,k)=>shuffle(a).slice(0,Math.min(k,a.length));
-  const memHtml=(hz,ok,opts)=>`<div class="li memq"><span class="hzq">${esc(hz)}</span><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
+  const memHtml=(hz,ok,opts)=>`<div class="li memq"><span class="hzq">${esc(hz)}</span>${EMO[hz]?`<span style="font-size:34px" aria-hidden="true">${EMO[hz]}</span>`:""}<div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
   const spHtml=([lab,hz,py,vn])=>SITE?`<div class="sp" data-hz="${esc(hz)}"><div class="tg">${esc(hz)}</div><div class="pys">${colorPinyin(py)}</div><div class="bt"><button class="btn" data-say="${esc(hz)}">🔊 Nghe mẫu</button><button class="btn main mic">🎤 Đọc &amp; chấm</button><button class="btn rb">⏺ Thu &amp; nghe lại</button></div><p class="res"></p></div>`:"";
   const grids=d.grp.map(([name,hint,cells],gi)=>{
     const labs=cells.map(c=>c[0]),pys=cells.map(c=>c[2]);
     const ex=pick(cells,3).map(([lab,hz])=>liHtml(hz,lab,[lab,...pick(labs.filter(x=>x!==lab),3)]));
     const mem=pick(cells,3).map(([lab,hz,py])=>memHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),2)]));
     const sp=pick(cells,2).map(spHtml).join("");
-    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>
+    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>`<button class="pyc" data-say="${esc(hz)}">${EMO[hz]?`<span class="emo" aria-hidden="true">${EMO[hz]}</span>`:""}<span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
     <h4 class="pyh">✎ 1 · Nghe và chọn<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>
     ${sp?`<h4 class="pyh">🎤 2 · Đọc lại<i>nghe mẫu → bấm Đọc &amp; chấm → đọc to</i></h4><div class="spk-list">${sp}</div>`:""}
     <h4 class="pyh">🧠 ${sp?3:2} · Luyện nhớ<i>nhìn chữ, tự đọc thầm, rồi chọn phiên âm</i></h4><div class="lis pylis">${mem.join("")}</div>
