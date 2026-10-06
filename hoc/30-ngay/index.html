@@ -531,6 +531,30 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 
 .tone1{color:var(--t1)}.tone2{color:var(--t2)}.tone3{color:var(--t3)}.tone4{color:var(--t4)}.tone5{color:var(--t5)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* iPad & điện thoại (06/10) */
+button,a,.opt,.node{touch-action:manipulation}
+@media (min-width:700px){
+ .wrap,.top .in{max-width:860px}
+ .wrap{padding-inline:24px}
+ .pyg{grid-template-columns:repeat(auto-fill,minmax(128px,1fr))}
+ .pylis{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+ .pdg{grid-template-columns:repeat(4,1fr)}
+ .tqr{grid-template-columns:repeat(auto-fill,minmax(52px,1fr))}
+ .tqr button{height:56px;font-size:26px}
+ .cap{width:200px;font-size:15px}
+ .stepbar button{width:88px}
+ .stepnav .btn{font-size:17px;padding:14px 16px}
+}
+@media (min-width:1000px){.wrap,.top .in{max-width:940px}}
+@media (max-width:360px){
+ .wrap{padding-inline:12px}
+ .pyg{grid-template-columns:repeat(2,1fr)}
+ .pyc .big{font-size:42px}
+ .pylis .opt{font-size:18px}
+ .pdg .p{font-size:22px}
+ .cap{width:110px;font-size:13px}
+}
+
 
 /* chị Linh 24/09: tiếng Trung đậm, tiếng Việt nhạt */
 .hzi,.w .hz,.s .hz,.ln .hz,.tile,.chip2,.nd .c,.rad .rc,.hc .big,.hv button b,.rad .ex,.cult .hzi,.big{font-weight:700}
@@ -1394,7 +1418,8 @@ function pyBlock(n){const d=PYD[n];if(!d)return"";
     const mem=pick(cells,3).map(([lab,hz,py])=>memHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),2)]));
     const sp=pick(cells,2).map(spHtml).join("");
     return `<div class="pystep">${d.yt&&gi===(d.intro?1:0)?ytHtml(d.yt):""}<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
-    <h4 class="pyh">✎ 1 · Nghe và chọn<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>
+    </div><div class="pystep"><h4 class="pyh" style="font-size:18px">✎ Bài tập · ${esc(name)}</h4>
+    <h4 class="pyh">1 · Nghe và chọn<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>
     ${sp?`<h4 class="pyh">🎤 2 · Đọc lại<i>nghe mẫu → bấm Đọc &amp; chấm → đọc to</i></h4><div class="spk-list">${sp}</div>`:""}
     <h4 class="pyh">🧠 ${sp?3:2} · Luyện nhớ<i>nhìn chữ, tự đọc thầm, rồi chọn phiên âm</i></h4><div class="lis pylis">${mem.join("")}</div>
     </div>`}).join("");
