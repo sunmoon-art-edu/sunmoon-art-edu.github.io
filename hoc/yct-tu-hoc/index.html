@@ -1420,7 +1420,7 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
   let CUE=null,cu=-1;fetch(cueUrl+"?v="+AV).then(r=>r.ok?r.json():null).then(j=>CUE=j).catch(()=>{});
   const veDong=()=>{if(!CUE)return;let i=-1;for(let q=0;q<CUE.length;q++)if(CUE[q].t<=au.currentTime+.05)i=q;if(i===cu||i<0)return;cu=i;const c=CUE[i];
     // 06/10 chị: cô giảng tới đâu, CHỮ HIỆN LÊN BẢNG tới đó (như viết phấn) — chữ cái/âm quan trọng to, vàng
-    if(c.vi){const hl=esc(c.vi).replace(/(^|[\s“"(,])([a-zA-Zü]{1,2}|[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]+(?=[\s,.”"]|$)(?<=[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ].*))(?=[\s,.!?:”")]|$)/g,'$1<b class="vcNhan">$2</b>');
+    if(c.vi){const hl=esc(c.vi).replace(/(^|[\s“"(,])([a-zA-Zü]|zh|ch|sh)(?=[\s,.!?:”")]|$)/g,'$1<b class="vcNhan">$2</b>');
       hinh.innerHTML="";chu.innerHTML=`<span class="vcPhan">${hl}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
     if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh">${esc(c.zh)}</span>${py?`<span class="vcPy">${tonePy(py)}</span>`:""}`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
 };
