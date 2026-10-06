@@ -1,0 +1,939 @@
+{
+ "0": {
+  "w": [
+   [
+    "中国",
+    "Zhōngguó",
+    "Trung Quốc",
+    "🌏"
+   ],
+   [
+    "熊猫",
+    "xióngmāo",
+    "gấu trúc",
+    "🐼"
+   ],
+   [
+    "灯笼",
+    "dēnglong",
+    "đèn lồng",
+    "🏮"
+   ],
+   [
+    "饺子",
+    "jiǎozi",
+    "sủi cảo",
+    "🥟"
+   ],
+   [
+    "龙",
+    "lóng",
+    "con rồng",
+    "🐉"
+   ],
+   [
+    "筷子",
+    "kuàizi",
+    "đôi đũa",
+    "🥢"
+   ],
+   [
+    "妈",
+    "mā",
+    "mẹ (thanh 1)",
+    "👩"
+   ],
+   [
+    "麻",
+    "má",
+    "cây gai (thanh 2)",
+    "🌿"
+   ],
+   [
+    "马",
+    "mǎ",
+    "con ngựa (thanh 3)",
+    "🐴"
+   ],
+   [
+    "骂",
+    "mà",
+    "mắng (thanh 4)",
+    "😠"
+   ]
+  ],
+  "thanh": [
+   [
+    "1",
+    "ā",
+    "—",
+    "Ngang, cao, kéo dài",
+    "Giống thanh ngang (không dấu) nhưng CAO hơn",
+    "mā · 妈 · mẹ",
+    "ma"
+   ],
+   [
+    "2",
+    "á",
+    "↗",
+    "Đi lên",
+    "Giống dấu SẮC",
+    "má · 麻 · cây gai",
+    "má"
+   ],
+   [
+    "3",
+    "ǎ",
+    "↘↗",
+    "Trầm xuống rồi lên",
+    "Giống dấu HỎI",
+    "mǎ · 马 · con ngựa",
+    "mả"
+   ],
+   [
+    "4",
+    "à",
+    "↘",
+    "Rơi mạnh, dứt khoát",
+    "Giống dấu HUYỀN nhưng rơi nhanh, mạnh",
+    "mà · 骂 · mắng",
+    "mà"
+   ],
+   [
+    "nhẹ",
+    "a",
+    "·",
+    "Đọc nhẹ, ngắn",
+    "Giống đọc lướt, không nhấn",
+    "māma · 妈妈 · mẹ (chữ sau đọc nhẹ)",
+    "—"
+   ]
+  ],
+  "py": {
+   "van": [
+    [
+     "a",
+     "啊",
+     "ā",
+     "như “a” tiếng Việt",
+     "😮",
+     "há miệng thật to"
+    ],
+    [
+     "o",
+     "喔",
+     "ō",
+     "gần như “ô”",
+     "🐓",
+     "gà trống gáy ō ō"
+    ],
+    [
+     "e",
+     "鹅",
+     "é",
+     "gần như “ơ”",
+     "🦢",
+     "con ngỗng 鹅"
+    ],
+    [
+     "i",
+     "衣",
+     "yī",
+     "như “i”",
+     "👕",
+     "cái áo 衣"
+    ],
+    [
+     "u",
+     "乌",
+     "wū",
+     "như “u”",
+     "🐦",
+     "con quạ 乌鸦"
+    ],
+    [
+     "ü",
+     "鱼",
+     "yú",
+     "chụm môi như “u” rồi đọc “i”",
+     "🐟",
+     "con cá 鱼"
+    ]
+   ],
+   "thanh": [
+    [
+     "b",
+     "玻",
+     "bō",
+     "gần như “p” nhẹ",
+     "👨",
+     "爸爸",
+     "bàba",
+     "bố"
+    ],
+    [
+     "p",
+     "坡",
+     "pō",
+     "“p” bật hơi mạnh",
+     "🍎",
+     "苹果",
+     "píngguǒ",
+     "quả táo"
+    ],
+    [
+     "m",
+     "摸",
+     "mō",
+     "như “m”",
+     "👩",
+     "妈妈",
+     "māma",
+     "mẹ"
+    ],
+    [
+     "f",
+     "佛",
+     "fó",
+     "như “ph”",
+     "✈️",
+     "飞机",
+     "fēijī",
+     "máy bay"
+    ],
+    [
+     "d",
+     "得",
+     "dé",
+     "như “t”",
+     "🐘",
+     "大象",
+     "dàxiàng",
+     "con voi"
+    ],
+    [
+     "t",
+     "特",
+     "tè",
+     "“th” bật hơi",
+     "🐰",
+     "兔子",
+     "tùzi",
+     "con thỏ"
+    ],
+    [
+     "n",
+     "讷",
+     "nè",
+     "như “n”",
+     "🥛",
+     "牛奶",
+     "niúnǎi",
+     "sữa"
+    ],
+    [
+     "l",
+     "勒",
+     "lè",
+     "như “l”",
+     "🐯",
+     "老虎",
+     "lǎohǔ",
+     "con hổ"
+    ],
+    [
+     "g",
+     "哥",
+     "gē",
+     "như “c”",
+     "🐶",
+     "狗",
+     "gǒu",
+     "con chó"
+    ],
+    [
+     "k",
+     "科",
+     "kē",
+     "“kh” bật hơi",
+     "😭",
+     "哭",
+     "kū",
+     "khóc"
+    ],
+    [
+     "h",
+     "喝",
+     "hē",
+     "như “h”, hơi khàn",
+     "🌸",
+     "花",
+     "huā",
+     "bông hoa"
+    ],
+    [
+     "j",
+     "鸡",
+     "jī",
+     "như “ch”",
+     "🐔",
+     "鸡",
+     "jī",
+     "con gà"
+    ],
+    [
+     "q",
+     "七",
+     "qī",
+     "“ch” bật hơi",
+     "🚗",
+     "汽车",
+     "qìchē",
+     "ô tô"
+    ],
+    [
+     "x",
+     "西",
+     "xī",
+     "như “x”",
+     "🍉",
+     "西瓜",
+     "xīguā",
+     "dưa hấu"
+    ]
+   ],
+   "ghep": [
+    [
+     "b",
+     "a",
+     "bā",
+     "八",
+     "số 8"
+    ],
+    [
+     "m",
+     "a",
+     "mā",
+     "妈",
+     "mẹ"
+    ],
+    [
+     "d",
+     "a",
+     "dà",
+     "大",
+     "to"
+    ],
+    [
+     "t",
+     "a",
+     "tā",
+     "他",
+     "bạn ấy"
+    ],
+    [
+     "n",
+     "i",
+     "nǐ",
+     "你",
+     "bạn"
+    ],
+    [
+     "g",
+     "e",
+     "gē",
+     "哥",
+     "anh trai"
+    ]
+   ]
+  },
+  "t": "Phiên âm & thanh điệu",
+  "icon": "🔤",
+  "muc": "Học cách đọc chữ cái tiếng Trung và 4 thanh điệu — chìa khoá để tự đọc mọi từ",
+  "hd": [
+   "Chào con! Trước khi vào bài một, mình làm quen với phiên âm nhé.",
+   "Phiên âm là những chữ cái ghi cách đọc chữ Hán. Biết phiên âm, con sẽ tự đọc được mọi từ mới.",
+   "Tiếng Trung có bốn thanh điệu, giống dấu trong tiếng Việt. Ví dụ, cùng một âm ma, đổi thanh là đổi nghĩa. Con nghe nhé.",
+   "zh:妈",
+   "Đó là mẹ. Còn đây là con ngựa.",
+   "zh:马",
+   "Con học từng phần, bấm vào mỗi chữ cái để nghe cô giảng, rồi vào mục Bé làm bài để luyện. Cố lên nhé!"
+  ],
+  "g": {
+   "py": [
+    "Đây là các chữ cái phiên âm. Con bấm vào từng ô, cô sẽ giảng cách đọc và đọc mẫu ba lần.",
+    "Chú ý: chữ b đọc gần như p nhẹ, chữ d đọc như t, chữ g đọc như c.",
+    "Còn p, t, k phải bật hơi thật mạnh. Con đặt tờ giấy trước miệng, đọc đúng thì tờ giấy sẽ bay lên!"
+   ],
+   "thanh": [
+    "Tiếng Trung có bốn thanh điệu, giống tiếng Việt lắm.",
+    "Thanh một đi ngang, cao và kéo dài. Con nghe nhé.",
+    "zh:妈",
+    "Thanh hai đi lên, giống dấu sắc.",
+    "zh:麻",
+    "Thanh ba trầm xuống rồi lên, giống dấu hỏi.",
+    "zh:马",
+    "Thanh bốn rơi mạnh, giống dấu huyền nhưng dứt khoát.",
+    "zh:骂",
+    "Con bấm nút So sánh để nghe tiếng Trung và tiếng Việt cạnh nhau, rồi vừa đọc vừa vẽ tay theo thanh điệu nhé."
+   ]
+  }
+ },
+ "1": {
+  "t": "你好！ Xin chào!",
+  "icon": "👋",
+  "muc": "Con biết chào bạn, chào cô, nói tạm biệt — rồi đếm từ 1 đến 10",
+  "sach": "Sách YCT 1 · Bài 1 · trang 1–4",
+  "cau": [
+   [
+    "你好！",
+    "Nǐ hǎo!",
+    "Xin chào!",
+    "Gặp bạn, gặp mọi người"
+   ],
+   [
+    "再见！",
+    "Zàijiàn!",
+    "Tạm biệt!",
+    "Lúc chia tay"
+   ],
+   [
+    "老师好！",
+    "Lǎoshī hǎo!",
+    "Em chào cô ạ!",
+    "Đến lớp gặp cô giáo"
+   ]
+  ],
+  "w": [
+   [
+    "你好",
+    "nǐ hǎo",
+    "xin chào",
+    "👋"
+   ],
+   [
+    "再见",
+    "zàijiàn",
+    "tạm biệt",
+    "🤚"
+   ],
+   [
+    "老师",
+    "lǎoshī",
+    "thầy giáo, cô giáo",
+    "👩‍🏫"
+   ],
+   [
+    "一",
+    "yī",
+    "số 1",
+    "1"
+   ],
+   [
+    "二",
+    "èr",
+    "số 2",
+    "2"
+   ],
+   [
+    "三",
+    "sān",
+    "số 3",
+    "3"
+   ],
+   [
+    "四",
+    "sì",
+    "số 4",
+    "4"
+   ],
+   [
+    "五",
+    "wǔ",
+    "số 5",
+    "5"
+   ],
+   [
+    "六",
+    "liù",
+    "số 6",
+    "6"
+   ],
+   [
+    "七",
+    "qī",
+    "số 7",
+    "7"
+   ],
+   [
+    "八",
+    "bā",
+    "số 8",
+    "8"
+   ],
+   [
+    "九",
+    "jiǔ",
+    "số 9",
+    "9"
+   ],
+   [
+    "十",
+    "shí",
+    "số 10",
+    "10"
+   ]
+  ],
+  "vd": [
+   [
+    "你好，你好吗？",
+    "Nǐ hǎo, nǐ hǎo ma?",
+    "Chào bạn, bạn khoẻ không?"
+   ],
+   [
+    "我很好。",
+    "Wǒ hěn hǎo.",
+    "Mình rất khoẻ."
+   ],
+   [
+    "她是我的老师。",
+    "Tā shì wǒ de lǎoshī.",
+    "Cô ấy là cô giáo của mình."
+   ],
+   [
+    "我先走啦，再见！",
+    "Wǒ xiān zǒu la, zàijiàn!",
+    "Mình về trước nhé, tạm biệt!"
+   ]
+  ],
+  "ht": [
+   {
+    "canh": "Gặp bạn ở cổng trường",
+    "l": [
+     [
+      "👦",
+      "小明",
+      "你好！",
+      "Nǐ hǎo!",
+      "Chào bạn!"
+     ],
+     [
+      "👧",
+      "小红",
+      "你好！",
+      "Nǐ hǎo!",
+      "Chào bạn!"
+     ]
+    ]
+   },
+   {
+    "canh": "Vào lớp gặp cô giáo",
+    "l": [
+     [
+      "👦",
+      "小明",
+      "老师好！",
+      "Lǎoshī hǎo!",
+      "Em chào cô ạ!"
+     ],
+     [
+      "👩‍🏫",
+      "老师",
+      "你好！",
+      "Nǐ hǎo!",
+      "Chào em!"
+     ]
+    ]
+   },
+   {
+    "canh": "Tan học, chào bạn ra về",
+    "l": [
+     [
+      "👧",
+      "小红",
+      "再见！",
+      "Zàijiàn!",
+      "Tạm biệt nhé!"
+     ],
+     [
+      "👦",
+      "小明",
+      "再见！",
+      "Zàijiàn!",
+      "Tạm biệt!"
+     ]
+    ]
+   }
+  ],
+  "noi": {
+   "de": "Nối câu nói với câu đáp",
+   "cap": [
+    [
+     "你好。",
+     "Nǐ hǎo.",
+     "你好。",
+     "Nǐ hǎo."
+    ],
+    [
+     "老师好。",
+     "Lǎoshī hǎo.",
+     "你好。",
+     "Nǐ hǎo."
+    ],
+    [
+     "再见。",
+     "Zàijiàn.",
+     "再见。",
+     "Zàijiàn."
+    ]
+   ]
+  },
+  "game": [
+   [
+    "Giơ tay ra số kiểu Trung Quốc",
+    "2 người · bàn tay",
+    "Một người giơ tay, người kia nói số tiếng Trung. 1–5: giơ đủ số ngón. 六 6: ngón cái + ngón út. 七 7: chụm 3 đầu ngón. 八 8: ngón cái + ngón trỏ hình chữ L. 九 9: ngón trỏ cong như cái móc. 十 10: 2 ngón trỏ bắt chéo."
+   ],
+   [
+    "Đếm tiếp sức, nhanh dần",
+    "Cả nhà",
+    "Từng người đếm nối nhau 一 二 三 … 十. Hết một vòng thì đếm lại nhanh hơn. Ai đếm sai thì làm lại từ 一."
+   ],
+   [
+    "Chuyền hoa",
+    "1 bông hoa (hoặc đồ chơi) · nhạc",
+    "Bật nhạc, chuyền hoa. Nhạc tắt, ai cầm hoa thì nói một câu hội thoại: 你好！ 老师好！ 再见！"
+   ]
+  ],
+  "song": [
+   [
+    "m_rDIzj6DRE",
+    "Hello Song (你好歌)",
+    "Little Fox Chinese",
+    "0:59"
+   ],
+   [
+    "NcLNmRgCpAE",
+    "Number Song (数字歌)",
+    "Little Fox Chinese",
+    "0:56"
+   ]
+  ],
+  "thi": [
+   {
+    "t": "tranh",
+    "nghe": "六",
+    "chon": [
+     "5",
+     "6",
+     "8"
+    ],
+    "dap": 1
+   },
+   {
+    "t": "tranh",
+    "nghe": "你好",
+    "chon": [
+     "🤝",
+     "👋",
+     "🚗"
+    ],
+    "dap": 0
+   },
+   {
+    "t": "tranh",
+    "nghe": "老师再见",
+    "chon": [
+     "👨‍👧",
+     "👭",
+     "🤚"
+    ],
+    "dap": 2
+   },
+   {
+    "t": "doc",
+    "chu": "七",
+    "py": "qī",
+    "img": "6",
+    "dung": false
+   },
+   {
+    "t": "doc",
+    "chu": "老师",
+    "py": "lǎoshī",
+    "img": "🧒",
+    "dung": false
+   },
+   {
+    "t": "doc",
+    "chu": "再见",
+    "py": "zàijiàn",
+    "img": "🤚",
+    "dung": true
+   }
+  ],
+  "bt": [
+   {
+    "t": "noi",
+    "de": "Nối chữ Hán với phiên âm",
+    "cap": [
+     [
+      "好",
+      "hǎo"
+     ],
+     [
+      "你",
+      "nǐ"
+     ],
+     [
+      "老师",
+      "lǎoshī"
+     ],
+     [
+      "再见",
+      "zàijiàn"
+     ],
+     [
+      "四",
+      "sì"
+     ],
+     [
+      "十",
+      "shí"
+     ]
+    ]
+   },
+   {
+    "t": "noi",
+    "de": "Nối chữ Hán với số",
+    "cap": [
+     [
+      "四",
+      "4"
+     ],
+     [
+      "一",
+      "1"
+     ],
+     [
+      "十",
+      "10"
+     ],
+     [
+      "七",
+      "7"
+     ],
+     [
+      "八",
+      "8"
+     ],
+     [
+      "九",
+      "9"
+     ]
+    ]
+   },
+   {
+    "t": "dem",
+    "de": "Đếm hình, chọn số bằng chữ Hán",
+    "cau": [
+     [
+      "🐡",
+      6
+     ],
+     [
+      "🚗",
+      8
+     ],
+     [
+      "🌼",
+      5
+     ],
+     [
+      "☁️",
+      9
+     ],
+     [
+      "👕",
+      6
+     ]
+    ]
+   },
+   {
+    "t": "ds",
+    "de": "Đúng hay sai?",
+    "cau": [
+     [
+      "Phiên âm của 你好 là “nǐ hǎo”",
+      true
+     ],
+     [
+      "再见 nghĩa là xin chào",
+      false
+     ],
+     [
+      "Cảm ơn là 谢谢",
+      true
+     ],
+     [
+      "Thầy/cô giáo chữ Hán là 朋友",
+      false
+     ],
+     [
+      "Thầy/cô giáo phiên âm là “lǎoshī”",
+      true
+     ]
+    ]
+   }
+  ],
+  "tv": [
+   [
+    "你",
+    "nǐ",
+    "bạn"
+   ],
+   [
+    "好",
+    "hǎo",
+    "tốt"
+   ],
+   [
+    "老",
+    "lǎo",
+    "老师 lǎoshī"
+   ],
+   [
+    "师",
+    "shī",
+    "老师 lǎoshī"
+   ],
+   [
+    "再",
+    "zài",
+    "再见 zàijiàn"
+   ],
+   [
+    "见",
+    "jiàn",
+    "再见 zàijiàn"
+   ],
+   [
+    "谢",
+    "xiè",
+    "谢谢 xièxie · cảm ơn"
+   ],
+   [
+    "对",
+    "duì",
+    "对不起 duìbuqǐ · xin lỗi"
+   ],
+   [
+    "不",
+    "bù",
+    "对不起 · xin lỗi"
+   ],
+   [
+    "起",
+    "qǐ",
+    "对不起 · xin lỗi"
+   ],
+   [
+    "一",
+    "yī",
+    "số 1"
+   ],
+   [
+    "二",
+    "èr",
+    "số 2"
+   ],
+   [
+    "三",
+    "sān",
+    "số 3"
+   ],
+   [
+    "四",
+    "sì",
+    "số 4"
+   ],
+   [
+    "五",
+    "wǔ",
+    "số 5"
+   ],
+   [
+    "六",
+    "liù",
+    "số 6"
+   ],
+   [
+    "七",
+    "qī",
+    "số 7"
+   ],
+   [
+    "八",
+    "bā",
+    "số 8"
+   ],
+   [
+    "九",
+    "jiǔ",
+    "số 9"
+   ],
+   [
+    "十",
+    "shí",
+    "số 10"
+   ]
+  ],
+  "hd": [
+   "Chào con! Hôm nay mình học bài một trong sách YCT một: xin chào.",
+   "Bài này có hai câu chính. Gặp nhau, mình nói:",
+   "zh:你好！",
+   "Chia tay, mình nói:",
+   "zh:再见！",
+   "Con còn học đếm từ một đến mười nữa. Một, hai, ba:",
+   "zh:一，二，三",
+   "Học xong từ mới, con nghe bài đọc, nối câu, chơi, hát, rồi làm bài kiểm tra và bài tập về nhà nhé. Cố lên!"
+  ],
+  "g": {
+   "cau": [
+    "Đây là hai câu chính của bài. Gặp ai cũng nói:",
+    "zh:你好！",
+    "Lúc ra về thì nói:",
+    "zh:再见！",
+    "Bấm từng câu để nghe rồi nói theo thật to nhé."
+   ],
+   "w": [
+    "Bài này có mười ba từ mới. Trước tiên là ba từ chào hỏi: xin chào, tạm biệt, và cô giáo.",
+    "Học xong ba từ này, mình mới sang các số từ một đến mười.",
+    "Con bấm từng thẻ để nghe, rồi đọc to theo nhé."
+   ],
+   "ht": [
+    "Đây là bài đọc trong sách, có ba đoạn ngắn.",
+    "Con bấm Nghe cả đoạn, rồi bấm Đóng vai, chọn một bạn, đến lượt mình thì nói thật to."
+   ],
+   "noi": [
+    "Bạn nói một câu, mình đáp lại thế nào? Con bấm câu bên trái, rồi bấm câu đáp bên phải nhé."
+   ],
+   "game": [
+    "Đây là trò chơi trong sách. Con chơi cùng bố mẹ nhé, vừa chơi vừa nói tiếng Trung."
+   ],
+   "song": [
+    "Mình cùng hát bài xin chào và bài đếm số nhé. Vừa hát vừa vẫy tay, giơ ngón tay đếm theo."
+   ],
+   "thi": [
+    "Đây là bài kiểm tra cuối bài một, giống trong sách.",
+    "Phần một: nghe rồi chọn tranh đúng. Phần hai: đọc chữ, nhìn tranh, chọn đúng hay sai."
+   ],
+   "bt": [
+    "Đây là bài tập về nhà của trung tâm. Có nối chữ, đếm hình và đúng sai. Con làm từng bài nhé."
+   ],
+   "tv": [
+    "Đây là phần tập viết. Con bấm vào từng chữ, xem cô viết mẫu từng nét, rồi tự viết theo thứ tự nét nhé."
+   ]
+  }
+ }
+}
