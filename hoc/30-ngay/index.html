@@ -126,9 +126,9 @@ button:focus-visible{outline:3px solid var(--moon);outline-offset:2px}
 .cap.r{left:calc(50% + 43px);text-align:left}.cap.l{right:calc(50% + 43px);text-align:right}
 .nwrap.lk .cap{color:var(--ink-2);opacity:.75}
 .nwrap .st{font-size:12px;letter-spacing:1px;color:#E4B342;line-height:1;min-height:12px}
-.bub{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;max-width:230px;overflow:hidden;text-overflow:ellipsis;background:var(--surface);color:var(--sun-2);border:2px solid var(--line);border-radius:12px;padding:6px 10px;font:600 13px/1.2 var(--tx);pointer-events:none}
+.nbub{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;max-width:230px;overflow:hidden;text-overflow:ellipsis;background:var(--surface);color:var(--sun-2);border:2px solid var(--line);border-radius:12px;padding:6px 10px;font:600 13px/1.2 var(--tx);pointer-events:none}
 .nwrap.has-bub{margin-top:40px}
-.bub::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--line)}
+.nbub::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--line)}
 @media (prefers-reduced-motion:no-preference){.node.cur:not(.done){animation:nb 1.6s ease-in-out infinite}@keyframes nb{50%{transform:translateY(-3px)}}}
 /* bài phiên âm */
 .pyg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
@@ -765,14 +765,13 @@ button,a,.opt,.node{touch-action:manipulation}
 <script src="giang/cues.js"></script>
 <script>
 const L = [
-{t:"Thanh điệu & câu chào đầu tiên",g:"Nghe 4 thanh — và nói được xin chào, cảm ơn, tạm biệt ngay hôm nay",
- w:["妈|mā|mẹ","麻|má|cây gai","马|mǎ|con ngựa","骂|mà|mắng","你好|nǐ hǎo|xin chào","谢谢|xièxie|cảm ơn","再见|zàijiàn|tạm biệt","老师|lǎoshī|thầy / cô giáo"],
- h:["马|Hình con ngựa đứng nghiêng|nét trên là đầu và bờm, nét dưới là thân và chân", "妈|女 người phụ nữ + 马 (đọc là mā)|người phụ nữ mình gọi “mā” = mẹ", "你|亻 người đứng + 尔 (ngươi)|người đứng trước mặt mình = bạn"],
- r:["女|Nữ|con gái, phụ nữ|妈 好 她 姐 妹", "马|Mã|con ngựa|妈 吗 骑"],m:["fan:马|con ngựa*女|妈|mẹ*口|吗|… không?*奇|骑|cưỡi"],
- s:["你好！|Nǐ hǎo!|Xin chào!","老师好！|Lǎoshī hǎo!|Em chào thầy ạ!","谢谢老师！|Xièxie lǎoshī!|Em cảm ơn thầy!","再见！|Zàijiàn!|Tạm biệt!","妈妈骂马吗？|Māma mà mǎ ma?|Mẹ mắng ngựa à? (câu luyện thanh)"],
- tip:["Thanh 1 — ngang, cao, đều|như hát một nốt cao","Thanh 2 — đi lên|gần dấu sắc tiếng Việt","Thanh 3 — trầm xuống rồi lên|gần dấu hỏi","Thanh 4 — rơi mạnh, dứt khoát|như ra lệnh","Hai thanh 3 liền nhau → chữ đầu đọc thanh 2|你好 đọc thực tế là ní hǎo","Chào ai: chức danh + 好|老师好, 妈妈好"],
- d:["A|你好！|Nǐ hǎo!|Chào em!", "B|老师好！|Lǎoshī hǎo!|Em chào thầy ạ!", "A|再见！|Zàijiàn!|Tạm biệt em!", "B|谢谢老师，再见！|Xièxie lǎoshī, zàijiàn!|Em cảm ơn thầy, chào thầy!"],c:"Người Trung Quốc chào nhau bằng 你好, không cúi người|gật đầu, cười hoặc bắt tay là đủ",c2:"Tiếng Trung có 4 thanh, tiếng Quảng Đông có tới 6–9 thanh|tiếng Việt có 6 thanh — nên người Việt học thanh điệu nhanh hơn người phương Tây",
- q:[["mǎ nghĩa là?",["con ngựa","mẹ","mắng"],0],["Thanh nào gần dấu sắc?",["thanh 2","thanh 1","thanh 4"],0],["“Tạm biệt” là?",["再见","谢谢","你好"],0],["Chào thầy giáo?",["老师好！","好老师！","你老师！"],0]]},
+{t:"Thanh điệu — tập đọc 4 thanh",g:"Nghe, đọc to và phân biệt 4 thanh + thanh nhẹ — hôm nay chưa cần học từ mới",chiPA:1,
+ w:["妈|mā|mẹ","麻|má|tê","马|mǎ|con ngựa","骂|mà|mắng","八|bā|số 8","爸|bà|bố","一|yī|số 1","五|wǔ|số 5","鱼|yú|con cá","饿|è|đói"],
+ h:[],r:[],m:[],
+ s:["妈、麻、马、骂|mā, má, mǎ, mà|4 thanh với ma","八、拔、把、爸|bā, bá, bǎ, bà|4 thanh với ba","一、姨、椅、意|yī, yí, yǐ, yì|4 thanh với i","乌、无、五、雾|wū, wú, wǔ, wù|4 thanh với u","妈妈骂马吗？|Māma mà mǎ ma?|Mẹ mắng ngựa à? (câu luyện thanh)"],
+ tip:["Thanh 1 — ngang, cao, đều|như hát một nốt cao","Thanh 2 — đi lên|gần dấu sắc tiếng Việt","Thanh 3 — trầm xuống rồi lên|gần dấu hỏi","Thanh 4 — rơi mạnh, dứt khoát|như ra lệnh","Thanh nhẹ — ngắn, không dấu|妈妈 māma: chữ sau đọc nhẹ","Mẹo: vừa đọc vừa vẽ dấu thanh trong không khí|tay đi theo giọng"],
+ d:[],
+ q:[["mǎ nghĩa là?",["con ngựa","mẹ","mắng"],0],["Thanh nào gần dấu sắc?",["thanh 2","thanh 1","thanh 4"],0],["Thanh nào gần dấu hỏi?",["thanh 3","thanh 2","thanh 4"],0],["妈妈 māma — chữ thứ hai đọc thanh gì?",["thanh nhẹ","thanh 1","thanh 4"],0]]},
 
 {t:"Số đếm & âm khó",g:"Đếm 1–10 và sửa các âm người Việt hay đọc sai",
  w:["一|yī|1","二|èr|2","三|sān|3","四|sì|4","五|wǔ|5","六|liù|6","七|qī|7","八|bā|8","九|jiǔ|9","十|shí|10"],
@@ -1590,7 +1589,7 @@ function renderMap(){
       const t=L[it.day-1].t,lab="Ngày "+it.day,st=GM.stars[it.day]||0,rev=/Ôn tập|Về đích/.test(t);
       const face=lk?LOCK:(dn&&!c?"✓":it.day);
       const side=x>0?"l":"r";
-      return `<div class="nwrap${c?" has-bub":""}${lk?" lk":""}" style="transform:translateX(${x}px)"><span class="cap ${side}" aria-hidden="true"><small>${lab}</small>${esc(t)}</span>${c?`<span class="bub">${dn?"Ôn lại":done.size?"Học tiếp":"Bắt đầu"} · ${lab}</span>`:""}<button class="node${dn?" done":""}${lk?" locked":""}${c?" cur":""}${rev?" rev":""}" data-day="${it.day}" title="${lab} · ${esc(t)}" aria-label="${lab}: ${esc(t)}${dn?", đã xong":lk?", chưa mở":""}"${c?' aria-current="step"':""}>${face}</button><span class="st">${st?"★".repeat(st):""}</span></div>`}).join("");
+      return `<div class="nwrap${c?" has-bub":""}${lk?" lk":""}" style="transform:translateX(${x}px)"><span class="cap ${side}" aria-hidden="true"><small>${lab}</small>${esc(t)}</span>${c?`<span class="nbub">${dn?"Ôn lại":done.size?"Học tiếp":"Bắt đầu"} · ${lab}</span>`:""}<button class="node${dn?" done":""}${lk?" locked":""}${c?" cur":""}${rev?" rev":""}" data-day="${it.day}" title="${lab} · ${esc(t)}" aria-label="${lab}: ${esc(t)}${dn?", đã xong":lk?", chưa mở":""}"${c?' aria-current="step"':""}>${face}</button><span class="st">${st?"★".repeat(st):""}</span></div>`}).join("");
     return `<div class="unit${now?" now":""}${fin&&!now?" fin":""}"><button class="ubar" data-u="${ui}" aria-expanded="${open}"><span class="ut"><small>${u.a}</small><b>${u.b}</b></span><span class="uc">${fin?"✓ ":""}${nd}/${u.items.length}</span></button><div class="path"${open?"":" hidden"}>${nodes}</div></div>`;
   }).join("");
   document.getElementById("progTxt").textContent=`${done.size}/30 bài`;document.getElementById("chipTxt").textContent=done.size;
@@ -1600,7 +1599,7 @@ function renderMap(){
 }
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function renderLesson(){
-  const d=L[cur-1];const el=document.getElementById("lesson");const G=(window.GIANG||{})[cur];stopTeacher();LS={ok:0,tot:0};_cf=0;
+  const d=L[cur-1];const el=document.getElementById("lesson");const G=d.chiPA&&!d.giangMoi?null:(window.GIANG||{})[cur];stopTeacher();LS={ok:0,tot:0};_cf=0;
   const words=d.w.map((x,i)=>{const[hz,py,vi]=x.split("|");return `<button class="w" data-cue="w${i}" data-say="${esc(hz)}"><span class="spk">${SPK}</span><span class="hz">${colorHanzi(hz,py)}</span><span class="pyw">${colorPinyin(py)}</span><span class="vi">${esc(vi)}</span></button>`}).join("");
   const sents=d.s.map((x,i)=>{const[hz,py,vi]=x.split("|");return `<button class="s" data-cue="s${i}" data-say="${esc(hz)}"><span class="play">${SPK}</span><span><span class="hz" style="display:block">${esc(hz)}</span><span class="pys" style="display:block">${colorPinyin(py)}</span><span class="vi" style="display:block">${esc(vi)}</span></span></button>`}).join("");
   const wchars=[...new Set([...(d.h||[]).map(x=>x.split("|")[0]),...d.w.map(x=>x.split("|")[0])].join("").replace(/[^\u3400-\u9fff]/g,""))].slice(0,14);
@@ -1623,22 +1622,22 @@ function renderLesson(){
     ${G?`<div class="teacher"><button class="tplay" id="tPlay" aria-label="Nghe giảng bài">${PLAY}</button><div class="tmid"><b>Nghe giảng bài <i id="tTime">${fmt(0)} / ${fmt(G.d)}</i></b><input type="range" class="tbar" id="tBar" min="0" max="${G.d}" step="0.1" value="0" aria-label="Tua bài giảng"></div><button class="tspeed" id="tSpeed" aria-label="Tốc độ">1×</button></div>`:""}
     ${canSpeak?"":'<p class="warn">Trình duyệt này không đọc được tiếng — mở bằng Chrome hoặc Safari để nghe.</p>'}
     ${pyBlock(cur)}
-    <section><h3>Từ mới <small>bấm để nghe</small></h3><div class="vocab">${words}</div></section>
+    ${d.chiPA?"":`<section><h3>Từ mới <small>bấm để nghe</small></h3><div class="vocab">${words}</div></section>`}
     ${hanz?`<section><h3>Chữ Hán hôm nay <small>nhìn hình — đoán nghĩa</small></h3><div class="hanz">${hanz}</div></section>`:""}
     ${mindMap(d)?`<section><h3>Bộ thủ &amp; sơ đồ chữ <small>thêm nét, ghép bộ → ra chữ mới</small></h3>${mindMap(d)}</section>`:""}
-    <section><h3>Tập viết <small>xem thứ tự nét, rồi tự viết bằng ngón tay</small></h3>
+    ${d.chiPA?"":`<section><h3>Tập viết <small>xem thứ tự nét, rồi tự viết bằng ngón tay</small></h3>
       <div class="wr"><div class="pad" id="pad"></div><div class="wside">
         <div class="chips" id="wchips">${wchars.map((c,i)=>`<button class="chip2${i?"":" on"}" data-c="${c}">${c}</button>`).join("")}</div>
         <p class="winfo" id="winfo"></p>
         <div class="wbtns"><button class="btn" id="wAnim">▶ Xem lại nét</button><button class="btn main" id="wQuiz">✎ Tự viết</button><button class="btn" id="wSay">🔊 Nghe</button></div>
         <p class="note">Quy tắc: ngang trước sổ sau · trên trước dưới sau · trái trước phải sau · ngoài trước trong sau.</p>
-      </div></div></section>
-    <section><h3>Mẫu câu <small>nghe → đọc to 3 lần</small></h3><div class="sents">${sents}</div></section>
+      </div></div></section>`}
+    <section><h3>${d.chiPA?"Tập đọc 4 thanh":"Mẫu câu"} <small>nghe → đọc to 3 lần</small></h3><div class="sents">${sents}</div></section>
     ${dlg?`<section><h3>Hội thoại <small>bấm từng câu để nghe</small></h3><div class="dlg">${dlg}</div></section>`:""}
     <section><h3>Luyện nói <small>đọc to — máy chấm phát âm</small></h3>${speakHtml(d)}</section>
     <section><h3>Ghi nhớ</h3><ul class="tips">${tips}</ul></section>
     ${cm?`<section><h3>Văn hoá <small>chuyện thú vị về Trung Quốc</small></h3><div class="facts">${(LIMG[cur]||[]).length?`<div class="gal">${LIMG[cur].map(k=>`<figure class="ph"><img src="img/${k}.jpg" alt="${esc(IMG[k].cap)}" loading="lazy"><figcaption>${esc(IMG[k].cap)}<a href="${IMG[k].url}" target="_blank" rel="noopener">Ảnh: ${esc(IMG[k].by)}</a></figcaption></figure>`).join("")}</div>`:""}<div class="fact" data-cue="c"><span class="ic" aria-hidden="true">知</span><p><b>${hzWrap(cm)}</b><i>${hzWrap(cs)}</i></p></div>${d.c2?(()=>{const[a,b]=d.c2.split("|");return `<div class="fact" data-cue="c2"><span class="ic" aria-hidden="true">趣</span><p><b>${hzWrap(a)}</b><i>${hzWrap(b||"")}</i></p></div>`})():""}</div></section>`:""}
-    <section><h3>Clip xem thêm <small>video chọn sẵn cho bài này</small></h3>${ytHtml(cur)}</section>
+    ${d.chiPA?"":`<section><h3>Clip xem thêm <small>video chọn sẵn cho bài này</small></h3>${ytHtml(cur)}</section>`}
     <section><h3>Bài tập <small>3 phần — làm hết nhé</small></h3><div class="ex">
       <h4>1 · Nghe và chọn nghĩa</h4><div class="lis">${lis}</div>
       ${arr?`<h4>2 · Ghép câu <small style="font-weight:300;color:var(--ink-2)">bấm các ô theo đúng thứ tự</small></h4>${arr}`:""}
@@ -1728,7 +1727,7 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
 })();
 
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261006092943";
+const BAN_SO="20261006093303";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
