@@ -778,6 +778,9 @@ body{background:#FFFDF2}.card{background:#fff}
 .pyc2 .big2{font:800 40px/1.1 var(--py);color:var(--sun-2)}.pyc2 img{width:40px;height:40px}.pyc2 .ex2{display:flex;gap:6px;align-items:baseline}.pyc2 .hzc{font-family:var(--hz);font-size:22px}.pyc2 .mn2{font-size:12.5px;color:#7A5A00}.pyc2 .vn2{font-size:12.5px;color:var(--ink-2)}/* 06/10 chị: "nhiều chữ đậm quá — tiêu đề" → bỏ dòng "Phần x/4" (thanh bước đã có), bỏ tiêu đề + nút giảng của mục phiên âm (đã có cô giảng từng nhóm) */
 .phanBox>.phan{display:none!important}
 .bdV{display:flex;flex-direction:column;align-items:center;gap:4px}.bdZ{font:400 clamp(44px,11vw,90px)/1.1 var(--hz)}.bdV.to .bdZ{font-size:clamp(64px,15vw,130px)}.bdP{font:700 clamp(20px,4.6vw,34px)/1.3 var(--py)}.bdP i{font:400 .6em/1 var(--vi,inherit);color:var(--ink-2)}.vcBang:has(.bdV){flex-direction:column!important;gap:10px}
+.rbW{display:inline-flex;gap:.12em}.rbO{display:inline-flex;flex-direction:column;align-items:center;padding:0 .08em;border-radius:12px}.rbO.doi{background:#FFF0C2;box-shadow:0 0 0 3px #F1C84A inset}.rbPy{font:700 clamp(22px,5vw,40px)/1.2 var(--py)}.vcZh.rbBox .bdZ{font:400 clamp(64px,15vw,130px)/1.1 var(--hz)}
+.vcBam{position:absolute;inset:auto 0 12% 0;margin:auto;width:max-content;max-width:90%;background:#22AFB1;color:#fff;border:0;border-radius:999px;padding:14px 26px;font:800 clamp(18px,4.5vw,28px)/1.2 var(--vi,inherit);box-shadow:0 5px 0 #17898B;z-index:3}.vcBam[hidden]{display:none}.vcBang{position:relative}
+.bdT{display:inline-block;background:#FFE58A;color:#6B4E00;border-radius:999px;padding:4px 14px;font:800 clamp(15px,3.6vw,24px)/1.2 var(--vi,inherit)}.bdM{font:600 clamp(16px,3.8vw,26px)/1.3 var(--vi,inherit);color:var(--ink-2);text-align:center;margin-bottom:6px}
 .pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
 .pyc2.playing{border-color:#E0B640;background:#FFF8DC}
 /* 06/10 Biến điệu: thẻ ngang cả hàng, chữ Hán to, không vỡ dòng */
@@ -1138,7 +1141,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061238";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061242";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1448,7 +1451,11 @@ function lvNoi(){const h=linhVat("kha",200).replace('<svg ','<svg class="vcSun" 
 /* 06/10 chị: cô nói "thanh 1/2/3/4" thì trên bảng PHẢI GHI RÕ dấu thanh: mā má mǎ mà + nét đi lên/xuống */
 /* 06/10 chị: "có ví dụ chứ" → cô nói quy tắc biến điệu thì bảng hiện luôn VÍ DỤ: 你好 nǐ hǎo → ní hǎo */
 function bdHinh(i,to){const x=(ND[0].bd||[])[i];if(!x)return "";const [v,d]=x[2].split("→").map(z=>z.trim());
-  return `<span class="bdV${to?" to":""}"><span class="bdZ">${esc(x[1])}</span><span class="bdP"><i>viết</i> ${tonePy(v)} → <i>đọc</i> <b>${tonePy(d)}</b></span></span>`}
+  return `<span class="bdV${to?" to":""}"><span class="bdT">Biến điệu ${i+1}</span>${to?`<span class="bdM">${esc(x[3])}</span>`:""}${rubyHz(x[1],d,v)}<span class="bdP"><i>viết</i> ${tonePy(v)} → <i>đọc</i> <b>${tonePy(d)}</b></span></span>`}
+/* 06/10 chị: "viết thanh bên trên" → phiên âm (có dấu thanh) nằm TRÊN từng chữ Hán; âm bị đổi thanh thì tô viền */
+function rubyHz(hz,py,goc){const c=[...hz],p=(py||"").trim().split(/\s+/),g=(goc||"").trim().split(/\s+/);
+  if(!py||p.length!==c.length)return `<span class="rbPy">${tonePy(py||"")}</span><span class="bdZ">${esc(hz)}</span>`;
+  return `<span class="rbW">${c.map((z,k)=>`<span class="rbO${goc&&g[k]&&g[k]!==p[k]?" doi":""}"><span class="rbPy">${tonePy(p[k])}</span><span class="bdZ">${esc(z)}</span></span>`).join("")}</span>`}
 function thanhHinh(vi){const t=vi.toLowerCase(),N={"một":1,"1":1,"hai":2,"2":2,"ba":3,"3":3,"bốn":4,"4":4};
   const C=["","M8 12H52","M8 40L52 8","M8 22Q22 46 30 44T52 8","M8 8L52 44"],DAU=["","ˉ","ˊ","ˇ","ˋ"],A=["","ā","á","ǎ","à"];
   const o=k=>`<span class="thO tone${k}"><b>${A[k]}</b><svg viewBox="0 0 60 52"><path d="${C[k]}" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><i>Thanh ${k}</i></span>`;
@@ -1467,6 +1474,10 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
   const dong=()=>{try{au.pause()}catch(e){}o.remove();document.body.style.overflow=""};
   $(".vcX").onclick=dong;pp.onclick=()=>{au.paused?au.play().catch(()=>{}):au.pause()};tua.oninput=()=>{au.currentTime=+tua.value};
   au.addEventListener("play",()=>pp.textContent="⏸");au.addEventListener("pause",()=>pp.textContent="▶");au.addEventListener("ended",()=>{pp.textContent="↺";pp.onclick=()=>{au.currentTime=0;au.play();pp.onclick=()=>{au.paused?au.play().catch(()=>{}):au.pause()}}});
+  // 06/10 chị "không nghe được": iPhone chặn tự phát → nếu sau 0,9 giây chưa kêu thì hiện nút to "Bấm để nghe cô giảng"
+  const bam=document.createElement("button");bam.className="vcBam";bam.innerHTML="▶ Bấm để nghe cô giảng";bam.hidden=true;$(".vcBang").appendChild(bam);
+  bam.onclick=()=>{bam.hidden=true;au.play().catch(()=>{bam.hidden=false})};au.addEventListener("play",()=>bam.hidden=true);
+  setTimeout(()=>{if(au.paused&&!au.ended){bam.hidden=false;pp.textContent="▶"}},900);
   let CUE=null,cu=-1;fetch(cueUrl+"?v="+AV).then(r=>r.ok?r.json():null).then(j=>CUE=j).catch(()=>{});
   const veDong=()=>{if(!CUE)return;let i=-1;for(let q=0;q<CUE.length;q++)if(CUE[q].t<=au.currentTime+.05)i=q;if(i===cu||i<0)return;cu=i;const c=CUE[i];
     // 06/10 chị: cô giảng tới đâu, CHỮ HIỆN LÊN BẢNG tới đó (như viết phấn) — chữ cái/âm quan trọng to, vàng
@@ -1474,7 +1485,7 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
       const ds=[];hl.split(/(?<=[,;:.!?])\s+/).forEach(x=>{if(ds.length&&(x.replace(/<[^>]+>/g,"").length<14||ds[ds.length-1].replace(/<[^>]+>/g,"").length<14))ds[ds.length-1]+=" "+x;else ds.push(x)});
       hinh.innerHTML=c.ex!=null?bdHinh(c.ex):thanhHinh(c.vi);chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
     if(c.zh&&c.ex!=null){hinh.innerHTML="";chu.innerHTML=bdHinh(c.ex,1);o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
-    if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh">${esc(c.zh)}</span>${py?`<span class="vcPy">${tonePy(py)}</span>`:""}`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
+    if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh rbBox">${rubyHz(c.zh,py)}</span>`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
 };
   let an=null,buf=null;try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
   const t0=performance.now();const tick=()=>{if(!document.body.contains(o))return;
@@ -1521,7 +1532,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
     ...P.thanh.map(x=>({lab:x[0],hz:x[1],py:x[2],vn:x[3],mo:x[3],e:"",au:`aud/c0-ps-${x[0]}.mp3`,gi:`aud/c0-pgi-${x[0]}.mp4`})),
     ...P.ghep.map((x,i)=>({lab:`${x[0]} + ${x[1]}`,hz:x[3],py:x[2],vn:x[4],mo:"",e:"",au:`aud/c0-pg${i}.mp3`,gi:`aud/c0-pgi-g${i}.mp4`})),
     ...ND[0].w.slice(6,10).map((w,j)=>({lab:w[1],hz:w[0],py:w[1],vn:w[2],mo:["Thanh 1 — ngang, cao","Thanh 2 — đi lên","Thanh 3 — xuống rồi lên","Thanh 4 — rơi mạnh"][j],e:"",au:`aud/c0-w${6+j}.mp3`,gi:`aud/c0-w${6+j}.mp3`})),
-    ...(ND[0].bd||[]).map((x,i)=>({lab:x[0],hz:x[1],py:x[2],vn:x[3],mo:x[3],e:"",bd:1,au:`aud/c0-bd${i}.mp3`,gi:`aud/c0-pgi-bd${i}.mp4`}))];
+    ...(ND[0].bd||[]).map((x,i)=>({lab:`Biến điệu ${i+1} · ${x[0]}`,hz:x[1],py:x[2],vn:x[3],mo:x[3],e:"",bd:1,au:`aud/c0-bd${i}.mp3`,gi:`aud/c0-pgi-bd${i}.mp4`}))];
   const a=P.van.length,b=P.thanh.length,c=P.ghep.length,h=Math.ceil(b/2),r=(x,y)=>[...Array(y-x).keys()].map(z=>z+x);
   // 06/10 chị: "sau thanh điệu phải có biến điệu luôn" → Thanh điệu → Biến điệu → nguyên âm → phụ âm (chỉ âm đơn giản bō pō…) → ghép
   const t0i=a+b+c+4,nb=(ND[0].bd||[]).length;
@@ -1549,7 +1560,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
     const giangNhom=()=>{const au=play(`aud/c0-nh${gi}.mp4`);au.addEventListener("ended",()=>setTimeout(()=>{const x=document.querySelector(".vidCo .vcX");if(x)x.click()},1200));moVideo(au,`aud/c0-nh${gi}.json`)};
     function ve(){if(buoc>0)coDan("py"+Math.min(buoc,4)+"-"+gi);
       if(buoc===0){khung(`<button class="btn2 pyCoG" id="pyCoG">▶ Nghe cô giảng lại</button><div class="pyg2">${g.ds.map(k=>`<button class="pyc2${IT[k].bd?" bd":""}" data-k="${k}"><span class="big2">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(IT[k].lab)?tonePy(IT[k].lab):esc(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span><span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
-        box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;box.querySelector("#pyCoG").onclick=giangNhom;setTimeout(giangNhom,400);return}
+        box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;box.querySelector("#pyCoG").onclick=giangNhom;giangNhom();return}
       if(buoc===1)return cauChon(g.ds,``,"nghe");
       if(buoc===2){const Q=pick(g.ds,2);let da=0;khung(`${Q.map(k=>`<div class="sp2" data-k="${k}"><div class="tg2">${esc(IT[k].hz)}</div><div class="pys2">${tonePy(IT[k].py)}</div><div class="bt2"><button class="btn2 sN">🔊 Nghe</button><button class="big sM">🎤 Đọc &amp; thu</button></div><p class="res2"></p></div>`).join("")}<button class="big" id="pyT">Tiếp →</button>`);
         box.querySelectorAll(".sp2").forEach(cd=>{const k=+cd.dataset.k,res=cd.querySelector(".res2"),m=cd.querySelector(".sM");cd.querySelector(".sN").onclick=e=>play(IT[k].au,e.currentTarget);
