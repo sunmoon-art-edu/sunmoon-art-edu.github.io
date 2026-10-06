@@ -215,6 +215,27 @@ body:not(.inles) #lesson{display:none}
 .kq .sao{color:#E4B342;font-size:18px;letter-spacing:2px}
 @keyframes kqin{from{transform:scale(.95);opacity:0}}
 .pyblk .sp .tg{font-size:30px}
+.tq{display:flex;flex-direction:column;gap:12px;padding:16px 14px;border-radius:20px;background:linear-gradient(160deg,#EAF3FB,var(--surface) 40%,#FFF4E2)}
+.tq h4{margin:0;font:800 20px/1.2 var(--tx);text-align:center;color:var(--sun-2)}
+.tq h4 small{display:block;font:400 13px/1.3 var(--tx);font-style:italic;color:var(--ink-2);margin-top:2px}
+.tqg{display:flex;flex-direction:column;gap:6px}
+.tqg .nh{align-self:flex-start;padding:3px 10px;border-radius:8px;font:700 13px/1.3 var(--tx);color:#fff;background:var(--g)}
+.tqg .nh i{font-weight:400;opacity:.85;margin-left:4px}
+.tqr{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:5px}
+.tqr button{min-width:0;height:48px;padding:0 2px;border:2px solid var(--g);border-radius:8px;font:500 21px/1 var(--tx);color:var(--g);
+ background:linear-gradient(to bottom,transparent 33%,color-mix(in srgb,var(--g) 30%,transparent) 33%,color-mix(in srgb,var(--g) 30%,transparent) calc(33% + 1px),transparent calc(33% + 1px),transparent 66%,color-mix(in srgb,var(--g) 30%,transparent) 66%,color-mix(in srgb,var(--g) 30%,transparent) calc(66% + 1px),transparent calc(66% + 1px)),color-mix(in srgb,var(--g) 10%,var(--surface))}
+.tqr button:active{transform:translateY(1px)}
+.pdw{display:flex;flex-direction:column;gap:14px}
+.pdb{border-radius:20px;overflow:hidden;border:2px solid var(--line);background:var(--surface)}
+.pdb .hd{display:flex;align-items:center;gap:10px;padding:8px 14px;background:linear-gradient(90deg,var(--sun-soft),#FFF4E2)}
+.pdb .hd b{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--sun);color:var(--on-sun);font:800 22px/1 var(--tx)}
+.pdb .hd span{font:700 15px/1.2 var(--tx);color:var(--sun-2)}
+.pdg{display:grid;grid-template-columns:repeat(3,1fr)}
+.pdg button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 4px 10px;border:0;border-bottom:1.5px dashed var(--line);background:none;font:inherit;color:var(--ink)}
+.pdg button:active{background:var(--soft)}
+.pdg .e{font-size:42px;line-height:1.1}
+.pdg .p{font:600 26px/1.1 var(--tx)}
+.pdg .m{font-size:12px;color:var(--ink-2);font-style:italic;font-weight:300;line-height:1.2;text-align:center}
 /* lesson */
 article{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:clamp(16px,4vw,26px);display:flex;flex-direction:column;gap:26px}
 .lhead{display:flex;gap:16px;align-items:center;padding:22px 20px;border-radius:24px;background:linear-gradient(135deg,var(--sun-soft) 0%,var(--moon-soft) 45%,#FFF4E2 100%);position:relative;overflow:hidden}
@@ -1342,6 +1363,11 @@ const PYD={
 Object.assign(YT,{py1:["_nEnY71pTrU","Vần đơn a o e i u ü","HuiChinese会中文","5:31"],py2:["rs8OV0FL10I","Phát âm 21 phụ âm đầu","HuiChinese会中文","1:22"]});
 PYD[1].yt="py1";
 const EMO={"妈": "👩", "麻": "🌶️", "马": "🐴", "骂": "😠", "吗": "❓", "八": "8️⃣", "哦": "😮", "饿": "😋", "一": "1️⃣", "五": "5️⃣", "鱼": "🐟", "爸": "👨", "怕": "😨", "米": "🍚", "饭": "🍛", "大": "🐘", "他": "🧑", "你": "👉", "来": "🚶", "哥": "👦", "看": "👀", "好": "👍", "家": "🏠", "七": "7️⃣", "谢": "🙏", "中": "🇨🇳", "吃": "🥢", "是": "✅", "人": "🧍", "在": "📍", "菜": "🥬", "三": "3️⃣", "也": "➕", "月": "🌙", "元": "💰", "音": "🎵", "云": "☁️", "英": "🇬🇧", "爱": "❤️", "黑": "⚫", "对": "✔️", "狗": "🐶", "六": "6️⃣", "花": "🌸", "我": "🙋", "小": "🐣", "快": "⚡", "二": "2️⃣", "您": "🤝", "春": "🌱", "天": "☀️", "晚": "🌃", "忙": "🏃", "冷": "🥶", "听": "👂", "东": "🌅", "想": "💭", "王": "👑", "用": "🛠️", "你好": "👋", "不是": "🙅", "一个": "☝️", "一天": "📅"};
+const TQ=[["Vần đơn","单韵母","#C8453A","a o e i u ü"],["Phụ âm","声母","#2C68B0","b p m f d t n l g k h j q x zh ch sh r z c s y w"],["Vần ghép","复韵母","#C77A12","ai ei ui ao ou iu ie üe er"],["Vần mũi trước","前鼻韵母","#7B4FB0","an en in un ün"],["Vần mũi sau","后鼻韵母","#C2457E","ang eng ing ong"],["Âm tiết đọc nguyên","整体认读音节","#3E8A4A","zhi chi shi ri zi ci si yi wu yu ye yue yuan yin yun ying"]];
+const TQS=Object.fromEntries(PYFULL.flatMap(x=>x[1].split(" ").map(c=>c.split("|"))).concat([["üe","月"]]));
+const tongQuat=()=>`<div class="tq"><h4>Bảng phiên âm tổng quát<small>23 phụ âm · 36 vần · 16 âm tiết đọc nguyên — bấm ô để nghe</small></h4>${TQ.map(([vn,cn,c,list])=>`<div class="tqg" style="--g:${c}"><span class="nh">${vn}<i>${cn}</i></span><div class="tqr">${list.split(" ").map(x=>`<button data-say="${TQS[x]||x}">${x}</button>`).join("")}</div></div>`).join("")}</div>`;
+const PD={"b": "bǐ|笔|✏️|bút;bā|八|8️⃣|số 8;bà|爸|👨|bố;bāo|包|🥟|bánh bao;bí|鼻|👃|mũi;bēi|杯|🥤|cốc;bā|巴|🚌|xe buýt (巴士);bù|不|🙅|không;bái|白|⚪|trắng", "p": "pá|爬|🧗|leo;pà|怕|😨|sợ;pí|啤|🍺|bia (啤酒);pǎo|跑|🏃|chạy;píng|苹|🍎|táo (苹果);pú|葡|🍇|nho (葡萄);pó|婆|👵|bà (婆婆);pāi|拍|👏|vỗ tay;pán|盘|🍽️|đĩa", "m": "mā|妈|👩|mẹ;mǎ|马|🐴|ngựa;māo|猫|🐱|mèo;mǐ|米|🍚|gạo;mù|木|🪵|gỗ;mén|门|🚪|cửa;miàn|面|🍜|mì;mào|帽|🧢|mũ;mǎi|买|🛒|mua", "f": "fēi|飞|✈️|bay;fàn|饭|🍛|cơm;fēng|风|🌬️|gió;fáng|房|🏠|nhà (房子);fú|福|🧧|phúc;fǎ|法|🇫🇷|Pháp (法国)", "d": "dà|大|🐘|to;dì|弟|👦|em trai;dú|读|📖|đọc;diàn|电|⚡|điện;dàn|蛋|🥚|trứng;dāo|刀|🔪|dao;dēng|灯|💡|đèn;duō|多|➕|nhiều;dǎ|打|🏸|đánh, chơi", "t": "tā|他|🧑|anh ấy;tù|兔|🐰|thỏ;táng|糖|🍬|kẹo;tiān|天|☀️|trời;tī|踢|⚽|đá bóng;tāng|汤|🍲|canh;tǎ|塔|🗼|tháp;tīng|听|👂|nghe;tóu|头|🙆|đầu", "n": "nǐ|你|👉|bạn;niú|牛|🐮|con bò;nǎi|奶|🥛|sữa;nǚ|女|👧|nữ;niǎo|鸟|🐦|chim;nuǎn|暖|🔥|ấm;ná|拿|✋|cầm;nián|年|📅|năm", "l": "lái|来|🚶|đến;lǜ|绿|🟢|xanh lá;lù|路|🛣️|đường;lán|蓝|🔵|xanh dương;lóng|龙|🐉|rồng;lí|梨|🍐|quả lê;lǎo|老|👴|già;lěng|冷|🥶|lạnh;lā|拉|🫸|kéo", "g": "gē|哥|👦|anh trai;gǒu|狗|🐶|chó;guā|瓜|🍉|dưa (西瓜);gāo|高|📏|cao;gē|歌|🎤|bài hát;gǔ|鼓|🥁|trống;guǒ|果|🍎|quả (水果);gōng|弓|🏹|cung", "k": "kàn|看|👀|xem;kū|哭|😭|khóc;kǎ|卡|💳|thẻ;kuài|快|⚡|nhanh;kā|咖|☕|cà phê (咖啡);kǒu|口|👄|miệng;kè|课|📚|bài học;kě|渴|🥤|khát", "h": "hǎo|好|👍|tốt;hē|喝|🧃|uống;huā|花|🌸|hoa;hóng|红|🔴|đỏ;hǔ|虎|🐯|hổ;huǒ|火|🔥|lửa;hǎi|海|🌊|biển;hēi|黑|⚫|đen", "j": "jiā|家|🏠|nhà;jī|鸡|🐔|gà;jiǔ|九|9️⃣|số 9;jú|橘|🍊|quýt;jiǎo|脚|🦶|bàn chân;jìng|镜|🪞|gương;jiāo|蕉|🍌|chuối (香蕉);jiǔ|酒|🍷|rượu", "q": "qī|七|7️⃣|số 7;qián|钱|💰|tiền;qiú|球|⚽|quả bóng;qí|骑|🚲|đạp xe;qiáo|桥|🌉|cây cầu;qún|裙|👗|váy;qiān|铅|✏️|bút chì (铅笔)", "x": "xiè|谢|🙏|cảm ơn;xué|学|📚|học;xiǎo|小|🐣|nhỏ;xióng|熊|🐻|gấu;xié|鞋|👟|giày;xīng|星|⭐|ngôi sao;xuě|雪|❄️|tuyết;xǐ|洗|🧼|rửa", "zh": "zhū|猪|🐷|heo;zhǐ|纸|📄|giấy;zhōng|钟|⏰|đồng hồ;zhǎo|找|🔍|tìm;zhōng|中|🇨🇳|Trung (中国);zhuō|桌|🪵|bàn (桌子)", "ch": "chī|吃|🥢|ăn;chá|茶|🍵|trà;chē|车|🚗|xe;chuán|船|⛵|thuyền;chuáng|床|🛏️|giường;chàng|唱|🎤|hát;chūn|春|🌱|mùa xuân", "sh": "shū|书|📖|sách;shǒu|手|✋|tay;shuǐ|水|💧|nước;shān|山|⛰️|núi;shé|蛇|🐍|rắn;shí|十|🔟|số 10;shǔ|鼠|🐭|chuột;shì|是|✅|là", "r": "rén|人|🧍|người;rè|热|🥵|nóng;rì|日|🌞|mặt trời;ròu|肉|🍖|thịt;ruǎn|软|🧸|mềm", "z": "zǎo|早|🌅|sớm;zuò|坐|🪑|ngồi;zì|字|🔤|chữ;zú|足|⚽|bóng đá (足球);zuǐ|嘴|👄|miệng;zǒu|走|🚶|đi bộ;zài|在|📍|ở", "c": "cài|菜|🥬|rau, món;cǎo|草|🌿|cỏ;cōng|葱|🧅|hành;cān|餐|🍽️|bữa ăn;cuò|错|❌|sai;cūn|村|🏘️|làng", "s": "sān|三|3️⃣|số 3;sì|四|4️⃣|số 4;sǎn|伞|☂️|ô (dù);sōng|松|🌲|cây thông;suān|酸|🍋|chua;sè|色|🎨|màu"};
+const pdHtml=ks=>`<div class="pdw">${ks.filter(k=>PD[k]).map(k=>`<div class="pdb"><div class="hd"><b>${k}</b><span>Luyện đọc âm tiết</span></div><div class="pdg">${PD[k].split(";").map(x=>{const[py,hz,e,m]=x.split("|");return `<button data-say="${hz}"><span class="e" aria-hidden="true">${e}</span><span class="p">${colorPinyin(py)}</span><span class="m">${esc(m)}</span></button>`}).join("")}</div></div>`).join("")}</div>`;
 const GHEP=`<div class="ghep"><p><b>Tiếng Trung ghép vần giống tiếng Việt</b></p>
  <div class="row"><span class="pa">m</span><em>+</em><span class="va">a</span><em>+</em><span class="th">dấu sắc</span><em>=</em><b>má</b></div><p class="lbl">tiếng Việt: phụ âm + vần + dấu</p>
  <div class="row"><span class="pa">m</span><em>+</em><span class="va">a</span><em>+</em><span class="th">thanh 1</span><em>=</em><b>${colorPinyin("mā")}</b><em>妈 mẹ</em></div><p class="lbl">tiếng Trung: phụ âm + vần + thanh</p>
@@ -1357,7 +1383,7 @@ function pyBlock(n){const d=PYD[n];if(!d)return"";
     const ex=pick(cells,3).map(([lab,hz,py])=>liHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),3)]));
     const mem=pick(cells,3).map(([lab,hz,py])=>memHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),2)]));
     const sp=pick(cells,2).map(spHtml).join("");
-    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
+    return `<div class="pystep">${d.yt&&gi===(d.intro?1:0)?ytHtml(d.yt):""}<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
     <h4 class="pyh">✎ 1 · Nghe và chọn<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>
     ${sp?`<h4 class="pyh">🎤 2 · Đọc lại<i>nghe mẫu → bấm Đọc &amp; chấm → đọc to</i></h4><div class="spk-list">${sp}</div>`:""}
     <h4 class="pyh">🧠 ${sp?3:2} · Luyện nhớ<i>nhìn chữ, tự đọc thầm, rồi chọn phiên âm</i></h4><div class="lis pylis">${mem.join("")}</div>
@@ -1366,14 +1392,15 @@ function pyBlock(n){const d=PYD[n];if(!d)return"";
   const ga=d.ga?`<h4 class="pyh">Ghép âm<i>phụ âm + vần → âm tiết · bấm để nghe</i></h4><div class="ga">${GA.filter(x=>d.ga.includes(x[0])).map(([i,r])=>`<div class="gab"><span class="ini">${i}</span><ul>${r.split(" ").map(x=>{const[v,sy,hz,py]=x.split("|");return `<li><button data-say="${hz}"><b>${v} → ${sy}</b><span>${hz}</span>${colorPinyin(py)}</button></li>`}).join("")}</ul></div>`).join("")}</div>`:"";
   const lis=shuffle(d.lis).map(([hz,py,opts])=>liHtml(hz,py,opts)).join("");
   return `<section class="pyblk"><h3>Phiên âm hôm nay <small>${esc(d.t)} · ngày ${n}/10</small></h3>
-    ${d.intro||d.yt?`<div class="pystep">${d.intro?GHEP:""}${d.yt?ytHtml(d.yt):""}</div>`:""}
+    ${d.intro?`<div class="pystep">${GHEP+tongQuat()}</div>`:""}
     ${grids}
+    ${d.ga?`<div class="pystep"><h4 class="pyh">Luyện đọc âm tiết<i>nhìn hình, đọc to phiên âm · bấm để nghe lại</i></h4>${pdHtml(d.ga)}</div>`:""}
     <div class="pystep">
     ${tips?`<ul class="tips">${tips}</ul>`:""}
     ${ga}
     <h4 class="pyh">✎ Bài tập phân biệt<i>âm dễ nhầm — nghe kỹ rồi chọn</i></h4><div class="lis pylis">${lis}</div>
     ${d.rd?`<h4 class="pyh">Bài đọc<i>bấm từng câu để nghe · đọc to 3 lần</i></h4>${rdHtml(d.rd)}`:""}
-    ${d.full||n===1?fullChart(!!d.full):""}
+    ${d.full?fullChart(true):""}
     </div>
   </section>`}
 
@@ -1418,7 +1445,7 @@ function setupSteps(el){
 }
 function bindPy(el){
   const blk=el.querySelector(".pyblk");if(blk)bindSpeak(blk);
-  el.querySelectorAll(".pyc,.ftab button,.gab button,.ln2,.rdb .all").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
+  el.querySelectorAll(".pyc,.pdg button,.ftab button,.tqr button,.gab button,.ln2,.rdb .all").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
   el.querySelectorAll(".pylis .li").forEach(li=>{const pl=li.querySelector(".pl");if(pl)pl.onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
 }
 function showMap(){document.body.classList.remove("inles");const m=document.querySelector("nav.map");m.scrollIntoView({block:"start"});const c=document.querySelector(".node.cur");if(c)c.scrollIntoView({block:"center"});try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
