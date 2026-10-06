@@ -796,6 +796,7 @@ body{background:#FFFDF2}.card{background:#fff}
 .vcTen{background:#FFD966;color:#4A3800;font-weight:800;font-size:clamp(11px,1.8vw,16px);padding:3px 12px;border-radius:999px;margin-top:-4%}
 .vcBang{position:absolute;right:4%;top:8%;width:56%;height:56%;background:#2F6B4F;border:clamp(4px,1vw,10px) solid #A0703C;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:4%;padding:3%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.08)}
 .vidCo:not(.coZh) .vcBang::after{content:"SunMoon · YCT 1";color:#E6F2EA;font:700 clamp(14px,3vw,30px) var(--tx);opacity:.75}
+.vcBang:has(.thH){flex-direction:column!important;gap:10px}.thH{display:flex;gap:clamp(8px,2vw,18px);justify-content:center}.thO{display:flex;flex-direction:column;align-items:center;gap:2px}.thO b{font:800 clamp(44px,10vw,96px)/1 var(--py)}.thO svg{width:clamp(40px,8vw,72px);height:auto}.thO i{white-space:nowrap;font:700 clamp(13px,2.6vw,20px)/1.2 var(--vi,inherit);font-style:normal;color:var(--ink-2)}
 .vcHinh img{width:clamp(56px,13vw,150px);height:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));animation:nhun 2.4s ease-in-out infinite}
 .vcChu{display:flex;flex-direction:column;align-items:center;gap:2px}.vcZh{font-family:var(--hz);font-size:clamp(34px,8vw,92px);color:#fff;line-height:1.05;text-shadow:0 3px 0 rgba(0,0,0,.25)}.vcPy{font:700 clamp(16px,3vw,32px) var(--py);color:#FFE58A}.vcPy span{color:#FFE58A!important}
 .vcLoi{position:absolute;left:38%;right:4%;bottom:6%;min-height:22%;background:#fff;border-radius:18px;padding:2% 3%;font-size:clamp(14px,2.6vw,24px);font-weight:600;color:var(--ink);display:flex;align-items:center;box-shadow:0 6px 16px rgba(0,0,0,.12)}
@@ -904,7 +905,7 @@ const TONE={"āēīōūǖ":1,"áéíóúǘ":2,"ǎěǐǒǔǚ":3,"àèìòùǜ":4}
 function tonePy(py){return esc(py).split(/(\s+)/).map(w=>{let t=0;for(const c of w)for(const k in TONE)if(k.includes(c.toLowerCase()))t=TONE[k];return /\S/.test(w)?`<span class="tone${t||5}">${w}</span>`:w}).join("")}
 const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 /* âm thanh */
-let cur=null;function play(src,el){try{cur&&cur.pause()}catch(e){}document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}RS(src).then(u=>{if(cur!==a)return;a.src=u;a.play().catch(()=>{})}).catch(()=>el&&el.classList.remove("playing"));return a}
+let cur=null;function play(src,el){try{cur&&cur.pause()}catch(e){}document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}RS(src).then(u=>{if(cur!==a)return;a.src=u;if(/\.mp4/.test(src)){a.defaultPlaybackRate=a.playbackRate=1.05;a.addEventListener("loadedmetadata",()=>a.playbackRate=1.05)}a.play().catch(()=>{})})   /* 06/10 chị: lời cô đọc nhanh hơn 5% */.catch(()=>el&&el.classList.remove("playing"));return a}
 let actx=null;function tone(fs,d=.12,type="sine",v=.12){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+d);t+=d*.8})}catch(e){}}
 function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const c=document.createElement("canvas");c.id="confetti";document.body.appendChild(c);const x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;const col=["#22AFB1","#E4B342","#5E9E5A","#5B8FB9"],P=Array.from({length:120},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,a:Math.random()*6,c:col[Math.floor(Math.random()*4)]}));let f=0;(function tk(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-4,-2,8,8);x.restore()});if(++f<140)requestAnimationFrame(tk);else c.remove()})()}
 const SPK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
@@ -1132,7 +1133,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061205";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061210";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1439,6 +1440,13 @@ function pyCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let r=null;c
 function hinhCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let e=null;const tim=v=>{if(e)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&v[0].replace(/[！!？?。，,、\s]/g,"")===k&&typeof v[3]==="string"&&H[v[3]])e=v[3];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};tim(ND);return e}
 // mặt trời biết nói = đúng linh vật chung linhVat("kha") + thêm miệng
 function lvNoi(){const h=linhVat("kha",200).replace('<svg ','<svg class="vcSun" ').replace(/<path d="M50 67q10 10 20 0"/,'<ellipse class="cnMieng" cx="60" cy="70" rx="8" ry="1.6" fill="#8B2E2E"/><path class="cnCuoi" d="M50 67q10 10 20 0"');return h}
+/* 06/10 chị: cô nói "thanh 1/2/3/4" thì trên bảng PHẢI GHI RÕ dấu thanh: mā má mǎ mà + nét đi lên/xuống */
+function thanhHinh(vi){const t=vi.toLowerCase(),N={"một":1,"1":1,"hai":2,"2":2,"ba":3,"3":3,"bốn":4,"4":4};
+  const C=["","M8 12H52","M8 40L52 8","M8 22Q22 46 30 44T52 8","M8 8L52 44"],DAU=["","ˉ","ˊ","ˇ","ˋ"],A=["","ā","á","ǎ","à"];
+  const o=k=>`<span class="thO tone${k}"><b>${A[k]}</b><svg viewBox="0 0 60 52"><path d="${C[k]}" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><i>Thanh ${k}</i></span>`;
+  if(/biến điệu|thanh ba đầu|đọc thành thanh/.test(t))return "";
+  if(/bốn thanh|4 thanh/.test(t))return `<span class="thH">${[1,2,3,4].map(o).join("")}</span>`;
+  const m=t.match(/thanh (một|hai|ba|bốn|[1-4])(?![\wà-ỹ])/);return m?`<span class="thH">${o(N[m[1]])}</span>`:""}
 function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
   const o=document.createElement("div");o.className="vidCo";o.innerHTML=`<div class="vcKhung"><button class="vcX" aria-label="Đóng">✕</button><div class="vcCanh">
       <div class="vcBang"><div class="vcHinh"></div><div class="vcChu"></div></div>
@@ -1456,7 +1464,7 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
     // 06/10 chị: cô giảng tới đâu, CHỮ HIỆN LÊN BẢNG tới đó (như viết phấn) — chữ cái/âm quan trọng to, vàng
     if(c.vi){const hl=esc(c.vi).replace(/(^|[\s“"(,])([a-zA-Zü]|zh|ch|sh)(?=[\s,.!?:”")]|$)/g,'$1<b class="vcNhan">$2</b>');
       const ds=[];hl.split(/(?<=[,;:.!?])\s+/).forEach(x=>{if(ds.length&&(x.replace(/<[^>]+>/g,"").length<14||ds[ds.length-1].replace(/<[^>]+>/g,"").length<14))ds[ds.length-1]+=" "+x;else ds.push(x)});
-      hinh.innerHTML="";chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
+      hinh.innerHTML=thanhHinh(c.vi);chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
     if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh">${esc(c.zh)}</span>${py?`<span class="vcPy">${tonePy(py)}</span>`:""}`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
 };
   let an=null,buf=null;try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
