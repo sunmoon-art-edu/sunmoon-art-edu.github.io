@@ -937,6 +937,7 @@ section.dangLam>h2{display:none!important}
 .htNut{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.htNghe2{display:block;margin-top:6px}
 .hhS .hhI{display:none!important}.hhIc{display:flex;gap:6px;justify-content:center;min-height:0}.hhIc img{width:40px;height:40px}   /* 06/10 chị: chữ chèn hình → hình đưa xuống dưới chữ */
 .hgO{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:2px dashed #E4F0F7}.hgO span{font-weight:800}.hgO input{font:700 18px var(--vi,inherit);padding:8px 10px;border:2px solid var(--line);border-radius:12px}
+.tkZ{display:inline-block;text-decoration:none;color:#0B6E70;font-weight:800}
 </style>
 
 <div class="top"><div class="in">
@@ -949,10 +950,10 @@ section.dangLam>h2{display:none!important}
 <div class="wrap" id="app"><p class="dangTai" id="dangTai">☀️ Đang mở bài học…</p></div>
 
 <div class="hfab"><div class="hbox" id="hBox" hidden><b>Con đang băn khoăn điều gì?</b><i>Bài khó, chỗ chưa hiểu, lỗi trang… — gửi thẳng cho cô SunMoon, cô trả lời qua email của bố mẹ</i><textarea id="hTxt" maxlength="2000" placeholder="VD: Bài 1 con chưa phân biệt được nǐ và nǐ hǎo…"></textarea><span class="msg" id="hMsg"></span><div class="row"><button class="btn2" id="hClose">Đóng</button><button class="big" id="hSend">Gửi</button></div></div><button type="button" id="hOpen" aria-label="Hỏi hoặc góp ý">💬 Hỏi / góp ý</button></div>
-<div class="zfab"><div class="zm" id="zfabM" hidden><b>Cần hỗ trợ? Nhắn Zalo SunMoon</b><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a><a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></div><button type="button" aria-label="Nhắn Zalo SunMoon" onclick="var m=document.getElementById('zfabM');m.hidden=!m.hidden">Zalo</button></div>
+<div class="zfab"><div class="zm" id="zfabM" hidden><b>Cần hỗ trợ? Nhắn Zalo SunMoon</b><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">💬 Nhắn Zalo SunMoon</a></div><button type="button" aria-label="Nhắn Zalo SunMoon" onclick="var m=document.getElementById('zfabM');m.hidden=!m.hidden">Zalo</button></div>
 <script>/* 06/10 chị: học viên hay mở qua Zalo / máy cũ — nếu sau 9 giây chưa mở được thì hiện hướng dẫn (viết kiểu cũ để máy nào cũng chạy) */
 (function(){var loi="";window.onerror=function(m){loi=String(m||"");};setTimeout(function(){var d=document.getElementById("dangTai");if(!d)return;var zalo=/Zalo/i.test(navigator.userAgent);
-d.innerHTML="Máy chưa mở được bài học 😥<br><br>"+(zalo?"<b>Bấm dấu ⋯ (góc trên bên phải) → chọn \"Mở bằng trình duyệt\"</b> (Safari / Chrome) rồi vào lại nhé.":"Con thử <b>tải lại trang</b>, hoặc mở bằng <b>Safari / Chrome</b> nhé.")+"<br><br>Vẫn chưa được: nhắn Zalo SunMoon <b>039 630 8188</b>"+(loi?"<br><small style='color:#999'>"+loi.slice(0,80)+"</small>":"");},9000);})();</script>
+d.innerHTML="Máy chưa mở được bài học 😥<br><br>"+(zalo?"<b>Bấm dấu ⋯ (góc trên bên phải) → chọn \"Mở bằng trình duyệt\"</b> (Safari / Chrome) rồi vào lại nhé.":"Con thử <b>tải lại trang</b>, hoặc mở bằng <b>Safari / Chrome</b> nhé.")+"<br><br><a href='https://zalo.me/0396308188' style='display:inline-block;padding:10px 18px;border-radius:999px;background:#22AFB1;color:#fff;text-decoration:none;font-weight:800'>💬 Nhắn Zalo SunMoon</a>"+(loi?"<br><small style='color:#999'>"+loi.slice(0,80)+"</small>":"");},9000);})();</script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 const TOPICS=[[0,"Phiên âm & thanh điệu","🔤"],[1,"你好！ Xin chào","👋"],[2,"你叫什么？ Bạn tên gì?","📛"],[3,"他是谁？ Bạn ấy là ai?","👦"],[4,"我家有四口人 Nhà mình","👨‍👩‍👧"],[5,"我6岁 Mình 6 tuổi","🎂"],[6,"你的个子真高！ Bạn cao quá","🦒"],[7,"这是谁的狗？ Con chó của ai?","🐶"],[8,"我去商店 Đi cửa hàng","🏪"],[9,"今天星期几？ Hôm nay thứ mấy?","📅"],[10,"现在几点？ Mấy giờ rồi?","⏰"],[11,"你吃什么？ Bạn ăn gì?","🍜"],[12,"复习 Ôn tập & thi thử","🏆"]];   // 02/10 chị: bám 12 bài YCT Standard Course 1 · nội dung SunMoon tự soạn
@@ -1072,7 +1073,7 @@ function topic(n){
   <section class="card noi" id="noiBox"><h2><span class="ic">${im("🎁")}</span>Quà: 10 phút nói với cô giáo thật</h2>
     <ul class="pyt"><li>Học xong bài <i>— làm xong bài “Ôn tập” và luyện đề</i></li><li>Bé được <b>nói tiếng Trung 10 phút với cô giáo</b> qua <b>Google Meet</b></li><li>Bố mẹ chọn giờ, link phòng học gửi về email</li></ul>
     <div id="noiTT"></div><button class="big" id="noiBtn">Đặt lịch nói với cô</button></section>
-  <section class="card khoe"><h2><span class="ic">${im("🎉")}</span>Khoe thành quả của con</h2><button class="gbtn" hidden data-g="aud/g-khoe.mp4">🔊 Cô giảng mục này</button><ul><li><b>Quay 15 giây con đọc hội thoại</b> <i>— đóng vai cùng bố mẹ</i></li><li><b>Gửi Zalo SunMoon</b> <i>— cô gửi lời khen riêng cho bé</i></li></ul><div class="pzl">${ZALOS.map(z=>`<a href="${z[1]}" target="_blank" rel="noopener">Zalo ${z[0]}</a>`).join("")}</div></section>`;
+  <section class="card khoe"><h2><span class="ic">${im("🎉")}</span>Khoe thành quả của con</h2><button class="gbtn" hidden data-g="aud/g-khoe.mp4">🔊 Cô giảng mục này</button><ul><li><b>Quay 15 giây con đọc hội thoại</b> <i>— đóng vai cùng bố mẹ</i></li><li><b>Gửi Zalo SunMoon</b> <i>— cô gửi lời khen riêng cho bé</i></li></ul><div class="pzl"><a href="${ZALOS[0][1]}" target="_blank" rel="noopener">💬 Nhắn Zalo SunMoon</a></div></section>`;
   // hướng dẫn
   const a=new Audio();RS(`aud/c${n}-hd.mp4`).then(u=>{a.src=u}).catch(()=>{});const btn=document.getElementById("hdPlay"),bar=document.getElementById("hdBar"),tm=document.getElementById("hdT");const f=t=>Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0");
   a.onloadedmetadata=()=>{bar.max=a.duration;tm.textContent="0:00 / "+f(a.duration)};a.ontimeupdate=()=>{bar.value=a.currentTime;tm.textContent=f(a.currentTime)+(a.duration?" / "+f(a.duration):"")};
@@ -1142,7 +1143,7 @@ function napTD(snap){let o=null;try{o=JSON.parse(snap)}catch(e){}if(!o||!o.d)ret
 function dnTK(){document.querySelectorAll(".tkPop").forEach(x=>x.remove());const o=document.createElement("div");o.className="mung tkPop";
   o.innerHTML=`<div class="bx" role="dialog" aria-modal="true">${coMT("⭐")}<b style="font-size:21px">Đăng nhập để vào học</b><i style="color:var(--ink-2)">Bài học tự lưu, học máy nào cũng học tiếp được</i>
     <input id="tkU" class="tkIn" placeholder="Email hoặc tên đăng nhập" autocomplete="username" autocapitalize="off"><input id="tkM" class="tkIn" placeholder="Mã 4 số" inputmode="numeric" maxlength="6" autocomplete="current-password">
-    <p id="tkE" class="tkE"></p><button class="big" id="tkGo">Vào học</button><small class="tkS">Chưa có tài khoản? Nhắn Zalo SunMoon <a href="https://zalo.me/0396308188" target="_blank" rel="noopener"><b>039 630 8188</b></a> để được cấp</small><button class="btn2" id="tkX">Để sau</button></div>`;
+    <p id="tkE" class="tkE"></p><button class="big" id="tkGo">Vào học</button><small class="tkS">Chưa có tài khoản?</small><a class="btn2 tkZ" href="https://zalo.me/0396308188" target="_blank" rel="noopener">💬 Nhắn Zalo SunMoon</a><button class="btn2" id="tkX">Để sau</button></div>`;
   document.body.appendChild(o);const $=q=>o.querySelector(q),go=$("#tkGo");$("#tkX").onclick=()=>o.remove();
   const vao=async()=>{const u=$("#tkU").value.trim().toLowerCase(),m=$("#tkM").value.trim();if(!u||!m)return $("#tkE").textContent="Điền đủ email (hoặc tên đăng nhập) và mã nhé";
     go.disabled=true;$("#tkE").textContent="Đang kiểm tra…";
@@ -1181,7 +1182,7 @@ function payPop(n,tab){
       <label>Email<input id="lU" type="email" inputmode="email" autocomplete="email" placeholder="Email đã đăng ký"></label>
       <label>Mã học<input id="lM" inputmode="numeric" autocomplete="one-time-code" placeholder="4 số trong email SunMoon gửi"></label>
       <p class="perr" id="lErr"></p><button class="big" id="lGo">Vào học</button>
-      <p class="pnote">Quên mã? Nhắn Zalo SunMoon: <b>039 630 8188</b> · <b>039 400 9488</b></p></div></div>`;
+      <p class="pnote">Quên mã? <a href="https://zalo.me/0396308188" target="_blank" rel="noopener">💬 Nhắn Zalo SunMoon</a></p></div></div>`;
   document.body.appendChild(o);
   const $=q=>o.querySelector(q),close=()=>o.remove();
   $(".x").onclick=close;o.onclick=e=>{if(e.target===o)close()};
@@ -1205,7 +1206,7 @@ function payPop(n,tab){
       box.innerHTML=`<h3 style="font-size:18px">Chuyển khoản để nhận mã</h3><div class="pqr"><div class="qr" id="pQi"></div><div>Mở app ngân hàng, <b>quét mã QR</b><br>Số tiền: <b>${tien(so)}</b><br>Nội dung: <b>${esc(nd)}</b></div></div>
         <p class="pnote"><b>Dùng điện thoại?</b> Bấm ngân hàng của bạn — app tự điền số tiền, nội dung:</p><div class="pbank">${BANKS.map(k=>`<a href="https://dl.vietqr.io/pay?app=${k[0]}&ba=272727888888@vpb&am=${so}&tn=${encodeURIComponent(nd)}" target="_blank" rel="noopener">${k[1]}</a>`).join("")}</div>
         <p class="pnote">Ngân hàng khác: <b>lưu ảnh QR</b> → mở app → Quét QR → chọn ảnh.</p><a class="big" id="pLuu" download="ma-qr-sunmoon.gif" href="#" style="text-decoration:none">⬇ Lưu ảnh mã QR</a>
-        <p class="pnote">Chuyển khoản xong, SunMoon gửi <b>mã học</b> về email${b.email?` <b>${esc(b.email)}</b>`:""} <i>(thường vài phút trong giờ làm việc — xem cả hộp thư Spam)</i>. Cần gấp, nhắn Zalo:</p><div class="pzl">${ZALOS.map(z=>`<a href="${z[1]}" target="_blank" rel="noopener">Zalo ${z[0]}</a>`).join("")}</div>`;
+        <p class="pnote">Chuyển khoản xong, SunMoon gửi <b>mã học</b> về email${b.email?` <b>${esc(b.email)}</b>`:""} <i>(thường vài phút trong giờ làm việc — xem cả hộp thư Spam)</i>. Cần gấp, nhắn Zalo:</p><div class="pzl"><a href="${ZALOS[0][1]}" target="_blank" rel="noopener">💬 Nhắn Zalo SunMoon</a></div>`;
       if(window.qrcode){const q=qrcode(0,"M");q.addData(vietQR(so,nd));q.make();const url=q.createDataURL(6,3);$("#pQi").innerHTML=`<img src="${url}" alt="Mã QR chuyển khoản" style="width:100%;height:100%;image-rendering:pixelated">`;$("#pLuu").href=url}
       box.scrollIntoView({behavior:"smooth",block:"start"});
     }catch(e){pErr.textContent=e.message==="Failed to fetch"?"Chưa kết nối được — kiểm tra mạng rồi thử lại nhé":e.message;pGui.disabled=false;pGui.textContent="Đăng ký & nhận mã QR chuyển khoản"}
@@ -1230,7 +1231,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061637";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061641";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
