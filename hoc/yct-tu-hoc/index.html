@@ -936,6 +936,7 @@ section.dangLam>h2{display:none!important}
 .hero{background:#fff!important;border-color:var(--m2)!important}.stage{background:#fff!important;border:3px solid #FFE58A!important}.loinhan{border-color:var(--m4)!important;background:#FFF8E8!important}
 .htNut{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.htNghe2{display:block;margin-top:6px}
 .hhS .hhI{display:none!important}.hhIc{display:flex;gap:6px;justify-content:center;min-height:0}.hhIc img{width:40px;height:40px}   /* 06/10 chị: chữ chèn hình → hình đưa xuống dưới chữ */
+.hgO{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:2px dashed #E4F0F7}.hgO span{font-weight:800}.hgO input{font:700 18px var(--vi,inherit);padding:8px 10px;border:2px solid var(--line);border-radius:12px}
 </style>
 
 <div class="top"><div class="in">
@@ -997,7 +998,7 @@ function sunIntro(box){
   a.onplay=()=>{sun.classList.add("talk");btn.textContent="⏸ Tạm dừng";cancelAnimationFrame(raf);loop()};
   a.onpause=()=>{sun.classList.remove("talk");btn.textContent="▶ Nghe tiếp";mouth.setAttribute("ry","0");smile.style.opacity=1};
   a.onended=()=>{sun.classList.remove("talk");btn.textContent="↻ Nghe lại";bub.innerHTML="Nào, chọn một bài bên dưới để bắt đầu nhé! 👇"};
-  const toggle=()=>a.paused?start():a.pause();btn.onclick=toggle;box.querySelector(".sunbtn").onclick=toggle;window._gt=a;{const g=document.getElementById("bdGo");if(g)g.onclick=()=>go(0);const dn=document.getElementById("bdDN");if(dn)dn.onclick=dnTK;}
+  const toggle=()=>a.paused?start():a.pause();btn.onclick=toggle;box.querySelector(".sunbtn").onclick=toggle;window._gt=a;{const g=document.getElementById("bdGo");if(g)g.onclick=()=>go(0);const hg=document.getElementById("hgBtn");if(hg)hg.onclick=henGio;const dn=document.getElementById("bdDN");if(dn)dn.onclick=dnTK;}
 }
 const imN=e=>isNum(e)?`<span class="tNum">${e}</span>`:im(e);
 const pic=e=>isNum(e)?`<span class="e num">${e}</span>`:`<span class="e">${im(e)}</span>`;
@@ -1009,7 +1010,7 @@ function home(){
     <div class="stagebar" style="margin-top:10px"><button class="big" id="gtPlay">▶ Nghe Cô Mặt Trời</button></div></div></section>
   <section class="card batDau"><b class="bdTieu">👉 Bắt đầu ở đây</b>
     <ol class="bdBuoc"><li><span>1</span>Bấm <b>Nghe Cô Mặt Trời</b> ở trên</li><li><span>2</span>Bấm nút xanh <b>Bắt đầu học</b> bên dưới</li><li><span>3</span>Mỗi ngày học 1 phần, khoảng <b>20 phút</b></li></ol>
-    <button class="big bdGo" id="bdGo">▶ Bắt đầu học — Bài Mở đầu</button>${U&&U.tk?"":`<button class="btn2" id="bdDN">👤 Đã có tài khoản? Đăng nhập</button>`}</section>
+    <button class="big bdGo" id="bdGo">▶ Bắt đầu học — Bài Mở đầu</button><div class="hgO"><span>⏰ Giờ học mỗi ngày</span><input type="time" id="hgGio" value="${store.get("yct1-hengio","19:30")}"><button class="btn2" id="hgBtn">Thêm vào lịch điện thoại</button></div>${U&&U.tk?"":`<button class="btn2" id="bdDN">👤 Đã có tài khoản? Đăng nhập</button>`}</section>
   <section class="card hero">${[["☁️",64,4,48],["🎈",84,6,46]].map(([e,x,y,z])=>H[e]?`<img class="deco floaty" src="${H[e]}" alt="" style="left:${x}%;top:${y}%;width:${z}px;animation-delay:${x/30}s">`:"").join("")}<span class="emo">${im("🎒")}</span><h1>Tự học YCT 1 — 12 bài, mỗi ngày 20 phút</h1>
     <p class="sub">Cho bé 7–12 tuổi tự học · bám sát giáo trình YCT Standard Course 1 · 80 từ YCT1</p>
     <ul class="steps"><li data-n="1"><span><b>Nghe cô giảng</b> <i>— mục nào cũng có cô giảng</i></span></li><li data-n="2"><span><b>Học từ, nghe hội thoại</b> <i>— 3 giọng đọc, đóng vai cùng các bạn</i></span></li><li data-n="3"><span><b>Làm bài nghe · nói · viết</b> <i>— trò chơi, tập viết từng nét</i></span></li><li data-n="4"><span><b>Luyện đề thi YCT1</b> <i>— giống đề thi thật</i></span></li></ul></section>
@@ -1022,9 +1023,9 @@ function home(){
       for(const [c,ch] of CHANG.entries()){if(!moC(c))continue;for(const n of ch[2])if(BUILT.includes(n)&&capBai(n)<1){cur=n;break}if(cur>=0)break}
       CHANG.forEach(([ten,mo,ds],c)=>{const mc=moC(c);
         h+=`<div class="chg${mc?"":" lock"}"><b>${ten}</b><span>${esc(mo)}</span>${mc?"":`<i>🔒 Qua bài kiểm tra ${CHANG[c-1][0]} để mở</i>`}</div>`;
-        for(const n of ds){const [,t,e]=TOPICS.find(x=>x[0]===n),ok=BUILT.includes(n)&&mc,cp=capBai(n),x=OFF[k++%8];
+        for(const n of ds){const [,t,e]=TOPICS.find(x=>x[0]===n),seq=khoaThuTu(n),ok=BUILT.includes(n)&&mc&&!seq,cp=capBai(n),x=OFF[k++%8];
           const cls=!ok?(mc?"soon":"lock"):cp>=5?"done cap5":cp>=3?"done cap3":cp>=1?"done cap1":n===cur?"cur":"open";
-          const sub=!mc?"🔒":!BUILT.includes(n)?"Sắp có":cp?capHTML(cp):n===cur?"Học tiếp":"Đã mở";
+          const sub=!mc?"🔒":!BUILT.includes(n)?"Sắp có":seq?"🔒 "+seq:cp?capHTML(cp):n===cur?"Học tiếp":"Đã mở";
           h+=`<button class="stn ${cls}" data-cd="${n}" style="--x:${x}px"${ok?"":" disabled"} aria-label="${n===0?"Mở đầu":"Bài "+n}: ${esc(t)} — cấp ${cp}/5">${n===cur?`<span class="bat">BẮT ĐẦU</span>`:""}<span class="node">${im(e,t)}${cp?`<span class="crn">${cp}</span>`:""}</span><span class="lb"><b>${n===0?"Mở đầu":"Bài "+n} · ${esc(t)}</b><i>${sub}</i></span></button>`}
         const xongHet=ds.filter(n=>BUILT.includes(n)).every(n=>capBai(n)>=1)&&ds.some(n=>BUILT.includes(n)&&n>0),qc=quaChang(c);
         h+=`<button class="kt${qc?" qua":xongHet&&mc?"":" lock"}" data-kt="${c}" style="--x:${OFF[k++%8]}px"${xongHet&&mc?"":" disabled"}><img src="${H["🏁"]||H["🏆"]||""}" alt=""><b>Kiểm tra ${ten}</b><i>${qc?"Đã qua ✓":xongHet&&mc?"Đạt 70% để mở chặng sau":"Học xong các bài trong chặng để mở"}</i></button>`});
@@ -1139,9 +1140,9 @@ function napTD(snap){let o=null;try{o=JSON.parse(snap)}catch(e){}if(!o||!o.d)ret
   const xoa=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("yct1-")&&k!=="yct1-user")xoa.push(k)}xoa.forEach(k=>localStorage.removeItem(k));
   Object.entries(o.d).forEach(([k,v])=>{try{localStorage.setItem(k,v)}catch(e){}});localStorage.setItem("yct1-luc",String(o.luc));return true}
 function dnTK(){document.querySelectorAll(".tkPop").forEach(x=>x.remove());const o=document.createElement("div");o.className="mung tkPop";
-  o.innerHTML=`<div class="bx" role="dialog" aria-modal="true">${coMT("⭐")}<b style="font-size:21px">Đăng nhập để lưu bài</b><i style="color:var(--ink-2)">Học máy nào cũng học tiếp được</i>
+  o.innerHTML=`<div class="bx" role="dialog" aria-modal="true">${coMT("⭐")}<b style="font-size:21px">Đăng nhập để vào học</b><i style="color:var(--ink-2)">Bài học tự lưu, học máy nào cũng học tiếp được</i>
     <input id="tkU" class="tkIn" placeholder="Email hoặc tên đăng nhập" autocomplete="username" autocapitalize="off"><input id="tkM" class="tkIn" placeholder="Mã 4 số" inputmode="numeric" maxlength="6" autocomplete="current-password">
-    <p id="tkE" class="tkE"></p><button class="big" id="tkGo">Vào học</button><small class="tkS">Chưa có tài khoản? Nhắn Zalo SunMoon 039 630 8188 để được cấp</small><button class="btn2" id="tkX">Để sau</button></div>`;
+    <p id="tkE" class="tkE"></p><button class="big" id="tkGo">Vào học</button><small class="tkS">Chưa có tài khoản? Nhắn Zalo SunMoon <a href="https://zalo.me/0396308188" target="_blank" rel="noopener"><b>039 630 8188</b></a> để được cấp</small><button class="btn2" id="tkX">Để sau</button></div>`;
   document.body.appendChild(o);const $=q=>o.querySelector(q),go=$("#tkGo");$("#tkX").onclick=()=>o.remove();
   const vao=async()=>{const u=$("#tkU").value.trim().toLowerCase(),m=$("#tkM").value.trim();if(!u||!m)return $("#tkE").textContent="Điền đủ email (hoặc tên đăng nhập) và mã nhé";
     go.disabled=true;$("#tkE").textContent="Đang kiểm tra…";
@@ -1229,7 +1230,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061634";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061637";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1371,7 +1372,7 @@ function lamBai(n,k,kho){const t0=Date.now();
   else if(kho&&!PYM){sh(g).forEach(i=>S.push({t:"nghe",i,c:1}));sh(g).forEach(i=>S.push({t:"nhin",i,c:1}));sh(g).forEach(i=>S.push({t:"noiHinh",i,c:2}));sh(g).forEach(i=>S.push({t:"chu",i,c:3}));sh(g).slice(0,2).forEach(i=>S.push({t:"to",i,c:4}));if(g.length>=3)S.push({t:"lat",g:sh(g).slice(0,3),c:3})}   // 02/10 Luyện khó: không có thẻ học, hỏi hết các từ
   else{if(!on)g.forEach(i=>S.push({t:"hoc",i,c:1}));sh(g).forEach(i=>S.push({t:"nghe",i,c:1}));sh(g).slice(0,on?2:1).forEach(i=>S.push({t:"nhin",i,c:1}));if(g.length>=3)S.push({t:"ghep",g:sh(g).slice(0,3),c:1});
   S.push({t:"noi",i:r1(),c:2});sh(g).slice(0,on?3:2).forEach(i=>S.push({t:"noiHinh",i,c:2}));
-  /* 06/10 chị: bỏ tô chữ cái a b c — chỉ tô chữ Hán */
+  if(PYM){}   /* 06/10 chị: bỏ tô chữ cái a b c — chỉ tô chữ Hán */
   else{sh(g).slice(0,on?3:2).forEach(i=>S.push({t:"chu",i,c:3}));S.push({t:"to",i:r1(),c:4});if(g.length>=3)S.push({t:"lat",g:sh(g).slice(0,3),c:3})}}
   let p=0,sai=0,tong=S.length;
   const o=document.createElement("div");o.className="ls";document.body.appendChild(o);document.body.style.overflow="hidden";
@@ -1914,7 +1915,17 @@ function quiz(n){
   };
   box.innerHTML=`<p style="margin:0;text-align:center">Nghe tiếng Trung, chạm đúng hình — ${R} câu, được sao thưởng!</p><button class="big" id="qs">Bắt đầu chơi</button>`;box.querySelector("#qs").onclick=round;
 }
-function go(n){try{window._hd&&window._hd.pause();window._gt&&window._gt.pause()}catch(e){}accBar();if(n>=0&&BUILT.includes(n)&&!coMo(n)){history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0);payPop(n);return}if(n>=0&&BUILT.includes(n)&&!ND[n]){app.innerHTML='<p class="card" style="text-align:center">Đang mở bài…</p>';moBai(n).then(()=>go(n)).catch(()=>{U&&(U.k=null);go(-1);payPop(n,"dn");const e=document.getElementById("lErr");if(e)e.textContent="Bố mẹ đăng nhập lại để mở bài nhé"});return}if(n>=0&&ND[n]){history.replaceState(null,"","#cd"+n);topic(n)}else{history.replaceState(null,"",location.pathname+location.search);home()}scrollTo(0,0)}
+/* 06/10 chị: học TỪNG BÀI — xong bài trước mới mở bài sau; mỗi ngày tối đa 3 bài MỚI (bài đã học rồi thì ôn thoải mái) */
+const MO3=()=>{const o=store.get("yct1-mo3",{});return o.d===homNay()?o.ds||[]:[]};
+function khoaThuTu(n){if(n<=0)return "";const X=daXong();if(X.has(n))return "";if(!X.has(n-1))return n===1?"Học xong Bài Mở đầu để mở":"Học xong Bài "+(n-1)+" để mở";const L=MO3();if(!L.includes(n)&&L.length>=3)return "Hôm nay con học 3 bài rồi — mai học tiếp nhé!";return ""}
+function ghiMoBai(n){if(daXong().has(n))return;const L=MO3();if(!L.includes(n)){L.push(n);store.set("yct1-mo3",{d:homNay(),ds:L})}}
+/* 06/10 chị: HẸN GIỜ học mỗi ngày — tạo lịch nhắc lặp hằng ngày (.ics) thêm vào lịch điện thoại, bấm nhắc là mở app */
+function henGio(){const g=(document.getElementById("hgGio")||{}).value||"19:30",[hh,mm]=g.split(":"),d=new Date();d.setHours(+hh,+mm,0,0);if(d<new Date())d.setDate(d.getDate()+1);
+  const p=x=>String(x).padStart(2,"0"),dt=`${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}T${p(hh)}${p(mm)}00`,url=location.origin+location.pathname;
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//SunMoon//YCT tu hoc//VI","BEGIN:VEVENT","UID:yct-tu-hoc-"+Date.now()+"@sunmoon","DTSTAMP:"+dt,"DTSTART:"+dt,"DURATION:PT20M","RRULE:FREQ=DAILY","SUMMARY:☀️ Học tiếng Trung 20 phút cùng Cô Mặt Trời","DESCRIPTION:Mở app học: "+url,"URL:"+url,"BEGIN:VALARM","TRIGGER:PT0M","ACTION:DISPLAY","DESCRIPTION:Đến giờ học tiếng Trung rồi!","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+  const a=document.createElement("a");a.href="data:text/calendar;charset=utf-8,"+encodeURIComponent(ics);a.download="lich-hoc-tieng-trung.ics";document.body.appendChild(a);a.click();a.remove();store.set("yct1-hengio",g);
+  mung("⏰",null,"Đã tạo lịch học "+g+" mỗi ngày","Bấm \"Thêm vào lịch\" trên điện thoại. Mở trong Zalo mà không thêm được thì bấm ⋯ → Mở bằng trình duyệt rồi làm lại nhé")}
+function go(n){try{window._hd&&window._hd.pause();window._gt&&window._gt.pause()}catch(e){}accBar();if(n>=0&&!(U&&U.tk)){history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0);dnTK();return}   /* 06/10 chị: phải ĐĂNG NHẬP mới được học (cả bài Mở đầu) */if(n>0&&BUILT.includes(n)){const k=khoaThuTu(n);if(k){history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0);mung("🔒",null,k,"Học từng bài một nhé — 加油！");return}ghiMoBai(n)}if(n>=0&&BUILT.includes(n)&&!coMo(n)){history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0);payPop(n);return}if(n>=0&&BUILT.includes(n)&&!ND[n]){app.innerHTML='<p class="card" style="text-align:center">Đang mở bài…</p>';moBai(n).then(()=>go(n)).catch(()=>{U&&(U.k=null);go(-1);payPop(n,"dn");const e=document.getElementById("lErr");if(e)e.textContent="Bố mẹ đăng nhập lại để mở bài nhé"});return}if(n>=0&&ND[n]){history.replaceState(null,"","#cd"+n);topic(n)}else{history.replaceState(null,"",location.pathname+location.search);home()}scrollTo(0,0)}
 document.getElementById("backBtn").onclick=()=>go(-1);document.getElementById("home").onclick=e=>{e.preventDefault();go(-1)};
 Promise.all([KHOA?fetch("muc.json").then(r=>r.json()).then(m=>{BUILT=m.built;return {}}):fetch("noi-dung.json?v="+AV).then(r=>r.json()).then(d=>{BUILT=Object.keys(d).filter(k=>/^\d+$/.test(k)).map(Number);return d}),fetch("hinh.json?v="+AV).then(r=>r.json()).catch(()=>({})),fetch("pinyin.json").then(r=>r.json()).catch(()=>({}))]).then(([d,h,py])=>{ND=d;H=h;PY=py;const m=location.hash.match(/^#cd(\d+)$/);go(m?+m[1]:-1);
   kiemTK();   // 06/10: có tài khoản → lấy tiến độ mới nhất (học máy khác) / đẩy tiến độ máy này lên
