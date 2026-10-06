@@ -1641,7 +1641,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610062019";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610062024";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -2206,7 +2206,7 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
    Máy không có chức năng này → giữ nút tự bấm như cũ. Sai 2 lần vẫn cho đi tiếp (máy hay nghe nhầm giọng trẻ con). */
 const SRN=window.SpeechRecognition||window.webkitSpeechRecognition;
 function ngheBe(giay){if(!SRN)return null;let r;try{r=new SRN()}catch(e){return null}r.lang="zh-CN";r.interimResults=false;r.maxAlternatives=5;r.continuous=false;
-  const p=new Promise(ok=>{const kq=[];let loi=false,xong=false;const het=v=>{if(!xong){xong=true;ok(v)}};
+  const p=new Promise(ok=>{const kq=[];let loi=false,xong=false;const het=v=>{loaPhat();if(!xong){xong=true;ok(v)}};
     r.onresult=e=>{for(const res of e.results)for(let i=0;i<res.length;i++)kq.push(res[i].transcript)};r.onerror=e=>{if(e.error!=="no-speech"&&e.error!=="aborted")loi=true};
     r.onend=()=>het(loi&&!kq.length?null:kq);setTimeout(()=>het(kq.length?kq:(loi?null:kq)),giay*1000+4000)});
   try{r.start()}catch(e){return null}setTimeout(()=>{try{r.stop()}catch(e){}},giay*1000+700);return p}
@@ -2220,8 +2220,10 @@ function dungChua(kq,hz,py){if(kq==null)return null;if(!kq.length)return false;c
 const SIL_AM="data:audio/wav;base64,UklGRrQBAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZABAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA";let AM_THU=null,MIC=null,MIC_T=0;
 function moiAmThu(){try{if(!AM_THU)AM_THU=new Audio();AM_THU.muted=true;AM_THU.src=SIL_AM;const p=AM_THU.play();if(p)p.then(()=>{AM_THU.pause();AM_THU.muted=false}).catch(()=>{AM_THU.muted=false});else AM_THU.muted=false}catch(e){}}
 function amThu(url){const a=AM_THU||new Audio();try{a.pause()}catch(e){}a.muted=false;a.onended=null;a.src=url;return a}
-async function layMic(){clearTimeout(MIC_T);if(MIC&&MIC.getTracks().every(t=>t.readyState==="live"))return MIC;MIC=await navigator.mediaDevices.getUserMedia({audio:true});return MIC}
-function henTatMic(){clearTimeout(MIC_T);MIC_T=setTimeout(()=>{try{MIC&&MIC.getTracks().forEach(t=>t.stop())}catch(e){}MIC=null},20000)}
+/* 06/10 tối chị: "sao mỗi lần thu âm xong âm thanh nhỏ đi" — iPhone/iPad mở micro là chuyển loa sang chế độ gọi điện (nhỏ) → thu xong TẮT MICRO NGAY + trả loa về chế độ phát nhạc */
+const loaPhat=()=>{try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}};loaPhat();
+async function layMic(){clearTimeout(MIC_T);try{if(navigator.audioSession)navigator.audioSession.type="play-and-record"}catch(e){}if(MIC&&MIC.getTracks().every(t=>t.readyState==="live"))return MIC;MIC=await navigator.mediaDevices.getUserMedia({audio:true});return MIC}
+function henTatMic(){clearTimeout(MIC_T);try{MIC&&MIC.getTracks().forEach(t=>t.stop())}catch(e){}MIC=null;loaPhat();setTimeout(loaPhat,400)}
 function thuDem(rec,btn,giay){giay=Math.min(giay||3,3);const goc=btn.innerHTML;btn.disabled=true;let d=1;btn.classList.add("dem");
   const dem=()=>{if(d>0){btn.innerHTML=`<span class="tdSo">${d}</span><span>Chuẩn bị nói…</span>`;tone([520],.08,"sine",.08);d--;setTimeout(dem,500);return}
     rec.start();btn.classList.remove("dem");btn.classList.add("rec");const t0=Date.now();tone([880],.12,"sine",.1);
