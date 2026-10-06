@@ -1141,7 +1141,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061242";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061243";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1451,7 +1451,8 @@ function lvNoi(){const h=linhVat("kha",200).replace('<svg ','<svg class="vcSun" 
 /* 06/10 chị: cô nói "thanh 1/2/3/4" thì trên bảng PHẢI GHI RÕ dấu thanh: mā má mǎ mà + nét đi lên/xuống */
 /* 06/10 chị: "có ví dụ chứ" → cô nói quy tắc biến điệu thì bảng hiện luôn VÍ DỤ: 你好 nǐ hǎo → ní hǎo */
 function bdHinh(i,to){const x=(ND[0].bd||[])[i];if(!x)return "";const [v,d]=x[2].split("→").map(z=>z.trim());
-  return `<span class="bdV${to?" to":""}"><span class="bdT">Biến điệu ${i+1}</span>${to?`<span class="bdM">${esc(x[3])}</span>`:""}${rubyHz(x[1],d,v)}<span class="bdP"><i>viết</i> ${tonePy(v)} → <i>đọc</i> <b>${tonePy(d)}</b></span></span>`}
+  const V=v.split(/\s+/),D=d.split(/\s+/),k=D.findIndex((z,q)=>z!==V[q]);   // 06/10 chị: "bớt chữ phải đọc — trẻ con lười đọc"
+  return `<span class="bdV${to?" to":""}"><span class="bdT">Biến điệu ${i+1}</span>${rubyHz(x[1],d,v)}${k>=0?`<span class="bdP">${tonePy(V[k])} → <b>${tonePy(D[k])}</b></span>`:""}</span>`}
 /* 06/10 chị: "viết thanh bên trên" → phiên âm (có dấu thanh) nằm TRÊN từng chữ Hán; âm bị đổi thanh thì tô viền */
 function rubyHz(hz,py,goc){const c=[...hz],p=(py||"").trim().split(/\s+/),g=(goc||"").trim().split(/\s+/);
   if(!py||p.length!==c.length)return `<span class="rbPy">${tonePy(py||"")}</span><span class="bdZ">${esc(hz)}</span>`;
@@ -1483,7 +1484,7 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
     // 06/10 chị: cô giảng tới đâu, CHỮ HIỆN LÊN BẢNG tới đó (như viết phấn) — chữ cái/âm quan trọng to, vàng
     if(c.vi){const hl=esc(c.vi).replace(/(^|[\s“"(,])([a-zA-Zü]|zh|ch|sh)(?=[\s,.!?:”")]|$)/g,'$1<b class="vcNhan">$2</b>');
       const ds=[];hl.split(/(?<=[,;:.!?])\s+/).forEach(x=>{if(ds.length&&(x.replace(/<[^>]+>/g,"").length<14||ds[ds.length-1].replace(/<[^>]+>/g,"").length<14))ds[ds.length-1]+=" "+x;else ds.push(x)});
-      hinh.innerHTML=c.ex!=null?bdHinh(c.ex):thanhHinh(c.vi);chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
+      hinh.innerHTML=c.ex!=null?bdHinh(c.ex):thanhHinh(c.vi);if(hinh.innerHTML){chu.innerHTML="";o.classList.add("coZh");return}chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
     if(c.zh&&c.ex!=null){hinh.innerHTML="";chu.innerHTML=bdHinh(c.ex,1);o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
     if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh rbBox">${rubyHz(c.zh,py)}</span>`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
 };
@@ -1532,7 +1533,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
     ...P.thanh.map(x=>({lab:x[0],hz:x[1],py:x[2],vn:x[3],mo:x[3],e:"",au:`aud/c0-ps-${x[0]}.mp3`,gi:`aud/c0-pgi-${x[0]}.mp4`})),
     ...P.ghep.map((x,i)=>({lab:`${x[0]} + ${x[1]}`,hz:x[3],py:x[2],vn:x[4],mo:"",e:"",au:`aud/c0-pg${i}.mp3`,gi:`aud/c0-pgi-g${i}.mp4`})),
     ...ND[0].w.slice(6,10).map((w,j)=>({lab:w[1],hz:w[0],py:w[1],vn:w[2],mo:["Thanh 1 — ngang, cao","Thanh 2 — đi lên","Thanh 3 — xuống rồi lên","Thanh 4 — rơi mạnh"][j],e:"",au:`aud/c0-w${6+j}.mp3`,gi:`aud/c0-w${6+j}.mp3`})),
-    ...(ND[0].bd||[]).map((x,i)=>({lab:`Biến điệu ${i+1} · ${x[0]}`,hz:x[1],py:x[2],vn:x[3],mo:x[3],e:"",bd:1,au:`aud/c0-bd${i}.mp3`,gi:`aud/c0-pgi-bd${i}.mp4`}))];
+    ...(ND[0].bd||[]).map((x,i)=>({lab:`Biến điệu ${i+1}`,hz:x[1],py:x[2],vn:"",mo:x[3],e:"",bd:1,au:`aud/c0-bd${i}.mp3`,gi:`aud/c0-pgi-bd${i}.mp4`}))];
   const a=P.van.length,b=P.thanh.length,c=P.ghep.length,h=Math.ceil(b/2),r=(x,y)=>[...Array(y-x).keys()].map(z=>z+x);
   // 06/10 chị: "sau thanh điệu phải có biến điệu luôn" → Thanh điệu → Biến điệu → nguyên âm → phụ âm (chỉ âm đơn giản bō pō…) → ghép
   const t0i=a+b+c+4,nb=(ND[0].bd||[]).length;
