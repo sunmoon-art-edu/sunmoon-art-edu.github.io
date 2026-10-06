@@ -179,6 +179,18 @@ details.full[open] summary{margin-bottom:6px}
 body.inles nav.map,body.inles #origin,body.inles .legend{display:none!important}
 body:not(.inles) #lesson{display:none}
 
+.pystep{display:flex;flex-direction:column;gap:12px}
+.pystep[hidden]{display:none}
+.memq{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.memq .hzq{flex:none;width:56px;height:56px;display:grid;place-items:center;border-radius:14px;background:var(--surface);border:2px solid var(--line);font:400 30px/1 var(--hz)}
+.stepbar{display:flex;flex-direction:column;gap:6px}
+.stepbar .t{display:flex;justify-content:space-between;gap:8px;font:600 13px/1.3 var(--tx);color:var(--ink-2)}
+.stepbar .t b{color:var(--sun-2);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stepnav{display:flex;gap:10px;border-top:2px solid var(--line);padding-top:16px}
+.stepnav .btn{flex:1}
+.stepnav .btn.main:disabled{opacity:.5}
+#lesson [data-off]{display:none!important}
+.pyblk .sp .tg{font-size:30px}
 /* lesson */
 article{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:clamp(16px,4vw,26px);display:flex;flex-direction:column;gap:26px}
 .lhead{display:flex;gap:14px;align-items:center}
@@ -971,7 +983,7 @@ function setupTeacher(G){
     bar.value=audio.currentTime;tm.textContent=fmt(audio.currentTime)+" / "+fmt(G.d);
     const c=cueAt(audio.currentTime);
     if(c!==lastCue){lastCue=c;document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));
-      if(c&&!audio.paused){const e=document.querySelector(`[data-cue="${c}"]`);if(e){e.classList.add("playing");e.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}}}
+      if(c&&!audio.paused){const e=document.querySelector(`[data-cue="${c}"]`);if(e){window.showSlideOf&&showSlideOf(e);e.classList.add("playing");e.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}}}
   };
   const a=audio;
   a.ontimeupdate=sync;
@@ -1309,26 +1321,66 @@ const GHEP=`<div class="ghep"><p><b>Tiếng Trung ghép vần giống tiếng Vi
  <p><b>23 phụ âm · 36 vần · 4 thanh</b> <i>— mỗi ngày học một ít, Ngày 10 đọc được hết</i></p></div>`;
 function pyBlock(n){const d=PYD[n];if(!d)return"";
   const liHtml=(hz,ok,opts)=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
-  const grids=d.grp.map(([name,hint,cells])=>{
-    const labs=cells.map(c=>c[0]),ex=shuffle(cells).slice(0,Math.min(3,cells.length)).map(([lab,hz])=>liHtml(hz,lab,[lab,...shuffle(labs.filter(x=>x!==lab)).slice(0,Math.min(3,labs.length-1))]));
-    return `<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${colorPinyin(lab)}</span><span class="ex"><span>${esc(hz)}</span>${py!==lab?" "+colorPinyin(py):""}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>
-    <h4 class="pyh">✎ Bài tập<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>`}).join("");
+  const pick=(a,k)=>shuffle(a).slice(0,Math.min(k,a.length));
+  const memHtml=(hz,ok,opts)=>`<div class="li memq"><span class="hzq">${esc(hz)}</span><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
+  const spHtml=([lab,hz,py,vn])=>SITE?`<div class="sp" data-hz="${esc(hz)}"><div class="tg">${esc(hz)}</div><div class="pys">${colorPinyin(py)}</div><div class="bt"><button class="btn" data-say="${esc(hz)}">🔊 Nghe mẫu</button><button class="btn main mic">🎤 Đọc &amp; chấm</button><button class="btn rb">⏺ Thu &amp; nghe lại</button></div><p class="res"></p></div>`:"";
+  const grids=d.grp.map(([name,hint,cells],gi)=>{
+    const labs=cells.map(c=>c[0]),pys=cells.map(c=>c[2]);
+    const ex=pick(cells,3).map(([lab,hz])=>liHtml(hz,lab,[lab,...pick(labs.filter(x=>x!==lab),3)]));
+    const mem=pick(cells,3).map(([lab,hz,py])=>memHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),2)]));
+    const sp=pick(cells,2).map(spHtml).join("");
+    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${colorPinyin(lab)}</span><span class="ex"><span>${esc(hz)}</span>${py!==lab?" "+colorPinyin(py):""}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>
+    <h4 class="pyh">✎ 1 · Nghe và chọn<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>
+    ${sp?`<h4 class="pyh">🎤 2 · Đọc lại<i>nghe mẫu → bấm Đọc &amp; chấm → đọc to</i></h4><div class="spk-list">${sp}</div>`:""}
+    <h4 class="pyh">🧠 ${sp?3:2} · Luyện nhớ<i>nhìn chữ, tự đọc thầm, rồi chọn phiên âm</i></h4><div class="lis pylis">${mem.join("")}</div>
+    </div>`}).join("");
   const tips=(d.tip||[]).map(x=>{const[a,b]=x.split("|");return `<li><b>${hzWrap(a)}</b>${b?`<i>${hzWrap(b)}</i>`:""}</li>`}).join("");
   const ga=d.ga?`<h4 class="pyh">Ghép âm<i>phụ âm + vần → âm tiết · bấm để nghe</i></h4><div class="ga">${GA.filter(x=>d.ga.includes(x[0])).map(([i,r])=>`<div class="gab"><span class="ini">${i}</span><ul>${r.split(" ").map(x=>{const[v,sy,hz,py]=x.split("|");return `<li><button data-say="${hz}"><b>${v} → ${sy}</b><span>${hz}</span>${colorPinyin(py)}</button></li>`}).join("")}</ul></div>`).join("")}</div>`:"";
   const lis=shuffle(d.lis).map(([hz,py,opts])=>liHtml(hz,py,opts)).join("");
   return `<section class="pyblk"><h3>Phiên âm hôm nay <small>${esc(d.t)} · ngày ${n}/10</small></h3>
-    ${d.intro?GHEP:""}
-    ${d.yt?ytHtml(d.yt):""}
+    ${d.intro||d.yt?`<div class="pystep">${d.intro?GHEP:""}${d.yt?ytHtml(d.yt):""}</div>`:""}
     ${grids}
+    <div class="pystep">
     ${tips?`<ul class="tips">${tips}</ul>`:""}
     ${ga}
     <h4 class="pyh">✎ Bài tập phân biệt<i>âm dễ nhầm — nghe kỹ rồi chọn</i></h4><div class="lis pylis">${lis}</div>
     ${d.rd?`<h4 class="pyh">Bài đọc<i>bấm từng câu để nghe · đọc to 3 lần</i></h4>${rdHtml(d.rd)}`:""}
     ${d.full||n===1?fullChart(!!d.full):""}
+    </div>
   </section>`}
+
+/* bài học từng bước — mỗi lần 1 phần (chị chốt 06/10) */
+function setupSteps(el){
+  const blk=el.querySelector(".pyblk"),slides=blk?[...blk.querySelectorAll(":scope > .pystep")]:[];
+  [...el.children].forEach(x=>{if(x.tagName==="SECTION"&&!x.classList.contains("pyblk"))slides.push(x)});
+  if(slides.length<2)return;
+  const free=done.has(cur),foot=el.querySelector(".foot"),tail=[foot,foot&&foot.nextElementSibling].filter(Boolean),hero=el.querySelector(".hero-ph");
+  const bar=document.createElement("div");bar.className="stepbar";bar.innerHTML=`<div class="t"><b></b><span></span></div><div class="bar"><i></i></div>`;
+  el.querySelector(".lhead").after(bar);
+  const nav=document.createElement("div");nav.className="stepnav";nav.innerHTML=`<button class="btn" data-b>← Quay lại</button><button class="btn main" data-n>Tiếp tục →</button>`;
+  (foot||el.lastElementChild).before(nav);
+  const ttl=x=>{const h=x.querySelector("h3,h4,h2");return h?(h.firstChild&&h.firstChild.nodeType===3?h.firstChild.textContent:h.textContent).replace(/\s+/g," ").trim():"Phiên âm hôm nay"};
+  const okOf=x=>free||[...x.querySelectorAll(".pylis .li")].every(li=>li.querySelector(".opt:disabled"));
+  let i=0;const max=+(sessionStorage.getItem("st"+cur)||0);if(max&&max<slides.length)i=max;
+  const show=(n,sc)=>{i=n;slides.forEach((x,k)=>k===i?x.removeAttribute("data-off"):x.setAttribute("data-off",""));
+    if(blk)blk.toggleAttribute("data-off",!blk.contains(slides[i]));
+    if(hero)hero.toggleAttribute("data-off",i>0);
+    const last=i===slides.length-1;tail.forEach(t=>t.toggleAttribute("data-off",!last));
+    bar.querySelector("b").textContent=ttl(slides[i]);bar.querySelector("span").textContent=`${i+1}/${slides.length}`;bar.querySelector("i").style.width=((i+1)/slides.length*100)+"%";
+    nav.querySelector("[data-b]").disabled=i===0;const nb=nav.querySelector("[data-n]");nb.hidden=last;upd();
+    try{sessionStorage.setItem("st"+cur,i)}catch(e){}
+    if(sc)el.scrollIntoView({block:"start"})};
+  const upd=()=>{const nb=nav.querySelector("[data-n]"),ok=okOf(slides[i]);nb.disabled=!ok;nb.textContent=ok?"Tiếp tục →":"Làm xong bài tập nhé"};
+  el.addEventListener("click",()=>setTimeout(upd,0));
+  nav.querySelector("[data-b]").onclick=()=>show(Math.max(0,i-1),1);
+  nav.querySelector("[data-n]").onclick=()=>{if(okOf(slides[i]))show(Math.min(slides.length-1,i+1),1)};
+  window.showSlideOf=e=>{const k=slides.findIndex(x=>x.contains(e));if(k>=0&&k!==i)show(k,0)};
+  show(i,0);
+}
 function bindPy(el){
+  const blk=el.querySelector(".pyblk");if(blk)bindSpeak(blk);
   el.querySelectorAll(".pyc,.ftab button,.gab button,.ln2,.rdb .all").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
-  el.querySelectorAll(".pylis .li").forEach(li=>{li.querySelector(".pl").onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
+  el.querySelectorAll(".pylis .li").forEach(li=>{const pl=li.querySelector(".pl");if(pl)pl.onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
 }
 function showMap(){document.body.classList.remove("inles");const m=document.querySelector("nav.map");m.scrollIntoView({block:"start"});const c=document.querySelector(".node.cur");if(c)c.scrollIntoView({block:"center"});try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
 /* ---------- render ---------- */
@@ -1407,7 +1459,7 @@ function renderLesson(){
   let right=0,answered=0;
   el.querySelectorAll(".w,.s,.ln,.hc,.nd[data-say]").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
   if(G)setupTeacher(G);
-  bindPy(el);document.getElementById("backMap").onclick=showMap;
+  bindPy(el);document.getElementById("backMap").onclick=showMap;window.showSlideOf=null;
   setupWriter(wchars);
   setupSurvey();
   bindYT(el);
@@ -1426,6 +1478,7 @@ function renderLesson(){
   document.getElementById("prev").onclick=()=>go(cur-1);
   document.getElementById("next").onclick=()=>go(cur+1);
   document.getElementById("markDone").onclick=completeLesson;
+  setupSteps(el);
 }
 function go(n,scroll=true){
   n=Math.min(30,Math.max(1,n));
