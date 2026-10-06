@@ -788,7 +788,7 @@ body{background:#FFFDF2}.card{background:#fff}
 .troOk{text-align:center;font:900 clamp(30px,8vw,48px)/1.2 var(--vi,inherit);color:#E0752C;margin:14px 0 4px}
 .noiW{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,14vw,120px);padding:6px 0}.noiSvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}.noiSvg line{stroke:#22AFB1;stroke-width:4;stroke-linecap:round}
 .noiC{display:flex;flex-direction:column;gap:12px}.noiO{border:3px solid var(--line);border-bottom-width:5px;border-radius:16px;background:#fff;padding:12px 6px;min-height:64px}.noiL{font:400 clamp(40px,10vw,56px)/1 var(--hz)}.noiR{font:800 clamp(32px,8.5vw,46px)/1 var(--py)}.noiO.chon{border-color:#E0B640;background:#FFF6D6}.noiO.ok{border-color:#7BC47F;background:#EEF8EE}
-.mmKey{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;margin:4px 0 12px;font:800 22px/1 var(--py)}.mmKey span{display:flex;align-items:center;gap:6px}.mmKey i,.mmDot i{display:inline-block;width:28px;height:28px;border-radius:50%}.mmDot{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--ink-2)}.mmDot i{width:40px;height:40px}
+.mmKey{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;margin:4px 0 12px;font:800 22px/1 var(--py)}.mmKey span{display:flex;align-items:center;gap:6px}.mmKey i,.mmDot i{display:inline-block;width:28px;height:28px;border-radius:50%}.mmDot{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--ink-2)}.mmDot i{width:40px;height:40px}.mmT{width:46px;height:42px;margin-left:6px;background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px}.mmT path{stroke:#3A2622;stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 #pyQ .op2{font-size:clamp(24px,6.5vw,34px);padding:12px 6px}
 .pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
 .pyc2.playing{border-color:#E0B640;background:#FFF8DC}
@@ -1151,7 +1151,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061307";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061309";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1589,11 +1589,16 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
         else{sai=1;bt.classList.add("wrong");tone([180],.18,"square",.05);setTimeout(()=>bt.classList.remove("wrong"),450)}})}
     // 🎨 GIẢI MÃ MÀU (Crack the code): mỗi màu = 1 chữ cái phiên âm; nhìn 2 chấm màu → chọn phiên âm ghép đúng
     function maMau(){const MAU=["#E8534A","#F2A93B","#F5D04A","#5DBB63","#3FA7D6","#7A6FE0","#E46FB0","#8D6E63","#1FB5A8","#2B2B2B","#A3D65C","#FF8FA3"],chu=[...new Set(g.ds.flatMap(k=>IT[k].lab.split(" + ")))],mau=Object.fromEntries(chu.map((z,i)=>[z,MAU[i%MAU.length]]));
+      // 06/10 chị: "thiếu chọn thanh điệu" → mã = màu phụ âm + màu nguyên âm + DẤU THANH; đáp án = cùng âm đủ 4 thanh
+      const DT={a:"āáǎà",e:"ēéěè",i:"īíǐì",o:"ōóǒò",u:"ūúǔù",ü:"ǖǘǚǜ"},TS={};Object.entries(DT).forEach(([v,m])=>[...m].forEach((c,t)=>TS[c]=[v,t]));
+      const thanh=py=>{for(const c of py)if(TS[c])return TS[c][1];return -1},doiThanh=(py,t)=>[...py].map(c=>TS[c]?DT[TS[c][0]][t]:c).join("");
+      const NET=["M6 10H42","M6 34L42 8","M6 16Q18 38 24 36T42 8","M6 8L42 34"];
       const Q=pick(g.ds,3);let xong=0,dung=0;
-      khung(`<div class="mmKey">${chu.map(z=>`<span><i style="background:${mau[z]}"></i>${z}</span>`).join("")}</div>${Q.map(k=>{const [c1,v1]=IT[k].lab.split(" + "),op=sh([k,...pick(g.ds.filter(z=>z!==k),2)]);return `<div class="cau mmC" data-k="${k}"><div class="mmDot"><i style="background:${mau[c1]}"></i>+<i style="background:${mau[v1]}"></i></div><div class="opts2">${op.map(o=>`<button class="op2" data-o="${o}">${tonePy(IT[o].py)}</button>`).join("")}</div></div>`}).join("")}<div id="kq"></div>`);
+      khung(`<div class="mmKey">${chu.map(z=>`<span><i style="background:${mau[z]}"></i>${z}</span>`).join("")}</div>${Q.map(k=>{const [c1,v1]=IT[k].lab.split(" + "),t=thanh(IT[k].py),op=sh([0,1,2,3].map(x=>doiThanh(IT[k].py,x)));
+        return `<div class="cau mmC" data-k="${k}" data-py="${IT[k].py}"><div class="mmDot"><i style="background:${mau[c1]}"></i>+<i style="background:${mau[v1]}"></i><svg class="mmT" viewBox="0 0 48 44"><path d="${NET[t]}"/></svg></div><div class="opts2">${op.map(o=>`<button class="op2" data-o="${o}">${tonePy(o)}</button>`).join("")}</div></div>`}).join("")}<div id="kq"></div>`);
       const Z=box.querySelector("#pyQ");
       Z.querySelectorAll(".mmC").forEach(cq=>{let lan=0;cq.querySelectorAll(".op2").forEach(bt=>bt.onclick=()=>{if(cq.classList.contains("xong"))return;lan++;
-        if(+bt.dataset.o===+cq.dataset.k){bt.classList.add("right");cq.classList.add("xong");play(IT[+cq.dataset.k].au);if(lan===1)dung++;if(++xong===Q.length)xongTro(Z,dung,Q.length,"Giải mã xong! 🔓")}
+        if(bt.dataset.o===cq.dataset.py){bt.classList.add("right");cq.classList.add("xong");play(IT[+cq.dataset.k].au);if(lan===1)dung++;if(++xong===Q.length)xongTro(Z,dung,Q.length,"Giải mã xong! 🔓")}
         else{bt.classList.add("wrong");tone([180],.18,"square",.05);setTimeout(()=>bt.classList.remove("wrong"),450)}})})}
     // 06/10 chị: trang kiến thức mới PHẢI CÓ CÔ GIẢNG — vào nhóm là mở lớp học, cô giảng cả nhóm (aud/c0-nh*.mp4, _gen_nhom.py); giảng xong → luyện tập
     const giangNhom=()=>{const au=play(`aud/c0-nh${gi}.mp4`);au.addEventListener("ended",()=>setTimeout(()=>{const x=document.querySelector(".vidCo .vcX");if(x)x.click()},1200));moVideo(au,`aud/c0-nh${gi}.json`)};
