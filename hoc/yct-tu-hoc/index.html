@@ -738,6 +738,7 @@ body{background:#FFFDF2}.card{background:#fff}
   .wrap{padding-inline:12px}
   .stn,.kt{transform:translateX(calc(var(--x,0px)*.45))}.stn{max-width:260px}.stn .lb{padding:0 6px}
 }
+.khenZh{margin:2px 0;display:flex;align-items:baseline;gap:8px;justify-content:center;flex-wrap:wrap}.khenZh .kz1{font-family:var(--hz);font-size:30px;color:var(--ink)}.khenZh .kz2{font-size:17px;color:#C9820F;font-weight:700}.khenZh .kz3{font-size:14px;color:var(--ink-2)}
 .lsEnd{justify-content:center}.lsTro{width:140px;height:140px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
@@ -1033,7 +1034,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061030";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061031";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1072,8 +1073,13 @@ function linhVat(m,px){m=m||"kha";px=px||72;
 const POSE=["nhay","lac","quay","vay","bay"];
 const coMT=(prop,pose)=>{const r=Math.random(),ai=prop==="⭐"?"sao":r<.6?"kha":r<.8?"colen":"sao";return `<div class="masc p-${pose||POSE[Math.floor(Math.random()*POSE.length)]}"><div class="mBody">${linhVat(ai,150)}</div>${prop&&H[prop]?`<img class="mProp" src="${H[prop]}" alt="">`:""}<span class="mSao s1">✦</span><span class="mSao s2">✦</span><span class="mSao s3">✦</span></div>`};
 const thongKe=(xp,giay,pct)=>`<div class="tk"><div class="tkO xp"><b>TỔNG XP</b><span>⚡ ${xp}</span></div><div class="tkO tg"><b>THỜI GIAN</b><span>⏱ ${Math.floor(giay/60)}:${String(Math.round(giay%60)).padStart(2,"0")}</span></div><div class="tkO cx"><b>${pct>=90?"TUYỆT VỜI":pct>=70?"GIỎI LẮM":"CHÍNH XÁC"}</b><span>🎯 ${pct}%</span></div></div>`;
+/* 06/10 chị: chỗ nào có chữ Trung thì phải có PHIÊN ÂM (trong popup khen, câu báo đúng/sai, màn kết quả) */
+const BO_QUA=".hz,.hzi,ruby,svg,.lsZ,.lt,.ltTu,.py,.hhT,.tnBang,.khenZh,script,style,textarea,.sents,.htB,.tDoc,.boI,.lsCard,.ltW";
+function phienAm(root){if(!root||!root.querySelectorAll)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>/[\u3400-\u9fff]/.test(t.nodeValue)&&!t.parentElement.closest(BO_QUA)?1:3});const L=[];while(w.nextNode())L.push(w.currentNode);
+  L.forEach(t=>{const sp=document.createElement("span");sp.innerHTML=hzw(t.nodeValue);t.replaceWith(sp)})}
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(nd=>{if(nd.nodeType!==1)return;const r=nd.matches&&nd.matches(".mung,.ls,.lsFoot,.htMe,.ltOk,.lsHint")?nd:nd.closest&&nd.closest(".mung,.ls");if(r)phienAm(r)}))).observe(document.body,{childList:true,subtree:true});
 function mung(anh,so,dong1,dong2,them){keng();confetti();setTimeout(()=>play("aud/khen.mp3"),500);
-  const o=document.createElement("div");o.className="mung";o.innerHTML=`<div class="bx" role="dialog" aria-modal="true">${coMT(anh)}${so!=null?`<div class="so">${so}</div>`:""}<b style="font-size:20px">${dong1}</b><i style="font-weight:300;color:var(--ink-2)">${dong2||""}</i>${them||""}<button class="big" style="align-self:center">Tuyệt quá!</button></div>`;
+  const o=document.createElement("div");o.className="mung";o.innerHTML=`<div class="bx" role="dialog" aria-modal="true">${coMT(anh)}${so!=null?`<div class="so">${so}</div>`:""}<b style="font-size:20px">${dong1}</b><i style="font-weight:300;color:var(--ink-2)">${dong2||""}</i><p class="khenZh"><span class="kz1">真棒！</span><span class="kz2">zhēn bàng</span><span class="kz3">giỏi quá!</span></p>${them||""}<button class="big" style="align-self:center">Tuyệt quá!</button></div>`;
   document.body.appendChild(o);o.querySelector("button").onclick=()=>o.remove();o.onclick=e=>{if(e.target===o)o.remove()}}
 function veChuoi(){try{veXP()}catch(e){}const el=document.getElementById("streakChip");if(!el)return;const n=chuoi(),hn=ngayHoc().includes(homNay());
   el.hidden=!(KHOA?U:true);el.classList.toggle("off",!hn);el.innerHTML=`<img src="${H["🔥"]||""}" alt="">${n}`;el.title=`${n} ngày học liền`}
