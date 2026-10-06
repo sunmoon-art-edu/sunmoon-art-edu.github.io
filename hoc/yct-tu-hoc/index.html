@@ -1177,6 +1177,14 @@ ruby.rbHP{ruby-position:over}ruby.rbHP rt{font-size:.5em;font-weight:700;letter-
 /* 06/10 sơ đồ tư duy học từ */
 .tuMM{max-width:430px}.amMM .tuN{width:clamp(70px,18vw,88px);height:clamp(70px,18vw,88px);flex-direction:column;gap:0;line-height:1}
 .tuN .tuH img{width:26px;height:26px}.tuN .tuSo{font-size:15px;color:#E8590C}.amMM .tuN b{font-size:clamp(15px,4vw,19px);color:#3A2622}.tuN ruby rt{font-size:.55em}
+/* 06/10 tối chị: hình trong sơ đồ từ "nhỏ xíu" → hình phủ kín vòng tròn, chữ Hán + phiên âm làm nhãn bên dưới */
+.amMM .tuN{width:clamp(78px,21vw,98px);height:clamp(78px,21vw,98px);overflow:visible;padding:0}
+.tuN .tuH{position:absolute;inset:3px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff}
+.tuN .tuH img{width:100%!important;height:100%!important;object-fit:cover}.tuN .tuH img[src*="/f3"]{object-fit:contain;padding:10%}
+.tuN .tuSo{font-size:clamp(30px,8vw,40px)!important;color:#E8590C}
+.amMM .tuN b{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);background:#fff;border-radius:12px;padding:1px 8px;white-space:nowrap;box-shadow:0 2px 0 #0002;font-size:clamp(14px,3.8vw,17px);z-index:2}
+.tuN .amPd{z-index:3}.tuN .amV{z-index:3}
+.tuN .tuH img[src$=".jpg"],.tuN .tuH img[src*=".jpg?"]{transform:scale(1.45);object-position:50% 60%}
 </style>
 
 <div class="top"><div class="in">
@@ -1663,7 +1671,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610062033";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610062035";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
