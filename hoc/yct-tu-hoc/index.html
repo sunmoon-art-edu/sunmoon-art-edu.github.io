@@ -784,6 +784,31 @@ body{background:#FFFDF2}.card{background:#fff}
 .coNoi.coPhu{left:10px;right:10px;transform:translateY(30px);border-radius:22px;padding:8px 10px 8px 6px;max-width:640px;margin:0 auto}.coNoi.coPhu.hien{transform:none}
 .coNoi.coPhu .cnTxt{flex:1;min-width:0}.coNoi.coPhu .cnTxt b{font-size:12px;color:#7A5A00}.coNoi.coPhu .cnTxt .cnDong{font-size:18px;color:var(--ink);line-height:1.35;min-height:2.6em;display:flex;flex-direction:column;justify-content:center}
 .coNoi .cnTxt .cnZh{font-family:var(--hz);font-size:30px;line-height:1.1;color:var(--ink)}.coNoi .cnTxt .cnPy{font:700 16px var(--py);color:#C9820F}.coNoi .cnTxt .cnPy span{font-size:16px}.cnDong.moi{animation:cnMoi .35s ease}@keyframes cnMoi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.vidCo{position:fixed;inset:0;z-index:85;background:rgba(15,25,30,.82);display:grid;place-items:center;padding:12px}
+.vcKhung{width:min(960px,100%);background:#000;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.vcCanh{position:relative;aspect-ratio:16/9;background:linear-gradient(#8ED8F0,#CFF1F7 62%,#BFE6A8 62%,#A6D88E);overflow:hidden}
+@media (orientation:portrait) and (max-width:700px){.vcCanh{aspect-ratio:3/4}}
+.vcMay{position:absolute;background:#fff;border-radius:999px;opacity:.9;height:9%;animation:mayBay 22s linear infinite}.vcMay::before,.vcMay::after{content:"";position:absolute;background:#fff;border-radius:50%}.vcMay.m1{width:18%;top:8%;left:-20%}.vcMay.m1::before{width:45%;height:160%;left:15%;top:-60%}.vcMay.m2{width:13%;top:18%;left:-20%;animation-delay:-11s;animation-duration:30s}.vcMay.m2::before{width:50%;height:150%;left:25%;top:-55%}
+@keyframes mayBay{to{transform:translateX(160vw)}}
+.vcCo{position:absolute;left:3%;bottom:6%;width:34%;display:flex;flex-direction:column;align-items:center}.vcSun{width:100%;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.15))}.vcCo.noi .vcSun{animation:coNhun .35s ease-in-out infinite alternate}@keyframes coNhun{to{transform:translateY(-3%) rotate(-2deg)}}
+.vcTen{background:#FFD966;color:#4A3800;font-weight:800;font-size:clamp(11px,1.8vw,16px);padding:3px 12px;border-radius:999px;margin-top:-4%}
+.vcBang{position:absolute;right:4%;top:8%;width:56%;height:56%;background:#2F6B4F;border:clamp(4px,1vw,10px) solid #A0703C;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:4%;padding:3%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.08)}
+.vidCo:not(.coZh) .vcBang::after{content:"SunMoon · YCT 1";color:#E6F2EA;font:700 clamp(14px,3vw,30px) var(--tx);opacity:.75}
+.vcHinh img{width:clamp(56px,13vw,150px);height:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));animation:nhun 2.4s ease-in-out infinite}
+.vcChu{display:flex;flex-direction:column;align-items:center;gap:2px}.vcZh{font-family:var(--hz);font-size:clamp(34px,8vw,92px);color:#fff;line-height:1.05;text-shadow:0 3px 0 rgba(0,0,0,.25)}.vcPy{font:700 clamp(16px,3vw,32px) var(--py);color:#FFE58A}.vcPy span{color:#FFE58A!important}
+.vcLoi{position:absolute;left:38%;right:4%;bottom:6%;min-height:22%;background:#fff;border-radius:18px;padding:2% 3%;font-size:clamp(14px,2.6vw,24px);font-weight:600;color:var(--ink);display:flex;align-items:center;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.vcLoi:empty{display:none}.vcLoi::before{content:"";position:absolute;left:-12px;bottom:22%;border:10px solid transparent;border-right:14px solid #fff;border-left:0}
+@media (orientation:portrait) and (max-width:700px){.vcBang{left:5%;right:5%;width:auto;top:5%;height:42%}.vcCo{left:2%;width:42%;bottom:4%}.vcLoi{left:44%;bottom:5%;min-height:30%;font-size:16px}}
+.vcChu.moi,.vcLoi.moi{animation:cnMoi .35s ease}
+.vcDk{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#111;color:#fff}.vcDk button{border:0;background:#222;color:#fff;border-radius:50%;width:40px;height:40px;font-size:16px;cursor:pointer;flex:none}.vcTua{flex:1;accent-color:#FFD966}.vcTg{font-size:13px;min-width:78px;text-align:right}
+.pyHead{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.pyHead b{font-size:20px}.pyHead span{font-size:13px;color:var(--ink-2)}.pyHead em{margin-left:auto;font-style:normal;font-weight:700;font-size:14px;color:#7A5A00;background:#FFF1BF;padding:3px 10px;border-radius:999px}
+.pySeg{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:2px 0 6px}.pySeg i{height:8px;border-radius:999px;background:#EEEBE3}.pySeg i.qua{background:#8BCB7E}.pySeg i.on{background:#FFD966}
+.pyh2{font-size:15px!important;font-weight:600;color:var(--ink-2)}
+section.dangLam>.pyt,section.dangLam>.gbtn{display:none!important}
+.psI span img{width:22px;height:22px}
+.goiY{font-size:26px;letter-spacing:2px;color:var(--ink)}.goiY b{font-size:18px;color:#C9A43A}.goiT{font-size:13px;color:var(--ink-2);font-weight:500}
+section.dangLam>h2{display:none!important}
+@media (max-width:600px){.phan i{display:none}.phan{margin:8px 2px 6px!important}}
 .lsEnd{justify-content:center}.lsTro{width:140px;height:140px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
@@ -1077,7 +1102,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061040";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061045";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1375,7 +1400,31 @@ function luyenTu(n){const box=document.getElementById("luyenTu"),c=ND[n];if(!box
 let _coAC=null;const _coSrc=new WeakMap();
 // phiên âm cho câu tiếng Trung trong phụ đề: tìm trong nội dung bài (từ, câu, hội thoại…)
 function pyCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let r=null;const tim=v=>{if(r)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&typeof v[1]==="string"&&v[0].replace(/[！!？?。，,、\s]/g,"")===k&&/[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]/i.test(v[1]))r=v[1];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};tim(ND);return r}
-function coNoi(au,cueUrl){if(!au)return;let o=document.getElementById("coNoi");
+/* 06/10 chị: bấm Cô giảng → MÀN HÌNH NHƯ VIDEO HOẠT HÌNH (kiểu Little Fox): cảnh nền, Cô Mặt Trời đứng nói (miệng theo tiếng), bảng hiện chữ Trung to + phiên âm + hình theo lời cô */
+function hinhCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let e=null;const tim=v=>{if(e)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&v[0].replace(/[！!？?。，,、\s]/g,"")===k&&typeof v[3]==="string"&&H[v[3]])e=v[3];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};tim(ND);return e}
+function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
+  const o=document.createElement("div");o.className="vidCo";o.innerHTML=`<div class="vcKhung"><div class="vcCanh">
+      <div class="vcMay m1"></div><div class="vcMay m2"></div><div class="vcCo">${'<svg viewBox="0 0 120 120" class="vcSun"><g class="cnTia" stroke="#F6C343" stroke-width="5.5" stroke-linecap="round">'+Array.from({length:16},(_,i)=>{const a=i*22.5*Math.PI/180,r2=i%2?55:59;return `<line x1="${(60+46*Math.cos(a)).toFixed(1)}" y1="${(60+46*Math.sin(a)).toFixed(1)}" x2="${(60+r2*Math.cos(a)).toFixed(1)}" y2="${(60+r2*Math.sin(a)).toFixed(1)}"/>`}).join("")+'</g><circle cx="60" cy="60" r="38" fill="#FFD94F"/><g class="cnMat"><ellipse cx="47" cy="54" rx="3.6" ry="4.4" fill="#2B2622"/><ellipse cx="73" cy="54" rx="3.6" ry="4.4" fill="#2B2622"/><circle cx="48.2" cy="52.4" r="1.3" fill="#fff"/><circle cx="74.2" cy="52.4" r="1.3" fill="#fff"/></g><circle cx="38" cy="65" r="6.5" fill="#F7A3A0" opacity=".75"/><circle cx="82" cy="65" r="6.5" fill="#F7A3A0" opacity=".75"/><ellipse class="cnMieng" cx="60" cy="70" rx="8" ry="1.6" fill="#8B2E2E"/><path class="cnCuoi" d="M50 67q10 10 20 0" stroke="#2B2622" stroke-width="2.8" fill="none" stroke-linecap="round"/></svg>'}<span class="vcTen">Cô Mặt Trời</span></div>
+      <div class="vcBang"><div class="vcHinh"></div><div class="vcChu"></div></div><div class="vcLoi"></div><div class="vcDat"></div></div>
+    <div class="vcDk"><button class="vcPP" aria-label="Phát / dừng">⏸</button><input type="range" class="vcTua" min="0" max="1" step=".1" value="0" aria-label="Tua"><span class="vcTg">0:00</span><button class="vcX" aria-label="Đóng">✕</button></div></div>`;
+  document.body.appendChild(o);document.body.style.overflow="hidden";
+  const $=q=>o.querySelector(q),mieng=$(".cnMieng"),cuoi=$(".cnCuoi"),pp=$(".vcPP"),tua=$(".vcTua"),tg=$(".vcTg"),hinh=$(".vcHinh"),chu=$(".vcChu"),loi=$(".vcLoi");
+  const f=t=>Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0");
+  const dong=()=>{try{au.pause()}catch(e){}o.remove();document.body.style.overflow=""};
+  $(".vcX").onclick=dong;pp.onclick=()=>{au.paused?au.play().catch(()=>{}):au.pause()};tua.oninput=()=>{au.currentTime=+tua.value};
+  au.addEventListener("play",()=>pp.textContent="⏸");au.addEventListener("pause",()=>pp.textContent="▶");au.addEventListener("ended",()=>{pp.textContent="↺";pp.onclick=()=>{au.currentTime=0;au.play();pp.onclick=()=>{au.paused?au.play().catch(()=>{}):au.pause()}}});
+  let CUE=null,cu=-1;fetch(cueUrl+"?v="+AV).then(r=>r.ok?r.json():null).then(j=>CUE=j).catch(()=>{});
+  const veDong=()=>{if(!CUE)return;let i=-1;for(let q=0;q<CUE.length;q++)if(CUE[q].t<=au.currentTime+.05)i=q;if(i===cu||i<0)return;cu=i;const c=CUE[i];
+    let vi=null;for(let q=i;q>=0;q--)if(CUE[q].vi){vi=CUE[q].vi;break}if(vi&&loi.textContent!==vi){loi.textContent=vi;loi.classList.remove("moi");void loi.offsetWidth;loi.classList.add("moi")}
+    if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh">${esc(c.zh)}</span>${py?`<span class="vcPy">${tonePy(py)}</span>`:""}`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
+};
+  let an=null,buf=null;try{_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
+  const t0=performance.now();const tick=()=>{if(!document.body.contains(o))return;
+    if(au.duration){tua.max=au.duration;tua.value=au.currentTime;tg.textContent=f(au.currentTime)+" / "+f(au.duration)}
+    let v=0;if(!au.paused&&!au.ended){if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else v=.5+.5*Math.sin((performance.now()-t0)/90)}
+    mieng.setAttribute("ry",(1.6+v*9).toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1;o.querySelector(".vcCo").classList.toggle("noi",v>.15);veDong();requestAnimationFrame(tick)};
+  requestAnimationFrame(tick)}
+function coNoi(au,cueUrl){if(!au)return;if(cueUrl)return moVideo(au,cueUrl);let o=document.getElementById("coNoi");
   if(!o){o=document.createElement("div");o.id="coNoi";o.className="coNoi";o.innerHTML=`<svg viewBox="0 0 120 120" class="cnSun"><g class="cnTia" stroke="#F6C343" stroke-width="5.5" stroke-linecap="round">${Array.from({length:16},(_,i)=>{const a=i*22.5*Math.PI/180,r2=i%2?55:59;return `<line x1="${(60+46*Math.cos(a)).toFixed(1)}" y1="${(60+46*Math.sin(a)).toFixed(1)}" x2="${(60+r2*Math.cos(a)).toFixed(1)}" y2="${(60+r2*Math.sin(a)).toFixed(1)}"/>`}).join("")}</g><circle cx="60" cy="60" r="38" fill="#FFD94F"/>
     <g class="cnMat"><ellipse cx="47" cy="54" rx="3.6" ry="4.4" fill="#2B2622"/><ellipse cx="73" cy="54" rx="3.6" ry="4.4" fill="#2B2622"/><circle cx="48.2" cy="52.4" r="1.3" fill="#fff"/><circle cx="74.2" cy="52.4" r="1.3" fill="#fff"/></g>
     <circle cx="38" cy="65" r="6.5" fill="#F7A3A0" opacity=".75"/><circle cx="82" cy="65" r="6.5" fill="#F7A3A0" opacity=".75"/>
@@ -1421,9 +1470,9 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
   let gi=NH.findIndex(g=>g.ds.some(k=>!DA.has(k)));if(gi<0)gi=0;
   const oDiem=(dung,tong)=>{const d=Math.round(10*dung/tong),sao=d>=10?3:d>=7?2:1;return `<div class="oDiem"><b>${d}/10</b><span>${"★".repeat(sao)}<i>${"★".repeat(3-sao)}</i></span><em>${d>=10?"Đúng hết! 真棒！":d>=7?"Giỏi lắm!":"Làm lại phần sai nhé — 加油！"}</em></div>`};
   function lam(){const g=NH[gi],t0=Date.now();let buoc=0,tongD=0,tongC=0;
-    const khung=(than)=>{box.innerHTML=`<div class="ltTu">${NH.map((x,t)=>{const xg=x.ds.every(z=>DA.has(z)),mo=xg||t===gi;return `<button class="${t===gi?"on":xg?"da":"khoa"}" data-g="${t}"${mo?"":" disabled"}>${xg&&t!==gi?"✓ ":""}${x.ten}</button>`}).join("")}</div>
-      <div class="ltBuoc">${PHA.map((t,z)=>`<span class="${z===buoc?"on":z<buoc?"qua":""}">${t}</span>`).join("")}</div><div id="pyQ" class="ltQ2">${than}</div>`;
-      box.querySelectorAll(".ltTu [data-g]:not([disabled])").forEach(bt=>bt.onclick=()=>{gi=+bt.dataset.g;lam()});box.scrollIntoView({behavior:"smooth",block:"start"})};
+    // 06/10 chị: "lộn xộn" → đầu gọn 1 dòng: nhóm + bước, 1 thanh tiến độ; ẩn lời giới thiệu khi đã vào làm bài
+    const khung=(than)=>{const sec=box.closest("section");if(sec)sec.classList.toggle("dangLam",buoc>0||gi>0);
+      box.innerHTML=`<div class="pyHead"><b>${g.ten}</b><span>${gi+1}/${NH.length} nhóm</span><em>${["📚","👂","🎤","🧠","✍️"][buoc]} ${PHA[buoc]}</em></div><div class="pySeg">${PHA.map((t,z)=>`<i class="${z<buoc?"qua":z===buoc?"on":""}"></i>`).join("")}</div><div id="pyQ" class="ltQ2">${than}</div>`;box.scrollIntoView({behavior:"smooth",block:"start"})};
     const sang=()=>{buoc++;ve()};
     // câu chọn đáp án (nhiều câu 1 màn) — chấm điểm, xong hết hiện ô điểm + nút Tiếp
     const cauChon=(ds,de,kieu)=>{let xong=0,dung=0;const Q=pick(ds,3);
@@ -1435,18 +1484,18 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
           else{const nx=[...Z.querySelectorAll(".cau:not(.xong) .pl2")][0];if(nx)setTimeout(()=>nx.click(),700)}}
         else{bt.classList.add("wrong");tone([180],.18,"square",.05);setTimeout(()=>bt.classList.remove("wrong"),450)}})})};
     function ve(){
-      if(buoc===0){khung(`<h4 class="pyh2">${g.ten} <i>bấm từng ô để nghe cô giảng</i></h4><div class="pyg2">${g.ds.map(k=>`<button class="pyc2" data-k="${k}"><span class="big2">${tonePy(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span>${IT[k].mo?`<span class="mn2">${hzw(IT[k].mo)}</span>`:""}<span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
+      if(buoc===0){khung(`<h4 class="pyh2"><span class="goiY">👆 <b>→</b> 🔊</span><span class="goiT">bấm ô để nghe</span></h4><div class="pyg2">${g.ds.map(k=>`<button class="pyc2" data-k="${k}"><span class="big2">${tonePy(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span>${IT[k].mo?`<span class="mn2">${hzw(IT[k].mo)}</span>`:""}<span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
         box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;return}
-      if(buoc===1)return cauChon(g.ds,`✎ Nghe và chọn <span class="nhan2">Bắt buộc</span><i>bấm loa, nghe rồi chọn đúng</i>`,"nghe");
-      if(buoc===2){const Q=pick(g.ds,2);let da=0;khung(`<h4 class="pyh2">🎤 Đọc lại <span class="nhan2 lt">Luyện thêm</span><i>bấm Đọc &amp; thu, rồi nghe lại so với cô</i></h4>${Q.map(k=>`<div class="sp2" data-k="${k}"><div class="tg2">${esc(IT[k].hz)}</div><div class="pys2">${tonePy(IT[k].py)}</div><div class="bt2"><button class="btn2 sN">🔊 Nghe</button><button class="big sM">🎤 Đọc &amp; thu</button></div><p class="res2"></p></div>`).join("")}<button class="big" id="pyT">Tiếp →</button>`);
+      if(buoc===1)return cauChon(g.ds,`<span class="goiY">🔊 <b>→</b> 👆</span><span class="goiT">nghe rồi chọn</span>`,"nghe");
+      if(buoc===2){const Q=pick(g.ds,2);let da=0;khung(`<h4 class="pyh2"><span class="goiY">🎤 <b>→</b> 👂</span><span class="goiT">đọc to, nghe lại</span></h4>${Q.map(k=>`<div class="sp2" data-k="${k}"><div class="tg2">${esc(IT[k].hz)}</div><div class="pys2">${tonePy(IT[k].py)}</div><div class="bt2"><button class="btn2 sN">🔊 Nghe</button><button class="big sM">🎤 Đọc &amp; thu</button></div><p class="res2"></p></div>`).join("")}<button class="big" id="pyT">Tiếp →</button>`);
         box.querySelectorAll(".sp2").forEach(cd=>{const k=+cd.dataset.k,res=cd.querySelector(".res2"),m=cd.querySelector(".sM");cd.querySelector(".sN").onclick=e=>play(IT[k].au,e.currentTarget);
           m.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true}),rr=new MediaRecorder(st),ch=[];rr.ondataavailable=e=>ch.push(e.data);
             rr.onstop=()=>{st.getTracks().forEach(t=>t.stop());const au=new Audio(URL.createObjectURL(new Blob(ch)));cur=au;res.textContent="Tiếng con…";au.onended=()=>setTimeout(()=>{res.textContent="Giờ nghe cô — giống chưa?";play(IT[k].au)},400);au.play().catch(()=>{});m.classList.remove("rec");m.innerHTML="⏺ Thu lại";if(!cd.dataset.ok){cd.dataset.ok=1;da++}};
             rr.start();m.classList.add("rec");m.innerHTML="⏺ Đang nghe…";setTimeout(()=>rr.state!=="inactive"&&rr.stop(),3000)}catch(e){res.innerHTML=e&&e.name==="NotAllowedError"?"Máy chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy chưa thu âm được — con đọc to theo cô nhé"}}});
         box.querySelector("#pyT").onclick=sang;return}
-      if(buoc===3)return cauChon(g.ds,`🧠 Luyện nhớ <span class="nhan2">Bắt buộc</span><i>nhìn chữ, đọc thầm, chọn phiên âm</i>`,"nho");
+      if(buoc===3)return cauChon(g.ds,`<span class="goiY">👀 <b>→</b> 👆</span><span class="goiT">nhìn chữ, chọn phiên âm</span>`,"nho");
       if(buoc===4){const vs=g.ds.filter(k=>/^[a-zü]+$/.test(IT[k].lab)).slice(0,2);if(!vs.length){buoc++;return ve()}let q=0;
-        const mot=()=>{const k=vs[q];khung(`<h4 class="pyh2">✍️ Viết <i>tô chữ “${esc(IT[k].lab)}” theo nét mờ (${q+1}/${vs.length})</i></h4><div id="pyViet"></div><p class="ltOk" id="pyVh">Tô kín chữ là xong</p>`);
+        const mot=()=>{const k=vs[q];khung(`<h4 class="pyh2">Tô chữ “${esc(IT[k].lab)}” theo nét mờ (${q+1}/${vs.length})</h4><div id="pyViet"></div><p class="ltOk" id="pyVh">Tô kín chữ là xong</p>`);
           veChuCai(box.querySelector("#pyViet"),IT[k].lab,()=>{tone([880,1320]);box.querySelector("#pyVh").textContent="Tô đẹp quá! 真棒！";setTimeout(()=>{if(++q<vs.length)mot();else{buoc++;ve()}},900)})};mot();return}
       // xong nhóm
       g.ds.forEach(k=>DA.add(k));store.set(key,[...DA]);themXP(2*g.ds.length,"Luyện phiên âm");const tk=thongKe(2*g.ds.length,(Date.now()-t0)/1000,Math.round(100*tongD/Math.max(1,tongC)));
@@ -1478,7 +1527,7 @@ function boCuc(n){const hero=app.querySelector(".hero");if(!hero)return;chuHinh(
     box.innerHTML=`<div class="phan"><span class="mlS">${STT[k]}</span><span><b>Phần ${STT[k]}/${so} · ${p[1]}</b><i>${p[2]}${nhom[k].length>1?` · trang <span class="phTr"></span>/${nhom[k].length}`:""}</i></span></div>`;
     nhom[k].forEach(x=>box.appendChild(x));truoc.after(box);truoc=box});
   const nav=document.createElement("div");nav.className="phNav";truoc.after(nav);
-  const veML=()=>{ml.innerHTML=`<div class="phStep">${DS.map(k=>`<button class="psI${k===TT.cur?" on":TT.da.includes(k)?" da":""}" data-p="${k}" aria-label="Phần ${STT[k]}: ${PH[k][1]}"><span>${TT.da.includes(k)&&k!==TT.cur?"✓":STT[k]}</span><i>${PH[k][1]}</i></button>`).join("")}</div>`;
+  const veML=()=>{ml.innerHTML=`<div class="phStep">${DS.map(k=>`<button class="psI${k===TT.cur?" on":TT.da.includes(k)?" da":""}" data-p="${k}" aria-label="Phần ${STT[k]}: ${PH[k][1]}"><span>${TT.da.includes(k)&&k!==TT.cur?"✓":im(PH[k][0])}</span><i>${PH[k][1]}</i></button>`).join("")}</div>`;
     ml.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>moTrang(TR.findIndex(t=>t[0]===+b.dataset.p)))};
   let t0=TR.findIndex(t=>t[0]===TT.cur&&t[1]===TT.sub);if(t0<0)t0=0;
   const moTrang=(t,cuon=true)=>{t=Math.max(0,Math.min(TR.length-1,t));const [k,j]=TR[t];TT.cur=k;TT.sub=j;store.set(key,TT);
