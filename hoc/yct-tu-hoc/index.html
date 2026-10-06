@@ -1151,7 +1151,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061306";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061307";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1549,7 +1549,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
   const t0i=a+b+c+4,nb=(ND[0].bd||[]).length;
   const NH=[{ten:"Thanh điệu",ds:r(a+b+c,t0i)},...(nb?[{ten:"Biến điệu",ds:r(t0i,t0i+nb)}]:[]),{ten:"6 nguyên âm",ds:r(0,a)},{ten:"Phụ âm (1)",ds:r(a,a+h)},{ten:"Phụ âm (2)",ds:r(a+h,a+b)},{ten:"Ghép âm",ds:r(a+b,a+b+c),ma:1}];
   const sh=x=>x.map(y=>[Math.random(),y]).sort((p,q)=>p[0]-q[0]).map(y=>y[1]),pick=(x,k)=>sh(x).slice(0,Math.min(k,x.length));
-  const PHA=["Học","Bingo","Đọc lại","Nối","Viết"];   // 06/10 chị: luyện tập bằng TRÒ CHƠI (Bingo · Nối cột · Giải mã màu)
+  const PHA=["Học","Bingo","Đọc lại","Nối"];   // 06/10 chị: luyện tập bằng TRÒ CHƠI (Bingo · Nối cột · Giải mã màu)
   let gi=NH.findIndex(g=>g.ds.some(k=>!DA.has(k)));if(gi<0)gi=0;
   const oDiem=(dung,tong)=>{const d=Math.round(10*dung/tong),sao=d>=10?3:d>=7?2:1;return `<div class="oDiem"><b>${d}/10</b><span>${"★".repeat(sao)}<i>${"★".repeat(3-sao)}</i></span><em>${d>=10?"Đúng hết! 真棒！":d>=7?"Giỏi lắm!":"Làm lại phần sai nhé — 加油！"}</em></div>`};
   function lam(){const g=NH[gi],t0=Date.now();let buoc=0,tongD=0,tongC=0;
@@ -1608,7 +1608,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
             thuDem(rr,m,4)}catch(e){res.innerHTML=e&&e.name==="NotAllowedError"?"Máy chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy chưa thu âm được — con đọc to theo cô nhé"}}});
         box.querySelector("#pyT").onclick=sang;return}
       if(buoc===3)return g.ma?maMau():noiCot();
-      if(buoc===4){const vs=g.ds.filter(k=>/^[a-zü]+$/.test(IT[k].lab)).slice(0,2);if(!vs.length){buoc++;return ve()}let q=0;
+      if(buoc===4){const vs=[];   /* 06/10 chị: "tô chữ Tviet (chữ cái Latin) thì thôi" — phiên âm không có bước Viết */if(!vs.length){buoc++;return ve()}let q=0;
         const mot=()=>{const k=vs[q];khung(`<div id="pyViet"></div><p class="ltOk" id="pyVh">${q+1}/${vs.length}</p>`);   /* 06/10 chị: bớt chữ — cô nói hướng dẫn tô */
           veChuCai(box.querySelector("#pyViet"),IT[k].lab,()=>{tone([880,1320]);box.querySelector("#pyVh").textContent="Tô đẹp quá! 真棒！";setTimeout(()=>{if(++q<vs.length)mot();else{buoc++;ve()}},900)})};mot();return}
       // xong nhóm
