@@ -161,6 +161,24 @@ details.full[open] summary{margin-bottom:6px}
 .ftab button{padding:9px 2px;border:2px solid var(--line);border-bottom-width:3px;border-radius:10px;background:var(--surface);font:600 16px/1 var(--tx);color:var(--ink)}
 .ftab button:active{transform:translateY(1px)}
 
+
+.pyblk{display:flex;flex-direction:column;gap:14px;padding:16px;border:2px solid var(--sun-soft);border-radius:20px;background:var(--moon-soft)}
+.pyblk>h3{margin:0}
+.pyblk .lis{margin-top:4px}
+.ghep{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:var(--surface);border:2px solid var(--line)}
+.ghep p{margin:0}
+.ghep .row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;font:600 17px/1.2 var(--tx)}
+.ghep .row span{padding:6px 10px;border-radius:10px;background:var(--soft)}
+.ghep .row .pa{background:var(--sun-soft);color:var(--sun-2)}
+.ghep .row .va{background:var(--ok-soft);color:var(--ok-2)}
+.ghep .row .th{background:#FBF0D5;color:#8A6416}
+.ghep .row em{font-style:normal;color:var(--ink-2)}
+.ghep .row b{font-size:20px}
+.ghep .lbl{text-align:center;font-size:13px;color:var(--ink-2);font-style:italic;font-weight:300}
+.backmap{align-self:flex-start;padding:8px 14px;font-size:14px}
+body.inles nav.map,body.inles #origin,body.inles .legend{display:none!important}
+body:not(.inles) #lesson{display:none}
+
 /* lesson */
 article{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:clamp(16px,4vw,26px);display:flex;flex-direction:column;gap:26px}
 .lhead{display:flex;gap:14px;align-items:center}
@@ -243,6 +261,14 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
 .qrbox .qr svg{width:100%;height:100%}
 .bank{line-height:1.7}
 .zalos{display:flex;flex-wrap:wrap;gap:8px}
+.hfab{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.hfab>button{height:46px;padding:0 16px;border-radius:999px;border:2px solid var(--line);border-bottom-width:4px;background:var(--surface);color:var(--sun-2);font:700 14px/1 var(--tx);box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.hbox{width:min(330px,calc(100vw - 28px));display:flex;flex-direction:column;gap:8px;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.hbox[hidden]{display:none}
+.hbox b{font-size:15px}.hbox i{font-size:13px;font-weight:300;color:var(--ink-2)}
+.hbox textarea{font:inherit;font-size:15px;min-height:110px;padding:10px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);resize:vertical}
+.hbox .row{display:flex;gap:8px;justify-content:flex-end}.hbox .btn{padding:8px 14px;font-size:14px}
+.hbox .msg{font-size:13px;color:var(--ok-2)}.hbox .msg.err{color:var(--bad)}
 .zfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .zfab>button{width:52px;height:52px;border-radius:50%;border:0;border-bottom:4px solid #A2342B;background:#C8453A;color:#fff;font:800 13px/1 Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 .zfab .zm{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #E6E0D8;border-radius:14px;padding:10px;box-shadow:0 6px 20px rgba(0,0,0,.15)}.zfab .zm[hidden]{display:none}
@@ -578,6 +604,7 @@ section h3 small{font:300 13px var(--tx);color:var(--ink-2);font-style:italic}
   <article id="lesson" aria-live="polite"></article>
 </div>
 
+<div class="hfab"><div class="hbox" id="hBox" hidden><b>Bạn đang băn khoăn điều gì?</b><i>Bài khó, chỗ chưa hiểu, lỗi trang… — gửi thẳng cho SunMoon, sẽ trả lời qua email của bạn</i><textarea id="hTxt" maxlength="2000" placeholder="VD: Ngày 3 em chưa phân biệt được d và t…"></textarea><span class="msg" id="hMsg"></span><div class="row"><button class="btn" id="hClose">Đóng</button><button class="btn main" id="hSend">Gửi</button></div></div><button type="button" id="hOpen" aria-label="Hỏi hoặc báo khó khăn">💬 Hỏi / góp ý</button></div>
 <div class="zfab"><div class="zm" id="zfabM" hidden><b>Cần hỗ trợ? Nhắn Zalo SunMoon</b><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a><a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></div><button type="button" aria-label="Nhắn Zalo SunMoon" onclick="var m=document.getElementById('zfabM');m.hidden=!m.hidden">Zalo</button></div>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -1106,7 +1133,7 @@ const today=()=>ymd(new Date());
 function streak(){const s=new Set(GM.days),d=new Date();if(!s.has(ymd(d)))d.setDate(d.getDate()-1);let n=0;while(s.has(ymd(d))){n++;d.setDate(d.getDate()-1)}return n}
 const BADGES=[["b1","Khởi đầu","1",()=>done.size>=1],["s3","3 ngày liền","3",()=>streak()>=3],["s7","7 ngày liền","7",()=>streak()>=7],["h15","Nửa chặng","15",()=>done.size>=15],["x1k","1.000 XP","1k",()=>GM.xp>=1000],["b30","Về đích","30",()=>done.size>=30]];
 function newBadges(){const nb=BADGES.filter(b=>!GM.badges.includes(b[0])&&b[3]());nb.forEach(b=>GM.badges.push(b[0]));saveGM();return nb}
-const unlocked=n=>!KHOA||done.has(n)||(n<=1?(pyAll()||done.size>0):done.has(n-1));
+const unlocked=n=>!KHOA||n<=1||done.has(n)||done.has(n-1);
 let actx=null;function tone(fs,dur=.12,type="sine",vol=.12){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+dur);t+=dur*.8})}catch(e){}}
 const ding=()=>tone([880,1320]),buzz=()=>tone([180],.18,"square",.05),fanfare=()=>tone([523,659,784,1047],.16,"triangle",.15);
 function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
@@ -1200,35 +1227,7 @@ function speakHtml(d){
 function bindSpeak(el){el.querySelectorAll(".sp").forEach(row=>{row.querySelector("[data-say]").onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};row.querySelector(".mic").onclick=()=>listen(row);row.querySelector(".rb").onclick=()=>recordBack(row)})}
 
 
-/* ---------- phiên âm (chặng 0) ---------- */
-const PY=[
-{t:"Thanh mẫu — 21 phụ âm đầu",n:"b p m",g:"Nghe và đọc đúng 21 âm đầu — chỗ người Việt hay sai nhất",
- grp:[["Âm môi","môi chạm môi / răng chạm môi",[["b","波","bō","≈ p (không bật hơi)"],["p","坡","pō","≈ p bật hơi mạnh"],["m","摸","mō","≈ m"],["f","佛","fó","≈ ph"]]],
-  ["Đầu lưỡi","lưỡi chạm chân răng trên",[["d","得","dé","≈ t"],["t","特","tè","≈ th bật hơi"],["n","呢","ne","≈ n"],["l","乐","lè","≈ l"]]],
-  ["Cuống lưỡi","âm từ trong họng",[["g","哥","gē","≈ c / k"],["k","科","kē","≈ kh bật hơi"],["h","喝","hē","≈ kh nhẹ"]]],
-  ["Mặt lưỡi","miệng cười, lưỡi dẹt",[["j","鸡","jī","≈ chi"],["q","七","qī","≈ chi bật hơi"],["x","西","xī","≈ xi"]]],
-  ["Uốn lưỡi","cong đầu lưỡi lên",[["zh","知","zhī","≈ tr"],["ch","吃","chī","≈ tr bật hơi"],["sh","诗","shī","≈ s cong lưỡi"],["r","日","rì","≈ r nhẹ"]]],
-  ["Lưỡi thẳng","đầu lưỡi sau răng cửa",[["z","资","zī","≈ chư"],["c","词","cí","≈ txư bật hơi"],["s","思","sī","≈ xư"]]]],
- tip:["Bật hơi = để tờ giấy trước miệng, giấy phải bay|p t k q ch c đều bật hơi","zh ch sh r — cong lưỡi|z c s — lưỡi thẳng, không cong","j q x chỉ đi với i và ü|đọc bằng miệng cười","Khi học thuộc, người Trung đọc kèm vần|b(o) p(o) m(o) f(o) · d(e) t(e) n(e) l(e)…"],
- lis:[["知","zhī",["zhī","zī","jī"]],["吃","chī",["chī","cī","qī"]],["诗","shī",["shī","sī","xī"]],["怕","pà",["pà","bà"]],["他","tā",["tā","dā"]],["哭","kū",["kū","gū"]],["七","qī",["qī","jī","chī"]],["四","sì",["sì","shì","xì"]]],
- q:[["Âm nào bật hơi?",["p","b","m"],0],["“zh” đọc gần với?",["tr","ch","d"],0],["Âm nào phải cong lưỡi?",["sh","s","x"],0],["j q x đi với vần nào?",["i và ü","a và o","e"],0]]},
-{t:"Vận mẫu — 36 vần",n:"a o e",g:"6 vần đơn, vần ghép và vần mũi — ghép với âm đầu là đọc được mọi chữ",
- grp:[["Vần đơn","6 nguyên âm gốc",[["a","啊","a","≈ a"],["o","哦","ó","≈ ua (tròn môi)"],["e","饿","è","≈ ưa / ơ"],["i","衣","yī","≈ i"],["u","乌","wū","≈ u"],["ü","鱼","yú","≈ uy (chu môi nói i)"]]],
-  ["Vần ghép","",[["ai","爱","ài","≈ ai"],["ei","黑","hēi","≈ ây"],["ao","好","hǎo","≈ ao"],["ou","狗","gǒu","≈ âu"],["ia","家","jiā","≈ ia"],["ie","谢","xiè","≈ iê"],["ua","花","huā","≈ oa"],["uo","我","wǒ","≈ ua / uô"],["üe","月","yuè","≈ uê"],["iao","小","xiǎo","≈ eo"],["iu","六","liù","≈ iêu"],["uai","快","kuài","≈ oai"],["ui","对","duì","≈ uây"]]],
-  ["Vần mũi -n","đầu lưỡi chạm chân răng",[["an","安","ān","≈ an"],["en","人","rén","≈ ân"],["in","您","nín","≈ in"],["ian","天","tiān","≈ iên"],["uan","晚","wǎn","≈ oan"],["üan","元","yuán","≈ uyên"],["un","春","chūn","≈ uân"],["ün","云","yún","≈ uyn"]]],
-  ["Vần mũi -ng","âm ra mũi, miệng mở",[["ang","忙","máng","≈ ang"],["eng","冷","lěng","≈ âng"],["ing","名","míng","≈ inh"],["ong","东","dōng","≈ ung"],["iang","想","xiǎng","≈ eng / iang"],["uang","王","wáng","≈ oang"],["iong","用","yòng","≈ iung"]]],
-  ["Vần đặc biệt","",[["er","二","èr","≈ ơ + cong lưỡi"],["-i","是","shì","sau zh ch sh r z c s đọc ≈ ư"]]]],
- tip:["ü = nói “i” rồi chu môi tròn|鱼 yú, 去 qù","Sau j q x, ü bỏ hai chấm|ju qu xu yu vẫn đọc là ü","i đứng đầu → viết y · u đứng đầu → viết w|yi ya ye · wu wa wo","zhi chi shi ri zi ci si — chữ i đọc ≈ ư|是 shì đọc gần “sư”","Vần viết gọn|iou → iu, uei → ui, uen → un"],
- lis:[["鱼","yú",["yú","yí","wú"]],["饿","è",["è","à","ò"]],["东","dōng",["dōng","dēng","dān"]],["名","míng",["míng","mín"]],["月","yuè",["yuè","yè"]],["王","wáng",["wáng","wán","wēng"]],["二","èr",["èr","è"]],["冷","lěng",["lěng","lǎng","lěn"]]],
- q:[["Đọc ü thế nào?",["nói i, chu môi tròn","giống u","giống ơ"],0],["“qu” trong 去 qù có vần?",["ü","u","o"],0],["是 shì — chữ i đọc gần?",["ư","i","ê"],0],["ing đọc gần?",["inh","in","ing kiểu Anh"],0]]},
-{t:"Thanh điệu & quy tắc đọc",n:"ā á",g:"4 thanh + thanh nhẹ, cách đặt dấu và 3 quy tắc biến điệu",
- grp:[["4 thanh + thanh nhẹ","cùng âm, khác thanh = khác nghĩa",[["mā","妈","mā","thanh 1 · ngang, cao"],["má","麻","má","thanh 2 · đi lên ≈ sắc"],["mǎ","马","mǎ","thanh 3 · xuống rồi lên ≈ hỏi"],["mà","骂","mà","thanh 4 · rơi mạnh"],["ma","吗","ma","thanh nhẹ · ngắn, nhẹ"]]],
-  ["Biến điệu","đọc khác chữ viết",[["nǐ hǎo","你好","nǐ hǎo","3 + 3 → đọc ní hǎo"],["bú shì","不是","bú shì","不 + thanh 4 → bú"],["yí gè","一个","yí gè","一 + thanh 4 → yí"],["yì tiān","一天","yì tiān","一 + thanh 1·2·3 → yì"]]]],
- tip:["Dấu thanh đặt trên nguyên âm chính|ưu tiên a → o, e → i, u, ü","iu và ui: dấu đặt ở chữ sau|liù, duì","Thanh 3 đứng trước thanh khác chỉ đọc nửa (trầm xuống)|很好 hěn hǎo → hén hǎo","Thanh nhẹ không có dấu|妈妈 māma, 谢谢 xièxie"],
- lis:[["妈","mā",["mā","má","mǎ","mà"]],["麻","má",["mā","má","mǎ","mà"]],["马","mǎ",["mā","má","mǎ","mà"]],["骂","mà",["mā","má","mǎ","mà"]],["买","mǎi",["mǎi","mài"]],["汤","tāng",["tāng","táng","tàng"]]],
- q:[["你好 đọc thực tế là?",["ní hǎo","nǐ hǎo","nì hǎo"],0],["不 + 是 (thanh 4) đọc là?",["bú shì","bù shì","bū shì"],0],["一个 đọc là?",["yí gè","yī gè","yì gè"],0],["Dấu thanh của liu đặt ở đâu?",["trên u","trên i","trên l"],0]]}
-];
-
+/* ---------- phiên âm hôm nay (Ngày 1–10) ---------- */
 /* bảng phiên âm đầy đủ: ô|chữ để nghe */
 const PYFULL=[["Phụ âm · 23","b|波 p|坡 m|摸 f|佛 d|得 t|特 n|呢 l|乐 g|哥 k|科 h|喝 j|鸡 q|七 x|西 zh|知 ch|吃 sh|诗 r|日 z|资 c|词 s|思 y|衣 w|乌"],
  ["Vần · 36","a|啊 ai|爱 an|安 ang|昂 ao|奥 e|饿 ei|黑 en|恩 eng|风 er|二 i|衣 ia|呀 ian|烟 iang|羊 iao|要 ie|耶 in|音 ing|英 io|哟 iong|用 iu|有 o|哦 ong|东 ou|欧 u|乌 ua|哇 uai|外 uan|弯 uang|王 ue|约 ui|为 un|文 uo|我 ü|鱼 üan|元 ün|云"],
@@ -1246,91 +1245,103 @@ function gaHtml(){return `<div class="ga">${GA.map(([i,r])=>`<div class="gab"><s
 function rdRuby(hz,py){const sy=py.split(/\s+/);let k=0;return [...hz].map(c=>/[㐀-鿿]/.test(c)?`<ruby>${c}<rt>${colorPinyin(sy[k++]||"")}</rt></ruby>`:`<span>${c}</span>`).join("")}
 function rdHtml(list){return (list||[]).map(r=>{const[grp,title,...lines]=r;const[th,tp,tv]=title.split("|");const all=lines.map(l=>l.split("|")[0]).join("");
   return `<div class="rdb"><span class="grp">${esc(grp)}</span><button class="ln2 ttl" data-say="${esc(th)}">${rdRuby(th,tp)}</button><span class="vi">${esc(tv)}</span>${lines.map(l=>{const[h,p,v]=l.split("|");return `<button class="ln2" data-say="${esc(h)}">${rdRuby(h,p)}</button><span class="vi">${esc(v)}</span>`}).join("")}<button class="btn all" data-say="${esc(all)}">🔊 Nghe cả bài</button></div>`}).join("")}
-const PYRD={1:[
- ["b p m f","宝宝爬坡|bǎo bao pá pō|Em bé leo dốc","宝宝爬山坡，|bǎo bao pá shān pō|Em bé leo dốc núi,","爸爸在后面。|bà ba zài hòu miàn|bố đi phía sau.","妈妈拍拍手，|mā ma pāi pai shǒu|Mẹ vỗ vỗ tay,","宝宝不怕风。|bǎo bao bú pà fēng|em bé chẳng sợ gió."],
- ["d t n l","打篮球|dǎ lán qiú|Chơi bóng rổ","弟弟打篮球，|dì di dǎ lán qiú|Em trai chơi bóng rổ,","一投就投进。|yì tóu jiù tóu jìn|ném một cái là vào.","老师拍拍手，|lǎo shī pāi pai shǒu|Thầy giáo vỗ tay,","大家都来了。|dà jiā dōu lái le|mọi người kéo đến xem."],
- ["g k h","喝花茶|hē huā chá|Uống trà hoa","哥哥口渴了，|gē ge kǒu kě le|Anh trai khát nước,","喝口热花茶。|hē kǒu rè huā chá|uống ngụm trà hoa nóng.","花茶好好喝，|huā chá hǎo hǎo hē|Trà hoa ngon quá,","哥哥笑哈哈。|gē ge xiào hā hā|anh cười ha ha."],
- ["j q x","小鸡回家|xiǎo jī huí jiā|Gà con về nhà","小鸡叽叽叫，|xiǎo jī jī jī jiào|Gà con kêu chiếp chiếp,","下雨去哪里？|xià yǔ qù nǎ lǐ|trời mưa đi đâu đây?","快快回家去，|kuài kuai huí jiā qù|Mau mau về nhà thôi,","家里不下雨。|jiā lǐ bú xià yǔ|trong nhà không mưa."],
- ["zh ch sh r · z c s","小松鼠|xiǎo sōng shǔ|Sóc nhỏ","小松鼠，最聪明，|xiǎo sōng shǔ zuì cōng míng|Sóc nhỏ thông minh nhất,","早上出门采松子。|zǎo shang chū mén cǎi sōng zǐ|sáng ra ngoài hái hạt thông.","吃四个，存十个，|chī sì ge cún shí ge|Ăn bốn hạt, cất mười hạt,","冬天日日不用愁。|dōng tiān rì rì bú yòng chóu|mùa đông ngày nào cũng chẳng lo."]],
-2:[
- ["ai ei ui · ao","下雪了|xià xuě le|Tuyết rơi rồi","外面雪花飞，|wài miàn xuě huā fēi|Ngoài trời tuyết bay,","小猫在睡觉。|xiǎo māo zài shuì jiào|mèo con đang ngủ.","我给爸爸倒杯水，|wǒ gěi bà ba dào bēi shuǐ|Con rót cho bố cốc nước,","爸爸说我真乖。|bà ba shuō wǒ zhēn guāi|bố khen con ngoan quá."],
- ["an en ang eng ing","月亮船|yuè liang chuán|Thuyền trăng","弯弯的月亮像小船，|wān wān de yuè liang xiàng xiǎo chuán|Trăng cong cong như thuyền nhỏ,","我坐船上看星星。|wǒ zuò chuán shang kàn xīng xing|con ngồi trên thuyền ngắm sao.","风儿轻轻唱，|fēng ér qīng qīng chàng|Gió khẽ khàng hát,","天上亮晶晶。|tiān shàng liàng jīng jīng|bầu trời lấp lánh."]],
-3:[
- ["4 thanh","绕口令|rào kǒu lìng|Câu nói líu lưỡi","妈妈骑马，|mā ma qí mǎ|Mẹ cưỡi ngựa,","马慢，|mǎ màn|ngựa chậm,","妈妈骂马。|mā ma mà mǎ|mẹ mắng ngựa."],
- ["thanh 3 · 不 · 一","你好吗|nǐ hǎo ma|Bạn khoẻ không","你好！我很好。|nǐ hǎo wǒ hěn hǎo|Chào bạn! Mình rất khoẻ.","这不是我的书，|zhè bú shì wǒ de shū|Đây không phải sách của mình,","我有一本，|wǒ yǒu yì běn|mình có một quyển,","他有一个。|tā yǒu yí gè|bạn ấy có một cái."]]};
-Object.assign(YT,{p1:["rs8OV0FL10I","Phát âm 21 phụ âm đầu (thanh mẫu)","HuiChinese会中文","1:22"],p2:["_nEnY71pTrU","Vần đơn a o e i u ü","HuiChinese会中文","5:31"],p3:["PWkXDSO8urE","Đọc chuẩn 4 thanh tiếng Trung trong 2 phút","Noong's World","2:45"]});
-const PYKEY="tt30-py";let pyDone=new Set();try{pyDone=new Set(JSON.parse(localStorage.getItem(PYKEY)||"[]"))}catch(e){}
-const savePy=()=>{try{localStorage.setItem(PYKEY,JSON.stringify([...pyDone]))}catch(e){}};
-const pyAll=()=>PY.every((_,i)=>pyDone.has(i+1));
-const pyUnlocked=k=>!KHOA||k<=1||pyDone.has(k)||pyDone.has(k-1);
-let curPy=0;
-function goPy(k,scroll=true){
-  k=Math.min(PY.length,Math.max(1,k));
-  if(!pyUnlocked(k)){toast("Học xong bài phiên âm "+(k-1)+" trước nhé");return}
-  curPy=k;renderMap();renderPy();
-  try{history.replaceState(null,"","#phienam"+k)}catch(e){}
-  if(scroll)document.getElementById("lesson").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
-}
-function renderPy(){
-  const k=curPy,d=PY[k-1],el=document.getElementById("lesson");stopTeacher();LS={ok:0,tot:0};_cf=0;
+const PYD={
+1:{t:"4 thanh · 6 vần đơn",intro:1,
+ grp:[["4 thanh + thanh nhẹ","cùng âm, khác thanh = khác nghĩa",[["mā","妈","mā","thanh 1 · ngang, cao"],["má","麻","má","thanh 2 ≈ dấu sắc"],["mǎ","马","mǎ","thanh 3 ≈ dấu hỏi"],["mà","骂","mà","thanh 4 · rơi mạnh"],["ma","吗","ma","thanh nhẹ · ngắn"]]],
+  ["6 vần đơn","nguyên âm gốc",[["a","啊","a","≈ a"],["o","哦","ó","≈ ua (tròn môi)"],["e","饿","è","≈ ưa / ơ"],["i","衣","yī","≈ i"],["u","乌","wū","≈ u"],["ü","鱼","yú","≈ uy (chu môi nói i)"]]]],
+ tip:["ü = nói “i” rồi chu môi tròn|鱼 yú — tiếng Việt không có âm này","Dấu thanh đặt trên nguyên âm|mā, hǎo, xiè"],
+ lis:[["妈","mā",["mā","má","mǎ","mà"]],["麻","má",["mā","má","mǎ","mà"]],["马","mǎ",["mā","má","mǎ","mà"]],["骂","mà",["mā","má","mǎ","mà"]],["鱼","yú",["yú","yí","wú"]],["饿","è",["è","à","ò"]]],
+ rd:[["4 thanh","绕口令|rào kǒu lìng|Câu nói líu lưỡi","妈妈骑马，|mā ma qí mǎ|Mẹ cưỡi ngựa,","马慢，|mǎ màn|ngựa chậm,","妈妈骂马。|mā ma mà mǎ|mẹ mắng ngựa."]]},
+2:{t:"b p m f",yt:"py2",ga:["b","p","m","f"],
+ grp:[["Âm môi","môi chạm môi / răng chạm môi",[["b","波","bō","≈ p (không bật hơi)"],["p","坡","pō","≈ p bật hơi mạnh"],["m","摸","mō","≈ m"],["f","佛","fó","≈ ph"]]]],
+ tip:["Bật hơi = để tờ giấy trước miệng, giấy phải bay|p bật hơi, b không"],
+ lis:[["怕","pà",["pà","bà"]],["八","bā",["bā","pā"]],["米","mǐ",["mǐ","fǐ"]],["父","fù",["fù","pù","bù"]]],
+ rd:[["b p m f","宝宝爬坡|bǎo bao pá pō|Em bé leo dốc","宝宝爬山坡，|bǎo bao pá shān pō|Em bé leo dốc núi,","爸爸在后面。|bà ba zài hòu miàn|bố đi phía sau.","妈妈拍拍手，|mā ma pāi pai shǒu|Mẹ vỗ vỗ tay,","宝宝不怕风。|bǎo bao bú pà fēng|em bé chẳng sợ gió."]]},
+3:{t:"d t n l",ga:["d","t","n","l"],
+ grp:[["Đầu lưỡi","lưỡi chạm chân răng trên",[["d","得","dé","≈ t"],["t","特","tè","≈ th bật hơi"],["n","呢","ne","≈ n"],["l","乐","lè","≈ l"]]]],
+ tip:["d đọc gần “t” tiếng Việt — đừng đọc thành “đ”|大 dà ≈ “ta”","t bật hơi ≈ “th”|他 tā ≈ “tha”"],
+ lis:[["他","tā",["tā","dā"]],["大","dà",["dà","tà"]],["你","nǐ",["nǐ","lǐ"]],["绿","lǜ",["lǜ","lù","nǜ"]]],
+ rd:[["d t n l","打篮球|dǎ lán qiú|Chơi bóng rổ","弟弟打篮球，|dì di dǎ lán qiú|Em trai chơi bóng rổ,","一投就投进。|yì tóu jiù tóu jìn|ném một cái là vào.","老师拍拍手，|lǎo shī pāi pai shǒu|Thầy giáo vỗ tay,","大家都来了。|dà jiā dōu lái le|mọi người kéo đến xem."]]},
+4:{t:"g k h",ga:["g","k","h"],
+ grp:[["Cuống lưỡi","âm từ trong họng",[["g","哥","gē","≈ c / k"],["k","科","kē","≈ kh bật hơi"],["h","喝","hē","≈ kh nhẹ"]]]],
+ tip:["g ≈ “c”, k ≈ “kh” bật hơi|哥 gē ≈ “cưa”, 科 kē ≈ “khưa”","h đọc từ cổ họng, hơi khàn|喝 hē"],
+ lis:[["哭","kū",["kū","gū"]],["哥","gē",["gē","kē","hē"]],["花","huā",["huā","guā"]],["国","guó",["guó","kuó","huó"]]],
+ rd:[["g k h","喝花茶|hē huā chá|Uống trà hoa","哥哥口渴了，|gē ge kǒu kě le|Anh trai khát nước,","喝口热花茶。|hē kǒu rè huā chá|uống ngụm trà hoa nóng.","花茶好好喝，|huā chá hǎo hǎo hē|Trà hoa ngon quá,","哥哥笑哈哈。|gē ge xiào hā hā|anh cười ha ha."]]},
+5:{t:"j q x",ga:["j","q","x"],
+ grp:[["Mặt lưỡi","miệng cười, lưỡi dẹt",[["j","鸡","jī","≈ chi"],["q","七","qī","≈ chi bật hơi"],["x","西","xī","≈ xi"]]]],
+ tip:["j q x chỉ đi với i và ü","Sau j q x, ü bỏ hai chấm|ju qu xu vẫn đọc là ü"],
+ lis:[["七","qī",["qī","jī","xī"]],["去","qù",["qù","jù","xù"]],["家","jiā",["jiā","qiā","xiā"]],["西","xī",["xī","qī"]]],
+ rd:[["j q x","小鸡回家|xiǎo jī huí jiā|Gà con về nhà","小鸡叽叽叫，|xiǎo jī jī jī jiào|Gà con kêu chiếp chiếp,","下雨去哪里？|xià yǔ qù nǎ lǐ|trời mưa đi đâu đây?","快快回家去，|kuài kuai huí jiā qù|Mau mau về nhà thôi,","家里不下雨。|jiā lǐ bú xià yǔ|trong nhà không mưa."]]},
+6:{t:"zh ch sh r",ga:["zh","ch","sh","r"],
+ grp:[["Uốn lưỡi","cong đầu lưỡi lên",[["zh","知","zhī","≈ tr"],["ch","吃","chī","≈ tr bật hơi"],["sh","诗","shī","≈ s cong lưỡi"],["r","日","rì","≈ r nhẹ"]]]],
+ tip:["zh ch sh r — cong lưỡi lên vòm miệng","zhi chi shi ri — chữ i đọc ≈ “ư”|是 shì ≈ “sư”"],
+ lis:[["知","zhī",["zhī","jī"]],["吃","chī",["chī","qī"]],["书","shū",["shū","xū"]],["热","rè",["rè","lè"]]],
+ rd:[["zh ch sh r","猪猪吃饭|zhū zhu chī fàn|Heo con ăn cơm","小猪吃饭真开心，|xiǎo zhū chī fàn zhēn kāi xīn|Heo con ăn cơm vui ghê,","吃了十个热包子。|chī le shí ge rè bāo zi|ăn hết mười cái bánh bao nóng.","吃饱了，睡大觉，|chī bǎo le shuì dà jiào|No rồi, ngủ một giấc,","日出还在说梦话。|rì chū hái zài shuō mèng huà|mặt trời lên vẫn còn nói mớ."]]},
+7:{t:"z c s · 16 âm tiết đọc nguyên",ga:["z","c","s"],
+ grp:[["Lưỡi thẳng","đầu lưỡi sau răng cửa, không cong",[["z","资","zī","≈ chư"],["c","词","cí","≈ txư bật hơi"],["s","思","sī","≈ xư"]]],
+  ["Âm tiết đọc nguyên","không cần ghép, đọc luôn cả khối",[["yi","衣","yī","≈ i"],["wu","乌","wū","≈ u"],["yu","鱼","yú","≈ uy"],["ye","耶","yē","≈ iê"],["yue","月","yuè","≈ uê"],["yuan","元","yuán","≈ uyên"],["yin","音","yīn","≈ in"],["yun","云","yún","≈ uyn"],["ying","英","yīng","≈ inh"]]]],
+ tip:["z c s lưỡi thẳng — zh ch sh cong lưỡi|四 sì ≠ 是 shì","i đứng đầu viết y, u đứng đầu viết w, ü đứng đầu viết yu"],
+ lis:[["四","sì",["sì","shì","xì"]],["字","zì",["zì","zhì","jì"]],["错","cuò",["cuò","chuò"]],["月","yuè",["yuè","yè"]]],
+ rd:[["z c s","小松鼠|xiǎo sōng shǔ|Sóc nhỏ","小松鼠，最聪明，|xiǎo sōng shǔ zuì cōng míng|Sóc nhỏ thông minh nhất,","早上出门采松子。|zǎo shang chū mén cǎi sōng zǐ|sáng ra ngoài hái hạt thông.","吃四个，存十个，|chī sì ge cún shí ge|Ăn bốn hạt, cất mười hạt,","冬天日日不用愁。|dōng tiān rì rì bú yòng chóu|mùa đông ngày nào cũng chẳng lo."]]},
+8:{t:"Vần ghép",
+ grp:[["Vần ghép","2–3 nguyên âm đi liền",[["ai","爱","ài","≈ ai"],["ei","黑","hēi","≈ ây"],["ui","对","duì","≈ uây"],["ao","好","hǎo","≈ ao"],["ou","狗","gǒu","≈ âu"],["iu","六","liù","≈ iêu"],["ia","家","jiā","≈ ia"],["ie","谢","xiè","≈ iê"],["ua","花","huā","≈ oa"],["uo","我","wǒ","≈ ua / uô"],["üe","月","yuè","≈ uê"],["iao","小","xiǎo","≈ eo"],["uai","快","kuài","≈ oai"],["er","二","èr","≈ ơ + cong lưỡi"]]]],
+ tip:["Vần viết gọn|iou → iu, uei → ui","iu và ui: dấu thanh đặt ở chữ sau|liù, duì"],
+ lis:[["狗","gǒu",["gǒu","gǎo"]],["黑","hēi",["hēi","hāi"]],["谢","xiè",["xiè","xià"]],["二","èr",["èr","è"]]],
+ rd:[["ai ei ui · ao","下雪了|xià xuě le|Tuyết rơi rồi","外面雪花飞，|wài miàn xuě huā fēi|Ngoài trời tuyết bay,","小猫在睡觉。|xiǎo māo zài shuì jiào|mèo con đang ngủ.","我给爸爸倒杯水，|wǒ gěi bà ba dào bēi shuǐ|Con rót cho bố cốc nước,","爸爸说我真乖。|bà ba shuō wǒ zhēn guāi|bố khen con ngoan quá."]]},
+9:{t:"Vần mũi -n",
+ grp:[["Vần mũi -n","cuối âm đầu lưỡi chạm chân răng",[["an","安","ān","≈ an"],["en","人","rén","≈ ân"],["in","您","nín","≈ in"],["un","春","chūn","≈ uân"],["ün","云","yún","≈ uyn"],["ian","天","tiān","≈ iên"],["uan","晚","wǎn","≈ oan"],["üan","元","yuán","≈ uyên"]]]],
+ tip:["ian đọc ≈ “iên”, không phải “ian”|天 tiān ≈ “thiên”","un thật ra là uen viết gọn|春 chūn ≈ “chuân”"],
+ lis:[["天","tiān",["tiān","tān"]],["人","rén",["rén","rán"]],["晚","wǎn",["wǎn","wǎng"]],["云","yún",["yún","yín"]]],
+ rd:[["an en in un","春天来了|chūn tiān lái le|Mùa xuân đến rồi","春天来了，|chūn tiān lái le|Mùa xuân đến rồi,","小燕子飞回来，|xiǎo yàn zi fēi huí lái|chim én nhỏ bay về,","人人都开心，|rén rén dōu kāi xīn|ai ai cũng vui,","我们一起看花。|wǒ men yì qǐ kàn huā|chúng mình cùng ngắm hoa."]]},
+10:{t:"Vần mũi -ng · biến điệu",full:1,
+ grp:[["Vần mũi -ng","âm ra mũi, miệng mở",[["ang","忙","máng","≈ ang"],["eng","冷","lěng","≈ âng"],["ing","名","míng","≈ inh"],["ong","东","dōng","≈ ung"],["iang","想","xiǎng","≈ eng / iang"],["uang","王","wáng","≈ oang"],["iong","用","yòng","≈ iung"]]],
+  ["Biến điệu","đọc khác chữ viết",[["nǐ hǎo","你好","nǐ hǎo","3 + 3 → đọc ní hǎo"],["bú shì","不是","bú shì","不 + thanh 4 → bú"],["yí gè","一个","yí gè","一 + thanh 4 → yí"],["yì tiān","一天","yì tiān","一 + thanh 1·2·3 → yì"]]]],
+ tip:["-n đầu lưỡi · -ng cuống lưỡi, ra mũi|安 ān ≠ 昂 áng","Hai thanh 3 liền nhau → chữ đầu đọc thanh 2|你好 → ní hǎo"],
+ lis:[["东","dōng",["dōng","dēng"]],["名","míng",["míng","mín"]],["王","wáng",["wáng","wán"]],["冷","lěng",["lěng","lǎng"]]],
+ rd:[["an en ang eng ing","月亮船|yuè liang chuán|Thuyền trăng","弯弯的月亮像小船，|wān wān de yuè liang xiàng xiǎo chuán|Trăng cong cong như thuyền nhỏ,","我坐船上看星星。|wǒ zuò chuán shang kàn xīng xing|con ngồi trên thuyền ngắm sao.","风儿轻轻唱，|fēng ér qīng qīng chàng|Gió khẽ khàng hát,","天上亮晶晶。|tiān shàng liàng jīng jīng|bầu trời lấp lánh."],
+  ["biến điệu","你好吗|nǐ hǎo ma|Bạn khoẻ không","你好！我很好。|nǐ hǎo wǒ hěn hǎo|Chào bạn! Mình rất khoẻ.","这不是我的书，|zhè bú shì wǒ de shū|Đây không phải sách của mình,","我有一本，|wǒ yǒu yì běn|mình có một quyển,","他有一个。|tā yǒu yí gè|bạn ấy có một cái."]]}};
+Object.assign(YT,{py1:["_nEnY71pTrU","Vần đơn a o e i u ü","HuiChinese会中文","5:31"],py2:["rs8OV0FL10I","Phát âm 21 phụ âm đầu","HuiChinese会中文","1:22"]});
+PYD[1].yt="py1";
+const GHEP=`<div class="ghep"><p><b>Tiếng Trung ghép vần giống tiếng Việt</b></p>
+ <div class="row"><span class="pa">m</span><em>+</em><span class="va">a</span><em>+</em><span class="th">dấu sắc</span><em>=</em><b>má</b></div><p class="lbl">tiếng Việt: phụ âm + vần + dấu</p>
+ <div class="row"><span class="pa">m</span><em>+</em><span class="va">a</span><em>+</em><span class="th">thanh 1</span><em>=</em><b>${colorPinyin("mā")}</b><em>妈 mẹ</em></div><p class="lbl">tiếng Trung: phụ âm + vần + thanh</p>
+ <p><b>Phiên âm (Pinyin)</b> <i>— cách đọc chữ Hán, viết bằng chữ cái La-tinh</i></p>
+ <p><b>23 phụ âm · 36 vần · 4 thanh</b> <i>— mỗi ngày học một ít, Ngày 10 đọc được hết</i></p></div>`;
+function pyBlock(n){const d=PYD[n];if(!d)return"";
   const grids=d.grp.map(([name,hint,cells])=>`<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${colorPinyin(lab)}</span><span class="ex"><span>${esc(hz)}</span> ${colorPinyin(py)}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>`).join("");
-  const tips=d.tip.map(x=>{const[a,b]=x.split("|");return `<li><b>${hzWrap(a)}</b>${b?`<i>${hzWrap(b)}</i>`:""}</li>`}).join("");
-  const lis=shuffle(d.lis).slice(0,5).map(([hz,py,opts])=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===py?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`).join("");
-  const qs=d.q.map((q,qi)=>{const opts=shuffle(q[1].map((o,oi)=>({o,ok:oi===q[2]})));return `<div class="q"><p><span class="n">${qi+1}.</span>${hzWrap(q[0])}</p><div class="opts">${opts.map(o=>`<button class="opt" data-ok="${o.ok?1:0}">${hzWrap(o.o)}</button>`).join("")}</div></div>`}).join("");
-  const isDone=pyDone.has(k);
-  el.innerHTML=`
-    <div class="lhead"><div class="dnum" aria-hidden="true">拼</div>
-      <div><p class="eyebrow">Phiên âm · Bài ${k} / ${PY.length} · học trước Ngày 1</p><h2>${esc(d.t)}</h2><p class="goal">${esc(d.g)}</p></div></div>
-    ${canSpeak?"":'<p class="warn">Trình duyệt này không đọc được tiếng — mở bằng Chrome hoặc Safari để nghe.</p>'}
-    ${k===1?`<section>${fullChart(true)}</section>`:""}
-    <section><h3>Clip cô giáo <small>xem cô đọc mẫu, đọc to theo</small></h3>${ytHtml("p"+k)}</section>
-    <section><h3>Bảng âm <small>bấm từng ô để nghe — đọc to theo</small></h3>${grids}</section>
-    ${k===2?`<section><h3>Ghép âm <small>phụ âm + vần → âm tiết · bấm để nghe</small></h3>${gaHtml()}</section>`:""}
-    ${PYRD[k]?`<section><h3>Bài đọc <small>bấm từng câu để nghe · đọc to 3 lần</small></h3>${rdHtml(PYRD[k])}</section>`:""}
-    <section><h3>Ghi nhớ</h3><ul class="tips">${tips}</ul></section>
-    ${k>1?`<section>${fullChart(false)}</section>`:""}
-    <section><h3>Bài tập <small>nghe rồi chọn phiên âm đúng</small></h3><div class="ex">
-      <h4>1 · Nghe và chọn phiên âm</h4><div class="lis">${lis}</div>
-      <h4>2 · Trắc nghiệm</h4><div class="quiz">${qs}</div></div></section>
-    <div class="foot">
-      <div class="nav"><button class="btn" id="prev" ${k===1?"disabled":""}>← Bài trước</button><button class="btn" id="next">${k===PY.length?"Sang Ngày 1 →":"Bài sau →"}</button></div>
-      <button class="btn main${isDone?" is-done":""}" id="markDone">${isDone?"Đã xong — học tiếp →":"Hoàn thành bài phiên âm "+k+" ★"}</button>
-    </div>`;
+  const tips=(d.tip||[]).map(x=>{const[a,b]=x.split("|");return `<li><b>${hzWrap(a)}</b>${b?`<i>${hzWrap(b)}</i>`:""}</li>`}).join("");
+  const ga=d.ga?`<h4 class="pyh">Ghép âm<i>phụ âm + vần → âm tiết · bấm để nghe</i></h4><div class="ga">${GA.filter(x=>d.ga.includes(x[0])).map(([i,r])=>`<div class="gab"><span class="ini">${i}</span><ul>${r.split(" ").map(x=>{const[v,sy,hz,py]=x.split("|");return `<li><button data-say="${hz}"><b>${v} → ${sy}</b><span>${hz}</span>${colorPinyin(py)}</button></li>`}).join("")}</ul></div>`).join("")}</div>`:"";
+  const lis=shuffle(d.lis).map(([hz,py,opts])=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===py?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`).join("");
+  return `<section class="pyblk"><h3>Phiên âm hôm nay <small>${esc(d.t)} · ngày ${n}/10</small></h3>
+    ${d.intro?GHEP:""}
+    ${d.yt?ytHtml(d.yt):""}
+    ${grids}${ga}
+    ${tips?`<ul class="tips">${tips}</ul>`:""}
+    <h4 class="pyh">Nghe và chọn phiên âm</h4><div class="lis pylis">${lis}</div>
+    ${d.rd?`<h4 class="pyh">Bài đọc<i>bấm từng câu để nghe · đọc to 3 lần</i></h4>${rdHtml(d.rd)}`:""}
+    ${d.full||n===1?fullChart(!!d.full):""}
+  </section>`}
+function bindPy(el){
   el.querySelectorAll(".pyc,.ftab button,.gab button,.ln2,.rdb .all").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
-  bindYT(el);
-  el.querySelectorAll(".li").forEach(li=>{li.querySelector(".pl").onclick=e=>speak(e.currentTarget.dataset.say,null);li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
-  el.querySelectorAll(".q").forEach(q=>q.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{q.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o)}));
-  const nextPy=()=>k<PY.length?goPy(k+1):go(1);
-  document.getElementById("prev").onclick=()=>goPy(k-1);
-  document.getElementById("next").onclick=nextPy;
-  document.getElementById("markDone").onclick=()=>{
-    if(pyDone.has(k))return nextPy();
-    if(!LS.tot&&!confirmOnce())return;
-    pyDone.add(k);savePy();GM.xp+=60;if(!GM.days.includes(today()))GM.days.push(today());saveGM();fanfare();updChips();
-    if(k===PY.length){confetti();toast("Xong phiên âm! Ngày 1 đã mở khoá");}else toast("Xong bài phiên âm "+k+" — mở bài tiếp theo");
-    nextPy();
-  };
+  el.querySelectorAll(".pylis .li").forEach(li=>{li.querySelector(".pl").onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
 }
-
+function showMap(){document.body.classList.remove("inles");const m=document.querySelector("nav.map");m.scrollIntoView({block:"start"});const c=document.querySelector(".node.cur");if(c)c.scrollIntoView({block:"center"});try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
 /* ---------- render ---------- */
 let cur=1;
 function firstUndone(){for(let i=1;i<=30;i++)if(!done.has(i))return i;return 30}
 const LOCK='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3h1v12H6V10zm2 0h6V7a3 3 0 0 0-6 0z"/></svg>';
 const ZZ=[0,1,2,1,0,-1,-2,-1];let openU=new Set();
 function renderMap(){
-  const units=[{a:"Chặng 0",b:"Phiên âm",py:1,items:PY.map((p,i)=>({py:i+1}))},...WEEKS.map(([a,b,from,to])=>({a,b,items:Array.from({length:to-from+1},(_,j)=>({day:from+j}))}))];
-  const isCur=it=>it.py?curPy===it.py:(!curPy&&cur===it.day);
-  const isDn=it=>it.py?pyDone.has(it.py):done.has(it.day);
-  const isLk=it=>it.py?!pyUnlocked(it.py):!unlocked(it.day);
+  const units=[...WEEKS.map(([a,b,from,to])=>({a,b,items:Array.from({length:to-from+1},(_,j)=>({day:from+j}))}))];
+  const isCur=it=>cur===it.day,isDn=it=>done.has(it.day),isLk=it=>!unlocked(it.day);
   document.getElementById("weeks").innerHTML=units.map((u,ui)=>{
     const nd=u.items.filter(isDn).length,fin=nd===u.items.length,now=u.items.some(isCur),open=now||openU.has(ui);
     const nodes=u.items.map((it,j)=>{
       const c=isCur(it),dn=isDn(it),lk=isLk(it),x=ZZ[j%ZZ.length]*40;
-      const t=it.py?PY[it.py-1].t:L[it.day-1].t,lab=it.py?"Phiên âm "+it.py:"Ngày "+it.day;
-      const st=it.py?0:(GM.stars[it.day]||0),rev=!it.py&&/Ôn tập|Về đích/.test(t);
-      const face=lk?LOCK:it.py?esc(PY[it.py-1].n):(dn&&!c?"✓":it.day);
-      return `<div class="nwrap${c?" has-bub":""}" style="transform:translateX(${x}px)">${c?`<span class="bub">${lab} · ${esc(t)}</span>`:""}<button class="node${it.py?" pyn":""}${dn?" done":""}${lk?" locked":""}${c?" cur":""}${rev?" rev":""}" ${it.py?`data-py="${it.py}"`:`data-day="${it.day}"`} title="${lab} · ${esc(t)}" aria-label="${lab}: ${esc(t)}${dn?", đã xong":lk?", chưa mở":""}"${c?' aria-current="step"':""}>${face}</button><span class="st">${st?"★".repeat(st):""}</span></div>`}).join("");
-    return `<div class="unit${now?" now":""}${fin&&!now?" fin":""}${u.py?" py":""}"><button class="ubar" data-u="${ui}" aria-expanded="${open}"><span class="ut"><small>${u.a}</small><b>${u.b}</b></span><span class="uc">${fin?"✓ ":""}${nd}/${u.items.length}</span></button><div class="path"${open?"":" hidden"}>${nodes}</div></div>`;
+      const t=L[it.day-1].t,lab="Ngày "+it.day,st=GM.stars[it.day]||0,rev=/Ôn tập|Về đích/.test(t);
+      const face=lk?LOCK:(dn&&!c?"✓":it.day);
+      return `<div class="nwrap${c?" has-bub":""}" style="transform:translateX(${x}px)">${c?`<span class="bub">${dn?"Ôn lại":done.size?"Học tiếp":"Bắt đầu"} · ${lab}</span>`:""}<button class="node${dn?" done":""}${lk?" locked":""}${c?" cur":""}${rev?" rev":""}" data-day="${it.day}" title="${lab} · ${esc(t)}" aria-label="${lab}: ${esc(t)}${dn?", đã xong":lk?", chưa mở":""}"${c?' aria-current="step"':""}>${face}</button><span class="st">${st?"★".repeat(st):""}</span></div>`}).join("");
+    return `<div class="unit${now?" now":""}${fin&&!now?" fin":""}"><button class="ubar" data-u="${ui}" aria-expanded="${open}"><span class="ut"><small>${u.a}</small><b>${u.b}</b></span><span class="uc">${fin?"✓ ":""}${nd}/${u.items.length}</span></button><div class="path"${open?"":" hidden"}>${nodes}</div></div>`;
   }).join("");
   document.getElementById("progTxt").textContent=`${done.size}/30 bài`;document.getElementById("chipTxt").textContent=done.size;
   document.getElementById("progBar").style.width=(done.size/30*100)+"%";
@@ -1355,11 +1366,13 @@ function renderLesson(){
   const arr=arrSrc.map((x,i)=>`<div class="ar" data-key="${esc(x.ch.join("|"))}" data-say="${esc(x.hz)}"><p class="vi">“${esc(x.vi)}”</p><div class="ans"></div><div class="pool">${shuffle(x.ch.map((c,j)=>({c,j}))).map(t=>`<button class="tile" data-c="${esc(t.c)}">${esc(t.c)}</button>`).join("")}</div><div class="row"><button class="btn chk">Kiểm tra</button><span class="res"></span></div></div>`).join("");
   const isDone=done.has(cur);
   el.innerHTML=`
+    <button class="btn backmap" id="backMap">← Sơ đồ bài học</button>
     <div class="lhead"><div class="dnum" aria-hidden="true">${cur}</div>
       <div><p class="eyebrow">Ngày ${cur} / 30 · 第${cnNum(cur)}天</p><h2>${esc(d.t)}</h2><p class="goal">${esc(d.g)}</p></div></div>
     ${HERO[cur]?`<figure class="hero-ph"><img src="${HERO[cur][0]}" alt="${esc(HERO[cur][1])}"><figcaption>${esc(HERO[cur][1])}<a href="${HERO[cur][3]}" target="_blank" rel="noopener">Ảnh: ${esc(HERO[cur][2])}</a></figcaption></figure>`:""}
     ${G?`<div class="teacher"><button class="tplay" id="tPlay" aria-label="Nghe giảng bài">${PLAY}</button><div class="tmid"><b>Nghe giảng bài <i id="tTime">${fmt(0)} / ${fmt(G.d)}</i></b><input type="range" class="tbar" id="tBar" min="0" max="${G.d}" step="0.1" value="0" aria-label="Tua bài giảng"></div><button class="tspeed" id="tSpeed" aria-label="Tốc độ">1×</button></div>`:""}
     ${canSpeak?"":'<p class="warn">Trình duyệt này không đọc được tiếng — mở bằng Chrome hoặc Safari để nghe.</p>'}
+    ${pyBlock(cur)}
     <section><h3>Từ mới <small>bấm để nghe</small></h3><div class="vocab">${words}</div></section>
     ${hanz?`<section><h3>Chữ Hán hôm nay <small>nhìn hình — đoán nghĩa</small></h3><div class="hanz">${hanz}</div></section>`:""}
     ${mindMap(d)?`<section><h3>Bộ thủ &amp; sơ đồ chữ <small>thêm nét, ghép bộ → ra chữ mới</small></h3>${mindMap(d)}</section>`:""}
@@ -1389,11 +1402,12 @@ function renderLesson(){
   let right=0,answered=0;
   el.querySelectorAll(".w,.s,.ln,.hc,.nd[data-say]").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
   if(G)setupTeacher(G);
+  bindPy(el);document.getElementById("backMap").onclick=showMap;
   setupWriter(wchars);
   setupSurvey();
   bindYT(el);
   bindSpeak(el);
-  el.querySelectorAll(".li").forEach(li=>{li.querySelector(".pl").onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
+  el.querySelectorAll(".lis:not(.pylis) .li").forEach(li=>{li.querySelector(".pl").onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
   el.querySelectorAll(".ar").forEach(ar=>{const ans=ar.querySelector(".ans"),pool=ar.querySelector(".pool"),res=ar.querySelector(".res");
     const move=t=>{ar.classList.remove("ok","no");res.textContent="";(t.parentElement===pool?ans:pool).appendChild(t)};
     ar.querySelectorAll(".tile").forEach(t=>t.onclick=()=>move(t));
@@ -1410,10 +1424,10 @@ function renderLesson(){
 }
 function go(n,scroll=true){
   n=Math.min(30,Math.max(1,n));
-  if(!unlocked(n)){toast(n<=1?"Học xong 3 bài Phiên âm để mở Ngày 1 nhé":"Hoàn thành ngày "+(n-1)+" để mở khoá ngày "+n+" nhé");return}
-  curPy=0;cur=n;renderMap();renderLesson();
-  try{history.replaceState(null,"","#ngay"+cur)}catch(e){}
-  if(scroll)document.getElementById("lesson").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  if(!unlocked(n)){toast("Hoàn thành ngày "+(n-1)+" để mở khoá ngày "+n+" nhé");return}
+  cur=n;renderMap();renderLesson();if(scroll!=="map")document.body.classList.add("inles");
+  if(scroll!=="map")try{history.replaceState(null,"","#ngay"+cur)}catch(e){}
+  if(scroll&&scroll!=="map")document.getElementById("lesson").scrollIntoView({block:"start"});
 }
 (function(){const G0=(window.GIANG||{})[0];if(!G0)return;
   const box=document.getElementById("introPlayer"),btn=document.getElementById("iPlay"),bar=document.getElementById("iBar"),tm=document.getElementById("iTime");
@@ -1428,9 +1442,22 @@ function go(n,scroll=true){
 })();
 (function(){const b=document.getElementById("introYT");if(b){b.innerHTML=ytHtml(0);bindYT(b)}})();
 document.querySelectorAll(".hv button").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,null)});
-document.getElementById("weeks").addEventListener("click",e=>{const u=e.target.closest(".ubar");if(u){const i=+u.dataset.u,p=u.nextElementSibling;p.hidden=!p.hidden;p.hidden?openU.delete(i):openU.add(i);u.setAttribute("aria-expanded",!p.hidden);return}const b=e.target.closest(".node");if(!b)return;b.dataset.py?goPy(+b.dataset.py):go(+b.dataset.day)});
+document.getElementById("weeks").addEventListener("click",e=>{const u=e.target.closest(".ubar");if(u){const i=+u.dataset.u,p=u.nextElementSibling;p.hidden=!p.hidden;p.hidden?openU.delete(i):openU.add(i);u.setAttribute("aria-expanded",!p.hidden);return}const b=e.target.closest(".node");if(b)go(+b.dataset.day)});
 function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^b/,"");if(n>=1&&n<=30&&!done.has(n)){done.add(n);ch=1}});if(ch)save();return ch}
-function start(){const p=location.hash.match(/^#phienam(\d)$/);if(p)return goPy(+p[1],false);const h=location.hash.match(/^#ngay(\d+)$/);if(h)return go(+h[1],false);if(!pyAll()&&!done.size){let k=1;while(pyDone.has(k))k++;return goPy(k,false)}go(firstUndone(),false)}
+
+(function(){const box=document.getElementById("hBox"),txt=document.getElementById("hTxt"),msg=document.getElementById("hMsg"),send=document.getElementById("hSend");
+  document.getElementById("hOpen").onclick=()=>{box.hidden=!box.hidden;msg.textContent="";msg.className="msg";if(!box.hidden)txt.focus()};
+  document.getElementById("hClose").onclick=()=>box.hidden=true;
+  send.onclick=async()=>{const nd=txt.value.trim();msg.className="msg";
+    if(nd.length<3){msg.className="msg err";msg.textContent="Bạn viết vài chữ nhé";return}
+    if(!U){msg.className="msg err";msg.textContent="Bạn đăng nhập trước rồi gửi nhé";return}
+    send.disabled=true;msg.textContent="Đang gửi…";
+    try{const r=await callApi({app:"hoi",u:U.u,m:U.m,giaoTrinh:GT,noiDung:nd,bai:document.body.classList.contains("inles")?"Ngày "+cur+" · "+L[cur-1].t:""});
+      if(r&&r.ok){txt.value="";msg.textContent="Đã gửi! SunMoon sẽ trả lời qua email của bạn."}else{msg.className="msg err";msg.textContent=(r&&r.loi)||"Chưa gửi được, thử lại nhé"}}
+    catch(e){msg.className="msg err";msg.textContent="Chưa gửi được, kiểm tra mạng rồi thử lại nhé"}
+    send.disabled=false};
+})();
+function start(){const h=location.hash.match(/^#ngay(\d+)$/);if(h)return go(+h[1],false);go(firstUndone(),"map")}
 if(!KHOA)start();
 else if(!U){showGate()}
 else{start();callApi({app:"dangnhap",u:U.u,m:U.m,giaoTrinh:GT}).then(r=>{if(r&&r.ok&&mergeTD(r.tienDo)){renderMap()}if(!r||!r.ok){U=null;saveU();showGate();const e=document.getElementById("lErr");if(e&&r&&r.loi)e.textContent=r.loi}}).catch(()=>{})}
