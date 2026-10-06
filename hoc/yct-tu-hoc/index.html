@@ -724,6 +724,20 @@ body{background:#FFFDF2}.card{background:#fff}
 .chg:nth-of-type(even){background:#F7C948;color:#4A3800}
 .psI.on span{box-shadow:0 0 0 3px #FFE9A3}
 .lsBar i,.ltBar i{background:linear-gradient(90deg,#22AFB1,#7FD8D9)}
+/* 06/10 chị (điện thoại): "nhiều khung quá, chữ nhỏ" — bỏ khung ngoài, chữ to hơn */
+@media (max-width:600px){
+  body{font-size:17.5px}
+  #app>section.card,.phanBox>section.card{border:0!important;box-shadow:none!important;background:transparent!important;padding:6px 2px!important}
+  .phanBox>section.card>h2,#app>section.card>h2{font-size:21px}
+  .stn .node{width:88px;height:88px}.stn .node img{width:54px;height:54px}.stn .lb b{font-size:17px}.stn .lb i{font-size:14px}
+  .chg b{font-size:20px}.chg span{font-size:15px}
+  .hero h1{font-size:26px}.hero .sub{font-size:16px}
+  .sn .hz,.fc .hz{font-size:34px}.sn .py,.sn .vi{font-size:17px}
+  .ltDe{font-size:18px}.ltW .hz{font-size:46px}.ltW .py{font-size:20px}.ltW .vi{font-size:17px}
+  .lsBody h3{font-size:22px}.lsHint{font-size:16px}
+  .wrap{padding-inline:12px}
+  .stn,.kt{transform:translateX(calc(var(--x,0px)*.45))}.stn{max-width:260px}.stn .lb{padding:0 6px}
+}
 .lsEnd{justify-content:center}.lsTro{width:140px;height:140px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
@@ -1019,7 +1033,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061026";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061030";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
