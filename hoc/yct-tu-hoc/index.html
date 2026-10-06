@@ -775,7 +775,7 @@ body{background:#FFFDF2}.card{background:#fff}
 .pyh2{margin:0;font-size:18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}.pyh2 i{flex-basis:100%;font-size:13px;font-weight:400;color:var(--ink-2)}
 .nhan2{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:#FDE2DE;color:#B4432F}.nhan2.lt{background:#E6F4E1;color:#3E7E3A}
 .pyg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}.pyc2{display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;background:#fff;padding:10px 6px;font:inherit;color:var(--ink);cursor:pointer;text-align:center}
-.pyc2 .big2{font:800 34px/1.1 var(--py)}.pyc2 img{width:40px;height:40px}.pyc2 .ex2{display:flex;gap:6px;align-items:baseline}.pyc2 .hzc{font-family:var(--hz);font-size:22px}.pyc2 .mn2{font-size:12.5px;color:#7A5A00}.pyc2 .vn2{font-size:12.5px;color:var(--ink-2)}.pyc2.playing{border-color:#E0B640;background:#FFF8DC}
+.pyc2 .big2{font:800 40px/1.1 var(--py);color:var(--sun-2)}.pyc2 img{width:40px;height:40px}.pyc2 .ex2{display:flex;gap:6px;align-items:baseline}.pyc2 .hzc{font-family:var(--hz);font-size:22px}.pyc2 .mn2{font-size:12.5px;color:#7A5A00}.pyc2 .vn2{font-size:12.5px;color:var(--ink-2)}.pyc2.playing{border-color:#E0B640;background:#FFF8DC}
 .cau{display:flex;align-items:center;gap:10px;border-bottom:1px dashed var(--line);padding:10px 0}.cau.xong{opacity:.75}.pl2{flex:none;width:48px;height:48px;border-radius:50%;border:0;border-bottom:3px solid #E0B640;background:#FFD966;font-size:20px;cursor:pointer}
 .cauTop{flex:none;display:flex;flex-direction:column;align-items:center;min-width:64px}.cauTop img{width:34px;height:34px}.hzq{font-family:var(--hz);font-size:30px}
 .opts2{display:flex;flex-wrap:wrap;gap:6px;flex:1}.op2{flex:1 0 60px;border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;background:#fff;padding:8px 6px;font:700 18px var(--py);cursor:pointer}.op2.right{border-color:#5E9E5A;background:#EAF6E6}.op2.wrong{border-color:#E8505B;background:#FDECEA;animation:lac .35s}
@@ -809,6 +809,7 @@ section.dangLam>.pyt,section.dangLam>.gbtn{display:none!important}
 .goiY{font-size:26px;letter-spacing:2px;color:var(--ink)}.goiY b{font-size:18px;color:#C9A43A}.goiT{font-size:13px;color:var(--ink-2);font-weight:500}
 section.dangLam>h2{display:none!important}
 @media (max-width:600px){.phan i{display:none}.phan{margin:8px 2px 6px!important}}
+#pinyin>.pyt{display:none!important}
 .lsEnd{justify-content:center}.lsTro{width:140px;height:140px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
@@ -1102,7 +1103,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061045";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061049";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1418,10 +1419,10 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
     let vi=null;for(let q=i;q>=0;q--)if(CUE[q].vi){vi=CUE[q].vi;break}if(vi&&loi.textContent!==vi){loi.textContent=vi;loi.classList.remove("moi");void loi.offsetWidth;loi.classList.add("moi")}
     if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh">${esc(c.zh)}</span>${py?`<span class="vcPy">${tonePy(py)}</span>`:""}`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
 };
-  let an=null,buf=null;try{_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
+  let an=null,buf=null;try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
   const t0=performance.now();const tick=()=>{if(!document.body.contains(o))return;
     if(au.duration){tua.max=au.duration;tua.value=au.currentTime;tg.textContent=f(au.currentTime)+" / "+f(au.duration)}
-    let v=0;if(!au.paused&&!au.ended){if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else v=.5+.5*Math.sin((performance.now()-t0)/90)}
+    let v=0;if(!au.paused&&!au.ended){if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else v=Math.max(0,.55+.45*Math.sin((performance.now()-t0)/85)*Math.sin((performance.now()-t0)/233))}
     mieng.setAttribute("ry",(1.6+v*9).toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1;o.querySelector(".vcCo").classList.toggle("noi",v>.15);veDong();requestAnimationFrame(tick)};
   requestAnimationFrame(tick)}
 function coNoi(au,cueUrl){if(!au)return;if(cueUrl)return moVideo(au,cueUrl);let o=document.getElementById("coNoi");
@@ -1438,10 +1439,10 @@ function coNoi(au,cueUrl){if(!au)return;if(cueUrl)return moVideo(au,cueUrl);let 
   const mieng=o.querySelector(".cnMieng"),cuoi=o.querySelector(".cnCuoi");o.hidden=false;o.classList.add("hien");
   o.querySelector(".cnX").onclick=()=>{try{au.pause()}catch(e){}};
   let an=null,buf=null;
-  try{_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();
+  try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();
     let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
   let t0=performance.now();const tick=()=>{if(au.paused||au.ended){mieng.setAttribute("ry","1.6");cuoi.style.opacity=1;o.classList.remove("hien");setTimeout(()=>{if(au.paused||au.ended)o.hidden=true},400);return}
-    let v;if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else{v=.5+.5*Math.sin((performance.now()-t0)/90)}   // không đo được thì mấp máy đều
+    let v;if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else{v=Math.max(0,.55+.45*Math.sin((performance.now()-t0)/85)*Math.sin((performance.now()-t0)/233))}   // không đo được thì mấp máy đều
     veDong();const ry=1.6+v*9;mieng.setAttribute("ry",ry.toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1;requestAnimationFrame(tick)};
   const chay=()=>requestAnimationFrame(tick);if(au.paused)au.addEventListener("playing",chay,{once:true});else chay()}
 /* ---------- 06/10 chị: PHIÊN ÂM HỌC TỪNG NHÓM RỒI LUYỆN NGAY — học hết 6 nguyên âm, luyện xong mới sang phụ âm. Mỗi câu 1 trang, tự chuyển ---------- */
@@ -1484,7 +1485,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
           else{const nx=[...Z.querySelectorAll(".cau:not(.xong) .pl2")][0];if(nx)setTimeout(()=>nx.click(),700)}}
         else{bt.classList.add("wrong");tone([180],.18,"square",.05);setTimeout(()=>bt.classList.remove("wrong"),450)}})})};
     function ve(){
-      if(buoc===0){khung(`<h4 class="pyh2"><span class="goiY">👆 <b>→</b> 🔊</span><span class="goiT">bấm ô để nghe</span></h4><div class="pyg2">${g.ds.map(k=>`<button class="pyc2" data-k="${k}"><span class="big2">${tonePy(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span>${IT[k].mo?`<span class="mn2">${hzw(IT[k].mo)}</span>`:""}<span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
+      if(buoc===0){khung(`<h4 class="pyh2"><span class="goiY">👆 <b>→</b> 🔊</span><span class="goiT">bấm ô để nghe</span></h4><div class="pyg2">${g.ds.map(k=>`<button class="pyc2" data-k="${k}"><span class="big2">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(IT[k].lab)?tonePy(IT[k].lab):esc(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span><span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
         box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;return}
       if(buoc===1)return cauChon(g.ds,`<span class="goiY">🔊 <b>→</b> 👆</span><span class="goiT">nghe rồi chọn</span>`,"nghe");
       if(buoc===2){const Q=pick(g.ds,2);let da=0;khung(`<h4 class="pyh2"><span class="goiY">🎤 <b>→</b> 👂</span><span class="goiT">đọc to, nghe lại</span></h4>${Q.map(k=>`<div class="sp2" data-k="${k}"><div class="tg2">${esc(IT[k].hz)}</div><div class="pys2">${tonePy(IT[k].py)}</div><div class="bt2"><button class="btn2 sN">🔊 Nghe</button><button class="big sM">🎤 Đọc &amp; thu</button></div><p class="res2"></p></div>`).join("")}<button class="big" id="pyT">Tiếp →</button>`);
