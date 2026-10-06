@@ -492,7 +492,7 @@ h2 .ic img.fi{width:28px;height:28px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .sun .eye{transform-box:fill-box;transform-origin:center;animation:blink 4s infinite}
 @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-.sun.talk .face{animation:bob .5s ease-in-out infinite}
+.sun.talk .face{animation:none}   /* 06/10 Thanh Hà: miệng đóng mở thôi, đừng cho nhảy */
 @keyframes bob{50%{transform:translateY(-2px)}}
 .bubble{position:relative;background:var(--surface);border-radius:22px;padding:16px 18px;box-shadow:0 8px 24px -14px rgba(0,0,0,.35);font-size:18px;font-weight:600;line-height:1.45;min-height:90px;display:flex;flex-direction:column;justify-content:center;gap:6px}
 .bubble::before{content:"";position:absolute;left:-10px;top:40px;border:10px solid transparent;border-right-color:var(--surface);border-left:0}
@@ -790,6 +790,26 @@ body{background:#FFFDF2}.card{background:#fff}
 .noiC{display:flex;flex-direction:column;gap:12px}.noiO{border:3px solid var(--line);border-bottom-width:5px;border-radius:16px;background:#fff;padding:12px 6px;min-height:64px}.noiL{font:400 clamp(40px,10vw,56px)/1 var(--hz)}.noiR{font:800 clamp(32px,8.5vw,46px)/1 var(--py)}.noiO.chon{border-color:#E0B640;background:#FFF6D6}.noiO.ok{border-color:#7BC47F;background:#EEF8EE}
 .mmC{width:100%;max-width:680px;margin-left:auto;margin-right:auto}.mmKey{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;margin:4px 0 12px;font:800 22px/1 var(--py)}.mmKey span{display:flex;align-items:center;gap:6px}.mmKey i,.mmDot i{display:inline-block;width:28px;height:28px;border-radius:50%}.mmDot{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--ink-2)}.mmDot i{width:40px;height:40px}.mmT{width:46px;height:42px;margin-left:6px;background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px}.mmT path{stroke:#3A2622;stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 #pyQ .op2{font-size:clamp(24px,6.5vw,34px);padding:12px 6px}
+/* 06/10 trò Chạy đua */
+.cd{position:fixed;inset:0;z-index:60;overflow:auto;background:linear-gradient(#BFE6FA 0,#E8F6FD 28%,#FFF9EC 60%);display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 14px 24px}
+.cd>*{width:100%;max-width:720px}.cdTop{display:flex;align-items:center;gap:8px}.cdX{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-size:20px}
+.cdBar{white-space:nowrap;min-width:0;flex:1;background:#fff;border-radius:999px;padding:6px 12px;display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px}.cdBar i{flex:1;height:10px;background:#EEE;border-radius:9px;overflow:hidden}.cdBar b{display:block;height:100%;background:#3DBE7A;transition:width .4s}
+.cdTg,.cdSao{background:#fff;border-radius:999px;padding:6px 12px;font-weight:800;display:flex;align-items:center;gap:4px}.cdSao img{width:22px;height:22px}
+.cdDuong{position:relative;background:repeating-linear-gradient(90deg,#E9A46B 0 40px,#E39A5F 40px 80px);border-radius:18px;padding:6px 0;box-shadow:inset 0 -6px 0 #C97F47}
+.cdLan{position:relative;height:52px;border-bottom:3px dashed rgba(255,255,255,.7)}.cdLan:last-of-type{border:0}
+.cdNv{position:absolute;top:2px;transition:left .8s cubic-bezier(.3,1.4,.5,1)}.cdNv img{width:48px;height:48px}.cdNv.toi img{width:56px;height:56px;margin-top:-4px;filter:drop-shadow(0 3px 0 rgba(0,0,0,.15))}
+.cdDich{position:absolute;right:6px;top:50%;transform:translateY(-50%)}.cdDich img{width:44px;height:44px}
+.cdHoi{background:#fff;border-radius:22px;border:3px solid #FFE58A;padding:14px;display:flex;align-items:center;justify-content:center;gap:14px;min-height:96px}
+.cdLoa{width:72px;height:72px;border-radius:50%;border:0;background:#3FA7D6;color:#fff;font-size:34px;box-shadow:0 5px 0 #2C7DA3}.cdDe{font:800 clamp(18px,4.5vw,24px)/1.3 var(--vi,inherit)}.cdHz{font:400 clamp(56px,14vw,84px)/1 var(--hz)}
+.cdOp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cdO{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:120px;background:#fff;border:3px solid var(--m);border-bottom-width:7px;border-radius:22px;padding:10px 6px;position:relative}
+.cdK{position:absolute;left:8px;top:8px;width:30px;height:30px;border-radius:50%;background:var(--m);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center}
+.cdO img{width:64px;height:64px}.cdT{font:800 clamp(24px,6vw,34px)/1.1 var(--py);display:flex;flex-direction:column;align-items:center}.cdZ{font:400 clamp(26px,7vw,36px)/1.1 var(--hz);color:var(--ink)}.cd .cdO b.cdSo{font-size:52px!important;font-weight:900!important;line-height:1!important;color:#E0752C}
+.cdO.dung{background:#E9F8EE;border-color:#3DBE7A;animation:bgC .3s}.cdO.sai{animation:lac .4s}@keyframes lac{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.cdKet{margin:auto;background:#fff;border-radius:26px;padding:24px 18px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}.cdKet>img{width:110px;height:110px}.cdKet>b{font:900 26px/1.3 var(--vi,inherit)}.cdNut{display:flex;gap:12px}
+#fbT{white-space:nowrap;position:fixed;left:50%;top:38%;z-index:90;transform:translate(-50%,-50%) scale(.6);opacity:0;pointer-events:none;padding:16px 28px;border-radius:999px;font:900 clamp(24px,6vw,36px)/1.2 var(--vi,inherit);color:#fff;box-shadow:0 8px 0 rgba(0,0,0,.12);transition:.25s cubic-bezier(.3,1.6,.5,1)}#fbT.ok{background:#3DBE7A}#fbT.sai{background:#F2A93B}#fbT.hien{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.tkIn{width:100%;max-width:340px;font:600 18px/1.2 var(--vi,inherit);padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:#fff}.tkE{color:#C4392A;min-height:1.2em;margin:0}.tkS{color:var(--ink-2)}
+img.fi[src*="img/gau/"]{border-radius:18px;object-fit:cover}
 .pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
 .pyc2.playing{border-color:#E0B640;background:#FFF8DC}
 /* 06/10 Biến điệu: thẻ ngang cả hàng, chữ Hán to, không vỡ dòng */
@@ -921,10 +941,16 @@ const ruby=r=>{const p=PY[r];return p?[...r].map((c,i)=>`<ruby>${c}<rt>${p[i]||"
 const hzw=s=>esc(s).replace(/[㐀-鿿]+/g,r=>`<span class="hzi">${ruby(r)}</span>`);
 const TONE={"āēīōūǖ":1,"áéíóúǘ":2,"ǎěǐǒǔǚ":3,"àèìòùǜ":4};
 function tonePy(py){return esc(py).split(/(\s+)/).map(w=>{let t=0;for(const c of w)for(const k in TONE)if(k.includes(c.toLowerCase()))t=TONE[k];return /\S/.test(w)?`<span class="tone${t||5}">${w}</span>`:w}).join("")}
-const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(k!=="yct1-user"&&k!=="yct1-luc")henLuu()}};
 /* âm thanh */
 let cur=null;function play(src,el){try{cur&&cur.pause()}catch(e){}document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}RS(src).then(u=>{if(cur!==a)return;a.src=u;if(/\.mp4/.test(src)){a.defaultPlaybackRate=a.playbackRate=1.05;a.addEventListener("loadedmetadata",()=>a.playbackRate=1.05)}a.play().catch(()=>{})})   /* 06/10 chị: lời cô đọc nhanh hơn 5% */.catch(()=>el&&el.classList.remove("playing"));return a}
-let actx=null;function tone(fs,d=.12,type="sine",v=.12){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+d);t+=d*.8})}catch(e){}}
+/* 06/10 chị: phản hồi sau mỗi câu trả lời — Đúng → "Giỏi quá!", Sai → "Mình thử lại nhé!" (chữ to + cô nói). Gắn vào tiếng "ting" (đúng) và "bụp" (sai) dùng chung mọi trò */
+let _fbT=0;function phanHoi(ok){const now=Date.now();if(now-_fbT<350)return;_fbT=now;let t=document.getElementById("fbT");if(!t){t=document.createElement("div");t.id="fbT";document.body.appendChild(t)}
+  t.className=ok?"ok":"sai";t.innerHTML=ok?"🎉 Giỏi quá!":"💪 Mình thử lại nhé!";void t.offsetWidth;t.classList.add("hien");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("hien"),1100);
+  try{const a=new Audio(ok?"aud/fb-dung.mp3":"aud/fb-sai.mp3");a.play().catch(()=>{})}catch(e){}}
+/* 06/10 Thanh Hà: miệng Cô Mặt Trời ĐÓNG – MỞ theo nhịp nói (như từng tiếng), không nhún nhảy */
+const miengV=t=>Math.sin(t/105)>-.15?.45+.55*Math.abs(Math.sin(t/41)):0;
+let actx=null;function tone(fs,d=.12,type="sine",v=.12){try{if(fs.length===2&&fs[0]===880&&fs[1]===1320)phanHoi(1);else if(fs.length===1&&fs[0]===180)phanHoi(0);actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+d);t+=d*.8})}catch(e){}}
 function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const c=document.createElement("canvas");c.id="confetti";document.body.appendChild(c);const x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;const col=["#22AFB1","#E4B342","#5E9E5A","#5B8FB9"],P=Array.from({length:120},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,a:Math.random()*6,c:col[Math.floor(Math.random()*4)]}));let f=0;(function tk(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-4,-2,8,8);x.restore()});if(++f<140)requestAnimationFrame(tk);else c.remove()})()}
 const SPK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
 const PLAY='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>',PAUSE='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>';
@@ -937,15 +963,15 @@ function sunIntro(box){
   fetch("aud/gioi-thieu.json").then(r=>r.json()).then(j=>meta=j).catch(()=>{});
   const sun=box.querySelector(".sun"),mouth=box.querySelector("#mouth"),smile=box.querySelector("#smile"),bub=box.querySelector(".bubble .txt"),moon=box.querySelector(".moonpal"),btn=box.querySelector("#gtPlay");
   const show=c=>{bub.innerHTML=c.zh?`<span class="zh">${esc(c.text)}</span>${PYM[c.text]?`<span class="zpy">${PYM[c.text]}</span>`:""}`:esc(c.text);moon.classList.toggle("on",!!c.moon)};
-  const loop=()=>{let v=0;if(an){const d=new Uint8Array(an.fftSize);an.getByteTimeDomainData(d);let m=0;for(const x of d)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/40)}else if(!a.paused)v=.3+.3*Math.sin(Date.now()/90);
-    mouth.setAttribute("ry",(1.5+v*7).toFixed(1));mouth.setAttribute("rx",(5+v*3).toFixed(1));smile.style.opacity=v>.15?0:1;
+  const loop=()=>{let v=0;if(an){const d=new Uint8Array(an.fftSize);an.getByteTimeDomainData(d);let m=0;for(const x of d)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/40)}else if(!a.paused)v=miengV(Date.now());
+    mouth.setAttribute("ry",(v*9).toFixed(1));mouth.setAttribute("rx",(6+v*2).toFixed(1));smile.style.opacity=v>.15?0:1;
     if(meta){let c=null;for(const x of meta.c)if(x.t<=a.currentTime+.05)c=x;if(c&&c!==loop.c){loop.c=c;show(c)}}
     if(!a.paused)raf=requestAnimationFrame(loop)};
   const start=()=>{try{window._hd&&window._hd.pause();cur&&cur.pause()}catch(e){}
     if(false&&!an){try{const C=actx=actx||new(window.AudioContext||window.webkitAudioContext)();const src=C.createMediaElementSource(a);an=C.createAnalyser();an.fftSize=512;src.connect(an);an.connect(C.destination);C.resume&&C.resume()}catch(e){an=null}}
     if(a.ended||a.currentTime===0){loop.c=null;moon.classList.remove("on")}a.play().catch(()=>{})};
   a.onplay=()=>{sun.classList.add("talk");btn.textContent="⏸ Tạm dừng";cancelAnimationFrame(raf);loop()};
-  a.onpause=()=>{sun.classList.remove("talk");btn.textContent="▶ Nghe tiếp";mouth.setAttribute("ry","2");smile.style.opacity=1};
+  a.onpause=()=>{sun.classList.remove("talk");btn.textContent="▶ Nghe tiếp";mouth.setAttribute("ry","0");smile.style.opacity=1};
   a.onended=()=>{sun.classList.remove("talk");btn.textContent="↻ Nghe lại";bub.innerHTML="Nào, chọn một bài bên dưới để bắt đầu nhé! 👇"};
   const toggle=()=>a.paused?start():a.pause();btn.onclick=toggle;box.querySelector(".sunbtn").onclick=toggle;window._gt=a;
 }
@@ -1071,9 +1097,34 @@ const OWN=()=>new Set((U&&U.own)||[]);
 const goi=n=>{const a=Math.floor((n-1)/4)*4+1;return[a,a+1,a+2,a+3]};   // 25/09 chị: bán KHOÁ 30 NGÀY = 4 bài (khoá 1 = Mở đầu + 1–4), 599k
 const soKhoa=n=>(goi(n)[0]+3)/4;
 const coMo=n=>!KHOA||(n===0?OWN().size>0:OWN().has(n));
-function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=true;return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("yct1-user",null),go(-1))):payPop(null,"dn")}
+function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=false;b.textContent=U&&U.tk?"👤 "+U.ten:"👤 Đăng nhập";b.onclick=()=>{if(!(U&&U.tk))return dnTK();if(confirm("Thoát tài khoản "+U.ten+"? Bài đã học vẫn lưu trên tài khoản."))luuTD().then(()=>{const x=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("yct1-"))x.push(k)}x.forEach(k=>localStorage.removeItem(k));U=null;location.reload()})};return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("yct1-user",null),go(-1))):payPop(null,"dn")}
 // 25/09 — ghi tiến độ về bảng SunMoon để tối Chủ nhật tự email báo cáo tuần cho bố mẹ
-function ghiKQ(phan,ten,dung){if(KHOA&&U)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:"BMDC",phan,ten,dung}).catch(()=>{})}
+function ghiKQ(phan,ten,dung){if(U&&U.tk)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:GT_TK,phan,ten,dung}).catch(()=>{});else if(KHOA&&U)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:"BMDC",phan,ten,dung}).catch(()=>{})}
+/* 06/10 chị: mỗi bạn có TÀI KHOẢN RIÊNG (email/tên đăng nhập + mã 4 số, trung tâm cấp ở bảng SunMoon › App học, giáo trình YCTTH).
+   Tiến độ (mọi khoá yct1-*) lưu lên bảng → học máy nào cũng nối tiếp; mỗi phần học xong ghi lịch sử (APP_KQ) để trung tâm xem. */
+const GT_TK="YCTTH";
+const chupTD=()=>{const d={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("yct1-")&&k!=="yct1-user"&&k!=="yct1-luc")d[k]=localStorage.getItem(k)}return d};
+let _luuH=0;function henLuu(){if(!U||!U.tk)return;clearTimeout(_luuH);_luuH=setTimeout(luuTD,4000)}
+function luuTD(){clearTimeout(_luuH);_luuH=0;if(!U||!U.tk)return;const luc=Date.now();try{localStorage.setItem("yct1-luc",String(luc))}catch(e){}
+  return callApi({app:"luutd",u:U.u,m:U.m,giaoTrinh:GT_TK,snap:JSON.stringify({luc,d:chupTD()})}).catch(()=>{})}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden"&&_luuH)luuTD()});
+function napTD(snap){let o=null;try{o=JSON.parse(snap)}catch(e){}if(!o||!o.d)return false;const loc=+(localStorage.getItem("yct1-luc")||0);if(o.luc<=loc)return false;
+  const xoa=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("yct1-")&&k!=="yct1-user")xoa.push(k)}xoa.forEach(k=>localStorage.removeItem(k));
+  Object.entries(o.d).forEach(([k,v])=>{try{localStorage.setItem(k,v)}catch(e){}});localStorage.setItem("yct1-luc",String(o.luc));return true}
+function dnTK(){document.querySelectorAll(".tkPop").forEach(x=>x.remove());const o=document.createElement("div");o.className="mung tkPop";
+  o.innerHTML=`<div class="bx" role="dialog" aria-modal="true">${coMT("⭐")}<b style="font-size:21px">Đăng nhập để lưu bài</b><i style="color:var(--ink-2)">Học máy nào cũng học tiếp được</i>
+    <input id="tkU" class="tkIn" placeholder="Email hoặc tên đăng nhập" autocomplete="username" autocapitalize="off"><input id="tkM" class="tkIn" placeholder="Mã 4 số" inputmode="numeric" maxlength="6" autocomplete="current-password">
+    <p id="tkE" class="tkE"></p><button class="big" id="tkGo">Vào học</button><small class="tkS">Chưa có tài khoản? Nhắn Zalo SunMoon 039 630 8188 để được cấp</small><button class="btn2" id="tkX">Để sau</button></div>`;
+  document.body.appendChild(o);const $=q=>o.querySelector(q),go=$("#tkGo");$("#tkX").onclick=()=>o.remove();
+  const vao=async()=>{const u=$("#tkU").value.trim().toLowerCase(),m=$("#tkM").value.trim();if(!u||!m)return $("#tkE").textContent="Điền đủ email (hoặc tên đăng nhập) và mã nhé";
+    go.disabled=true;$("#tkE").textContent="Đang kiểm tra…";
+    try{const r=await callApi({app:"dangnhap",u,m,giaoTrinh:GT_TK});
+      if(r&&r.ok){U={u,m,ten:r.ten||u,tk:1};store.set("yct1-user",U);if(r.snap&&napTD(r.snap)){location.reload();return}await luuTD();o.remove();accBar();mung("👋",null,`Chào ${esc(U.ten)}!`,"Bài học của con sẽ tự lưu nhé")}
+      else{$("#tkE").textContent=(r&&r.loi)||"Email hoặc mã chưa đúng";go.disabled=false}}
+    catch(e){$("#tkE").textContent="Chưa kết nối được — kiểm tra mạng rồi thử lại nhé";go.disabled=false}};
+  go.onclick=vao;$("#tkM").onkeydown=e=>{if(e.key==="Enter")vao()}}
+function kiemTK(){if(!U||!U.tk)return;callApi({app:"dangnhap",u:U.u,m:U.m,giaoTrinh:GT_TK}).then(r=>{if(r&&r.ok){if(r.snap&&!sessionStorage.getItem("yct1-nap")&&napTD(r.snap)){sessionStorage.setItem("yct1-nap",1);location.reload()}else luuTD()}
+  else if(r&&r.ok===false){U=null;store.set("yct1-user",null);accBar()}}).catch(()=>{})}
 const DAT=`<div class="dat"><b>Sau 30 ngày, bé:</b><ul><li>Chào hỏi, cảm ơn, xin lỗi bằng tiếng Trung</li><li>Đếm 1–10, gọi tên màu sắc, người trong nhà</li><li>Khoảng 40 từ · 20 câu <i>— nói trong sinh hoạt</i></li><li>Hát 10 bài hát tiếng Trung</li></ul></div>`;
 function setOwn(r,u,m){U={u,m,ten:r.ten||u,k:r.k||null,own:(r.giaoTrinh||[]).filter(g=>/^BM\d+$/.test(g)).map(g=>+g.slice(2))};store.set("yct1-user",U);accBar()}
 function payPop(n,tab){
@@ -1151,7 +1202,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061344";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061518";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1250,10 +1301,35 @@ function nhomBai(n){if(n==0&&ND[0].py){const P=ND[0].py,a=P.van.length,b=P.thanh
 const baiXong=n=>new Set(store.get("yct1-bai-"+n,[]));
 function veBai(n){const box=document.getElementById("bais");if(!box)return;const B=nhomBai(n),X=baiXong(n),w=mucBai(n),PYM=n==0&&ND[0].py,TEN=["Thanh điệu","6 nguyên âm","Phụ âm (1)","Phụ âm (2)","Ghép âm"];
   box.innerHTML=B.map((g,k)=>{const on=k===0||X.has(k-1)||X.has(k),on2=X.has(k),last=k===B.length-1;
-    return `<button class="bai${on2?" done":on?" open":" lock"}" data-k="${k}"${on?"":" disabled"}><span class="bn">${on2?"✓":on?(PYM&&!last?`<b class="pyB">${esc(w[g[0]][0])}</b>`:im(last?"🏆":(w[g[0]][3]||"").match(/^\d+$/)?"🔢":w[g[0]][3])):"🔒"}</span><span><b>${last?(PYM?"Ôn tập phiên âm":"Ôn tập cả bài"):"Lượt "+(k+1)+(PYM?" · "+TEN[k]:"")}</b><i>${last?"Làm hết các lượt trước để mở":g.map(i=>w[i][0]).join(" · ")}</i>${PYM?"":`<small class="nnv">👂 Nghe · 🗣 Nói · 📖 Đọc · ✍️ Viết</small>`}</span>${on&&!on2?`<span class="go">BẮT ĐẦU</span>`:""}</button>`}).join("");
+    return `<button class="bai${on2?" done":on?" open":" lock"}" data-k="${k}"${on?"":" disabled"}><span class="bn">${on2?"✓":on?(PYM&&!last?`<b class="pyB">${esc(w[g[0]][0])}</b>`:im(last?"🏆":(w[g[0]][3]||"").match(/^\d+$/)?"🔢":w[g[0]][3])):"🔒"}</span><span><b>${last?(PYM?"Ôn tập phiên âm":"Ôn tập cả bài"):"Lượt "+(k+1)+(PYM?" · "+TEN[k]:"")}</b><i>${last?"Làm hết các lượt trước để mở":g.map(i=>w[i][0]).join(" · ")}</i>${PYM?"":`<small class="nnv">👂 Nghe · 🗣 Nói · 📖 Đọc · ✍️ Viết</small>`}</span>${on&&!on2?`<span class="go">BẮT ĐẦU</span>`:""}</button>`}).join("")+`<button class="bai open cdVao" id="cdVao"><span class="bn">${im("🐼")}</span><span><b>🏁 Chạy đua cùng Gấu trúc</b><i>Trả lời đúng để chạy lên — về đích trước nhé!</i></span><span class="go">CHƠI</span></button>`;
   {const cb=capBai(n);box.insertAdjacentHTML("afterbegin",`<div class="capBar">${capHTML(cb)}<span>${cb?`Cấp ${cb}/5 — ${CAP_LO[cb]}`:"Làm hết các lượt để lên cấp 1"}</span></div>`);
    if(cb>=3||cb>=1&&!ND[n].thi)box.insertAdjacentHTML("beforeend",`<button class="bai kho open" data-kho="1"><span class="bn">${im("🔥")}</span><span><b>Luyện khó — lên cấp ${Math.min(5,cb+1)}</b><i>Không có thẻ học, hỏi hết các từ · không sai câu nào để lên cấp 5</i></span><span class="go">LUYỆN</span></button>`)}
-  box.querySelectorAll(".bai:not([disabled])").forEach(b=>b.onclick=()=>{try{window._hd&&window._hd.pause()}catch(e){}b.dataset.kho?lamBai(n,0,1):lamBai(n,+b.dataset.k)})}
+  box.querySelectorAll(".bai:not([disabled])").forEach(b=>b.onclick=()=>{try{window._hd&&window._hd.pause()}catch(e){}if(b.id==="cdVao")return chayDua(n);b.dataset.kho?lamBai(n,0,1):lamBai(n,+b.dataset.k)})}
+
+/* 06/10 chị: trò CHẠY ĐUA (theo ảnh mẫu): Gấu trúc chạy cùng Thỏ, Gấu; trả lời đúng thì tiến lên, về đích trước là thắng. Hình 3D Fluent (tự có), không lấy hình mẫu */
+function chayDua(n){const W=mucBai(n),PYM=n==0&&!!ND[0].py,sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+  const ds=sh([...W.keys()]).slice(0,Math.min(10,W.length)),N=ds.length,t0=Date.now(),au=i=>W[i][4]||`aud/c${n}-w${i}.mp3`;
+  let q=0,dung=0,sao=0,lan=0,ban=[0,0];const AN=["🐼","🐰","🐻"],MAU=["#F06A8A","#3FA7D6","#3DBE7A","#F2A93B"];
+  const o=document.createElement("div");o.className="cd";document.body.appendChild(o);document.body.style.overflow="hidden";
+  const dong=()=>{clearInterval(dh);try{cur&&cur.pause()}catch(e){}o.remove();document.body.style.overflow=""};
+  const hinhO=i=>{const e=W[i][3];return !PYM&&e&&!isNum(e)?im(e):isNum(e)?`<b class="cdSo">${e}</b>`:""};
+  function ve(){const i=ds[q],kieu=(q%3===2&&!PYM)?"nhin":"nghe",op=sh([i,...sh(ds.filter(x=>x!==i)).slice(0,3)]);lan=0;
+    o.innerHTML=`<div class="cdTop"><button class="cdX" aria-label="Thoát">✕</button><div class="cdBar"><span>🏁 Câu ${q+1}/${N}</span><i><b style="width:${100*q/N}%"></b></i></div><span class="cdTg">⏱ <b id="cdTg">0:00</b></span><span class="cdSao">${im("⭐")}<b>${sao}</b></span></div>
+      <div class="cdDuong">${AN.map((a,k)=>`<div class="cdLan"><span class="cdNv${k?"":" toi"}" style="left:${(k?ban[k-1]:dung)/N*86}%">${im(a)}</span></div>`).join("")}<span class="cdDich">${im("🏁")}</span></div>
+      <div class="cdHoi">${kieu==="nghe"?`<button class="cdLoa" id="cdLoa">🔊</button><span class="cdDe">Nghe và chọn đúng!</span>`:`<span class="cdDe">Chữ này là hình nào?</span><span class="cdHz">${esc(W[i][0])}</span>`}</div>
+      <div class="cdOp">${op.map((x,k)=>`<button class="cdO" data-x="${x}" style="--m:${MAU[k]}"><span class="cdK">${"ABCD"[k]}</span>${hinhO(x)}<span class="cdT">${kieu==="nhin"?"":`${/[㐀-鿿]/.test(W[x][0])?`<span class="cdZ">${esc(W[x][0])}</span>`:""}`}${tonePy(W[x][1])}</span></button>`).join("")}</div>`;
+    o.querySelector(".cdX").onclick=()=>{if(q===0||confirm("Bé muốn dừng cuộc đua à?"))dong()};
+    const L=o.querySelector("#cdLoa");if(L){L.onclick=()=>play(au(i),L)}
+    o.querySelectorAll(".cdO").forEach(b=>b.onclick=()=>{if(o.dataset.khoa)return;lan++;
+      if(+b.dataset.x===i){o.dataset.khoa=1;b.classList.add("dung");if(lan===1){dung++;sao+=2}else dung+=.5;tone([880,1320]);
+        ban=ban.map(v=>Math.min(N,v+.55+Math.random()*.5));o.querySelectorAll(".cdNv").forEach((x,k)=>x.style.left=`${(k?ban[k-1]:dung)/N*86}%`);
+        setTimeout(()=>{delete o.dataset.khoa;if(++q<N)ve();else xong()},1300)}
+      else{b.classList.add("sai");tone([180],.18,"square",.05);setTimeout(()=>b.classList.remove("sai"),450)}})}
+  const dh=setInterval(()=>{const e=o.querySelector("#cdTg"),g=Math.floor((Date.now()-t0)/1000);if(e)e.textContent=`${Math.floor(g/60)}:${String(g%60).padStart(2,"0")}`},500);
+  function xong(){clearInterval(dh);const hang=1+ban.filter(v=>v>dung).length;keng();confetti();themXP(sao,"Chạy đua");ghiKQ(`c${n}-cd`,`${n==0?"Mở đầu":"Bài "+n} · Chạy đua (về thứ ${hang})`,Math.round(100*dung/N));
+    o.innerHTML=`<div class="cdKet">${im(["🏆","🥈","🥉"][hang-1]||"🏅")}<b>${hang===1?"Gấu trúc về NHẤT! 🎉":`Về thứ ${hang} — lần sau nhanh hơn nhé!`}</b>${thongKe(sao,(Date.now()-t0)/1000,Math.round(100*dung/N))}<div class="cdNut"><button class="btn2" id="cdLai">↺ Đua lại</button><button class="big" id="cdXong">Xong →</button></div></div>`;
+    o.querySelector("#cdLai").onclick=()=>{dong();chayDua(n)};o.querySelector("#cdXong").onclick=dong}
+  ve()}
 function lamBai(n,k,kho){const t0=Date.now();
   const c=ND[n],W=mucBai(n),PYM=n==0&&!!c.py,g=kho?(n==0&&ND[0].py?[...W.keys()].map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).slice(0,10).map(x=>x[1]):[...W.keys()]):nhomBai(n)[k],on=kho||k===nhomBai(n).length-1,sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
   const hinh=(i,big)=>{const e=W[i][3];if(PYM)return `<span class="pyO${big?" big":""}">${e?im(e):""}<b>${esc(W[i][0])}</b></span>`;return isNum(e)?`<span class="so${big?" big":""}">${im("🍎").repeat(Math.min(+e,10))}<b>${e}</b></span>`:im(e)};
@@ -1501,8 +1577,8 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
   let an=null,buf=null;try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
   const t0=performance.now();const tick=()=>{if(!document.body.contains(o))return;
     if(au.duration){tua.max=au.duration;tua.value=au.currentTime;tg.textContent=f(au.currentTime)+" / "+f(au.duration)}
-    let v=0;if(!au.paused&&!au.ended){if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else v=Math.max(0,.55+.45*Math.sin((performance.now()-t0)/85)*Math.sin((performance.now()-t0)/233))}
-    if(mieng){mieng.setAttribute("ry",(1.6+v*9).toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1}o.querySelector(".vcCo").classList.toggle("noi",!au.paused&&!au.ended);veDong();requestAnimationFrame(tick)};
+    let v=0;if(!au.paused&&!au.ended){if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else v=miengV(performance.now()-t0)}
+    if(mieng){mieng.setAttribute("ry",(v*10).toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1}o.querySelector(".vcCo").classList.toggle("noi",!au.paused&&!au.ended);veDong();requestAnimationFrame(tick)};
   requestAnimationFrame(tick)}
 function coNoi(au,cueUrl){if(!au)return;if(cueUrl)return moVideo(au,cueUrl);let o=document.getElementById("coNoi");
   if(!o){o=document.createElement("div");o.id="coNoi";o.className="coNoi";o.innerHTML=`${lvNoi().replace('class="vcSun"','class="cnSun"')}
@@ -1517,8 +1593,8 @@ function coNoi(au,cueUrl){if(!au)return;if(cueUrl)return moVideo(au,cueUrl);let 
   let an=null,buf=null;
   try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();
     let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
-  let t0=performance.now();const tick=()=>{if(au.paused||au.ended){mieng.setAttribute("ry","1.6");cuoi.style.opacity=1;o.classList.remove("hien");setTimeout(()=>{if(au.paused||au.ended)o.hidden=true},400);return}
-    let v;if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else{v=Math.max(0,.55+.45*Math.sin((performance.now()-t0)/85)*Math.sin((performance.now()-t0)/233))}   // không đo được thì mấp máy đều
+  let t0=performance.now();const tick=()=>{if(au.paused||au.ended){mieng.setAttribute("ry","0");cuoi.style.opacity=1;o.classList.remove("hien");setTimeout(()=>{if(au.paused||au.ended)o.hidden=true},400);return}
+    let v;if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else{v=miengV(performance.now()-t0)}   // không đo được thì mấp máy đều
     veDong();const ry=1.6+v*9;mieng.setAttribute("ry",ry.toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1;requestAnimationFrame(tick)};
   const chay=()=>requestAnimationFrame(tick);if(au.paused)au.addEventListener("playing",chay,{once:true});else chay();
   // 06/10 chị: xong / dừng / không phát được (iPhone chặn tự phát) → khung tự ẩn, không treo "đang giảng"
@@ -1598,7 +1674,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
         return `<div class="cau mmC" data-k="${k}" data-py="${dap}"><div class="mmDot"><i style="background:${mau[c1]}"></i>+<i style="background:${mau[v1]}"></i><svg class="mmT" viewBox="0 0 48 44"><path d="${NET[t]}"/></svg></div><div class="opts2">${op.map(o=>`<button class="op2" data-o="${o}">${tonePy(o)}</button>`).join("")}</div></div>`}).join("")}<div id="kq"></div>`);
       const Z=box.querySelector("#pyQ");
       Z.querySelectorAll(".mmC").forEach(cq=>{let lan=0;cq.querySelectorAll(".op2").forEach(bt=>bt.onclick=()=>{if(cq.classList.contains("xong"))return;lan++;
-        if(bt.dataset.o===cq.dataset.py){bt.classList.add("right");cq.classList.add("xong");if(cq.dataset.py===IT[+cq.dataset.k].py)play(IT[+cq.dataset.k].au);else tone([880,1320]);if(lan===1)dung++;if(++xong===Q.length)xongTro(Z,dung,Q.length,"Giải mã xong! 🔓")}
+        if(bt.dataset.o===cq.dataset.py){bt.classList.add("right");cq.classList.add("xong");tone([880,1320]);if(lan===1)dung++;if(++xong===Q.length)xongTro(Z,dung,Q.length,"Giải mã xong! 🔓")}
         else{bt.classList.add("wrong");tone([180],.18,"square",.05);setTimeout(()=>bt.classList.remove("wrong"),450)}})})}
     // 06/10 chị: trang kiến thức mới PHẢI CÓ CÔ GIẢNG — vào nhóm là mở lớp học, cô giảng cả nhóm (aud/c0-nh*.mp4, _gen_nhom.py); giảng xong → luyện tập
     const giangNhom=()=>{const au=play(`aud/c0-nh${gi}.mp4`);au.addEventListener("ended",()=>setTimeout(()=>{const x=document.querySelector(".vidCo .vcX");if(x)x.click()},1200));moVideo(au,`aud/c0-nh${gi}.json`)};
@@ -1617,7 +1693,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
         const mot=()=>{const k=vs[q];khung(`<div id="pyViet"></div><p class="ltOk" id="pyVh">${q+1}/${vs.length}</p>`);   /* 06/10 chị: bớt chữ — cô nói hướng dẫn tô */
           veChuCai(box.querySelector("#pyViet"),IT[k].lab,()=>{tone([880,1320]);box.querySelector("#pyVh").textContent="Tô đẹp quá! 真棒！";setTimeout(()=>{if(++q<vs.length)mot();else{buoc++;ve()}},900)})};mot();return}
       // xong nhóm
-      g.ds.forEach(k=>DA.add(k));store.set(key,[...DA]);themXP(2*g.ds.length,"Luyện phiên âm");const tk=thongKe(2*g.ds.length,(Date.now()-t0)/1000,Math.round(100*tongD/Math.max(1,tongC)));
+      g.ds.forEach(k=>DA.add(k));store.set(key,[...DA]);themXP(2*g.ds.length,"Luyện phiên âm");ghiKQ(`c0-py${gi}`,`Phiên âm · ${g.ten}`,Math.round(100*tongD/Math.max(1,tongC)));const tk=thongKe(2*g.ds.length,(Date.now()-t0)/1000,Math.round(100*tongD/Math.max(1,tongC)));
       if(gi<NH.length-1){mung("🎉",null,`Xong ${g.ten}!`,`Giờ học tiếp: ${NH[gi+1].ten}`,tk);gi++;lam()}else{mung("🏆",null,"Con đã học hết phiên âm!","Sang phần tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.style.display="";ps.click()}}}
     ve()}
   lam()}
@@ -1807,7 +1883,8 @@ function quiz(n){
 }
 function go(n){try{window._hd&&window._hd.pause();window._gt&&window._gt.pause()}catch(e){}accBar();if(n>=0&&BUILT.includes(n)&&!coMo(n)){history.replaceState(null,"",location.pathname+location.search);home();scrollTo(0,0);payPop(n);return}if(n>=0&&BUILT.includes(n)&&!ND[n]){app.innerHTML='<p class="card" style="text-align:center">Đang mở bài…</p>';moBai(n).then(()=>go(n)).catch(()=>{U&&(U.k=null);go(-1);payPop(n,"dn");const e=document.getElementById("lErr");if(e)e.textContent="Bố mẹ đăng nhập lại để mở bài nhé"});return}if(n>=0&&ND[n]){history.replaceState(null,"","#cd"+n);topic(n)}else{history.replaceState(null,"",location.pathname+location.search);home()}scrollTo(0,0)}
 document.getElementById("backBtn").onclick=()=>go(-1);document.getElementById("home").onclick=e=>{e.preventDefault();go(-1)};
-Promise.all([KHOA?fetch("muc.json").then(r=>r.json()).then(m=>{BUILT=m.built;return {}}):fetch("noi-dung.json").then(r=>r.json()).then(d=>{BUILT=Object.keys(d).filter(k=>/^\d+$/.test(k)).map(Number);return d}),fetch("hinh.json").then(r=>r.json()).catch(()=>({})),fetch("pinyin.json").then(r=>r.json()).catch(()=>({}))]).then(([d,h,py])=>{ND=d;H=h;PY=py;const m=location.hash.match(/^#cd(\d+)$/);go(m?+m[1]:-1);
+Promise.all([KHOA?fetch("muc.json").then(r=>r.json()).then(m=>{BUILT=m.built;return {}}):fetch("noi-dung.json?v="+AV).then(r=>r.json()).then(d=>{BUILT=Object.keys(d).filter(k=>/^\d+$/.test(k)).map(Number);return d}),fetch("hinh.json?v="+AV).then(r=>r.json()).catch(()=>({})),fetch("pinyin.json").then(r=>r.json()).catch(()=>({}))]).then(([d,h,py])=>{ND=d;H=h;PY=py;const m=location.hash.match(/^#cd(\d+)$/);go(m?+m[1]:-1);
+  kiemTK();   // 06/10: có tài khoản → lấy tiến độ mới nhất (học máy khác) / đẩy tiến độ máy này lên
   if(KHOA&&U)callApi({app:"dangnhap",u:U.u,m:U.m,giaoTrinh:"BMDC"}).then(r=>{if(r&&r.ok){const a=JSON.stringify(U.own);setOwn(r,U.u,U.m);if(JSON.stringify(U.own)!==a)go(-1)}else if(r&&r.ok===false){U=null;store.set("yct1-user",null);go(-1)}}).catch(()=>{})}).catch(()=>{app.innerHTML='<p class="card">Chưa tải được nội dung — kiểm tra mạng rồi tải lại trang.</p>'});
 /* 06/10 chị: nút Hỏi / góp ý giống lớp người lớn (gửi về bảng SunMoon, app "hoi") */
 (function(){const box=document.getElementById("hBox"),txt=document.getElementById("hTxt"),msg=document.getElementById("hMsg"),send=document.getElementById("hSend");

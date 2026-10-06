@@ -173,7 +173,7 @@
     ],
     [
      "p",
-     "坡",
+     "泼",
      "pō",
      "“p” bật hơi mạnh",
      "🍎",
@@ -461,13 +461,13 @@
     "你好",
     "nǐ hǎo",
     "xin chào",
-    "👋"
+    "gau-nihao"
    ],
    [
     "再见",
     "zàijiàn",
     "tạm biệt",
-    "🤚"
+    "gau-zaijian"
    ],
    [
     "老师",
@@ -686,8 +686,8 @@
     "t": "tranh",
     "nghe": "你好",
     "chon": [
-     "🤝",
-     "👋",
+     "gau-nihao",
+     "gau-zaijian",
      "🚗"
     ],
     "dap": 0
@@ -698,7 +698,7 @@
     "chon": [
      "👨‍👧",
      "👭",
-     "🤚"
+     "gau-zaijian"
     ],
     "dap": 2
    },
@@ -720,7 +720,7 @@
     "t": "doc",
     "chu": "再见",
     "py": "zàijiàn",
-    "img": "🤚",
+    "img": "gau-zaijian",
     "dung": true
    }
   ],
@@ -1019,5 +1019,72 @@
   "tu4": [
    "Con xem cô viết mẫu, rồi tô theo từng nét đang nhấp nháy nhé."
   ]
- }
+ },
+ "gioiThieu": [
+  [
+   "Xin chào các bạn nhỏ! Cô là Cô Mặt Trời đây!",
+   0,
+   1.8
+  ],
+  [
+   "Cô tên là:",
+   0,
+   1.0
+  ],
+  [
+   "zh:太阳",
+   0,
+   1.8
+  ],
+  [
+   "Các bạn gọi tên cô nào!",
+   0,
+   1.0
+  ],
+  [
+   "zh:太阳",
+   0,
+   1.8
+  ],
+  [
+   "Đầu tiên, mình chào nhau bằng tiếng Trung nhé:",
+   0,
+   1.0
+  ],
+  [
+   "zh:你好！",
+   0,
+   1.8
+  ],
+  [
+   "Giỏi quá! Tiếng Trung khen là:",
+   0,
+   1.0
+  ],
+  [
+   "zh:真棒！",
+   0,
+   1.8
+  ],
+  [
+   "Cô có một người bạn thân, là Ông Mặt Trăng. Tên của ông là:",
+   1,
+   1.0
+  ],
+  [
+   "zh:月亮",
+   1,
+   1.8
+  ],
+  [
+   "Mỗi ngày chỉ hai mươi phút: nghe cô giảng, chơi trò chơi, rồi nói thật to. Nào, mình bắt đầu thôi!",
+   1,
+   1.2
+  ],
+  [
+   "zh:一，二，三，走！",
+   1,
+   1.0
+  ]
+ ]
 }
