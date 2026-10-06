@@ -935,6 +935,7 @@ section.dangLam>h2{display:none!important}
 .batDau{border-color:var(--m3)!important;box-shadow:0 4px 0 #BFE8CF;gap:10px}.bdTieu{font:900 22px/1.2 var(--vi,inherit)}.bdBuoc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}.bdBuoc li{display:flex;align-items:center;gap:10px;font-size:17px}.bdBuoc span{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center}.bdBuoc li:nth-child(1) span{background:var(--m1)}.bdBuoc li:nth-child(2) span{background:var(--m2)}.bdBuoc li:nth-child(3) span{background:var(--m4)}.bdGo{font-size:20px;padding:16px}
 .hero{background:#fff!important;border-color:var(--m2)!important}.stage{background:#fff!important;border:3px solid #FFE58A!important}.loinhan{border-color:var(--m4)!important;background:#FFF8E8!important}
 .htNut{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.htNghe2{display:block;margin-top:6px}
+.hhS .hhI{display:none!important}.hhIc{display:flex;gap:6px;justify-content:center;min-height:0}.hhIc img{width:40px;height:40px}   /* 06/10 chị: chữ chèn hình → hình đưa xuống dưới chữ */
 </style>
 
 <div class="top"><div class="in">
@@ -1077,7 +1078,7 @@ function topic(n){
   a.onplay=()=>{btn.innerHTML=PAUSE;coNoi(a,`aud/c${n}-hd.json`)};a.onpause=a.onended=()=>btn.innerHTML=PLAY;btn.onclick=()=>{try{cur&&cur.pause()}catch(e){}a.paused?a.play().catch(()=>{}):a.pause()};bar.oninput=()=>a.currentTime=+bar.value;window._hd=a;
   if(danhDauHoc()){const c=chuoi();setTimeout(()=>mung("🔥",c,c>1?`${c} ngày học liền!`:"Ngày học đầu tiên!",c>1?"Giữ lửa mỗi ngày nhé, bé giỏi quá!":"Mai học tiếp để có chuỗi 2 ngày nhé!"),600)}veChuoi();noiVe(n);
   {const hn=new Date().toLocaleDateString("sv-SE"),kk="yct1-mo-"+n;if(store.get(kk,"")!==hn){store.set(kk,hn);ghiKQ(`c${n}-mo`,`${n==0?"Mở đầu":"Bài "+n} · vào học`,100)}}   // 25/09 chị bỏ lịch 7 ngày — ghi "vào học" mỗi ngày để email tiến độ tuần
-  app.querySelectorAll(".fc[data-i]").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-w${b.dataset.i}.mp3`,b)});
+  app.querySelectorAll(".fc[data-i]").forEach(b=>b.onclick=()=>{a.pause();const x=play(`aud/c${n}-w${b.dataset.i}.mp3`,b);x.addEventListener("ended",()=>setTimeout(()=>{if(cur===x)play("aud/doc-theo.mp3")},300))});   /* 06/10 chị: nghe từ xong cô nhắc "Con đọc theo cô nhé" */
   app.querySelectorAll(".ke").forEach(b=>b.onclick=e=>{const t=e.target;a.pause();const vb=t.closest(".vbtn");if(vb){try{cur&&cur.pause()}catch(x){}video(vb.dataset.yt,vb.dataset.t,vb.dataset.m);return}const kk=t.closest(".kk");if(kk){play(`aud/c${n}-k${kk.dataset.k}.mp4`,kk);return}const kz=t.closest(".kz");if(kz)play(`aud/c${n}-v${kz.dataset.zh}.mp3`,kz)});
   {const pb=document.getElementById("pdfBtn");if(pb&&KHOA)pb.onclick=e=>{e.preventDefault();pb.style.opacity=.6;RS(`in/to-mau-c${n}.pdf`).then(u=>{const x=document.createElement("a");x.href=u;x.download=`SunMoon-to-mau-chuyen-de-${n}.pdf`;document.body.appendChild(x);x.click();x.remove();pb.style.opacity=1}).catch(()=>{pb.style.opacity=1;alert("Chưa mở được file — bố mẹ đăng nhập lại giúp SunMoon nhé")})}}
   app.querySelectorAll(".pyk").forEach(b=>b.onclick=()=>{a.pause();play(b.dataset.src,b)});
@@ -1228,7 +1229,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061633";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061634";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1366,11 +1367,11 @@ function lamBai(n,k,kho){const t0=Date.now();
   if(kho==="nhanh"){const G=sh(g).slice(0,6);G.forEach(i=>S.push({t:"nghe",i,c:1}));sh(G).slice(0,2).forEach(i=>S.push({t:"nhin",i,c:1}));
     sh(G).slice(0,2).forEach(i=>S.push({t:"noi",i,c:2}));sh(G).slice(0,2).forEach(i=>S.push({t:"noiHinh",i,c:2}));
     sh(G).slice(0,3).forEach(i=>S.push({t:"chu",i,c:3}));if(G.length>=3)S.push({t:"lat",g:sh(G).slice(0,3),c:3});
-    sh(G.filter(i=>/[\u3400-\u9fff]/.test(W[i][0]))).slice(0,1).forEach(i=>S.push({t:PYM?"toCu":"to",i,c:4}))}   // 06/10 chị: học từ mới xong luyện ngay
+    if(!PYM)sh(G.filter(i=>/[\u3400-\u9fff]/.test(W[i][0]))).slice(0,1).forEach(i=>S.push({t:"to",i,c:4}))}   // 06/10 chị: học từ mới xong luyện ngay
   else if(kho&&!PYM){sh(g).forEach(i=>S.push({t:"nghe",i,c:1}));sh(g).forEach(i=>S.push({t:"nhin",i,c:1}));sh(g).forEach(i=>S.push({t:"noiHinh",i,c:2}));sh(g).forEach(i=>S.push({t:"chu",i,c:3}));sh(g).slice(0,2).forEach(i=>S.push({t:"to",i,c:4}));if(g.length>=3)S.push({t:"lat",g:sh(g).slice(0,3),c:3})}   // 02/10 Luyện khó: không có thẻ học, hỏi hết các từ
   else{if(!on)g.forEach(i=>S.push({t:"hoc",i,c:1}));sh(g).forEach(i=>S.push({t:"nghe",i,c:1}));sh(g).slice(0,on?2:1).forEach(i=>S.push({t:"nhin",i,c:1}));if(g.length>=3)S.push({t:"ghep",g:sh(g).slice(0,3),c:1});
   S.push({t:"noi",i:r1(),c:2});sh(g).slice(0,on?3:2).forEach(i=>S.push({t:"noiHinh",i,c:2}));
-  if(PYM)sh(g).slice(0,2).forEach(i=>S.push({t:"toCu",i,c:4}));   // phiên âm: bé tô chữ cái
+  /* 06/10 chị: bỏ tô chữ cái a b c — chỉ tô chữ Hán */
   else{sh(g).slice(0,on?3:2).forEach(i=>S.push({t:"chu",i,c:3}));S.push({t:"to",i:r1(),c:4});if(g.length>=3)S.push({t:"lat",g:sh(g).slice(0,3),c:3})}}
   let p=0,sai=0,tong=S.length;
   const o=document.createElement("div");o.className="ls";document.body.appendChild(o);document.body.style.overflow="hidden";
@@ -1486,7 +1487,7 @@ const CP={"你":[[0,1],[2,6]],"好":[[0,2],[3,5]],"再":[[0,0],[1,5]],"谢":[[0,
 const MAU=["#E8505B","#22AFB1","#8E5BD0"];
 function chuHinh(n){if(!n)return;const c=ND[n],tm=[...app.querySelectorAll(":scope > section.card")].find(x=>/Từ mới/.test((x.querySelector("h2")||{}).textContent||""));if(!tm)return;
   const CH=[...new Set(c.w.map(w=>w[0]).join("").replace(/[^㐀-鿿]/g,""))].filter(x=>BO[x]);if(!CH.length)return;
-  const sec=document.createElement("section");sec.className="card";sec.innerHTML=`<h2><span class="ic">${im("🖼")}</span>Chữ Hán bằng hình ảnh <small>nhìn hình là nhớ chữ</small></h2><div class="hhG">${CH.map(x=>`<button class="hhC" data-ch="${x}"><div class="hhT"><b>${x}</b><span>${esc((c.w.find(w=>w[0].includes(x))||[])[1]||"")}</span></div><div class="hhS"></div><p>${hzw(BO[x][1])}</p></button>`).join("")}</div>`;
+  const sec=document.createElement("section");sec.className="card";sec.innerHTML=`<h2><span class="ic">${im("🖼")}</span>Chữ Hán bằng hình ảnh <small>nhìn hình là nhớ chữ</small></h2><div class="hhG">${CH.map(x=>`<button class="hhC" data-ch="${x}"><div class="hhT"><b>${x}</b><span>${esc((c.w.find(w=>w[0].includes(x))||[])[1]||"")}</span></div><div class="hhS"></div><div class="hhIc">${BO[x][0].map(bp=>bp[3]&&H[bp[3]]?im(bp[3]):"").join("")}</div><p>${hzw(BO[x][1])}</p></button>`).join("")}</div>`;
   tm.after(sec);
 
   napHW().then(()=>sec.querySelectorAll(".hhC").forEach(b=>{const x=b.dataset.ch,ci=c.w.findIndex(w=>w[0]===x);b.onclick=()=>ci>=0&&play(`aud/c${n}-w${ci}.mp3`,b);
