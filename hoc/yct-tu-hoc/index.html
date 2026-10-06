@@ -2,7 +2,7 @@
 <html lang="vi">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#14979B">
+<meta name="theme-color" content="#22AFB1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>YCT 1 · SunMoon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -308,8 +308,8 @@
 }
 :root{
   --bg:#FFFFFF; --surface:#FFFFFF; --soft:#FBF7F0; --ink:#2B2622; --ink-2:#6E655C; --line:#EADFD0;
-  --sun:#14979B; --sun-2:#0D7377; --sun-soft:#DCF3F3; --on-sun:#FFFFFF;   /* 02/10 chị: màu như bìa sách YCT — xanh ngọc + vàng */
-  --gold:#F5BE10; --gold-soft:#FFF6D3; --sky:#5B8FB9; --sky-soft:#E6EFF6; --leaf:#5E9E5A; --leaf-soft:#E6F0E1;
+  --sun:#22AFB1; --sun-2:#138A8C; --sun-soft:#E2F6F6; --on-sun:#FFFFFF;   /* 02/10 chị: màu như bìa sách YCT — xanh ngọc + vàng */
+  --gold:#FFD966; --gold-soft:#FFF8DC; --sky:#5B8FB9; --sky-soft:#E6EFF6; --leaf:#5E9E5A; --leaf-soft:#E6F0E1;
   --t1:#CC3B33; --t2:#C9820F; --t3:#34874A; --t4:#2C68B0; --t5:#9A918A;
   --hz:"LXGW WenKai Screen","Noto Serif SC","PingFang SC","Hiragino Sans GB",serif; --py:"Noto Sans","Helvetica Neue",Arial,sans-serif; --tx:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;
 }
@@ -521,9 +521,9 @@ h2 .ic img.fi{width:28px;height:28px}
 .pwb ul{margin:0;padding-left:20px}.pwb li{margin:2px 0}.pwb li i{font-weight:300;color:var(--ink-2)}
 .dat{padding:12px 14px;border-radius:16px;background:var(--leaf-soft)}.dat ul,.pqua,.khoe ul{margin:6px 0 0;padding-left:20px}.dat li i,.pqua i,.khoe i{font-weight:300;color:var(--ink-2)}.pqua{list-style:none;padding-left:0}
 .zfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.zfab>button{width:52px;height:52px;border-radius:50%;border:0;border-bottom:4px solid #0D7377;background:#14979B;color:#fff;font:800 13px/1 Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
+.zfab>button{width:52px;height:52px;border-radius:50%;border:0;border-bottom:4px solid #138A8C;background:#22AFB1;color:#fff;font:800 13px/1 Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 .zfab .zm{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #E6E0D8;border-radius:14px;padding:10px;box-shadow:0 6px 20px rgba(0,0,0,.15)}.zfab .zm[hidden]{display:none}
-.zfab .zm b{font:600 12px Arial,sans-serif;color:#6E655C}.zfab .zm a{font:700 14px Arial,sans-serif;color:#0D7377;text-decoration:none;padding:4px 2px}
+.zfab .zm b{font:600 12px Arial,sans-serif;color:#6E655C}.zfab .zm a{font:700 14px Arial,sans-serif;color:#138A8C;text-decoration:none;padding:4px 2px}
 .streak{display:inline-flex;align-items:center;gap:4px;flex:none;border:2px solid #FFD8A8;background:#FFF5E6;border-radius:999px;padding:3px 10px 3px 6px;font:800 15px var(--tx);color:#C2560C}
 .streak img{width:24px;height:24px}.streak.off{filter:grayscale(1);opacity:.6}
 .banner{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:#FFF5E6;border:2px solid #FFD8A8}
@@ -569,7 +569,7 @@ h2 .ic img.fi{width:28px;height:28px}
 .lsOpt{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%}
 .lsO{aspect-ratio:1;border-radius:20px;border:2px solid var(--line);border-bottom-width:5px;background:#fff;display:grid;place-items:center;cursor:pointer;padding:8px}.lsO img{width:72%;height:auto}
 .lsO.sm{aspect-ratio:auto;height:84px}.lsO.sm img{width:60px;height:60px}
-.lsO.right,.lsS.right{border-color:#5E9E5A;background:#EAF6E6}.lsO.wrong,.lsS.wrong{border-color:#14979B;background:#FDECEA;animation:lac .35s}
+.lsO.right,.lsS.right{border-color:#5E9E5A;background:#EAF6E6}.lsO.wrong,.lsS.wrong{border-color:#22AFB1;background:#FDECEA;animation:lac .35s}
 @keyframes lac{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .lsPic img{width:150px;height:150px}.lsSnd{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .lsS{min-width:84px;height:84px;border-radius:20px;border:2px solid var(--line);border-bottom-width:5px;background:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font:inherit;font-size:26px;gap:2px}.lsS b{font-size:15px;font-family:var(--hz)}.lsS.on{border-color:var(--sky);background:var(--sky-soft)}
@@ -716,6 +716,13 @@ h2 .ic img.fi{width:28px;height:28px}
 .snSo{font:800 20px var(--tx);color:var(--sun-2);min-width:28px}
 .linhvat{position:relative;display:inline-block;width:var(--lv);height:var(--lv)}.linhvat svg{display:block;filter:drop-shadow(0 3px 5px rgba(230,160,40,.25))}.linhvat .lv2{position:absolute;right:-6%;bottom:-4%;font-size:calc(var(--lv)*.36)}.masc .mBody .linhvat{width:100%;height:100%}
 .banMoi{position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:95;background:var(--sun);color:#fff;border:0;border-radius:999px;padding:10px 18px;font:700 15px var(--tx);box-shadow:0 6px 18px rgba(0,0,0,.2);cursor:pointer}
+/* 06/10 chị: xanh ngọc sáng như bìa sách YCT + VÀNG NHẠT làm màu phụ */
+body{background:#FFFDF2}.card{background:#fff}
+.hero{background:linear-gradient(135deg,#FFF6CF,#E2F6F6)!important}
+.btn2{background:#FFF8DC;border-color:#F3DE97}
+.chg:nth-of-type(even){background:#F7C948;color:#4A3800}
+.psI.on span{box-shadow:0 0 0 3px #FFE9A3}
+.lsBar i,.ltBar i{background:linear-gradient(90deg,#22AFB1,#7FD8D9)}
 .lsEnd{justify-content:center}.lsTro{width:140px;height:140px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
@@ -776,7 +783,7 @@ const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e)
 /* âm thanh */
 let cur=null;function play(src,el){try{cur&&cur.pause()}catch(e){}document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}RS(src).then(u=>{if(cur!==a)return;a.src=u;a.play().catch(()=>{})}).catch(()=>el&&el.classList.remove("playing"));return a}
 let actx=null;function tone(fs,d=.12,type="sine",v=.12){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();let t=actx.currentTime;fs.forEach(f=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+d);t+=d*.8})}catch(e){}}
-function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const c=document.createElement("canvas");c.id="confetti";document.body.appendChild(c);const x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;const col=["#14979B","#E4B342","#5E9E5A","#5B8FB9"],P=Array.from({length:120},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,a:Math.random()*6,c:col[Math.floor(Math.random()*4)]}));let f=0;(function tk(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-4,-2,8,8);x.restore()});if(++f<140)requestAnimationFrame(tk);else c.remove()})()}
+function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const c=document.createElement("canvas");c.id="confetti";document.body.appendChild(c);const x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;const col=["#22AFB1","#E4B342","#5E9E5A","#5B8FB9"],P=Array.from({length:120},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,a:Math.random()*6,c:col[Math.floor(Math.random()*4)]}));let f=0;(function tk(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-4,-2,8,8);x.restore()});if(++f<140)requestAnimationFrame(tk);else c.remove()})()}
 const SPK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
 const PLAY='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>',PAUSE='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>';
 const isNum=e=>/^\d+$/.test(e);
@@ -1011,7 +1018,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061019";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061021";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1178,7 +1185,7 @@ function lamBai(n,k,kho){const t0=Date.now();
       const tyle=()=>{let c=0;for(let q=0;q<Wd*Hd;q++)if(mau[q]&&phu[q])c++;return c/Math.max(1,tong0)};
       const toaDo=e=>{const r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]};
       cv.onpointerdown=e=>{dang=true;cv.setPointerCapture(e.pointerId);[lx,ly]=toaDo(e);cham(lx,ly)};
-      cv.onpointermove=e=>{if(!dang)return;const [nx,ny]=toaDo(e);x.strokeStyle="#14979B";x.lineWidth=R*2;x.lineCap=x.lineJoin="round";x.beginPath();x.moveTo(lx,ly);x.lineTo(nx,ny);x.stroke();const st=Math.ceil(Math.hypot(nx-lx,ny-ly)/(R/2))||1;for(let q=1;q<=st;q++)cham(lx+(nx-lx)*q/st,ly+(ny-ly)*q/st);lx=nx;ly=ny};
+      cv.onpointermove=e=>{if(!dang)return;const [nx,ny]=toaDo(e);x.strokeStyle="#22AFB1";x.lineWidth=R*2;x.lineCap=x.lineJoin="round";x.beginPath();x.moveTo(lx,ly);x.lineTo(nx,ny);x.stroke();const st=Math.ceil(Math.hypot(nx-lx,ny-ly)/(R/2))||1;for(let q=1;q<=st;q++)cham(lx+(nx-lx)*q/st,ly+(ny-ly)*q/st);lx=nx;ly=ny};
       cv.onpointerup=cv.onpointercancel=()=>{dang=false;if(tyle()>=.55)o.querySelector("#lsK").disabled=false};
       o.querySelector("#lsXo").onclick=()=>{phu=new Uint8Array(Wd*Hd);nen();o.querySelector("#lsK").disabled=true};
       o.querySelector("#lsK").onclick=()=>dung("Bé tô đẹp quá! 真棒！");
@@ -1197,8 +1204,8 @@ function lamBai(n,k,kho){const t0=Date.now();
         <div class="tnO"><svg class="mi" viewBox="0 0 100 100"><path d="M0 0L100 100M100 0L0 100M50 0V100M0 50H100" stroke="#F2D6CF" stroke-dasharray="3 3" fill="none"/></svg><div id="tnW"></div></div>
         <p class="lsHint" id="tnH">Xem cô viết mẫu nhé…</p><div class="lsHai"><button class="btn2" id="tnXem">▶ Xem cô viết lại</button><button class="btn2" id="tnLai">↺ Viết lại</button></div>`);
       const box=o.querySelector("#tnW"),Z=Math.min(240,o.querySelector(".lsBody").clientWidth-40);box.style.width=box.style.height=Z+"px";box.parentElement.style.width=box.parentElement.style.height=Z+"px";
-      HanziWriter.loadCharacterData(ch).then(d=>{const N=d.strokes.length;o.querySelector("#tnB").innerHTML=d.strokes.map((_,k)=>`<div class="tnC"><svg viewBox="0 0 1024 1024"><g transform="translate(0,900) scale(1,-1)">${d.strokes.map((p,j)=>`<path d="${p}" fill="${j<k?"#3A332D":j===k?"#14979B":"#EDE6DC"}"/>`).join("")}</g></svg><i>${k+1}</i></div>`).join("")+`<p class="tnN">${N} nét</p>`}).catch(()=>{});
-      const w=HanziWriter.create(box,ch,{width:Z,height:Z,padding:8,showOutline:true,strokeColor:"#3A332D",outlineColor:"#E9E2D8",highlightColor:"#5E9E5A",drawingColor:"#14979B",drawingWidth:Math.max(18,Z/11),strokeAnimationSpeed:.8,delayBetweenStrokes:350,showHintAfterMisses:2,highlightOnComplete:true});
+      HanziWriter.loadCharacterData(ch).then(d=>{const N=d.strokes.length;o.querySelector("#tnB").innerHTML=d.strokes.map((_,k)=>`<div class="tnC"><svg viewBox="0 0 1024 1024"><g transform="translate(0,900) scale(1,-1)">${d.strokes.map((p,j)=>`<path d="${p}" fill="${j<k?"#3A332D":j===k?"#22AFB1":"#EDE6DC"}"/>`).join("")}</g></svg><i>${k+1}</i></div>`).join("")+`<p class="tnN">${N} nét</p>`}).catch(()=>{});
+      const w=HanziWriter.create(box,ch,{width:Z,height:Z,padding:8,showOutline:true,strokeColor:"#3A332D",outlineColor:"#E9E2D8",highlightColor:"#5E9E5A",drawingColor:"#22AFB1",drawingWidth:Math.max(18,Z/11),strokeAnimationSpeed:.8,delayBetweenStrokes:350,showHintAfterMisses:2,highlightOnComplete:true});
       // bé tô: nét cần viết nhấp nháy đỏ + đánh số trong bảng; đặt bút sai → báo sai, sai 2 lần → hiện mũi tên hướng dẫn
       const H=o.querySelector("#tnH"),danh=k=>{o.querySelectorAll(".tnC").forEach((c,j)=>c.classList.toggle("now",j===k));try{w.highlightStroke(k)}catch(e){}};
       const thu=()=>{H.className="lsHint";H.textContent="Bé tô theo nét đỏ đang nhấp nháy nhé!";setTimeout(()=>danh(0),300);
@@ -1238,7 +1245,7 @@ const BO={"你":[[["亻","nhân đứng","người","🧍"],["尔","nhĩ","bạn
  "好":[[["女","nữ","mẹ, con gái","👩"],["子","tử","em bé","👶"]],"Mẹ (女) bế em bé (子) → thật là tốt, 好!"]};
 /* 06/10 chị: CHỮ HÁN BẰNG HÌNH ẢNH — chữ to, mỗi bộ phận một màu, hình 3D đặt lên đúng bộ phận (hình SunMoon tự dựng, không lấy hình có bản quyền) */
 const CP={"你":[[0,1],[2,6]],"好":[[0,2],[3,5]],"再":[[0,0],[1,5]],"谢":[[0,1],[2,8],[9,11]],"老":[[0,3],[4,5]],"对":[[0,1],[2,4]],"起":[[0,6],[7,9]],"妈":[[0,2],[3,5]],"四":[[0,2],[3,4]],"六":[[0,1],[2,3]]};
-const MAU=["#E8505B","#14979B","#8E5BD0"];
+const MAU=["#E8505B","#22AFB1","#8E5BD0"];
 function chuHinh(n){if(!n)return;const c=ND[n],tm=[...app.querySelectorAll(":scope > section.card")].find(x=>/Từ mới/.test((x.querySelector("h2")||{}).textContent||""));if(!tm)return;
   const CH=[...new Set(c.w.map(w=>w[0]).join("").replace(/[^㐀-鿿]/g,""))].filter(x=>BO[x]);if(!CH.length)return;
   const sec=document.createElement("section");sec.className="card";sec.innerHTML=`<h2><span class="ic">${im("🖼")}</span>Chữ Hán bằng hình ảnh <small>nhìn hình là nhớ chữ</small></h2><div class="hhG">${CH.map(x=>`<button class="hhC" data-ch="${x}"><div class="hhT"><b>${x}</b><span>${esc((c.w.find(w=>w[0].includes(x))||[])[1]||"")}</span></div><div class="hhS"></div><p>${hzw(BO[x][1])}</p></button>`).join("")}</div>`;
@@ -1289,8 +1296,8 @@ function luyenTu(n){const box=document.getElementById("luyenTu"),c=ND[n];if(!box
       if(ph===4){const CHs=[...w[0].replace(/[^㐀-鿿]/g,"")];let cq=0;Z.innerHTML=`<p class="ltDe">✍️ Viết — tô từng nét chữ “${esc(w[0])}”</p><div class="ltViet" id="ltViet"></div><p class="ltOk" id="ltVh">Xem bảng thứ tự nét, cô viết mẫu, rồi con tô theo nét đang nhấp nháy</p>`;
         napHW().then(()=>{const vt=$("#ltViet");const mot=()=>{const chr=CHs[cq];vt.innerHTML=`<div class="tnBang" id="ltBang"></div><div class="tnO"><svg class="mi" viewBox="0 0 100 100"><path d="M0 0L100 100M100 0L0 100M50 0V100M0 50H100" stroke="#CBE7E7" stroke-dasharray="3 3" fill="none"/></svg><div id="ltHW"></div></div><button class="btn2" id="ltXem">▶ Xem cô viết lại</button>`;
           const Zw=Math.min(240,(box.clientWidth||320)-40),hw=vt.querySelector("#ltHW");hw.style.width=hw.style.height=Zw+"px";hw.parentElement.style.width=hw.parentElement.style.height=Zw+"px";
-          HanziWriter.loadCharacterData(chr).then(d=>{vt.querySelector("#ltBang").innerHTML=d.strokes.map((_,z)=>`<div class="tnC"><svg viewBox="0 0 1024 1024"><g transform="translate(0,900) scale(1,-1)">${d.strokes.map((p,y)=>`<path d="${p}" fill="${y<z?"#3A332D":y===z?"#14979B":"#EDE6DC"}"/>`).join("")}</g></svg><i>${z+1}</i></div>`).join("")}).catch(()=>{});
-          const wr=HanziWriter.create(hw,chr,{width:Zw,height:Zw,padding:8,showOutline:true,strokeColor:"#3A332D",outlineColor:"#E9E2D8",highlightColor:"#14979B",drawingColor:"#14979B",drawingWidth:Math.max(18,Zw/11),strokeAnimationSpeed:.9,delayBetweenStrokes:300,showHintAfterMisses:2});
+          HanziWriter.loadCharacterData(chr).then(d=>{vt.querySelector("#ltBang").innerHTML=d.strokes.map((_,z)=>`<div class="tnC"><svg viewBox="0 0 1024 1024"><g transform="translate(0,900) scale(1,-1)">${d.strokes.map((p,y)=>`<path d="${p}" fill="${y<z?"#3A332D":y===z?"#22AFB1":"#EDE6DC"}"/>`).join("")}</g></svg><i>${z+1}</i></div>`).join("")}).catch(()=>{});
+          const wr=HanziWriter.create(hw,chr,{width:Zw,height:Zw,padding:8,showOutline:true,strokeColor:"#3A332D",outlineColor:"#E9E2D8",highlightColor:"#22AFB1",drawingColor:"#22AFB1",drawingWidth:Math.max(18,Zw/11),strokeAnimationSpeed:.9,delayBetweenStrokes:300,showHintAfterMisses:2});
           const danh=z=>{vt.querySelectorAll(".tnC").forEach((c,y)=>c.classList.toggle("now",y===z));try{wr.highlightStroke(z)}catch(e){}};
           const thu=()=>{$("#ltVh").textContent=`Con tô chữ ${chr}${CHs.length>1?` (${cq+1}/${CHs.length})`:""} theo nét đang nhấp nháy`;setTimeout(()=>danh(0),300);
             wr.quiz({onMistake:dd=>{tone([180],.15,"square",.04);$("#ltVh").textContent=`Sai rồi! Nét số ${dd.strokeNum+1} viết thế này nè`;setTimeout(()=>danh(dd.strokeNum),500)},
@@ -1386,8 +1393,8 @@ function tapViet(n,i){const c=ND[n],T=c.tv;const o=document.createElement("div")
   const ve=()=>{const t=T[i],Z=Math.min(300,innerWidth-60);
     o.innerHTML=`<div class="lsTop"><button class="lsX" aria-label="Thoát">✕</button><div class="lsBar"><i style="width:${Math.round(i/T.length*100)}%"></i></div><b class="tSo">${i+1}/${T.length}</b></div><div class="lsBody"><h3>Tập viết chữ <span class="hz">${esc(t[0])}</span> <span class="py">${tonePy(t[1])}</span></h3><p class="lsHint">${hzw(t[2]||"")}</p><div class="tnB" id="tvN"></div><div class="tvK" style="width:${Z}px;height:${Z}px"><svg class="tvL" viewBox="0 0 100 100"><path d="M0 0L100 100M100 0L0 100M50 0V100M0 50H100" stroke="#F1C9C4" stroke-dasharray="3 3" fill="none"/></svg><div id="tvW"></div></div><p class="lsHint" id="tvH">Bấm “Xem cô viết” trước, rồi tự viết từng nét nhé</p><div class="lsHai"><button class="btn2" id="tvM">▶ Xem cô viết</button><button class="btn2" id="tvL">↺ Viết lại</button></div></div><div class="lsFoot" id="lsF"><div class="lsHai"><button class="btn2" id="tvT"${i?"":" disabled"}>← Chữ trước</button><button class="big" id="tvS">${i+1<T.length?"Chữ tiếp →":"Xong"}</button></div></div>`;
     o.querySelector(".lsX").onclick=dong;o.querySelector("#tvT").onclick=()=>{i--;ve()};o.querySelector("#tvS").onclick=()=>{if(++i>=T.length)return dong();ve()};
-    napHW().then(()=>{const w=HanziWriter.create(o.querySelector("#tvW"),t[0],{width:Z,height:Z,padding:10,showOutline:true,strokeColor:"#3A332D",outlineColor:"#E9E2D8",drawingColor:"#14979B",drawingWidth:Math.max(18,Z/11),strokeAnimationSpeed:.8,delayBetweenStrokes:300,showHintAfterMisses:2,highlightOnComplete:true});
-      HanziWriter.loadCharacterData(t[0]).then(d=>{o.querySelector("#tvN").innerHTML=d.strokes.map((_,k)=>`<div class="tnC"><svg viewBox="0 0 1024 1024"><g transform="translate(0,900) scale(1,-1)">${d.strokes.map((p,j)=>`<path d="${p}" fill="${j<k?"#3A332D":j===k?"#14979B":"#EDE6DC"}"/>`).join("")}</g></svg><i>${k+1}</i></div>`).join("")+`<p class="tnN">${d.strokes.length} nét</p>`}).catch(()=>{});
+    napHW().then(()=>{const w=HanziWriter.create(o.querySelector("#tvW"),t[0],{width:Z,height:Z,padding:10,showOutline:true,strokeColor:"#3A332D",outlineColor:"#E9E2D8",drawingColor:"#22AFB1",drawingWidth:Math.max(18,Z/11),strokeAnimationSpeed:.8,delayBetweenStrokes:300,showHintAfterMisses:2,highlightOnComplete:true});
+      HanziWriter.loadCharacterData(t[0]).then(d=>{o.querySelector("#tvN").innerHTML=d.strokes.map((_,k)=>`<div class="tnC"><svg viewBox="0 0 1024 1024"><g transform="translate(0,900) scale(1,-1)">${d.strokes.map((p,j)=>`<path d="${p}" fill="${j<k?"#3A332D":j===k?"#22AFB1":"#EDE6DC"}"/>`).join("")}</g></svg><i>${k+1}</i></div>`).join("")+`<p class="tnN">${d.strokes.length} nét</p>`}).catch(()=>{});
       const H=o.querySelector("#tvH"),hoi=()=>w.quiz({onMistake:()=>{H.textContent="Chưa đúng nét, bé thử lại nhé"},onCorrectStroke:d=>{tone([660,990],.06);H.textContent=d.strokesRemaining?`Đúng rồi! Tiếp nét số ${d.strokeNum+2}`:"Xong rồi!"},onComplete:()=>{const X=new Set(store.get("yct1-tv-"+n,[]));const moi=!X.has(i);X.add(i);store.set("yct1-tv-"+n,[...X]);if(moi)themXP(2,"Tập viết");H.textContent="Bé viết đẹp quá! 真棒！";keng()}});
       o.querySelector("#tvM").onclick=()=>w.animateCharacter({onComplete:hoi});o.querySelector("#tvL").onclick=hoi;hoi()}).catch(()=>{o.querySelector("#tvH").textContent="Cần mạng để tải nét chữ — bố mẹ kiểm tra wifi nhé"})};ve()}
 
