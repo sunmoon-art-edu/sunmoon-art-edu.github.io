@@ -563,58 +563,61 @@
     "canh": "Gặp bạn ở cổng trường",
     "l": [
      [
-      "👦",
+      "av-be-trai",
       "小明",
       "你好！",
       "Nǐ hǎo!",
       "Chào bạn!"
      ],
      [
-      "👧",
+      "av-be-gai",
       "小红",
       "你好！",
       "Nǐ hǎo!",
       "Chào bạn!"
      ]
-    ]
+    ],
+    "img": "img/gau/nihao-be.jpg"
    },
    {
     "canh": "Vào lớp gặp cô giáo",
     "l": [
      [
-      "👦",
+      "av-be-trai",
       "小明",
       "老师好！",
       "Lǎoshī hǎo!",
       "Em chào cô ạ!"
      ],
      [
-      "👩‍🏫",
+      "av-co-giao",
       "老师",
       "你好！",
       "Nǐ hǎo!",
       "Chào em!"
      ]
-    ]
+    ],
+    "img": "img/gau/laoshi-be.jpg"
    },
    {
     "canh": "Tan học, chào bạn ra về",
     "l": [
      [
-      "👧",
+      "av-be-gai",
       "小红",
       "再见！",
       "Zàijiàn!",
       "Tạm biệt nhé!"
      ],
      [
-      "👦",
+      "av-be-trai",
       "小明",
       "再见！",
       "Zàijiàn!",
       "Tạm biệt!"
      ]
-    ]
+    ],
+    "img": "img/gau/zaijian-be.jpg"
    }
   ],
   "noi": {
