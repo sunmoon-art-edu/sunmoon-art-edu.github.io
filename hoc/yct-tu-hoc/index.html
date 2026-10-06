@@ -775,7 +775,8 @@ body{background:#FFFDF2}.card{background:#fff}
 .pyh2{margin:0;font-size:18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}.pyh2 i{flex-basis:100%;font-size:13px;font-weight:400;color:var(--ink-2)}
 .nhan2{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:#FDE2DE;color:#B4432F}.nhan2.lt{background:#E6F4E1;color:#3E7E3A}
 .pyg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}.pyc2{display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;background:#fff;padding:10px 6px;font:inherit;color:var(--ink);cursor:pointer;text-align:center}
-.pyc2 .big2{font:800 40px/1.1 var(--py);color:var(--sun-2)}.pyc2 img{width:40px;height:40px}.pyc2 .ex2{display:flex;gap:6px;align-items:baseline}.pyc2 .hzc{font-family:var(--hz);font-size:22px}.pyc2 .mn2{font-size:12.5px;color:#7A5A00}.pyc2 .vn2{font-size:12.5px;color:var(--ink-2)}.pyc2.playing{border-color:#E0B640;background:#FFF8DC}
+.pyc2 .big2{font:800 40px/1.1 var(--py);color:var(--sun-2)}.pyc2 img{width:40px;height:40px}.pyc2 .ex2{display:flex;gap:6px;align-items:baseline}.pyc2 .hzc{font-family:var(--hz);font-size:22px}.pyc2 .mn2{font-size:12.5px;color:#7A5A00}.pyc2 .vn2{font-size:12.5px;color:var(--ink-2)}.pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
+.pyc2.playing{border-color:#E0B640;background:#FFF8DC}
 /* 06/10 Biến điệu: thẻ ngang cả hàng, chữ Hán to, không vỡ dòng */
 .pyc2.bd{grid-column:1/-1;padding:12px}.pyc2.bd .big2{font:800 20px/1.2 var(--vi,inherit);color:var(--ink-2)}.pyc2.bd .ex2{flex-wrap:wrap;justify-content:center;gap:4px 8px;font-size:20px}.pyc2.bd .hzc{font-size:30px;white-space:nowrap;width:100%}.pyc2.bd .vn2{font-size:15px}
 .cau{display:flex;align-items:center;gap:10px;border-bottom:1px dashed var(--line);padding:10px 0}.cau.xong{opacity:.75}.pl2{flex:none;width:48px;height:48px;border-radius:50%;border:0;border-bottom:3px solid #E0B640;background:#FFD966;font-size:20px;cursor:pointer}
@@ -1133,7 +1134,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061230";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061232";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1536,9 +1537,11 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
           }  /* 06/10 chị: bấm loa nào đọc cái đó rồi dừng — không tự đọc tiếp */
 
         else{bt.classList.add("wrong");tone([180],.18,"square",.05);setTimeout(()=>bt.classList.remove("wrong"),450)}})})};
-    function ve(){coDan("py"+Math.min(buoc,4)+"-"+gi);
-      if(buoc===0){khung(`<div class="pyg2">${g.ds.map(k=>`<button class="pyc2${IT[k].bd?" bd":""}" data-k="${k}"><span class="big2">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(IT[k].lab)?tonePy(IT[k].lab):esc(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span><span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
-        box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;return}
+    // 06/10 chị: trang kiến thức mới PHẢI CÓ CÔ GIẢNG — vào nhóm là mở lớp học, cô giảng cả nhóm (aud/c0-nh*.mp4, _gen_nhom.py); giảng xong → luyện tập
+    const giangNhom=()=>{const au=play(`aud/c0-nh${gi}.mp4`);au.addEventListener("ended",()=>setTimeout(()=>{const x=document.querySelector(".vidCo .vcX");if(x)x.click()},1200));moVideo(au,`aud/c0-nh${gi}.json`)};
+    function ve(){if(buoc>0)coDan("py"+Math.min(buoc,4)+"-"+gi);
+      if(buoc===0){khung(`<button class="btn2 pyCoG" id="pyCoG">▶ Nghe cô giảng lại</button><div class="pyg2">${g.ds.map(k=>`<button class="pyc2${IT[k].bd?" bd":""}" data-k="${k}"><span class="big2">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(IT[k].lab)?tonePy(IT[k].lab):esc(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span><span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
+        box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;box.querySelector("#pyCoG").onclick=giangNhom;setTimeout(giangNhom,400);return}
       if(buoc===1)return cauChon(g.ds,``,"nghe");
       if(buoc===2){const Q=pick(g.ds,2);let da=0;khung(`${Q.map(k=>`<div class="sp2" data-k="${k}"><div class="tg2">${esc(IT[k].hz)}</div><div class="pys2">${tonePy(IT[k].py)}</div><div class="bt2"><button class="btn2 sN">🔊 Nghe</button><button class="big sM">🎤 Đọc &amp; thu</button></div><p class="res2"></p></div>`).join("")}<button class="big" id="pyT">Tiếp →</button>`);
         box.querySelectorAll(".sp2").forEach(cd=>{const k=+cd.dataset.k,res=cd.querySelector(".res2"),m=cd.querySelector(".sM");cd.querySelector(".sN").onclick=e=>play(IT[k].au,e.currentTarget);
