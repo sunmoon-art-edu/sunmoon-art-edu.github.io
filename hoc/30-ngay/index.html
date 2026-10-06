@@ -1054,7 +1054,7 @@ function speak(text,el){
   if(!canSpeak)return;
   speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(text.replace(/—/g,"，"));
-  u.lang="zh-CN";u.rate=.8;if(zhVoice)u.voice=zhVoice;
+  u.lang="zh-CN";u.rate=.65;if(zhVoice)u.voice=zhVoice;
   document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));
   if(el){el.classList.add("playing");u.onend=u.onerror=()=>el.classList.remove("playing")}
   speechSynthesis.speak(u);
@@ -1065,7 +1065,7 @@ const SPK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="c
 const PLAY='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
 const PAUSE='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>';
 const fmt=t=>{t=Math.max(0,Math.round(t));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")};
-let audio=null,speed=1;
+let audio=null,speed=.9;
 function stopTeacher(pauseOnly){if(!audio)return;audio.pause();if(!pauseOnly){audio.removeAttribute("src");audio.load();audio=null}}
 function setupTeacher(G){
   audio=new Audio(G.f);audio.preload="metadata";audio.playbackRate=speed;
@@ -1084,7 +1084,7 @@ function setupTeacher(G){
   a.onpause=a.onended=()=>{btn.innerHTML=PLAY;btn.setAttribute("aria-label","Nghe giảng bài");document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"))};
   btn.onclick=()=>{if(canSpeak)speechSynthesis.cancel();window.pauseIntro&&window.pauseIntro();a.paused?a.play().catch(()=>{}):a.pause()};
   bar.oninput=()=>{a.currentTime=+bar.value;sync()};
-  const SPEEDS=[1,1.25,1.5,0.8],lab=v=>String(v).replace(".",",")+"×";
+  const SPEEDS=[.9,1,1.25,.75],lab=v=>String(v).replace(".",",")+"×";
   sp.textContent=lab(speed);
   sp.onclick=()=>{speed=SPEEDS[(SPEEDS.indexOf(speed)+1)%SPEEDS.length];a.playbackRate=speed;sp.textContent=lab(speed)};
 }
