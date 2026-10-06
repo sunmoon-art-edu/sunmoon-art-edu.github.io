@@ -385,7 +385,8 @@
     "nǐ hǎo → ní hǎo",
     "2 thanh 3 liền nhau: chữ đầu đọc thành thanh 2",
     [
-     "Hai thanh ba đứng liền nhau thì thanh ba đầu tiên đọc thành thanh hai. Ví dụ, xin chào viết là nǐ hǎo, nhưng đọc là:",
+     "Hai thanh ba đứng liền nhau thì thanh ba đầu tiên đọc lên giọng, thành thanh hai.",
+     "Ví dụ, xin chào. Con nghe chữ đầu đọc lên giọng nhé:",
      "zh:你好"
     ]
    ],
@@ -395,7 +396,10 @@
     "bù shì → bú shì",
     "不 trước thanh 4 đọc thành bú",
     [
-     "Chữ bù đứng trước thanh bốn thì đọc thành bú. Ví dụ, không phải là:",
+     "Chữ này:",
+     "zh:不",
+     "đứng trước thanh bốn thì đọc lên giọng, thành thanh hai.",
+     "Ví dụ, không phải là:",
      "zh:不是"
     ]
    ],
@@ -405,7 +409,10 @@
     "yī gè → yí gè",
     "一 trước thanh 4 đọc thành yí",
     [
-     "Chữ yī đứng trước thanh bốn thì đọc thành yí. Ví dụ, một cái là:",
+     "Chữ này:",
+     "zh:一",
+     "đứng trước thanh bốn thì đọc lên giọng, thành thanh hai.",
+     "Ví dụ, một cái là:",
      "zh:一个"
     ]
    ],
@@ -415,7 +422,10 @@
     "yī tiān → yì tiān",
     "一 trước thanh 1, 2, 3 đọc thành yì",
     [
-     "Chữ yī đứng trước thanh một, hai, ba thì đọc thành yì. Ví dụ, một ngày là:",
+     "Vẫn chữ này:",
+     "zh:一",
+     "đứng trước thanh một, hai, ba thì đọc thành thanh bốn.",
+     "Ví dụ, một ngày là:",
      "zh:一天"
     ]
    ]
