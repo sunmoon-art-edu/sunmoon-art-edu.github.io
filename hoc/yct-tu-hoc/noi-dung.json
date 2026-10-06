@@ -935,5 +935,37 @@
     "Đây là phần tập viết. Con bấm vào từng chữ, xem cô viết mẫu từng nét, rồi tự viết theo thứ tự nét nhé."
    ]
   }
+ },
+ "buoc": {
+  "py0": [
+   "Con bấm vào từng ô, nghe cô giảng, rồi đọc to theo cô nhé."
+  ],
+  "py1": [
+   "Con bấm loa, nghe thật kỹ, rồi chọn phiên âm đúng nhé."
+  ],
+  "py2": [
+   "Con bấm nút Đọc và thu, đọc thật to, rồi nghe lại xem đã giống cô chưa nhé."
+  ],
+  "py3": [
+   "Con nhìn chữ, đọc thầm trong đầu, rồi chọn phiên âm đúng nhé."
+  ],
+  "py4": [
+   "Con dùng ngón tay tô theo nét mờ. Tô kín chữ là xong nhé."
+  ],
+  "tu0": [
+   "Con nhìn hình, nghe cô đọc, rồi đọc to theo cô nhé."
+  ],
+  "tu1": [
+   "Con nghe cô đọc, rồi chạm vào hình đúng nhé."
+  ],
+  "tu2": [
+   "Con bấm nút micro, nói thật to, rồi nghe lại xem đã giống cô chưa nhé."
+  ],
+  "tu3": [
+   "Con nhìn hình, rồi chọn chữ Hán đúng nhé."
+  ],
+  "tu4": [
+   "Con xem cô viết mẫu, rồi tô theo từng nét đang nhấp nháy nhé."
+  ]
  }
 }
