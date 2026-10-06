@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" data-theme="light"><!-- 06/10: luôn chế độ sáng — máy để dark mode làm chữ xám mất -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#22AFB1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaigbscreen.css">   <!-- 06/10 chị: chữ Trung viết tay mềm mại — đủ mọi chữ (chỉ tải mảnh có chữ dùng tới) -->
@@ -1151,7 +1151,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061309";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061310";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
