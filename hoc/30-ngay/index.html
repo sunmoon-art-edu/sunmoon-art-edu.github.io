@@ -190,6 +190,14 @@ body:not(.inles) #lesson{display:none}
 .stepnav .btn{flex:1}
 .stepnav .btn.main:disabled{opacity:.5}
 #lesson [data-off]{display:none!important}
+.kq{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--ok-soft);border:2px solid var(--ok);animation:kqin .3s ease-out}
+.kq.mid{background:#FBF0D5;border-color:#E4B342}.kq.low{background:var(--bad-soft);border-color:var(--bad)}
+.kq .d{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--surface);font:800 22px/1 var(--tx);color:var(--ok-2)}
+.kq.mid .d{color:#8A6416}.kq.low .d{color:var(--bad)}
+.kq .d small{display:block;font-size:11px;font-weight:600;color:var(--ink-2);text-align:center}
+.kq b{display:block;font-size:16px}.kq i{font-size:14px;font-weight:300;color:var(--ink-2)}
+.kq .sao{color:#E4B342;font-size:18px;letter-spacing:2px}
+@keyframes kqin{from{transform:scale(.95);opacity:0}}
 .pyblk .sp .tg{font-size:30px}
 /* lesson */
 article{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:clamp(16px,4vw,26px);display:flex;flex-direction:column;gap:26px}
@@ -1166,7 +1174,7 @@ function completeLesson(){
   const o=document.createElement("div");o.className="celeb";o.innerHTML=`<div class="box" role="dialog" aria-label="Hoàn thành bài">
     <div class="stars">${[1,2,3].map(i=>`<span class="${i<=st?"":"off"}">★</span>`).join("")}</div>
     <h2>Xong ngày ${cur}!</h2>
-    <div class="stat"><span>+${gain} XP</span><span>🔥 ${streak()} ngày liên tiếp</span>${LS.tot?`<span>Đúng ${Math.round(acc*100)}%</span>`:""}</div>
+    <div class="stat"><span>+${gain} XP</span><span>🔥 ${streak()} ngày liên tiếp</span>${LS.tot?`<span>Điểm ${String(Math.round(acc*100)/10).replace(".",",")}/10</span><span>Đúng ${LS.ok}/${LS.tot} câu</span>`:""}</div>
     ${nb.map(b=>`<div class="nb">Huy hiệu mới: ${b[1]}</div>`).join("")}
     ${st<3&&LS.tot?`<p class="tease">Làm lại bài tập đúng trên 90% để được 3 sao nhé!</p>`:""}
     ${nx?`<p class="tease">Ngày mai: <b>${esc(nx.t)}</b> — ${esc(nx.g)}</p><button class="btn main" id="cNext">Học tiếp ngày ${cur+1}</button><button class="btn" id="cClose">Để mai học tiếp</button>`:`<p class="tease"><b>Bạn đã hoàn thành cả khoá 30 ngày!</b></p><button class="btn main" id="cClose">Tuyệt vời!</button>`}</div>`;
@@ -1370,7 +1378,14 @@ function setupSteps(el){
     nav.querySelector("[data-b]").disabled=i===0;const nb=nav.querySelector("[data-n]");nb.hidden=last;upd();
     try{sessionStorage.setItem("st"+cur,i)}catch(e){}
     if(sc)el.scrollIntoView({block:"start"})};
-  const upd=()=>{const nb=nav.querySelector("[data-n]"),ok=okOf(slides[i]);nb.disabled=!ok;nb.textContent=ok?"Tiếp tục →":"Làm xong bài tập nhé"};
+  const items=x=>[...x.querySelectorAll(".pylis .li,.lis .li,.quiz .q")].filter(q=>q.querySelector(".opt"));
+  const ketQua=x=>{const it=items(x);if(!it.length||x.querySelector(":scope > .kq")||!it.every(q=>q.querySelector(".opt:disabled")))return;
+    const dung=it.filter(q=>!q.querySelector(".opt.wrong")).length,diem=Math.round(dung/it.length*100)/10,sao=diem>=9?3:diem>=7?2:1,xp=dung===it.length?20:0;
+    if(xp){GM.xp+=xp;saveGM();updChips();fanfare()}
+    const k=document.createElement("div");k.className="kq"+(diem>=8?"":diem>=5?" mid":" low");
+    k.innerHTML=`<span class="d">${String(diem).replace(".",",")}<small>/10</small></span><span><span class="sao">${"★".repeat(sao)}${"☆".repeat(3-sao)}</span><b>Đúng ${dung}/${it.length} câu</b><i>${xp?"Tuyệt vời! +"+xp+" XP thưởng":diem>=5?"Khá lắm — nghe lại câu sai nhé":"Xem lại bảng âm rồi làm lại bài sau nhé"}</i></span>`;
+    x.appendChild(k);k.scrollIntoView({block:"nearest",behavior:"smooth"})};
+  const upd=()=>{ketQua(slides[i]);const nb=nav.querySelector("[data-n]"),ok=okOf(slides[i]);nb.disabled=!ok;nb.textContent=ok?"Tiếp tục →":"Làm xong bài tập nhé"};
   el.addEventListener("click",()=>setTimeout(upd,0));
   nav.querySelector("[data-b]").onclick=()=>show(Math.max(0,i-1),1);
   nav.querySelector("[data-n]").onclick=()=>{if(okOf(slides[i]))show(Math.min(slides.length-1,i+1),1)};
