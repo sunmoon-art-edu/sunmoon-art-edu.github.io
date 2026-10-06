@@ -796,7 +796,8 @@ body{background:#FFFDF2}.card{background:#fff}
 @media (orientation:portrait) and (max-width:700px){.vcCanh{aspect-ratio:3/4}}
 .vcMay{position:absolute;background:#fff;border-radius:999px;opacity:.9;height:9%;animation:mayBay 22s linear infinite}.vcMay::before,.vcMay::after{content:"";position:absolute;background:#fff;border-radius:50%}.vcMay.m1{width:18%;top:8%;left:-20%}.vcMay.m1::before{width:45%;height:160%;left:15%;top:-60%}.vcMay.m2{width:13%;top:18%;left:-20%;animation-delay:-11s;animation-duration:30s}.vcMay.m2::before{width:50%;height:150%;left:25%;top:-55%}
 @keyframes mayBay{to{transform:translateX(160vw)}}
-.vcCo{position:absolute;left:3%;bottom:6%;width:34%;display:flex;flex-direction:column;align-items:center}.vcCo .linhvat{width:100%!important;height:auto!important;aspect-ratio:1}.vcSun{width:100%;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.15))}.vcCo.noi .vcSun{animation:none}@keyframes coNhun{to{transform:translateY(-1.5%)}}
+.vcCo{position:absolute;left:3%;bottom:6%;width:34%;display:flex;flex-direction:column;align-items:center}.vcCo .linhvat{width:100%!important;height:auto!important;aspect-ratio:1}.vcSun{width:100%;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.15))}.vcCo.noi .vcSun{animation:none}
+.vcCo.noi{background:none!important}   /* 06/10: lúc cô nói bị dính nền ô vuông của class .noi chung */@keyframes coNhun{to{transform:translateY(-1.5%)}}
 .vcTen{background:#FFD966;color:#4A3800;font-weight:800;font-size:clamp(11px,1.8vw,16px);padding:3px 12px;border-radius:999px;margin-top:-4%}
 .vcBang{position:absolute;right:4%;top:8%;width:56%;height:56%;background:#2F6B4F;border:clamp(4px,1vw,10px) solid #A0703C;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:4%;padding:3%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.08)}
 .vidCo:not(.coZh) .vcBang::after{content:"SunMoon · YCT 1";color:#E6F2EA;font:700 clamp(14px,3vw,30px) var(--tx);opacity:.75}
@@ -1137,7 +1138,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061234";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061235";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
