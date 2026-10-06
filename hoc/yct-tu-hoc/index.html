@@ -488,7 +488,7 @@ h2 .ic img.fi{width:28px;height:28px}
 @media (max-width:480px){.stage{grid-template-columns:1fr;justify-items:center;text-align:center}}
 .sunbtn{border:0;background:none;padding:0;width:100%;max-width:210px;cursor:pointer}
 .sun{width:100%;height:auto;display:block;overflow:visible}
-.sun .rays{transform-origin:100px 100px;animation:spin 30s linear infinite}
+.sun .rays{transform-origin:60px 60px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .sun .eye{transform-box:fill-box;transform-origin:center;animation:blink 4s infinite}
 @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
@@ -878,25 +878,18 @@ const PLAY='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
 const isNum=e=>/^\d+$/.test(e);
 let H={};const im=(e,alt="")=>H[e]?`<img class="fi" src="${H[e]}" alt="${esc(alt)}" loading="lazy">`:e;
 const PYM={"你好！":"nǐ hǎo","真棒！":"zhēn bàng","太阳":"tàiyáng","月亮":"yuèliang","一，二，三，走！":"yī, èr, sān, zǒu"};
-const SUNSVG=`<svg class="sun" viewBox="0 0 200 200" aria-hidden="true"><defs><radialGradient id="sg" cx="42%" cy="38%" r="70%"><stop offset="0" stop-color="#FFF4C2"/><stop offset=".65" stop-color="#FFE38A"/><stop offset="1" stop-color="#FFD166"/></radialGradient></defs>
-<g class="rays">${Array.from({length:10},(_,i)=>`<ellipse cx="100" cy="20" rx="11" ry="15" fill="#FFE7A0" transform="rotate(${i*36} 100 100)"/>`).join("")}</g>
-<g class="face"><circle cx="100" cy="100" r="66" fill="url(#sg)"/>
-<ellipse cx="70" cy="114" rx="10" ry="6" fill="#FFB8A8" opacity=".6"/><ellipse cx="130" cy="114" rx="10" ry="6" fill="#FFB8A8" opacity=".6"/>
-<g class="eye"><circle cx="82" cy="100" r="8" fill="#5B3A1E"/><circle cx="84.5" cy="97" r="3" fill="#fff"/><circle cx="80" cy="103" r="1.3" fill="#fff"/></g>
-<g class="eye"><circle cx="118" cy="100" r="8" fill="#5B3A1E"/><circle cx="120.5" cy="97" r="3" fill="#fff"/><circle cx="116" cy="103" r="1.3" fill="#fff"/></g>
-
-<ellipse id="mouth" cx="100" cy="119" rx="6" ry="2" fill="#C96B5E"/><path id="smile" d="M93 115 q7 6 14 0" stroke="#9A5B2E" stroke-width="2.6" fill="none" stroke-linecap="round"/></g></svg>`;
+const SUNSVG=`<svg class="sun" viewBox="0 0 120 120" aria-hidden="true"><g class="rays"><line x1="104.3" y1="58.9" x2="117.6" y2="58.6" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="102.6" y1="71.1" x2="108.4" y2="72.6" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="96.1" y1="86.5" x2="104.5" y2="92.7" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="85.8" y1="95.6" x2="89.3" y2="100.5" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="76.6" y1="101.7" x2="80.4" y2="111.4" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="62.5" y1="103.9" x2="62.9" y2="109.9" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="46.4" y1="103.6" x2="43.4" y2="113.0" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="35.5" y1="96.6" x2="32.2" y2="101.6" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="22.4" y1="86.3" x2="13.0" y2="92.9" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="18.4" y1="74.2" x2="12.7" y2="76.1" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="16.0" y1="57.1" x2="1.7" y2="56.1" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="17.8" y1="47.6" x2="12.0" y2="46.0" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="23.0" y1="35.8" x2="12.9" y2="29.2" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="35.7" y1="23.3" x2="32.4" y2="18.3" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="44.1" y1="17.7" x2="39.8" y2="6.1" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="59.2" y1="16.0" x2="59.1" y2="10.0" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="73.9" y1="18.1" x2="77.4" y2="7.6" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="84.4" y1="23.4" x2="87.7" y2="18.4" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/><line x1="96.9" y1="34.6" x2="106.3" y2="28.1" stroke="#F7CF4F" stroke-width="7.5" stroke-linecap="round"/><line x1="102.0" y1="46.9" x2="107.7" y2="45.1" stroke="#F0A53A" stroke-width="5.5" stroke-linecap="round"/></g><g class="face"><circle cx="60" cy="60" r="36" fill="#F7D35C"/><path d="M44 46.5h4M72 45.5h4" stroke="#2B2622" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="47" cy="55" rx="3.8" ry="4.4" fill="#2B2622"/><ellipse cx="73" cy="55" rx="3.8" ry="4.4" fill="#2B2622"/><circle cx="48.3" cy="53.4" r="1.4" fill="#fff"/><circle cx="74.3" cy="53.4" r="1.4" fill="#fff"/><path d="M43.5 53.5l-2-1.5M76.5 53.5l2-1.5" stroke="#2B2622" stroke-width="1.6" stroke-linecap="round"/><circle cx="39" cy="64" r="6.5" fill="#F4A6B0"/><circle cx="81" cy="64" r="6.5" fill="#F4A6B0"/><path d="M39 64m-1 0a1 1 0 1 1 2 0a2.2 2.2 0 1 1-4.2 0a3.6 3.6 0 1 1 7 .3M81 64m-1 0a1 1 0 1 1 2 0a2.2 2.2 0 1 1-4.2 0a3.6 3.6 0 1 1 7 .3" stroke="#E2788A" stroke-width="1.1" fill="none"/><ellipse id="mouth" cx="60" cy="70" rx="5" ry="1.5" fill="#8B2E2E"/><path id="smile" d="M50 67q10 10 20 0" stroke="#2B2622" stroke-width="2.6" fill="none" stroke-linecap="round"/></g></svg>`;   // 06/10 chị: mặt trời kiểu dễ thương mới (giống linh vật mọi app)
 function sunIntro(box){
   const a=new Audio("aud/gioi-thieu.mp4");let meta=null,an=null,raf=0;
   fetch("aud/gioi-thieu.json").then(r=>r.json()).then(j=>meta=j).catch(()=>{});
   const sun=box.querySelector(".sun"),mouth=box.querySelector("#mouth"),smile=box.querySelector("#smile"),bub=box.querySelector(".bubble .txt"),moon=box.querySelector(".moonpal"),btn=box.querySelector("#gtPlay");
   const show=c=>{bub.innerHTML=c.zh?`<span class="zh">${esc(c.text)}</span>${PYM[c.text]?`<span class="zpy">${PYM[c.text]}</span>`:""}`:esc(c.text);moon.classList.toggle("on",!!c.moon)};
   const loop=()=>{let v=0;if(an){const d=new Uint8Array(an.fftSize);an.getByteTimeDomainData(d);let m=0;for(const x of d)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/40)}else if(!a.paused)v=.3+.3*Math.sin(Date.now()/90);
-    mouth.setAttribute("ry",(2+v*7).toFixed(1));mouth.setAttribute("rx",(6+v*3).toFixed(1));smile.style.opacity=v>.15?0:1;
+    mouth.setAttribute("ry",(1.5+v*7).toFixed(1));mouth.setAttribute("rx",(5+v*3).toFixed(1));smile.style.opacity=v>.15?0:1;
     if(meta){let c=null;for(const x of meta.c)if(x.t<=a.currentTime+.05)c=x;if(c&&c!==loop.c){loop.c=c;show(c)}}
     if(!a.paused)raf=requestAnimationFrame(loop)};
   const start=()=>{try{window._hd&&window._hd.pause();cur&&cur.pause()}catch(e){}
-    if(!an){try{const C=actx=actx||new(window.AudioContext||window.webkitAudioContext)();const src=C.createMediaElementSource(a);an=C.createAnalyser();an.fftSize=512;src.connect(an);an.connect(C.destination);C.resume&&C.resume()}catch(e){an=null}}
+    if(false&&!an){try{const C=actx=actx||new(window.AudioContext||window.webkitAudioContext)();const src=C.createMediaElementSource(a);an=C.createAnalyser();an.fftSize=512;src.connect(an);an.connect(C.destination);C.resume&&C.resume()}catch(e){an=null}}
     if(a.ended||a.currentTime===0){loop.c=null;moon.classList.remove("on")}a.play().catch(()=>{})};
   a.onplay=()=>{sun.classList.add("talk");btn.textContent="⏸ Tạm dừng";cancelAnimationFrame(raf);loop()};
   a.onpause=()=>{sun.classList.remove("talk");btn.textContent="▶ Nghe tiếp";mouth.setAttribute("ry","2");smile.style.opacity=1};
@@ -1105,7 +1098,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061100";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061104";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
