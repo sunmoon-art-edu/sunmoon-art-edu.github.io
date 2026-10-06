@@ -1151,7 +1151,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061315";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061332";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1250,7 +1250,7 @@ function nhomBai(n){if(n==0&&ND[0].py){const P=ND[0].py,a=P.van.length,b=P.thanh
 const baiXong=n=>new Set(store.get("yct1-bai-"+n,[]));
 function veBai(n){const box=document.getElementById("bais");if(!box)return;const B=nhomBai(n),X=baiXong(n),w=mucBai(n),PYM=n==0&&ND[0].py,TEN=["Thanh điệu","6 nguyên âm","Phụ âm (1)","Phụ âm (2)","Ghép âm"];
   box.innerHTML=B.map((g,k)=>{const on=k===0||X.has(k-1)||X.has(k),on2=X.has(k),last=k===B.length-1;
-    return `<button class="bai${on2?" done":on?" open":" lock"}" data-k="${k}"${on?"":" disabled"}><span class="bn">${on2?"✓":on?(PYM&&!last?`<b class="pyB">${esc(w[g[0]][0])}</b>`:im(last?"🏆":(w[g[0]][3]||"").match(/^\d+$/)?"🔢":w[g[0]][3])):"🔒"}</span><span><b>${last?(PYM?"Ôn tập phiên âm":"Ôn tập cả bài"):"Lượt "+(k+1)+(PYM?" · "+TEN[k]:"")}</b><i>${last?"Làm hết các lượt trước để mở":g.map(i=>w[i][0]).join(" · ")}</i><small class="nnv">👂 Nghe · 🗣 Nói · 📖 Đọc · ✍️ Viết</small></span>${on&&!on2?`<span class="go">BẮT ĐẦU</span>`:""}</button>`}).join("");
+    return `<button class="bai${on2?" done":on?" open":" lock"}" data-k="${k}"${on?"":" disabled"}><span class="bn">${on2?"✓":on?(PYM&&!last?`<b class="pyB">${esc(w[g[0]][0])}</b>`:im(last?"🏆":(w[g[0]][3]||"").match(/^\d+$/)?"🔢":w[g[0]][3])):"🔒"}</span><span><b>${last?(PYM?"Ôn tập phiên âm":"Ôn tập cả bài"):"Lượt "+(k+1)+(PYM?" · "+TEN[k]:"")}</b><i>${last?"Làm hết các lượt trước để mở":g.map(i=>w[i][0]).join(" · ")}</i>${PYM?"":`<small class="nnv">👂 Nghe · 🗣 Nói · 📖 Đọc · ✍️ Viết</small>`}</span>${on&&!on2?`<span class="go">BẮT ĐẦU</span>`:""}</button>`}).join("");
   {const cb=capBai(n);box.insertAdjacentHTML("afterbegin",`<div class="capBar">${capHTML(cb)}<span>${cb?`Cấp ${cb}/5 — ${CAP_LO[cb]}`:"Làm hết các lượt để lên cấp 1"}</span></div>`);
    if(cb>=3||cb>=1&&!ND[n].thi)box.insertAdjacentHTML("beforeend",`<button class="bai kho open" data-kho="1"><span class="bn">${im("🔥")}</span><span><b>Luyện khó — lên cấp ${Math.min(5,cb+1)}</b><i>Không có thẻ học, hỏi hết các từ · không sai câu nào để lên cấp 5</i></span><span class="go">LUYỆN</span></button>`)}
   box.querySelectorAll(".bai:not([disabled])").forEach(b=>b.onclick=()=>{try{window._hd&&window._hd.pause()}catch(e){}b.dataset.kho?lamBai(n,0,1):lamBai(n,+b.dataset.k)})}
