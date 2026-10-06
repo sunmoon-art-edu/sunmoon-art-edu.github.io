@@ -1308,16 +1308,21 @@ const GHEP=`<div class="ghep"><p><b>Tiếng Trung ghép vần giống tiếng Vi
  <p><b>Phiên âm (Pinyin)</b> <i>— cách đọc chữ Hán, viết bằng chữ cái La-tinh</i></p>
  <p><b>23 phụ âm · 36 vần · 4 thanh</b> <i>— mỗi ngày học một ít, Ngày 10 đọc được hết</i></p></div>`;
 function pyBlock(n){const d=PYD[n];if(!d)return"";
-  const grids=d.grp.map(([name,hint,cells])=>`<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${colorPinyin(lab)}</span><span class="ex"><span>${esc(hz)}</span> ${colorPinyin(py)}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>`).join("");
+  const liHtml=(hz,ok,opts)=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
+  const grids=d.grp.map(([name,hint,cells])=>{
+    const labs=cells.map(c=>c[0]),ex=shuffle(cells).slice(0,Math.min(3,cells.length)).map(([lab,hz])=>liHtml(hz,lab,[lab,...shuffle(labs.filter(x=>x!==lab)).slice(0,Math.min(3,labs.length-1))]));
+    return `<h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${colorPinyin(lab)}</span><span class="ex"><span>${esc(hz)}</span>${py!==lab?" "+colorPinyin(py):""}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>
+    <h4 class="pyh">✎ Bài tập<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>`}).join("");
   const tips=(d.tip||[]).map(x=>{const[a,b]=x.split("|");return `<li><b>${hzWrap(a)}</b>${b?`<i>${hzWrap(b)}</i>`:""}</li>`}).join("");
   const ga=d.ga?`<h4 class="pyh">Ghép âm<i>phụ âm + vần → âm tiết · bấm để nghe</i></h4><div class="ga">${GA.filter(x=>d.ga.includes(x[0])).map(([i,r])=>`<div class="gab"><span class="ini">${i}</span><ul>${r.split(" ").map(x=>{const[v,sy,hz,py]=x.split("|");return `<li><button data-say="${hz}"><b>${v} → ${sy}</b><span>${hz}</span>${colorPinyin(py)}</button></li>`}).join("")}</ul></div>`).join("")}</div>`:"";
-  const lis=shuffle(d.lis).map(([hz,py,opts])=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===py?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`).join("");
+  const lis=shuffle(d.lis).map(([hz,py,opts])=>liHtml(hz,py,opts)).join("");
   return `<section class="pyblk"><h3>Phiên âm hôm nay <small>${esc(d.t)} · ngày ${n}/10</small></h3>
     ${d.intro?GHEP:""}
     ${d.yt?ytHtml(d.yt):""}
-    ${grids}${ga}
+    ${grids}
     ${tips?`<ul class="tips">${tips}</ul>`:""}
-    <h4 class="pyh">Nghe và chọn phiên âm</h4><div class="lis pylis">${lis}</div>
+    ${ga}
+    <h4 class="pyh">✎ Bài tập phân biệt<i>âm dễ nhầm — nghe kỹ rồi chọn</i></h4><div class="lis pylis">${lis}</div>
     ${d.rd?`<h4 class="pyh">Bài đọc<i>bấm từng câu để nghe · đọc to 3 lần</i></h4>${rdHtml(d.rd)}`:""}
     ${d.full||n===1?fullChart(!!d.full):""}
   </section>`}
