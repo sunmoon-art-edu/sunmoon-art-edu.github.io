@@ -1124,7 +1124,7 @@ const pic=e=>isNum(e)?`<span class="e num">${e}</span>`:`<span class="e">${im(e)
 /* trang chủ */
 function home(){
   document.getElementById("backBtn").hidden=true;
-  app.innerHTML=`<section class="card stage coGT" id="stage"><img class="moonpal floaty" src="${H["🌛"]||""}" alt="Ông Mặt Trăng"><div class="gtCo"><img class="gtGiao" src="img/lop/co-giao.webp" alt="Cô giáo SunMoon"><span class="song"><i></i><i></i><i></i></span><button class="sunbtn" aria-label="Nghe Cô Mặt Trời nói">${SUNSVG}</button></div>
+  app.innerHTML=`<section class="card stage coGT" id="stage"><img class="moonpal floaty" src="${H["🌛"]||""}" alt="Ông Mặt Trăng"><div class="gtCo"><img class="gtGiao" src="img/lop/co-giao.webp?v=${AV}" alt="Cô giáo SunMoon"><span class="song"><i></i><i></i><i></i></span><button class="sunbtn" aria-label="Nghe Cô Mặt Trời nói">${SUNSVG}</button></div>
     <div><div class="bubble"><span class="who">Cô Mặt Trời</span><span class="txt">Xin chào các bạn nhỏ! Bấm vào cô để nghe cô nói nhé!</span></div>
     <div class="stagebar" style="margin-top:10px"><button class="big" id="gtPlay">▶ Nghe Cô Mặt Trời</button></div></div></section>
   <section class="card batDau"><b class="bdTieu">👉 Bắt đầu ở đây</b>
@@ -1351,7 +1351,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061831";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061836";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -1738,7 +1738,7 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
   const o=document.createElement("div");o.className="vidCo";o.innerHTML=`<div class="vcKhung"><button class="vcX" aria-label="Đóng">✕</button><div class="vcCanh">
       <div class="vcBang"><div class="vcHinh"></div><div class="vcChu"></div></div>
       <div class="vcSan"></div>
-      <img class="vcGiao" src="img/lop/co-giao.webp" alt=""><img class="vcBan2" src="img/lop/cac-ban.webp" alt="">
+      <img class="vcGiao" src="img/lop/co-giao.webp?v=${AV}" alt=""><img class="vcBan2" src="img/lop/cac-ban.webp?v=${AV}" alt="">
       <div class="vcCo">${lvNoi()}<span class="vcTen">Cô Mặt Trời</span></div></div>
     <div class="vcDk"><button class="vcPP" aria-label="Phát / dừng">⏸</button><input type="range" class="vcTua" min="0" max="1" step=".1" value="0" aria-label="Tua"><span class="vcTg">0:00</span></div></div>`;
   document.body.appendChild(o);document.body.style.overflow="hidden";
