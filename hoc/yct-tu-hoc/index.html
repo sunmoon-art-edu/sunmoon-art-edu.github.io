@@ -1207,7 +1207,7 @@ img.fi[src*="img/tu/"]{border-radius:14px;object-fit:cover}
 d.innerHTML="Máy chưa mở được bài học 😥<br><br>"+(zalo?"<b>Bấm dấu ⋯ (góc trên bên phải) → chọn \"Mở bằng trình duyệt\"</b> (Safari / Chrome) rồi vào lại nhé.":"Con thử <b>tải lại trang</b>, hoặc mở bằng <b>Safari / Chrome</b> nhé.")+"<br><br><a href='https://zalo.me/0396308188' style='display:inline-block;padding:10px 18px;border-radius:999px;background:#22AFB1;color:#fff;text-decoration:none;font-weight:800'>💬 Nhắn Zalo SunMoon</a>"+(loi?"<br><small style='color:#999'>"+loi.slice(0,80)+"</small>":"");},9000);})();</script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
-const TOPICS=[[0,"Phiên âm & thanh điệu","🔤"],[1,"你好！ Xin chào","👋"],[2,"你叫什么？ Bạn tên gì?","📛"],[3,"他是谁？ Bạn ấy là ai?","👦"],[4,"我家有四口人 Nhà mình","👨‍👩‍👧"],[5,"我6岁 Mình 6 tuổi","🎂"],[6,"你的个子真高！ Bạn cao quá","🦒"],[7,"这是谁的狗？ Con chó của ai?","🐶"],[8,"我去商店 Đi cửa hàng","🏪"],[9,"今天星期几？ Hôm nay thứ mấy?","📅"],[10,"现在几点？ Mấy giờ rồi?","⏰"],[11,"你吃什么？ Bạn ăn gì?","🍜"],[12,"复习 Ôn tập & thi thử","🏆"]];   // 02/10 chị: bám 12 bài YCT Standard Course 1 · nội dung SunMoon tự soạn
+const TOPICS=[[0,"Phiên âm & thanh điệu","🔤"],[1,"你好！ Xin chào","👋"],[2,"你叫什么？ Bạn tên gì?","📛"],[3,"他是谁？ Bạn ấy là ai?","👦"],[4,"我家有四口人 Nhà mình","👨‍👩‍👧"],[5,"我六岁 Mình sáu tuổi","🎂"],[6,"你真高！ Bạn cao thật!","🦒"],[7,"这是谁的狗？ Chó của ai?","🐶"],[8,"我去商店 Mình đi cửa hàng","🏪"],[9,"今天星期几？ Hôm nay thứ mấy?","📅"],[10,"现在几点？ Bây giờ mấy giờ?","⏰"],[11,"你吃什么？ Bạn ăn gì?","🍜"],[12,"复习 Ôn tập & thi thử","🏆"]];   // 02/10 chị: bám 12 bài YCT Standard Course 1 · nội dung SunMoon tự soạn
 const SITE=/chinesekidsvn\.com$|hoctiengtrungvn\.com$|github\.io$|^localhost$|^127\./.test(location.hostname);
 // 25/09 chị: KHOÁ ở mọi nơi, trả phí mới học — chỉ mở sẵn trong bản xem thử riêng của chị trên Claude
 const KHOA=false;   // 02/10: bản làm thử cho chị duyệt — chưa khoá trả phí
@@ -1240,7 +1240,34 @@ const BUOI=[
   {ten:"Bài 4 · Bố mẹ · anh chị em",ic:"👨‍👩‍👧",bai:4,ch:[{k:"tu",n:4,g:0,ten:"Bố · mẹ",loai:"bong"},{k:"tu",n:4,g:1,ten:"Anh chị em",loai:"trai"}]},
   {ten:"Bài 4 · Nhà mình",ic:"🏠",bai:4,ch:[{k:"tu",n:4,g:2,ten:"Nhà · có · người",loai:"lego"}]},
   {ten:"Bài 4 · Hội thoại · Làm bài",ic:"🎭",bai:4,ch:[{k:"trang",n:4,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
-  {ten:"Bài 4 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:4,xong:[4],ch:[{k:"trang",n:4,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]}];
+  {ten:"Bài 4 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:4,xong:[4],ch:[{k:"trang",n:4,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 5 · Tuổi",ic:"🎂",bai:5,ch:[{k:"tu",n:5,g:0,ten:"Tuổi · mấy · bao nhiêu",loai:"lego"},{k:"tu",n:5,g:1,ten:"To · nhỏ",loai:"trai"}]},
+  {ten:"Bài 5 · Sinh nhật",ic:"🎂",bai:5,ch:[{k:"tu",n:5,g:2,ten:"Sinh nhật · vui vẻ",loai:"bong"}]},
+  {ten:"Bài 5 · Hội thoại · Làm bài",ic:"🎭",bai:5,ch:[{k:"trang",n:5,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 5 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:5,xong:[5],ch:[{k:"trang",n:5,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 6 · Cơ thể",ic:"🧍",bai:6,ch:[{k:"tu",n:6,g:0,ten:"Cao · thật · rất",loai:"bong"},{k:"tu",n:6,g:1,ten:"Mắt · tai · mũi · miệng · tay",loai:"chuot"}]},
+  {ten:"Bài 6 · Hội thoại · Làm bài",ic:"🎭",bai:6,ch:[{k:"trang",n:6,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 6 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:6,xong:[6],ch:[{k:"trang",n:6,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 7 · Con vật của ai",ic:"🐶",bai:7,ch:[{k:"tu",n:7,g:0,ten:"Đây · kia · của",loai:"lego"},{k:"tu",n:7,g:1,ten:"Chó · mèo · cá · chim",loai:"trai"}]},
+  {ten:"Bài 7 · Hội thoại · Làm bài",ic:"🎭",bai:7,ch:[{k:"trang",n:7,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 7 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:7,xong:[7],ch:[{k:"trang",n:7,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 8 · Đi đâu",ic:"🏪",bai:8,ch:[{k:"tu",n:8,g:0,ten:"Đi · mua · đồ",loai:"chuot"},{k:"tu",n:8,g:1,ten:"Cửa hàng · trường · bệnh viện · nhà",loai:"bong"}]},
+  {ten:"Bài 8 · Hội thoại · Làm bài",ic:"🎭",bai:8,ch:[{k:"trang",n:8,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 8 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:8,xong:[8],ch:[{k:"trang",n:8,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 9 · Thứ và ngày",ic:"📅",bai:9,ch:[{k:"tu",n:9,g:0,ten:"Hôm qua · hôm nay · ngày mai",loai:"trai"},{k:"tu",n:9,g:1,ten:"Thứ · tháng · ngày",loai:"lego"}]},
+  {ten:"Bài 9 · Hội thoại · Làm bài",ic:"🎭",bai:9,ch:[{k:"trang",n:9,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 9 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:9,xong:[9],ch:[{k:"trang",n:9,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 10 · Xem giờ",ic:"⏰",bai:10,ch:[{k:"tu",n:10,g:0,ten:"Bây giờ · giờ · phút",loai:"chuot"},{k:"tu",n:10,g:1,ten:"Sáng · chiều · thức dậy",loai:"bong"}]},
+  {ten:"Bài 10 · Hội thoại · Làm bài",ic:"🎭",bai:10,ch:[{k:"trang",n:10,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 10 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:10,xong:[10],ch:[{k:"trang",n:10,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 11 · Ăn uống",ic:"🍜",bai:11,ch:[{k:"tu",n:11,g:0,ten:"Ăn · uống · thích",loai:"trai"},{k:"tu",n:11,g:1,ten:"Cơm · mì · táo",loai:"lego"}]},
+  {ten:"Bài 11 · Đồ uống",ic:"🥛",bai:11,ch:[{k:"tu",n:11,g:2,ten:"Nước · sữa",loai:"chuot"}]},
+  {ten:"Bài 11 · Hội thoại · Làm bài",ic:"🎭",bai:11,ch:[{k:"trang",n:11,p:[2,3],ten:"Hội thoại · Bé làm bài"}]},
+  {ten:"Bài 11 · Chơi · Viết · Kiểm tra",ic:"🏆",bai:11,xong:[11],ch:[{k:"trang",n:11,p:[4,5,6,7],ten:"Chơi · Tập viết · Kiểm tra"}]},
+  {ten:"Bài 12 · Ôn Bài 1–4",ic:"🏁",bai:12,ch:[{k:"on",ten:"Ôn Bài 1–4",bai:[1,2,3,4]}]},
+  {ten:"Bài 12 · Ôn Bài 5–8",ic:"🏁",bai:12,ch:[{k:"on",ten:"Ôn Bài 5–8",bai:[5,6,7,8]}]},
+  {ten:"Bài 12 · Ôn Bài 9–11",ic:"🏁",bai:12,ch:[{k:"on",ten:"Ôn Bài 9–11",bai:[9,10,11]}]},
+  {ten:"Bài 12 · Thi thử YCT 1",ic:"🏆",bai:12,xong:[12],ch:[{k:"trang",n:12,p:[5],ten:"Thi thử"}]}];
 const buoiXong=()=>new Set(store.get("yct1-buoi",[]));
 const buoiHT=()=>{const X=buoiXong(),b=BUOI.findIndex((_,i)=>!X.has(i));return b<0?BUOI.length-1:b};
 function khoaBuoi(b){const X=buoiXong();if(X.has(b))return "";if(b>0&&!X.has(b-1))return `Học xong Buổi ${b} để mở`;   /* 06/10 tối chị: học lại buổi cũ thoải mái; buổi MỚI tối đa 3 buổi/ngày */const L=MO3().filter(x=>typeof x==="string");   /* chỉ ghi buổi MỚI mở trong ngày (học lại không ghi) */if(!L.includes("b"+b)&&L.length>=3)return "Hôm nay con học 3 buổi mới rồi — mai học tiếp nhé! Buổi cũ vẫn học lại được";return ""}
@@ -1282,10 +1309,13 @@ function moBuoi(b){try{window._hd&&window._hd.pause();window._gt&&window._gt.pau
   const chay=()=>{map();box.innerHTML="";const x=B.ch[c];
     if(x.k==="py")return luyenPy(0,{box,nh:[x.ten],gon:1,xong:xongCh});
     if(x.k==="tu")return luyenTu(x.n,{box,nhom:[x.g],gon:1,loai:x.loai,xong:xongCh});
-    if(x.k==="on")return onLai(box,xongCh)};
+    if(x.k==="on")return onLai(box,xongCh,x.bai)};
   chay()}
 /* Ôn lại cuối phần phiên âm: chạy đua phiên âm → đập chuột từ mới */
-function onLai(box,xong){const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]),da={},P=mucBai(0).filter(x=>x[4]&&!da[x[1]]&&(da[x[1]]=1)),W=(ND[1]&&ND[1].w)||[];
+function onLai(box,xong,BAI){if(BAI&&BAI.length){const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]),W=[];   /* Bài 12 ôn tập: từ của nhiều bài */
+    BAI.forEach(n=>((ND[n]&&ND[n].w)||[]).forEach((w,k)=>W.push({e:w[3],hz:w[0],py:w[1],au:`aud/c${n}-w${k}.mp3`})));
+    box.innerHTML=`<div class="onLai"><div class="troCho">${im("🏁")}<b>Ôn lại Bài ${BAI[0]}–${BAI[BAI.length-1]}</b></div><div class="onB"><span>${im("🚗")}<i>Đua xe từ mới</i></span><span>${im("🍉")}<i>Chém trái cây</i></span></div><button class="big" id="onGo">▶ Chơi nào!</button></div>`;
+    box.querySelector("#onGo").onclick=()=>chayDua(BAI[0],sh(W).slice(0,10).map(x=>[x.hz,x.py,"",x.e,x.au]),()=>troChoiNhom(sh(W).slice(0,6),()=>xong(""),"trai"),{xe:1});return}const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]),da={},P=mucBai(0).filter(x=>x[4]&&!da[x[1]]&&(da[x[1]]=1)),W=(ND[1]&&ND[1].w)||[];
   box.innerHTML=`<div class="onLai"><div class="troCho">${im("🏁")}<b>Ôn lại</b></div><div class="onB"><span>${im("🐼")}<i>Chạy đua phiên âm</i></span>${W.length?`<span>${im("🐭")}<i>Đập chuột từ mới</i></span>`:""}</div><button class="big" id="onGo">▶ Chơi nào!</button></div>`;
   box.querySelector("#onGo").onclick=()=>chayDua(0,sh(P).slice(0,10).map(x=>[x[1],x[1],"","",x[4]]),()=>W.length?troChoiNhom(sh([...W.keys()]).slice(0,6).map(k=>({e:W[k][3],hz:W[k][0],py:W[k][1],au:`aud/c1-w${k}.mp3`})),()=>xong(""),"chuot"):xong(""))}
 /* 06/10 chị: "sau mỗi buổi được mở avatar, rồi cô mời chào buổi sau sẽ có game gì" */
@@ -1345,7 +1375,7 @@ function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)re
 const SPK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
 const PLAY='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>',PAUSE='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>';
 const isNum=e=>/^\d+$/.test(e);
-let H={};const im=(e,alt="")=>H[e]?`<img class="fi" src="${H[e]}" alt="${esc(alt)}" loading="lazy">`:e;
+let H={};const im=(e,alt="")=>H[e]?`<img class="fi" src="${H[e]}" alt="${esc(alt)}" loading="lazy">`:(/^(w|av|gau)-/.test(e||"")?"":e);   /* hình chưa vẽ xong thì để trống, không hiện chữ mã */
 const PYM={"你好！":"nǐ hǎo","真棒！":"zhēn bàng","太阳":"tàiyáng","月亮":"yuèliang","一，二，三，走！":"yī, èr, sān, zǒu"};
 const SUNSVG=`<svg class="sun" viewBox="0 0 120 120" aria-hidden="true"><defs><radialGradient id="lvS2" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#FBE48A"/><stop offset="1" stop-color="#F1CD55"/></radialGradient></defs><g class="rays"><path d="M60.0 3.0 L73.2 14.9 L90.8 12.0 L95.5 29.2 L111.8 36.3 L106.5 53.3 L116.4 68.1 L102.8 79.5 L103.1 97.3 L85.4 99.5 L76.1 114.7 L60.0 107.0 L43.9 114.7 L34.6 99.5 L16.9 97.3 L17.2 79.5 L3.6 68.1 L13.5 53.3 L8.2 36.3 L24.5 29.2 L29.2 12.0 L46.8 14.9Z" fill="#F9E9A8" stroke="#F9E9A8" stroke-width="7" stroke-linejoin="round"/></g><g class="face"><circle cx="60" cy="60" r="41" fill="url(#lvS2)"/><path d="M30 84A41 41 0 0 0 96 76A44 44 0 0 1 30 84z" fill="#E9C24A" opacity=".45"/><path d="M70 26q16 4 22 18q-12-9-24-11z" fill="#fff" opacity=".55"/><ellipse cx="41" cy="70" rx="7.5" ry="6" fill="#EDA15A" opacity=".85"/><ellipse cx="79" cy="70" rx="7.5" ry="6" fill="#EDA15A" opacity=".85"/><circle cx="49" cy="61" r="3.6" fill="#3A2622"/><circle cx="71" cy="61" r="3.6" fill="#3A2622"/><g transform="matrix(.5 0 0 .5 30 32.5)"><ellipse id="mouth" cx="60" cy="70" rx="5" ry="0" fill="#8B2E2E"/><path id="smile" d="M50 67q10 10 20 0" stroke="#3A2622" stroke-width="4.8" fill="none" stroke-linecap="round"/></g></g></svg>`;   // 06/10 chị: mặt trời kiểu dễ thương mới (giống linh vật mọi app)
 function sunIntro(box){
@@ -1686,7 +1716,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610062112";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610062141";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -1789,7 +1819,7 @@ function nhomBai(n){if(n==0&&ND[0].py){const P=ND[0].py,a=P.van.length,b=P.thanh
     return [r(a+b+c,a+b+c+4),r(0,a),r(a,a+h),r(a+h,a+b),r(a+b,a+b+c),[...r(0,a+b+c+4)].map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).slice(0,8).map(x=>x[1])]}
   const w=ND[n].w,k=w.length,G=k<=4?[k]:k<=7?[Math.ceil(k/2),Math.floor(k/2)]:[Math.ceil(k/3),Math.ceil(k/3),k-2*Math.ceil(k/3)],b=[];let i=0;G.forEach(g=>{b.push([...Array(g).keys()].map(x=>x+i));i+=g});b.push([...w.keys()]);return b}
 const baiXong=n=>new Set(store.get("yct1-bai-"+n,[]));
-function veBai(n){const box=document.getElementById("bais");if(!box)return;const B=nhomBai(n),X=baiXong(n),w=mucBai(n),PYM=n==0&&ND[0].py,TEN=["Thanh điệu","6 nguyên âm","Phụ âm (1)","Phụ âm (2)","Ghép âm"];
+function veBai(n){const box=document.getElementById("bais");if(!box)return;if(!(mucBai(n)||[]).length){box.innerHTML="";return}   /* bài ôn tập không có từ mới */const B=nhomBai(n),X=baiXong(n),w=mucBai(n),PYM=n==0&&ND[0].py,TEN=["Thanh điệu","6 nguyên âm","Phụ âm (1)","Phụ âm (2)","Ghép âm"];
   box.innerHTML=B.map((g,k)=>{const on=k===0||X.has(k-1)||X.has(k),on2=X.has(k),last=k===B.length-1;
     return `<button class="bai${on2?" done":on?" open":" lock"}" data-k="${k}"${on?"":" disabled"}><span class="bn">${on2?"✓":on?(PYM&&!last?`<b class="pyB">${esc(w[g[0]][0])}</b>`:im(last?"🏆":(w[g[0]][3]||"").match(/^\d+$/)?"🔢":w[g[0]][3])):"🔒"}</span><span><b>${last?(PYM?"Ôn tập phiên âm":"Ôn tập cả bài"):"Lượt "+(k+1)+(PYM?" · "+TEN[k]:"")}</b><i>${last?"Làm hết các lượt trước để mở":g.map(i=>w[i][0]).join(" · ")}</i>${PYM?"":`<small class="nnv">👂 Nghe · 🗣 Nói · 📖 Đọc · ✍️ Viết</small>`}</span>${on&&!on2?`<span class="go">BẮT ĐẦU</span>`:""}</button>`}).join("")+`<button class="bai open cdVao" id="cdVao"><span class="bn">${im("🐼")}</span><span><b>🏁 Chạy đua cùng Gấu trúc</b><i>Trả lời đúng để chạy lên — về đích trước nhé!</i></span><span class="go">CHƠI</span></button>`;
   {const cb=capBai(n);box.insertAdjacentHTML("afterbegin",`<div class="capBar">${capHTML(cb)}<span>${cb?`Cấp ${cb}/5 — ${CAP_LO[cb]}`:"Làm hết các lượt để lên cấp 1"}</span></div>`);
@@ -2009,7 +2039,7 @@ function troChoiNhom(ds,xong,LOAI,OPT){OPT=OPT||{};const sh=a=>a.map(x=>[Math.ra
     o.innerHTML=`<div class="cdKet">${im("🏆")}<b>${loai==="bong"?"Nổ hết bóng rồi! 🎈":loai==="chuot"?"Đập trúng hết rồi! 🐭":loai==="trai"?"Chém hết trái cây rồi! 🍉":loai==="lego"?"Xây xong tháp lego! 🧱":"BINGO! 🎉"}</b>${loai==="lego"?`<div class="lgThap lgKet">${o._thap.map(c=>`<i class="lgV" style="--m:${c}"></i>`).join("")}</div>`:""}${thongKe(dung*2,(Date.now()-t0)/1000,Math.round(100*dung/thu.length))}<div class="cdNut"><button class="big" id="bbXong">Học tiếp →</button></div></div>`;
     o.querySelector("#bbXong").onclick=()=>{dong();xong()}}
   ve()}
-function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=ND[n];if(!box||!c||!c.w||n==0)return;const W=c.w,key="yct1-tu-"+n;let DA=new Set(store.get(key,[]));
+function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=ND[n];if(!box||!c||!c.w||!c.w.length||n==0)return;const W=c.w,key="yct1-tu-"+n;let DA=new Set(store.get(key,[]));
   // 06/10 chị: HỌC CẢ NHÓM TỪ trước (vd 你好 · 再见 · 老师) → LUYỆN NGAY cả nhóm: Nghe → Nói (thu âm so với cô) → Đọc → Viết tô nét. Mỗi câu 1 trang, làm đúng tự chuyển, không bỏ qua.
   const NH=[];if(c.nhom)c.nhom.forEach(ds=>NH.push({so:ds.every(k=>isNum(W[k][3])),ds:ds.slice()}));else{let cu=null;W.forEach((w,k)=>{const so=isNum(w[3]);if(!cu||cu.so!==so||cu.ds.length>=5){cu={so,ds:[]};NH.push(cu)}cu.ds.push(k)})}   /* bài mới: nhóm từ theo nghĩa (c.nhom) */
   NH.forEach(g=>g.ten=g.so?`Số ${W[g.ds[0]][3]}–${W[g.ds[g.ds.length-1]][3]}`:g.ds.map(k=>W[k][0]).join(" · "));if(O&&O.nhom){const giu=NH.filter((_,i)=>O.nhom.includes(i));NH.length=0;NH.push(...giu)}
