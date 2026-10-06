@@ -932,12 +932,25 @@ section.dangLam>h2{display:none!important}
 .tvK{position:relative;border:2px solid #E7A39B;border-radius:8px;background:#fff}.tvK .tvL,.tvK #tvW{position:absolute;inset:0;width:100%;height:100%}
 .dangTai{text-align:center;padding:60px 20px;font:600 18px/1.5 system-ui,sans-serif;color:#5A4300}
 /* 06/10 chị: trang đầu có chỉ dẫn + màu mới */
-.batDau{border-color:var(--m3)!important;box-shadow:0 4px 0 #BFE8CF;gap:10px}.bdTieu{font:900 22px/1.2 var(--vi,inherit)}.bdBuoc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}.bdBuoc li{display:flex;align-items:center;gap:10px;font-size:17px}.bdBuoc span{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center}.bdBuoc li:nth-child(1) span{background:var(--m1)}.bdBuoc li:nth-child(2) span{background:var(--m2)}.bdBuoc li:nth-child(3) span{background:var(--m4)}.bdGo{font-size:20px;padding:16px}
+.batDau{border-color:var(--m3)!important;box-shadow:0 4px 0 #BFE8CF;gap:10px}.bdTieu{font:900 22px/1.2 var(--vi,inherit)}.bdBuoc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}.bdBuoc li{display:flex;align-items:center;gap:10px;font-size:17px}.bdBuoc em{font-style:normal;display:block}.batDau{background:#fff!important;border:3px solid var(--m3)!important;border-radius:22px!important;padding:16px!important;display:flex;flex-direction:column}.bdBuoc span{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center}.bdBuoc li:nth-child(1) span{background:var(--m1)}.bdBuoc li:nth-child(2) span{background:var(--m2)}.bdBuoc li:nth-child(3) span{background:var(--m4)}.bdGo{font-size:20px;padding:16px}
 .hero{background:#fff!important;border-color:var(--m2)!important}.stage{background:#fff!important;border:3px solid #FFE58A!important}.loinhan{border-color:var(--m4)!important;background:#FFF8E8!important}
 .htNut{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.htNghe2{display:block;margin-top:6px}
 .hhS .hhI{display:none!important}.hhIc{display:flex;gap:6px;justify-content:center;min-height:0}.hhIc img{width:40px;height:40px}   /* 06/10 chị: chữ chèn hình → hình đưa xuống dưới chữ */
 .hgO{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:2px dashed #E4F0F7}.hgO span{font-weight:800}.hgO input{font:700 18px var(--vi,inherit);padding:8px 10px;border:2px solid var(--line);border-radius:12px}
 .tkZ{display:inline-block;text-decoration:none;color:#0B6E70;font-weight:800}
+/* 06/10 chị (ảnh iPad): ô "Ghép tiếng với âm" chữ đè hình → ô cao tự động, chữ vừa ô */
+.lsGh .lsO{height:auto!important;min-height:84px;padding:8px 6px!important;overflow:hidden;display:flex;align-items:center;justify-content:center}.lsGh .pyO{flex-direction:row;gap:8px}.lsGh .pyO b{font-size:36px!important}.lsGh .pyO img{width:38px!important;height:38px!important}.lsGh img.fi{max-height:64px}
+/* 06/10 chị (iPad ngang): màn cô giảng full màn — bảng trải đều 2 bên, Cô Mặt Trời giữa dưới */
+@media (orientation:landscape){.vidCo .vcBang{left:5%!important;right:5%!important;width:auto!important;top:5%!important;height:62%!important}.vidCo .vcCo{left:0!important;right:0!important;margin:0 auto!important;bottom:4%!important}.vidCo .vcCo .linhvat{width:min(20vw,26vh)!important}}
+/* 06/10 trò Bóng bay từ vựng */
+.bbTroi{position:relative;height:min(58vh,520px);border-radius:22px;background:linear-gradient(#BFE6FA,#EAF7FD);overflow:hidden;border:3px solid #D6ECF8}
+.bbB{position:absolute;left:var(--x);bottom:-40%;width:22%;min-width:84px;border:0;background:none;padding:0;animation:bbLen 7s linear var(--d) infinite}
+@keyframes bbLen{0%{bottom:-40%}100%{bottom:110%}}
+.bbQ{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;aspect-ratio:.85;border-radius:50% 50% 48% 48%;background:radial-gradient(circle at 32% 28%,#fff8 0 12%,transparent 13%),var(--m);box-shadow:inset -8px -10px 0 #0002;color:#fff;padding:8px}
+.bbQ img{width:44px;height:44px}.bbZ{font:400 clamp(22px,5vw,32px)/1 var(--hz);color:#fff;text-shadow:0 2px 0 #0003}.bbSo{font:900 34px/1 var(--vi,inherit);color:#fff}
+.bbB i{display:block;width:2px;height:40px;margin:0 auto;background:#8899aa}
+.bbB.no{animation:none!important;transform:scale(1.6);opacity:0;transition:.35s}.bbB.sai .bbQ{animation:lac .4s}
+.bbG .bbSo{color:#E0752C}
 </style>
 
 <div class="top"><div class="in">
@@ -1010,7 +1023,7 @@ function home(){
     <div><div class="bubble"><span class="who">Cô Mặt Trời</span><span class="txt">Xin chào các bạn nhỏ! Bấm vào cô để nghe cô nói nhé!</span></div>
     <div class="stagebar" style="margin-top:10px"><button class="big" id="gtPlay">▶ Nghe Cô Mặt Trời</button></div></div></section>
   <section class="card batDau"><b class="bdTieu">👉 Bắt đầu ở đây</b>
-    <ol class="bdBuoc"><li><span>1</span>Bấm <b>Nghe Cô Mặt Trời</b> ở trên</li><li><span>2</span>Bấm nút xanh <b>Bắt đầu học</b> bên dưới</li><li><span>3</span>Mỗi ngày học 1 phần, khoảng <b>20 phút</b></li></ol>
+    <ol class="bdBuoc"><li><span>1</span><em>Bấm <b>Nghe Cô Mặt Trời</b> ở trên</em></li><li><span>2</span><em>Bấm nút xanh <b>Bắt đầu học</b> bên dưới</em></li><li><span>3</span><em>Mỗi ngày học 1 bài, khoảng <b>20 phút</b></em></li></ol>
     <button class="big bdGo" id="bdGo">▶ Bắt đầu học — Bài Mở đầu</button><div class="hgO"><span>⏰ Giờ học mỗi ngày</span><input type="time" id="hgGio" value="${store.get("yct1-hengio","19:30")}"><button class="btn2" id="hgBtn">Thêm vào lịch điện thoại</button></div>${U&&U.tk?"":`<button class="btn2" id="bdDN">👤 Đã có tài khoản? Đăng nhập</button>`}</section>
   <section class="card hero">${[["☁️",64,4,48],["🎈",84,6,46]].map(([e,x,y,z])=>H[e]?`<img class="deco floaty" src="${H[e]}" alt="" style="left:${x}%;top:${y}%;width:${z}px;animation-delay:${x/30}s">`:"").join("")}<span class="emo">${im("🎒")}</span><h1>Tự học YCT 1 — 12 bài, mỗi ngày 20 phút</h1>
     <p class="sub">Cho bé 7–12 tuổi tự học · bám sát giáo trình YCT Standard Course 1 · 80 từ YCT1</p>
@@ -1231,7 +1244,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061641";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061659";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1406,8 +1419,12 @@ function lamBai(n,k,kho){const t0=Date.now();
       o.querySelectorAll("[data-b]").forEach(b=>b.onclick=()=>{if(!a||b.disabled)return;if(b.dataset.b===a.dataset.a){[a,b].forEach(x=>{x.classList.remove("on");x.classList.add("right");x.disabled=true});tone([660,990],.08);a=null;if(++xong===G.length)dung("Ghép đúng hết rồi! 真棒！")}else saiRoi(b,{})});return}
   }
   function buoc2(s,i){
-    if(s.t==="noiHinh"){khung(PYM?"Bé đọc to âm này nhé!":"Hình này tiếng Trung là gì? Bé nói to nhé!",`<div class="lsPic">${hinh(i,1)}</div><button class="lsS lsDap" id="lsD"><span>🔊</span><b>Nghe đáp án</b></button>`,`<div class="lsHai"><button class="btn2" id="lsL">Chưa đúng, nói lại</button><button class="big" id="lsN">Bé nói đúng 👍</button></div>`);
+    if(s.t==="noiHinh"){khung(PYM?"Bé đọc to âm này nhé!":"Hình này tiếng Trung là gì? Bé nói to nhé!",`<div class="lsPic">${hinh(i,1)}</div><button class="lsMic" id="lsM2">🎤 <span>Bấm rồi nói — máy thu âm</span></button><p class="lsHint" id="lsMh2">Nói xong máy phát lại giọng con, rồi phát giọng cô để so</p><button class="lsS lsDap" id="lsD"><span>🔊</span><b>Nghe đáp án</b></button>`,`<div class="lsHai"><button class="btn2" id="lsL">Chưa đúng, nói lại</button><button class="big" id="lsN">Bé nói đúng 👍</button></div>`);
       const d=o.querySelector("#lsD");d.onclick=()=>{play(nho(i),d);d.querySelector("b").textContent=W[i][0]};
+      /* 06/10 chị: bé nói PHẢI thu âm để so với giọng gốc */
+      const m2=o.querySelector("#lsM2"),h2=o.querySelector("#lsMh2");m2.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true}),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
+        r.onstop=()=>{st.getTracks().forEach(t=>t.stop());const a=new Audio(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;h2.textContent="Đây là giọng con…";a.onended=()=>setTimeout(()=>{h2.textContent="Giờ nghe cô — giống chưa nào?";d.querySelector("b").textContent=W[i][0];play(nho(i),d)},400);a.play().catch(()=>{});m2.classList.remove("rec");m2.innerHTML="🎤 <span>Thu lại</span>"};
+        thuDem(r,m2,4)}catch(e){h2.innerHTML=e&&e.name==="NotAllowedError"?"Máy chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy chưa thu âm được — con nói to rồi bấm Nghe đáp án nhé"}};
       o.querySelector("#lsN").onclick=()=>{tone([880,1320]);p++;buoc()};o.querySelector("#lsL").onclick=()=>{if(!s.lai){s.lai=1;S.push({...s,lai:1});tong++}sai++;p++;buoc()};return}
     if(s.t==="chu"){const op=ba(i);khung("Chữ nào là hình này?",`<div class="lsPic">${hinh(i,1)}</div><div class="lsChu">${op.map(j=>`<button class="lsO lsZ" data-j="${j}">${esc(W[j][0])}</button>`).join("")}</div>`);
       setTimeout(()=>play(nho(i)),250);o.querySelectorAll(".lsZ").forEach(b=>b.onclick=()=>{if(o.querySelector(".lsFoot.ok"))return;if(+b.dataset.j===i){b.classList.add("right");play(nho(i));dung()}else saiRoi(b,s)});return}
@@ -1500,6 +1517,33 @@ function chuHinh(n){if(!n)return;const c=ND[n],tm=[...app.querySelectorAll(":sco
         const one=comp.length===1,z=one?300:Math.max(220,Math.min(420,Math.min(bb.width,bb.height)*.8)),cx=one?820:bb.x+bb.width/2,cy=one?170:900-(bb.y+bb.height/2);
         const im2=document.createElementNS("http://www.w3.org/2000/svg","image");im2.setAttribute("href",H[bp[3]]);im2.setAttribute("x",cx-z/2);im2.setAttribute("y",cy-z/2-(one?0:40));im2.setAttribute("width",z);im2.setAttribute("height",z);im2.setAttribute("class","hhI");svg.appendChild(im2)})})}).catch(()=>{})})).catch(()=>{})}
 /* ---------- 06/10 chị: DƯỚI TỪ MỚI LÀ LUYỆN LUÔN — từng từ một: 👂 Nghe → 🗣 Nói (thu âm, nghe lại so với cô) → 📖 Đọc → ✍️ Viết tô nét ---------- */
+
+/* 06/10 chị: "Bài 1 học chay tụi nhỏ không thích" → học xong mỗi nhóm từ là CHƠI NGAY 1 trò (Bóng bay từ vựng / Bingo), xen kẽ */
+function troChoiNhom(ds,xong){const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]),MAU=["#F06A8A","#3FA7D6","#3DBE7A","#F2A93B","#9B7BE0"];
+  const o=document.createElement("div");o.className="cd bb";document.body.appendChild(o);document.body.style.overflow="hidden";
+  const hinhB=x=>isNum(x.e)?`<b class="bbSo">${x.e}</b>`:(x.e&&H[x.e]?im(x.e):"");
+  const thu=sh([...ds,...sh(ds)]).slice(0,Math.min(8,ds.length*2));let q=0,dung=0,lan=0;const t0=Date.now();
+  const dong=()=>{o.remove();document.body.style.overflow=""};
+  const loai=Math.random()<.5?"bong":"bingo";
+  function ve(){const x=thu[q];lan=0;
+    if(loai==="bong"){const op=sh([x,...sh(ds.filter(y=>y!==x)).slice(0,Math.min(3,ds.length-1))]);
+      o.innerHTML=`<div class="cdTop"><button class="cdX">✕</button><div class="cdBar"><span>🎈 Bóng bay ${q+1}/${thu.length}</span><i><b style="width:${100*q/thu.length}%"></b></i></div><span class="cdSao">${im("⭐")}<b>${dung*2}</b></span></div>
+        <div class="cdHoi"><button class="cdLoa" id="bbL">🔊</button><span class="cdDe">Nghe cô đọc — chạm quả bóng đúng!</span></div>
+        <div class="bbTroi">${op.map((y,k)=>`<button class="bbB" data-i="${ds.indexOf(y)}" style="--m:${MAU[k%5]};--x:${8+k*23}%;--d:${(k%2)*.6}s"><span class="bbQ">${hinhB(y)}<span class="bbZ">${esc(y.hz)}</span></span><i></i></button>`).join("")}</div>`;
+    }else{
+      o.innerHTML=`<div class="cdTop"><button class="cdX">✕</button><div class="cdBar"><span>🎯 Bingo ${q+1}/${thu.length}</span><i><b style="width:${100*q/thu.length}%"></b></i></div><span class="cdSao">${im("⭐")}<b>${dung*2}</b></span></div>
+        <div class="cdHoi"><button class="cdLoa" id="bbL">🔊</button><span class="cdDe">Nghe cô đọc — chạm ô đúng!</span></div>
+        <div class="cdOp">${sh(ds).slice(0,Math.max(4,Math.min(6,ds.length))).concat(ds.length<4?[]:[]).map((y,k)=>`<button class="cdO bbG" data-i="${ds.indexOf(y)}" style="--m:${MAU[k%5]}">${hinhB(y)}<span class="cdT"><span class="cdZ">${esc(y.hz)}</span>${tonePy(y.py)}</span></button>`).join("")}</div>`;
+      if(![...o.querySelectorAll("[data-i]")].some(b=>+b.dataset.i===ds.indexOf(x))){const b=o.querySelector("[data-i]");b.dataset.i=ds.indexOf(x);b.innerHTML=`${hinhB(x)}<span class="cdT"><span class="cdZ">${esc(x.hz)}</span>${tonePy(x.py)}</span>`}}
+    o.querySelector(".cdX").onclick=()=>{dong();xong()};
+    const L=o.querySelector("#bbL");L.onclick=()=>play(x.au,L);setTimeout(()=>L.click(),300);
+    o.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{if(o.dataset.k)return;lan++;
+      if(+b.dataset.i===ds.indexOf(x)){o.dataset.k=1;b.classList.add("no");if(lan===1)dung++;tone([880,1320]);setTimeout(()=>{delete o.dataset.k;if(++q<thu.length)ve();else ket()},900)}
+      else{b.classList.add("sai");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("sai"),450)}})}
+  function ket(){keng();confetti();themXP(dung*2,loai==="bong"?"Bóng bay":"Bingo");
+    o.innerHTML=`<div class="cdKet">${im("🏆")}<b>${loai==="bong"?"Nổ hết bóng rồi! 🎈":"BINGO! 🎉"}</b>${thongKe(dung*2,(Date.now()-t0)/1000,Math.round(100*dung/thu.length))}<div class="cdNut"><button class="big" id="bbXong">Học tiếp →</button></div></div>`;
+    o.querySelector("#bbXong").onclick=()=>{dong();xong()}}
+  ve()}
 function luyenTu(n){const box=document.getElementById("luyenTu"),c=ND[n];if(!box||!c||!c.w||n==0)return;const W=c.w,key="yct1-tu-"+n;let DA=new Set(store.get(key,[]));
   // 06/10 chị: HỌC CẢ NHÓM TỪ trước (vd 你好 · 再见 · 老师) → LUYỆN NGAY cả nhóm: Nghe → Nói (thu âm so với cô) → Đọc → Viết tô nét. Mỗi câu 1 trang, làm đúng tự chuyển, không bỏ qua.
   const NH=[];{let cu=null;W.forEach((w,k)=>{const so=isNum(w[3]);if(!cu||cu.so!==so||cu.ds.length>=5){cu={so,ds:[]};NH.push(cu)}cu.ds.push(k)})}
@@ -1510,7 +1554,7 @@ function luyenTu(n){const box=document.getElementById("luyenTu"),c=ND[n];if(!box
   const PHA=["Học từ","Nghe","Nói","Đọc","Viết"];
   let gi=NH.findIndex(g=>g.ds.some(k=>!DA.has(k)));if(gi<0)gi=0;
   function lam(){const t0=Date.now();let saiN=0;const g=NH[gi],Q=[...g.ds.map(k=>[0,k]),...sh(g.ds).map(k=>[1,k]),...g.ds.map(k=>[2,k]),...sh(g.ds).map(k=>[3,k]),...g.ds.filter(HAN).map(k=>[4,k])];let q=0;
-    const xongNhom=()=>{g.ds.forEach(k=>DA.add(k));store.set(key,[...DA]);themXP(5*g.ds.length,"Luyện từ");
+    const xongNhom=()=>{if(!g._choi){g._choi=1;return troChoiNhom(g.ds.map(k=>({e:W[k][3],hz:W[k][0],py:W[k][1],au:nho(k)})),xongNhom)}g.ds.forEach(k=>DA.add(k));store.set(key,[...DA]);themXP(5*g.ds.length,"Luyện từ");
       // 06/10 chị: ôn xong mỗi nhóm từ → HÁT BÀI LITTLE FOX liên quan (mỗi bài hát chỉ hiện 1 lần)
       const SG=c.song||[],daHat=new Set(store.get("yct1-hat-"+n,[]));const bh=SG.find(x=>!daHat.has(x[0])&&(g.so?/Number|数字/.test(x[1]):g.ds.some(k=>x[1].includes(W[k][0]))))||SG.find(x=>!daHat.has(x[0])&&!g.so&&!/Number|数字/.test(x[1]));
       if(bh){daHat.add(bh[0]);store.set("yct1-hat-"+n,[...daHat]);const tiepSau=()=>{box.innerHTML="";xongNhom2()};
