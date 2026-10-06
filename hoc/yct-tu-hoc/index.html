@@ -1114,6 +1114,7 @@ body.coTab{padding-bottom:84px}body.coTab .hfab,body.coTab .zfab{bottom:calc(86p
 .nvB.xong{background:#FFF8E6;border-radius:12px;padding:4px}
 .nvBn{border:0;background:#F2A93B;color:#fff;font-weight:800;font-size:12px;font-family:inherit;border-radius:10px;padding:6px 8px;cursor:pointer;animation:lac .9s ease-in-out infinite;white-space:nowrap}
 @media (max-width:759px){.nvBen{padding:8px 10px;gap:6px}.nvBenT{font-size:14px}}
+.sp2.dung{border-color:#3DBE7A!important;background:#F1FBF3}
 </style>
 
 <div class="top"><div class="in">
@@ -1146,7 +1147,8 @@ function tonePy(py){return esc(py).split(/(\s+)/).map(w=>{let t=0;for(const c of
 const store={get(k,d){try{return (function(v){return v==null?d:v})(JSON.parse(localStorage.getItem(k)))}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(k!=="yct1-user"&&k!=="yct1-luc")henLuu()}};
 /* âm thanh */
 let cur=null;const TOC={vi:1,zh:1};   /* 06/10 tối: tốc độ (Việt 1.2× · Trung 1×) đã LÀM SẴN trong file bằng _toc_bai.py → máy phát đúng 1×, không tự tua (tua trên điện thoại sinh tiếng rè/xẹt) */
-function play(src,el){try{cur&&cur.pause()}catch(e){}tatFB();document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();a._t0=Date.now();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}RS(src).then(u=>{if(cur!==a)return;a.src=u;if(/\.mp4/.test(src)){a.defaultPlaybackRate=a.playbackRate=TOC.vi;a.addEventListener("loadedmetadata",()=>a.playbackRate=TOC.vi)}a.play().catch(()=>{})})   /* 06/10 chị: lời cô đọc nhanh hơn 5% */.catch(()=>el&&el.classList.remove("playing"));return a}
+function play(src,el){try{cur&&cur.pause()}catch(e){}tatFB();document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();a._t0=Date.now();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}if(!KHOA||!/^(?:aud\/c\d+-|in\/to-mau-c\d+\.)/.test(src)){a.src=AMU[src]||(/^aud\//.test(src)?src+"?v="+AV:src);a.play().catch(()=>{});return a}   /* 06/10 tối chị: "bấm loa chỉ cần 1 lần" — phát NGAY trong lúc bé bấm (chờ tải xong mới phát thì iPhone chặn) */
+  RS(src).then(u=>{if(cur!==a)return;a.src=u;a.play().catch(()=>{})})   /* 06/10 chị: lời cô đọc nhanh hơn 5% */.catch(()=>el&&el.classList.remove("playing"));return a}
 /* 06/10 chị: mỗi BUỔI ~10 phút, trộn phiên âm + từ của bài — "Buổi 1: thanh điệu + biến điệu + mấy câu chào · Buổi 2: nguyên âm, phụ âm, số đếm · Buổi 3: ghép âm + ôn lại" */
 const BUOI=[
   {ten:"Thanh điệu · Câu chào",ic:"👋",ch:[{k:"py",ten:"Thanh điệu"},{k:"py",ten:"Biến điệu"},{k:"tu",n:1,g:0,ten:"Câu chào",loai:"bong"}]},
@@ -1379,9 +1381,10 @@ function dnTK(){document.querySelectorAll(".tkPop").forEach(x=>x.remove());const
     go.disabled=true;$("#tkE").textContent="Đang kiểm tra…";
     try{const r=await callApi({app:"dangnhap",u,m,giaoTrinh:GT_TK});
       if(r&&r.ok){const chu=localStorage.getItem("yct1-chu");
-        if(chu&&chu!==u){if(U_CU&&U_CU.u===chu){U=U_CU;$("#tkE").textContent="Đang cất bài của "+(U_CU.ten||chu)+"…";await Promise.race([Promise.resolve(luuTD()),new Promise(z=>setTimeout(z,5000))]).catch(()=>{})}xoaMay()}   /* bạn khác vào: cất bài bạn trước lên tài khoản rồi xoá khỏi máy */
+        if(chu&&chu!==u){if(U_CU&&U_CU.u===chu){U=U_CU;luuTD()}xoaMay()}   /* 06/10 tối chị: "đăng nhập load chậm" → cất bài bạn trước CHẠY NGẦM (ảnh chụp lấy ngay lúc gọi) */   /* bạn khác vào: cất bài bạn trước lên tài khoản rồi xoá khỏi máy */
         localStorage.setItem("yct1-chu",u);U={u,m,ten:r.ten||u,tk:1};U_CU=null;store.set("yct1-user",U);try{sessionStorage.setItem("yct1-vao",1)}catch(e){}
-        try{const L=JSON.parse(localStorage.getItem("sm-tk-ds")||"[]").filter(x=>x.u!==u);L.unshift({u,ten:U.ten});localStorage.setItem("sm-tk-ds",JSON.stringify(L.slice(0,6)))}catch(e){}if(r.snap&&napTD(r.snap)){location.reload();return}await luuTD();o.remove();accBar();if(!localStorage.getItem("yct1-avt"))return hoSo(1);mung("👋",null,`Chào ${esc(U.ten)}!`,"Bài học của con sẽ tự lưu nhé")}
+        try{const L=JSON.parse(localStorage.getItem("sm-tk-ds")||"[]").filter(x=>x.u!==u);L.unshift({u,ten:U.ten});localStorage.setItem("sm-tk-ds",JSON.stringify(L.slice(0,6)))}catch(e){}const nap=r.snap&&napTD(r.snap);o.remove();if(!nap)luuTD();accBar();go(-1);   /* không tải lại trang, không chờ lưu — vào học ngay */
+        if(!localStorage.getItem("yct1-avt"))return hoSo(1);mung("👋",null,`Chào ${esc(U.ten)}!`,"Bài học của con sẽ tự lưu nhé")}
       else{$("#tkE").textContent=(r&&r.loi)||"Email hoặc mã chưa đúng";go.disabled=false}}
     catch(e){$("#tkE").textContent="Chưa kết nối được — kiểm tra mạng rồi thử lại nhé";go.disabled=false}};
   go.onclick=vao;$("#tkM").onkeydown=e=>{if(e.key==="Enter")vao()}}
@@ -1560,7 +1563,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061951";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610062003";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -1571,7 +1574,7 @@ const T0=Date.now();
 function taiMoi(v){let d=0;try{d=sessionStorage.getItem("yct1-tai")===v}catch(e){}if(d)return;try{sessionStorage.setItem("yct1-tai",v)}catch(e){}location.replace(location.pathname+"?v="+v+location.hash)}
 setTimeout(kiemBanMoi,3000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)kiemBanMoi()});setInterval(kiemBanMoi,10*60*1000);   // 06/10: đổi số này mỗi lần thu lại tiếng — trình duyệt không phát bản cũ
 /* 06/10 chị: "phần đọc chậm hơn thao tác người bấm" → TẢI SẴN tiếng cả nhóm/trò vào bộ nhớ (bấm là kêu ngay, không chờ mạng) */
-const AMC={};function napAm(ds){(ds||[]).forEach(src=>{if(!src||AMC[src]||!/^aud\/.*\.mp3$/.test(src))return;const u=src+"?v="+AV;AMC[src]=fetch(u).then(r=>r.ok?r.blob():Promise.reject()).then(b=>URL.createObjectURL(b)).catch(()=>{delete AMC[src];return u})})}
+const AMC={},AMU={};function napAm(ds){(ds||[]).forEach(src=>{if(!src||AMC[src]||!/^aud\/.*\.mp3$/.test(src))return;const u=src+"?v="+AV;AMC[src]=fetch(u).then(r=>r.ok?r.blob():Promise.reject()).then(b=>{const x=URL.createObjectURL(b);AMU[src]=x;return x}).catch(()=>{delete AMC[src];return u})})}
 function RS(src){const m=/^(?:aud\/c(\d+)-|in\/to-mau-c(\d+)\.)/.exec(src);if(!KHOA||!m)return AMC[src]||Promise.resolve(/^aud\//.test(src)?src+"?v="+AV:src);
   if(!BLOB[src])BLOB[src]=giaiMa("enc/"+src+".bin",nhomCD(+(m[1]||m[2]))).then(d=>URL.createObjectURL(new Blob([d],{type:MIME[src.split(".").pop()]||""})));return BLOB[src]}
 /* ---------- 01/10 chị: CHUỖI NGÀY 🔥 · PHÁO GIẤY + ÂM THANH · BẢN ĐỒ CON ĐƯỜNG (học theo Duolingo) ---------- */
@@ -1683,12 +1686,12 @@ function chayDua(n,W0,XONG){const W=W0||mucBai(n),PYM=n==0&&!!ND[0].py,sh=a=>a.m
       <div class="cdHoi">${kieu==="nghe"?`<button class="cdLoa" id="cdLoa">🔊</button><span class="cdDe">Nghe và chọn đúng!</span>`:`<span class="cdDe">Chữ này là hình nào?</span><span class="cdHz">${esc(W[i][0])}</span>`}</div>
       <div class="cdOp">${op.map((x,k)=>`<button class="cdO" data-x="${x}" style="--m:${MAU[k]}"><span class="cdK">${"ABCD"[k]}</span>${hinhO(x)}<span class="cdT">${kieu==="nhin"?"":`${/[㐀-鿿]/.test(W[x][0])?`<span class="cdZ">${esc(W[x][0])}</span>`:""}`}${tonePy(W[x][1])}</span></button>`).join("")}</div>`;
     o.querySelector(".cdX").onclick=()=>{if(q===0||confirm("Bé muốn dừng cuộc đua à?"))dong()};
-    const L=o.querySelector("#cdLoa");if(L){L.onclick=()=>play(au(i),L)}
+    const L=o.querySelector("#cdLoa");if(L){L.onclick=()=>play(au(i),L);setTimeout(()=>{if(document.body.contains(L))L.click()},350)}
     o.querySelectorAll(".cdO").forEach(b=>b.onclick=()=>{if(o.dataset.khoa)return;lan++;
       if(+b.dataset.x===i){o.dataset.khoa=1;b.classList.add("dung");if(lan===1){dung++;sao+=2}else dung+=.5;tone([880,1320]);
         ban=ban.map(v=>Math.min(N,v+.55+Math.random()*.5));o.querySelectorAll(".cdNv").forEach((x,k)=>x.style.left=`${(k?ban[k-1]:dung)/N*86}%`);
         setTimeout(()=>{delete o.dataset.khoa;if(++q<N)ve();else xong()},1300)}
-      else{b.classList.add("sai");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("sai"),450)}})}
+      else{b.classList.add("sai");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("sai"),450);if(L){clearTimeout(o._doc);o._doc=setTimeout(()=>{if(document.body.contains(L)&&!o.dataset.khoa)L.click()},1300)}}})}
   const dh=setInterval(()=>{const e=o.querySelector("#cdTg"),g=Math.floor((Date.now()-t0)/1000);if(e)e.textContent=`${Math.floor(g/60)}:${String(g%60).padStart(2,"0")}`},500);
   function xong(){clearInterval(dh);const hang=1+ban.filter(v=>v>dung).length;keng();confetti();themXP(sao,"Chạy đua");ghiKQ(`c${n}-cd`,`${n==0?"Mở đầu":"Bài "+n} · Chạy đua (về thứ ${hang})`,Math.round(100*dung/N));
     o.innerHTML=`<div class="cdKet">${im(["🏆","🥈","🥉"][hang-1]||"🏅")}<b>${hang===1?"Gấu trúc về NHẤT! 🎉":`Về thứ ${hang} — lần sau nhanh hơn nhé!`}</b>${thongKe(sao,(Date.now()-t0)/1000,Math.round(100*dung/N))}<div class="cdNut"><button class="btn2" id="cdLai">↺ Đua lại</button><button class="big" id="cdXong">Xong →</button></div></div>`;
@@ -1865,7 +1868,7 @@ function troChoiNhom(ds,xong,LOAI,OPT){OPT=OPT||{};const sh=a=>a.map(x=>[Math.ra
     const L=o.querySelector("#bbL");L.onclick=()=>play(x.au,L);setTimeout(()=>L.click(),300);
     o.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{if(o.dataset.k)return;lan++;
       if(+b.dataset.i===ds.indexOf(x)){o.dataset.k=1;b.classList.add("no");if(lan===1)dung++;tone([880,1320]);setTimeout(()=>{delete o.dataset.k;if(++q<thu.length)ve();else ket()},900)}
-      else{b.classList.add("sai");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("sai"),450)}})}
+      else{b.classList.add("sai");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("sai"),450);clearTimeout(o._doc);o._doc=setTimeout(()=>{if(document.body.contains(L)&&!o.dataset.k)play(x.au,L)},1300)}})}
   function ket(){keng();confetti();themXP(dung*2,loai==="bong"?"Bóng bay":loai==="chuot"?"Đập chuột":"Bingo");
     o.innerHTML=`<div class="cdKet">${im("🏆")}<b>${loai==="bong"?"Nổ hết bóng rồi! 🎈":loai==="chuot"?"Đập trúng hết rồi! 🐭":"BINGO! 🎉"}</b>${thongKe(dung*2,(Date.now()-t0)/1000,Math.round(100*dung/thu.length))}<div class="cdNut"><button class="big" id="bbXong">Học tiếp →</button></div></div>`;
     o.querySelector("#bbXong").onclick=()=>{dong();xong()}}
@@ -1891,7 +1894,7 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
       const tk=thongKe(5*g.ds.length,(Date.now()-t0)/1000,Math.round(100*Math.max(0,Q.length-saiN)/Q.length));if(O&&O.xong)return O.xong(tk);
       if(gi<NH.length-1){mung("🎉",null,`Xong nhóm ${g.ten}!`,`Giờ học nhóm tiếp: ${NH[gi+1].ten}`,tk);gi++;lam()}
       else{mung("🏆",null,"Con đã học và luyện hết từ mới!","Sang trang tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.style.display="";ps.click()}}};
-    function ve(){if(q>=Q.length)return xongNhom();const [ph,k]=Q[q],w=W[k];coDan("tu"+ph+"-"+gi);
+    function ve(){if(q>=Q.length)return xongNhom();const [ph,k]=Q[q],w=W[k];if(ph>=2)coDan("tu"+ph+"-"+gi);
       box.innerHTML=`<div class="ltTu">${NH.map((x,t)=>{const xg=x.ds.every(z=>DA.has(z)),mo=xg||t===gi;return `<button class="${t===gi?"on":xg?"da":"khoa"}" data-g="${t}"${mo?"":" disabled"}>${xg&&t!==gi?"✓ ":""}${esc(x.ten)}</button>`}).join("")}</div>
         <div class="ltBuoc"><b>${q+1}/${Q.length}</b>${PHA.map((t,z)=>`<span class="${z===ph?"on":z<ph?"qua":""}">${t}</span>`).join("")}</div><div class="ltBar"><i style="width:${Math.round(q/Q.length*100)}%"></i></div><div id="ltQ"></div>`;
       box.querySelectorAll(".ltTu [data-g]:not([disabled])").forEach(b=>b.onclick=()=>{gi=+b.dataset.g;lam()});
@@ -1904,8 +1907,13 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
         Z.querySelectorAll(".lsO").forEach(b=>b.onclick=()=>{if(+b.dataset.k===k){b.classList.add("right");tiep()}else{sai(b);H1()}});return}
       if(ph===2){Z.innerHTML=`<p class="ltDe">🗣 Nói — thu âm rồi so với cô</p><div class="ltW"><div class="ltPic">${hinh(k)}</div><div><span class="hz">${esc(w[0])}</span><span class="py">${tonePy(w[1])}</span></div><button class="qhear" id="ltH">🔊</button></div><div class="ltRow"><button class="lsMic" id="ltMic">🎤 <span>Bấm rồi nói “${esc(w[0])}”</span></button><button class="btn2" id="ltNoiOk" disabled>Con nói giống cô rồi ✓</button></div><p class="ltOk" id="ltMh">Máy thu 3 giây → phát lại tiếng con → phát giọng cô để so</p>`;
         $("#ltH").onclick=()=>play(nho(k),$("#ltH"));const mic=$("#ltMic");
-        mic.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);
-          r.onstop=()=>{henTatMic();const a=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;$("#ltMh").textContent="Đây là tiếng con…";a.onended=()=>setTimeout(()=>{$("#ltMh").textContent="Giờ nghe cô — giống chưa nào?";const x=play(nho(k),$("#ltH"));x.addEventListener("ended",()=>{$("#ltNoiOk").disabled=false;$("#ltMh").textContent="Giống cô thì bấm ✓, chưa giống thì thu lại nhé"})},400);a.play().catch(()=>{});mic.classList.remove("rec");mic.innerHTML="🎤 <span>Thu lại</span>"};
+        let nghe=null,sai2=0;
+        mic.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),r=new MediaRecorder(st),ch=[];r.ondataavailable=e=>ch.push(e.data);r.onstart=()=>{nghe=ngheBe(3)};
+          r.onstop=()=>{henTatMic();const a=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=a;mic.classList.remove("rec");mic.innerHTML="🎤 <span>Thu lại</span>";$("#ltMh").textContent="Máy đang nghe con…";
+            Promise.resolve(nghe).then(kq=>{const d=dungChua(kq,w[0],w[1]);
+              if(d===true){$("#ltMh").innerHTML="✅ <b>Đúng rồi!</b> Nghe lại giọng con nè";tone([880,1320]);setTimeout(()=>{a.onended=()=>setTimeout(()=>{q++;ve()},300);a.play().catch(()=>{q++;ve()})},1150);return}
+              if(d===false){sai2++;$("#ltMh").innerHTML=sai2>=2?"Gần được rồi! Nghe cô rồi đi tiếp nhé":"❌ <b>Chưa đúng</b> — nghe cô rồi con bấm 🎤 đọc lại nhé";tone([180],.18,"triangle",.07);setTimeout(()=>{const x=play(nho(k),$("#ltH"));if(sai2>=2)x.addEventListener("ended",()=>{const b=$("#ltNoiOk");b.disabled=false;b.textContent="Đi tiếp →"})},1500);return}
+              $("#ltMh").textContent="Đây là tiếng con…";a.onended=()=>setTimeout(()=>{$("#ltMh").textContent="Giờ nghe cô — giống chưa nào?";const x=play(nho(k),$("#ltH"));x.addEventListener("ended",()=>{$("#ltNoiOk").disabled=false;$("#ltMh").textContent="Giống cô thì bấm ✓, chưa giống thì thu lại nhé"})},400);a.play().catch(()=>{})})};
           thuDem(r,mic,4)}
           catch(e){$("#ltMh").innerHTML=e&&e.name==="NotAllowedError"?"Máy đang chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy này chưa thu âm được — con nói to theo cô rồi bấm ✓";$("#ltNoiOk").disabled=false}};
         $("#ltNoiOk").onclick=()=>tiep(300);return}
@@ -2078,7 +2086,7 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
         else{bt.classList.add("wrong");tone([180],.18,"triangle",.07);setTimeout(()=>bt.classList.remove("wrong"),450)}})})}
     // 06/10 chị: trang kiến thức mới PHẢI CÓ CÔ GIẢNG — vào nhóm là mở lớp học, cô giảng cả nhóm (aud/c0-nh*.mp4, _gen_nhom.py); giảng xong → luyện tập
     const giangNhom=()=>{const au=play(`aud/c0-nh${g.nh}.mp4`);au.addEventListener("ended",()=>setTimeout(()=>{const x=document.querySelector(".vidCo .vcX");if(x)x.click()},1200));moVideo(au,`aud/c0-nh${g.nh}.json`)};
-    function ve(){if(buoc>0)coDan("py"+Math.min(buoc,4)+"-"+gi);
+    function ve(){if(buoc>1)coDan("py"+Math.min(buoc,4)+"-"+gi);   /* 06/10 chị: trò chơi cô ĐỌC LUÔN, bé chỉ chạm — không phát lời dặn "bấm loa" đè lên đề */
       if(buoc===0){khung(`<button class="btn2 pyCoG" id="pyCoG">▶ Nghe cô giảng lại</button><div class="pyg2">${g.ds.map(k=>IT[k].bd?`<button class="pyc2 bd" data-k="${k}">${bdHinh(IT[k].bi)}</button>`:`<button class="pyc2" data-k="${k}"><span class="big2">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(IT[k].lab)?tonePy(IT[k].lab):esc(IT[k].lab)}</span>${IT[k].e?im(IT[k].e):""}<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span><span class="vn2">${esc(IT[k].vn)}</span></button>`).join("")}</div><button class="big" id="pyT">Học xong — làm bài tập →</button>`);
         box.querySelectorAll(".pyc2").forEach(bt=>bt.onclick=()=>coNoi(play(IT[+bt.dataset.k].gi,bt)));box.querySelector("#pyT").onclick=sang;box.querySelector("#pyCoG").onclick=giangNhom;giangNhom();return}
       if(buoc===1){   /* 06/10 chị: "bài phiên âm nhàm" → mỗi đảo 1 trò khác nhau */
@@ -2088,8 +2096,12 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
         return moTro()}
       if(buoc===2){const Q=pick(g.ds,2);let da=0;khung(`${Q.map(k=>`<div class="sp2" data-k="${k}"><div class="tg2">${esc(IT[k].hz)}</div><div class="pys2">${tonePy(IT[k].py)}</div><div class="bt2"><button class="btn2 sN">🔊 Nghe</button><button class="big sM">🎤 Đọc &amp; thu</button></div><p class="res2"></p></div>`).join("")}<button class="big" id="pyT">Tiếp →</button>`);
         box.querySelectorAll(".sp2").forEach(cd=>{const k=+cd.dataset.k,res=cd.querySelector(".res2"),m=cd.querySelector(".sM");cd.querySelector(".sN").onclick=e=>play(IT[k].au,e.currentTarget);
-          m.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),rr=new MediaRecorder(st),ch=[];rr.ondataavailable=e=>ch.push(e.data);
-            rr.onstop=()=>{henTatMic();const au=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=au;res.textContent="Tiếng con…";au.onended=()=>setTimeout(()=>{res.textContent="Giờ nghe cô — giống chưa?";play(IT[k].au)},400);au.play().catch(()=>{});m.classList.remove("rec");m.innerHTML="⏺ Thu lại";if(!cd.dataset.ok){cd.dataset.ok=1;da++}};
+          let nghe=null;m.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const st=(moiAmThu(),await layMic()),rr=new MediaRecorder(st),ch=[];rr.ondataavailable=e=>ch.push(e.data);rr.onstart=()=>{nghe=ngheBe(3)};
+            rr.onstop=()=>{henTatMic();const au=amThu(URL.createObjectURL(new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"})));cur=au;m.classList.remove("rec");m.innerHTML="⏺ Thu lại";if(!cd.dataset.ok){cd.dataset.ok=1;da++}res.textContent="Máy đang nghe con…";
+              Promise.resolve(nghe).then(kq=>{const d=dungChua(kq,IT[k].hz,IT[k].py);
+                if(d===true){res.innerHTML="✅ <b>Đúng rồi!</b>";cd.classList.add("dung");tone([880,1320]);setTimeout(()=>au.play().catch(()=>{}),1150);return}
+                if(d===false){res.innerHTML="❌ <b>Chưa đúng</b> — nghe cô rồi đọc lại nhé";tone([180],.18,"triangle",.07);setTimeout(()=>play(IT[k].au),1500);return}
+                res.textContent="Tiếng con…";au.onended=()=>setTimeout(()=>{res.textContent="Giờ nghe cô — giống chưa?";play(IT[k].au)},400);au.play().catch(()=>{})})};
             thuDem(rr,m,4)}catch(e){res.innerHTML=e&&e.name==="NotAllowedError"?"Máy chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy chưa thu âm được — con đọc to theo cô nhé"}}});
         box.querySelector("#pyT").onclick=sang;return}
       if(buoc===3){if(O&&O.gon&&!g.ma){buoc=5;return ve()}return g.ma?maMau():noiCot()}   /* buổi 10 phút: bỏ bước Nối */
@@ -2101,6 +2113,19 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
       if(O&&O.xong)return O.xong(tk);const stk=moQua();if(gi<NH.length-1){mung("🎁",null,`Xong đảo ${gi+1}: ${g.ten}!`,`Đảo tiếp: ${NH[gi+1].ten}`,quaHTML(stk)+tk);gi++;lam()}else{mung("🏆",null,"Con đã học hết phiên âm!","Sang phần tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.style.display="";ps.click()}}}
     ve()}
   lam()}
+/* 06/10 tối chị: "thu âm: đọc đúng thì tích ✓ là đã đúng, chưa đúng thì đọc lại" → máy nghe giọng bé bằng NHẬN GIỌNG CÓ SẴN của iPhone/iPad/Chrome (miễn phí), so với chữ đang học.
+   Máy không có chức năng này → giữ nút tự bấm như cũ. Sai 2 lần vẫn cho đi tiếp (máy hay nghe nhầm giọng trẻ con). */
+const SRN=window.SpeechRecognition||window.webkitSpeechRecognition;
+function ngheBe(giay){if(!SRN)return null;let r;try{r=new SRN()}catch(e){return null}r.lang="zh-CN";r.interimResults=false;r.maxAlternatives=5;r.continuous=false;
+  const p=new Promise(ok=>{const kq=[];let loi=false,xong=false;const het=v=>{if(!xong){xong=true;ok(v)}};
+    r.onresult=e=>{for(const res of e.results)for(let i=0;i<res.length;i++)kq.push(res[i].transcript)};r.onerror=e=>{if(e.error!=="no-speech"&&e.error!=="aborted")loi=true};
+    r.onend=()=>het(loi&&!kq.length?null:kq);setTimeout(()=>het(kq.length?kq:(loi?null:kq)),giay*1000+4000)});
+  try{r.start()}catch(e){return null}setTimeout(()=>{try{r.stop()}catch(e){}},giay*1000+700);return p}
+const boDau=s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/ü|v/g,"u").toLowerCase().replace(/[^a-z]/g,"");
+const soHan=t=>String(t).replace(/10/g,"十").replace(/\d/g,d=>"零一二三四五六七八九"[d]);
+const pyChu=t=>[...t].map(c=>(PY[c]||[])[0]||"?").join("");
+function dungChua(kq,hz,py){if(kq==null)return null;if(!kq.length)return false;const H0=String(hz||"").replace(/[^㐀-鿿]/g,""),P0=boDau(py);
+  return kq.some(t=>{const c=soHan(t).replace(/[^㐀-鿿]/g,"");if(!c)return false;if(H0&&c.includes(H0))return true;const q=pyChu(c);return !!P0&&!q.includes("?")&&boDau(q).includes(P0)})}
 /* 06/10 tối chị: "mục thu âm bị khá lâu, mãi không ra" → đếm 1 nhịp rồi thu luôn, tối đa 3 giây, BẤM LẦN NỮA ĐỂ DỪNG; giữ micro mở 20 giây (khỏi xin lại);
    loa phát lại tiếng bé được "mở khoá" ngay lúc bé bấm (iPhone chặn phát tiếng nếu không do bé bấm) */
 const SIL_AM="data:audio/wav;base64,UklGRrQBAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZABAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA";let AM_THU=null,MIC=null,MIC_T=0;
