@@ -773,10 +773,10 @@ const L = [
 {t:"Thanh điệu — tập đọc 4 thanh",g:"Nghe, đọc to và phân biệt 4 thanh + thanh nhẹ — hôm nay chưa cần học từ mới",chiPA:1,
  w:["妈|mā|mẹ","麻|má|tê","马|mǎ|con ngựa","骂|mà|mắng","八|bā|số 8","爸|bà|bố","一|yī|số 1","五|wǔ|số 5","鱼|yú|con cá","饿|è|đói"],
  h:[],r:[],m:[],
- s:["妈、麻、马、骂|mā, má, mǎ, mà|4 thanh với ma","八、拔、把、爸|bā, bá, bǎ, bà|4 thanh với ba","一、姨、椅、意|yī, yí, yǐ, yì|4 thanh với i","乌、无、五、雾|wū, wú, wǔ, wù|4 thanh với u","妈妈骂马吗？|Māma mà mǎ ma?|Mẹ mắng ngựa à? (câu luyện thanh)"],
- tip:["Thanh 1 — ngang, cao, đều|như hát một nốt cao","Thanh 2 — đi lên|gần dấu sắc tiếng Việt","Thanh 3 — trầm xuống rồi lên|gần dấu hỏi","Thanh 4 — rơi mạnh, dứt khoát|như ra lệnh","Thanh nhẹ — ngắn, không dấu|妈妈 māma: chữ sau đọc nhẹ","Mẹo: vừa đọc vừa vẽ dấu thanh trong không khí|tay đi theo giọng"],
+ s:["妈、麻、马、骂|mā, má, mǎ, mà|4 thanh với ma","八、拔、把、爸|bā, bá, bǎ, bà|4 thanh với ba","一、姨、椅、意|yī, yí, yǐ, yì|4 thanh với i","乌、无、五、雾|wū, wú, wǔ, wù|4 thanh với u","妈妈骂马吗？|Māma mà mǎ ma?|Mẹ mắng ngựa à? (câu luyện thanh)","你好、很好、雨伞|ní hǎo, hén hǎo, yú sǎn|3 + 3: chữ đầu đọc thanh 2"],
+ tip:["Thanh 1 — ngang, cao, đều|như hát một nốt cao","Thanh 2 — đi lên|gần dấu sắc tiếng Việt","Thanh 3 — trầm xuống rồi lên|gần dấu hỏi","Thanh 4 — rơi mạnh, dứt khoát|như ra lệnh","Thanh nhẹ — ngắn, không dấu|妈妈 māma: chữ sau đọc nhẹ","Biến điệu: 2 thanh 3 liền nhau → chữ đầu đọc thanh 2|你好 nǐ hǎo → ní hǎo","Mẹo: vừa đọc vừa vẽ dấu thanh trong không khí|tay đi theo giọng"],
  d:[],
- q:[["mǎ nghĩa là?",["con ngựa","mẹ","mắng"],0],["Thanh nào gần dấu sắc?",["thanh 2","thanh 1","thanh 4"],0],["Thanh nào gần dấu hỏi?",["thanh 3","thanh 2","thanh 4"],0],["妈妈 māma — chữ thứ hai đọc thanh gì?",["thanh nhẹ","thanh 1","thanh 4"],0]]},
+ q:[["mǎ nghĩa là?",["con ngựa","mẹ","mắng"],0],["Thanh nào gần dấu sắc?",["thanh 2","thanh 1","thanh 4"],0],["Thanh nào gần dấu hỏi?",["thanh 3","thanh 2","thanh 4"],0],["妈妈 māma — chữ thứ hai đọc thanh gì?",["thanh nhẹ","thanh 1","thanh 4"],0],["你好 đọc thực tế là?",["ní hǎo","nǐ hǎo","nì hǎo"],0]]},
 
 {t:"Số đếm & âm khó",g:"Đếm 1–10 và sửa các âm người Việt hay đọc sai",
  w:["一|yī|1","二|èr|2","三|sān|3","四|sì|4","五|wǔ|5","六|liù|6","七|qī|7","八|bā|8","九|jiǔ|9","十|shí|10"],
@@ -1410,8 +1410,9 @@ function rdHtml(list){return (list||[]).map(r=>{const[grp,title,...lines]=r;cons
 const PYD={
 1:{t:"4 thanh · 6 vần đơn",intro:1,
  grp:[["4 thanh + thanh nhẹ","cùng âm, khác thanh = khác nghĩa",[["mā","妈","mā","thanh 1 · ngang, cao","mẹ"],["má","麻","má","thanh 2 ≈ dấu sắc","tê (麻辣 cay tê)"],["mǎ","马","mǎ","thanh 3 ≈ dấu hỏi","con ngựa"],["mà","骂","mà","thanh 4 · rơi mạnh","mắng"],["ma","吗","ma","thanh nhẹ · ngắn","… không? (câu hỏi)"]]],
-  ["6 vần đơn","nguyên âm gốc",[["a","八","bā","≈ a","số 8"],["o","哦","ó","≈ ua (tròn môi)","ồ! (thán từ)"],["e","饿","è","≈ ưa / ơ","đói"],["i","一","yī","≈ i","số 1"],["u","五","wǔ","≈ u","số 5"],["ü","鱼","yú","≈ uy (chu môi nói i)","con cá"]]]],
- tip:["ü = nói “i” rồi chu môi tròn|鱼 yú — tiếng Việt không có âm này","Dấu thanh đặt trên nguyên âm|mā, hǎo, xiè"],
+  ["6 vần đơn","nguyên âm gốc",[["a","八","bā","≈ a","số 8"],["o","哦","ó","≈ ua (tròn môi)","ồ! (thán từ)"],["e","饿","è","≈ ưa / ơ","đói"],["i","一","yī","≈ i","số 1"],["u","五","wǔ","≈ u","số 5"],["ü","鱼","yú","≈ uy (chu môi nói i)","con cá"]]],
+  ["Biến điệu","chữ viết một thanh, đọc thành thanh khác",[["3 + 3","你好","ní hǎo","nǐ hǎo → đọc ní hǎo","xin chào"],["不 + 4","不是","bú shì","bù → đọc bú","không phải"],["一 + 4","一个","yí gè","yī → đọc yí","một cái"],["一 + 1·2·3","一天","yì tiān","yī → đọc yì","một ngày"]]]],
+ tip:["ü = nói “i” rồi chu môi tròn|鱼 yú — tiếng Việt không có âm này","Dấu thanh đặt trên nguyên âm|mā, hǎo, xiè","Hai thanh 3 liền nhau → chữ đầu đọc thanh 2|你好 nǐ hǎo → ní hǎo","不 trước thanh 4 → bú · 一 trước thanh 4 → yí, trước thanh khác → yì|viết vẫn giữ dấu gốc"],
  lis:[["妈","mā",["mā","má","mǎ","mà"]],["麻","má",["mā","má","mǎ","mà"]],["马","mǎ",["mā","má","mǎ","mà"]],["骂","mà",["mā","má","mǎ","mà"]],["鱼","yú",["yú","yí","wú"]],["饿","è",["è","à","ò"]]],
  rd:[["4 thanh","绕口令|rào kǒu lìng|Câu nói líu lưỡi","妈妈骑马，|mā ma qí mǎ|Mẹ cưỡi ngựa,","马慢，|mǎ màn|ngựa chậm,","妈妈骂马。|mā ma mà mǎ|mẹ mắng ngựa."]]},
 2:{t:"b p m f",yt:"py2",ga:["b","p","m","f"],
@@ -1736,7 +1737,7 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
 })();
 
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261006093741";
+const BAN_SO="20261006094130";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
