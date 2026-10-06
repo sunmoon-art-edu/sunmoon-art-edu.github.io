@@ -1067,6 +1067,8 @@ section.dangLam>h2{display:none!important}
 .ltSap{color:var(--ink-2);text-align:center;padding:30px 10px}
 @media (max-width:699px){.ltW2{grid-template-columns:1fr}.ltTrai{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:2px dashed #E9E2D8;padding:0 0 10px;max-height:none}.ltChg{display:none}.ltBai{flex:0 0 auto;max-width:210px;border-color:#E9E2D8;background:#fff}.ltBai.on{background:#DDF1FB;border-color:#22AFB1}.ltKt{flex:0 0 auto;max-width:200px}}
 .ltTrai>*{flex-shrink:0}
+.hsAvs img[src*="img/av/"],.hsAv img[src*="img/av/"],.avMoi img[src*="img/av/"]{width:100%!important;height:100%!important;object-fit:cover;max-width:none!important}
+#accBtn img[src*="img/av/"]{width:30px!important;height:30px!important}
 </style>
 
 <div class="top"><div class="in">
@@ -1351,7 +1353,7 @@ function tkPop(chao){if(!(U&&U.tk))return dnTK();document.querySelectorAll(".tkP
 /* 06/10 chị: "khi các bạn đăng nhập vào thì có PROFILE mỗi bạn" → hồ sơ: ảnh con vật tự chọn, tên, 🔥 chuỗi ngày, XP, số buổi, album sticker */
 /* 06/10 chị gửi mẫu VioEdu: hồ sơ có "avatar đang sở hữu" + "kim cương"; avatar sắp có hiện xám kèm giá, ĐỦ KIM CƯƠNG TỰ MỞ KHOÁ.
    Kim cương: mỗi câu đúng +1 · hộp quà sau mỗi phần +5/10/15 · xong buổi +10 (yct1-kc = tổng đã kiếm, không trừ) */
-const AVT=[["av-be-trai",0],["av-be-gai",0],["🐼",0],["🐰",0],["🐻",20],["🐱",40],["🐶",60],["👦",80],["👧",80],["🐯",100],["🐭",130],["🐘",160],["🧒",200],["🦒",240],["🐔",280],["🦋",320]];
+const AVT=[["av-be-trai",0],["av-be-gai",0],["🐼",0],["🐰",0],["🐻",20],["🐱",40],["av-be-kinh",60],["av-be-bim",60],["av-tho-may",90],["av-meo-may",120],["av-kiem-si",150],["av-kungfu",150],["av-hai-tac",190],["av-ninja",190],["av-phi-hanh",240],["av-cong-chua",240],["av-ky-lan",300],["av-rong",380]];   /* 06/10: nhân vật TỰ VẼ của SunMoon cùng gu trẻ 8–12 thích (không dùng Doraemon/Luffy… vì bản quyền) */
 const KC=()=>store.get("yct1-kc",0);
 const coAv=e=>{const x=AVT.find(a=>a[0]===e);return !!x&&x[1]<=KC()};
 const avtCua=()=>{const a=store.get("yct1-avt","");return a&&H[a]&&coAv(a)?a:"🐼"};
@@ -1449,7 +1451,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061921";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061928";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
