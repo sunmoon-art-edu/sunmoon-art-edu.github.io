@@ -781,6 +781,9 @@ body{background:#FFFDF2}.card{background:#fff}
 .opts2{display:flex;flex-wrap:wrap;gap:6px;flex:1}.op2{flex:1 0 60px;border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;background:#fff;padding:8px 6px;font:700 18px var(--py);cursor:pointer}.op2.right{border-color:#5E9E5A;background:#EAF6E6}.op2.wrong{border-color:#E8505B;background:#FDECEA;animation:lac .35s}
 .oDiem{display:flex;align-items:center;gap:12px;justify-content:center;background:#FFF8DC;border:2px solid #F3D27A;border-radius:16px;padding:10px 14px;margin:8px 0}.oDiem b{font:900 30px var(--tx);color:#C9820F}.oDiem span{color:#F5BE10;font-size:22px;letter-spacing:2px}.oDiem span i{font-style:normal;color:#E5DFD3}.oDiem em{font-style:normal;font-size:14px;color:var(--ink-2)}
 .sp2{border:2px solid var(--line);border-radius:16px;padding:12px;text-align:center;display:flex;flex-direction:column;gap:6px;background:#fff}.tg2{font-family:var(--hz);font-size:40px}.pys2{font:700 20px var(--py)}.bt2{display:flex;gap:8px;justify-content:center}.bt2 .big{margin:0}.res2{margin:0;font-size:14px;color:var(--ink-2);min-height:1em}
+.coNoi.coPhu{left:10px;right:10px;transform:translateY(30px);border-radius:22px;padding:8px 10px 8px 6px;max-width:640px;margin:0 auto}.coNoi.coPhu.hien{transform:none}
+.coNoi.coPhu .cnTxt{flex:1;min-width:0}.coNoi.coPhu .cnTxt b{font-size:12px;color:#7A5A00}.coNoi.coPhu .cnTxt .cnDong{font-size:18px;color:var(--ink);line-height:1.35;min-height:2.6em;display:flex;flex-direction:column;justify-content:center}
+.coNoi .cnTxt .cnZh{font-family:var(--hz);font-size:30px;line-height:1.1;color:var(--ink)}.coNoi .cnTxt .cnPy{font:700 16px var(--py);color:#C9820F}.coNoi .cnTxt .cnPy span{font-size:16px}.cnDong.moi{animation:cnMoi .35s ease}@keyframes cnMoi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .lsEnd{justify-content:center}.lsTro{width:140px;height:140px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
@@ -945,7 +948,7 @@ function topic(n){
   // hướng dẫn
   const a=new Audio();RS(`aud/c${n}-hd.mp4`).then(u=>{a.src=u}).catch(()=>{});const btn=document.getElementById("hdPlay"),bar=document.getElementById("hdBar"),tm=document.getElementById("hdT");const f=t=>Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0");
   a.onloadedmetadata=()=>{bar.max=a.duration;tm.textContent="0:00 / "+f(a.duration)};a.ontimeupdate=()=>{bar.value=a.currentTime;tm.textContent=f(a.currentTime)+(a.duration?" / "+f(a.duration):"")};
-  a.onplay=()=>{btn.innerHTML=PAUSE;coNoi(a)};a.onpause=a.onended=()=>btn.innerHTML=PLAY;btn.onclick=()=>{try{cur&&cur.pause()}catch(e){}a.paused?a.play().catch(()=>{}):a.pause()};bar.oninput=()=>a.currentTime=+bar.value;window._hd=a;
+  a.onplay=()=>{btn.innerHTML=PAUSE;coNoi(a,`aud/c${n}-hd.json`)};a.onpause=a.onended=()=>btn.innerHTML=PLAY;btn.onclick=()=>{try{cur&&cur.pause()}catch(e){}a.paused?a.play().catch(()=>{}):a.pause()};bar.oninput=()=>a.currentTime=+bar.value;window._hd=a;
   if(danhDauHoc()){const c=chuoi();setTimeout(()=>mung("🔥",c,c>1?`${c} ngày học liền!`:"Ngày học đầu tiên!",c>1?"Giữ lửa mỗi ngày nhé, bé giỏi quá!":"Mai học tiếp để có chuỗi 2 ngày nhé!"),600)}veChuoi();noiVe(n);
   {const hn=new Date().toLocaleDateString("sv-SE"),kk="yct1-mo-"+n;if(store.get(kk,"")!==hn){store.set(kk,hn);ghiKQ(`c${n}-mo`,`${n==0?"Mở đầu":"Bài "+n} · vào học`,100)}}   // 25/09 chị bỏ lịch 7 ngày — ghi "vào học" mỗi ngày để email tiến độ tuần
   app.querySelectorAll(".fc[data-i]").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-w${b.dataset.i}.mp3`,b)});
@@ -953,7 +956,7 @@ function topic(n){
   {const pb=document.getElementById("pdfBtn");if(pb&&KHOA)pb.onclick=e=>{e.preventDefault();pb.style.opacity=.6;RS(`in/to-mau-c${n}.pdf`).then(u=>{const x=document.createElement("a");x.href=u;x.download=`SunMoon-to-mau-chuyen-de-${n}.pdf`;document.body.appendChild(x);x.click();x.remove();pb.style.opacity=1}).catch(()=>{pb.style.opacity=1;alert("Chưa mở được file — bố mẹ đăng nhập lại giúp SunMoon nhé")})}}
   app.querySelectorAll(".pyk").forEach(b=>b.onclick=()=>{a.pause();play(b.dataset.src,b)});
   // 25/09 chị: mục nào cũng có giọng cô giảng — nút chỉ hiện khi đã có file tiếng
-  app.querySelectorAll(".gbtn").forEach(g=>{const t=new Audio();t.preload="metadata";t.onloadedmetadata=()=>g.hidden=false;RS(g.dataset.g).then(u=>t.src=u).catch(()=>{});g.onclick=()=>{a.pause();coNoi(play(g.dataset.g,g))}});
+  app.querySelectorAll(".gbtn").forEach(g=>{const t=new Audio();t.preload="metadata";t.onloadedmetadata=()=>g.hidden=false;RS(g.dataset.g).then(u=>t.src=u).catch(()=>{});g.onclick=()=>{a.pause();coNoi(play(g.dataset.g,g),g.dataset.g.replace(/\.mp4$/,".json"))}});
   app.querySelectorAll(".tnb button[data-src]").forEach(b=>b.onclick=()=>{a.pause();play(b.dataset.src,b.closest(".tn"))});
   app.querySelectorAll(".tnb button[data-both]").forEach(b=>b.onclick=()=>{a.pause();const i=+b.dataset.both,card=b.closest(".tn");const x=play(`aud/c${n}-w${6+i}.mp3`,card);x.onended=()=>{setTimeout(()=>play(`aud/vi-ma${i+1}.mp3`,card),350)}});
   app.querySelectorAll(".sn").forEach(b=>b.onclick=()=>{a.pause();play(`aud/c${n}-s${b.dataset.i}.mp3`,b)});
@@ -1074,7 +1077,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061037";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061040";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1370,12 +1373,19 @@ function luyenTu(n){const box=document.getElementById("luyenTu"),c=ND[n];if(!box
   lam()}
 /* 06/10 chị: CÔ GIẢNG CÓ HÌNH HOẠT HÌNH NÓI — Cô Mặt Trời hiện góc dưới, miệng mấp máy theo đúng độ to của tiếng cô (đo âm lượng thật) */
 let _coAC=null;const _coSrc=new WeakMap();
-function coNoi(au){if(!au)return;let o=document.getElementById("coNoi");
+// phiên âm cho câu tiếng Trung trong phụ đề: tìm trong nội dung bài (từ, câu, hội thoại…)
+function pyCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let r=null;const tim=v=>{if(r)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&typeof v[1]==="string"&&v[0].replace(/[！!？?。，,、\s]/g,"")===k&&/[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]/i.test(v[1]))r=v[1];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};tim(ND);return r}
+function coNoi(au,cueUrl){if(!au)return;let o=document.getElementById("coNoi");
   if(!o){o=document.createElement("div");o.id="coNoi";o.className="coNoi";o.innerHTML=`<svg viewBox="0 0 120 120" class="cnSun"><g class="cnTia" stroke="#F6C343" stroke-width="5.5" stroke-linecap="round">${Array.from({length:16},(_,i)=>{const a=i*22.5*Math.PI/180,r2=i%2?55:59;return `<line x1="${(60+46*Math.cos(a)).toFixed(1)}" y1="${(60+46*Math.sin(a)).toFixed(1)}" x2="${(60+r2*Math.cos(a)).toFixed(1)}" y2="${(60+r2*Math.sin(a)).toFixed(1)}"/>`}).join("")}</g><circle cx="60" cy="60" r="38" fill="#FFD94F"/>
     <g class="cnMat"><ellipse cx="47" cy="54" rx="3.6" ry="4.4" fill="#2B2622"/><ellipse cx="73" cy="54" rx="3.6" ry="4.4" fill="#2B2622"/><circle cx="48.2" cy="52.4" r="1.3" fill="#fff"/><circle cx="74.2" cy="52.4" r="1.3" fill="#fff"/></g>
     <circle cx="38" cy="65" r="6.5" fill="#F7A3A0" opacity=".75"/><circle cx="82" cy="65" r="6.5" fill="#F7A3A0" opacity=".75"/>
     <ellipse class="cnMieng" cx="60" cy="70" rx="8" ry="1.6" fill="#8B2E2E"/><path class="cnCuoi" d="M50 67q10 10 20 0" stroke="#2B2622" stroke-width="2.8" fill="none" stroke-linecap="round"/></svg>
-    <div class="cnTxt"><b>Cô Mặt Trời đang giảng</b><span>nghe kỹ nhé!</span></div><button class="cnX" aria-label="Dừng">⏸</button>`;document.body.appendChild(o)}
+    <div class="cnTxt"><b>Cô Mặt Trời đang giảng</b><span class="cnDong">nghe kỹ nhé!</span></div><button class="cnX" aria-label="Dừng">⏸</button>`;document.body.appendChild(o)}
+  // 06/10 chị: bấm Cô giảng → hình hoạt hình NÓI KÈM CHỮ chạy theo lời cô
+  let CUE=null,cu=-1;const dong=o.querySelector(".cnDong");o.classList.toggle("coPhu",!!cueUrl);dong.textContent=cueUrl?"…":"nghe kỹ nhé!";
+  if(cueUrl)fetch(cueUrl+"?v="+AV).then(r=>r.ok?r.json():null).then(j=>{CUE=j;if(!j){o.classList.remove("coPhu");dong.textContent="nghe kỹ nhé!"}}).catch(()=>{o.classList.remove("coPhu")});
+  const veDong=()=>{if(!CUE)return;let i=-1;for(let q=0;q<CUE.length;q++)if(CUE[q].t<=au.currentTime+.05)i=q;if(i===cu||i<0)return;cu=i;const c=CUE[i];
+    dong.innerHTML=c.zh?`<span class="cnZh">${esc(c.zh)}</span>${pyCua(c.zh)?`<span class="cnPy">${tonePy(pyCua(c.zh))}</span>`:""}`:esc(c.vi);dong.classList.remove("moi");void dong.offsetWidth;dong.classList.add("moi")};
   const mieng=o.querySelector(".cnMieng"),cuoi=o.querySelector(".cnCuoi");o.hidden=false;o.classList.add("hien");
   o.querySelector(".cnX").onclick=()=>{try{au.pause()}catch(e){}};
   let an=null,buf=null;
@@ -1383,7 +1393,7 @@ function coNoi(au){if(!au)return;let o=document.getElementById("coNoi");
     let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
   let t0=performance.now();const tick=()=>{if(au.paused||au.ended){mieng.setAttribute("ry","1.6");cuoi.style.opacity=1;o.classList.remove("hien");setTimeout(()=>{if(au.paused||au.ended)o.hidden=true},400);return}
     let v;if(an){an.getByteTimeDomainData(buf);let m=0;for(const x of buf)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/50)}else{v=.5+.5*Math.sin((performance.now()-t0)/90)}   // không đo được thì mấp máy đều
-    const ry=1.6+v*9;mieng.setAttribute("ry",ry.toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1;requestAnimationFrame(tick)};
+    veDong();const ry=1.6+v*9;mieng.setAttribute("ry",ry.toFixed(1));mieng.setAttribute("rx",(7+v*3).toFixed(1));cuoi.style.opacity=v>.15?0:1;requestAnimationFrame(tick)};
   const chay=()=>requestAnimationFrame(tick);if(au.paused)au.addEventListener("playing",chay,{once:true});else chay()}
 /* ---------- 06/10 chị: PHIÊN ÂM HỌC TỪNG NHÓM RỒI LUYỆN NGAY — học hết 6 nguyên âm, luyện xong mới sang phụ âm. Mỗi câu 1 trang, tự chuyển ---------- */
 function veChuCai(box,chu,xong){   // tô chữ cái phiên âm theo nét mờ
