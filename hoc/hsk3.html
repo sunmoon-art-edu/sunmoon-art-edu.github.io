@@ -309,6 +309,7 @@ svg .rays{transform-origin:50px 50px;animation:pulse 2.4s ease-in-out infinite}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .node.song .dot{background:var(--surface);color:var(--c2);border:2px solid var(--c);border-bottom:6px solid var(--c2);font-size:30px}
 .linhvat{position:relative;display:inline-block;width:var(--lv);height:var(--lv);flex:none;line-height:1}
+.linhvat svg{display:block;filter:drop-shadow(0 3px 5px rgba(230,160,40,.25))}
 .linhvat .lv1{display:block;font-size:calc(var(--lv)*.86);line-height:var(--lv);text-align:center;filter:drop-shadow(0 4px 6px rgba(200,100,30,.25))}
 .linhvat .lv2{position:absolute;right:-6%;bottom:-4%;font-size:calc(var(--lv)*.42)}
 .lv-gioi .lv2{right:auto;left:-4%;top:-6%;bottom:auto}
@@ -339,6 +340,8 @@ svg .rays{transform-origin:50px 50px;animation:pulse 2.4s ease-in-out infinite}
 .passage .pp{color:var(--moon);font-weight:500;margin-top:6px}.passage .pv{color:var(--ink-2);margin-top:6px;font-style:italic}
 .anh{font-size:54px;line-height:1.1;flex:none;text-align:center;animation:pop .45s ease-out}
 .anh.to{font-size:76px;margin:0 auto 10px}
+.anh img{width:46px;height:46px;vertical-align:middle;margin:0 1px}
+.anh.to img{width:58px;height:58px}
 .prompt>.anh{width:auto;font-size:38px;white-space:nowrap;max-width:45%}
 @media (max-width:400px){.anh{font-size:46px}.anh.to{font-size:64px}}
 .onchip{display:inline-block;vertical-align:middle;font:600 12px/1 var(--f-body);letter-spacing:.04em;text-transform:uppercase;background:var(--moon-soft);color:var(--moon);padding:5px 9px;border-radius:999px;margin-left:6px}
@@ -796,16 +799,40 @@ const IC = {
   badC: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="var(--bad)"/><path d="M14 14l12 12M26 14 14 26" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>'
 };
 /* mascot: half sun, half moon */
-/* Linh vật khen thưởng: mặt trời 🌞 (chị duyệt) + biểu tượng nhỏ theo lúc. linhVat(tâm trạng, cỡ px) */
-function linhVat(m,px){m=m||"kha";px=px||72;const nho={gioi:"✨",cup:"🏆",lua:"🔥",colen:"💪",chao:"👋"}[m]||"";
-  return `<span class="linhvat lv-${m}" style="--lv:${px}px" role="img" aria-label="Mặt trời SunMoon"><span class="lv1">🌞</span>${nho?`<span class="lv2">${nho}</span>`:""}</span>`}
+/* Linh vật khen thưởng SunMoon (tự vẽ, 06/10/2026): mặt trời · mặt trăng · ngôi sao, kiểu dễ thương.
+   linhVat(tâm trạng, cỡ px): gioi (mặt trời + sao lấp lánh) · kha (mặt trời) · cup (mặt trời + cúp) · lua (mặt trời + lửa) · colen (mặt trăng ngủ) · sao (ngôi sao) */
+function linhVat(m,px){m=m||"kha";px=px||72;
+  const cheek=(x,y)=>`<circle cx="${x}" cy="${y}" r="6.5" fill="#F7A3A0" opacity=".75"/><path d="M${x-3} ${y}a3 3 0 1 1 3 3" stroke="#EE8580" stroke-width="1.4" fill="none" opacity=".8"/>`;
+  const eye=(x,y)=>`<ellipse cx="${x}" cy="${y}" rx="3.6" ry="4.4" fill="#2B2622"/><circle cx="${x+1.2}" cy="${y-1.6}" r="1.3" fill="#fff"/>`;
+  const sleep=(x,y)=>`<path d="M${x-5} ${y}q5 5 10 0" stroke="#2B2622" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M${x-4} ${y+2}l-2 3M${x} ${y+3.4}v3.4M${x+4} ${y+2}l2 3" stroke="#2B2622" stroke-width="1.6" stroke-linecap="round"/>`;
+  let body="";
+  if(m==="colen"){   // mặt trăng ngủ
+    body=`<path d="M78 14A46 46 0 1 0 104 88 38 38 0 1 1 78 14z" fill="#F6CF5A"/><path d="M78 14A46 46 0 1 0 104 88 38 38 0 1 1 78 14z" fill="url(#lvm)" opacity=".55"/>
+      ${sleep(40,56)}${sleep(62,58)}${cheek(34,68)}${cheek(68,70)}<path d="M47 72q5 4 10 0" stroke="#2B2622" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  }else if(m==="sao"){
+    body=`<path d="M60 12l13 27 29 4-21 20 5 29-26-14-26 14 5-29-21-20 29-4z" fill="#FFD54A" stroke="#F4BE2E" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M48 56q4-5 8 0M64 56q4-5 8 0" stroke="#2B2622" stroke-width="2.6" fill="none" stroke-linecap="round"/>${cheek(43,64)}${cheek(77,64)}<path d="M54 64q6 6 12 0" stroke="#2B2622" stroke-width="2.6" fill="none" stroke-linecap="round"/>`;
+  }else{             // mặt trời
+    const rays=Array.from({length:16},(_,i)=>{const a=i*22.5*Math.PI/180,r1=46,r2=i%2?55:59;return `<line x1="${(60+r1*Math.cos(a)).toFixed(1)}" y1="${(60+r1*Math.sin(a)).toFixed(1)}" x2="${(60+r2*Math.cos(a)).toFixed(1)}" y2="${(60+r2*Math.sin(a)).toFixed(1)}"/>`}).join("");
+    body=`<g stroke="#F6C343" stroke-width="5.5" stroke-linecap="round">${rays}</g><circle cx="60" cy="60" r="38" fill="#FFD94F"/><circle cx="60" cy="60" r="38" fill="url(#lvs)" opacity=".6"/>
+      ${eye(47,55)}${eye(73,55)}${cheek(38,66)}${cheek(82,66)}<path d="M50 67q10 10 20 0" stroke="#2B2622" stroke-width="2.8" fill="none" stroke-linecap="round"/>`;
+  }
+  const nho={gioi:"✨",cup:"🏆",lua:"🔥"}[m]||"";
+  return `<span class="linhvat lv-${m}" style="--lv:${px}px" role="img" aria-label="Linh vật SunMoon"><svg viewBox="0 0 120 120" width="100%" height="100%"><defs><radialGradient id="lvs" cx=".35" cy=".3"><stop offset="0" stop-color="#FFF6C2"/><stop offset="1" stop-color="#FFD94F" stop-opacity="0"/></radialGradient><radialGradient id="lvm" cx=".3" cy=".3"><stop offset="0" stop-color="#FFF3C4"/><stop offset="1" stop-color="#F6CF5A" stop-opacity="0"/></radialGradient></defs>${body}</svg>${nho?`<span class="lv2">${nho}</span>`:""}</span>`}
 
 const PY_MAC = false;   // HSK 3–3: mở sẵn pinyin ở bài đọc
 const LOGO_SRC = (document.querySelector(".brand .lm") || {}).src || "";
 // hình minh hoạ: có emoji thì hiện emoji, không thì hiện logo SunMoon
 const hW = w => (w && HINH.w && HINH.w[w.h]) || "";
 const hS = x => (x && HINH.s && HINH.s[x.z]) || "";
-function anh(e, cls = "") { return `<div class="anh ${cls}" aria-hidden="true">${e}</div>`; }
+// hình phẳng dễ thương (Fluent Emoji Flat, MIT) lưu ở hoc/hinh/ — chị chốt 06/10: mọi hình theo kiểu này, cỡ nhỏ
+const HINH_CO = new Set(["1f004", "1f193", "1f195", "1f197", "1f235", "1f305", "1f307", "1f308", "1f309", "1f30a", "1f30d", "1f30f", "1f310", "1f319", "1f31e", "1f31f", "1f321", "1f324", "1f326", "1f327", "1f32a", "1f32c", "1f331", "1f332", "1f333", "1f334", "1f336", "1f338", "1f339", "1f33a", "1f33f", "1f340", "1f342", "1f343", "1f345", "1f347", "1f349", "1f34b", "1f34c", "1f34e", "1f350", "1f351", "1f354", "1f356", "1f357", "1f35a", "1f35c", "1f35e", "1f362", "1f366", "1f36a", "1f36b", "1f36c", "1f370", "1f372", "1f373", "1f374", "1f375", "1f37a", "1f37d", "1f37e", "1f37f", "1f381", "1f382", "1f388", "1f389", "1f38a", "1f392", "1f393", "1f396", "1f39f", "1f3a4", "1f3a7", "1f3a8", "1f3ab", "1f3ac", "1f3ad", "1f3ae", "1f3af", "1f3b5", "1f3b6", "1f3b9", "1f3be", "1f3c0", "1f3c1", "1f3c3", "1f3c5", "1f3c6", "1f3c7", "1f3ca", "1f3cb", "1f3d0", "1f3d3", "1f3d6", "1f3d8", "1f3d9", "1f3db", "1f3de", "1f3df", "1f3e0", "1f3e1", "1f3e2", "1f3e4", "1f3e5", "1f3e6", "1f3e7", "1f3e8", "1f3ea", "1f3eb", "1f3ed", "1f3ee", "1f3f7", "1f3f8", "1f407", "1f409", "1f415", "1f418", "1f41b", "1f41f", "1f422", "1f426", "1f42d", "1f42f", "1f430", "1f431", "1f434", "1f435", "1f436", "1f43c", "1f43e", "1f440", "1f442", "1f443", "1f444", "1f445", "1f447", "1f448", "1f449", "1f44b", "1f44c", "1f44d", "1f44e", "1f44f", "1f453", "1f454", "1f455", "1f456", "1f457", "1f45a", "1f45c", "1f45e", "1f45f", "1f463", "1f464", "1f465", "1f466", "1f467", "1f468", "1f468-200d-1f373", "1f468-200d-2695", "1f469", "1f469-200d-1f373", "1f469-200d-1f3eb", "1f46a", "1f46e", "1f474", "1f475", "1f476", "1f483", "1f484", "1f487", "1f489", "1f48a", "1f48c", "1f48d", "1f490", "1f492", "1f494", "1f495", "1f496", "1f497", "1f49d", "1f49e", "1f4a1", "1f4a5", "1f4a6", "1f4a7", "1f4a8", "1f4aa", "1f4ab", "1f4ac", "1f4ad", "1f4af", "1f4b0", "1f4b3", "1f4b4", "1f4b5", "1f4b8", "1f4ba", "1f4bb", "1f4bc", "1f4c1", "1f4c3", "1f4c4", "1f4c5", "1f4c6", "1f4c8", "1f4c9", "1f4ca", "1f4cb", "1f4cc", "1f4cd", "1f4cf", "1f4d0", "1f4d1", "1f4d2", "1f4d3", "1f4d4", "1f4d5", "1f4d6", "1f4d8", "1f4da", "1f4db", "1f4dc", "1f4dd", "1f4de", "1f4e0", "1f4e2", "1f4e3", "1f4e4", "1f4e5", "1f4e6", "1f4e7", "1f4ee", "1f4f0", "1f4f1", "1f4f7", "1f4f8", "1f4fa", "1f4fb", "1f500", "1f501", "1f502", "1f504", "1f50a", "1f50c", "1f50d", "1f50e", "1f511", "1f512", "1f513", "1f514", "1f517", "1f519", "1f51a", "1f51d", "1f51f", "1f522", "1f524", "1f525", "1f527", "1f528", "1f52a", "1f52c", "1f52e", "1f534", "1f535", "1f550", "1f552", "1f553", "1f556", "1f557", "1f55b", "1f562", "1f567", "1f570", "1f58a", "1f58d", "1f5a5", "1f5a8", "1f5bc", "1f5c2", "1f5d1", "1f5d3", "1f5e3", "1f5fa", "1f602", "1f604", "1f605", "1f606", "1f60a", "1f60b", "1f60c", "1f60d", "1f60e", "1f60f", "1f612", "1f613", "1f614", "1f615", "1f616", "1f61d", "1f61e", "1f61f", "1f620", "1f622", "1f623", "1f624", "1f628", "1f629", "1f62b", "1f62c", "1f62d", "1f630", "1f632", "1f633", "1f634", "1f637", "1f642", "1f645", "1f647", "1f64b", "1f64b-200d-2640", "1f64b-200d-2642", "1f64c", "1f64f", "1f686", "1f687", "1f689", "1f68c", "1f68f", "1f693", "1f695", "1f697", "1f69a", "1f6a2", "1f6a6", "1f6a9", "1f6aa", "1f6ab", "1f6ac", "1f6ad", "1f6ae", "1f6b2", "1f6b4", "1f6b6", "1f6b9", "1f6ba", "1f6bb", "1f6bd", "1f6bf", "1f6c1", "1f6c2", "1f6cb", "1f6cc", "1f6cd", "1f6ce", "1f6cf", "1f6d1", "1f6d2", "1f6d7", "1f6e0", "1f6e1", "1f6e3", "1f6e4", "1f6eb", "1f6ec", "1f7e1", "1f7e2", "1f90f", "1f912", "1f913", "1f914", "1f915", "1f917", "1f91d", "1f922", "1f924", "1f925", "1f926", "1f927", "1f928", "1f929", "1f92b", "1f932", "1f937", "1f938", "1f940", "1f941", "1f942", "1f944", "1f947", "1f94b", "1f957", "1f95a", "1f95b", "1f95f", "1f961", "1f962", "1f963", "1f964", "1f96c", "1f970", "1f971", "1f975", "1f976", "1f97a", "1f97e", "1f981", "1f986", "1f98b", "1f9a5", "1f9b5", "1f9b6", "1f9b7", "1f9ba", "1f9c2", "1f9c3", "1f9ca", "1f9cd", "1f9d0", "1f9d1", "1f9d2", "1f9e0", "1f9e2", "1f9e5", "1f9e6", "1f9e9", "1f9ea", "1f9ed", "1f9ee", "1f9f0", "1f9f1", "1f9f2", "1f9f3", "1f9f4", "1f9f8", "1f9f9", "1f9fc", "1f9fd", "1f9fe", "1fa7a", "1fa91", "1fa99", "1fa9d", "1fa9e", "1fa9f", "1faa5", "1fab6", "203c", "2194", "21a9", "23-20e3", "231a", "231b", "23e9", "23ea", "23ed", "23f0", "23f1", "23f3", "25b6", "2600", "2601", "2602", "2603", "260e", "2615", "261d", "2640", "2642", "267b", "267e", "2696", "2699", "26a0", "26a1", "26aa", "26ab", "26bd", "26c5", "26d4", "26f0", "26fd", "2702", "2705", "2708", "2709", "270a", "270b", "270d", "270f", "2712", "2714", "2716", "2728", "2744", "274c", "2753", "2754", "2757", "2764", "2795", "2796", "2797", "27a1", "2935", "2b05", "2b06", "2b07", "2b1b", "2b1c", "2b50", "2b55", "30-20e3", "3030", "31-20e3", "32-20e3", "33-20e3", "34-20e3", "35-20e3", "36-20e3", "37-20e3", "38-20e3", "39-20e3"]);
+const _seg = typeof Intl !== "undefined" && Intl.Segmenter ? new Intl.Segmenter("vi", { granularity: "grapheme" }) : null;
+function hinhPhang(e) {
+  if (!_seg || !e) return e || "";
+  return [..._seg.segment(e)].map(({ segment: g }) => { const k = [...g].filter(c => c !== "\ufe0f").map(c => c.codePointAt(0).toString(16)).join("-"); return HINH_CO.has(k) ? `<img src="hinh/${k}.svg" alt="" loading="lazy">` : g; }).join("");
+}
+function anh(e, cls = "") { return `<div class="anh ${cls}" aria-hidden="true">${hinhPhang(e)}</div>`; }
 function anhHay(e, mood = "happy", cls = "") { return e ? anh(e, cls) : mascot(mood, cls); }
 function mascot(mood = "happy", cls = "") {   // dùng logo SunMoon (hình chồng sách) làm linh vật
   return `<img class="mascot ${cls}" src="${LOGO_SRC}" alt="" aria-hidden="true">`;
