@@ -1744,7 +1744,7 @@ function go(n,scroll=true){
   const box=document.getElementById("introPlayer"),btn=document.getElementById("iPlay"),bar=document.getElementById("iBar"),tm=document.getElementById("iTime");
   box.hidden=false;bar.max=G0.d;btn.innerHTML=PLAY;tm.textContent="0:00 / "+fmt(G0.d);
   const a=new Audio(G0.f);a.preload="metadata";
-  const IC=[[8.52, "t0"], [17.03, "t1"], [23.79, "t2"], [31.91, "t3"], [42.19, "t4"], [48.02, "t5"], [53.74, "h0"], [56.46, "h1"], [59.16, "h2"], [60.1, "t5"], [63.66, "v"], [67.58, "c0"], [75.62, "c1"], [80.8, "c2"], [88.01, "c3"], [98.69, "c4"], [104.51, "c5"], [110.87, "c6"], [118.22, "c7"], [124.92, null]];let lc;
+  const IC=[[8.38, "t0"], [16.77, "t1"], [23.39, "t2"], [31.37, "t3"], [41.51, "t4"], [47.22, "t5"], [52.8, "h0"], [55.38, "h1"], [57.95, "h2"], [58.89, "t5"], [62.32, "v"], [66.1, "c0"], [74.0, "c1"], [79.18, "c2"], [86.39, "c3"], [97.07, "c4"], [102.89, "c5"], [109.26, "c6"], [116.6, "c7"], [123.31, null]];let lc;
   const el=k=>{const o=document.getElementById("origin"),n=+k.slice(1);return k[0]==="t"?o.querySelectorAll("ul.tl > li")[n]:k[0]==="h"?o.querySelectorAll(".hv button")[n]:k[0]==="c"?o.querySelectorAll("ul.cult > li")[n]:k==="v"?o.querySelectorAll(".otabs button")[2]:null};
   const cue=()=>{let c=null;for(const[s,k]of IC){if(s<=a.currentTime)c=k;else break}if(c===lc)return;lc=c;document.querySelectorAll("#origin .chi").forEach(x=>x.classList.remove("chi"));
     if(!c||a.paused)return;window.introMo&&introMo(c[0]==="c"||c==="v"?2:1);const e=el(c);if(e){e.classList.add("chi");e.scrollIntoView({block:"center",behavior:"smooth"})}};
@@ -1788,7 +1788,7 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
 })();
 
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261006154843";
+const BAN_SO="20261006154905";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
