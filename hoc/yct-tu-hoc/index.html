@@ -812,6 +812,7 @@ section.dangLam>h2{display:none!important}
 #pinyin>.pyt{display:none!important}
 .vcPhan{font-family:var(--tx);font-weight:600;color:#F4F7F2;font-size:clamp(17px,3.6vw,38px);line-height:1.35;text-align:center;text-shadow:0 1px 0 rgba(0,0,0,.2)}.vcNhan{color:#FFE066;font-size:1.35em;font-family:var(--py);padding:0 .08em}
 @media (orientation:portrait) and (max-width:700px){.vcBang{height:52%!important}.vcCo{left:50%!important;transform:translateX(-50%);width:44%!important}}
+.hatBox{display:flex;flex-direction:column;gap:10px}.hatV{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000}.hatV iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.hatT{margin:0;display:flex;flex-direction:column}.hatT i{font-size:13px;color:var(--ink-2)}
 .lsEnd{justify-content:center}.lsTro{width:140px;height:140px}
 .pgoi{margin:0;padding-left:20px;color:var(--sun-2);font-weight:600}.pgoi i{font-weight:300;color:var(--ink-2)}.pgom{margin:0;padding-left:20px}.pgom b{font-weight:600}
 .pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:16px;background:var(--gold-soft)}
@@ -1098,7 +1099,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061104";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061107";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1353,6 +1354,13 @@ function luyenTu(n){const box=document.getElementById("luyenTu"),c=ND[n];if(!box
   let gi=NH.findIndex(g=>g.ds.some(k=>!DA.has(k)));if(gi<0)gi=0;
   function lam(){const t0=Date.now();let saiN=0;const g=NH[gi],Q=[...g.ds.map(k=>[0,k]),...sh(g.ds).map(k=>[1,k]),...g.ds.map(k=>[2,k]),...sh(g.ds).map(k=>[3,k]),...g.ds.filter(HAN).map(k=>[4,k])];let q=0;
     const xongNhom=()=>{g.ds.forEach(k=>DA.add(k));store.set(key,[...DA]);themXP(5*g.ds.length,"Luyện từ");
+      // 06/10 chị: ôn xong mỗi nhóm từ → HÁT BÀI LITTLE FOX liên quan (mỗi bài hát chỉ hiện 1 lần)
+      const SG=c.song||[],daHat=new Set(store.get("yct1-hat-"+n,[]));const bh=SG.find(x=>!daHat.has(x[0])&&(g.so?/Number|数字/.test(x[1]):g.ds.some(k=>x[1].includes(W[k][0]))))||SG.find(x=>!daHat.has(x[0])&&!g.so&&!/Number|数字/.test(x[1]));
+      if(bh){daHat.add(bh[0]);store.set("yct1-hat-"+n,[...daHat]);const tiepSau=()=>{box.innerHTML="";xongNhom2()};
+        box.innerHTML=`<div class="hatBox"><p class="ltDe">🎵 Hát cùng Little Fox</p><div class="hatV"><iframe src="https://www.youtube-nocookie.com/embed/${bh[0]}?rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${esc(bh[1])}"></iframe></div><p class="hatT"><b>${hzw(bh[1])}</b><i>${esc(bh[2])}</i></p><button class="big" id="hatOk">Hát xong — học tiếp →</button></div>`;
+        box.querySelector("#hatOk").onclick=tiepSau;box.scrollIntoView({behavior:"smooth",block:"start"});return}
+      xongNhom2()};
+    const xongNhom2=()=>{
       const tk=thongKe(5*g.ds.length,(Date.now()-t0)/1000,Math.round(100*Math.max(0,Q.length-saiN)/Q.length));
       if(gi<NH.length-1){mung("🎉",null,`Xong nhóm ${g.ten}!`,`Giờ học nhóm tiếp: ${NH[gi+1].ten}`,tk);gi++;lam()}
       else{mung("🏆",null,"Con đã học và luyện hết từ mới!","Sang trang tiếp theo nhé",tk);const ps=document.getElementById("phS");if(ps){ps.disabled=false;ps.click()}}};
