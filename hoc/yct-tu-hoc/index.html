@@ -812,6 +812,19 @@ body{background:#FFFDF2}.card{background:#fff}
 img.fi[src*="img/gau/"]{border-radius:18px;object-fit:cover}
 /* 06/10 Thanh Hà: Cô Mặt Trời KHÔNG nhún nhảy ở bất cứ đâu — chỉ miệng đóng mở */
 .masc .mBody,.p-nhay .mBody,.p-lac .mBody,.p-quay .mBody,.p-vay .mBody,.p-bay .mBody,.linhvat,.vcSun,.cnSun,.sun,.sun .face,.sun .rays,.sunbtn{animation:none!important}
+/* 06/10 chị: "chỉnh màu sắc theo màu chị bảo đẹp" = bộ màu trò Chạy đua: nền trời xanh nhạt, ô trắng viền hồng · xanh dương · xanh lá · cam */
+:root{--m1:#F06A8A;--m2:#3FA7D6;--m3:#3DBE7A;--m4:#F2A93B}
+body{background:linear-gradient(180deg,#CDEBFA 0,#E6F5FD 260px,#F4FAFE 700px,#FFFBF0 1400px) fixed!important}
+.card{border:3px solid #D6ECF8!important;box-shadow:0 4px 0 #CFE6F3}
+.op2,.bgO,.noiO,.pyc2,.bai{border-width:3px!important;border-bottom-width:6px!important}
+.opts2 .op2:nth-child(4n+1),.bgL .bgO:nth-child(4n+1),.pyg2 .pyc2:nth-child(4n+1),.noiL{border-color:var(--m1)!important}
+.opts2 .op2:nth-child(4n+2),.bgL .bgO:nth-child(4n+2),.pyg2 .pyc2:nth-child(4n+2),.noiR{border-color:var(--m2)!important}
+.opts2 .op2:nth-child(4n+3),.bgL .bgO:nth-child(4n+3),.pyg2 .pyc2:nth-child(4n+3){border-color:var(--m3)!important}
+.opts2 .op2:nth-child(4n+4),.bgL .bgO:nth-child(4n+4),.pyg2 .pyc2:nth-child(4n+4){border-color:var(--m4)!important}
+.op2.right,.noiO.ok,.bgO.co{background:#E9F8EE!important;border-color:var(--m3)!important}.noiO.chon{background:#FFF6D6!important;border-color:var(--m4)!important}
+.pySeg i.on{background:var(--m4)!important}.pySeg i.qua{background:var(--m3)!important}
+.bai.open{border-color:var(--m2)!important}.bai.done{border-color:var(--m3)!important}
+@media (max-width:440px){#accBtn .tkC{display:none}#accBtn{padding:6px 10px!important;min-width:0}}
 .pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
 .pyc2.playing{border-color:#E0B640;background:#FFF8DC}
 /* 06/10 Biến điệu: thẻ ngang cả hàng, chữ Hán to, không vỡ dòng */
@@ -1099,7 +1112,7 @@ const OWN=()=>new Set((U&&U.own)||[]);
 const goi=n=>{const a=Math.floor((n-1)/4)*4+1;return[a,a+1,a+2,a+3]};   // 25/09 chị: bán KHOÁ 30 NGÀY = 4 bài (khoá 1 = Mở đầu + 1–4), 599k
 const soKhoa=n=>(goi(n)[0]+3)/4;
 const coMo=n=>!KHOA||(n===0?OWN().size>0:OWN().has(n));
-function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=false;b.textContent=U&&U.tk?"👤 "+U.ten:"👤 Đăng nhập";b.onclick=()=>{if(!(U&&U.tk))return dnTK();if(confirm("Thoát tài khoản "+U.ten+"? Bài đã học vẫn lưu trên tài khoản."))luuTD().then(()=>{const x=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("yct1-"))x.push(k)}x.forEach(k=>localStorage.removeItem(k));U=null;location.reload()})};return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("yct1-user",null),go(-1))):payPop(null,"dn")}
+function accBar(){const b=document.getElementById("accBtn");if(!KHOA){b.hidden=false;b.innerHTML=U&&U.tk?"👤<span class=\"tkC\"> "+esc(U.ten)+"</span>":"👤<span class=\"tkC\"> Đăng nhập</span>";b.title=U&&U.tk?U.ten:"Đăng nhập";b.onclick=()=>{if(!(U&&U.tk))return dnTK();if(confirm("Thoát tài khoản "+U.ten+"? Bài đã học vẫn lưu trên tài khoản."))luuTD().then(()=>{const x=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("yct1-"))x.push(k)}x.forEach(k=>localStorage.removeItem(k));U=null;location.reload()})};return}b.hidden=false;b.textContent=U?"👤 "+(U.ten||U.u):"Đăng nhập";b.onclick=()=>U?(confirm("Thoát tài khoản "+(U.ten||U.u)+"?")&&(U=null,store.set("yct1-user",null),go(-1))):payPop(null,"dn")}
 // 25/09 — ghi tiến độ về bảng SunMoon để tối Chủ nhật tự email báo cáo tuần cho bố mẹ
 function ghiKQ(phan,ten,dung){if(U&&U.tk)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:GT_TK,phan,ten,dung}).catch(()=>{});else if(KHOA&&U)callApi({app:"ketqua",u:U.u,m:U.m,giaoTrinh:"BMDC",phan,ten,dung}).catch(()=>{})}
 /* 06/10 chị: mỗi bạn có TÀI KHOẢN RIÊNG (email/tên đăng nhập + mã 4 số, trung tâm cấp ở bảng SunMoon › App học, giáo trình YCTTH).
@@ -1204,7 +1217,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061520";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061523";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
