@@ -856,7 +856,7 @@ function topic(n){
     <h3 class="pyh">Phụ âm đầu <small>chữ cái · từ có âm đó</small></h3><div class="pyc">${c.py.thanh.map(x=>`<button class="pyk" data-src="aud/c${n}-pgi-${x[0]}.mp4"><span class="pl">${x[0]}</span>${im(x[4])}<span class="hz">${esc(x[5])}</span><span class="py">${tonePy(x[6])}</span><small>${esc(x[7])}</small><i>${esc(x[3])}</i></button>`).join("")}</div>
     <h3 class="pyh">Ghép âm <small>phụ âm + nguyên âm</small></h3><div class="pyg">${c.py.ghep.map((x,i)=>`<button class="pyk gh" data-src="aud/c${n}-pgi-g${i}.mp4"><span class="pl">${x[0]} + ${x[1]}</span><span class="to">→</span><span class="pl">${tonePy(x[2])}</span><span class="hz">${esc(x[3])}</span><small>${esc(x[4])}</small></button>`).join("")}</div></section>`:""}
   <section class="card"><h2><span class="ic">${im("💬")}</span>${c.sach?"Câu chính":"Câu mẫu"} <small>bấm để nghe, nói theo thật to</small></h2><button class="gbtn" hidden data-g="aud/c${n}-g-cau.mp4">🔊 Cô giảng mục này</button>
-    <div class="sents">${c.cau.map((s,i)=>`<button class="sn" data-i="${i}"><span class="snSo">${i+1}/</span><span class="pl">${SPK}</span><span><span class="hz">${esc(s[0])}</span><span class="py">${tonePy(s[1])}</span><span class="vi">${esc(s[2])}</span><span class="khi">${im("🕒")} ${esc(s[3])}</span></span></button>`).join("")}</div></section>
+    <div class="sents">${(c.cau||[]).map((s,i)=>`<button class="sn" data-i="${i}"><span class="snSo">${i+1}/</span><span class="pl">${SPK}</span><span><span class="hz">${esc(s[0])}</span><span class="py">${tonePy(s[1])}</span><span class="vi">${esc(s[2])}</span><span class="khi">${im("🕒")} ${esc(s[3])}</span></span></button>`).join("")}</div></section>
   <section class="card"><h2><span class="ic">${im("🃏")}</span>Từ mới <small>bấm để nghe · trình chiếu</small></h2><button class="gbtn" hidden data-g="aud/c${n}-g-w.mp4">🔊 Cô giảng mục này</button>
     <div class="cards">${c.w.map((w,i)=>`<button class="fc" data-i="${i}">${pic(w[3])}<span class="hz">${esc(w[0])}</span><span class="py">${tonePy(w[1])}</span><span class="vi">${esc(w[2])}</span></button>`).join("")}</div>
     ${c.vd?`<h3 class="pyh">Câu ví dụ <small>bấm để nghe</small></h3><div class="sents">${c.vd.map((s,i)=>`<button class="sn vdS" data-v="${i}"><span class="pl">${SPK}</span><span><span class="hz">${esc(s[0])}</span><span class="py">${tonePy(s[1])}</span><span class="vi">${esc(s[2])}</span></span></button>`).join("")}</div>`:""}
@@ -1011,7 +1011,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610060936";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061019";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1344,7 +1344,7 @@ function boCuc(n){const hero=app.querySelector(".hero");if(!hero)return;chuHinh(
 /* ---------- 02/10 chị: làm theo sách YCT1 + bài tập về nhà + tập viết của trung tâm ---------- */
 const btXong=n=>new Set(store.get("yct1-bt-"+n,[]));
 function veBT(n){const box=document.getElementById("btBox");if(!box)return;const c=ND[n],X=btXong(n),IC={noi:"🔗",dem:"🔢",ds:"✅",chon:"📝",xep:"🧱"};
-  box.innerHTML=c.bt.map((e,k)=>`<button class="bai ${X.has(k)?"done":"open"}" data-k="${k}"><span class="bn">${X.has(k)?"✓":im(IC[e.t]||"📝")}</span><span><b>Bài ${["I","II","III","IV","V","VI","VII","VIII","IX","X"][k]||k+1}. ${esc(e.de)}</b><i>${btTom(e)}</i></span>${X.has(k)?"":`<span class="go">LÀM</span>`}</button>`).join("");
+  box.innerHTML=(c.bt||[]).map((e,k)=>`<button class="bai ${X.has(k)?"done":"open"}" data-k="${k}"><span class="bn">${X.has(k)?"✓":im(IC[e.t]||"📝")}</span><span><b>Bài ${["I","II","III","IV","V","VI","VII","VIII","IX","X"][k]||k+1}. ${esc(e.de)}</b><i>${btTom(e)}</i></span>${X.has(k)?"":`<span class="go">LÀM</span>`}</button>`).join("");
   box.querySelectorAll(".bai").forEach(b=>b.onclick=()=>{try{window._hd&&window._hd.pause()}catch(e){}const k=+b.dataset.k;lamBT(n,c.bt[k],k)})}
 function btTom(e){if(e.t==="noi")return e.cap.slice(0,4).map(x=>esc(x[0])).join(" · ")+(e.cap.length>4?" …":"");if(e.t==="dem")return e.cau.map(x=>im(x[0])).join(" ");return `${(e.cau||[]).length} câu`}
 function lamBT(n,e,k){const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);const SO="一二三四五六七八九十".split("");
@@ -1379,7 +1379,7 @@ function lamBT(n,e,k){const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q
     mung(dung===tong?"🏆":"⭐",null,`Xong bài tập ${["I","II","III","IV","V","VI","VII","VIII","IX","X"][k]||k+1}!`,`Đúng ${dung}/${tong}${moi?" · +15 XP":""}`);veBT(n)}
   cau()}
 function veTV(n){const box=document.getElementById("tvBox");if(!box)return;const c=ND[n],X=new Set(store.get("yct1-tv-"+n,[]));
-  box.innerHTML=c.tv.map((t,i)=>`<button class="tvO${X.has(i)?" done":""}" data-t="${i}"><span class="hz">${esc(t[0])}</span><span class="py">${tonePy(t[1])}</span></button>`).join("");
+  box.innerHTML=(c.tv||[]).map((t,i)=>`<button class="tvO${X.has(i)?" done":""}" data-t="${i}"><span class="hz">${esc(t[0])}</span><span class="py">${tonePy(t[1])}</span></button>`).join("");
   box.querySelectorAll(".tvO").forEach(b=>b.onclick=()=>{try{window._hd&&window._hd.pause()}catch(e){}tapViet(n,+b.dataset.t)})}
 function tapViet(n,i){const c=ND[n],T=c.tv;const o=document.createElement("div");o.className="ls";document.body.appendChild(o);document.body.style.overflow="hidden";
   const dong=()=>{o.remove();document.body.style.overflow="";veTV(n)};
