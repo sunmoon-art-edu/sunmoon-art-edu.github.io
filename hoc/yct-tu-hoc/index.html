@@ -775,7 +775,10 @@ body{background:#FFFDF2}.card{background:#fff}
 .pyh2{margin:0;font-size:18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}.pyh2 i{flex-basis:100%;font-size:13px;font-weight:400;color:var(--ink-2)}
 .nhan2{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:#FDE2DE;color:#B4432F}.nhan2.lt{background:#E6F4E1;color:#3E7E3A}
 .pyg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}.pyc2{display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;background:#fff;padding:10px 6px;font:inherit;color:var(--ink);cursor:pointer;text-align:center}
-.pyc2 .big2{font:800 40px/1.1 var(--py);color:var(--sun-2)}.pyc2 img{width:40px;height:40px}.pyc2 .ex2{display:flex;gap:6px;align-items:baseline}.pyc2 .hzc{font-family:var(--hz);font-size:22px}.pyc2 .mn2{font-size:12.5px;color:#7A5A00}.pyc2 .vn2{font-size:12.5px;color:var(--ink-2)}.pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
+.pyc2 .big2{font:800 40px/1.1 var(--py);color:var(--sun-2)}.pyc2 img{width:40px;height:40px}.pyc2 .ex2{display:flex;gap:6px;align-items:baseline}.pyc2 .hzc{font-family:var(--hz);font-size:22px}.pyc2 .mn2{font-size:12.5px;color:#7A5A00}.pyc2 .vn2{font-size:12.5px;color:var(--ink-2)}/* 06/10 chị: "nhiều chữ đậm quá — tiêu đề" → bỏ dòng "Phần x/4" (thanh bước đã có), bỏ tiêu đề + nút giảng của mục phiên âm (đã có cô giảng từng nhóm) */
+.phanBox>.phan{display:none!important}
+.bdV{display:flex;flex-direction:column;align-items:center;gap:4px}.bdZ{font:400 clamp(44px,11vw,90px)/1.1 var(--hz)}.bdV.to .bdZ{font-size:clamp(64px,15vw,130px)}.bdP{font:700 clamp(20px,4.6vw,34px)/1.3 var(--py)}.bdP i{font:400 .6em/1 var(--vi,inherit);color:var(--ink-2)}.vcBang:has(.bdV){flex-direction:column!important;gap:10px}
+.pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
 .pyc2.playing{border-color:#E0B640;background:#FFF8DC}
 /* 06/10 Biến điệu: thẻ ngang cả hàng, chữ Hán to, không vỡ dòng */
 .pyc2.bd{grid-column:1/-1;padding:12px}.pyc2.bd .big2{font:800 20px/1.2 var(--vi,inherit);color:var(--ink-2)}.pyc2.bd .ex2{flex-wrap:wrap;justify-content:center;gap:4px 8px;font-size:20px}.pyc2.bd .hzc{font-size:30px;white-space:nowrap;width:100%}.pyc2.bd .vn2{font-size:15px}
@@ -1134,7 +1137,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610061232";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610061234";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung");if(dang){if(!document.getElementById("banMoi")){const b=document.createElement("button");b.id="banMoi";b.className="banMoi";b.textContent="✨ Có bài mới — bấm để cập nhật";b.onclick=()=>location.reload();document.body.appendChild(b)}return}
@@ -1442,6 +1445,9 @@ function hinhCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let e=null
 // mặt trời biết nói = đúng linh vật chung linhVat("kha") + thêm miệng
 function lvNoi(){const h=linhVat("kha",200).replace('<svg ','<svg class="vcSun" ').replace(/<path d="M50 67q10 10 20 0"/,'<ellipse class="cnMieng" cx="60" cy="70" rx="8" ry="1.6" fill="#8B2E2E"/><path class="cnCuoi" d="M50 67q10 10 20 0"');return h}
 /* 06/10 chị: cô nói "thanh 1/2/3/4" thì trên bảng PHẢI GHI RÕ dấu thanh: mā má mǎ mà + nét đi lên/xuống */
+/* 06/10 chị: "có ví dụ chứ" → cô nói quy tắc biến điệu thì bảng hiện luôn VÍ DỤ: 你好 nǐ hǎo → ní hǎo */
+function bdHinh(i,to){const x=(ND[0].bd||[])[i];if(!x)return "";const [v,d]=x[2].split("→").map(z=>z.trim());
+  return `<span class="bdV${to?" to":""}"><span class="bdZ">${esc(x[1])}</span><span class="bdP"><i>viết</i> ${tonePy(v)} → <i>đọc</i> <b>${tonePy(d)}</b></span></span>`}
 function thanhHinh(vi){const t=vi.toLowerCase(),N={"một":1,"1":1,"hai":2,"2":2,"ba":3,"3":3,"bốn":4,"4":4};
   const C=["","M8 12H52","M8 40L52 8","M8 22Q22 46 30 44T52 8","M8 8L52 44"],DAU=["","ˉ","ˊ","ˇ","ˋ"],A=["","ā","á","ǎ","à"];
   const o=k=>`<span class="thO tone${k}"><b>${A[k]}</b><svg viewBox="0 0 60 52"><path d="${C[k]}" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><i>Thanh ${k}</i></span>`;
@@ -1465,7 +1471,8 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
     // 06/10 chị: cô giảng tới đâu, CHỮ HIỆN LÊN BẢNG tới đó (như viết phấn) — chữ cái/âm quan trọng to, vàng
     if(c.vi){const hl=esc(c.vi).replace(/(^|[\s“"(,])([a-zA-Zü]|zh|ch|sh)(?=[\s,.!?:”")]|$)/g,'$1<b class="vcNhan">$2</b>');
       const ds=[];hl.split(/(?<=[,;:.!?])\s+/).forEach(x=>{if(ds.length&&(x.replace(/<[^>]+>/g,"").length<14||ds[ds.length-1].replace(/<[^>]+>/g,"").length<14))ds[ds.length-1]+=" "+x;else ds.push(x)});
-      hinh.innerHTML=thanhHinh(c.vi);chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
+      hinh.innerHTML=c.ex!=null?bdHinh(c.ex):thanhHinh(c.vi);chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
+    if(c.zh&&c.ex!=null){hinh.innerHTML="";chu.innerHTML=bdHinh(c.ex,1);o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
     if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh">${esc(c.zh)}</span>${py?`<span class="vcPy">${tonePy(py)}</span>`:""}`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
 };
   let an=null,buf=null;try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
@@ -1524,7 +1531,7 @@ function luyenPy(n){const box=document.getElementById("luyenPy");if(!box||n!=0||
   const oDiem=(dung,tong)=>{const d=Math.round(10*dung/tong),sao=d>=10?3:d>=7?2:1;return `<div class="oDiem"><b>${d}/10</b><span>${"★".repeat(sao)}<i>${"★".repeat(3-sao)}</i></span><em>${d>=10?"Đúng hết! 真棒！":d>=7?"Giỏi lắm!":"Làm lại phần sai nhé — 加油！"}</em></div>`};
   function lam(){const g=NH[gi],t0=Date.now();let buoc=0,tongD=0,tongC=0;
     // 06/10 chị: "lộn xộn" → đầu gọn 1 dòng: nhóm + bước, 1 thanh tiến độ; ẩn lời giới thiệu khi đã vào làm bài
-    const khung=(than)=>{const sec=box.closest("section");if(sec)sec.classList.toggle("dangLam",buoc>0||gi>0);
+    const khung=(than)=>{const sec=box.closest("section");if(sec)sec.classList.add("dangLam");
       box.innerHTML=`<div class="pyHead"><b>${g.ten}</b><span>${gi+1}/${NH.length} nhóm</span><em>${["📚","👂","🎤","🧠","✍️"][buoc]} ${PHA[buoc]}</em></div><div class="pySeg">${PHA.map((t,z)=>`<i class="${z<buoc?"qua":z===buoc?"on":""}"></i>`).join("")}</div><div id="pyQ" class="ltQ2">${than}</div>`;box.scrollIntoView({behavior:"smooth",block:"start"})};
     const sang=()=>{buoc++;ve()};
     // câu chọn đáp án (nhiều câu 1 màn) — chấm điểm, xong hết hiện ô điểm + nút Tiếp
