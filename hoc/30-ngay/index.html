@@ -127,13 +127,13 @@ button:focus-visible{outline:3px solid var(--moon);outline-offset:2px}
 .bub::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--line)}
 @media (prefers-reduced-motion:no-preference){.node.cur:not(.done){animation:nb 1.6s ease-in-out infinite}@keyframes nb{50%{transform:translateY(-3px)}}}
 /* bài phiên âm */
-.pyg{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
-.pyc{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 6px 8px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;background:var(--surface);color:var(--ink);font:inherit}
+.pyg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.pyc{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 8px 12px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;background:var(--surface);color:var(--ink);font:inherit}
 .pyc:active{transform:translateY(2px)}
-.pyc .big{font:700 24px/1.1 var(--tx)}
-.pyc .ex{font-size:13px;color:var(--ink-2)}
-.pyc .ex span{font-family:var(--hz)}
-.pyc .vn{font-size:13px;font-style:italic;font-weight:300;color:var(--sun-2)}
+.pyc .big{font:800 36px/1.05 var(--tx);color:var(--ink)}
+.pyc .ex{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:18px;font-weight:600;color:var(--ink-2)}
+.pyc .ex .hzc{font:400 30px/1.1 var(--hz);color:var(--ink)}
+.pyc .vn{font-size:15px;line-height:1.35;font-style:italic;font-weight:400;color:var(--sun-2);text-align:center}
 .pyh{margin:16px 0 8px;font:600 15px/1.3 var(--tx)}
 .pyh:first-child{margin-top:0}
 .pyh i{font-weight:300;color:var(--ink-2);margin-left:6px}
@@ -141,29 +141,31 @@ button:focus-visible{outline:3px solid var(--moon);outline-offset:2px}
 
 .rdb{display:flex;flex-direction:column;gap:6px;padding:16px;border:2px solid var(--line);border-radius:18px;background:var(--soft);margin-bottom:12px}
 .rdb .grp{align-self:center;font:600 13px/1 var(--tx);letter-spacing:.2em;color:var(--sun-2)}
-.rdb .ln2{display:block;border:0;background:none;padding:4px 0;text-align:center;font-family:var(--hz);font-size:24px;line-height:1;color:var(--ink)}
+.rdb .ln2{display:block;border:0;background:none;padding:4px 0;text-align:center;font-family:var(--hz);font-size:30px;line-height:1;color:var(--ink)}
 .rdb .ln2.ttl{font-size:27px;font-weight:700}
 .rdb ruby{margin:0 3px;ruby-position:over}
-.rdb rt{font:500 12px/1.4 var(--tx);color:var(--ink-2)}
+.rdb rt{font:600 14px/1.4 var(--tx);color:var(--ink-2)}
 .rdb .vi{display:block;text-align:center;font-size:14px;font-style:italic;font-weight:300;color:var(--ink-2);margin:-2px 0 6px}
 .rdb .all{align-self:center;margin-top:6px;padding:8px 14px;font-size:14px}
-.ga{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.ga{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .gab{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid var(--line);border-radius:14px;background:var(--surface)}
 .gab .ini{flex:none;font:700 30px/1 var(--tx);color:var(--sun);min-width:34px;text-align:center}
 .gab ul{list-style:none;margin:0;padding:0 0 0 10px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:2px;flex:1}
-.gab button{display:flex;gap:6px;align-items:baseline;width:100%;border:0;background:none;padding:2px 0;font:inherit;font-size:14px;color:var(--ink);text-align:left}
+.gab button{display:flex;gap:8px;align-items:baseline;width:100%;border:0;background:none;padding:3px 0;font:inherit;font-size:17px;color:var(--ink);text-align:left}
 .gab button b{min-width:42px;font-weight:600}
-.gab button span{font-family:var(--hz);color:var(--ink-2)}
+.gab button span{font:400 20px/1 var(--hz);color:var(--ink)}
 details.full{border:2px solid var(--line);border-radius:18px;padding:12px 14px}
 details.full summary{cursor:pointer;font:700 16px/1.3 var(--tx)}
 details.full[open] summary{margin-bottom:6px}
-.ftab{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:6px}
-.ftab button{padding:9px 2px;border:2px solid var(--line);border-bottom-width:3px;border-radius:10px;background:var(--surface);font:600 16px/1 var(--tx);color:var(--ink)}
+.ftab{display:grid;grid-template-columns:repeat(auto-fill,minmax(66px,1fr));gap:8px}
+.ftab button{padding:12px 2px;border:2px solid var(--line);border-bottom-width:3px;border-radius:10px;background:var(--surface);font:700 19px/1 var(--tx);color:var(--ink)}
 .ftab button:active{transform:translateY(1px)}
 
 
 .pyblk{display:flex;flex-direction:column;gap:14px;padding:16px;border:2px solid var(--sun-soft);border-radius:20px;background:var(--moon-soft)}
 .pyblk>h3{margin:0}
+.pylis .opt{font-size:21px;font-weight:600;padding:10px 16px;min-width:66px;text-align:center}
+.pylis .li .pl{width:48px;height:48px}
 .pyblk .lis{margin-top:4px}
 .ghep{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:var(--surface);border:2px solid var(--line)}
 .ghep p{margin:0}
@@ -182,7 +184,7 @@ body:not(.inles) #lesson{display:none}
 .pystep{display:flex;flex-direction:column;gap:12px}
 .pystep[hidden]{display:none}
 .memq{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.memq .hzq{flex:none;width:56px;height:56px;display:grid;place-items:center;border-radius:14px;background:var(--surface);border:2px solid var(--line);font:400 30px/1 var(--hz)}
+.memq .hzq{flex:none;width:68px;height:68px;display:grid;place-items:center;border-radius:16px;background:var(--surface);border:2px solid var(--line);font:400 40px/1 var(--hz)}
 .stepbar{display:flex;gap:4px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .stepbar::-webkit-scrollbar{display:none}
 .stepbar button{flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;padding:0;font:inherit;color:var(--ink-2)}
@@ -1346,7 +1348,7 @@ function pyBlock(n){const d=PYD[n];if(!d)return"";
     const ex=pick(cells,3).map(([lab,hz])=>liHtml(hz,lab,[lab,...pick(labs.filter(x=>x!==lab),3)]));
     const mem=pick(cells,3).map(([lab,hz,py])=>memHtml(hz,py,[py,...pick(pys.filter(x=>x!==py),2)]));
     const sp=pick(cells,2).map(spHtml).join("");
-    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${colorPinyin(lab)}</span><span class="ex"><span>${esc(hz)}</span>${py!==lab?" "+colorPinyin(py):""}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>
+    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn])=>`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span><span class="vn">${esc(vn)}</span></button>`).join("")}</div>
     <h4 class="pyh">✎ 1 · Nghe và chọn<i>bấm loa, nghe rồi chọn đúng</i></h4><div class="lis pylis">${ex.join("")}</div>
     ${sp?`<h4 class="pyh">🎤 2 · Đọc lại<i>nghe mẫu → bấm Đọc &amp; chấm → đọc to</i></h4><div class="spk-list">${sp}</div>`:""}
     <h4 class="pyh">🧠 ${sp?3:2} · Luyện nhớ<i>nhìn chữ, tự đọc thầm, rồi chọn phiên âm</i></h4><div class="lis pylis">${mem.join("")}</div>
