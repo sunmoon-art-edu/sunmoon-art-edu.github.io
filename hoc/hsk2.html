@@ -308,6 +308,14 @@ svg .rays{transform-origin:50px 50px;animation:pulse 2.4s ease-in-out infinite}
 .video{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .node.song .dot{background:var(--surface);color:var(--c2);border:2px solid var(--c);border-bottom:6px solid var(--c2);font-size:30px}
+.linhvat{position:relative;display:inline-block;width:var(--lv);height:var(--lv);flex:none;line-height:1}
+.linhvat .lv1{display:block;font-size:calc(var(--lv)*.86);line-height:var(--lv);text-align:center;filter:drop-shadow(0 4px 6px rgba(200,100,30,.25))}
+.linhvat .lv2{position:absolute;right:-6%;bottom:-4%;font-size:calc(var(--lv)*.42)}
+.lv-gioi .lv2{right:auto;left:-4%;top:-6%;bottom:auto}
+.lv-lua .lv2{right:auto;left:50%;top:-30%;bottom:auto;transform:translateX(-50%)}
+.linhvat{animation:lvin .5s cubic-bezier(.2,1.5,.4,1);vertical-align:middle}
+@keyframes lvin{from{transform:scale(.3) rotate(-20deg);opacity:0}}
+.finish .linhvat{align-self:center;margin:0 auto}
 .mascot{display:block;height:auto;flex:none;object-fit:contain}
 .next>.mascot{width:64px}
 .prompt>.mascot{width:74px}
@@ -768,6 +776,10 @@ const IC = {
   badC: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="var(--bad)"/><path d="M14 14l12 12M26 14 14 26" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>'
 };
 /* mascot: half sun, half moon */
+/* Linh vật khen thưởng: mặt trời 🌞 (chị duyệt) + biểu tượng nhỏ theo lúc. linhVat(tâm trạng, cỡ px) */
+function linhVat(m,px){m=m||"kha";px=px||72;const nho={gioi:"✨",cup:"🏆",lua:"🔥",colen:"💪",chao:"👋"}[m]||"";
+  return `<span class="linhvat lv-${m}" style="--lv:${px}px" role="img" aria-label="Mặt trời SunMoon"><span class="lv1">🌞</span>${nho?`<span class="lv2">${nho}</span>`:""}</span>`}
+
 const PY_MAC = false;   // HSK 2–3: mở sẵn pinyin ở bài đọc
 const LOGO_SRC = (document.querySelector(".brand .lm") || {}).src || "";
 // hình minh hoạ: có emoji thì hiện emoji, không thì hiện logo SunMoon
@@ -1557,7 +1569,7 @@ function feedback(ok, sol, soft) {
   $("#foot").hidden = true;
   sfx(ok ? "ok" : soft ? "tap" : "bad");
   const sh = $("#sheet"); sh.className = "sheet " + (ok ? "ok" : "bad"); sh.hidden = false;
-  $("#sheetTtl").innerHTML = (ok ? IC.okC : IC.badC) + (ok ? PRAISE[Math.floor(Math.random() * PRAISE.length)] : soft ? "Cố lên nhé!" : "Chưa đúng rồi");
+  $("#sheetTtl").innerHTML = (ok ? linhVat("gioi", 40) : soft ? linhVat("colen", 40) : IC.badC) + (ok ? PRAISE[Math.floor(Math.random() * PRAISE.length)] : soft ? "Cố lên nhé!" : "Chưa đúng rồi");
   $("#sheetSol").innerHTML = (ok || soft ? "" : "Đáp án đúng:<br>") + (sol || "");
   $("#nextBtn").className = "btn wide " + (ok ? "okb" : "badb");
   if (S.after) { S.after(); S.after = null; }
@@ -1583,11 +1595,11 @@ function finish(win) {
     const where = S.node.intro ? "Học cách viết chữ" : `Bài ${S.node.lesson + 1}`;
     if (S.test) { P.badge = P.badge || {}; if (acc >= (P.badge[S.node.id] || 0)) P.badge[S.node.id] = acc; save(); }
     const dat = S.test && acc >= 80;
-    body = `${mascot(S.test && !dat ? "wow" : "happy", "m")}<h1>${S.test ? (dat ? "Đạt rồi!" : "Gần đạt rồi!") : S.wrong === 0 ? "Hoàn hảo!" : "Xong bài rồi!"}</h1><p>${where} · ${esc(S.node.label)}${S.test ? ` · ${dat ? "huy hiệu vàng" : "cần 80% để lấy huy hiệu"}` : first ? "" : " (ôn lại)"}</p>
+    body = `${linhVat(S.test && !dat ? "colen" : P.streak >= 3 ? "lua" : "cup", 150)}<h1>${S.test ? (dat ? "Đạt rồi!" : "Gần đạt rồi!") : S.wrong === 0 ? "Hoàn hảo!" : "Xong bài rồi!"}</h1><p>${where} · ${esc(S.node.label)}${S.test ? ` · ${dat ? "huy hiệu vàng" : "cần 80% để lấy huy hiệu"}` : first ? "" : " (ôn lại)"}</p>
       <div class="tiles3"><div><b>+<span id="fXp">0</span></b><span>Điểm XP${S.wrong === 0 ? " · có thưởng" : ""}</span></div><div><b><span id="fAcc">0</span>%</b><span>Chính xác</span></div><div><b>${P.streak}</b><span>Ngày liên tiếp</span></div></div>
       <button class="btn" id="fDone">Tiếp tục</button>`;
   } else {
-    body = `${mascot("sad", "m")}<h1>Hết tim rồi!</h1><p>Không sao cả, mình làm lại nhé.</p><button class="btn" id="fRetry">Làm lại</button><button class="btn ghost" id="fDone">Về trang chính</button>`;
+    body = `${linhVat("colen", 150)}<h1>Hết tim rồi!</h1><p>Không sao cả, mình làm lại nhé.</p><button class="btn" id="fRetry">Làm lại</button><button class="btn ghost" id="fDone">Về trang chính</button>`;
   }
   $("#finishBody").innerHTML = body; $("#finish").hidden = false; $("#lesson").hidden = true;
   if (win) { confetti(); sfx("win"); setTimeout(() => { countUp($("#fXp"), 0, P.xp - S.xpTruoc, 900); countUp($("#fAcc"), 0, acc, 900); }, 350); }
