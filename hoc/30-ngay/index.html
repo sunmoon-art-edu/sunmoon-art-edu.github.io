@@ -647,6 +647,24 @@ button,a,.opt,.node{touch-action:manipulation}
 .loinhan b{display:block;margin-bottom:2px}
 .loinhan p{margin:0;font-weight:300;line-height:1.5}
 
+
+/* 06/10 chị: từ mới có HÌNH VẼ màu nước (img/tu/) xếp SƠ ĐỒ TƯ DUY + bài tập ngay sau */
+.tmm{position:relative;width:100%;max-width:560px;aspect-ratio:1;margin:4px auto 0;border-radius:50%;background:radial-gradient(circle,var(--sun-soft) 0 34%,transparent 35%),var(--soft)}
+.tmmC{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:30%;aspect-ratio:1;border-radius:50%;background:var(--sun);color:var(--on-sun);display:grid;place-items:center;text-align:center;font:700 clamp(15px,4vw,22px)/1.15 var(--tx);box-shadow:0 6px 0 var(--sun-2)}
+.tmmO{position:absolute;transform:translate(-50%,-50%);width:clamp(68px,19%,112px);display:flex;flex-direction:column;align-items:center;gap:2px;padding:0;border:0;background:none;color:var(--ink);cursor:pointer;font:inherit}
+.tmmO img{width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;border:4px solid var(--surface);box-shadow:0 0 0 2px var(--line),0 4px 10px rgba(0,0,0,.12);background:#fff}
+.tmmO.on img{box-shadow:0 0 0 4px var(--sun),0 4px 10px rgba(0,0,0,.15)}.tmmO.da:not(.on) img{box-shadow:0 0 0 3px var(--ok,#2E8B57)}
+.tmmH{white-space:nowrap;background:var(--surface);border-radius:10px;padding:0 6px;font:600 clamp(15px,3.6vw,19px)/1.1 var(--zh,inherit);margin-top:-12px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.tmmH rt{font:500 11px/1 var(--tx)}
+.tmmNo{width:100%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:8px;box-sizing:border-box;background:var(--surface);border:3px solid var(--line);font:500 13px/1.2 var(--tx);color:var(--ink-2)}
+.tmmCard{display:flex;gap:14px;align-items:center;margin-top:12px;padding:12px;border-radius:18px;background:var(--sun-soft)}
+.tmmCard img{width:min(42%,190px);aspect-ratio:1;border-radius:16px;object-fit:cover;background:#fff}
+.tmmCard .big{font:600 clamp(30px,8vw,44px)/1.2 var(--zh,inherit)}.tmmCard .big rt{font:500 14px/1 var(--tx)}
+.tmmCard i{display:block;font-style:italic;font-weight:300;color:var(--ink-2);font-size:17px}
+.tuhinh .opts{grid-auto-flow:row!important;grid-template-columns:1fr 1fr}
+.tuhinh .opt{padding:4px!important}.tuhinh .opt img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block}
+.noiL.nhH{padding:3px;display:flex;justify-content:center}.noiL.nhH img{width:68px;height:68px;border-radius:12px;object-fit:cover;display:block}
+.noiR ruby rt{font-size:11px}
 /* 06/10 chuẩn app SunMoon: lộ trình 2 cột · buổi 10 phút · tài khoản · thu âm tự chấm */
 .ltW2{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:16px;align-items:start}
 .ltTrai{display:flex;flex-direction:column;gap:6px;max-height:72vh;overflow:auto;padding-right:4px}
@@ -1637,7 +1655,7 @@ function setupSteps(el){
   bar.onclick=e=>{const b=e.target.closest("button");if(b&&+b.dataset.k<=far)show(+b.dataset.k,1)};
   const show=(n,sc)=>{i=n;slides.forEach((x,k)=>k===i?x.removeAttribute("data-off"):x.setAttribute("data-off",""));
     if(blk)blk.toggleAttribute("data-off",!blk.contains(slides[i]));
-    if(hero)hero.toggleAttribute("data-off",i>0);
+    if(hero)hero.toggleAttribute("data-off",i>0||bk>0);
     const last=i===slides.length-1;tail.forEach(t=>t.toggleAttribute("data-off",!last));
     far=Math.max(far,i);bar.querySelectorAll("button").forEach((b,k)=>{b.className=k===i?"on":k<far||k<i?"ok":"";b.querySelector(".c").textContent=k!==i&&(k<far)?"✓":k+1;b.disabled=k>far;if(k===i)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current")});
     const on=bar.children[i];if(on)bar.scrollTo({left:on.offsetLeft-bar.clientWidth/2+38,behavior:"smooth"});
@@ -1678,16 +1696,35 @@ function bingo(box){const ds=JSON.parse(box.dataset.ds),cot=ds.length<=4?2:3,thu
       if(q<thu.length){box.querySelector(".bgDem").textContent=`${q+1}/${thu.length}`;loa.classList.add("nhay");setTimeout(()=>loa.classList.remove("nhay"),1600)}
       else{loa.disabled=true;box.insertAdjacentHTML("beforeend",'<div class="bgBingo">BINGO! 🎉</div>');fanfare()}}
     else{if(!sai)sai=1;bt.classList.add("wrong");buzz();setTimeout(()=>bt.classList.remove("wrong"),450)}})}
-function noiCot(box){const ds=JSON.parse(box.dataset.ds),ph=shuffle(ds.map((_,i)=>i));let chon=null,xong=0,sai=0;
-  box.innerHTML=`<div class="noiW"><svg class="noiSvg"></svg><div class="noiC">${ds.map(([hz],i)=>`<button class="noiO noiL" data-i="${i}" aria-label="Nghe">🔊</button>`).join("")}</div><div class="noiC">${ph.map(i=>`<button class="noiO noiR" data-i="${i}">${colorPinyin(ds[i][1])}</button>`).join("")}</div></div>`;
+function noiCot(box,tF,pF){const ds=JSON.parse(box.dataset.ds),ph=shuffle(ds.map((_,i)=>i));let chon=null,xong=0,sai=0;
+  box.innerHTML=`<div class="noiW"><svg class="noiSvg"></svg><div class="noiC">${ds.map((x,i)=>`<button class="noiO noiL${tF?" nhH":""}" data-i="${i}" aria-label="Nghe">${tF?tF(x):"🔊"}</button>`).join("")}</div><div class="noiC">${ph.map(i=>`<button class="noiO noiR" data-i="${i}">${pF?pF(ds[i]):colorPinyin(ds[i][1])}</button>`).join("")}</div></div>`;
   const W=box.querySelector(".noiW"),svg=box.querySelector(".noiSvg");
   const ke=(a,b)=>{const w=W.getBoundingClientRect(),p=a.getBoundingClientRect(),r=b.getBoundingClientRect();svg.insertAdjacentHTML("beforeend",`<line x1="${p.right-w.left}" y1="${p.top+p.height/2-w.top}" x2="${r.left-w.left}" y2="${r.top+r.height/2-w.top}"/>`)};
   box.querySelectorAll(".noiL").forEach(bt=>bt.onclick=()=>{if(bt.classList.contains("ok"))return;box.querySelectorAll(".noiL").forEach(x=>x.classList.remove("chon"));bt.classList.add("chon");chon=bt;speak(ds[+bt.dataset.i][0],null)});
   box.querySelectorAll(".noiR").forEach(bt=>bt.onclick=()=>{if(!chon||bt.classList.contains("ok"))return;
     if(bt.dataset.i===chon.dataset.i){chon.classList.remove("chon");chon.classList.add("ok");bt.classList.add("ok");ke(chon,bt);ding();troGhi(box,xong,!sai);if(!sai){GM.xp+=10;saveGM();updChips()}sai=0;chon=null;xong++}
     else{sai=1;bt.classList.add("wrong");buzz();setTimeout(()=>bt.classList.remove("wrong"),450)}})}
+
+/* 06/10 chị: từ mới = sơ đồ tư duy có hình vẽ; chạm hình → nghe + thẻ to (hình, chữ có phiên âm, nghĩa) */
+const anhTu=(n,i)=>`img/tu/${n}-${i}.jpg`,TU_HINH=n=>n>=2&&n<=26;   /* 06/10: đã vẽ Ngày 2–26 (22–26 bằng Gemini bản free); ngày chưa có hình thì hiện chữ */
+function tuMM(d,n){const W=d.w.map(x=>x.split("|")),N=W.length;
+  return `<div class="tmm"><div class="tmmC">Từ mới<br>${N}</div>${W.map(([hz,py,vi],i)=>{const a=(-90+360*i/N)*Math.PI/180,x=50+39*Math.cos(a),y=50+39*Math.sin(a);
+    return `<button class="tmmO" data-i="${i}" data-cue="w${i}" data-say="${esc(hz)}" data-py="${esc(py)}" data-vi="${esc(vi)}" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%" aria-label="${esc(hz)} — ${esc(vi)}">${TU_HINH(n)?`<img src="${anhTu(n,i)}" alt="" loading="lazy">`:`<span class="tmmNo">${esc(vi)}</span>`}<span class="tmmH">${rdRuby(hz,py)}</span></button>`}).join("")}</div><div class="tmmCard" hidden></div>`}
+function luyenTu(d,n){const W=d.w.map((x,i)=>[...x.split("|"),i]);if(W.length<3)return"";const k=Math.min(4,W.length);
+  const lis=shuffle(W).slice(0,k).map(([hz,py,vi,i])=>{const op=shuffle([i,...shuffle(W.filter(x=>x[3]!==i)).slice(0,k-1).map(x=>x[3])]);
+    return `<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${op.map(j=>`<button class="opt" data-ok="${j===i?1:0}" data-reveal="${esc(hz)}">${TU_HINH(n)?`<img src="${anhTu(n,j)}" alt="">`:esc(W[j][2])}</button>`).join("")}</div></div>`}).join("");
+  const nc=shuffle(W).slice(0,k).map(([hz,py,vi,i])=>[hz,py,i]);
+  return `<section class="ltu"><h3>Luyện từ mới <small>nghe → chọn hình · nối hình với chữ</small></h3>
+    <h4 class="pyh">1 · Nghe, chọn ${TU_HINH(n)?"hình":"nghĩa"} <span class="nhan bb">Bắt buộc</span></h4><div class="lis pylis${TU_HINH(n)?" tuhinh":""}">${lis}</div>
+    <h4 class="pyh">2 · Nối hình với chữ <span class="nhan bb">Bắt buộc</span><i>chạm hình → chạm chữ đúng</i></h4><div class="tro noihinh" data-n="${n}" data-ds='${esc(JSON.stringify(nc))}'></div><div class="pylis gk" hidden>${nc.map(()=>'<div class="li"><button class="opt"></button></div>').join("")}</div></section>`}
+function bindTu(el){el.querySelectorAll(".tmm").forEach(mm=>{const card=mm.nextElementSibling;
+  mm.querySelectorAll(".tmmO").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b);mm.querySelectorAll(".tmmO").forEach(x=>x.classList.toggle("on",x===b));b.classList.add("da");
+    card.hidden=false;card.innerHTML=`${b.querySelector("img")?`<img src="${b.querySelector("img").src}" alt="">`:""}<div><span class="big">${rdRuby(b.dataset.say,b.dataset.py)}</span><i>${esc(b.dataset.vi)}</i><button class="btn" style="margin-top:8px">🔊 Nghe lại</button></div>`;
+    card.querySelector("button").onclick=()=>speak(b.dataset.say,null)})});
+  el.querySelectorAll(".tuhinh").forEach(b=>motCau(b,1));   /* mỗi lần 1 câu, đúng/sai tự sang câu sau */
+  el.querySelectorAll(".tro.noihinh").forEach(box=>noiCot(box,TU_HINH(+box.dataset.n)?x=>`<img src="${anhTu(box.dataset.n,x[2])}" alt="">`:null,x=>rdRuby(x[0],x[1])))}
 function bindPy(el){
-  const blk=el.querySelector(".pyblk");if(blk){bindSpeak(blk);blk.querySelectorAll(".tro.bingo").forEach(bingo);blk.querySelectorAll(".tro.noicot").forEach(noiCot);}
+  bindTu(el);const blk=el.querySelector(".pyblk");if(blk){bindSpeak(blk);blk.querySelectorAll(".tro.bingo").forEach(bingo);blk.querySelectorAll(".tro.noicot").forEach(b=>noiCot(b));}
   el.querySelectorAll(".pyc,.pdg button,.ftab button,.tqr button,.gab button,.ln2,.rdb .all").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
   el.querySelectorAll(".pylis .li").forEach(li=>{const pl=li.querySelector(".pl");if(pl)pl.onclick=e=>{stopTeacher(true);speak(e.currentTarget.dataset.say,null)};li.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{li.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});if(o.dataset.ok!=="1")o.classList.add("wrong");award(o.dataset.ok==="1",o);setTimeout(()=>speak(o.dataset.reveal,null),250)})});
 }
@@ -1739,7 +1776,7 @@ function renderLesson(){
     ${G?`<div class="teacher"><button class="tplay" id="tPlay" aria-label="Nghe giảng bài">${PLAY}</button><div class="tmid"><b>Nghe giảng bài <i id="tTime">${fmt(0)} / ${fmt(G.d)}</i></b><input type="range" class="tbar" id="tBar" min="0" max="${G.d}" step="0.1" value="0" aria-label="Tua bài giảng"></div><button class="tspeed" id="tSpeed" aria-label="Tốc độ">1×</button></div>`:""}
     ${canSpeak?"":'<p class="warn">Trình duyệt này không đọc được tiếng — mở bằng Chrome hoặc Safari để nghe.</p>'}
     ${pyBlock(cur)}
-    ${d.chiPA?"":`<section><h3>Từ mới <small>bấm để nghe</small></h3><div class="vocab">${words}</div></section>`}
+    ${d.chiPA?"":`<section><h3>Từ mới <small>chạm từng hình để nghe</small></h3>${tuMM(d,cur)}</section>${luyenTu(d,cur)}`}
     ${hanz?`<section><h3>Chữ Hán hôm nay <small>nhìn hình — đoán nghĩa</small></h3><div class="hanz">${hanz}</div></section>`:""}
     ${mindMap(d)?`<section><h3>Bộ thủ &amp; sơ đồ chữ <small>thêm nét, ghép bộ → ra chữ mới</small></h3>${mindMap(d)}</section>`:""}
     ${d.chiPA?"":`<section><h3>Tập viết <small>xem thứ tự nét, rồi tự viết bằng ngón tay</small></h3>
@@ -1802,7 +1839,9 @@ function go(n,scroll=true,k){
   const box=document.getElementById("introPlayer"),btn=document.getElementById("iPlay"),bar=document.getElementById("iBar"),tm=document.getElementById("iTime");
   box.hidden=false;bar.max=G0.d;btn.innerHTML=PLAY;tm.textContent="0:00 / "+fmt(G0.d);
   const a=new Audio(G0.f);a.preload="metadata";
-  const IC=[[8.38, "t0"], [16.77, "t1"], [23.39, "t2"], [31.37, "t3"], [41.51, "t4"], [47.22, "t5"], [52.8, "h0"], [55.38, "h1"], [57.95, "h2"], [58.89, "t5"], [62.32, "v"], [66.1, "c0"], [74.0, "c1"], [79.18, "c2"], [86.39, "c3"], [97.07, "c4"], [102.89, "c5"], [109.26, "c6"], [116.6, "c7"], [123.31, null]];let lc;
+  /* 07/10: mốc lấy từ cues.js (i{số câu}) — làm lại giọng không phải sửa tay */
+  const IMAP={1:"t0",2:"t1",3:"t2",4:"t3",5:"t4",6:"t5",7:"h0",9:"h1",11:"h2",12:"t5",13:"v",14:"c0",16:"c1",17:"c2",18:"c3",20:"c4",21:"c5",23:"c6",24:"c7",26:null};
+  const IC=(G0.c||[]).filter(x=>x[1]&&(+x[1].slice(1) in IMAP)).map(x=>[x[0],IMAP[+x[1].slice(1)]]);let lc;
   const el=k=>{const o=document.getElementById("origin"),n=+k.slice(1);return k[0]==="t"?o.querySelectorAll("ul.tl > li")[n]:k[0]==="h"?o.querySelectorAll(".hv button")[n]:k[0]==="c"?o.querySelectorAll("ul.cult > li")[n]:k==="v"?o.querySelectorAll(".otabs button")[2]:null};
   const cue=()=>{let c=null;for(const[s,k]of IC){if(s<=a.currentTime)c=k;else break}if(c===lc)return;lc=c;document.querySelectorAll("#origin .chi").forEach(x=>x.classList.remove("chi"));
     if(!c||a.paused)return;window.introMo&&introMo(c[0]==="c"||c==="v"?2:1);const e=el(c);if(e){e.classList.add("chi");e.scrollIntoView({block:"center",behavior:"smooth"})}};
@@ -1852,7 +1891,7 @@ function mergeTD(td){let ch=0;(td||[]).forEach(p=>{const n=+String(p).replace(/^
 let curB=0;
 function slidesOf(n){const d=L[n-1],P=PYD[n],S=[];
   if(P){if(P.intro)S.push(["Phiên âm",2,1]);P.grp.forEach(g=>{S.push([g[0],2,1],["Bingo",2,1]);if(SITE)S.push(["Đọc lại",2,1]);S.push(["Nối",1,1])});if(P.ga)S.push(["Âm tiết",2,1]);S.push(["Phân biệt",2,1])}
-  if(!d.chiPA)S.push(["Từ mới",3]);if((d.h||[]).length)S.push(["Chữ Hán",2]);if(mindMap(d))S.push(["Bộ thủ",2]);if(!d.chiPA)S.push(["Tập viết",3]);
+  if(!d.chiPA)S.push(["Từ mới",2]);if(!d.chiPA&&d.w.length>=3)S.push(["Luyện từ",2]);if((d.h||[]).length)S.push(["Chữ Hán",2]);if(mindMap(d))S.push(["Bộ thủ",2]);if(!d.chiPA)S.push(["Tập viết",2]);
   S.push([d.chiPA?"Tập đọc 4 thanh":"Mẫu câu",3]);if((d.d||[]).length)S.push(["Hội thoại",3]);S.push(["Luyện nói",3],["Ghi nhớ",1]);
   if((d.c||"|").split("|")[0])S.push(["Văn hoá",2]);if(!d.chiPA)S.push(["Clip",0]);S.push(["Bài tập",4],["Góp ý",0]);return S}
 const _CB={};
@@ -1924,7 +1963,7 @@ document.getElementById("whoChip").onclick=()=>{if(!U)return;document.querySelec
   o.querySelector("#tkDoi").onclick=e=>{e.currentTarget.disabled=true;o.querySelector("#tkE").textContent="Đang lưu bài của "+U.ten+"…";dangXuat()}};
 
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261006210507";
+const BAN_SO="20261007084702";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
