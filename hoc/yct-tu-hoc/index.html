@@ -1185,6 +1185,11 @@ ruby.rbHP{ruby-position:over}ruby.rbHP rt{font-size:.5em;font-weight:700;letter-
 .amMM .tuN b{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);background:#fff;border-radius:12px;padding:1px 8px;white-space:nowrap;box-shadow:0 2px 0 #0002;font-size:clamp(14px,3.8vw,17px);z-index:2}
 .tuN .amPd{z-index:3}.tuN .amV{z-index:3}
 .tuN .tuH img[src$=".jpg"],.tuN .tuH img[src*=".jpg?"]{transform:scale(1.45);object-position:50% 60%}
+/* 07/10 chị: chữ Trung luôn kèm phiên âm + nghĩa */
+.vcVi{display:block;font:700 clamp(15px,2.8vw,28px)/1.2 system-ui,sans-serif;color:#fff;margin-top:6px;text-shadow:0 2px 0 rgba(0,0,0,.3)}
+.rbBox+.vcVi{color:#5B4A3A;text-shadow:none}
+.coNoi .cnTxt .cnVi{font-size:15px;font-weight:600;color:#6B5B55;margin-top:2px}
+.bubble .zvi{display:block;font-size:.78em;font-weight:600;color:#6B5B55;margin-top:2px}
 /* 07/10 bài hát cuối buổi */
 .hatB{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:6px 0}.hatB .ytl{width:min(560px,100%);aspect-ratio:16/9;position:relative;border:0;border-radius:18px;overflow:hidden;padding:0;background:#000}
 .hatB .ytl img{width:100%;height:100%;object-fit:cover;display:block}.hatB .ytl iframe{width:100%;height:100%;border:0;display:block}.hatB .ytl .pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px}
@@ -1400,7 +1405,7 @@ function sunIntro(box){
   const a=new Audio("aud/gioi-thieu.mp4?v="+AV);a.defaultPlaybackRate=a.playbackRate=TOC.vi;a.addEventListener("loadedmetadata",()=>a.playbackRate=TOC.vi);/*gtToc 06/10 chị: nhanh thêm 10%*/let meta=null,an=null,raf=0;
   fetch("aud/gioi-thieu.json?v="+AV).then(r=>r.json()).then(j=>meta=j).catch(()=>{});
   const sun=box.querySelector(".sun"),mouth=box.querySelector("#mouth"),smile=box.querySelector("#smile"),bub=box.querySelector(".bubble .txt"),moon=box.querySelector(".moonpal"),btn=box.querySelector("#gtPlay");
-  const show=c=>{try{const r=c.zh?TOC.zh:TOC.vi;if(a.playbackRate!==r)a.playbackRate=r}catch(e){}bub.innerHTML=c.zh?`<span class="zh">${esc(c.text)}</span>${PYM[c.text]?`<span class="zpy">${PYM[c.text]}</span>`:""}`:esc(c.text);moon.classList.toggle("on",!!c.moon)};
+  const show=c=>{try{const r=c.zh?TOC.zh:TOC.vi;if(a.playbackRate!==r)a.playbackRate=r}catch(e){}bub.innerHTML=c.zh?`<span class="zh">${esc(c.text)}</span>${PYM[c.text]?`<span class="zpy">${PYM[c.text]}</span>`:pyCua(c.text)?`<span class="zpy">${tonePy(pyCua(c.text))}</span>`:""}${nghiaCua(c.text)?`<span class="zvi">${esc(nghiaCua(c.text))}</span>`:""}`:esc(c.text);moon.classList.toggle("on",!!c.moon)};
   const loop=()=>{let v=0;if(an){const d=new Uint8Array(an.fftSize);an.getByteTimeDomainData(d);let m=0;for(const x of d)m=Math.max(m,Math.abs(x-128));v=Math.min(1,m/40)}else if(!a.paused)v=miengV(Date.now());
     mouth.setAttribute("ry",(v*9).toFixed(1));mouth.setAttribute("rx",(6+v*2).toFixed(1));smile.style.opacity=v>.15?0:1;
     if(meta){let c=null;for(const x of meta.c)if(x.t<=a.currentTime+.05)c=x;if(c&&c!==loop.c){loop.c=c;show(c)}}
@@ -1734,7 +1739,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610071615";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610071623";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -2131,7 +2136,14 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
 /* 06/10 chị: CÔ GIẢNG CÓ HÌNH HOẠT HÌNH NÓI — Cô Mặt Trời hiện góc dưới, miệng mấp máy theo đúng độ to của tiếng cô (đo âm lượng thật) */
 let _coAC=null;const _coSrc=new WeakMap();
 // phiên âm cho câu tiếng Trung trong phụ đề: tìm trong nội dung bài (từ, câu, hội thoại…)
-function pyCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let r=null;const tim=v=>{if(r)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&typeof v[1]==="string"&&v[0].replace(/[！!？?。，,、\s]/g,"")===k&&/[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]/i.test(v[1]))r=v[1];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};tim(ND);return r}
+/* 07/10 chị: "Bao giờ cũng là chữ TT – phiên âm – nghĩa tiếng Việt" (bảng cô giảng hiện mỗi 玻) → bổ sung phiên âm + nghĩa cho chữ ví dụ phiên âm và câu trong lời cô */
+const ZH_THEM={"玻":["bō","thuỷ tinh"],"泼":["pō","hắt nước"],"摸":["mō","sờ"],"佛":["fó","Phật"],"得":["dé","được"],"特":["tè","đặc biệt"],"讷":["nè","ít nói"],"勒":["lè","siết, ghìm"],"科":["kē","môn học"],"鸡":["jī","con gà"],"阿":["ā","a (tiếng gọi)"],"喔":["ō","ồ"],"婀":["ē","mềm mại"],"衣":["yī","cái áo"],"乌":["wū","con quạ"],"迂":["yū","quanh co"],"你":["nǐ","bạn"],"西":["xī","phía tây"],
+  "一个":["yí gè","một cái"],"一天":["yì tiān","một ngày"],"不是":["bú shì","không phải"],"一，二，三":["yī, èr, sān","một, hai, ba"],"一，二，三，走！":["yī, èr, sān, zǒu!","một, hai, ba, đi!"],"你多大？":["nǐ duō dà?","bạn bao nhiêu tuổi?"],"太阳":["tàiyáng","mặt trời"],"月亮":["yuèliang","mặt trăng"],"星期一":["xīngqīyī","thứ Hai"],"真棒！":["zhēn bàng!","giỏi quá!"],"你好！":["nǐ hǎo!","xin chào!"],"我去商店买东西。":["wǒ qù shāngdiàn mǎi dōngxi.","Mình đi cửa hàng mua đồ."],"爸爸、妈妈、哥哥和我。":["bàba, māma, gēge hé wǒ.","Bố, mẹ, anh trai và mình."]};
+const zhK=z=>String(z||"").replace(/[！!？?。，,、\s]/g,"");const ZH_THEM_K={};for(const k in ZH_THEM)ZH_THEM_K[zhK(k)]=ZH_THEM[k];
+function nghiaCua(zh){const k=zhK(zh);if(ZH_THEM_K[k])return ZH_THEM_K[k][1];let r=null;const laPy=t=>/[āēīōūǎěǐǒǔǖǘǚǜ]/.test(t);
+  const tim=v=>{if(r)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&zhK(v[0])===k&&typeof v[2]==="string"&&v[2]&&!laPy(v[2]))r=v[2];else if(typeof v[3]==="string"&&zhK(v[3])===k&&typeof v[4]==="string"&&v[4]&&!laPy(v[4]))r=v[4];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};
+  try{tim(ND)}catch(e){}return r}
+function pyCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");if(ZH_THEM_K[zhK(zh)])return ZH_THEM_K[zhK(zh)][0];let r=null;const tim=v=>{if(r)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&typeof v[1]==="string"&&v[0].replace(/[！!？?。，,、\s]/g,"")===k&&/[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]/i.test(v[1]))r=v[1];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};tim(ND);return r}
 /* 06/10 chị: bấm Cô giảng → MÀN HÌNH NHƯ VIDEO HOẠT HÌNH (kiểu Little Fox): cảnh nền, Cô Mặt Trời đứng nói (miệng theo tiếng), bảng hiện chữ Trung to + phiên âm + hình theo lời cô */
 function hinhCua(zh){const k=zh.replace(/[！!？?。，,、\s]/g,"");let e=null;const tim=v=>{if(e)return;if(Array.isArray(v)){if(typeof v[0]==="string"&&v[0].replace(/[！!？?。，,、\s]/g,"")===k&&typeof v[3]==="string"&&H[v[3]])e=v[3];else v.forEach(tim)}else if(v&&typeof v==="object")Object.values(v).forEach(tim)};tim(ND);return e}
 // mặt trời biết nói = đúng linh vật chung linhVat("kha") + thêm miệng
@@ -2175,7 +2187,7 @@ function moVideo(au,cueUrl){if(document.querySelector(".vidCo"))return;
       const ds=[];hl.replace(/([,;:.!?])\s+/g,"$1\u0001").split("\u0001")   /* 06/10: bỏ lookbehind — iPhone iOS < 16.4 không chạy được, app trắng màn */.forEach(x=>{if(ds.length&&(x.replace(/<[^>]+>/g,"").length<14||ds[ds.length-1].replace(/<[^>]+>/g,"").length<14))ds[ds.length-1]+=" "+x;else ds.push(x)});
       hinh.innerHTML=c.ex!=null?bdHinh(c.ex):thanhHinh(c.vi);if(hinh.innerHTML){chu.innerHTML="";o.classList.add("coZh");return}chu.innerHTML=`<span class="vcPhan">${ds.map(x=>`<span class="dong">${x}</span>`).join("")}</span>`;o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
     if(c.zh&&c.ex!=null){hinh.innerHTML="";chu.innerHTML=bdHinh(c.ex,1);o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi");return}
-    if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);chu.innerHTML=`<span class="vcZh rbBox">${rubyHz(c.zh,py)}</span>`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
+    if(c.zh){const py=pyCua(c.zh),e=hinhCua(c.zh);const ng=nghiaCua(c.zh);chu.innerHTML=`<span class="vcZh rbBox">${rubyHz(c.zh,py)}</span>${ng?`<span class="vcVi">${esc(ng)}</span>`:""}`;hinh.innerHTML=e?`<img src="${H[e]}" alt="">`:"";o.classList.add("coZh");chu.classList.remove("moi");void chu.offsetWidth;chu.classList.add("moi")}
 };
   let an=null,buf=null;try{throw 0;_coAC=_coAC||new(window.AudioContext||window.webkitAudioContext)();if(_coAC.state==="suspended")_coAC.resume();let src=_coSrc.get(au);if(!src){src=_coAC.createMediaElementSource(au);_coSrc.set(au,src)}an=_coAC.createAnalyser();an.fftSize=512;src.connect(an);an.connect(_coAC.destination);buf=new Uint8Array(an.fftSize)}catch(e){an=null}
   const t0=performance.now();const tick=()=>{if(!document.body.contains(o))return;
@@ -2190,7 +2202,7 @@ function coNoi(au,cueUrl){if(!au)return;if(cueUrl)return moVideo(au,cueUrl);let 
   let CUE=null,cu=-1;const dong=o.querySelector(".cnDong");o.classList.toggle("coPhu",!!cueUrl);dong.textContent=cueUrl?"…":"nghe kỹ nhé!";
   if(cueUrl)fetch(cueUrl+"?v="+AV).then(r=>r.ok?r.json():null).then(j=>{CUE=j;if(!j){o.classList.remove("coPhu");dong.textContent="nghe kỹ nhé!"}}).catch(()=>{o.classList.remove("coPhu")});
   const veDong=()=>{if(!CUE)return;let i=-1;for(let q=0;q<CUE.length;q++)if(CUE[q].t<=au.currentTime+.05)i=q;if(i===cu||i<0)return;cu=i;const c=CUE[i];try{const r=c.zh?TOC.zh:TOC.vi;if(au.playbackRate!==r)au.playbackRate=r}catch(e){}
-    dong.innerHTML=c.zh?`<span class="cnZh">${esc(c.zh)}</span>${pyCua(c.zh)?`<span class="cnPy">${tonePy(pyCua(c.zh))}</span>`:""}`:esc(c.vi);dong.classList.remove("moi");void dong.offsetWidth;dong.classList.add("moi")};
+    dong.innerHTML=c.zh?`<span class="cnZh">${esc(c.zh)}</span>${pyCua(c.zh)?`<span class="cnPy">${tonePy(pyCua(c.zh))}</span>`:""}${nghiaCua(c.zh)?`<span class="cnVi">${esc(nghiaCua(c.zh))}</span>`:""}`:esc(c.vi);dong.classList.remove("moi");void dong.offsetWidth;dong.classList.add("moi")};
   const mieng=o.querySelector(".cnMieng"),cuoi=o.querySelector(".cnCuoi");o.hidden=false;o.classList.add("hien");
   o.querySelector(".cnX").onclick=()=>{try{au.pause()}catch(e){}};
   let an=null,buf=null;
