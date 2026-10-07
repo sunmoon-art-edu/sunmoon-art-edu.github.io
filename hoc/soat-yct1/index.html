@@ -45,6 +45,42 @@ dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);widt
 dialog::backdrop{background:rgba(10,16,20,.82)}
 dialog img{width:100%;height:auto;border-radius:12px;display:block}
 dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
+/* 07/10 — tab "Tra soát giáo trình" cho Hà */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--vien)}
+.tabs button{all:unset;cursor:pointer;padding:9px 16px;font:600 15px/1.2 var(--than);color:var(--phu);border-radius:10px 10px 0 0;margin-bottom:-2px;border-bottom:3px solid transparent}
+.tabs button[aria-selected="true"]{color:var(--ngoc-dam);border-bottom-color:var(--ngoc);background:var(--the)}
+.tabs button:focus-visible{outline:3px solid var(--ngoc);outline-offset:-3px}
+.gt-tien{background:var(--the);border:1px solid var(--vien);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+.gt-hang{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.gt-so{font:800 24px/1 var(--hien);font-variant-numeric:tabular-nums}.gt-so small{font:400 14px var(--than);color:var(--phu)}
+.gt-dem{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--phu)}.gt-dem b{color:var(--muc)}
+.gt-vach{height:8px;border-radius:99px;background:var(--vien);overflow:hidden}.gt-vach i{display:block;height:100%;width:0;background:var(--ngoc);transition:width .4s}
+.gt-loc{display:flex;gap:6px;flex-wrap:wrap}
+.gt-loc button{all:unset;cursor:pointer;font-size:13px;border:1px solid var(--vien);background:var(--the);border-radius:99px;padding:5px 12px}
+.gt-loc button.on{background:var(--ngoc);border-color:var(--ngoc);color:#fff}
+.gt-khoa h2{font:800 20px/1.2 var(--hien);margin:4px 0 8px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.gt-khoa h2 small{font:400 13px var(--than);color:var(--phu)}
+.gt-ds{background:var(--the);border:1px solid var(--vien);border-radius:14px;overflow:hidden}
+.gt-muc{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.6fr);gap:8px 18px;padding:12px 14px;border-top:1px solid var(--vien)}
+.gt-muc:first-child{border-top:0}.gt-muc.xong{background:#F1FAF6}
+.gt-ten{font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{font-size:12px;font-weight:600;border-radius:6px;padding:1px 7px;white-space:nowrap}
+.chip.ok{background:#E3F4EC;color:#24724F}.chip.thieu{background:var(--vang-nhat);color:#8A600A}.chip.chua{background:#FCE9E6;color:#B23A2B}
+.gt-may{font-size:13px;color:var(--phu);font-style:italic;margin-top:2px}
+.gt-duong{font-size:12px;color:var(--phu);margin-top:4px;word-break:break-word}
+.gt-chon{display:flex;flex-direction:column;gap:6px;min-width:0}
+.gt-nut{display:flex;gap:4px;flex-wrap:wrap}
+.gt-nut button{all:unset;cursor:pointer;font-size:13px;border:1px solid var(--vien);background:#fff;border-radius:8px;padding:5px 10px}
+.gt-nut button[aria-pressed="true"][data-kq="dung"]{background:#2F8A5F;border-color:#2F8A5F;color:#fff}
+.gt-nut button[aria-pressed="true"][data-kq="bosung"]{background:var(--vang);border-color:var(--vang);color:#3A2A05}
+.gt-nut button[aria-pressed="true"][data-kq="sai"]{background:#C4392A;border-color:#C4392A;color:#fff}
+.gt-nut button:focus-visible{outline:2px solid var(--ngoc);outline-offset:2px}
+.gt-o{font:inherit;font-size:13px;width:100%;min-width:0;border:1.5px solid var(--vien);border-radius:8px;padding:6px 9px;background:#fff;color:var(--muc)}
+.gt-o:focus{outline:none;border-color:var(--ngoc)}
+.gt-lk{display:flex;gap:6px;align-items:center}.gt-lk .gt-o{flex:1}
+.gt-lk a{font-size:13px;font-weight:600;color:var(--ngoc-dam);white-space:nowrap;text-decoration:none}
+.gt-tt{font-size:12px;color:var(--phu);min-height:16px}.gt-tt.loi{color:#B23A2B}
+@media (max-width:640px){.gt-muc{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -53,6 +89,11 @@ dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
     <h1>Soát app <span>YCT 1 tự học</span></h1>
     <div class="ban">Bản 07/10/2026 · 20 màn · khổ iPad ngang · <span class="tong" id="tong">đang tải nhận xét…</span></div>
   </header>
+  <nav class="tabs" role="tablist" aria-label="Chọn việc soát">
+    <button role="tab" id="t-app" aria-controls="p-app" aria-selected="true">Soát app YCT 1</button>
+    <button role="tab" id="t-gt" aria-controls="p-gt" aria-selected="false">Tra soát giáo trình · Hà</button>
+  </nav>
+  <div id="p-app" role="tabpanel" aria-labelledby="t-app" style="display:flex;flex-direction:column;gap:20px">
   <section class="huong" aria-label="Cách soát">
     <p><b>Mở app:</b> <i>hoctiengtrungvn.com/hoc/yct-tu-hoc</i></p>
     <p><b>Thấy lỗi:</b> gõ vào ô <i>Nhi nhận xét</i> / <i>Hà nhận xét</i> → bấm <b>Lưu</b></p>
@@ -60,6 +101,22 @@ dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
     <p><b>Và:</b> <i>chữ nhỏ quá, nút khó bấm, tiếng rè</i>?</p>
   </section>
   <main class="luoi" id="luoi"></main>
+  </div>
+  <div id="p-gt" role="tabpanel" aria-labelledby="t-gt" hidden style="flex-direction:column;gap:18px">
+    <section class="huong" aria-label="Cách tra soát giáo trình">
+      <p><b>Mở thư mục</b> → <i>so với dòng chữ nghiêng em đã ghi</i></p>
+      <p><b>Đúng như ghi</b> → bấm <i>Đúng</i></p>
+      <p><b>Mục còn thiếu</b> → <i>dán link file bổ sung</i> vào ô link</p>
+      <p><b>Ghi sai</b> → bấm <i>Có sai</i> + ghi chú ngắn · <i>tự lưu</i></p>
+    </section>
+    <section class="gt-tien" aria-label="Tiến độ">
+      <div class="gt-hang"><div class="gt-so"><span id="gtXem">0</span><small> / <span id="gtTong">0</span> mục đã xem</small></div>
+        <div class="gt-dem"><span>Đúng <b id="gtD">0</b></span><span>Đã bổ sung <b id="gtB">0</b></span><span>Có sai <b id="gtS">0</b></span></div></div>
+      <div class="gt-vach"><i id="gtVach"></i></div>
+      <div class="gt-loc" role="group" aria-label="Lọc"><button data-gtloc="tat" class="on">Tất cả</button><button data-gtloc="chuaxem">Chưa xem</button><button data-gtloc="thieu">Đang thiếu</button><button data-gtloc="sai">Có sai</button></div>
+    </section>
+    <div id="gtDs" style="display:flex;flex-direction:column;gap:18px"></div>
+  </div>
 </div>
 <dialog id="xem"><img id="xemAnh" alt=""><p id="xemTen"></p></dialog>
 <script>
@@ -115,6 +172,137 @@ function ve(ds,boQuaDangGo){let n=0;ds.forEach(x=>{const c=(NG.find(g=>g[0]===x.
   tong.textContent=n?`đã có ${n} nhận xét`:"chưa có nhận xét"}
 const tai=()=>goi({app:"soat"}).then(r=>{if(r&&r.ok)ve(r.ds||[],true)}).catch(()=>{tong.textContent="chưa tải được nhận xét (kiểm tra mạng)"});
 tai();setInterval(tai,60000);
+/* ===== 07/10 — TAB TRA SOÁT GIÁO TRÌNH (Hà) · lưu bảng SunMoon, app "soatgt" ===== */
+const tabs=[["t-app","p-app"],["t-gt","p-gt"]];
+function moTab(id){tabs.forEach(([t,p])=>{const on=t===id;document.getElementById(t).setAttribute("aria-selected",on);const el=document.getElementById(p);el.hidden=!on;el.style.display=on?"flex":"none"});
+  try{history.replaceState(null,"",id==="t-gt"?"#giao-trinh":location.pathname)}catch(e){} if(id==="t-gt"&&!gtDaTai)gtTai()}
+tabs.forEach(([t])=>document.getElementById(t).addEventListener("click",()=>moTab(t)));
+const GOC="Downloads › GIÁO TRÌNH 2023 › GIÁO TRÌNH TIẾNG TRUNG › ";
+const KHOA=[
+ {ten:"Pre Chinese",phu:"mầm non · 10 chủ đề",tm:"GIÁO TRÌNH PRE CHINESE",muc:[
+  ["pre-ppt","PPT","ok","11 file: 10 chủ đề + tự giới thiệu","PPT"],
+  ["pre-nhac","Nhạc","thieu","7/10 chủ đề · thiếu ngày tháng, màu sắc, đồ dùng học tập, động vật","CHINESE MUSIC"],
+  ["pre-tv","Tập viết","ok","15 file","TẬP VIẾT"],
+  ["pre-bt","Bài tập + test","ok","14 bài tập + 1 test cuối khoá","BÀI TẬP"],
+  ["pre-fc","Flashcard","thieu","6/10 · thiếu gia đình, hỏi tên, hỏi tuổi, ngày tháng, đồ dùng, động vật","FLASHCARD"]]},
+ {ten:"YCT 1",phu:"11 bài",tm:"GIÁO TRÌNH CHINESE KIDS › YCT1",muc:[
+  ["yct1-ppt","PPT","ok","11 bài + phát âm 3 buổi · đã sửa lỗi chữ 30/09","PPT YCT1"],
+  ["yct1-audio","Audio","ok","52 file","AUDIO YCT1"],
+  ["yct1-tv","Tập viết","ok","11 bài","TẬP VIẾT YCT1"],
+  ["yct1-bt","Bài tập + test","ok","12 file","BÀI TẬP + BÀI TEST YCT1"],
+  ["yct1-fc","Flashcard","chua","Không có thư mục",""]]},
+ {ten:"YCT 2",phu:"11 bài",tm:"GIÁO TRÌNH CHINESE KIDS › YCT2",muc:[
+  ["yct2-ppt","PPT","ok","11 bài","PPT YCT2"],
+  ["yct2-audio","Audio","ok","52 file","AUDIO YCT2"],
+  ["yct2-tv","Tập viết","ok","11 bài","TẬP VIẾT YCT2"],
+  ["yct2-bt","Bài tập + test","ok","11 bài","BÀI TẬP + BÀI TEST YCT2"],
+  ["yct2-fc","Flashcard","chua","Thư mục trống","FLASHCARD YCT2"]]},
+ {ten:"YCT 3",phu:"11 bài",tm:"GIÁO TRÌNH CHINESE KIDS › YCT3",muc:[
+  ["yct3-ppt","PPT","ok","11 bài","PPT YCT3"],
+  ["yct3-audio","Audio","ok","49 file","AUDIO YCT3"],
+  ["yct3-tv","Tập viết","ok","11 bài","TẬP VIẾT YCT3"],
+  ["yct3-bt","Bài tập + test","ok","12 file","BÀI TẬP + BÀI TEST YCT3"],
+  ["yct3-fc","Flashcard","ok","11 bài","FLASHCARD YCT3"]]},
+ {ten:"YCT 4",phu:"11 bài + khởi động",tm:"GIÁO TRÌNH CHINESE KIDS › YCT4",muc:[
+  ["yct4-ppt","PPT","chua","Thư mục trống · cần PPT cả 11 bài","PPT"],
+  ["yct4-audio","Audio","ok","50 file","AUDIO"],
+  ["yct4-tv","Tập viết","ok","11 bài","TẬP VIẾT"],
+  ["yct4-bt","Bài tập + test","ok","12 file + test kết thúc khoá","BÀI TẬP + BÀI TEST"],
+  ["yct4-fc","Flashcard","chua","Không có thư mục",""]]},
+ {ten:"YCT 5",phu:"14 bài + khởi động",tm:"GIÁO TRÌNH CHINESE KIDS › YCT5",muc:[
+  ["yct5-ppt","PPT","chua","Thư mục trống · cần PPT cả 14 bài","PPT"],
+  ["yct5-audio","Audio","ok","70 file","AUDIO"],
+  ["yct5-tv","Tập viết","ok","14 bài","TẬP VIẾT"],
+  ["yct5-bt","Bài tập + test","ok","15 file","BTVN + TEST"],
+  ["yct5-fc","Flashcard","chua","Không có thư mục",""]]},
+ {ten:"YCT 6",phu:"15 bài",tm:"GIÁO TRÌNH CHINESE KIDS › YCT6",muc:[
+  ["yct6-ppt","PPT","ok","15 bài","PPT"],
+  ["yct6-audio","Audio","chua","Thư mục trống","AUDIO"],
+  ["yct6-tv","Tập viết","chua","Thư mục trống","TẬP VIẾT"],
+  ["yct6-bt","Bài tập + test","thieu","2/15 · mới có bài 1–2","BTVN + BÀI TEST"],
+  ["yct6-fc","Flashcard","chua","Thư mục trống","FLASHCARD"]]},
+ {ten:"HSK 1",phu:"15 bài",tm:"GIÁO TRÌNH HSK › HSK1",muc:[
+  ["hsk1-ppt","PPT","ok","15 bài","PPT HSK1"],
+  ["hsk1-audio","Audio","ok","124 file","AUDIO HSK1"],
+  ["hsk1-tv","Tập viết","ok","15 bài","TẬP VIẾT HSK1"],
+  ["hsk1-bt","Bài tập","thieu","13/15 · thiếu bài 1–2","BÀI TẬP HSK1"],
+  ["hsk1-de","Sách + đề ôn","ok","Sách giáo trình + 2 đề ôn","ĐỀ ÔN TẬP HSK1"]]},
+ {ten:"HSK 2",phu:"15 bài",tm:"GIÁO TRÌNH HSK › HSK2",muc:[
+  ["hsk2-ppt","PPT","ok","15 bài","PPT HSK2"],
+  ["hsk2-audio","Audio","ok","76 file","AUDIO HSK2"],
+  ["hsk2-tv","Tập viết","ok","15 bài","TẬP VIẾT HSK2"],
+  ["hsk2-bt","Bài tập","ok","14 file","BÀI TẬP HSK2"],
+  ["hsk2-de","Đề ôn tập","chua","Thư mục trống","ĐỀ ÔN TẬP HSK2"]]},
+ {ten:"HSK 3",phu:"20 bài",tm:"GIÁO TRÌNH HSK › HSK3",muc:[
+  ["hsk3-ppt","PPT","thieu","19/20 · thiếu bài 17","PPT HSK3"],
+  ["hsk3-audio","Audio","ok","101 file","AUDIO HSK3"],
+  ["hsk3-tv","Tập viết","ok","20 bài","TẬP VIẾT HSK3"],
+  ["hsk3-bt","Bài tập","ok","20 bài","BÀI TẬP HSK3"],
+  ["hsk3-de","Đề ôn tập","chua","Thư mục trống","ĐỀ ÔN TẬP HSK3"]]},
+ {ten:"HSK 4",phu:"20 bài · quyển Thượng + Hạ",tm:"GIÁO TRÌNH HSK › HSK4",muc:[
+  ["hsk4-ppt","PPT","thieu","4/20 · mới có bài 12–15","PPT HSK4"],
+  ["hsk4-audio","Audio","ok","165 file","AUDIO HSK4"],
+  ["hsk4-tv","Tập viết","thieu","10/20 · mới có bài 1–10","TẬP VIẾT HSK4"],
+  ["hsk4-bt","Bài tập","thieu","15/20 · mới có bài 1–15","BÀI TẬP HSK4"],
+  ["hsk4-de","Sách + đề ôn","ok","SGK + SBT Thượng/Hạ + 12 đề ôn","ĐỀ ÔN TẬP HSK4"]]},
+ {ten:"Kouyu Sucheng · quyển 1",phu:"15 bài · luyện nói",tm:"GIÁO TRÌNH KOUYU SUCHENG",muc:[
+  ["ky1-ppt","PPT","ok","15 bài","PPT KYSC › QUYỂN 1"],
+  ["ky1-audio","Audio","chua","Thư mục trống","AUDIO KYSC"],
+  ["ky1-tv","Tập viết","thieu","6/15 · mới có bài 1–6","TẬP VIẾT KYSC"],
+  ["ky1-bt","Bài tập","chua","Không có",""]]},
+ {ten:"Kouyu Sucheng · quyển 2",phu:"bài 16–24",tm:"GIÁO TRÌNH KOUYU SUCHENG",muc:[
+  ["ky2-ppt","PPT","ok","9 bài (16–24)","PPT KYSC › QUYỂN 2"],
+  ["ky2-audio","Audio","chua","Không có",""],
+  ["ky2-tv","Tập viết","chua","Không có",""],
+  ["ky2-bt","Bài tập","chua","Không có",""]]},
+ {ten:"Kouyu Sucheng · quyển 3",phu:"sơ cấp quyển 1",tm:"GIÁO TRÌNH KOUYU SUCHENG",muc:[
+  ["ky3-tat","Toàn bộ","chua","Thư mục trống","PPT KYSC › QUYỂN 3 (SƠ CẤP QUYỂN 1)"]]},
+ {ten:"Dọn file rác",phu:"xoá xong thì bấm Đã bổ sung",tm:"GIÁO TRÌNH HSK",muc:[
+  ["rac-hsk2","File tạm HSK2","thieu","4 file ~$HSK2L….pptx + HSK2L7.pptm bị trùng","HSK2 › PPT HSK2"],
+  ["rac-hsk1","File trùng HSK1","thieu","“Bản sao của HSK标准教程1-第8课.pptx”","HSK1 › PPT HSK1"]]}
+];
+const NHAN={ok:"Đủ",thieu:"Thiếu một phần",chua:"Chưa có"},KQ={dung:"Đúng",bosung:"Đã bổ sung",sai:"Có sai"};
+const TAT=[];KHOA.forEach(k=>k.muc.forEach(m=>TAT.push({m,k})));
+let gtKQ={},gtLoc="tat",gtDaTai=false;const gtTT={};
+const gtHien=m=>{const r=gtKQ[m[0]]||{};return gtLoc==="chuaxem"?!r.kq:gtLoc==="thieu"?m[2]!=="ok"&&r.kq!=="bosung":gtLoc==="sai"?r.kq==="sai":true};
+function gtVe(){
+  const ds=document.getElementById("gtDs");
+  const dangGo=document.activeElement&&ds.contains(document.activeElement)&&document.activeElement.tagName==="INPUT";
+  if(!dangGo){
+    ds.innerHTML=KHOA.map(k=>{const ms=k.muc.filter(gtHien);if(!ms.length)return"";
+      return`<section class="gt-khoa"><h2>${esc(k.ten)} <small>${esc(k.phu)}</small></h2><div class="gt-ds">${ms.map(m=>{const r=gtKQ[m[0]]||{};
+        return`<div class="gt-muc${r.kq==="dung"||r.kq==="bosung"?" xong":""}" data-id="${m[0]}">
+        <div><div class="gt-ten">${esc(m[1])} <span class="chip ${m[2]}">${NHAN[m[2]]}</span></div><div class="gt-may">${esc(m[3])}</div><div class="gt-duong">${esc(GOC+k.tm+(m[4]?" › "+m[4]:""))}</div></div>
+        <div class="gt-chon"><div class="gt-nut" role="group" aria-label="Kết quả ${esc(k.ten)} ${esc(m[1])}">${Object.keys(KQ).map(x=>`<button type="button" data-kq="${x}" aria-pressed="${r.kq===x}">${KQ[x]}</button>`).join("")}</div>
+        ${m[2]!=="ok"?`<div class="gt-lk"><input class="gt-o lk" id="lk-${m[0]}" type="url" inputmode="url" placeholder="Dán link file bổ sung (Drive…)" value="${esc(r.link||"")}">${/^https?:\/\//.test(r.link||"")?`<a href="${esc(r.link)}" target="_blank" rel="noopener">Mở ↗</a>`:""}</div>`:""}
+        <input class="gt-o gc" id="gc-${m[0]}" placeholder="Ghi chú (vd: thiếu bài 5)" value="${esc(r.ghiChu||"")}">
+        <div class="gt-tt${gtTT[m[0]]&&gtTT[m[0]].loi?" loi":""}" aria-live="polite">${esc(gtTT[m[0]]?gtTT[m[0]].chu:(r.luc?"Lưu lúc "+r.luc:""))}</div></div></div>`}).join("")}</div></section>`}).join("")||'<div class="gt-ds" style="padding:18px;text-align:center;color:var(--phu)">Không có mục nào ở bộ lọc này.</div>';
+  }
+  let xem=0;const d={dung:0,bosung:0,sai:0};TAT.forEach(({m})=>{const r=gtKQ[m[0]];if(r&&r.kq){xem++;d[r.kq]++}});
+  document.getElementById("gtXem").textContent=xem;document.getElementById("gtTong").textContent=TAT.length;
+  document.getElementById("gtD").textContent=d.dung;document.getElementById("gtB").textContent=d.bosung;document.getElementById("gtS").textContent=d.sai;
+  document.getElementById("gtVach").style.width=Math.round(xem/TAT.length*100)+"%";
+}
+const gtNap=ds=>{gtKQ={};ds.forEach(x=>gtKQ[x.id]=x);gtVe()};
+function gtTai(){return goi({app:"soatgt"}).then(r=>{if(r&&r.ok){gtDaTai=true;gtNap(r.ds||[])}}).catch(()=>{})}
+async function gtLuu(id,patch){
+  const cu=gtKQ[id]||{},moi=Object.assign({kq:"",link:"",ghiChu:""},cu,patch),t=TAT.find(x=>x.m[0]===id);
+  gtKQ[id]=Object.assign({},moi,{id});gtTT[id]={chu:"Đang lưu…"};gtVe();
+  try{const r=await goi({app:"soatgt",viec:"luu",muc:id,ten:t?t.k.ten+" · "+t.m[1]:id,kq:moi.kq,link:moi.link,ghiChu:moi.ghiChu});
+    if(r&&r.ok){gtTT[id]={chu:"Đã lưu "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"})+" ✓"};gtNap(r.ds||[])}
+    else{gtKQ[id]=cu;gtTT[id]={chu:(r&&r.loi)||"Chưa lưu được — thử lại nhé",loi:1};gtVe()}}
+  catch(e){gtKQ[id]=cu;gtTT[id]={chu:"Mất mạng — chưa lưu được, thử lại nhé",loi:1};gtVe()}
+}
+const gtDsEl=document.getElementById("gtDs");
+gtDsEl.addEventListener("click",e=>{const b=e.target.closest("button[data-kq]");if(!b)return;const id=b.closest(".gt-muc").dataset.id;gtLuu(id,{kq:(gtKQ[id]||{}).kq===b.dataset.kq?"":b.dataset.kq})});
+gtDsEl.addEventListener("change",e=>{const i=e.target;if(!i.classList.contains("gt-o"))return;const id=i.closest(".gt-muc").dataset.id,v=i.value.trim(),r=gtKQ[id]||{};
+  if(i.classList.contains("lk")){if(v&&!/^https?:\/\//.test(v)){gtTT[id]={chu:"Link phải bắt đầu bằng https://",loi:1};i.blur();gtVe();return}
+    if(v!==(r.link||""))gtLuu(id,v&&!r.kq?{link:v,kq:"bosung"}:{link:v})}
+  else if(v!==(r.ghiChu||""))gtLuu(id,{ghiChu:v.slice(0,500)})});
+document.querySelectorAll("[data-gtloc]").forEach(b=>b.addEventListener("click",()=>{gtLoc=b.dataset.gtloc;document.querySelectorAll("[data-gtloc]").forEach(x=>x.classList.toggle("on",x===b));gtVe()}));
+gtVe();
+if(location.hash==="#giao-trinh")moTab("t-gt");
+setInterval(()=>{if(!document.getElementById("p-gt").hidden)gtTai()},60000);
 </script>
 </body>
 </html>
