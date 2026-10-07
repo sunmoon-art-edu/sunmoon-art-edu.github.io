@@ -1431,7 +1431,7 @@ function home(){
     <button class="big bdGo" id="bdGo">▶ ${buoiXong().size?"Học tiếp":"Bắt đầu học"} — Buổi ${buoiHT()+1}</button><div class="hgO"><span>⏰ Giờ học mỗi ngày</span><input type="time" id="hgGio" value="${store.get("yct1-hengio","19:30")}"><button class="btn2" id="hgBtn">Thêm vào lịch điện thoại</button></div>${U&&U.tk?"":`<button class="btn2" id="bdDN">👤 Đã có tài khoản? Đăng nhập</button>`}</section>
   <section class="card hero">${[["☁️",64,4,48],["🎈",84,6,46]].map(([e,x,y,z])=>H[e]?`<img class="deco floaty" src="${H[e]}" alt="" style="left:${x}%;top:${y}%;width:${z}px;animation-delay:${x/30}s">`:"").join("")}<span class="emo">${im("🎒")}</span><h1>Tự học YCT 1 — mỗi buổi 10 phút</h1>
     <p class="sub">Cho bé 7–12 tuổi tự học · bám sát giáo trình YCT Standard Course 1 · 80 từ YCT1</p>
-    <ul class="steps"><li data-n="1"><span><b>Nghe cô giảng</b> <i>— mục nào cũng có cô giảng</i></span></li><li data-n="2"><span><b>Học từ, nghe hội thoại</b> <i>— 3 giọng đọc, đóng vai cùng các bạn</i></span></li><li data-n="3"><span><b>Làm bài nghe · nói · viết</b> <i>— trò chơi, tập viết từng nét</i></span></li><li data-n="4"><span><b>Luyện đề thi YCT1</b> <i>— giống đề thi thật</i></span></li></ul></section>
+    <ul class="steps"><li data-n="1"><span><b>Nghe cô giảng</b> <i>— mục nào cũng có cô giảng</i></span></li><li data-n="2"><span><b>Học từ, nghe hội thoại</b> <i>— 2 giọng đọc, đóng vai cùng các bạn</i></span></li><li data-n="3"><span><b>Làm bài nghe · nói · viết</b> <i>— trò chơi, tập viết từng nét</i></span></li><li data-n="4"><span><b>Luyện đề thi YCT1</b> <i>— giống đề thi thật</i></span></li></ul></section>
   <div class="loinhan"><span style="font-size:26px">${im("💛")}</span><div><b>Lời nhắn nhỏ từ SunMoon</b><p>Con tiến bộ nhờ học đều mỗi ngày. Nếu học không đều, SunMoon không dám hứa chắc kết quả. Mỗi ngày chỉ cần <b style="display:inline">1–2 buổi, mỗi buổi 10 phút</b> thôi nhé!</p></div></div>
   ${(()=>{const n=chuoi(),hn=ngayHoc().includes(homNay());if(KHOA&&!U)return "";
     return `<div class="banner"><img src="${H["🔥"]||""}" alt=""><div><b>${hn?`Hôm nay bé đã học ✓ · ${n} ngày liền`:n?`Học hôm nay để giữ lửa ${n} ngày!`:ngayHoc().length?"Gấu trúc nhớ bé lắm — học lại nhé!":"Bắt đầu ngày học đầu tiên nào!"}</b><i>${hn?"Mai quay lại để chuỗi dài thêm":"Chỉ 10 phút thôi"}</i></div></div>`})()}
@@ -1541,6 +1541,15 @@ let _luuH=0;function henLuu(){if(!U||!U.tk)return;clearTimeout(_luuH);_luuH=setT
 function luuTD(){clearTimeout(_luuH);_luuH=0;if(!U||!U.tk)return;const luc=Date.now();try{localStorage.setItem("yct1-luc",String(luc))}catch(e){}
   return callApi({app:"luutd",u:U.u,m:U.m,giaoTrinh:GT_TK,snap:JSON.stringify({luc,d:chupTD()})}).catch(()=>{})}
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden"&&_luuH)luuTD()});
+/* 07/10 chị: "mỗi lần các bạn ý thoát ra ngoài là phải đăng nhập lại" → app nằm ngoài ≥5 giây (về màn hình chính, sang app khác, tắt màn hình)
+   quay lại là phải nhập mã (bài đã lưu lúc thoát); trừ khi đang xem bài hát YouTube */
+let _anLuc=0;
+document.addEventListener("visibilitychange",()=>{if(document.hidden){_anLuc=Date.now();try{sessionStorage.setItem("yct1-an",String(_anLuc))}catch(e){}}else khoaLai()});
+window.addEventListener("pageshow",e=>{if(e.persisted)khoaLai()});
+function khoaLai(){let t=_anLuc;try{t=t||+(sessionStorage.getItem("yct1-an")||0)}catch(e){}_anLuc=0;try{sessionStorage.removeItem("yct1-an")}catch(e){}
+  if(!t||Date.now()-t<5000||!(U&&U.tk))return;if(document.querySelector(".ytl iframe"))return;
+  try{cur&&cur.pause()}catch(e){}try{sessionStorage.removeItem("yct1-vao")}catch(e){}U_CU=U;U=null;
+  try{history.replaceState(null,"",location.pathname+location.search);document.querySelectorAll(".mung").forEach(x=>x.remove());go(-1);accBar()}catch(e){}dnTK()}
 function napTD(snap){let o=null;try{o=JSON.parse(snap)}catch(e){}if(!o||!o.d)return false;const loc=+(localStorage.getItem("yct1-luc")||0);if(o.luc<=loc)return false;
   const xoa=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("yct1-")&&k!=="yct1-user"&&k!=="yct1-chu")xoa.push(k)}xoa.forEach(k=>localStorage.removeItem(k));
   Object.entries(o.d).forEach(([k,v])=>{try{localStorage.setItem(k,v)}catch(e){}});localStorage.setItem("yct1-luc",String(o.luc));return true}
@@ -1739,7 +1748,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610071623";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610071635";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
