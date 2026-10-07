@@ -124,7 +124,7 @@ dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
 const API="https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";
 const goi=b=>fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(b)}).then(r=>r.json());
 const M=[
- ["01","Đăng nhập","Tên đăng nhập + mã 4 số · thoát app 5 giây là phải nhập lại"],
+ ["01","Đăng nhập","Tên đăng nhập + mã 4 số · ra khỏi app quá 15 phút mới phải nhập lại"],
  ["02","Trang chủ","Cô Mặt Trời chào · nút Học tiếp · giờ học mỗi ngày"],
  ["03","Lộ trình","Trái: chặng & bài · phải: các buổi của bài"],
  ["04","Cô giảng (lớp học)","Bảng trắng hiện chữ Hán · phiên âm · nghĩa theo lời cô"],
