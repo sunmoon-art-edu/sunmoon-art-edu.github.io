@@ -41,6 +41,7 @@ figcaption{padding:10px 14px 6px;display:grid;grid-template-columns:auto 1fr;gap
 .luu[disabled]{opacity:.55;cursor:default}
 .tt{font-size:12px;color:var(--phu);min-height:16px;margin-top:3px}
 .tt.ok{color:var(--ngoc-dam)}.tt.loi{color:#C4392A}
+.o textarea.daSua{text-decoration:line-through;color:#8C8C8C;background:#F3F8F1}.tt.xong{color:#2E7D4F;font-size:13px;font-weight:600}
 dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);width:100%}
 dialog::backdrop{background:rgba(10,16,20,.82)}
 dialog img{width:100%;height:auto;border-radius:12px;display:block}
@@ -168,7 +169,10 @@ dl.addEventListener("click",()=>{try{dl.close()}catch(err){dl.removeAttribute("o
 /* nạp nhận xét đã lưu; ô đang gõ dở (khác bản đã lưu) thì không ghi đè */
 function ve(ds,boQuaDangGo){let n=0;ds.forEach(x=>{const c=(NG.find(g=>g[0]===x.nguoi)||[])[1];if(!c)return;const ta=document.getElementById(`nx-${x.man}-${c}`);if(!ta)return;
     if(x.noiDung)n++;const dangGo=document.activeElement===ta||(ta.dataset.goc!==undefined&&ta.value.trim()!==ta.dataset.goc);
-    if(!dangGo||!boQuaDangGo&&ta.value.trim()===""){ta.value=x.noiDung;ta.dataset.goc=x.noiDung;const tt=document.getElementById(`tt-${x.man}-${c}`);if(x.noiDung&&!tt.textContent)tt.textContent="Lưu lúc "+x.luc}});
+    if(!dangGo||!boQuaDangGo&&ta.value.trim()===""){ta.value=x.noiDung;ta.dataset.goc=x.noiDung;const tt=document.getElementById(`tt-${x.man}-${c}`);if(x.noiDung&&!tt.textContent)tt.textContent="Lưu lúc "+x.luc;
+      /* 07/10 chị: góp ý đã sửa → gạch ngang + dòng "Đã sửa"; bạn gõ nhận xét mới thì bỏ gạch */
+      if(x.xong&&x.noiDung){ta.classList.add("daSua");tt.className="tt xong";tt.textContent="✅ Đã sửa ("+x.xong.slice(11,16)+" "+x.xong.slice(8,10)+"/"+x.xong.slice(5,7)+"): "+x.traLoi;ta.oninput=()=>ta.classList.remove("daSua")}
+      else{ta.classList.remove("daSua");if(tt.classList.contains("xong")){tt.className="tt";tt.textContent=x.noiDung?"Lưu lúc "+x.luc:""}}}});
   tong.textContent=n?`đã có ${n} nhận xét`:"chưa có nhận xét"}
 const tai=()=>goi({app:"soat"}).then(r=>{if(r&&r.ok)ve(r.ds||[],true)}).catch(()=>{tong.textContent="chưa tải được nhận xét (kiểm tra mạng)"});
 tai();setInterval(tai,60000);
