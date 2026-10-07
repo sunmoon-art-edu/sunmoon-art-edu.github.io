@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Soát app YCT 1 · SunMoon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Be+Vietnam+Pro:wght@400;600&display=swap">
+<style>
+/* 07/10 chị: trang cho 2 quản lý soát 20 màn hình app YCT 1 — dưới mỗi màn "Nhi nhận xét", "Hà nhận xét", bấm Lưu là lưu (bảng SunMoon, action soat) */
+:root{--nen:#EEF5F8;--the:#fff;--muc:#24323A;--phu:#5E6E76;--vien:#D6E3E9;--ngoc:#22AFB1;--ngoc-dam:#17898B;--vang:#F2B935;--vang-nhat:#FFF4D6;
+  --hien:'Baloo 2','Be Vietnam Pro',system-ui,sans-serif;--than:'Be Vietnam Pro',system-ui,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--nen);color:var(--muc);font:400 15px/1.55 var(--than);padding:20px 16px 48px}
+.khung{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:flex-end;justify-content:space-between}
+h1{font:800 clamp(26px,4.2vw,38px)/1.1 var(--hien);margin:0}
+h1 span{color:var(--ngoc)}
+.ban{font-size:13px;color:var(--phu)}
+.huong{background:var(--vang-nhat);border:1px solid var(--vang);border-radius:14px;padding:12px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 22px}
+.huong p{margin:0}.huong b{font-weight:600}.huong i{color:var(--phu)}
+.tong{font-size:14px;color:var(--phu)}
+.luoi{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:18px}
+figure{margin:0;background:var(--the);border:1px solid var(--vien);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.anh{all:unset;cursor:zoom-in;display:block;aspect-ratio:1180/820;max-width:100%;background:var(--nen)}
+.anh:focus-visible{outline:3px solid var(--ngoc);outline-offset:-3px}
+.anh img{width:100%;height:100%;object-fit:cover;display:block}
+figcaption{padding:10px 14px 6px;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline}
+.so{font:800 22px/1 var(--hien);color:var(--ngoc);font-variant-numeric:tabular-nums;grid-row:span 2}
+.ten{font-weight:600;font-size:16px}.ghi{color:var(--phu);font-size:14px}
+.minh{display:inline-block;font-size:12px;background:var(--vang-nhat);border:1px solid var(--vang);border-radius:999px;padding:0 8px;margin-left:6px}
+.nx{padding:6px 14px 14px;display:grid;gap:10px}
+.o label{display:block;font-weight:600;font-size:14px;margin-bottom:4px}
+.o label.nhi{color:#C2436A}.o label.ha{color:#2E7DBA}
+.o .dong{display:flex;gap:8px;align-items:flex-end}
+.o textarea{flex:1;min-width:0;resize:vertical;min-height:44px;border:1.5px solid var(--vien);border-radius:10px;padding:8px 10px;font:inherit;color:var(--muc);background:#fff}
+.o textarea:focus{outline:none;border-color:var(--ngoc)}
+.luu{all:unset;cursor:pointer;background:var(--ngoc);color:#fff;font-weight:600;border-radius:10px;padding:9px 16px;box-shadow:0 3px 0 var(--ngoc-dam)}
+.luu:focus-visible{outline:3px solid var(--vang);outline-offset:2px}
+.luu[disabled]{opacity:.55;cursor:default}
+.tt{font-size:12px;color:var(--phu);min-height:16px;margin-top:3px}
+.tt.ok{color:var(--ngoc-dam)}.tt.loi{color:#C4392A}
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);width:100%}
+dialog::backdrop{background:rgba(10,16,20,.82)}
+dialog img{width:100%;height:auto;border-radius:12px;display:block}
+dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
+</style>
+</head>
+<body>
+<div class="khung">
+  <header>
+    <h1>Soát app <span>YCT 1 tự học</span></h1>
+    <div class="ban">Bản 07/10/2026 · 20 màn · khổ iPad ngang · <span class="tong" id="tong">đang tải nhận xét…</span></div>
+  </header>
+  <section class="huong" aria-label="Cách soát">
+    <p><b>Mở app:</b> <i>hoctiengtrungvn.com/hoc/yct-tu-hoc</i></p>
+    <p><b>Thấy lỗi:</b> gõ vào ô <i>Nhi nhận xét</i> / <i>Hà nhận xét</i> → bấm <b>Lưu</b></p>
+    <p><b>Soát kỹ:</b> chữ Hán có đủ <i>phiên âm + nghĩa</i>?</p>
+    <p><b>Và:</b> <i>chữ nhỏ quá, nút khó bấm, tiếng rè</i>?</p>
+  </section>
+  <main class="luoi" id="luoi"></main>
+</div>
+<dialog id="xem"><img id="xemAnh" alt=""><p id="xemTen"></p></dialog>
+<script>
+const API="https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";
+const goi=b=>fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(b)}).then(r=>r.json());
+const M=[
+ ["01","Đăng nhập","Tên đăng nhập + mã 4 số · thoát app 5 giây là phải nhập lại"],
+ ["02","Trang chủ","Cô Mặt Trời chào · nút Học tiếp · giờ học mỗi ngày"],
+ ["03","Lộ trình","Trái: chặng & bài · phải: các buổi của bài"],
+ ["04","Cô giảng (lớp học)","Bảng trắng hiện chữ Hán · phiên âm · nghĩa theo lời cô"],
+ ["05","Buổi học · sơ đồ phiên âm","Thanh chặng của buổi (có 🎵 bài hát) · nhiệm vụ bên trái"],
+ ["06","Trò bóng bay","Cô đọc → bé chạm đúng quả bóng"],
+ ["07","Trò đua xe","Nghe → chọn 1 trong 4 ô"],
+ ["08","Trò chém trái cây","Cô đọc → chém đúng quả"],
+ ["09","Trò xếp lego","Chọn đúng viên → xây tháp"],
+ ["10","Sơ đồ từ mới","Chỉ chữ: phiên âm · chữ Hán · nghĩa"],
+ ["11","Luyện nghe","Nghe cô đọc → chạm đúng hình"],
+ ["12","Luyện nói","Bấm micro đọc → app báo “đọc tốt” hoặc “đọc lại”"],
+ ["13","Bài hát Little Fox","Sau phần luyện tập · mỗi bài hát 1 lần"],
+ ["14","Xong buổi","Kim cương · avatar mới · quà mỗi ngày tăng dần"],
+ ["15","Hồ sơ","Avatar đang có · kim cương · avatar sắp mở"],
+ ["16","Nhiệm vụ","Học đủ → bấm Nhận quà"],
+ ["17","Xếp hạng","Cả SunMoon · Lớp · Nhóm",1],
+ ["18","Thông báo","Quà chưa nhận · nhắc học · buổi đang chờ"],
+ ["19","Trang bài đầy đủ","Các mục của 1 bài (Bài 2)"],
+ ["20","Thi thử YCT 1","Bài kiểm tra cuối (Bài 12)"]
+];
+const NG=[["Nhi","nhi"],["Hà","ha"]];
+const luoi=document.getElementById("luoi"),dl=document.getElementById("xem"),xa=document.getElementById("xemAnh"),xt=document.getElementById("xemTen"),tong=document.getElementById("tong");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+luoi.innerHTML=M.map(([so,ten,ghi,mh])=>`<figure>
+  <button class="anh" type="button" data-so="${so}" aria-label="Phóng to màn ${so}: ${esc(ten)}"><img src="img/${so}.jpg" alt="Màn ${so}: ${esc(ten)}" loading="lazy"></button>
+  <figcaption><span class="so">${so}</span><span class="ten">${esc(ten)}${mh?'<span class="minh">ảnh dùng số liệu minh hoạ</span>':""}</span><span class="ghi">${esc(ghi)}</span></figcaption>
+  <div class="nx">${NG.map(([n,c])=>`<div class="o"><label class="${c}" for="nx-${so}-${c}">${n} nhận xét</label>
+    <div class="dong"><textarea id="nx-${so}-${c}" rows="2" maxlength="1500" placeholder="Màn ${so}: lỗi gì, ở đâu…"></textarea><button class="luu" type="button" data-so="${so}" data-ng="${n}" data-c="${c}">Lưu</button></div>
+    <div class="tt" id="tt-${so}-${c}" aria-live="polite"></div></div>`).join("")}</div>
+</figure>`).join("");
+luoi.addEventListener("click",async e=>{
+  const a=e.target.closest(".anh");if(a){const m=M.find(x=>x[0]===a.dataset.so);xa.src=`img/${m[0]}.jpg`;xa.alt=`Màn ${m[0]}: ${m[1]}`;xt.textContent=`${m[0]} · ${m[1]}`;try{dl.showModal()}catch(err){dl.setAttribute("open","")}return}
+  const b=e.target.closest(".luu");if(!b)return;
+  const ta=document.getElementById(`nx-${b.dataset.so}-${b.dataset.c}`),tt=document.getElementById(`tt-${b.dataset.so}-${b.dataset.c}`);
+  b.disabled=true;b.textContent="Đang lưu…";tt.className="tt";tt.textContent="";
+  try{const r=await goi({app:"soat",viec:"luu",man:b.dataset.so,nguoi:b.dataset.ng,noiDung:ta.value.trim()});
+    if(r&&r.ok){ta.dataset.goc=ta.value.trim();tt.className="tt ok";tt.textContent="Đã lưu "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"})+" ✓";if(r.ds)ve(r.ds,true)}
+    else{tt.className="tt loi";tt.textContent=(r&&r.loi)||"Chưa lưu được — thử lại nhé"}}
+  catch(err){tt.className="tt loi";tt.textContent="Mất mạng — chưa lưu được, bấm Lưu lại nhé"}
+  b.disabled=false;b.textContent="Lưu"});
+dl.addEventListener("click",()=>{try{dl.close()}catch(err){dl.removeAttribute("open")}});
+/* nạp nhận xét đã lưu; ô đang gõ dở (khác bản đã lưu) thì không ghi đè */
+function ve(ds,boQuaDangGo){let n=0;ds.forEach(x=>{const c=(NG.find(g=>g[0]===x.nguoi)||[])[1];if(!c)return;const ta=document.getElementById(`nx-${x.man}-${c}`);if(!ta)return;
+    if(x.noiDung)n++;const dangGo=document.activeElement===ta||(ta.dataset.goc!==undefined&&ta.value.trim()!==ta.dataset.goc);
+    if(!dangGo||!boQuaDangGo&&ta.value.trim()===""){ta.value=x.noiDung;ta.dataset.goc=x.noiDung;const tt=document.getElementById(`tt-${x.man}-${c}`);if(x.noiDung&&!tt.textContent)tt.textContent="Lưu lúc "+x.luc}});
+  tong.textContent=n?`đã có ${n} nhận xét`:"chưa có nhận xét"}
+const tai=()=>goi({app:"soat"}).then(r=>{if(r&&r.ok)ve(r.ds||[],true)}).catch(()=>{tong.textContent="chưa tải được nhận xét (kiểm tra mạng)"});
+tai();setInterval(tai,60000);
+</script>
+</body>
+</html>
