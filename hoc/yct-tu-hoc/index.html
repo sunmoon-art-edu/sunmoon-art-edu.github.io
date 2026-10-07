@@ -312,7 +312,7 @@
   --sun:#22AFB1; --sun-2:#138A8C; --sun-soft:#E2F6F6; --on-sun:#FFFFFF;   /* 02/10 chị: màu như bìa sách YCT — xanh ngọc + vàng */
   --gold:#FFD966; --gold-soft:#FFF8DC; --sky:#5B8FB9; --sky-soft:#E6EFF6; --leaf:#5E9E5A; --leaf-soft:#E6F0E1;
   --t1:#CC3B33; --t2:#C9820F; --t3:#34874A; --t4:#2C68B0; --t5:#9A918A;
-  --hz:"LXGW WenKai Screen","Noto Serif SC","PingFang SC","Hiragino Sans GB",serif; --py:"Noto Sans","Helvetica Neue",Arial,sans-serif; --tx:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;
+  --hz:"LXGW WenKai Screen","Noto Serif SC","PingFang SC","Hiragino Sans GB",serif; --py:"Noto Sans","Helvetica Neue",Arial,sans-serif; --tx:"Be Vietnam Pro","LXGW WenKai Screen",system-ui,-apple-system,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1C1816;--surface:#28221F;--soft:#221D1A;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D3430;--sun:#E0695D;--sun-2:#E88A80;--sun-soft:#40211E;--on-sun:#1A0E0C;--gold-soft:#3B2F17;--sky-soft:#1F2C38;--leaf-soft:#22331F;--t1:#F07068;--t2:#E8A93F;--t3:#6CC381;--t4:#6FA4E8}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#1C1816;--surface:#28221F;--soft:#221D1A;--ink:#F3EEE6;--ink-2:#B9AFA2;--line:#3D3430;--sun:#E0695D;--sun-2:#E88A80;--sun-soft:#40211E;--on-sun:#1A0E0C;--gold-soft:#3B2F17;--sky-soft:#1F2C38;--leaf-soft:#22331F;--t1:#F07068;--t2:#E8A93F;--t3:#6CC381;--t4:#6FA4E8}
@@ -1190,6 +1190,16 @@ ruby.rbHP{ruby-position:over}ruby.rbHP rt{font-size:.5em;font-weight:700;letter-
 .rbBox+.vcVi{color:#5B4A3A;text-shadow:none}
 .coNoi .cnTxt .cnVi{font-size:15px;font-weight:600;color:#6B5B55;margin-top:2px}
 .bubble .zvi{display:block;font-size:.78em;font-weight:600;color:#6B5B55;margin-top:2px}
+/* 07/10 chị: "toàn bộ chữ Trung để font chữ mềm mại viết tay" — mọi chữ Hán (kể cả trong nút, tiêu đề, trò chơi) dùng 霞鹜文楷 */
+ruby,rt,.hz,.hzi,.bdZ,.cnZh,.vcZh,.tuT ruby,.bbZ,.tg2{font-family:"LXGW WenKai Screen","Be Vietnam Pro",serif}
+rt{font-family:"Noto Sans","Be Vietnam Pro",sans-serif}
+/* 07/10 chị: "hình hoạt hình to chút, chứ bé quá không nhìn thấy gì" — hình phủ gần kín ô đáp án */
+.ltOpt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ltOpt .lsO{height:auto!important;min-height:0!important;aspect-ratio:1/1!important;padding:6px!important}
+.ltOpt .lsO img{width:100%!important;height:100%!important;object-fit:cover;border-radius:14px}
+.cdO img{width:104px!important;height:104px!important;object-fit:cover;border-radius:14px}
+.cdO{min-height:170px}
+.bbQ img{width:58%!important;height:auto!important;border-radius:50%}
 /* 07/10 bài hát cuối buổi */
 .hatB{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:6px 0}.hatB .ytl{width:min(560px,100%);aspect-ratio:16/9;position:relative;border:0;border-radius:18px;overflow:hidden;padding:0;background:#000}
 .hatB .ytl img{width:100%;height:100%;object-fit:cover;display:block}.hatB .ytl iframe{width:100%;height:100%;border:0;display:block}.hatB .ytl .pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px}
@@ -1751,7 +1761,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610071653";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610071726";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
