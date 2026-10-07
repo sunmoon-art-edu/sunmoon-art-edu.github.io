@@ -657,6 +657,9 @@ button,a,.opt,.node{touch-action:manipulation}
 .tmmH{white-space:nowrap;background:var(--surface);border-radius:10px;padding:0 6px;font:600 clamp(15px,3.6vw,19px)/1.1 var(--zh,inherit);margin-top:-12px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
 .tmmH rt{font:500 11px/1 var(--tx)}
 .tmmNo{width:100%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:8px;box-sizing:border-box;background:var(--surface);border:3px solid var(--line);font:500 13px/1.2 var(--tx);color:var(--ink-2)}
+.tmmV{font:400 12px/1.2 var(--tx);color:var(--ink-2);background:var(--surface);border-radius:8px;padding:1px 6px;margin-top:2px;white-space:nowrap}
+small.nghia{display:block;font:400 13px/1.25 var(--tx);color:var(--ink-2);margin-top:3px}
+.hzi ruby rt,.nd ruby rt,.hc .big ruby rt{font:500 .45em/1 var(--tx)}
 .tmmCard{display:flex;gap:14px;align-items:center;margin-top:12px;padding:12px;border-radius:18px;background:var(--sun-soft)}
 .tmmCard img{width:min(42%,190px);aspect-ratio:1;border-radius:16px;object-fit:cover;background:#fff}
 .tmmCard .big{font:600 clamp(30px,8vw,44px)/1.2 var(--zh,inherit)}.tmmCard .big rt{font:500 14px/1 var(--tx)}
@@ -842,11 +845,13 @@ button,a,.opt,.node{touch-action:manipulation}
   <article id="lesson" aria-live="polite"></article>
 </div>
 
+<p class="note" style="text-align:center;font-size:12px;margin:24px 0 90px">Tiếng đọc phiên âm &amp; từ: Chen Wang, Yue Tan — <a href="https://github.com/hugolpz/audio-cmn" target="_blank" rel="noopener">audio-cmn</a> · CC BY-SA</p>
 <div class="hfab"><div class="hbox" id="hBox" hidden><b>Bạn đang băn khoăn điều gì?</b><i>Bài khó, chỗ chưa hiểu, lỗi trang… — gửi thẳng cho SunMoon, sẽ trả lời qua email của bạn</i><textarea id="hTxt" maxlength="2000" placeholder="VD: Ngày 3 em chưa phân biệt được d và t…"></textarea><span class="msg" id="hMsg"></span><div class="row"><button class="btn" id="hClose">Đóng</button><button class="btn main" id="hSend">Gửi</button></div></div><button type="button" id="hOpen" aria-label="Hỏi hoặc báo khó khăn">💬 Hỏi / góp ý</button></div>
 <div class="zfab"><div class="zm" id="zfabM" hidden><b>Cần hỗ trợ? Nhắn Zalo SunMoon</b><a href="https://zalo.me/0396308188" target="_blank" rel="noopener">039 630 8188</a><a href="https://zalo.me/0394009488" target="_blank" rel="noopener">039 400 9488</a></div><button type="button" aria-label="Nhắn Zalo SunMoon" onclick="var m=document.getElementById('zfabM');m.hidden=!m.hidden">Zalo</button></div>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script src="giang/cues.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3/dist/index.js"></script>
 <script>
 const L = [
 {t:"Thanh điệu — tập đọc 4 thanh",g:"Nghe, đọc to và phân biệt 4 thanh + thanh nhẹ — hôm nay chưa cần học từ mới",chiPA:1,giangMoi:1,
@@ -1175,15 +1180,25 @@ function chunks(hz,py){
   return k===hs.length?out:null;
 }
 function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-const hzWrap=s=>esc(s).replace(/([㐀-鿿！-？、。]+)/g,'<span class="hzi">$1</span>');
+/* 07/10 chị: chữ Trung LUÔN kèm phiên âm (ruby) — dùng pinyin-pro (miễn phí) */
+const pyRun=t=>{try{return window.pinyinPro?pinyinPro.pinyin(t,{type:"array"}):[]}catch(e){return[]}};
+const rbHz=t=>esc(t).replace(/[\u3400-\u9fff]+/g,r=>{const p=pyRun(r);return [...r].map((c,i)=>p[i]&&/[a-zü]/i.test(p[i])&&p[i]!==c?`<ruby>${c}<rt>${colorPinyin(p[i])}</rt></ruby>`:c).join("")});
+const hzWrap=s=>esc(s).replace(/([㐀-鿿！-？、。]+)/g,m=>`<span class="hzi">${rbHz(m).replace(/&amp;/g,"&")}</span>`);
 
 /* ---------- speech ---------- */
 const canSpeak="speechSynthesis" in window;
 let zhVoice=null;
 function pickVoice(){if(!canSpeak)return;const v=speechSynthesis.getVoices();zhVoice=v.find(x=>/zh[-_]CN/i.test(x.lang))||v.find(x=>/^zh/i.test(x.lang))||null}
 if(canSpeak){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+/* 07/10 chị: nút đọc lẻ dùng TIẾNG NGƯỜI THẬT (âm tiết: Chen Wang · từ: Yue Tan — audio-cmn, CC BY-SA); không có file mới dùng giọng điện thoại */
+let AMF={};fetch("am/am.json").then(r=>r.json()).then(j=>AMF=j).catch(()=>{});
+const AMP=new Audio();let amHang=[];
+function phatAm(ds,el){amHang=ds.slice();const tiep=()=>{const f=amHang.shift();if(!f){el&&el.classList.remove("playing");return}AMP.src="am/"+encodeURI(f);AMP.play().catch(()=>{});AMP.onended=()=>setTimeout(tiep,amHang.length?450:0)};tiep()}
 function speak(text,el){
+  const t=String(text).trim().replace(/[。！？!?]+$/,""),ds=AMF[t]?[AMF[t]]:t.split(/[、，,]\s*/).map(x=>AMF[x]);
+  if(ds.length&&ds.every(Boolean)){if(canSpeak)speechSynthesis.cancel();document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));if(el)el.classList.add("playing");phatAm(ds,el);return}
   if(!canSpeak)return;
+  AMP.pause();amHang=[];
   speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(text.replace(/—/g,"，"));
   u.lang="zh-CN";u.rate=.65;if(zhVoice)u.voice=zhVoice;
@@ -1412,10 +1427,10 @@ function bindYT(root){root.querySelectorAll(".ytl").forEach(b=>b.onclick=()=>{st
 
 const RADS="亻忄讠氵灬饣钅宀艹冫刂囗匚丨丶丿𠂇卜彐";
 const ARW='<svg viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 6h22M18 1l5 5-5 5"/></svg>';
-function nd(c,m,base){const say=[...c].some(x=>/[\u3400-\u9fff]/.test(x)&&!RADS.includes(x));return `<button class="nd${base?" base":""}"${say?` data-say="${esc(c.replace(/[^\u3400-\u9fff]/g,"").slice(-1))}"`:""}><span class="c">${esc(c)}</span>${m?`<span class="m">${esc(m)}</span>`:""}</button>`}
-function arw(add){return `<span class="ar2"><span class="pl">+ ${esc(add)}</span>${ARW}</span>`}
+function nd(c,m,base){const say=[...c].some(x=>/[\u3400-\u9fff]/.test(x)&&!RADS.includes(x));return `<button class="nd${base?" base":""}"${say?` data-say="${esc(c.replace(/[^\u3400-\u9fff]/g,"").slice(-1))}"`:""}><span class="c">${rbHz(c)}</span>${m?`<span class="m">${hzWrap(m)}</span>`:""}</button>`}
+function arw(add){return `<span class="ar2"><span class="pl">+ ${rbHz(add)}</span>${ARW}</span>`}
 function mindMap(d){
-  const rads=(d.r||[]).map(x=>{const[c,ten,ng,ex]=x.split("|");return `<div class="rad"><span class="rc">${esc(c)}</span><span><b>Bộ ${esc(ten)}</b><i>${esc(ng)}</i><span class="ex">${esc(ex)}</span></span></div>`}).join("");
+  const rads=(d.r||[]).map(x=>{const[c,ten,ng,ex]=x.split("|");return `<div class="rad"><span class="rc">${rbHz(c)}</span><span><b>Bộ ${esc(ten)}</b><i>${esc(ng)}</i><span class="ex">${hzWrap(ex)}</span></span></div>`}).join("");
   const maps=(d.m||[]).map(x=>{const[type,body]=[x.slice(0,x.indexOf(":")),x.slice(x.indexOf(":")+1)];
     if(type==="chain"){const st=body.split(">");const[c0,m0]=st[0].split("|");return `<div class="flow">${nd(c0,m0,1)}${st.slice(1).map(t=>{const[add,c,m]=t.split("|");return arw(add)+nd(c,m)}).join("")}</div>`}
     const it=body.split("*");const[c0,m0]=it[0].split("|");
@@ -1584,9 +1599,9 @@ function hinh(em,cls){if(!em)return"";const k=emCode(em);return HINH_CO.has(k)?`
 const EMO={"妈": "👩", "麻": "🌶️", "马": "🐴", "骂": "😠", "吗": "❓", "八": "8️⃣", "哦": "😮", "饿": "😋", "一": "1️⃣", "五": "5️⃣", "鱼": "🐟", "爸": "👨", "怕": "😨", "米": "🍚", "饭": "🍛", "大": "🐘", "他": "🧑", "你": "👉", "来": "🚶", "哥": "👦", "看": "👀", "好": "👍", "家": "🏠", "七": "7️⃣", "谢": "🙏", "中": "🏮", "吃": "🥢", "是": "✅", "人": "🧍", "在": "📍", "菜": "🥬", "三": "3️⃣", "也": "➕", "月": "🌙", "元": "💰", "音": "🎵", "云": "☁️", "英": "💂", "爱": "❤️", "黑": "⚫", "对": "✔️", "狗": "🐶", "六": "6️⃣", "花": "🌸", "我": "🙋", "小": "🐣", "快": "⚡", "二": "2️⃣", "您": "🤝", "春": "🌱", "天": "☀️", "晚": "🌃", "忙": "🏃", "冷": "🥶", "听": "👂", "东": "🌅", "想": "💭", "王": "👑", "用": "🛠️", "你好": "👋", "不是": "🙅", "一个": "☝️", "一天": "📅"};
 const TQ=[["Vần đơn","单韵母","#C8453A","a o e i u ü"],["Phụ âm","声母","#8A5A44","b p m f d t n l g k h j q x zh ch sh r z c s y w"],["Vần ghép","复韵母","#B7862B","ai ei ui ao ou iu ie üe er"],["Vần mũi trước","前鼻韵母","#C8453A","an en in un ün"],["Vần mũi sau","后鼻韵母","#B7862B","ang eng ing ong"],["Âm tiết đọc nguyên","整体认读音节","#8A5A44","zhi chi shi ri zi ci si yi wu yu ye yue yuan yin yun ying"]];
 const TQS=Object.fromEntries(PYFULL.flatMap(x=>x[1].split(" ").map(c=>c.split("|"))).concat([["üe","月"]]));
-const tongQuat=()=>`<div class="tq"><h4>Bảng phiên âm tổng quát<small>23 phụ âm · 36 vần · 16 âm tiết đọc nguyên — bấm ô để nghe</small></h4>${TQ.map(([vn,cn,c,list])=>`<div class="tqg" style="--g:${c}"><span class="nh">${vn}<i>${cn}</i></span><div class="tqr">${list.split(" ").map(x=>`<button data-say="${TQS[x]||x}">${x}</button>`).join("")}</div></div>`).join("")}</div>`;
+const tongQuat=()=>`<div class="tq"><h4>Bảng phiên âm tổng quát<small>23 phụ âm · 36 vần · 16 âm tiết đọc nguyên — bấm ô để nghe</small></h4>${TQ.map(([vn,cn,c,list])=>`<div class="tqg" style="--g:${c}"><span class="nh">${vn}<i>${rbHz(cn)}</i></span><div class="tqr">${list.split(" ").map(x=>`<button data-say="${TQS[x]||x}">${x}</button>`).join("")}</div></div>`).join("")}</div>`;
 const PD={"b": "bǐ|笔|✏️|bút;bā|八|8️⃣|số 8;bà|爸|👨|bố;bāo|包|🥟|bánh bao;bí|鼻|👃|mũi;bēi|杯|🥤|cốc;bā|巴|🚌|xe buýt (巴士);bù|不|🙅|không;bái|白|⚪|trắng", "p": "pá|爬|🧗|leo;pà|怕|😨|sợ;pí|啤|🍺|bia (啤酒);pǎo|跑|🏃|chạy;píng|苹|🍎|táo (苹果);pú|葡|🍇|nho (葡萄);pó|婆|👵|bà (婆婆);pāi|拍|👏|vỗ tay;pán|盘|🍽️|đĩa", "m": "mā|妈|👩|mẹ;mǎ|马|🐴|ngựa;māo|猫|🐱|mèo;mǐ|米|🍚|gạo;mù|木|🪵|gỗ;mén|门|🚪|cửa;miàn|面|🍜|mì;mào|帽|🧢|mũ;mǎi|买|🛒|mua", "f": "fēi|飞|✈️|bay;fàn|饭|🍛|cơm;fēng|风|🌬️|gió;fáng|房|🏠|nhà (房子);fú|福|🧧|phúc;fǎ|法|🥖|Pháp (法国)", "d": "dà|大|🐘|to;dì|弟|👦|em trai;dú|读|📖|đọc;diàn|电|⚡|điện;dàn|蛋|🥚|trứng;dāo|刀|🔪|dao;dēng|灯|💡|đèn;duō|多|➕|nhiều;dǎ|打|🏸|đánh, chơi", "t": "tā|他|🧑|anh ấy;tù|兔|🐰|thỏ;táng|糖|🍬|kẹo;tiān|天|☀️|trời;tī|踢|⚽|đá bóng;tāng|汤|🍲|canh;tǎ|塔|🗼|tháp;tīng|听|👂|nghe;tóu|头|🙆|đầu", "n": "nǐ|你|👉|bạn;niú|牛|🐮|con bò;nǎi|奶|🥛|sữa;nǚ|女|👧|nữ;niǎo|鸟|🐦|chim;nuǎn|暖|🔥|ấm;ná|拿|✋|cầm;nián|年|📅|năm", "l": "lái|来|🚶|đến;lǜ|绿|🟢|xanh lá;lù|路|🛣️|đường;lán|蓝|🔵|xanh dương;lóng|龙|🐉|rồng;lí|梨|🍐|quả lê;lǎo|老|👴|già;lěng|冷|🥶|lạnh;lā|拉|🫸|kéo", "g": "gē|哥|👦|anh trai;gǒu|狗|🐶|chó;guā|瓜|🍉|dưa (西瓜);gāo|高|📏|cao;gē|歌|🎤|bài hát;gǔ|鼓|🥁|trống;guǒ|果|🍎|quả (水果);gōng|弓|🏹|cung", "k": "kàn|看|👀|xem;kū|哭|😭|khóc;kǎ|卡|💳|thẻ;kuài|快|⚡|nhanh;kā|咖|☕|cà phê (咖啡);kǒu|口|👄|miệng;kè|课|📚|bài học;kě|渴|🥤|khát", "h": "hǎo|好|👍|tốt;hē|喝|🧃|uống;huā|花|🌸|hoa;hóng|红|🔴|đỏ;hǔ|虎|🐯|hổ;huǒ|火|🔥|lửa;hǎi|海|🌊|biển;hēi|黑|⚫|đen", "j": "jiā|家|🏠|nhà;jī|鸡|🐔|gà;jiǔ|九|9️⃣|số 9;jú|橘|🍊|quýt;jiǎo|脚|🦶|bàn chân;jìng|镜|🪞|gương;jiāo|蕉|🍌|chuối (香蕉);jiǔ|酒|🍷|rượu", "q": "qī|七|7️⃣|số 7;qián|钱|💰|tiền;qiú|球|⚽|quả bóng;qí|骑|🚲|đạp xe;qiáo|桥|🌉|cây cầu;qún|裙|👗|váy;qiān|铅|✏️|bút chì (铅笔)", "x": "xiè|谢|🙏|cảm ơn;xué|学|📚|học;xiǎo|小|🐣|nhỏ;xióng|熊|🐻|gấu;xié|鞋|👟|giày;xīng|星|⭐|ngôi sao;xuě|雪|❄️|tuyết;xǐ|洗|🧼|rửa", "zh": "zhū|猪|🐷|heo;zhǐ|纸|📄|giấy;zhōng|钟|⏰|đồng hồ;zhǎo|找|🔍|tìm;zhōng|中|🏮|Trung (中国);zhuō|桌|🪵|bàn (桌子)", "ch": "chī|吃|🥢|ăn;chá|茶|🍵|trà;chē|车|🚗|xe;chuán|船|⛵|thuyền;chuáng|床|🛏️|giường;chàng|唱|🎤|hát;chūn|春|🌱|mùa xuân", "sh": "shū|书|📖|sách;shǒu|手|✋|tay;shuǐ|水|💧|nước;shān|山|⛰️|núi;shé|蛇|🐍|rắn;shí|十|🔟|số 10;shǔ|鼠|🐭|chuột;shì|是|✅|là", "r": "rén|人|🧍|người;rè|热|🥵|nóng;rì|日|🌞|mặt trời;ròu|肉|🍖|thịt;ruǎn|软|🧸|mềm", "z": "zǎo|早|🌅|sớm;zuò|坐|🪑|ngồi;zì|字|🔤|chữ;zú|足|⚽|bóng đá (足球);zuǐ|嘴|👄|miệng;zǒu|走|🚶|đi bộ;zài|在|📍|ở", "c": "cài|菜|🥬|rau, món;cǎo|草|🌿|cỏ;cōng|葱|🧅|hành;cān|餐|🍽️|bữa ăn;cuò|错|❌|sai;cūn|村|🏘️|làng", "s": "sān|三|3️⃣|số 3;sì|四|4️⃣|số 4;sǎn|伞|☂️|ô (dù);sōng|松|🌲|cây thông;suān|酸|🍋|chua;sè|色|🎨|màu"};
-const pdHtml=ks=>`<div class="pdw">${ks.filter(k=>PD[k]).map(k=>`<div class="pdb"><div class="hd"><b>${k}</b><span>Luyện đọc âm tiết</span></div><div class="pdg">${PD[k].split(";").map(x=>{const[py,hz,e,m]=x.split("|");return `<button data-say="${hz}"><span class="e" aria-hidden="true">${hinh(e)}</span><span class="p">${colorPinyin(py)}</span><span class="m">${esc(m)}</span></button>`}).join("")}</div></div>`).join("")}</div>`;
+const pdHtml=ks=>`<div class="pdw">${ks.filter(k=>PD[k]).map(k=>`<div class="pdb"><div class="hd"><b>${k}</b><span>Luyện đọc âm tiết</span></div><div class="pdg">${PD[k].split(";").map(x=>{const[py,hz,e,m]=x.split("|");return `<button data-say="${hz}"><span class="e" aria-hidden="true">${hinh(e)}</span><span class="p">${colorPinyin(py)}</span><span class="m">${hzWrap(m)}</span></button>`}).join("")}</div></div>`).join("")}</div>`;
 /* 06/10 nhận xét GV: ô âm chỉ đọc đúng âm đó, thanh ngang (chữ chuẩn sách giáo khoa TQ), không ví dụ */
 const AM={a:"啊",o:"喔",e:"婀",i:"衣",u:"乌","ü":"迂",b:"玻",p:"坡",m:"摸",f:"佛",d:"得",t:"特",n:"讷",l:"勒",g:"哥",k:"科",h:"喝",j:"基",q:"欺",x:"希",zh:"知",ch:"蚩",sh:"诗",r:"日",z:"资",c:"雌",s:"思",y:"衣",w:"乌",
  ai:"哀",ei:"欸",ui:"威",ao:"凹",ou:"欧",iu:"优",ia:"呀",ie:"耶",ua:"蛙",uo:"窝","üe":"约",iao:"腰",uai:"歪",er:"儿",
@@ -1602,15 +1617,15 @@ function pyBlock(n){const d=PYD[n];if(!d)return"";
   const liHtml=(hz,ok,opts)=>`<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
   const pick=(a,k)=>shuffle(a).slice(0,Math.min(k,a.length));
   const memHtml=(hz,ok,opts)=>`<div class="li memq"><div class="mtop">${EMO[hz]?`<span class="em" aria-hidden="true">${hinh(EMO[hz])}</span>`:""}<span class="hzq">${esc(hz)}</span></div><div class="opts">${shuffle(opts).map(o=>`<button class="opt" data-ok="${o===ok?1:0}" data-reveal="${esc(hz)}">${colorPinyin(o)}</button>`).join("")}</div></div>`;
-  const spHtml=([lab,hz,py,vn])=>{if(laAm(lab)){hz=AM[lab];py=lab}return SITE?`<div class="sp" data-hz="${esc(hz)}"><div class="tg" style="display:none">${esc(hz)}</div><div class="pys" style="font-size:44px">${colorPinyin(py)}</div><div class="bt"><button class="btn" data-say="${esc(hz)}">🔊 Nghe</button><button class="btn main mic" data-lb="🎤 Đọc &amp; chấm">🎤 Đọc &amp; chấm</button><button class="btn rb" data-lb="⏺ Thu lại">⏺ Thu lại</button></div><p class="res"></p></div>`:""};
+  const spHtml=([lab,hz,py,vn,mn])=>{if(laAm(lab)){hz=AM[lab];py=lab}return SITE?`<div class="sp" data-hz="${esc(hz)}"><div class="tg" style="display:none">${esc(hz)}</div><div class="pys" style="font-size:44px">${colorPinyin(py)}</div>${laAm(lab)?"":`<div class="vi">${esc(hz)} · ${esc((mn||vn||"").replace(/\s*\(.*$/,""))}</div>`}<div class="bt"><button class="btn" data-say="${esc(hz)}">🔊 Nghe</button><button class="btn main mic" data-lb="🎤 Đọc &amp; chấm">🎤 Đọc &amp; chấm</button><button class="btn rb" data-lb="⏺ Thu lại">⏺ Thu lại</button></div><p class="res"></p></div>`:""};
   const grids=d.grp.map(([name,hint,cells],gi)=>{
     const labs=cells.map(c=>c[0]),pys=cells.map(c=>c[2]);
     const uniq=[...new Map(cells.map(c=>laAm(c[0])?[c[0],[c[0],AM[c[0]],c[0]]]:[c[2],c])).values()];
-    const bgDs=pick(uniq,Math.min(uniq.length,uniq.length<=4?4:uniq.length<=6?6:9)).map(c=>[c[1],c[2]]);
-    const ncDs=pick(uniq,Math.min(4,uniq.length)).map(c=>[c[1],c[2]]);
+    const bgDs=pick(uniq,Math.min(uniq.length,uniq.length<=4?4:uniq.length<=6?6:9)).map(c=>[c[1],c[2],laAm(c[0])?"":(c[4]||c[3]||"").replace(/\s*\(.*$/,"")]);
+    const ncDs=pick(uniq,Math.min(4,uniq.length)).map(c=>[c[1],c[2],laAm(c[0])?"":(c[4]||c[3]||"").replace(/\s*\(.*$/,"")]);
     const an=n=>`<div class="pylis gk" hidden>${Array.from({length:n},()=>'<div class="li"><button class="opt"></button></div>').join("")}</div>`;
     const sp=pick(cells,2).map(spHtml).join("");
-    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>laAm(lab)?`<button class="pyc am" data-say="${AM[lab]}"><span class="big">${esc(lab)}</span><span class="vn">${esc(vn.replace(/\s*\(.*$/,""))}</span></button>`:`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):esc(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${esc(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
+    return `<div class="pystep"><h4 class="pyh">${esc(name)}${hint?`<i>${esc(hint)}</i>`:""}</h4><div class="pyg">${cells.map(([lab,hz,py,vn,mn])=>laAm(lab)?`<button class="pyc am" data-say="${AM[lab]}"><span class="big">${esc(lab)}</span><span class="vn">${esc(vn.replace(/\s*\(.*$/,""))}</span></button>`:`<button class="pyc" data-say="${esc(hz)}"><span class="big">${/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/.test(lab)?colorPinyin(lab):rbHz(lab)}</span><span class="ex"><span class="hzc">${esc(hz)}</span>${py!==lab?`<span>${colorPinyin(py)}</span>`:""}</span>${mn?`<span class="mn">${hzWrap(mn)}</span>`:""}<span class="vn">${esc(vn)}</span></button>`).join("")}</div>
     </div><div class="pystep"><h4 class="pyh" style="font-size:18px">✎ Bài tập · ${esc(name)}</h4>
     <h4 class="pyh">BINGO <span class="nhan bb">Bắt buộc</span><i>bấm loa → chạm đúng ô</i></h4><div class="tro bingo" data-ds='${esc(JSON.stringify(bgDs))}'></div>${an(bgDs.length)}
     </div>${sp?`<div class="pystep"><h4 class="pyh" style="font-size:18px">🎤 Đọc lại · ${esc(name)}</h4><h4 class="pyh"><span class="nhan lt" style="margin:0">Luyện thêm</span><i>bấm Đọc &amp; chấm điểm rồi đọc to</i></h4><div class="spk-list pysp">${sp}</div></div>`:""}<div class="pystep"><h4 class="pyh" style="font-size:18px">🧠 Luyện nhớ · ${esc(name)}</h4>
@@ -1689,7 +1704,7 @@ function motCau(box,auto){const it=[...box.children].filter(x=>x.matches(".li,.s
 /* trò chơi: BINGO + NỐI CỘT — ghi kết quả vào ô ẩn .gk để chấm điểm & mở Tiếp tục */
 function troGhi(box,i,dung){const o=box.nextElementSibling&&box.nextElementSibling.querySelectorAll(".opt")[i];if(o){o.disabled=true;if(!dung)o.classList.add("wrong")}}
 function bingo(box){const ds=JSON.parse(box.dataset.ds),cot=ds.length<=4?2:3,thu=shuffle(ds.map((_,i)=>i));let q=0,sai=0;
-  box.innerHTML=`<div class="bgTop"><button class="bgLoa">🔊 Nghe cô đọc</button><span class="bgDem">1/${thu.length}</span></div><div class="bgL" style="grid-template-columns:repeat(${cot},1fr)">${ds.map(([hz,py],i)=>`<button class="bgO" data-i="${i}"><span>${colorPinyin(py)}</span></button>`).join("")}</div>`;
+  box.innerHTML=`<div class="bgTop"><button class="bgLoa">🔊 Nghe cô đọc</button><span class="bgDem">1/${thu.length}</span></div><div class="bgL" style="grid-template-columns:repeat(${cot},1fr)">${ds.map(([hz,py],i)=>`<button class="bgO" data-i="${i}"><span>${colorPinyin(py)}</span>${ds[i][2]?`<small class="nghia">${esc(hz)} · ${esc(ds[i][2])}</small>`:""}</button>`).join("")}</div>`;
   const loa=box.querySelector(".bgLoa");loa.onclick=()=>{if(q<thu.length)speak(ds[thu[q]][0],null)};
   box.querySelectorAll(".bgO").forEach(bt=>bt.onclick=()=>{if(q>=thu.length||bt.classList.contains("co"))return;
     if(+bt.dataset.i===thu[q]){bt.classList.add("co");ding();troGhi(box,q,!sai);if(!sai){GM.xp+=10;saveGM();updChips()}sai=0;q++;
@@ -1697,7 +1712,7 @@ function bingo(box){const ds=JSON.parse(box.dataset.ds),cot=ds.length<=4?2:3,thu
       else{loa.disabled=true;box.insertAdjacentHTML("beforeend",'<div class="bgBingo">BINGO! 🎉</div>');fanfare()}}
     else{if(!sai)sai=1;bt.classList.add("wrong");buzz();setTimeout(()=>bt.classList.remove("wrong"),450)}})}
 function noiCot(box,tF,pF){const ds=JSON.parse(box.dataset.ds),ph=shuffle(ds.map((_,i)=>i));let chon=null,xong=0,sai=0;
-  box.innerHTML=`<div class="noiW"><svg class="noiSvg"></svg><div class="noiC">${ds.map((x,i)=>`<button class="noiO noiL${tF?" nhH":""}" data-i="${i}" aria-label="Nghe">${tF?tF(x):"🔊"}</button>`).join("")}</div><div class="noiC">${ph.map(i=>`<button class="noiO noiR" data-i="${i}">${pF?pF(ds[i]):colorPinyin(ds[i][1])}</button>`).join("")}</div></div>`;
+  box.innerHTML=`<div class="noiW"><svg class="noiSvg"></svg><div class="noiC">${ds.map((x,i)=>`<button class="noiO noiL${tF?" nhH":""}" data-i="${i}" aria-label="Nghe">${tF?tF(x):"🔊"}</button>`).join("")}</div><div class="noiC">${ph.map(i=>`<button class="noiO noiR" data-i="${i}">${pF?pF(ds[i]):colorPinyin(ds[i][1])+(ds[i][2]?`<small class="nghia">${esc(ds[i][0])} · ${esc(ds[i][2])}</small>`:"")}</button>`).join("")}</div></div>`;
   const W=box.querySelector(".noiW"),svg=box.querySelector(".noiSvg");
   const ke=(a,b)=>{const w=W.getBoundingClientRect(),p=a.getBoundingClientRect(),r=b.getBoundingClientRect();svg.insertAdjacentHTML("beforeend",`<line x1="${p.right-w.left}" y1="${p.top+p.height/2-w.top}" x2="${r.left-w.left}" y2="${r.top+r.height/2-w.top}"/>`)};
   box.querySelectorAll(".noiL").forEach(bt=>bt.onclick=()=>{if(bt.classList.contains("ok"))return;box.querySelectorAll(".noiL").forEach(x=>x.classList.remove("chon"));bt.classList.add("chon");chon=bt;speak(ds[+bt.dataset.i][0],null)});
@@ -1709,11 +1724,11 @@ function noiCot(box,tF,pF){const ds=JSON.parse(box.dataset.ds),ph=shuffle(ds.map
 const anhTu=(n,i)=>`img/tu/${n}-${i}.jpg`,TU_HINH=n=>n>=2&&n<=26;   /* 06/10: đã vẽ Ngày 2–26 (22–26 bằng Gemini bản free); ngày chưa có hình thì hiện chữ */
 function tuMM(d,n){const W=d.w.map(x=>x.split("|")),N=W.length;
   return `<div class="tmm"><div class="tmmC">Từ mới<br>${N}</div>${W.map(([hz,py,vi],i)=>{const a=(-90+360*i/N)*Math.PI/180,x=50+39*Math.cos(a),y=50+39*Math.sin(a);
-    return `<button class="tmmO" data-i="${i}" data-cue="w${i}" data-say="${esc(hz)}" data-py="${esc(py)}" data-vi="${esc(vi)}" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%" aria-label="${esc(hz)} — ${esc(vi)}">${TU_HINH(n)?`<img src="${anhTu(n,i)}" alt="" loading="lazy">`:`<span class="tmmNo">${esc(vi)}</span>`}<span class="tmmH">${rdRuby(hz,py)}</span></button>`}).join("")}</div><div class="tmmCard" hidden></div>`}
+    return `<button class="tmmO" data-i="${i}" data-cue="w${i}" data-say="${esc(hz)}" data-py="${esc(py)}" data-vi="${esc(vi)}" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%" aria-label="${esc(hz)} — ${esc(vi)}">${TU_HINH(n)?`<img src="${anhTu(n,i)}" alt="" loading="lazy">`:`<span class="tmmNo">${esc(vi)}</span>`}<span class="tmmH">${rdRuby(hz,py)}</span><span class="tmmV">${esc(vi)}</span></button>`}).join("")}</div><div class="tmmCard" hidden></div>`}
 function luyenTu(d,n){const W=d.w.map((x,i)=>[...x.split("|"),i]);if(W.length<3)return"";const k=Math.min(4,W.length);
   const lis=shuffle(W).slice(0,k).map(([hz,py,vi,i])=>{const op=shuffle([i,...shuffle(W.filter(x=>x[3]!==i)).slice(0,k-1).map(x=>x[3])]);
     return `<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${op.map(j=>`<button class="opt" data-ok="${j===i?1:0}" data-reveal="${esc(hz)}">${TU_HINH(n)?`<img src="${anhTu(n,j)}" alt="">`:esc(W[j][2])}</button>`).join("")}</div></div>`}).join("");
-  const nc=shuffle(W).slice(0,k).map(([hz,py,vi,i])=>[hz,py,i]);
+  const nc=shuffle(W).slice(0,k).map(([hz,py,vi,i])=>[hz,py,i,vi]);
   return `<section class="ltu"><h3>Luyện từ mới <small>nghe → chọn hình · nối hình với chữ</small></h3>
     <h4 class="pyh">1 · Nghe, chọn ${TU_HINH(n)?"hình":"nghĩa"} <span class="nhan bb">Bắt buộc</span></h4><div class="lis pylis${TU_HINH(n)?" tuhinh":""}">${lis}</div>
     <h4 class="pyh">2 · Nối hình với chữ <span class="nhan bb">Bắt buộc</span><i>chạm hình → chạm chữ đúng</i></h4><div class="tro noihinh" data-n="${n}" data-ds='${esc(JSON.stringify(nc))}'></div><div class="pylis gk" hidden>${nc.map(()=>'<div class="li"><button class="opt"></button></div>').join("")}</div></section>`}
@@ -1722,7 +1737,7 @@ function bindTu(el){el.querySelectorAll(".tmm").forEach(mm=>{const card=mm.nextE
     card.hidden=false;card.innerHTML=`${b.querySelector("img")?`<img src="${b.querySelector("img").src}" alt="">`:""}<div><span class="big">${rdRuby(b.dataset.say,b.dataset.py)}</span><i>${esc(b.dataset.vi)}</i><button class="btn" style="margin-top:8px">🔊 Nghe lại</button></div>`;
     card.querySelector("button").onclick=()=>speak(b.dataset.say,null)})});
   el.querySelectorAll(".tuhinh").forEach(b=>motCau(b,1));   /* mỗi lần 1 câu, đúng/sai tự sang câu sau */
-  el.querySelectorAll(".tro.noihinh").forEach(box=>noiCot(box,TU_HINH(+box.dataset.n)?x=>`<img src="${anhTu(box.dataset.n,x[2])}" alt="">`:null,x=>rdRuby(x[0],x[1])))}
+  el.querySelectorAll(".tro.noihinh").forEach(box=>noiCot(box,TU_HINH(+box.dataset.n)?x=>`<img src="${anhTu(box.dataset.n,x[2])}" alt="">`:null,x=>rdRuby(x[0],x[1])+`<small class="nghia">${esc(x[3]||"")}</small>`))}
 function bindPy(el){
   bindTu(el);const blk=el.querySelector(".pyblk");if(blk){bindSpeak(blk);blk.querySelectorAll(".tro.bingo").forEach(bingo);blk.querySelectorAll(".tro.noicot").forEach(b=>noiCot(b));}
   el.querySelectorAll(".pyc,.pdg button,.ftab button,.tqr button,.gab button,.ln2,.rdb .all").forEach(b=>b.onclick=()=>{stopTeacher(true);speak(b.dataset.say,b)});
@@ -1757,7 +1772,7 @@ function renderLesson(){
   const words=d.w.map((x,i)=>{const[hz,py,vi]=x.split("|");return `<button class="w" data-cue="w${i}" data-say="${esc(hz)}"><span class="spk">${SPK}</span><span class="hz">${colorHanzi(hz,py)}</span><span class="pyw">${colorPinyin(py)}</span><span class="vi">${esc(vi)}</span></button>`}).join("");
   const sents=d.s.map((x,i)=>{const[hz,py,vi]=x.split("|");return `<button class="s" data-cue="s${i}" data-say="${esc(hz)}"><span class="play">${SPK}</span><span><span class="hz" style="display:block">${esc(hz)}</span><span class="pys" style="display:block">${colorPinyin(py)}</span><span class="vi" style="display:block">${esc(vi)}</span></span></button>`}).join("");
   const wchars=[...new Set([...(d.h||[]).map(x=>x.split("|")[0]),...d.w.map(x=>x.split("|")[0])].join("").replace(/[^\u3400-\u9fff]/g,""))].slice(0,14);
-  const hanz=(d.h||[]).map((x,i)=>{const[c,m,sub]=x.split("|");return `<button class="hc" data-cue="h${i}" data-say="${esc(c)}"><span class="big">${esc(c)}</span><span><b>${hzWrap(m)}</b><i>→ ${hzWrap(sub)}</i></span></button>`}).join("");
+  const hanz=(d.h||[]).map((x,i)=>{const[c,m,sub]=x.split("|");return `<button class="hc" data-cue="h${i}" data-say="${esc(c)}"><span class="big">${rbHz(c)}</span><span><b>${hzWrap(m)}</b><i>→ ${hzWrap(sub)}</i></span></button>`}).join("");
   const dlg=(d.d||[]).map((x,i)=>{const[who,hz,py,vi]=x.split("|");return `<button class="ln ${who}" data-cue="d${i}" data-say="${esc(hz)}"><span class="who">${who}</span><span class="bub"><span class="hz">${esc(hz)}</span><span class="pys">${colorPinyin(py)}</span><span class="vi">${esc(vi)}</span></span></button>`}).join("");
   const [cm,cs]=(d.c||"|").split("|");
   const tips=d.tip.map(x=>{const[a,b]=x.split("|");return `<li><b>${hzWrap(a)}</b>${b?`<i>${hzWrap(b)}</i>`:""}</li>`}).join("");
@@ -1766,7 +1781,7 @@ function renderLesson(){
   const lisItems=shuffle(W).slice(0,Math.min(4,W.length));
   const lis=lisItems.map(([hz,py,vi])=>{const others=shuffle(W.filter(x=>x[2]!==vi)).slice(0,2).map(x=>x[2]);return `<div class="li"><button class="pl" data-say="${esc(hz)}" aria-label="Nghe">${SPK}</button><div class="opts">${shuffle([{o:vi,ok:1},...others.map(o=>({o,ok:0}))]).map(o=>`<button class="opt" data-ok="${o.ok}" data-reveal="${esc(hz)}">${esc(o.o)}</button>`).join("")}</div></div>`}).join("");
   const arrSrc=shuffle([...d.s,...(d.d||[]).map(x=>x.split("|").slice(1).join("|"))].map(x=>{const[hz,py,vi]=x.split("|");return{hz,vi,ch:chunks(hz,py)}}).filter(x=>x.ch&&x.ch.length>=3&&x.ch.length<=7)).slice(0,2);
-  const arr=arrSrc.map((x,i)=>`<div class="ar" data-key="${esc(x.ch.join("|"))}" data-say="${esc(x.hz)}"><p class="vi">“${esc(x.vi)}”</p><div class="ans"></div><div class="pool">${shuffle(x.ch.map((c,j)=>({c,j}))).map(t=>`<button class="tile" data-c="${esc(t.c)}">${esc(t.c)}</button>`).join("")}</div><div class="row"><button class="btn chk">Kiểm tra</button><span class="res"></span></div></div>`).join("");
+  const arr=arrSrc.map((x,i)=>`<div class="ar" data-key="${esc(x.ch.join("|"))}" data-say="${esc(x.hz)}"><p class="vi">“${esc(x.vi)}”</p><div class="ans"></div><div class="pool">${shuffle(x.ch.map((c,j)=>({c,j}))).map(t=>`<button class="tile" data-c="${esc(t.c)}">${rbHz(t.c)}</button>`).join("")}</div><div class="row"><button class="btn chk">Kiểm tra</button><span class="res"></span></div></div>`).join("");
   const isDone=done.has(cur);
   el.innerHTML=`
     <button class="btn backmap" id="backMap">← Lộ trình</button>
@@ -1781,7 +1796,7 @@ function renderLesson(){
     ${mindMap(d)?`<section><h3>Bộ thủ &amp; sơ đồ chữ <small>thêm nét, ghép bộ → ra chữ mới</small></h3>${mindMap(d)}</section>`:""}
     ${d.chiPA?"":`<section><h3>Tập viết <small>xem thứ tự nét, rồi tự viết bằng ngón tay</small></h3>
       <div class="wr"><div class="pad" id="pad"></div><div class="wside">
-        <div class="chips" id="wchips">${wchars.map((c,i)=>`<button class="chip2${i?"":" on"}" data-c="${c}">${c}</button>`).join("")}</div>
+        <div class="chips" id="wchips">${wchars.map((c,i)=>`<button class="chip2${i?"":" on"}" data-c="${c}">${rbHz(c)}</button>`).join("")}</div>
         <p class="winfo" id="winfo"></p>
         <div class="wbtns"><button class="btn" id="wAnim">▶ Xem lại nét</button><button class="btn main" id="wQuiz">✎ Tự viết</button><button class="btn" id="wSay">🔊 Nghe</button></div>
         <p class="note">Quy tắc: ngang trước sổ sau · trên trước dưới sau · trái trước phải sau · ngoài trước trong sau.</p>
@@ -1962,8 +1977,12 @@ document.getElementById("whoChip").onclick=()=>{if(!U)return;document.querySelec
   document.body.appendChild(o);o.querySelector("#tkO").onclick=()=>o.remove();o.onclick=e=>{if(e.target===o)o.remove()};
   o.querySelector("#tkDoi").onclick=e=>{e.currentTarget.disabled=true;o.querySelector("#tkE").textContent="Đang lưu bài của "+U.ten+"…";dangXuat()}};
 
+/* 07/10 chị: chữ Trung trên phần chữ cố định (đầu trang, bài mở đầu, trang giới thiệu) cũng có phiên âm */
+function rubyTinh(root){if(!root||!window.pinyinPro)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/[\u4e00-\u9fff]/.test(n.textContent)&&!n.parentElement.closest("ruby,rt,script,style,button[data-say],.hv,.tqr,.lvl")?1:2});const ds=[];while(w.nextNode())ds.push(w.currentNode);
+  ds.forEach(n=>{const sp=document.createElement("span");sp.innerHTML=rbHz(n.textContent);n.replaceWith(sp)})}
+["origin","gate"].forEach(id=>rubyTinh(document.getElementById(id)));document.querySelectorAll("#course > section:not(#origin), .top").forEach(rubyTinh);
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261007084702";
+const BAN_SO="20261007160816";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
