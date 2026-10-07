@@ -1250,7 +1250,12 @@ function tonePy(py){return esc(py).split(/(\s+)/).map(w=>{let t=0;for(const c of
 const store={get(k,d){try{return (function(v){return v==null?d:v})(JSON.parse(localStorage.getItem(k)))}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(k!=="yct1-user"&&k!=="yct1-luc")henLuu()}};
 /* âm thanh */
 let cur=null;const TOC={vi:1,zh:1};   /* 06/10 tối: tốc độ (Việt 1.2× · Trung 1×) đã LÀM SẴN trong file bằng _toc_bai.py → máy phát đúng 1×, không tự tua (tua trên điện thoại sinh tiếng rè/xẹt) */
-function play(src,el){try{cur&&cur.pause()}catch(e){}tatFB();document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();a._t0=Date.now();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}if(!KHOA||!/^(?:aud\/c\d+-|in\/to-mau-c\d+\.)/.test(src)){a.src=AMU[src]||(/^aud\//.test(src)?src+"?v="+AV:src);a.play().catch(()=>{});return a}   /* 06/10 tối chị: "bấm loa chỉ cần 1 lần" — phát NGAY trong lúc bé bấm (chờ tải xong mới phát thì iPhone chặn) */
+/* 07/10 Thanh Hà soát màn 06: "Giỏi quá" bị dính vào từ đọc tiếp → máy TỰ đọc (bé không bấm) mà cô đang khen thì ĐỢI khen xong (tối đa 1,8s); bé bấm loa thì kêu ngay */
+function play(src,el){const dang=()=>["d","s"].some(k=>FB[k]&&!FB[k].paused&&!FB[k].ended),e=window.event,tay=e&&e.isTrusted&&/^(click|pointer|touch|mouse|key)/.test(e.type);
+  if(!dang()||tay)return play0(src,el);
+  const p=new Audio();let huy=0;p._t0=Date.now();p.pause=()=>{huy=1};try{cur&&cur.pause()}catch(e){}cur=p;const t0=Date.now();
+  const k=()=>{if(huy||cur!==p)return;if(dang()&&Date.now()-t0<1800)return setTimeout(k,50);setTimeout(()=>{if(huy||cur!==p)return;const r=play0(src,el);["ended","error"].forEach(ev=>r.addEventListener(ev,()=>p.dispatchEvent(new Event(ev))))},120)};k();return p}
+function play0(src,el){try{cur&&cur.pause()}catch(e){}tatFB();document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();a._t0=Date.now();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}if(!KHOA||!/^(?:aud\/c\d+-|in\/to-mau-c\d+\.)/.test(src)){a.src=AMU[src]||(/^aud\//.test(src)?src+"?v="+AV:src);a.play().catch(()=>{});return a}   /* 06/10 tối chị: "bấm loa chỉ cần 1 lần" — phát NGAY trong lúc bé bấm (chờ tải xong mới phát thì iPhone chặn) */
   RS(src).then(u=>{if(cur!==a)return;a.src=u;a.play().catch(()=>{})})   /* 06/10 chị: lời cô đọc nhanh hơn 5% */.catch(()=>el&&el.classList.remove("playing"));return a}
 /* 06/10 chị: mỗi BUỔI ~10 phút, trộn phiên âm + từ của bài — "Buổi 1: thanh điệu + biến điệu + mấy câu chào · Buổi 2: nguyên âm, phụ âm, số đếm · Buổi 3: ghép âm + ôn lại" */
 const BUOI=[
@@ -1563,7 +1568,7 @@ let _anLuc=0;
 document.addEventListener("visibilitychange",()=>{if(document.hidden){_anLuc=Date.now();try{sessionStorage.setItem("yct1-an",String(_anLuc))}catch(e){}}else khoaLai()});
 window.addEventListener("pageshow",e=>{if(e.persisted)khoaLai()});
 function khoaLai(){let t=_anLuc;try{t=t||+(sessionStorage.getItem("yct1-an")||0)}catch(e){}_anLuc=0;try{sessionStorage.removeItem("yct1-an")}catch(e){}
-  if(!t||Date.now()-t<5000||!(U&&U.tk))return;if(document.querySelector(".ytl iframe"))return;
+  if(!t||Date.now()-t<15*60000||!(U&&U.tk))return;   /* 07/10 Nhi + Hà soát màn 01: "5 giây quá nhanh, vừa chuyển tab đã out" → ra ngoài ≥15 phút mới phải đăng nhập lại */if(document.querySelector(".ytl iframe"))return;
   try{cur&&cur.pause()}catch(e){}try{sessionStorage.removeItem("yct1-vao")}catch(e){}U_CU=U;U=null;
   try{history.replaceState(null,"",location.pathname+location.search);document.querySelectorAll(".mung").forEach(x=>x.remove());go(-1);accBar()}catch(e){}dnTK()}
 function napTD(snap){let o=null;try{o=JSON.parse(snap)}catch(e){}if(!o||!o.d)return false;const loc=+(localStorage.getItem("yct1-luc")||0);if(o.luc<=loc)return false;
@@ -1768,7 +1773,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610071859";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610071914";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
