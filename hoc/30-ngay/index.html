@@ -702,6 +702,8 @@ small.nghia{display:block;font:400 13px/1.25 var(--tx);color:var(--ink-2);margin
 .tkCh{font:inherit;padding:8px 12px;border-radius:999px;border:2px solid var(--line);background:var(--soft);color:var(--ink);cursor:pointer}.tkCh.on{border-color:var(--sun);background:var(--sun-soft)}
 .sp.dat{border-color:var(--ok,#2E8B57)!important}.sp.sai{border-color:var(--sun)!important}
 .mic.dem,.mic.rec{background:var(--sun-2)!important;color:#fff!important}
+
+.hero h1 .hzi,.pyc .ex .hzc,.rdb .ln2,.gab button span,.noiL,.mtop .hzq,.w .hz,.s .hz,.hc .big,.chip2,.rad .rc,.rad .ex,.nd .c,.ar2 .pl,.sp .tg,.sp .heard,.ln .hz,.fact .ic,.ohead .ic,.hv button b,.tile,.hzi{font-weight:400!important}   /* 08/10 chị: chữ Hán in đậm khó nhìn nét — mọi chữ Hán nét thường (như YCT) */
 </style>
 
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
@@ -1466,7 +1468,7 @@ function listen(row){
   setTimeout(()=>{const r=new SR(),kq=[];let loi="";row._r=r;r.lang="zh-CN";r.interimResults=false;r.maxAlternatives=5;
     r.onresult=e=>{for(const x of e.results)for(let i=0;i<x.length;i++)kq.push(x[i].transcript)};
     r.onerror=e=>{loi=e.error};
-    r.onend=()=>{recBusy=false;row._r=null;loaPhat();setTimeout(loaPhat,400);btn.classList.remove("rec","dem");btn.innerHTML=lb;chamRow(row,kq,loi)};
+    r.onend=()=>{recBusy=false;row._r=null;try{if(actx){actx.close();actx=null}}catch(e){}loaPhat();setTimeout(loaPhat,400);setTimeout(loaPhat,1200);btn.classList.remove("rec","dem");btn.innerHTML=lb;chamRow(row,kq,loi)};
     btn.classList.remove("dem");btn.classList.add("rec");tone([880],.12,"sine",.1);const t0=Date.now();
     const chay=()=>{if(row._r!==r)return;const con=Math.max(0,giay-(Date.now()-t0)/1000);btn.textContent=`⏺ Đọc đi! ${Math.ceil(con)}s · bấm để dừng`;if(con>0)setTimeout(chay,150);else try{r.stop()}catch(e){}};
     try{r.start();chay()}catch(e){recBusy=false;row._r=null;btn.classList.remove("rec");btn.innerHTML=lb}},500)}
@@ -1488,7 +1490,7 @@ async function recordBack(row){
   if(b.dataset.on){b._mr&&b._mr.stop();return}
   try{try{if(navigator.audioSession)navigator.audioSession.type="play-and-record"}catch(e){}const st=await navigator.mediaDevices.getUserMedia({audio:true});const mr=new MediaRecorder(st),ch=[];b._mr=mr;b.dataset.on=1;b.textContent=b.dataset.lb?"■ Dừng":"■ Dừng thu";
     mr.ondataavailable=e=>ch.push(e.data);
-    mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());loaPhat();setTimeout(loaPhat,400);delete b.dataset.on;b.textContent=b.dataset.lb||"⏺ Thu & nghe lại";const a=new Audio(URL.createObjectURL(new Blob(ch,{type:mr.mimeType})));a.play()};
+    mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());try{if(actx){actx.close();actx=null}}catch(e){}loaPhat();setTimeout(loaPhat,400);setTimeout(loaPhat,1200);   /* 08/10 (như YCT): thu xong đóng cả AudioContext → hết tiếng nhỏ */delete b.dataset.on;b.textContent=b.dataset.lb||"⏺ Thu & nghe lại";const a=new Audio(URL.createObjectURL(new Blob(ch,{type:mr.mimeType})));a.play()};
     mr.start();setTimeout(()=>{if(mr.state==="recording")mr.stop()},8000)}
   catch(e){res.textContent="Bạn cho phép dùng micro để thu âm nhé."}
 }
@@ -1982,7 +1984,7 @@ function rubyTinh(root){if(!root||!window.pinyinPro)return;const w=document.crea
   ds.forEach(n=>{const sp=document.createElement("span");sp.innerHTML=rbHz(n.textContent);n.replaceWith(sp)})}
 ["origin","gate"].forEach(id=>rubyTinh(document.getElementById(id)));document.querySelectorAll("#course > section:not(#origin), .top").forEach(rubyTinh);
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261007160816";
+const BAN_SO="20261008115137";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
