@@ -1230,6 +1230,7 @@ img.fi[src*="img/tu/"]{border-radius:14px;object-fit:cover}
 .lgO.lgmT,.lgO.lgmP{border:0;background:#E7EEF5}.lgO.lgmT{clip-path:polygon(100% 0,100% 100%,0 100%)}.lgO.lgmP{clip-path:polygon(0 0,100% 100%,0 100%)}
 .lgO.lgmT.da,.lgO.lgmP.da{background:var(--m)}
 .lgO.moi{animation:lgRoi .5s cubic-bezier(.3,1.5,.5,1) both}
+.bbVi{display:block;font:500 12px/1.2 var(--tx);font-style:normal;color:#5A4A3A;margin-top:2px;white-space:nowrap}.lgN .bbVi{font-size:13px}.hatVi{font:500 .85em var(--tx);font-style:normal;color:var(--ink-2)}
 </style>
 
 <div class="top"><div class="in">
@@ -1370,7 +1371,7 @@ function baiHat(b){const B=BUOI[b];if(!B)return null;let n=B.bai!=null?B.bai:((B
   const chon=m=>{const S=(ND[m]&&ND[m].song)||[],da=new Set(store.get("yct1-hat-"+m,[]));const s=S.find(x=>(m!==n||hop(x))&&!da.has(x[0]));return s?[s[0],s[1],s[2],s[3],m]:null};
   return chon(n)||(n!==0&&B.ch.some(x=>x.k==="py")?chon(0):null)}   /* bài hát đã hát sau nhóm từ (luyenTu) thì không hát lại */
 function hatBuoi(b,box,next){const s=baiHat(b);if(!s||!box)return next();{const da=new Set(store.get("yct1-hat-"+s[4],[]));da.add(s[0]);store.set("yct1-hat-"+s[4],[...da])}
-  box.innerHTML=`<div class="hatB"><div class="troCho">${im("🎵")}<b>Hát cùng Little Fox</b></div><button class="ytl" data-yt="${s[0]}" aria-label="Phát: ${esc(s[1])}"><img src="https://i.ytimg.com/vi/${s[0]}/hqdefault.jpg" alt="" loading="lazy"><span class="pb">${PLAY.replace('fill="currentColor"','fill="#fff"')}</span></button><p class="ytm"><b>${esc(s[1])}</b><i>${esc(s[2])} · ${s[3]}</i></p><button class="big" id="hatXong">Xong buổi 🎉</button></div>`;
+  box.innerHTML=`<div class="hatB"><div class="troCho">${im("🎵")}<b>Hát cùng Little Fox</b></div><button class="ytl" data-yt="${s[0]}" aria-label="Phát: ${esc(s[1])}"><img src="https://i.ytimg.com/vi/${s[0]}/hqdefault.jpg" alt="" loading="lazy"><span class="pb">${PLAY.replace('fill="currentColor"','fill="#fff"')}</span></button><p class="ytm"><b>${tenHat(s[1])}</b><i>${esc(s[2])} · ${s[3]}</i></p><button class="big" id="hatXong">Xong buổi 🎉</button></div>`;
   box.querySelector(".ytl").onclick=e=>{const t=e.currentTarget;try{cur&&cur.pause()}catch(x){}t.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${s[0]}?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen title="Bài hát"></iframe>`;t.onclick=null};
   box.querySelector("#hatXong").onclick=()=>{box.innerHTML="";next()};box.scrollIntoView({behavior:"smooth",block:"start"})}
 /* Ôn lại cuối phần phiên âm: chạy đua phiên âm → đập chuột từ mới */
@@ -1547,9 +1548,11 @@ function topic(n){veTab(null);
   hoiThoai(n);{const tb=document.getElementById("thiBtn");if(tb)tb.onclick=()=>thiYCT(n);veThi(n)}
   veBai(n);boCuc(n);luyenTu(n);luyenPy(n);
 }
+/* 08/10 chị: chữ Hán phải có phiên âm + nghĩa Việt ở MỌI chỗ — tên bài hát cũng vậy */
+const VIHAT={"Tones Song (声调歌)": "Bài hát thanh điệu", "Hello Song (你好歌)": "Bài hát Xin chào", "Number Song (数字歌)": "Bài hát đếm số", "What's Your Name? (你叫什么名字？)": "Bạn tên là gì?", "Who's She? (她是谁？)": "Bạn ấy là ai?", "Who Is It? (谁？)": "Ai đấy?", "我的家人 (The Family)": "Gia đình em", "The Finger Family (手指家庭)": "Gia đình ngón tay", "How Old Are You? (你几岁？)": "Bạn mấy tuổi?", "Happy Birthday! (祝你生日快乐！)": "Chúc mừng sinh nhật!", "Head and Shoulders (头和肩膀)": "Đầu, vai, đầu gối, chân", "I Have a Big Farm (我有一个大农场)": "Em có trang trại lớn", "Where Is the Kitty? (小猫在哪里？)": "Mèo con ở đâu?", "How Are You Going There? (你怎么去那里？)": "Bạn đến đó bằng gì?", "What Day Is It Today? (今天星期几？)": "Hôm nay thứ mấy?", "星期歌 (The Days of the Week)": "Bài hát các thứ trong tuần", "What Time Is It? (现在几点了？)": "Bây giờ mấy giờ?", "What Do You Like? (你喜欢什么？)": "Bạn thích gì?", "I Like Ice Cream (我喜欢冰淇淋)": "Em thích kem", "Good-bye Song (再见歌)": "Bài hát Tạm biệt"};const tenHat=t=>`${hzw(t)}${VIHAT[t]?` <i class="hatVi">· ${esc(VIHAT[t])}</i>`:""}`;
 function yt(v){const[id,t,ch,len]=v;
-  if(SITE)return `<div><button class="ytl" data-yt="${id}" aria-label="Phát: ${esc(t)}"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span class="pb">${PLAY.replace('fill="currentColor"','fill="#fff"')}</span></button><p class="ytm"><b>${esc(t)}</b><i>${esc(ch)} · ${len}</i></p></div>`;
-  return `<a class="yt" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><span class="ico">${PLAY.replace('fill="currentColor"','fill="#fff"')}</span><span><b>${esc(t)}</b><i>${esc(ch)} · ${len} — mở YouTube</i></span></a>`}
+  if(SITE)return `<div><button class="ytl" data-yt="${id}" aria-label="Phát: ${esc(t)}"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span class="pb">${PLAY.replace('fill="currentColor"','fill="#fff"')}</span></button><p class="ytm"><b>${tenHat(t)}</b><i>${esc(ch)} · ${len}</i></p></div>`;
+  return `<a class="yt" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><span class="ico">${PLAY.replace('fill="currentColor"','fill="#fff"')}</span><span><b>${tenHat(t)}</b><i>${esc(ch)} · ${len} — mở YouTube</i></span></a>`}
 /* video văn hoá: trên web phát ngay trong trang, bản xem thử mở YouTube */
 function video(id,t,m){try{cur&&cur.pause()}catch(e){}
   if(!SITE){window.open("https://www.youtube.com/watch?v="+id,"_blank","noopener");return}
@@ -1794,7 +1797,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610081144";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610081149";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -2089,7 +2092,8 @@ function troChoiNhom(ds,xong,LOAI,OPT){OPT=OPT||{};const sh=a=>a.map(x=>[Math.ra
   const hinhB=x=>isNum(x.e)?`<b class="bbSo">${x.e}</b>`:(x.e&&H[x.e]?im(x.e):"");
   napAm(ds.map(x=>x.au));const thu=sh([...ds,...sh(ds)]).slice(0,Math.min(8,ds.length*2));let q=0,dung=0,lan=0;const t0=Date.now();
   const dong=()=>{o.remove();document.body.style.overflow=""};
-  const loai=LOAI||(Math.random()<.5?"bong":"bingo");o._thap=[];const nhanT=y=>OPT.py?tonePy(y.py):hzPy(y.hz,y.py);const nhan=y=>OPT.py?`<b class="bbPy">${tonePy(y.py)}</b>`:`<span class="bbZ">${hzPy(y.hz,y.py)}</span>`;
+  const loai=LOAI||(Math.random()<.5?"bong":"bingo");o._thap=[];const viCua=y=>{const v=y.vn||nghiaCua(y.hz);return v?`<i class="bbVi">${esc(v)}</i>`:""};   /* 08/10 chị: chữ Hán luôn có nghĩa Việt — cả trong trò chơi */
+  const nhanT=y=>OPT.py?tonePy(y.py):hzPy(y.hz,y.py)+viCua(y);const nhan=y=>OPT.py?`<b class="bbPy">${tonePy(y.py)}</b>`:`<span class="bbZ">${hzPy(y.hz,y.py)}${viCua(y)}</span>`;
   function ve(){const x=thu[q];lan=0;
     if(loai==="bong"){const op=sh([x,...sh(ds.filter(y=>y!==x)).slice(0,Math.min(3,ds.length-1))]);
       o.innerHTML=`<div class="cdTop"><button class="cdX">✕</button><div class="cdBar"><span>🎈 Bóng bay ${q+1}/${thu.length}</span><i><b style="width:${100*q/thu.length}%"></b></i></div><span class="cdSao">${im("⭐")}<b>${dung*2}</b></span></div>
@@ -2135,7 +2139,7 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
       // 06/10 chị: ôn xong mỗi nhóm từ → HÁT BÀI LITTLE FOX liên quan (mỗi bài hát chỉ hiện 1 lần)
       const SG=c.song||[],daHat=new Set(store.get("yct1-hat-"+n,[]));const bh=SG.find(x=>!daHat.has(x[0])&&(g.so?/Number|数字/.test(x[1]):g.ds.some(k=>x[1].includes(W[k][0]))))||SG.find(x=>!daHat.has(x[0])&&!g.so&&!/Number|数字/.test(x[1]));
       if(bh){daHat.add(bh[0]);store.set("yct1-hat-"+n,[...daHat]);const tiepSau=()=>{box.innerHTML="";xongNhom2()};
-        box.innerHTML=`<div class="hatBox"><p class="ltDe">🎵 Hát cùng Little Fox</p><div class="hatV"><iframe src="https://www.youtube-nocookie.com/embed/${bh[0]}?rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${esc(bh[1])}"></iframe></div><p class="hatT"><b>${hzw(bh[1])}</b><i>${esc(bh[2])}</i></p><button class="big" id="hatOk">Hát xong — học tiếp →</button></div>`;
+        box.innerHTML=`<div class="hatBox"><p class="ltDe">🎵 Hát cùng Little Fox</p><div class="hatV"><iframe src="https://www.youtube-nocookie.com/embed/${bh[0]}?rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${esc(bh[1])}"></iframe></div><p class="hatT"><b>${tenHat(bh[1])}</b><i>${esc(bh[2])}</i></p><button class="big" id="hatOk">Hát xong — học tiếp →</button></div>`;
         box.querySelector("#hatOk").onclick=tiepSau;box.scrollIntoView({behavior:"smooth",block:"start"});return}
       xongNhom2()};
     const xongNhom2=()=>{
@@ -2358,9 +2362,9 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
         const nhanAm=k=>IT[k].bd?`BĐ${IT[k].bi+1}`:CO.test(IT[k].lab)?tonePy(IT[k].lab):esc(IT[k].lab);
         const the=k=>IT[k].bd?`<div class="amThe bd">${bdHinh(IT[k].bi)}</div>`:`<div class="amThe"><span class="amTo">${nhanAm(k)}</span>${IT[k].e?im(IT[k].e):""}${IT[k].hz?`<span class="ex2"><span class="hzc">${esc(IT[k].hz)}</span>${tonePy(IT[k].py)}</span>`:""}${IT[k].vn?`<span class="vn2">${esc(IT[k].vn)}</span>`:""}</div>`;
         const veMap=()=>{const het=g.ds.every(k=>HOC.has(k));const N=g.ds.length,vt=i=>{const a=(-90+i*360/N)*Math.PI/180;return [50+38*Math.cos(a),50+38*Math.sin(a)]};   /* 06/10 tối chị: "viết thì có MIND MAP cho dễ" — tên nhóm ở giữa, các âm toả ra */
-          khung(`<div class="amMM"><svg class="amL" viewBox="0 0 100 100" preserveAspectRatio="none">${g.ds.map((k,i)=>{const [x,y]=vt(i);return `<line x1="50" y1="50" x2="${x}" y2="${y}" class="${HOC.has(k)?"da":i===cu0?"dang":""}"/>`}).join("")}</svg><div class="amTam">${esc(g.ten)}</div>${g.ds.map((k,i)=>{const [x,y]=vt(i);return `<button class="amTram${HOC.has(k)?" da":""}${i===cu0?" dang":""}" style="left:${x}%;top:${y}%" data-i="${i}"${HOC.has(k)||i===cu0?"":" disabled"}>${i===cu0?`<span class="amPd">${im("🐼")}</span>`:""}<b>${nhanAm(k)}</b>${HOC.has(k)&&i!==cu0?'<i class="amV">✓</i>':""}</button>`}).join("")}</div>${the(g.ds[cu0])}<div class="amNut"><button class="btn2" id="amLai">🔊 Nghe cô giảng lại</button>${het?`<button class="big" id="pyT">Chơi trò ▶</button>`:`<span class="amGoi">👆 Chạm trạm có gấu trúc</span>`}</div>`);
-          box.querySelectorAll(".amTram:not([disabled])").forEach(b=>b.onclick=()=>phat(+b.dataset.i));box.querySelector("#amLai").onclick=()=>phat(cu0);const t=box.querySelector("#pyT");if(t)t.onclick=sang};
-        const phat=i=>{cu0=i;veMap();const k=g.ds[i],a=play(IT[k].gi);coNoi(a);a.addEventListener("ended",()=>{if(!HOC.has(k)){HOC.add(k);dem("giang")}if(buoc!==0)return;const nx=g.ds.findIndex(z=>!HOC.has(z));if(nx<0){veMap();setTimeout(()=>{if(buoc===0)sang()},1200)}else{cu0=nx;veMap()}})};
+          khung(`<div class="amMM"><svg class="amL" viewBox="0 0 100 100" preserveAspectRatio="none">${g.ds.map((k,i)=>{const [x,y]=vt(i);return `<line x1="50" y1="50" x2="${x}" y2="${y}" class="${HOC.has(k)?"da":i===cu0?"dang":""}"/>`}).join("")}</svg><div class="amTam">${esc(g.ten)}</div>${g.ds.map((k,i)=>{const [x,y]=vt(i);return `<button class="amTram${HOC.has(k)?" da":""}${i===cu0?" dang":""}" style="left:${x}%;top:${y}%" data-i="${i}"${HOC.has(k)||i===cu0?"":" disabled"}>${i===cu0?`<span class="amPd">${im("🐼")}</span>`:""}<b>${nhanAm(k)}</b>${HOC.has(k)&&i!==cu0?'<i class="amV">✓</i>':""}</button>`}).join("")}</div>${the(g.ds[cu0])}<div class="amNut"><button class="btn2" id="amLai">🔊 Nghe cô giảng lại</button>${het?`<button class="big" id="pyT">Chơi trò ▶</button>`:`<button class="big" id="amTiep">Âm tiếp theo →</button>`}</div>`);   /* 08/10 chị: chỗ chuyển tiếp phải rõ (như học từ) */
+          box.querySelectorAll(".amTram:not([disabled])").forEach(b=>b.onclick=()=>phat(+b.dataset.i));box.querySelector("#amLai").onclick=()=>phat(cu0);const t=box.querySelector("#pyT");if(t)t.onclick=sang;const tp=box.querySelector("#amTiep");if(tp)tp.onclick=()=>phat(cu0)};
+        const phat=i=>{cu0=i;veMap();const k=g.ds[i],a=play(IT[k].gi);coNoi(a);a.addEventListener("ended",()=>{if(!HOC.has(k)){HOC.add(k);dem("giang")}if(buoc!==0)return;const nx=g.ds.findIndex(z=>!HOC.has(z));if(nx<0){veMap();setTimeout(()=>{if(buoc===0)sang()},1200)}else{cu0=nx;veMap();setTimeout(()=>{if(buoc===0&&cu0===nx&&!HOC.has(g.ds[nx])&&document.body.contains(box))phat(nx)},900)}})};   /* 08/10: giảng xong 1 âm → cô tự giảng âm tiếp */
         veMap();setTimeout(()=>phat(cu0),350);return}
       if(buoc===1){   /* 06/10 chị: "bài phiên âm nhàm" → mỗi đảo 1 trò khác nhau */
         const L=["bong","chuot","xe","trai","lego","bingo"][g.nh%6],its=g.ds.map(k=>({e:"",hz:IT[k].hz,py:IT[k].py,au:IT[k].au}));
