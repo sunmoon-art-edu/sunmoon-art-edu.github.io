@@ -1797,7 +1797,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610081149";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610081211";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -2150,7 +2150,8 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
       box.innerHTML=`<div class="ltTu">${NH.map((x,t)=>{const xg=x.ds.every(z=>DA.has(z)),mo=xg||t===gi;return `<button class="${t===gi?"on":xg?"da":"khoa"}" data-g="${t}"${mo?"":" disabled"}>${xg&&t!==gi?"✓ ":""}${x.so?esc(x.ten):x.ds.map(k=>hzPy(W[k][0],W[k][1])).join(" · ")}</button>`}).join("")}</div>
         <div class="ltBuoc"><b>${q+1}/${Q.length}</b>${PHA.map((t,z)=>`<span class="${z===ph?"on":z<ph?"qua":""}">${t}</span>`).join("")}</div><div class="ltBar"><i style="width:${Math.round(q/Q.length*100)}%"></i></div><div id="ltQ"></div>`;
       box.querySelectorAll(".ltTu [data-g]:not([disabled])").forEach(b=>b.onclick=()=>{gi=+b.dataset.g;lam()});
-      const Z=box.querySelector("#ltQ"),$=x=>box.querySelector(x),tiep=(t=600)=>{tone([880,1320]);setTimeout(()=>{q++;ve();box.scrollIntoView({behavior:"smooth",block:"start"})},t)};
+      const Z=box.querySelector("#ltQ"),$=x=>box.querySelector(x),$m=x=>box.querySelector(x)||document.createElement("i"),   /* 08/10: bé bấm đi tiếp nhanh lúc máy còn chấm → phần tử đã mất, không được báo lỗi */
+        tiep=(t=600)=>{tone([880,1320]);setTimeout(()=>{q++;ve();box.scrollIntoView({behavior:"smooth",block:"start"})},t)};
       const sai=b=>{saiN++;b.classList.add("wrong");tone([180],.18,"triangle",.07);setTimeout(()=>b.classList.remove("wrong"),450)};
       if(ph===0){   /* 06/10 tối chị: "cái nào làm được sơ đồ tư duy thì làm hết" — học từ mới dạng sơ đồ tư duy: chủ đề giữa, các từ toả ra, chạm từ nào nghe từ đó */
         const HT=g._hoc||(g._hoc=new Set());let cu=g.ds.findIndex(z=>!HT.has(z));if(cu<0)cu=0;
@@ -2169,17 +2170,17 @@ function luyenTu(n,O){const box=O&&O.box||document.getElementById("luyenTu"),c=N
         $("#ltH").onclick=()=>play(nho(k),$("#ltH"));const mic=$("#ltMic");
         let nghe=null,sai2=0;
         mic.onclick=async()=>{try{try{cur&&cur.pause()}catch(e){}const r=await taoThu(),ch=[];r.ondataavailable=e=>ch.push(e.data);const GI=Math.min(3,1.2+0.45*([...String(w[0]).replace(/[^㐀-鿿]/g,"")].length||1));r.onstart=()=>{nghe=ngheBe(GI)};
-          r.onstop=()=>{henTatMic();const bl=new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"}),a=amThu(URL.createObjectURL(bl));cur=a;mic.classList.remove("rec");mic.innerHTML="🎤 <span>Thu lại</span>";$("#ltMh").textContent="Máy đang nghe con…";
-            Promise.resolve(nghe).then(kq=>{if(kq&&!kq.length&&SRN){window._chiNghe=true;$("#ltMh").innerHTML="🎤 Máy chưa nghe rõ — con bấm micro nói lại <b>thật to</b> nhé";return}const d=dungChua(kq,w[0],w[1]);
-              if(d===true){$("#ltMh").innerHTML="✅ <b>Đúng rồi!</b> Nghe lại giọng con nè";tone([880,1320]);setTimeout(()=>{a.onended=()=>setTimeout(()=>{q++;ve()},250);a.play().catch(()=>{q++;ve()})},450);return}
-              if(d===false){sai2++;$("#ltMh").innerHTML=sai2>=2?"Gần được rồi! Nghe cô rồi đi tiếp nhé":"❌ <b>Chưa đúng</b> — nghe cô rồi con bấm 🎤 đọc lại nhé";tone([180],.18,"triangle",.07);setTimeout(()=>{const x=play(nho(k),$("#ltH"));if(sai2>=2)x.addEventListener("ended",()=>{const b=$("#ltNoiOk");b.disabled=false;b.textContent="Đi tiếp →"})},700);return}
+          r.onstop=()=>{henTatMic();const bl=new Blob(ch,{type:(ch[0]&&ch[0].type)||"audio/mp4"}),a=amThu(URL.createObjectURL(bl));cur=a;mic.classList.remove("rec");mic.innerHTML="🎤 <span>Thu lại</span>";$m("#ltMh").textContent="Máy đang nghe con…";
+            Promise.resolve(nghe).then(kq=>{if(kq&&!kq.length&&SRN){window._chiNghe=true;$m("#ltMh").innerHTML="🎤 Máy chưa nghe rõ — con bấm micro nói lại <b>thật to</b> nhé";return}const d=dungChua(kq,w[0],w[1]);
+              if(d===true){$m("#ltMh").innerHTML="✅ <b>Đúng rồi!</b> Nghe lại giọng con nè";tone([880,1320]);setTimeout(()=>{a.onended=()=>setTimeout(()=>{if(document.body.contains(mic)){q++;ve()}},250);a.play().catch(()=>{if(document.body.contains(mic)){q++;ve()}})},450);return}
+              if(d===false){sai2++;$m("#ltMh").innerHTML=sai2>=2?"Gần được rồi! Nghe cô rồi đi tiếp nhé":"❌ <b>Chưa đúng</b> — nghe cô rồi con bấm 🎤 đọc lại nhé";tone([180],.18,"triangle",.07);setTimeout(()=>{const x=play(nho(k),$("#ltH"));if(sai2>=2)x.addEventListener("ended",()=>{const b=$m("#ltNoiOk");b.disabled=false;b.textContent="Đi tiếp →"})},700);return}
               chamAm(bl,[...String(w[0]).replace(/[^㐀-鿿]/g,"")].length||1).then(c=>{   /* 07/10: máy không nhận giọng được → chấm theo tiếng */
-              if(c.ok===true){$("#ltMh").innerHTML="✅ <b>Con đọc tốt rồi!</b> Nghe lại giọng con nè";tone([880,1320]);setTimeout(()=>{a.onended=()=>setTimeout(()=>{q++;ve()},250);a.play().catch(()=>{q++;ve()})},450);return}
-              if(c.ok===false){sai2++;$("#ltMh").innerHTML=sai2>=2?"Gần được rồi! Nghe cô rồi đi tiếp nhé":VD_LAI;tone([180],.18,"triangle",.07);setTimeout(()=>{const x=play(nho(k),$("#ltH"));if(sai2>=2)x.addEventListener("ended",()=>{const b=$("#ltNoiOk");b.disabled=false;b.textContent="Đi tiếp →"})},700);return}
-              $("#ltMh").textContent="Đây là tiếng con…";a.onended=()=>setTimeout(()=>{$("#ltMh").textContent="Giờ nghe cô — giống chưa nào?";const x=play(nho(k),$("#ltH"));x.addEventListener("ended",()=>{$("#ltNoiOk").disabled=false;$("#ltMh").textContent="Giống cô thì bấm ✓, chưa giống thì thu lại nhé"})},400);a.play().catch(()=>{})})})};
+              if(c.ok===true){$m("#ltMh").innerHTML="✅ <b>Con đọc tốt rồi!</b> Nghe lại giọng con nè";tone([880,1320]);setTimeout(()=>{a.onended=()=>setTimeout(()=>{if(document.body.contains(mic)){q++;ve()}},250);a.play().catch(()=>{if(document.body.contains(mic)){q++;ve()}})},450);return}
+              if(c.ok===false){sai2++;$m("#ltMh").innerHTML=sai2>=2?"Gần được rồi! Nghe cô rồi đi tiếp nhé":VD_LAI;tone([180],.18,"triangle",.07);setTimeout(()=>{const x=play(nho(k),$("#ltH"));if(sai2>=2)x.addEventListener("ended",()=>{const b=$m("#ltNoiOk");b.disabled=false;b.textContent="Đi tiếp →"})},700);return}
+              $m("#ltMh").textContent="Đây là tiếng con…";a.onended=()=>setTimeout(()=>{$m("#ltMh").textContent="Giờ nghe cô — giống chưa nào?";const x=play(nho(k),$("#ltH"));x.addEventListener("ended",()=>{$m("#ltNoiOk").disabled=false;$m("#ltMh").textContent="Giống cô thì bấm ✓, chưa giống thì thu lại nhé"})},400);a.play().catch(()=>{})})})};
           thuDem(r,mic,GI)}
-          catch(e){$("#ltMh").innerHTML=e&&e.name==="NotAllowedError"?"Máy đang chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy này chưa thu âm được — con nói to theo cô rồi bấm ✓";$("#ltNoiOk").disabled=false}};
-        $("#ltNoiOk").onclick=()=>tiep(300);return}
+          catch(e){$m("#ltMh").innerHTML=e&&e.name==="NotAllowedError"?"Máy đang chặn micro — bấm 🔒 cạnh địa chỉ web → <b>Micro: Cho phép</b>":"Máy này chưa thu âm được — con nói to theo cô rồi bấm ✓";$m("#ltNoiOk").disabled=false}};
+        $m("#ltNoiOk").onclick=()=>tiep(300);return}
       if(ph===3){Z.innerHTML=`<p class="ltDe">📖 Đọc — chữ nào là “${esc(w[2])}”?</p><div class="ltPic ltPicC">${hinh(k)}</div><div class="ltOpt">${ba(k).map(x=>`<button class="lsO lsZ" data-k="${x}">${hzPy(W[x][0],W[x][1])}</button>`).join("")}</div>`;
         Z.querySelectorAll(".lsO").forEach(b=>b.onclick=()=>{if(+b.dataset.k===k){b.classList.add("right");play(nho(k));tiep(800)}else sai(b)});return}
       if(ph===4){const CHs=[...w[0].replace(/[^㐀-鿿]/g,"")];let cq=0;Z.innerHTML=`<p class="ltDe">✍️ Viết — tô từng nét chữ “${esc(w[0])}”</p><div class="ltViet" id="ltViet"></div><p class="ltOk" id="ltVh">Xem bảng thứ tự nét, cô viết mẫu, rồi con tô theo nét đang nhấp nháy</p>`;
