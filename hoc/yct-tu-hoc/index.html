@@ -825,6 +825,8 @@ body{background:linear-gradient(180deg,#CDEBFA 0,#E6F5FD 260px,#F4FAFE 700px,#FF
 .pySeg i.on{background:var(--m4)!important}.pySeg i.qua{background:var(--m3)!important}
 .bai.open{border-color:var(--m2)!important}.bai.done{border-color:var(--m3)!important}
 @media (max-width:440px){#accBtn .tkC{display:none}#accBtn{padding:6px 10px!important;min-width:0}}
+.noiNet{width:56px;height:50px}.noiNet path{stroke:#3A2622;stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.htImg{display:block;width:100%;max-width:420px;margin:6px auto 10px;border-radius:20px;border:3px solid #D6ECF8}.htA img[src*="img/gau/"]{border-radius:50%}
 .pyCoG{display:block;margin:0 auto 12px;font-size:17px;background:#FFF3C4;border-color:#F1D27A;color:#6B4E00}
 .pyc2.playing{border-color:#E0B640;background:#FFF8DC}
 /* 06/10 Biến điệu: thẻ ngang cả hàng, chữ Hán to, không vỡ dòng */
@@ -1490,7 +1492,7 @@ function topic(n){veTab(null);
     <div class="player"><button class="pbtn" id="hdPlay" aria-label="Nghe hướng dẫn">${PLAY}</button><div><div class="ptxt">Cô giảng bài <i id="hdT">0:00</i></div><input type="range" class="pbar" id="hdBar" min="0" max="1" step=".1" value="0" aria-label="Tua"></div></div></section>
   ${c.ly?`<section class="card"><h2><span class="ic">${im("💛")}</span>Vì sao nên cho con học tiếng Trung?</h2><button class="gbtn" hidden data-g="aud/c${n}-g-ly.mp4">🔊 Cô giảng mục này</button><div class="lys">${c.ly.map(x=>`<div class="ly"><span class="li">${im(x[0])}</span><div><b>${esc(x[1])}</b><p>${hzw(x[2])}</p></div></div>`).join("")}</div></section>`:""}
   ${c.vh?`<section class="card"><h2><span class="ic">${im("🏮")}</span>Văn hoá Trung Quốc kể cho bé <small>bố mẹ bấm "Nghe cô kể" rồi xem video cùng con</small></h2><button class="gbtn" hidden data-g="aud/c${n}-g-vh.mp4">🔊 Cô giảng mục này</button><div class="kes">${c.vh.map((v,i)=>`<article class="ke" data-v="${i}"><span class="e">${im(v[0])}</span><div class="kb"><h3>${esc(v[3])} <span class="kz" role="button" tabindex="0" data-zh="${i}" aria-label="Nghe tên tiếng Trung">${hzw(v[1])} 🔊</span></h3><ul>${(Array.isArray(v[4])?v[4]:[v[4]]).map(x=>`<li>${hzw(x)}</li>`).join("")}</ul><div class="kbtn">${v[6]?`<button class="kk" data-k="${i}">🔊 Nghe cô kể</button>`:""}${v[5]?`<button class="vbtn" data-yt="${v[5][0]}" data-t="${esc(v[5][1])}" data-m="${esc(v[5][2]+" · "+v[5][3])}">▶ Xem video ${v[5][3]}</button>`:""}</div></div></article>`).join("")}</div></section>`:""}
-  ${c.thanh?`<section class="card"><h2><span class="ic">${im("🎵")}</span>Thanh điệu tiếng Trung — giống tiếng Việt lắm! <small>bấm để nghe</small></h2><button class="gbtn" hidden data-g="aud/c${n}-g-thanh.mp4">🔊 Cô giảng mục này</button><p class="note" style="font-style:normal">Tiếng Việt có 6 thanh · tiếng Trung có 4 thanh + 1 thanh nhẹ. Cùng một âm “ma”, đổi thanh là đổi nghĩa — y như tiếng Việt!</p><div class="tones">${c.thanh.map((t,i)=>`<div class="tn t${t[0]}"><span class="tno">${t[0]==="nhẹ"?"Thanh nhẹ":"Thanh "+t[0]}</span><span class="tmk">${t[2]}</span><span class="tpy">${t[1]}</span><b>${esc(t[3])}</b><span class="tvi">${esc(t[4])}</span><span class="tex">${hzw(t[5])}</span>${t[6]!=="—"?`<span class="tcmp">Tiếng Việt: “${esc(t[6])}”</span>`:""}<span class="tnb"><button class="zh" data-src="aud/c${n}-${i<4?"w"+(6+i):"t5"}.mp3">🔊 Trung</button>${i<4?`<button data-src="aud/vi-ma${i+1}.mp3">🔊 Việt</button><button data-both="${i}">So sánh</button>`:""}</span></div>`).join("")}</div></section>`:""}
+  ${c.thanh?`<section class="card"><h2><span class="ic">${im("🎵")}</span>Thanh điệu tiếng Trung <small>bấm để nghe</small></h2><button class="gbtn" hidden data-g="aud/c${n}-g-thanh.mp4">🔊 Cô giảng mục này</button><div class="tones">${c.thanh.map((t,i)=>`<div class="tn t${t[0]}"><span class="tno">${t[0]==="nhẹ"?"Thanh nhẹ":"Thanh "+t[0]}</span><span class="tmk">${t[2]}</span><span class="tpy">${t[1]}</span><b>${esc(t[3])}</b><span class="tnb"><button class="zh" data-src="aud/c${n}-${i<4?"a"+(i+1):"t5"}.mp3">🔊 Nghe</button></span></div>`).join("")}</div></section>`:""}
   ${c.py?`<section class="card" id="pinyin"><h2><span class="ic">${im("🔤")}</span>Phiên âm (pinyin) <small>học trước khi vào bài 1</small></h2><button class="gbtn" hidden data-g="aud/c${n}-g-py.mp4">🔊 Cô giảng mục này</button>
     <ul class="pyt"><li><b>Phiên âm</b> = chữ cái ghi cách đọc chữ Hán</li><li>b đọc gần “p” nhẹ · d như “t” · g như “c”</li><li>p, t, k <b>bật hơi mạnh</b> <i>— đặt tờ giấy trước miệng bé, giấy bay là đúng</i></li></ul>
     <div id="luyenPy"></div></section>`:""}
@@ -1797,7 +1799,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610081852";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610082008";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -1896,7 +1898,7 @@ function printPage(c){
 // 01/10 chị: Mở đầu chưa học từ mới — "Bé làm bài" là LUYỆN PHIÊN ÂM: nguyên âm · phụ âm · ghép âm · thanh điệu
 function mucBai(n){if(n!=0||!ND[0].py)return ND[n].w;if(ND[0]._pyw)return ND[0]._pyw;const P=ND[0].py,v=x=>x.replace("ü","v");
   return ND[0]._pyw=[...P.van.map(x=>[x[0],x[2],x[5],x[4],`aud/c0-pv-${v(x[0])}.mp3`]),...P.thanh.map(x=>[x[0],x[2],`${x[1]} · ${x[3]}`,"",`aud/c0-ps-${x[0]}.mp3`]),
-    ...P.ghep.map((x,i)=>[x[2],x[2],`${x[0]} + ${x[1]} · ${x[3]} · ${x[4]}`,"",`aud/c0-pg${i}.mp3`]),...ND[0].w.slice(6,10).map((w,j)=>[w[1],w[1],w[2],w[3],`aud/c0-w${6+j}.mp3`])]}
+    ...P.ghep.map((x,i)=>[x[2],x[2],`${x[0]} + ${x[1]} · ${x[3]} · ${x[4]}`,"",`aud/c0-pg${i}.mp3`]),...["ā","á","ǎ","à"].map((a,j)=>[a,a,"Thanh "+(j+1),"",`aud/c0-a${j+1}.mp3`])]}
 function nhomBai(n){if(n==0&&ND[0].py){const P=ND[0].py,a=P.van.length,b=P.thanh.length,c=P.ghep.length,r=(s,e)=>[...Array(e-s).keys()].map(x=>x+s),h=Math.ceil(b/2);
     return [r(a+b+c,a+b+c+4),r(0,a),r(a,a+h),r(a+h,a+b),r(a+b,a+b+c),[...r(0,a+b+c+4)].map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).slice(0,8).map(x=>x[1])]}
   const w=ND[n].w,k=w.length,G=k<=4?[k]:k<=7?[Math.ceil(k/2),Math.floor(k/2)]:[Math.ceil(k/3),Math.ceil(k/3),k-2*Math.ceil(k/3)],b=[];let i=0;G.forEach(g=>{b.push([...Array(g).keys()].map(x=>x+i));i+=g});b.push([...w.keys()]);return b}
@@ -2297,7 +2299,7 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
   const IT=[...P.van.map(x=>({lab:x[3]||x[0],hz:x[1],py:x[2],vn:"",mo:x[5],e:x[4],   /* 06/10 chị: nguyên âm học kèm THANH 1 (ā ō ē ī ū ǖ) — chữ và tiếng đọc khớp nhau */au:`aud/c0-pv-${x[0].replace("ü","v")}.mp3`,gi:`aud/c0-pgi-${x[0].replace("ü","v")}.mp4`})),
     ...P.thanh.map(x=>({lab:x[0],hz:x[1],py:x[2],vn:x[3],mo:x[3],e:"",au:`aud/c0-ps-${x[0]}.mp3`,gi:`aud/c0-pgi-${x[0]}.mp4`})),
     ...P.ghep.map((x,i)=>({lab:`${x[0]} + ${x[1]}`,hz:x[3],py:x[2],vn:x[4],mo:"",e:"",au:`aud/c0-pg${i}.mp3`,gi:`aud/c0-pgi-g${i}.mp4`})),
-    ...ND[0].w.slice(6,10).map((w,j)=>({lab:w[1],hz:w[0],py:w[1],vn:w[2],mo:["Thanh 1 — ngang, cao","Thanh 2 — đi lên","Thanh 3 — xuống rồi lên","Thanh 4 — rơi mạnh"][j],e:"",au:`aud/c0-w${6+j}.mp3`,gi:`aud/c0-th${j+1}.mp4`})),
+    ...["ā","á","ǎ","à"].map((a,j)=>({lab:a,hz:"",py:a,vn:"",net:j,mo:["Thanh 1 — ngang, cao","Thanh 2 — đi lên","Thanh 3 — xuống rồi lên","Thanh 4 — rơi mạnh"][j],e:"",au:`aud/c0-a${j+1}.mp3`,gi:`aud/c0-th${j+1}.mp4`})),   /* 06/10: thanh điệu chỉ đọc vận mẫu a */
     ...(ND[0].bd||[]).map((x,i)=>({lab:`Biến điệu ${i+1}`,hz:x[1],py:x[2].split("→").pop().trim(),vn:x[5]||"",mo:x[3],e:"",bd:1,bi:i,au:`aud/c0-bd${i}.mp3`,gi:`aud/c0-pgi-bd${i}.mp4`}))];
   const a=P.van.length,b=P.thanh.length,c=P.ghep.length,h=Math.ceil(b/2),r=(x,y)=>[...Array(y-x).keys()].map(z=>z+x);
   // 06/10 chị: "sau thanh điệu phải có biến điệu luôn" → Thanh điệu → Biến điệu → nguyên âm → phụ âm (chỉ âm đơn giản bō pō…) → ghép
@@ -2326,7 +2328,7 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
     const xongTro=(Z,dung,tong,chu)=>{tongD+=dung;tongC+=tong;const kq=Z.querySelector("#kq");kq.innerHTML=(chu?`<div class="troOk">${chu}</div>`:"")+oDiem(dung,tong)+`<button class="big" id="pyT">Tiếp →</button>`;kq.querySelector("#pyT").onclick=sang;kq.scrollIntoView({behavior:"smooth",block:"center"});if(dung===tong)keng();confetti()};
     // 🎯 BINGO (ảnh mẫu chị gửi): bấm loa nghe cô đọc → chạm đúng ô → ô được đặt đồng xu; phủ kín bảng = BINGO
     function bingo(){const ds=sh(g.ds),cot=ds.length<=4?2:3,thu=sh(g.ds);let q=0,dung=0,sai=0;
-      khung(`<div class="bgTop"><button class="bgLoa" id="bgLoa">🔊 Nghe cô đọc</button><span id="bgDem">1/${thu.length}</span></div><div class="bgL" style="grid-template-columns:repeat(${cot},1fr)">${ds.map(k=>`<button class="bgO" data-k="${k}"><b>${tonePy(IT[k].py)}</b><span>${esc(IT[k].hz)}</span></button>`).join("")}</div><div id="kq"></div>`);
+      khung(`<div class="bgTop"><button class="bgLoa" id="bgLoa">🔊 Nghe cô đọc</button><span id="bgDem">1/${thu.length}</span></div><div class="bgL" style="grid-template-columns:repeat(${cot},1fr)">${ds.map(k=>`<button class="bgO" data-k="${k}"><b>${tonePy(IT[k].py)}</b>${IT[k].hz?`<span>${esc(IT[k].hz)}</span>`:""}</button>`).join("")}</div><div id="kq"></div>`);
       const Z=box.querySelector("#pyQ"),loa=Z.querySelector("#bgLoa");loa.onclick=()=>{if(q<thu.length)play(IT[thu[q]].au,loa)};
       Z.querySelectorAll(".bgO").forEach(bt=>bt.onclick=()=>{if(q>=thu.length||bt.classList.contains("co"))return;
         if(+bt.dataset.k===thu[q]){bt.classList.add("co");tone([880,1320]);if(!sai)dung++;sai=0;q++;
@@ -2335,7 +2337,7 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
         else{sai=1;bt.classList.add("wrong");tone([180],.18,"triangle",.07);setTimeout(()=>bt.classList.remove("wrong"),450)}})}
     // 🔗 NỐI 2 CỘT: chạm chữ Hán bên trái → chạm phiên âm đúng bên phải → hiện đường nối
     function noiCot(){const L=pick(g.ds,4),Rr=sh(L);let chon=null,xong=0,dung=0,sai=0;
-      khung(`<div class="noiW"><svg class="noiSvg"></svg><div class="noiC">${L.map(k=>`<button class="noiO noiL" data-k="${k}">${esc(IT[k].hz)}</button>`).join("")}</div><div class="noiC">${Rr.map(k=>`<button class="noiO noiR" data-k="${k}">${tonePy(IT[k].py)}</button>`).join("")}</div></div><div id="kq"></div>`);
+      khung(`<div class="noiW"><svg class="noiSvg"></svg><div class="noiC">${L.map(k=>`<button class="noiO noiL" data-k="${k}">${IT[k].hz?esc(IT[k].hz):`<svg class="noiNet" viewBox="0 0 48 44"><path d="${["M6 10H42","M6 34L42 8","M6 16Q18 38 24 36T42 8","M6 8L42 34"][IT[k].net]}"/></svg>`}</button>`).join("")}</div><div class="noiC">${Rr.map(k=>`<button class="noiO noiR" data-k="${k}">${tonePy(IT[k].py)}</button>`).join("")}</div></div><div id="kq"></div>`);
       const Z=box.querySelector("#pyQ"),W=Z.querySelector(".noiW"),svg=Z.querySelector(".noiSvg");
       const ke=(a,b)=>{const w=W.getBoundingClientRect(),p=a.getBoundingClientRect(),r=b.getBoundingClientRect();svg.insertAdjacentHTML("beforeend",`<line x1="${p.right-w.left}" y1="${p.top+p.height/2-w.top}" x2="${r.left-w.left}" y2="${r.top+r.height/2-w.top}"/>`)};
       Z.querySelectorAll(".noiL").forEach(bt=>bt.onclick=()=>{if(bt.classList.contains("ok"))return;Z.querySelectorAll(".noiL").forEach(x=>x.classList.remove("chon"));bt.classList.add("chon");chon=bt;play(IT[+bt.dataset.k].au)});
