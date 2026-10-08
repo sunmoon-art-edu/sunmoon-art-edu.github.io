@@ -1,0 +1,5762 @@
+{
+"1": {
+"t": "我可以坐这儿吗？ Mình ngồi đây được không?",
+"icon": "💺",
+"muc": "Con biết xin phép ngồi, mời bạn ngồi, xin lỗi và đáp lời cảm ơn",
+"hd": [
+"Chào con! Hôm nay mình học bài một của YCT hai: xin phép ngồi.",
+"Muốn ngồi cạnh bạn, con hỏi:",
+"zh:我可以坐这儿吗？",
+"Bạn đồng ý thì nói:",
+"zh:可以，请坐。",
+"Học xong, con còn biết xin lỗi và cảm ơn thật lịch sự nữa đó!"
+],
+"w": [
+[
+"可以",
+"kěyǐ",
+"được, có thể",
+"👌"
+],
+[
+"坐",
+"zuò",
+"ngồi",
+"💺"
+],
+[
+"请",
+"qǐng",
+"mời, xin (nói lịch sự)",
+"🙏"
+],
+[
+"要",
+"yào",
+"muốn, cần, phải",
+"🙋"
+],
+[
+"说话",
+"shuōhuà",
+"nói chuyện",
+"💬"
+],
+[
+"对不起",
+"duìbuqǐ",
+"xin lỗi",
+"🙇"
+],
+[
+"没关系",
+"méi guānxi",
+"không sao đâu",
+"😊"
+],
+[
+"不客气",
+"bú kèqi",
+"không có gì (đáp lời cảm ơn)",
+"🤗"
+],
+[
+"同学",
+"tóngxué",
+"bạn cùng lớp",
+"w-tongxue"
+]
+],
+"nhom": [
+[
+0,
+1,
+2
+],
+[
+3,
+4,
+8
+],
+[
+5,
+6,
+7
+]
+],
+"cau": [
+[
+"我可以坐这儿吗？",
+"Wǒ kěyǐ zuò zhèr ma?",
+"Mình ngồi đây được không?",
+"Muốn ngồi cạnh bạn"
+],
+[
+"可以，请坐。",
+"Kěyǐ, qǐng zuò.",
+"Được, mời bạn ngồi.",
+"Mời bạn ngồi"
+],
+[
+"请不要说话。",
+"Qǐng bú yào shuōhuà.",
+"Các bạn đừng nói chuyện nhé.",
+"Nhắc cả lớp giữ trật tự"
+]
+],
+"vd": [
+[
+"她是我的同学。",
+"Tā shì wǒ de tóngxué.",
+"Bạn ấy là bạn cùng lớp của mình."
+]
+],
+"ht": [
+{
+"canh": "Bạn mới ngồi cạnh trong lớp",
+"l": [
+[
+"av-be-kinh",
+"大卫",
+"你好！我可以坐这儿吗？",
+"Nǐ hǎo! Wǒ kěyǐ zuò zhèr ma?",
+"Chào bạn! Mình ngồi đây được không?"
+],
+[
+"av-be-gai",
+"小月",
+"可以，请坐。",
+"Kěyǐ, qǐng zuò.",
+"Được chứ, bạn ngồi đi."
+],
+[
+"av-be-kinh",
+"大卫",
+"谢谢！",
+"Xièxie!",
+"Cảm ơn bạn!"
+],
+[
+"av-be-gai",
+"小月",
+"不客气。我叫小月，你叫什么名字？",
+"Bú kèqi. Wǒ jiào Xiǎoyuè, nǐ jiào shénme míngzi?",
+"Không có gì. Mình tên là Tiểu Nguyệt, bạn tên là gì?"
+],
+[
+"av-be-kinh",
+"大卫",
+"我叫大卫。我们是同学了！",
+"Wǒ jiào Dàwèi. Wǒmen shì tóngxué le!",
+"Mình tên là Đa-vít. Tụi mình là bạn cùng lớp rồi!"
+],
+[
+"av-be-gai",
+"小月",
+"老师来了，不要说话。",
+"Lǎoshī lái le, bú yào shuōhuà.",
+"Cô giáo đến rồi, đừng nói chuyện nữa."
+]
+],
+"q": [
+"大卫可以坐这儿吗？",
+"Dàwèi kěyǐ zuò zhèr ma?",
+"Đa-vít có được ngồi đây không?",
+"可以",
+"Được ngồi."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"我可以坐这儿吗？",
+"Wǒ kěyǐ zuò zhèr ma?",
+"可以，请坐。",
+"Kěyǐ, qǐng zuò."
+],
+[
+"我叫小月，你叫什么名字？",
+"Wǒ jiào Xiǎoyuè, nǐ jiào shénme míngzi?",
+"我叫大卫。",
+"Wǒ jiào Dàwèi."
+]
+]
+},
+"tr": {
+"ten": "丁丁说话了 · Đinh Đinh nói chuyện",
+"l": [
+{
+"canh": "Bạn cùng lớp của mình",
+"img": "🏫",
+"l": [
+[
+"av-be-gai",
+"小月",
+"丁丁是我的同学。",
+"Dīngding shì wǒ de tóngxué.",
+"Đinh Đinh là bạn cùng lớp của mình."
+]
+]
+},
+{
+"canh": "Đinh Đinh nói chuyện",
+"img": "💬",
+"l": [
+[
+"av-be-gai",
+"小月",
+"今天在学校，丁丁说话了。",
+"Jīntiān zài xuéxiào, Dīngding shuōhuà le.",
+"Hôm nay ở trường, Đinh Đinh nói chuyện."
+]
+]
+},
+{
+"canh": "Cô nhắc nhở",
+"img": "🤫",
+"l": [
+[
+"av-co-giao",
+"老师",
+"请不要说话。",
+"Qǐng bú yào shuōhuà.",
+"Các con đừng nói chuyện nhé."
+]
+]
+},
+{
+"canh": "Đinh Đinh xin lỗi",
+"img": "🙇",
+"l": [
+[
+"av-be-trai",
+"丁丁",
+"对不起，老师！",
+"Duìbuqǐ, lǎoshī!",
+"Con xin lỗi cô ạ!"
+]
+]
+}
+]
+},
+"game": [
+[
+"Ghế âm nhạc lịch sự",
+"3 người trở lên · ghế · nhạc",
+"Bật nhạc, cả nhà đi vòng quanh ghế. Nhạc tắt, ai muốn ngồi phải hỏi 我可以坐这儿吗？ Người kia đáp 可以，请坐。 rồi mới được ngồi."
+],
+[
+"Xin lỗi – không sao",
+"2 người",
+"Một người giả vờ va vào bạn và nói 对不起！ Người kia đáp 没关系。 Đổi vai. Ai nói nhầm thì làm lại thật to."
+]
+],
+"g": {
+"cau": [
+"Hỏi xin ngồi, con nói:",
+"zh:我可以坐这儿吗？",
+"Mời bạn ngồi, con nói:",
+"zh:可以，请坐。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "要",
+"chon": [
+"🙏",
+"🙋",
+"🙇"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "坐",
+"chon": [
+"💺",
+"👌",
+"🙏"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "同学",
+"chon": [
+"🤗",
+"w-tongxue",
+"💬"
+],
+"dap": 1
+},
+{
+"t": "doc",
+"chu": "说话",
+"py": "shuōhuà",
+"img": "💬",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "请",
+"py": "qǐng",
+"img": "💺",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "我（ ）坐这儿吗？",
+"py": "Wǒ ( ) zuò zhèr ma?",
+"chon": [
+[
+"怎么",
+"zěnme"
+],
+[
+"可以",
+"kěyǐ"
+],
+[
+"没有",
+"méiyǒu"
+]
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "大卫可以坐这儿吗？",
+"chon": [
+"不可以",
+"可以",
+"不客气"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "老师来了，他们不要做什么？",
+"chon": [
+"说话",
+"坐",
+"看"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "丁丁是谁？",
+"chon": [
+"我的哥哥",
+"我的同学",
+"我的老师"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "丁丁对老师说什么？",
+"chon": [
+"谢谢",
+"没关系",
+"对不起"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"说话",
+"shuōhuà"
+],
+[
+"对不起",
+"duìbuqǐ"
+],
+[
+"请",
+"qǐng"
+],
+[
+"要",
+"yào"
+],
+[
+"不客气",
+"bú kèqi"
+],
+[
+"坐",
+"zuò"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"可以",
+"được"
+],
+[
+"坐",
+"ngồi"
+],
+[
+"不客气",
+"không có gì"
+],
+[
+"要",
+"muốn"
+],
+[
+"没关系",
+"không sao đâu"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"我（ ）坐这儿吗？",
+[
+"怎么",
+"可以",
+"没有"
+],
+1
+],
+[
+"Câu nào đúng?",
+[
+"请不要说话。",
+"不请要说话。",
+"请说话不要。"
+],
+0
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"她",
+"是",
+"我的",
+"同学"
+],
+"Bạn ấy là bạn cùng lớp của mình."
+],
+[
+[
+"我",
+"可以",
+"坐",
+"这儿",
+"吗"
+],
+"Mình ngồi đây được không?"
+],
+[
+[
+"可以",
+"请",
+"坐"
+],
+"Được, mời bạn ngồi."
+],
+[
+[
+"请",
+"不",
+"要",
+"说话"
+],
+"Các bạn đừng nói chuyện nhé."
+]
+]
+}
+],
+"tv": [
+[
+"可",
+"kě",
+"可以 kěyǐ"
+],
+[
+"坐",
+"zuò",
+"ngồi"
+],
+[
+"以",
+"yǐ",
+"可以 kěyǐ"
+],
+[
+"请",
+"qǐng",
+"mời"
+],
+[
+"要",
+"yào",
+"muốn"
+],
+[
+"说",
+"shuō",
+"说话 shuōhuà"
+],
+[
+"话",
+"huà",
+"说话 shuōhuà"
+],
+[
+"没",
+"méi",
+"没关系 méi guānxi"
+]
+]
+},
+"2": {
+"t": "你早上几点起床？ Buổi sáng bạn dậy lúc mấy giờ?",
+"icon": "⏰",
+"muc": "Con biết hỏi và kể giờ ngủ dậy, giờ đi ngủ, đi đến trường mất mấy phút",
+"hd": [
+"Chào con! Hôm nay mình học bài hai của YCT hai: giờ dậy, giờ ngủ.",
+"Muốn hỏi bạn sáng dậy lúc mấy giờ, con nói:",
+"zh:你早上几点起床？",
+"Kể mình dậy lúc sáu giờ sáng, con nói:",
+"zh:我早上六点起床。",
+"Dậy đúng giờ, đi ngủ đúng giờ, con sẽ học thật giỏi đó!"
+],
+"w": [
+[
+"早上",
+"zǎoshang",
+"buổi sáng",
+"🌅"
+],
+[
+"晚上",
+"wǎnshang",
+"buổi tối",
+"🌙"
+],
+[
+"起床",
+"qǐchuáng",
+"thức dậy, ngủ dậy",
+"w-qichuang"
+],
+[
+"睡觉",
+"shuìjiào",
+"đi ngủ",
+"😴"
+],
+[
+"分钟",
+"fēnzhōng",
+"phút",
+"⏱️"
+]
+],
+"nhom": [
+[
+0,
+1,
+4
+],
+[
+2,
+3
+]
+],
+"cau": [
+[
+"你早上几点起床？",
+"Nǐ zǎoshang jǐ diǎn qǐchuáng?",
+"Buổi sáng bạn dậy lúc mấy giờ?",
+"Hỏi bạn sáng dậy lúc mấy giờ"
+],
+[
+"我早上六点起床。",
+"Wǒ zǎoshang liù diǎn qǐchuáng.",
+"Mình dậy lúc 6 giờ sáng.",
+"Kể giờ mình ngủ dậy"
+],
+[
+"我晚上九点睡觉。",
+"Wǒ wǎnshang jiǔ diǎn shuìjiào.",
+"Mình đi ngủ lúc 9 giờ tối.",
+"Kể giờ mình đi ngủ"
+]
+],
+"vd": [
+[
+"我去学校要十分钟。",
+"Wǒ qù xuéxiào yào shí fēnzhōng.",
+"Mình đi đến trường mất 10 phút."
+]
+],
+"ht": [
+{
+"canh": "Hỏi nhau giờ dậy, giờ ngủ",
+"l": [
+[
+"av-be-trai",
+"明明",
+"小月，你早上几点起床？",
+"Xiǎoyuè, nǐ zǎoshang jǐ diǎn qǐchuáng?",
+"Tiểu Nguyệt ơi, buổi sáng bạn dậy lúc mấy giờ?"
+],
+[
+"av-be-gai",
+"小月",
+"我六点起床。明明，你呢？",
+"Wǒ liù diǎn qǐchuáng. Míngming, nǐ ne?",
+"Mình dậy lúc sáu giờ. Còn bạn, Minh Minh?"
+],
+[
+"av-be-trai",
+"明明",
+"我七点起床。",
+"Wǒ qī diǎn qǐchuáng.",
+"Mình dậy lúc bảy giờ."
+],
+[
+"av-be-gai",
+"小月",
+"你去学校要几分钟？",
+"Nǐ qù xuéxiào yào jǐ fēnzhōng?",
+"Bạn đi đến trường mất mấy phút?"
+],
+[
+"av-be-trai",
+"明明",
+"要十分钟。你晚上几点睡觉？",
+"Yào shí fēnzhōng. Nǐ wǎnshang jǐ diǎn shuìjiào?",
+"Mất mười phút. Buổi tối bạn đi ngủ lúc mấy giờ?"
+],
+[
+"av-be-gai",
+"小月",
+"我晚上九点睡觉。",
+"Wǒ wǎnshang jiǔ diǎn shuìjiào.",
+"Buổi tối mình đi ngủ lúc chín giờ."
+]
+],
+"q": [
+"明明早上几点起床？",
+"Míngming zǎoshang jǐ diǎn qǐchuáng?",
+"Buổi sáng Minh Minh dậy lúc mấy giờ?",
+"七点",
+"Bảy giờ."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"小月，你早上几点起床？",
+"Xiǎoyuè, nǐ zǎoshang jǐ diǎn qǐchuáng?",
+"我六点起床。",
+"Wǒ liù diǎn qǐchuáng."
+],
+[
+"明明，你呢？",
+"Míngming, nǐ ne?",
+"我七点起床。",
+"Wǒ qī diǎn qǐchuáng."
+],
+[
+"你去学校要几分钟？",
+"Nǐ qù xuéxiào yào jǐ fēnzhōng?",
+"要十分钟。",
+"Yào shí fēnzhōng."
+]
+]
+},
+"tr": {
+"ten": "大卫去学校 · Đa-vít đi học",
+"l": [
+{
+"canh": "Sáu giờ sáng đã dậy",
+"img": "⏰",
+"l": [
+[
+"av-co-giao",
+"",
+"大卫早上六点起床。",
+"Dàwèi zǎoshang liù diǎn qǐchuáng.",
+"Buổi sáng Đa-vít dậy lúc sáu giờ."
+]
+]
+},
+{
+"canh": "Đến trường mất năm phút",
+"img": "🏫",
+"l": [
+[
+"av-co-giao",
+"",
+"他七点去学校，去学校要五分钟。",
+"Tā qī diǎn qù xuéxiào, qù xuéxiào yào wǔ fēnzhōng.",
+"Bảy giờ bạn ấy đi học, đi đến trường mất năm phút."
+]
+]
+},
+{
+"canh": "Mười giờ tối đi ngủ",
+"img": "😴",
+"l": [
+[
+"av-co-giao",
+"",
+"晚上十点，大卫睡觉。",
+"Wǎnshang shí diǎn, Dàwèi shuìjiào.",
+"Mười giờ tối, Đa-vít đi ngủ."
+]
+]
+}
+]
+},
+"game": [
+[
+"Đồng hồ báo thức",
+"2 người · đồng hồ có kim (hoặc vẽ đồng hồ)",
+"Một người vặn kim đồng hồ rồi hỏi 你早上几点起床？ Người kia nhìn giờ và đáp, ví dụ 我早上六点起床。 Nói đúng giờ thì đổi vai."
+],
+[
+"Dậy hay ngủ?",
+"2 người trở lên",
+"Một người hô 起床！ cả nhà vươn vai đứng dậy. Hô 睡觉！ cả nhà nằm xuống ngủ. Ai làm sai phải nói to 我晚上九点睡觉。 rồi chơi tiếp."
+]
+],
+"song": [
+[
+"rYDH8fEsqac",
+"What Time Is It? (现在几点了？)",
+"Little Fox Chinese",
+"0:53"
+]
+],
+"g": {
+"cau": [
+"Hỏi bạn dậy lúc mấy giờ, con nói:",
+"zh:你早上几点起床？",
+"Kể giờ mình dậy, con nói:",
+"zh:我早上六点起床。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "睡觉",
+"chon": [
+"🌅",
+"w-qichuang",
+"😴"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "起床",
+"chon": [
+"😴",
+"w-qichuang",
+"🌙"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "分钟",
+"chon": [
+"⏱️",
+"🌅",
+"🌙"
+],
+"dap": 0
+},
+{
+"t": "doc",
+"chu": "早上",
+"py": "zǎoshang",
+"img": "🌅",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "晚上",
+"py": "wǎnshang",
+"img": "🌅",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "你（ ）几点睡觉？",
+"py": "Nǐ ( ) jǐ diǎn shuìjiào?",
+"chon": [
+[
+"晚上",
+"wǎnshang"
+],
+[
+"分钟",
+"fēnzhōng"
+],
+[
+"起床",
+"qǐchuáng"
+]
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "明明早上几点起床？",
+"chon": [
+"六点",
+"七点",
+"九点"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "小月晚上几点睡觉？",
+"chon": [
+"九点",
+"十点",
+"八点"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "大卫几点去学校？",
+"chon": [
+"六点",
+"十点",
+"七点"
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "大卫去学校要几分钟？",
+"chon": [
+"十分钟",
+"五分钟",
+"七分钟"
+],
+"dap": 1
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"早上",
+"zǎoshang"
+],
+[
+"晚上",
+"wǎnshang"
+],
+[
+"起床",
+"qǐchuáng"
+],
+[
+"睡觉",
+"shuìjiào"
+],
+[
+"分钟",
+"fēnzhōng"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"早上",
+"buổi sáng"
+],
+[
+"晚上",
+"buổi tối"
+],
+[
+"起床",
+"thức dậy"
+],
+[
+"睡觉",
+"đi ngủ"
+],
+[
+"分钟",
+"phút"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"Câu nào đúng?",
+[
+"我起床早上六点。",
+"我早上六点起床。",
+"早上我起床六点。"
+],
+1
+],
+[
+"你（ ）几点睡觉？",
+[
+"晚上",
+"分钟",
+"起床"
+],
+0
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"我",
+"去学校",
+"要",
+"十分钟"
+],
+"Mình đi đến trường mất 10 phút."
+],
+[
+[
+"你",
+"早上",
+"几",
+"点",
+"起床"
+],
+"Buổi sáng bạn dậy lúc mấy giờ?"
+],
+[
+[
+"我",
+"早上",
+"六",
+"点",
+"起床"
+],
+"Mình dậy lúc 6 giờ sáng."
+],
+[
+[
+"我",
+"晚上",
+"九",
+"点",
+"睡觉"
+],
+"Mình đi ngủ lúc 9 giờ tối."
+]
+]
+}
+],
+"tv": [
+[
+"早",
+"zǎo",
+"早上 zǎoshang"
+],
+[
+"晚",
+"wǎn",
+"晚上 wǎnshang"
+],
+[
+"睡",
+"shuì",
+"睡觉 shuìjiào"
+],
+[
+"觉",
+"jiào",
+"睡觉 shuìjiào"
+],
+[
+"钟",
+"zhōng",
+"分钟 fēnzhōng"
+]
+]
+},
+"3": {
+"t": "你的铅笔呢？ Bút chì của bạn đâu rồi?",
+"icon": "🎨",
+"muc": "Con biết hỏi đồ dùng đâu rồi, hỏi và nói màu sắc: đỏ, vàng, xanh lá",
+"hd": [
+"Chào con! Hôm nay mình học bài ba của YCT hai: bút chì và màu sắc.",
+"Không thấy bút chì của bạn đâu, con hỏi:",
+"zh:你的铅笔呢？",
+"Muốn biết cặp sách của bạn màu gì, con hỏi:",
+"zh:你的书包是什么颜色的？",
+"Con thích màu gì nhất? Học xong kể cho cô nghe nhé!"
+],
+"w": [
+[
+"铅笔",
+"qiānbǐ",
+"bút chì",
+"✏️"
+],
+[
+"呢",
+"ne",
+"… đâu rồi? … thì sao? (để hỏi)",
+"🤷"
+],
+[
+"书包",
+"shūbāo",
+"cặp sách",
+"🎒"
+],
+[
+"颜色",
+"yánsè",
+"màu sắc",
+"🎨"
+],
+[
+"红",
+"hóng",
+"đỏ",
+"🔴"
+],
+[
+"黄",
+"huáng",
+"vàng",
+"🟡"
+],
+[
+"绿",
+"lǜ",
+"xanh lá",
+"🟢"
+]
+],
+"nhom": [
+[
+0,
+1,
+2
+],
+[
+3,
+4,
+5,
+6
+]
+],
+"cau": [
+[
+"你的铅笔呢？",
+"Nǐ de qiānbǐ ne?",
+"Bút chì của bạn đâu rồi?",
+"Không thấy bút chì của bạn"
+],
+[
+"你的书包是什么颜色的？",
+"Nǐ de shūbāo shì shénme yánsè de?",
+"Cặp sách của bạn màu gì?",
+"Hỏi cặp sách của bạn màu gì"
+],
+[
+"我的书包是绿的。",
+"Wǒ de shūbāo shì lǜ de.",
+"Cặp sách của mình màu xanh lá.",
+"Kể màu cặp sách của mình"
+]
+],
+"vd": [
+[
+"我喜欢红的，你呢？",
+"Wǒ xǐhuan hóng de, nǐ ne?",
+"Mình thích màu đỏ, còn bạn?"
+]
+],
+"ht": [
+{
+"canh": "Tìm bút chì, hỏi màu cặp sách",
+"l": [
+[
+"av-be-trai",
+"丁丁",
+"大卫，你的铅笔呢？",
+"Dàwèi, nǐ de qiānbǐ ne?",
+"Đa-vít ơi, bút chì của bạn đâu rồi?"
+],
+[
+"av-be-kinh",
+"大卫",
+"在我的书包里面。",
+"Zài wǒ de shūbāo lǐmiàn.",
+"Ở trong cặp sách của mình."
+],
+[
+"av-be-trai",
+"丁丁",
+"你的书包是什么颜色的？",
+"Nǐ de shūbāo shì shénme yánsè de?",
+"Cặp sách của bạn màu gì?"
+],
+[
+"av-be-kinh",
+"大卫",
+"我的书包是红的。丁丁，你的呢？",
+"Wǒ de shūbāo shì hóng de. Dīngding, nǐ de ne?",
+"Cặp của mình màu đỏ. Còn cặp của bạn, Đinh Đinh?"
+],
+[
+"av-be-trai",
+"丁丁",
+"我的书包是绿的。我喜欢绿的。",
+"Wǒ de shūbāo shì lǜ de. Wǒ xǐhuan lǜ de.",
+"Cặp của mình màu xanh lá. Mình thích màu xanh lá."
+]
+],
+"q": [
+"大卫的铅笔在哪儿？",
+"Dàwèi de qiānbǐ zài nǎr?",
+"Bút chì của Đa-vít ở đâu?",
+"书包里面",
+"Trong cặp sách."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"大卫，你的铅笔呢？",
+"Dàwèi, nǐ de qiānbǐ ne?",
+"在我的书包里面。",
+"Zài wǒ de shūbāo lǐmiàn."
+],
+[
+"你的书包是什么颜色的？",
+"Nǐ de shūbāo shì shénme yánsè de?",
+"我的书包是红的。",
+"Wǒ de shūbāo shì hóng de."
+],
+[
+"丁丁，你的呢？",
+"Dīngding, nǐ de ne?",
+"我的书包是绿的。",
+"Wǒ de shūbāo shì lǜ de."
+]
+]
+},
+"tr": {
+"ten": "小月的书包 · Cặp sách của Tiểu Nguyệt",
+"l": [
+{
+"canh": "Cặp sách màu vàng",
+"img": "🎒",
+"l": [
+[
+"av-co-giao",
+"",
+"小月的书包是黄的。",
+"Xiǎoyuè de shūbāo shì huáng de.",
+"Cặp sách của Tiểu Nguyệt màu vàng."
+]
+]
+},
+{
+"canh": "Thích vàng, không thích đỏ",
+"img": "💛",
+"l": [
+[
+"av-co-giao",
+"",
+"她喜欢黄色，不喜欢红色。",
+"Tā xǐhuan huángsè, bù xǐhuan hóngsè.",
+"Bạn ấy thích màu vàng, không thích màu đỏ."
+]
+]
+},
+{
+"canh": "Bút chì màu xanh lá",
+"img": "✏️",
+"l": [
+[
+"av-co-giao",
+"",
+"她的铅笔是绿的。",
+"Tā de qiānbǐ shì lǜ de.",
+"Bút chì của bạn ấy màu xanh lá."
+]
+]
+}
+]
+},
+"game": [
+[
+"Tìm bút chì",
+"2 người · bút chì · cặp sách",
+"Một người giấu bút chì trong phòng. Người kia hỏi 你的铅笔呢？ Người giấu chỉ chỗ và nói, ví dụ 在我的书包里面。 Tìm thấy thì đổi vai."
+],
+[
+"Đoán màu cặp",
+"2 người · giấy · bút màu đỏ, vàng, xanh lá",
+"Mỗi người vẽ một chiếc cặp, tô một màu rồi úp giấy xuống. Hỏi nhau 你的书包是什么颜色的？ Người kia đáp, ví dụ 我的书包是绿的。 rồi lật giấy. Nói đúng màu được một điểm."
+]
+],
+"g": {
+"cau": [
+"Hỏi đồ vật của bạn đâu rồi, con nói:",
+"zh:你的铅笔呢？",
+"Hỏi đồ vật màu gì, con nói:",
+"zh:你的书包是什么颜色的？"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "呢",
+"chon": [
+"🤷",
+"🎒",
+"🟡"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "铅笔",
+"chon": [
+"🎨",
+"🟡",
+"✏️"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "颜色",
+"chon": [
+"🤷",
+"🟡",
+"🎨"
+],
+"dap": 2
+},
+{
+"t": "doc",
+"chu": "书包",
+"py": "shūbāo",
+"img": "🎒",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "红",
+"py": "hóng",
+"img": "🎨",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "你的铅笔（ ）？",
+"py": "Nǐ de qiānbǐ ( )?",
+"chon": [
+[
+"呢",
+"ne"
+],
+[
+"吗",
+"ma"
+],
+[
+"了",
+"le"
+]
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "大卫的铅笔在哪儿？",
+"chon": [
+"桌子上边",
+"书包里面",
+"房间里面"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "丁丁的书包是什么颜色的？",
+"chon": [
+"红的",
+"黄的",
+"绿的"
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "小月的书包是什么颜色的？",
+"chon": [
+"黄的",
+"红的",
+"绿的"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "小月不喜欢什么颜色？",
+"chon": [
+"黄色",
+"绿色",
+"红色"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"红",
+"hóng"
+],
+[
+"绿",
+"lǜ"
+],
+[
+"书包",
+"shūbāo"
+],
+[
+"呢",
+"ne"
+],
+[
+"铅笔",
+"qiānbǐ"
+],
+[
+"黄",
+"huáng"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"黄",
+"vàng"
+],
+[
+"书包",
+"cặp sách"
+],
+[
+"铅笔",
+"bút chì"
+],
+[
+"红",
+"đỏ"
+],
+[
+"呢",
+"… đâu rồi? … thì sao?"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"你的铅笔（ ）？",
+[
+"呢",
+"吗",
+"了"
+],
+0
+],
+[
+"Câu nào đúng?",
+[
+"我的书包绿是的。",
+"我的书包是绿的。",
+"绿的我的书包是。"
+],
+1
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"你的书包",
+"是",
+"什么颜色",
+"的"
+],
+"Cặp sách của bạn màu gì?"
+],
+[
+[
+"你",
+"的",
+"铅笔",
+"呢"
+],
+"Bút chì của bạn đâu rồi?"
+],
+[
+[
+"你",
+"的",
+"书包",
+"是",
+"什么",
+"颜色",
+"的"
+],
+"Cặp sách của bạn màu gì?"
+],
+[
+[
+"我",
+"的",
+"书包",
+"是",
+"绿",
+"的"
+],
+"Cặp sách của mình màu xanh lá."
+]
+]
+}
+],
+"tv": [
+[
+"书",
+"shū",
+"书包 shūbāo"
+],
+[
+"红",
+"hóng",
+"đỏ"
+],
+[
+"铅",
+"qiān",
+"铅笔 qiānbǐ"
+],
+[
+"笔",
+"bǐ",
+"铅笔 qiānbǐ"
+],
+[
+"呢",
+"ne",
+"… đâu rồi? … thì sao?"
+],
+[
+"包",
+"bāo",
+"书包 shūbāo"
+],
+[
+"颜",
+"yán",
+"颜色 yánsè"
+],
+[
+"色",
+"sè",
+"颜色 yánsè"
+]
+]
+},
+"4": {
+"t": "书包里有两本书。 Trong cặp có hai quyển sách.",
+"icon": "🪑",
+"muc": "Con biết nói đồ vật ở trên, ở trong và kể trong phòng có mấy con vật",
+"hd": [
+"Chào con! Hôm nay mình học bài bốn của YCT hai: ở trên và ở trong.",
+"Cặp sách nằm trên bàn, con nói:",
+"zh:书包在桌子上边。",
+"Bút chì nằm trong cặp sách, con nói:",
+"zh:铅笔在书包里面。",
+"Con nhìn quanh phòng xem, đồ nào ở đâu nào!"
+],
+"w": [
+[
+"里面",
+"lǐmiàn",
+"bên trong",
+"📥"
+],
+[
+"上边",
+"shàngbian",
+"bên trên",
+"⬆️"
+],
+[
+"两",
+"liǎng",
+"hai",
+"2️⃣"
+],
+[
+"只",
+"zhī",
+"con (để đếm con vật)",
+"🐾"
+],
+[
+"熊猫",
+"xióngmāo",
+"gấu trúc",
+"🐼"
+],
+[
+"桌子",
+"zhuōzi",
+"cái bàn",
+"🍽️"
+],
+[
+"椅子",
+"yǐzi",
+"cái ghế",
+"🪑"
+],
+[
+"房间",
+"fángjiān",
+"căn phòng",
+"🚪"
+]
+],
+"nhom": [
+[
+0,
+1
+],
+[
+2,
+3,
+4
+],
+[
+5,
+6,
+7
+]
+],
+"cau": [
+[
+"书包在桌子上边。",
+"Shūbāo zài zhuōzi shàngbian.",
+"Cặp sách ở trên bàn.",
+"Chỉ cặp sách nằm trên bàn"
+],
+[
+"铅笔在书包里面。",
+"Qiānbǐ zài shūbāo lǐmiàn.",
+"Bút chì ở trong cặp sách.",
+"Nói bút chì ở trong cặp"
+],
+[
+"房间里面有一只猫。",
+"Fángjiān lǐmiàn yǒu yì zhī māo.",
+"Trong phòng có một con mèo.",
+"Kể trong phòng có con mèo"
+]
+],
+"vd": [
+[
+"那儿有两只熊猫。",
+"Nàr yǒu liǎng zhī xióngmāo.",
+"Ở đó có hai con gấu trúc."
+]
+],
+"ht": [
+{
+"canh": "Trong phòng của Minh Minh có gì?",
+"l": [
+[
+"av-be-bim",
+"同学",
+"明明，你的房间里面有什么？",
+"Míngming, nǐ de fángjiān lǐmiàn yǒu shénme?",
+"Minh Minh ơi, trong phòng bạn có gì?"
+],
+[
+"av-be-trai",
+"明明",
+"有桌子和椅子。",
+"Yǒu zhuōzi hé yǐzi.",
+"Có bàn và ghế."
+],
+[
+"av-be-bim",
+"同学",
+"桌子上边有什么？",
+"Zhuōzi shàngbian yǒu shénme?",
+"Trên bàn có gì?"
+],
+[
+"av-be-trai",
+"明明",
+"有两只小熊猫。",
+"Yǒu liǎng zhī xiǎo xióngmāo.",
+"Có hai chú gấu trúc nhỏ."
+],
+[
+"av-be-bim",
+"同学",
+"你的猫呢？",
+"Nǐ de māo ne?",
+"Còn con mèo của bạn đâu?"
+],
+[
+"av-be-trai",
+"明明",
+"我的猫在椅子上边。",
+"Wǒ de māo zài yǐzi shàngbian.",
+"Mèo của mình ở trên ghế."
+]
+],
+"q": [
+"桌子上边有什么？",
+"Zhuōzi shàngbian yǒu shénme?",
+"Trên bàn có gì?",
+"两只熊猫",
+"Hai con gấu trúc."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"明明，你的房间里面有什么？",
+"Míngming, nǐ de fángjiān lǐmiàn yǒu shénme?",
+"有桌子和椅子。",
+"Yǒu zhuōzi hé yǐzi."
+],
+[
+"桌子上边有什么？",
+"Zhuōzi shàngbian yǒu shénme?",
+"有两只小熊猫。",
+"Yǒu liǎng zhī xiǎo xióngmāo."
+],
+[
+"你的猫呢？",
+"Nǐ de māo ne?",
+"我的猫在椅子上边。",
+"Wǒ de māo zài yǐzi shàngbian."
+]
+]
+},
+"tr": {
+"ten": "丁丁的房间 · Phòng của Đinh Đinh",
+"l": [
+{
+"canh": "Phòng của Đinh Đinh",
+"img": "🚪",
+"l": [
+[
+"av-co-giao",
+"",
+"这是丁丁的房间。",
+"Zhè shì Dīngding de fángjiān.",
+"Đây là phòng của Đinh Đinh."
+]
+]
+},
+{
+"canh": "Cặp trên bàn, bút trong cặp",
+"img": "🎒",
+"l": [
+[
+"av-co-giao",
+"",
+"桌子上边有书包，书包里面有铅笔。",
+"Zhuōzi shàngbian yǒu shūbāo, shūbāo lǐmiàn yǒu qiānbǐ.",
+"Trên bàn có cặp sách, trong cặp có bút chì."
+]
+]
+},
+{
+"canh": "Cún con nằm trên ghế",
+"img": "🐶",
+"l": [
+[
+"av-co-giao",
+"",
+"椅子上边有一只小狗。",
+"Yǐzi shàngbian yǒu yì zhī xiǎo gǒu.",
+"Trên ghế có một chú cún con."
+]
+]
+}
+]
+},
+"game": [
+[
+"Bút chì ở đâu?",
+"2 người · bút chì · cặp sách · bàn",
+"Một người đặt bút chì vào cặp hoặc đặt cặp lên bàn. Người kia nhìn rồi nói 铅笔在书包里面。 hoặc 书包在桌子上边。 Nói đúng chỗ thì đổi vai."
+],
+[
+"Đếm thú bông",
+"2 người · thú bông",
+"Xếp thú bông quanh phòng. Một người chỉ một chỗ, người kia đếm và nói, ví dụ 那儿有两只熊猫。 hoặc 房间里面有一只猫。 Đếm sai thì đếm lại thật to."
+]
+],
+"song": [
+[
+"A_7UsaB9oKU",
+"Where Is the Kitty? (小猫在哪里？)",
+"Little Fox Chinese",
+"0:59"
+]
+],
+"g": {
+"cau": [
+"Đồ vật ở trên, con nói:",
+"zh:书包在桌子上边。",
+"Đồ vật ở trong, con nói:",
+"zh:铅笔在书包里面。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "两",
+"chon": [
+"2️⃣",
+"🐼",
+"🐾"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "房间",
+"chon": [
+"🚪",
+"🪑",
+"🐼"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "椅子",
+"chon": [
+"2️⃣",
+"🐼",
+"🪑"
+],
+"dap": 2
+},
+{
+"t": "doc",
+"chu": "上边",
+"py": "shàngbian",
+"img": "⬆️",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "只",
+"py": "zhī",
+"img": "📥",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "房间里面有一（ ）猫。",
+"py": "Fángjiān lǐmiàn yǒu yì ( ) māo.",
+"chon": [
+[
+"个",
+"gè"
+],
+[
+"只",
+"zhī"
+],
+[
+"块",
+"kuài"
+]
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "桌子上边有什么？",
+"chon": [
+"一只猫",
+"两只熊猫",
+"两只狗"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "明明的猫在哪儿？",
+"chon": [
+"椅子上边",
+"桌子上边",
+"书包里面"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "书包在哪儿？",
+"chon": [
+"椅子上边",
+"桌子上边",
+"学校里面"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "椅子上边有什么？",
+"chon": [
+"一只猫",
+"两只狗",
+"一只狗"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"桌子",
+"zhuōzi"
+],
+[
+"椅子",
+"yǐzi"
+],
+[
+"房间",
+"fángjiān"
+],
+[
+"上边",
+"shàngbian"
+],
+[
+"里面",
+"lǐmiàn"
+],
+[
+"熊猫",
+"xióngmāo"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"只",
+"con"
+],
+[
+"上边",
+"bên trên"
+],
+[
+"熊猫",
+"gấu trúc"
+],
+[
+"房间",
+"căn phòng"
+],
+[
+"椅子",
+"cái ghế"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"房间里面有一（ ）猫。",
+[
+"个",
+"只",
+"块"
+],
+1
+],
+[
+"Câu nào đúng?",
+[
+"书包上边桌子在。",
+"书包在桌子上边。",
+"在书包桌子上边。"
+],
+1
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"那儿",
+"有",
+"两只",
+"熊猫"
+],
+"Ở đó có hai con gấu trúc."
+],
+[
+[
+"书包",
+"在",
+"桌子",
+"上边"
+],
+"Cặp sách ở trên bàn."
+],
+[
+[
+"铅笔",
+"在",
+"书包",
+"里面"
+],
+"Bút chì ở trong cặp sách."
+],
+[
+[
+"房间",
+"里面",
+"有",
+"一",
+"只",
+"猫"
+],
+"Trong phòng có một con mèo."
+]
+]
+}
+],
+"tv": [
+[
+"只",
+"zhī",
+"con"
+],
+[
+"两",
+"liǎng",
+"hai"
+],
+[
+"里",
+"lǐ",
+"里面 lǐmiàn"
+],
+[
+"边",
+"bian",
+"上边 shàngbian"
+],
+[
+"熊",
+"xióng",
+"熊猫 xióngmāo"
+],
+[
+"桌",
+"zhuō",
+"桌子 zhuōzi"
+],
+[
+"椅",
+"yǐ",
+"椅子 yǐzi"
+],
+[
+"房",
+"fáng",
+"房间 fángjiān"
+]
+]
+},
+"5": {
+"t": "你会不会做饭？ Bạn có biết nấu cơm không?",
+"icon": "🖍️",
+"muc": "Con biết hỏi bạn có biết làm gì không, khoe mình biết vẽ và nói mình cũng biết",
+"hd": [
+"Chào con! Hôm nay mình học bài năm của YCT hai: biết vẽ, biết nấu.",
+"Hỏi bạn có biết vẽ gấu trúc không, con nói:",
+"zh:你会不会画熊猫？",
+"Khoe mình biết vẽ mèo con, con nói:",
+"zh:我会画小猫。",
+"Con biết làm nhiều việc lắm, học xong khoe với cô nhé!"
+],
+"w": [
+[
+"会",
+"huì",
+"biết (làm gì)",
+"💪"
+],
+[
+"做",
+"zuò",
+"làm, nấu",
+"👩‍🍳"
+],
+[
+"画",
+"huà",
+"vẽ",
+"🖍️"
+],
+[
+"汉语",
+"Hànyǔ",
+"tiếng Trung",
+"🏮"
+],
+[
+"学习",
+"xuéxí",
+"học",
+"📚"
+],
+[
+"也",
+"yě",
+"cũng",
+"👫"
+]
+],
+"nhom": [
+[
+0,
+1,
+2,
+5
+],
+[
+3,
+4
+]
+],
+"cau": [
+[
+"你会不会画熊猫？",
+"Nǐ huì bu huì huà xióngmāo?",
+"Bạn có biết vẽ gấu trúc không?",
+"Hỏi bạn có biết vẽ không"
+],
+[
+"我会画小猫。",
+"Wǒ huì huà xiǎo māo.",
+"Mình biết vẽ mèo con.",
+"Khoe mình biết vẽ"
+],
+[
+"妈妈会做面条，我也会。",
+"Māma huì zuò miàntiáo, wǒ yě huì.",
+"Mẹ biết nấu mì, mình cũng biết.",
+"Mẹ biết làm, mình cũng biết"
+]
+],
+"vd": [
+[
+"我喜欢学习汉语。",
+"Wǒ xǐhuan xuéxí Hànyǔ.",
+"Mình thích học tiếng Trung."
+]
+],
+"ht": [
+{
+"canh": "Bạn biết vẽ, biết nấu cơm không?",
+"l": [
+[
+"av-be-trai",
+"同学",
+"小月，你会不会画画？",
+"Xiǎoyuè, nǐ huì bu huì huàhuà?",
+"Tiểu Nguyệt ơi, bạn có biết vẽ không?"
+],
+[
+"av-be-gai",
+"小月",
+"我会画画。我会画熊猫！",
+"Wǒ huì huàhuà. Wǒ huì huà xióngmāo!",
+"Mình biết vẽ. Mình biết vẽ gấu trúc đấy!"
+],
+[
+"av-be-trai",
+"同学",
+"我也会画熊猫。你会做饭吗？",
+"Wǒ yě huì huà xióngmāo. Nǐ huì zuò fàn ma?",
+"Mình cũng biết vẽ gấu trúc. Bạn có biết nấu cơm không?"
+],
+[
+"av-be-gai",
+"小月",
+"我不会做饭。我妈妈会做面条。",
+"Wǒ bú huì zuò fàn. Wǒ māma huì zuò miàntiáo.",
+"Mình không biết nấu cơm. Mẹ mình biết nấu mì."
+],
+[
+"av-be-trai",
+"同学",
+"你会说汉语吗？",
+"Nǐ huì shuō Hànyǔ ma?",
+"Bạn có biết nói tiếng Trung không?"
+],
+[
+"av-be-gai",
+"小月",
+"会，我在学习汉语。",
+"Huì, wǒ zài xuéxí Hànyǔ.",
+"Có, mình đang học tiếng Trung."
+]
+],
+"q": [
+"小月会做饭吗？",
+"Xiǎoyuè huì zuò fàn ma?",
+"Tiểu Nguyệt có biết nấu cơm không?",
+"不会",
+"Không biết."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"小月，你会不会画画？",
+"Xiǎoyuè, nǐ huì bu huì huàhuà?",
+"我会画画。",
+"Wǒ huì huàhuà."
+],
+[
+"你会做饭吗？",
+"Nǐ huì zuò fàn ma?",
+"我不会做饭。",
+"Wǒ bú huì zuò fàn."
+],
+[
+"你会说汉语吗？",
+"Nǐ huì shuō Hànyǔ ma?",
+"会，我在学习汉语。",
+"Huì, wǒ zài xuéxí Hànyǔ."
+]
+]
+},
+"tr": {
+"ten": "明明会画画 · Minh Minh biết vẽ",
+"l": [
+{
+"canh": "Biết tiếng Trung, biết vẽ",
+"img": "🖍️",
+"l": [
+[
+"av-co-giao",
+"",
+"明明会说汉语，他也会画画。",
+"Míngming huì shuō Hànyǔ, tā yě huì huàhuà.",
+"Minh Minh biết nói tiếng Trung, bạn ấy cũng biết vẽ."
+]
+]
+},
+{
+"canh": "Thích vẽ mèo con, cún con",
+"img": "🐱",
+"l": [
+[
+"av-co-giao",
+"",
+"他喜欢画小猫和小狗。",
+"Tā xǐhuan huà xiǎo māo hé xiǎo gǒu.",
+"Bạn ấy thích vẽ mèo con và cún con."
+]
+]
+},
+{
+"canh": "Không biết nấu cơm",
+"img": "🍚",
+"l": [
+[
+"av-co-giao",
+"",
+"他不会做饭。",
+"Tā bú huì zuò fàn.",
+"Bạn ấy không biết nấu cơm."
+]
+]
+}
+]
+},
+"game": [
+[
+"Họa sĩ nhí",
+"2 người · giấy · bút màu",
+"Một người hỏi 你会不会画熊猫？ Người kia vẽ thật nhanh trong một phút rồi đáp 我会！ Đổi vai, lần này vẽ mèo, vẽ xong nói 我会画小猫。 Cả nhà chọn bức đẹp nhất."
+],
+[
+"Mình cũng biết!",
+"2 người trở lên",
+"Một người làm động tác và nói mình biết làm gì, ví dụ 我会画小猫。 Ai cũng làm được thì giơ tay nói 我也会！ Ai không làm được thì lắc đầu. Lần lượt đổi người."
+]
+],
+"g": {
+"cau": [
+"Hỏi bạn có biết làm không, con nói:",
+"zh:你会不会画熊猫？",
+"Khoe mình biết làm, con nói:",
+"zh:我会画小猫。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "会",
+"chon": [
+"📚",
+"🏮",
+"💪"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "也",
+"chon": [
+"👫",
+"📚",
+"💪"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "画",
+"chon": [
+"👫",
+"📚",
+"🖍️"
+],
+"dap": 2
+},
+{
+"t": "doc",
+"chu": "做",
+"py": "zuò",
+"img": "👩‍🍳",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "汉语",
+"py": "Hànyǔ",
+"img": "🖍️",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "妈妈会做面条，我（ ）会。",
+"py": "Māma huì zuò miàntiáo, wǒ ( ) huì.",
+"chon": [
+[
+"很",
+"hěn"
+],
+[
+"不",
+"bù"
+],
+[
+"也",
+"yě"
+]
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "小月会做饭吗？",
+"chon": [
+"会",
+"不会",
+"也会"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "谁会做面条？",
+"chon": [
+"小月的妈妈",
+"小月",
+"小月的爸爸"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "明明喜欢画什么？",
+"chon": [
+"熊猫",
+"小猫和小狗",
+"小鸟"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "明明不会做什么？",
+"chon": [
+"画画",
+"说汉语",
+"做饭"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"会",
+"huì"
+],
+[
+"做",
+"zuò"
+],
+[
+"画",
+"huà"
+],
+[
+"汉语",
+"Hànyǔ"
+],
+[
+"学习",
+"xuéxí"
+],
+[
+"也",
+"yě"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"做",
+"làm"
+],
+[
+"也",
+"cũng"
+],
+[
+"会",
+"biết"
+],
+[
+"画",
+"vẽ"
+],
+[
+"学习",
+"học"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"Câu nào đúng?",
+[
+"你会画熊猫不会？",
+"你会不会画熊猫？",
+"你不会会画熊猫？"
+],
+1
+],
+[
+"妈妈会做面条，我（ ）会。",
+[
+"很",
+"不",
+"也"
+],
+2
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"明明",
+"喜欢",
+"学习",
+"汉语"
+],
+""
+],
+[
+[
+"你",
+"会",
+"不",
+"会",
+"画",
+"熊猫"
+],
+"Bạn có biết vẽ gấu trúc không?"
+],
+[
+[
+"我",
+"会",
+"画",
+"小",
+"猫"
+],
+"Mình biết vẽ mèo con."
+],
+[
+[
+"妈妈",
+"会",
+"做",
+"面条",
+"我",
+"也",
+"会"
+],
+"Mẹ biết nấu mì, mình cũng biết."
+]
+]
+}
+],
+"tv": [
+[
+"也",
+"yě",
+"cũng"
+],
+[
+"会",
+"huì",
+"biết"
+],
+[
+"做",
+"zuò",
+"làm"
+],
+[
+"画",
+"huà",
+"vẽ"
+],
+[
+"汉",
+"hàn",
+"汉语 Hànyǔ"
+],
+[
+"语",
+"yǔ",
+"汉语 Hànyǔ"
+],
+[
+"习",
+"xí",
+"学习 xuéxí"
+]
+]
+},
+"6": {
+"t": "包子多少钱一个？ Bánh bao bao nhiêu tiền một cái?",
+"icon": "🥟",
+"muc": "Con biết hỏi giá, nói giá tiền và nói mình muốn mua gì khi đi cửa hàng",
+"hd": [
+"Chào con! Hôm nay mình học bài sáu của YCT hai: đi mua đồ.",
+"Muốn hỏi giá bánh bao, con nói:",
+"zh:包子多少钱一个？",
+"Cô bán hàng trả lời:",
+"zh:三块钱一个。",
+"Lần sau đi chợ với mẹ, con thử hỏi giá nhé!"
+],
+"w": [
+[
+"包子",
+"bāozi",
+"bánh bao",
+"🥟"
+],
+[
+"多少",
+"duōshao",
+"bao nhiêu",
+"🔢"
+],
+[
+"钱",
+"qián",
+"tiền",
+"💰"
+],
+[
+"块",
+"kuài",
+"đồng (tiền)",
+"💵"
+],
+[
+"买",
+"mǎi",
+"mua",
+"w-mai"
+],
+[
+"茶",
+"chá",
+"trà",
+"🍵"
+],
+[
+"香蕉",
+"xiāngjiāo",
+"quả chuối",
+"🍌"
+],
+[
+"好吃",
+"hǎochī",
+"ngon",
+"😋"
+]
+],
+"nhom": [
+[
+0,
+5,
+6,
+7
+],
+[
+1,
+2,
+3,
+4
+]
+],
+"cau": [
+[
+"包子多少钱一个？",
+"Bāozi duōshao qián yí ge?",
+"Bánh bao bao nhiêu tiền một cái?",
+"Hỏi giá khi đi mua đồ"
+],
+[
+"三块钱一个。",
+"Sān kuài qián yí ge.",
+"Ba đồng một cái.",
+"Trả lời giá tiền"
+],
+[
+"我要买五个香蕉。",
+"Wǒ yào mǎi wǔ ge xiāngjiāo.",
+"Mình muốn mua năm quả chuối.",
+"Nói muốn mua gì, mua mấy cái"
+]
+],
+"vd": [
+[
+"这儿的包子很好吃。",
+"Zhèr de bāozi hěn hǎochī.",
+"Bánh bao ở đây rất ngon."
+]
+],
+"ht": [
+{
+"canh": "Mua bánh bao ở cửa hàng",
+"l": [
+[
+"av-be-trai",
+"小朋友",
+"你好！包子多少钱一个？",
+"Nǐ hǎo! Bāozi duōshao qián yí ge?",
+"Chào cô! Bánh bao bao nhiêu tiền một cái ạ?"
+],
+[
+"w-mama",
+"阿姨",
+"两块钱一个。",
+"Liǎng kuài qián yí ge.",
+"Hai đồng một cái."
+],
+[
+"av-be-trai",
+"小朋友",
+"我要买三个包子。",
+"Wǒ yào mǎi sān ge bāozi.",
+"Cháu muốn mua ba cái bánh bao."
+],
+[
+"w-mama",
+"阿姨",
+"好，六块钱。你要茶吗？",
+"Hǎo, liù kuài qián. Nǐ yào chá ma?",
+"Được, sáu đồng. Cháu có lấy trà không?"
+],
+[
+"av-be-trai",
+"小朋友",
+"不要，谢谢。香蕉多少钱？",
+"Bú yào, xièxie. Xiāngjiāo duōshao qián?",
+"Không ạ, cảm ơn cô. Chuối bao nhiêu tiền ạ?"
+],
+[
+"w-mama",
+"阿姨",
+"香蕉一块钱一个。",
+"Xiāngjiāo yí kuài qián yí ge.",
+"Chuối một đồng một quả."
+]
+],
+"q": [
+"包子多少钱一个？",
+"Bāozi duōshao qián yí ge?",
+"Bánh bao bao nhiêu tiền một cái?",
+"两块",
+"Hai đồng."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"包子多少钱一个？",
+"Bāozi duōshao qián yí ge?",
+"两块钱一个。",
+"Liǎng kuài qián yí ge."
+],
+[
+"你要茶吗？",
+"Nǐ yào chá ma?",
+"不要，谢谢。",
+"Bú yào, xièxie."
+],
+[
+"香蕉多少钱？",
+"Xiāngjiāo duōshao qián?",
+"香蕉一块钱一个。",
+"Xiāngjiāo yí kuài qián yí ge."
+]
+]
+},
+"tr": {
+"ten": "去商店 · Đi cửa hàng",
+"l": [
+{
+"canh": "Cùng mẹ đi cửa hàng",
+"img": "🛒",
+"l": [
+[
+"av-be-gai",
+"小月",
+"今天我和妈妈去商店。",
+"Jīntiān wǒ hé māma qù shāngdiàn.",
+"Hôm nay mình và mẹ đi cửa hàng."
+]
+]
+},
+{
+"canh": "Mua chuối và bánh bao",
+"img": "🍌",
+"l": [
+[
+"av-be-gai",
+"小月",
+"我们买了五个香蕉和两个包子。",
+"Wǒmen mǎi le wǔ ge xiāngjiāo hé liǎng ge bāozi.",
+"Tụi mình mua năm quả chuối và hai cái bánh bao."
+]
+]
+},
+{
+"canh": "Bánh bao ngon lắm",
+"img": "😋",
+"l": [
+[
+"av-be-gai",
+"小月",
+"这儿的包子很好吃，三块钱一个。",
+"Zhèr de bāozi hěn hǎochī, sān kuài qián yí ge.",
+"Bánh bao ở đây ngon lắm, ba đồng một cái."
+]
+]
+}
+]
+},
+"game": [
+[
+"Cửa hàng bánh bao",
+"2 người · giấy cắt làm tiền · đồ chơi",
+"Một người bán, một người mua. Người mua hỏi 包子多少钱一个？ Người bán đáp 三块钱一个。 Người mua nói 我要买五个香蕉。 rồi trả tiền giấy. Đổi vai."
+],
+[
+"Xếp đúng số chuối",
+"2 người · hạt đậu hoặc mẩu giấy",
+"Người mua nói 我要买五个香蕉。 (đổi số khác nhau). Người bán đếm và xếp đúng số hạt làm chuối ra bàn. Xếp đúng thì đổi vai, xếp sai thì đếm lại thật to."
+]
+],
+"g": {
+"cau": [
+"Hỏi giá một món đồ, con nói:",
+"zh:包子多少钱一个？",
+"Nói giá tiền, con nói:",
+"zh:三块钱一个。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "钱",
+"chon": [
+"💰",
+"🍌",
+"💵"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "多少",
+"chon": [
+"🍌",
+"🔢",
+"🍵"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "块",
+"chon": [
+"🍵",
+"🍌",
+"💵"
+],
+"dap": 2
+},
+{
+"t": "doc",
+"chu": "买",
+"py": "mǎi",
+"img": "w-mai",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "香蕉",
+"py": "xiāngjiāo",
+"img": "🔢",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "包子（ ）钱一个？",
+"py": "Bāozi ( ) qián yí ge?",
+"chon": [
+[
+"多少",
+"duōshao"
+],
+[
+"怎么",
+"zěnme"
+],
+[
+"什么",
+"shénme"
+]
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "包子多少钱一个？",
+"chon": [
+"一块",
+"两块",
+"六块"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "三个包子多少钱？",
+"chon": [
+"六块",
+"三块",
+"两块"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "他们买了几个香蕉？",
+"chon": [
+"两个",
+"五个",
+"三个"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "包子多少钱一个？",
+"chon": [
+"两块",
+"五块",
+"三块"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"钱",
+"qián"
+],
+[
+"好吃",
+"hǎochī"
+],
+[
+"多少",
+"duōshao"
+],
+[
+"块",
+"kuài"
+],
+[
+"包子",
+"bāozi"
+],
+[
+"香蕉",
+"xiāngjiāo"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"多少",
+"bao nhiêu"
+],
+[
+"钱",
+"tiền"
+],
+[
+"好吃",
+"ngon"
+],
+[
+"香蕉",
+"quả chuối"
+],
+[
+"茶",
+"trà"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"包子（ ）钱一个？",
+[
+"多少",
+"怎么",
+"什么"
+],
+0
+],
+[
+"Câu nào đúng?",
+[
+"我买要五个香蕉。",
+"我要买五个香蕉。",
+"我要五个买香蕉。"
+],
+1
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"这儿的",
+"包子",
+"很好吃"
+],
+"Bánh bao ở đây rất ngon."
+],
+[
+[
+"包子",
+"多少",
+"钱",
+"一",
+"个"
+],
+"Bánh bao bao nhiêu tiền một cái?"
+],
+[
+[
+"三",
+"块",
+"钱",
+"一",
+"个"
+],
+"Ba đồng một cái."
+],
+[
+[
+"我",
+"要",
+"买",
+"五",
+"个",
+"香蕉"
+],
+"Mình muốn mua năm quả chuối."
+]
+]
+}
+],
+"tv": [
+[
+"少",
+"shao",
+"多少 duōshao"
+],
+[
+"钱",
+"qián",
+"tiền"
+],
+[
+"块",
+"kuài",
+"đồng"
+],
+[
+"茶",
+"chá",
+"trà"
+],
+[
+"香",
+"xiāng",
+"香蕉 xiāngjiāo"
+],
+[
+"蕉",
+"jiāo",
+"香蕉 xiāngjiāo"
+]
+]
+},
+"7": {
+"t": "今天比昨天热。 Hôm nay nóng hơn hôm qua.",
+"icon": "⛅",
+"muc": "Con biết hỏi thời tiết, nói trời nóng, trời lạnh và so hôm nay với hôm qua",
+"hd": [
+"Chào con! Hôm nay mình học bài bảy của YCT hai: thời tiết.",
+"Hôm nay nóng hơn hôm qua, con nói:",
+"zh:今天比昨天热。",
+"Muốn biết ngày mai trời thế nào, con hỏi:",
+"zh:明天天气怎么样？",
+"Sáng mai con nhìn trời rồi kể cho cô nghe nhé!"
+],
+"w": [
+[
+"比",
+"bǐ",
+"so với, hơn",
+"⚖️"
+],
+[
+"昨天",
+"zuótiān",
+"hôm qua",
+"📅"
+],
+[
+"热",
+"rè",
+"nóng",
+"🔥"
+],
+[
+"冷",
+"lěng",
+"lạnh",
+"❄️"
+],
+[
+"天气",
+"tiānqì",
+"thời tiết",
+"⛅"
+],
+[
+"怎么样",
+"zěnmeyàng",
+"thế nào",
+"❓"
+],
+[
+"真",
+"zhēn",
+"thật, thật là",
+"w-zhen"
+]
+],
+"nhom": [
+[
+0,
+1,
+2,
+3
+],
+[
+4,
+5,
+6
+]
+],
+"cau": [
+[
+"今天比昨天热。",
+"Jīntiān bǐ zuótiān rè.",
+"Hôm nay nóng hơn hôm qua.",
+"So hôm nay với hôm qua"
+],
+[
+"明天天气怎么样？",
+"Míngtiān tiānqì zěnmeyàng?",
+"Thời tiết ngày mai thế nào?",
+"Hỏi thời tiết ngày mai"
+],
+[
+"明天很冷。",
+"Míngtiān hěn lěng.",
+"Ngày mai trời lạnh.",
+"Báo ngày mai trời lạnh"
+]
+],
+"vd": [
+[
+"今天天气真好！",
+"Jīntiān tiānqì zhēn hǎo!",
+"Hôm nay trời đẹp thật!"
+]
+],
+"ht": [
+{
+"canh": "Hôm nay, ngày mai trời thế nào?",
+"l": [
+[
+"av-be-bim",
+"同学",
+"大卫，今天天气怎么样？",
+"Dàwèi, jīntiān tiānqì zěnmeyàng?",
+"Đa-vít ơi, hôm nay thời tiết thế nào?"
+],
+[
+"av-be-kinh",
+"大卫",
+"今天很热！",
+"Jīntiān hěn rè!",
+"Hôm nay nóng lắm!"
+],
+[
+"av-be-bim",
+"同学",
+"是，今天比昨天热。",
+"Shì, jīntiān bǐ zuótiān rè.",
+"Ừ, hôm nay nóng hơn hôm qua."
+],
+[
+"av-be-kinh",
+"大卫",
+"明天天气怎么样？",
+"Míngtiān tiānqì zěnmeyàng?",
+"Ngày mai thời tiết thế nào?"
+],
+[
+"av-be-bim",
+"同学",
+"明天很冷。",
+"Míngtiān hěn lěng.",
+"Ngày mai lạnh lắm."
+],
+[
+"av-be-kinh",
+"大卫",
+"我不喜欢冷的天气。",
+"Wǒ bù xǐhuan lěng de tiānqì.",
+"Mình không thích trời lạnh."
+]
+],
+"q": [
+"今天天气怎么样？",
+"Jīntiān tiānqì zěnmeyàng?",
+"Hôm nay thời tiết thế nào?",
+"很热",
+"Rất nóng."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"大卫，今天天气怎么样？",
+"Dàwèi, jīntiān tiānqì zěnmeyàng?",
+"今天很热！",
+"Jīntiān hěn rè!"
+],
+[
+"明天天气怎么样？",
+"Míngtiān tiānqì zěnmeyàng?",
+"明天很冷。",
+"Míngtiān hěn lěng."
+]
+]
+},
+"tr": {
+"ten": "天气真好 · Trời đẹp quá",
+"l": [
+{
+"canh": "Hôm qua trời lạnh",
+"img": "❄️",
+"l": [
+[
+"av-be-trai",
+"丁丁",
+"昨天很冷。",
+"Zuótiān hěn lěng.",
+"Hôm qua trời lạnh."
+]
+]
+},
+{
+"canh": "Hôm nay trời đẹp, nóng hơn",
+"img": "☀️",
+"l": [
+[
+"av-be-trai",
+"丁丁",
+"今天天气真好，比昨天热。",
+"Jīntiān tiānqì zhēn hǎo, bǐ zuótiān rè.",
+"Hôm nay trời đẹp thật, nóng hơn hôm qua."
+]
+]
+},
+{
+"canh": "Mai đi chơi với bạn",
+"img": "🎈",
+"l": [
+[
+"av-be-trai",
+"丁丁",
+"明天我和朋友去玩。",
+"Míngtiān wǒ hé péngyou qù wán.",
+"Ngày mai mình đi chơi với bạn."
+]
+]
+}
+]
+},
+"game": [
+[
+"Bản tin thời tiết",
+"2 người · giấy vẽ mặt trời và bông tuyết",
+"Một người làm cô dẫn bản tin. Người kia hỏi 明天天气怎么样？ Người dẫn giơ tranh tuyết nói 明天很冷。 hoặc giơ tranh mặt trời nói 今天天气真好！ Đổi vai."
+],
+[
+"Cốc nào ấm hơn?",
+"2 người · một cốc nước ấm · một cốc nước mát",
+"Cốc ấm là hôm nay, cốc mát là hôm qua. Sờ hai cốc rồi nói đúng 今天比昨天热。 thì được một điểm. Đổi chỗ hai cốc, người kia chơi tiếp."
+]
+],
+"g": {
+"cau": [
+"So hai ngày với nhau, con nói:",
+"zh:今天比昨天热。",
+"Hỏi thời tiết, con nói:",
+"zh:明天天气怎么样？"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "天气",
+"chon": [
+"⛅",
+"❓",
+"w-zhen"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "比",
+"chon": [
+"📅",
+"⚖️",
+"❄️"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "昨天",
+"chon": [
+"📅",
+"⛅",
+"w-zhen"
+],
+"dap": 0
+},
+{
+"t": "doc",
+"chu": "热",
+"py": "rè",
+"img": "🔥",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "冷",
+"py": "lěng",
+"img": "📅",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "明天天气（ ）？",
+"py": "Míngtiān tiānqì ( )?",
+"chon": [
+[
+"多少",
+"duōshao"
+],
+[
+"怎么样",
+"zěnmeyàng"
+],
+[
+"几",
+"jǐ"
+]
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "今天天气怎么样？",
+"chon": [
+"很冷",
+"很热",
+"不热"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "明天天气怎么样？",
+"chon": [
+"很冷",
+"很热",
+"比今天热"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "昨天天气怎么样？",
+"chon": [
+"很冷",
+"很热",
+"真好"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "明天“我”和谁去玩？",
+"chon": [
+"妈妈",
+"同学",
+"朋友"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"热",
+"rè"
+],
+[
+"真",
+"zhēn"
+],
+[
+"昨天",
+"zuótiān"
+],
+[
+"天气",
+"tiānqì"
+],
+[
+"冷",
+"lěng"
+],
+[
+"比",
+"bǐ"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"冷",
+"lạnh"
+],
+[
+"热",
+"nóng"
+],
+[
+"昨天",
+"hôm qua"
+],
+[
+"真",
+"thật"
+],
+[
+"怎么样",
+"thế nào"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"Câu nào đúng?",
+[
+"今天比昨天热。",
+"今天热比昨天。",
+"比今天昨天热。"
+],
+0
+],
+[
+"明天天气（ ）？",
+[
+"多少",
+"怎么样",
+"几"
+],
+1
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"今天",
+"天气",
+"真好"
+],
+"Hôm nay trời đẹp thật!"
+],
+[
+[
+"今天",
+"比",
+"昨天",
+"热"
+],
+"Hôm nay nóng hơn hôm qua."
+],
+[
+[
+"明天",
+"天气",
+"怎么样"
+],
+"Thời tiết ngày mai thế nào?"
+],
+[
+[
+"明天",
+"很",
+"冷"
+],
+"Ngày mai trời lạnh."
+]
+]
+}
+],
+"tv": [
+[
+"比",
+"bǐ",
+"so với"
+],
+[
+"冷",
+"lěng",
+"lạnh"
+],
+[
+"热",
+"rè",
+"nóng"
+],
+[
+"气",
+"qì",
+"天气 tiānqì"
+],
+[
+"怎",
+"zěn",
+"怎么样 zěnmeyàng"
+],
+[
+"样",
+"yàng",
+"怎么样 zěnmeyàng"
+]
+]
+},
+"8": {
+"t": "马丁比我大三岁。 Martin lớn hơn mình ba tuổi.",
+"icon": "👫",
+"muc": "Con biết kể về em trai, em gái, so tuổi với em và khen em xinh",
+"hd": [
+"Chào con! Hôm nay mình học bài tám của YCT hai: em trai, em gái và bạn bè.",
+"Mình lớn hơn em gái ba tuổi, con nói:",
+"zh:我比妹妹大三岁。",
+"Muốn hỏi tên em trai của bạn, con nói:",
+"zh:你弟弟叫什么名字？",
+"Học xong, con kể cho cô nghe về em hay bạn thân của con nhé!"
+],
+"w": [
+[
+"弟弟",
+"dìdi",
+"em trai",
+"w-didi"
+],
+[
+"妹妹",
+"mèimei",
+"em gái",
+"w-meimei"
+],
+[
+"朋友",
+"péngyou",
+"bạn, bạn bè",
+"w-pengyou"
+],
+[
+"漂亮",
+"piàoliang",
+"đẹp, xinh",
+"🌸"
+],
+[
+"名字",
+"míngzi",
+"tên",
+"w-mingzi"
+],
+[
+"觉得",
+"juéde",
+"thấy, cảm thấy",
+"🤔"
+]
+],
+"nhom": [
+[
+0,
+1,
+2
+],
+[
+3,
+4,
+5
+]
+],
+"cau": [
+[
+"我比妹妹大三岁。",
+"Wǒ bǐ mèimei dà sān suì.",
+"Mình lớn hơn em gái ba tuổi.",
+"So tuổi mình với em"
+],
+[
+"你弟弟叫什么名字？",
+"Nǐ dìdi jiào shénme míngzi?",
+"Em trai bạn tên là gì?",
+"Hỏi tên em trai của bạn"
+],
+[
+"小猫和小狗是好朋友。",
+"Xiǎo māo hé xiǎo gǒu shì hǎo péngyou.",
+"Mèo con và cún con là bạn thân.",
+"Kể ai là bạn thân của nhau"
+]
+],
+"vd": [
+[
+"我觉得妹妹很漂亮。",
+"Wǒ juéde mèimei hěn piàoliang.",
+"Mình thấy em gái rất xinh."
+]
+],
+"ht": [
+{
+"canh": "Hỏi về em gái của Đinh Đinh",
+"l": [
+[
+"av-be-bim",
+"同学",
+"丁丁，你有弟弟妹妹吗？",
+"Dīngding, nǐ yǒu dìdi mèimei ma?",
+"Đinh Đinh ơi, bạn có em trai em gái không?"
+],
+[
+"av-be-trai",
+"丁丁",
+"我有一个妹妹。",
+"Wǒ yǒu yí ge mèimei.",
+"Mình có một em gái."
+],
+[
+"av-be-bim",
+"同学",
+"她几岁？",
+"Tā jǐ suì?",
+"Em ấy mấy tuổi?"
+],
+[
+"av-be-trai",
+"丁丁",
+"她五岁。我比她大三岁。",
+"Tā wǔ suì. Wǒ bǐ tā dà sān suì.",
+"Em ấy năm tuổi. Mình lớn hơn em ấy ba tuổi."
+],
+[
+"av-be-bim",
+"同学",
+"我觉得你妹妹很漂亮！",
+"Wǒ juéde nǐ mèimei hěn piàoliang!",
+"Mình thấy em gái bạn xinh lắm!"
+],
+[
+"av-be-trai",
+"丁丁",
+"谢谢！她是我的好朋友。",
+"Xièxie! Tā shì wǒ de hǎo péngyou.",
+"Cảm ơn bạn! Em ấy là bạn thân của mình."
+]
+],
+"q": [
+"丁丁的妹妹几岁？",
+"Dīngding de mèimei jǐ suì?",
+"Em gái của Đinh Đinh mấy tuổi?",
+"五岁",
+"Năm tuổi."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"丁丁，你有弟弟妹妹吗？",
+"Dīngding, nǐ yǒu dìdi mèimei ma?",
+"我有一个妹妹。",
+"Wǒ yǒu yí ge mèimei."
+],
+[
+"她几岁？",
+"Tā jǐ suì?",
+"她五岁。",
+"Tā wǔ suì."
+]
+]
+},
+"tr": {
+"ten": "弟弟丁丁 · Em trai Đinh Đinh",
+"l": [
+{
+"canh": "Minh Minh có em trai",
+"img": "👦",
+"l": [
+[
+"av-co-giao",
+"",
+"明明有一个弟弟，名字叫丁丁。",
+"Míngming yǒu yí ge dìdi, míngzi jiào Dīngding.",
+"Minh Minh có một em trai, tên là Đinh Đinh."
+]
+]
+},
+{
+"canh": "Đinh Đinh sáu tuổi",
+"img": "🎂",
+"l": [
+[
+"av-co-giao",
+"",
+"丁丁六岁，明明比他大两岁。",
+"Dīngding liù suì, Míngming bǐ tā dà liǎng suì.",
+"Đinh Đinh sáu tuổi, Minh Minh lớn hơn em hai tuổi."
+]
+]
+},
+{
+"canh": "Hai anh em là bạn thân",
+"img": "🤝",
+"l": [
+[
+"av-co-giao",
+"",
+"明明觉得弟弟很好，他们是好朋友。",
+"Míngming juéde dìdi hěn hǎo, tāmen shì hǎo péngyou.",
+"Minh Minh thấy em trai rất ngoan, hai anh em là bạn thân."
+]
+]
+}
+]
+},
+"game": [
+[
+"Xem ảnh gia đình",
+"2 người trở lên · ảnh gia đình",
+"Một người chỉ ảnh và hỏi 你弟弟叫什么名字？ (hoặc hỏi về 妹妹). Người kia nói tên rồi so tuổi, ví dụ 我比妹妹大三岁。 Nói đúng thì đổi vai."
+],
+[
+"Đôi bạn thú bông",
+"2 người · thú bông",
+"Mỗi người chọn một thú bông làm em và khen 我觉得妹妹很漂亮。 Đặt hai thú bông cạnh nhau rồi nói 小猫和小狗是好朋友。 Ai nói to, rõ được một ngôi sao."
+]
+],
+"song": [
+[
+"ngOM7skqjjo",
+"How Old Are You? (你几岁？)",
+"Little Fox Chinese",
+"0:50"
+],
+[
+"iPvYsKAgsM0",
+"我的家人 (The Family)",
+"Little Fox Chinese",
+"1:54"
+]
+],
+"g": {
+"cau": [
+"So tuổi với em, con nói:",
+"zh:我比妹妹大三岁。",
+"Hỏi tên em của bạn, con nói:",
+"zh:你弟弟叫什么名字？"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "弟弟",
+"chon": [
+"w-didi",
+"🤔",
+"w-pengyou"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "朋友",
+"chon": [
+"w-mingzi",
+"🌸",
+"w-pengyou"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "觉得",
+"chon": [
+"w-meimei",
+"w-mingzi",
+"🤔"
+],
+"dap": 2
+},
+{
+"t": "doc",
+"chu": "名字",
+"py": "míngzi",
+"img": "w-mingzi",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "妹妹",
+"py": "mèimei",
+"img": "🌸",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "大卫比我大三（ ）。",
+"py": "Dàwèi bǐ wǒ dà sān ( ).",
+"chon": [
+[
+"岁",
+"suì"
+],
+[
+"年",
+"nián"
+],
+[
+"点",
+"diǎn"
+]
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "丁丁的妹妹几岁？",
+"chon": [
+"三岁",
+"八岁",
+"五岁"
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "丁丁几岁？",
+"chon": [
+"八岁",
+"五岁",
+"三岁"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "明明的弟弟叫什么名字？",
+"chon": [
+"大卫",
+"丁丁",
+"小月"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "明明几岁？",
+"chon": [
+"六岁",
+"两岁",
+"八岁"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"弟弟",
+"dìdi"
+],
+[
+"妹妹",
+"mèimei"
+],
+[
+"朋友",
+"péngyou"
+],
+[
+"漂亮",
+"piàoliang"
+],
+[
+"名字",
+"míngzi"
+],
+[
+"觉得",
+"juéde"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"名字",
+"tên"
+],
+[
+"弟弟",
+"em trai"
+],
+[
+"漂亮",
+"đẹp"
+],
+[
+"觉得",
+"thấy"
+],
+[
+"朋友",
+"bạn"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"大卫比我大三（ ）。",
+[
+"岁",
+"年",
+"点"
+],
+0
+],
+[
+"Câu nào đúng?",
+[
+"我觉得很漂亮妹妹。",
+"觉得我妹妹很漂亮。",
+"我觉得妹妹很漂亮。"
+],
+2
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"你弟弟",
+"叫",
+"什么",
+"名字"
+],
+"Em trai bạn tên là gì?"
+],
+[
+[
+"我",
+"比",
+"妹妹",
+"大",
+"三",
+"岁"
+],
+"Mình lớn hơn em gái ba tuổi."
+],
+[
+[
+"你",
+"弟弟",
+"叫",
+"什么",
+"名字"
+],
+"Em trai bạn tên là gì?"
+],
+[
+[
+"我",
+"觉得",
+"妹妹",
+"很",
+"漂亮"
+],
+"Mình thấy em gái rất xinh."
+]
+]
+}
+],
+"tv": [
+[
+"漂",
+"piào",
+"漂亮 piàoliang"
+],
+[
+"亮",
+"liang",
+"漂亮 piàoliang"
+],
+[
+"得",
+"de",
+"觉得 juéde"
+]
+]
+},
+"9": {
+"t": "你今天做什么了？ Hôm nay bạn đã làm gì?",
+"icon": "📺",
+"muc": "Con biết hỏi và kể hôm nay đã làm gì, nói việc mình không làm",
+"hd": [
+"Chào con! Hôm nay mình học bài chín của YCT hai: hôm nay con đã làm gì.",
+"Muốn hỏi bạn hôm nay đã làm gì, con nói:",
+"zh:你今天做什么了？",
+"Kể mình đã sang nhà bạn chơi, con nói:",
+"zh:我去朋友家玩了。",
+"Tối nay con kể cho bố mẹ nghe hôm nay con làm gì nhé!"
+],
+"w": [
+[
+"了",
+"le",
+"rồi, đã (việc đã xong)",
+"✅"
+],
+[
+"没有",
+"méiyǒu",
+"không, chưa (làm)",
+"❌"
+],
+[
+"玩",
+"wán",
+"chơi",
+"🎈"
+],
+[
+"电视",
+"diànshì",
+"tivi",
+"📺"
+],
+[
+"打电话",
+"dǎ diànhuà",
+"gọi điện thoại",
+"📞"
+]
+],
+"nhom": [
+[
+0,
+1
+],
+[
+2,
+3,
+4
+]
+],
+"cau": [
+[
+"你今天做什么了？",
+"Nǐ jīntiān zuò shénme le?",
+"Hôm nay bạn đã làm gì?",
+"Hỏi bạn hôm nay đã làm gì"
+],
+[
+"我去朋友家玩了。",
+"Wǒ qù péngyou jiā wán le.",
+"Mình đã đến nhà bạn chơi.",
+"Kể mình đã sang nhà bạn chơi"
+],
+[
+"我昨天没有看电视。",
+"Wǒ zuótiān méiyǒu kàn diànshì.",
+"Hôm qua mình không xem tivi.",
+"Kể việc hôm qua mình không làm"
+]
+],
+"vd": [
+[
+"妈妈在打电话。",
+"Māma zài dǎ diànhuà.",
+"Mẹ đang gọi điện thoại."
+]
+],
+"ht": [
+{
+"canh": "Hôm nay, hôm qua bạn làm gì?",
+"l": [
+[
+"av-be-kinh",
+"大卫",
+"明明，你今天做什么了？",
+"Míngming, nǐ jīntiān zuò shénme le?",
+"Minh Minh ơi, hôm nay bạn đã làm gì?"
+],
+[
+"av-be-trai",
+"明明",
+"我去小月家玩了。大卫，你呢？",
+"Wǒ qù Xiǎoyuè jiā wán le. Dàwèi, nǐ ne?",
+"Mình sang nhà Tiểu Nguyệt chơi. Còn bạn, Đa-vít?"
+],
+[
+"av-be-kinh",
+"大卫",
+"我在家看电视了。",
+"Wǒ zài jiā kàn diànshì le.",
+"Mình ở nhà xem ti vi."
+],
+[
+"av-be-trai",
+"明明",
+"你昨天看电视了吗？",
+"Nǐ zuótiān kàn diànshì le ma?",
+"Hôm qua bạn có xem ti vi không?"
+],
+[
+"av-be-kinh",
+"大卫",
+"没有。昨天我和妈妈去商店了。",
+"Méiyǒu. Zuótiān wǒ hé māma qù shāngdiàn le.",
+"Không. Hôm qua mình đi cửa hàng với mẹ."
+]
+],
+"q": [
+"明明今天去哪儿玩了？",
+"Míngming jīntiān qù nǎr wán le?",
+"Hôm nay Minh Minh đi chơi ở đâu?",
+"小月家",
+"Nhà Tiểu Nguyệt."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"明明，你今天做什么了？",
+"Míngming, nǐ jīntiān zuò shénme le?",
+"我去小月家玩了。",
+"Wǒ qù Xiǎoyuè jiā wán le."
+],
+[
+"大卫，你呢？",
+"Dàwèi, nǐ ne?",
+"我在家看电视了。",
+"Wǒ zài jiā kàn diànshì le."
+],
+[
+"你昨天看电视了吗？",
+"Nǐ zuótiān kàn diànshì le ma?",
+"没有。",
+"Méiyǒu."
+]
+]
+},
+"tr": {
+"ten": "星期六 · Ngày thứ Bảy",
+"l": [
+{
+"canh": "Hôm nay là thứ Bảy",
+"img": "📅",
+"l": [
+[
+"av-be-trai",
+"明明",
+"今天是星期六。",
+"Jīntiān shì xīngqīliù.",
+"Hôm nay là thứ Bảy."
+]
+]
+},
+{
+"canh": "Chơi ở nhà với em trai",
+"img": "🏠",
+"l": [
+[
+"av-be-trai",
+"明明",
+"早上我和弟弟在家玩了，没有去学校。",
+"Zǎoshang wǒ hé dìdi zài jiā wán le, méiyǒu qù xuéxiào.",
+"Buổi sáng mình và em trai chơi ở nhà, không đi học."
+]
+]
+},
+{
+"canh": "Bố gọi điện, mình xem ti vi",
+"img": "📺",
+"l": [
+[
+"av-be-trai",
+"明明",
+"晚上爸爸打电话了，我们看电视了。",
+"Wǎnshang bàba dǎ diànhuà le, wǒmen kàn diànshì le.",
+"Buổi tối bố gọi điện thoại, còn tụi mình xem ti vi."
+]
+]
+}
+]
+},
+"game": [
+[
+"Phóng viên nhí",
+"2 người · chai nhỏ làm micro",
+"Một người làm phóng viên, cầm micro hỏi 你今天做什么了？ Người kia kể, ví dụ 我去朋友家玩了。 Hỏi thêm 你昨天看电视了吗？ Người kia đáp thật. Đổi vai."
+],
+[
+"Đoán việc mẹ làm",
+"2 người trở lên",
+"Một người giả làm mẹ: gọi điện, xem ti vi hoặc nấu cơm, không nói gì. Người kia đoán và nói, ví dụ 妈妈在打电话。 Đoán đúng thì đổi vai."
+]
+],
+"g": {
+"cau": [
+"Hỏi việc bạn đã làm, con nói:",
+"zh:你今天做什么了？",
+"Kể việc mình đã làm, con nói:",
+"zh:我去朋友家玩了。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "没有",
+"chon": [
+"📺",
+"❌",
+"📞"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "打电话",
+"chon": [
+"❌",
+"✅",
+"📞"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "玩",
+"chon": [
+"📺",
+"📞",
+"🎈"
+],
+"dap": 2
+},
+{
+"t": "doc",
+"chu": "电视",
+"py": "diànshì",
+"img": "📺",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "了",
+"py": "le",
+"img": "📺",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "你今天做什么（ ）？",
+"py": "Nǐ jīntiān zuò shénme ( )?",
+"chon": [
+[
+"吗",
+"ma"
+],
+[
+"呢",
+"ne"
+],
+[
+"了",
+"le"
+]
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "明明今天去哪儿玩了？",
+"chon": [
+"大卫家",
+"小月家",
+"商店"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "大卫今天做什么了？",
+"chon": [
+"去商店了",
+"去小月家了",
+"看电视了"
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "今天“我”去学校了吗？",
+"chon": [
+"没有",
+"去了",
+"去商店了"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "晚上谁打电话了？",
+"chon": [
+"妈妈",
+"弟弟",
+"爸爸"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"了",
+"le"
+],
+[
+"没有",
+"méiyǒu"
+],
+[
+"玩",
+"wán"
+],
+[
+"电视",
+"diànshì"
+],
+[
+"打电话",
+"dǎ diànhuà"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"了",
+"rồi"
+],
+[
+"没有",
+"không"
+],
+[
+"玩",
+"chơi"
+],
+[
+"电视",
+"tivi"
+],
+[
+"打电话",
+"gọi điện thoại"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"你今天做什么（ ）？",
+[
+"吗",
+"呢",
+"了"
+],
+2
+],
+[
+"Câu nào đúng?",
+[
+"我昨天没有看电视。",
+"我昨天没有看电视了。",
+"我昨天看没有电视。"
+],
+0
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"妈妈",
+"在",
+"打电话"
+],
+"Mẹ đang gọi điện thoại."
+],
+[
+[
+"你",
+"今天",
+"做",
+"什么",
+"了"
+],
+"Hôm nay bạn đã làm gì?"
+],
+[
+[
+"我",
+"去",
+"朋友",
+"家",
+"玩",
+"了"
+],
+"Mình đã đến nhà bạn chơi."
+],
+[
+[
+"我",
+"昨天",
+"没有",
+"看",
+"电视"
+],
+"Hôm qua mình không xem tivi."
+]
+]
+}
+],
+"tv": [
+[
+"了",
+"le",
+"rồi"
+],
+[
+"电",
+"diàn",
+"电视 diànshì"
+],
+[
+"玩",
+"wán",
+"chơi"
+],
+[
+"视",
+"shì",
+"电视 diànshì"
+],
+[
+"打",
+"dǎ",
+"打电话 dǎ diànhuà"
+]
+]
+},
+"10": {
+"t": "你怎么了？ Bạn sao thế?",
+"icon": "🏥",
+"muc": "Con biết hỏi bạn sao thế, nói chỗ bị đau và nói phải đi khám bác sĩ",
+"hd": [
+"Chào con! Hôm nay mình học bài mười của YCT hai: bị đau thì đi khám.",
+"Thấy bạn buồn hay bị đau, con hỏi:",
+"zh:你怎么了？",
+"Bị ốm cần đi bệnh viện, con nói:",
+"zh:我要去医院。",
+"Biết hỏi han khi bạn bị đau, con ngoan lắm đó!"
+],
+"w": [
+[
+"怎么",
+"zěnme",
+"sao, thế nào",
+"❓"
+],
+[
+"医生",
+"yīshēng",
+"bác sĩ",
+"w-yisheng"
+],
+[
+"医院",
+"yīyuàn",
+"bệnh viện",
+"w-yiyuan"
+],
+[
+"脚",
+"jiǎo",
+"bàn chân",
+"🦶"
+]
+],
+"nhom": [
+[
+0,
+3
+],
+[
+1,
+2
+]
+],
+"cau": [
+[
+"你怎么了？",
+"Nǐ zěnme le?",
+"Bạn sao thế?",
+"Thấy bạn buồn hay bị đau"
+],
+[
+"我要去医院。",
+"Wǒ yào qù yīyuàn.",
+"Mình phải đi bệnh viện.",
+"Bị ốm, cần đi bệnh viện"
+],
+[
+"弟弟要去看医生。",
+"Dìdi yào qù kàn yīshēng.",
+"Em trai phải đi khám bác sĩ.",
+"Em bị ốm, phải đi khám"
+]
+],
+"vd": [
+[
+"我有两只脚。",
+"Wǒ yǒu liǎng zhī jiǎo.",
+"Mình có hai bàn chân."
+]
+],
+"ht": [
+{
+"canh": "Đinh Đinh bị đau chân",
+"l": [
+[
+"av-be-gai",
+"小月",
+"丁丁，你怎么了？",
+"Dīngding, nǐ zěnme le?",
+"Đinh Đinh ơi, bạn sao thế?"
+],
+[
+"av-be-trai",
+"丁丁",
+"我的脚不好。",
+"Wǒ de jiǎo bù hǎo.",
+"Chân mình bị đau."
+],
+[
+"av-be-gai",
+"小月",
+"你要去医院吗？",
+"Nǐ yào qù yīyuàn ma?",
+"Bạn có cần đi bệnh viện không?"
+],
+[
+"av-be-trai",
+"丁丁",
+"要，我要去看医生。",
+"Yào, wǒ yào qù kàn yīshēng.",
+"Có, mình phải đi khám bác sĩ."
+],
+[
+"av-be-gai",
+"小月",
+"我和你去医院。",
+"Wǒ hé nǐ qù yīyuàn.",
+"Mình đi bệnh viện với bạn nhé."
+],
+[
+"av-be-trai",
+"丁丁",
+"谢谢你，小月！",
+"Xièxie nǐ, Xiǎoyuè!",
+"Cảm ơn bạn, Tiểu Nguyệt!"
+]
+],
+"q": [
+"丁丁怎么了？",
+"Dīngding zěnme le?",
+"Đinh Đinh bị làm sao?",
+"脚不好",
+"Chân bị đau."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"丁丁，你怎么了？",
+"Dīngding, nǐ zěnme le?",
+"我的脚不好。",
+"Wǒ de jiǎo bù hǎo."
+],
+[
+"你要去医院吗？",
+"Nǐ yào qù yīyuàn ma?",
+"要，我要去看医生。",
+"Yào, wǒ yào qù kàn yīshēng."
+]
+]
+},
+"tr": {
+"ten": "大卫的妹妹 · Em gái Đa-vít",
+"l": [
+{
+"canh": "Em gái Đa-vít không vui",
+"img": "😟",
+"l": [
+[
+"av-co-giao",
+"",
+"今天大卫的妹妹不高兴。",
+"Jīntiān Dàwèi de mèimei bù gāoxìng.",
+"Hôm nay em gái của Đa-vít không vui."
+]
+]
+},
+{
+"canh": "Chân em bị đau",
+"img": "🦶",
+"l": [
+[
+"av-co-giao",
+"",
+"她的脚不好。",
+"Tā de jiǎo bù hǎo.",
+"Chân em ấy bị đau."
+]
+]
+},
+{
+"canh": "Bố đưa em đi khám",
+"img": "🏥",
+"l": [
+[
+"av-co-giao",
+"",
+"爸爸和她去医院看医生了。",
+"Bàba hé tā qù yīyuàn kàn yīshēng le.",
+"Bố đưa em đi bệnh viện khám bác sĩ."
+]
+]
+}
+]
+},
+"game": [
+[
+"Bác sĩ nhí",
+"2 người · khăn nhỏ · đồ chơi bác sĩ",
+"Một người ôm chân kêu đau. Người kia hỏi 你怎么了？ Người đau chỉ chân rồi nói 我要去医院。 Người kia làm bác sĩ, băng chân thật nhẹ nhàng. Đổi vai."
+],
+[
+"Đưa em đi khám",
+"2 người trở lên · thú bông",
+"Thú bông làm em trai bị ốm. Một người hỏi thú bông 你怎么了？ rồi gọi to 弟弟要去看医生！ Cả nhà bế em ra ghế sofa làm bệnh viện. Ai nói đúng câu thì được làm bác sĩ."
+]
+],
+"g": {
+"cau": [
+"Hỏi bạn sao thế, con nói:",
+"zh:你怎么了？",
+"Cần đi bệnh viện, con nói:",
+"zh:我要去医院。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "医院",
+"chon": [
+"w-yiyuan",
+"w-yisheng",
+"❓"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "怎么",
+"chon": [
+"🦶",
+"❓",
+"w-yiyuan"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "脚",
+"chon": [
+"🦶",
+"w-yiyuan",
+"w-yisheng"
+],
+"dap": 0
+},
+{
+"t": "doc",
+"chu": "医生",
+"py": "yīshēng",
+"img": "w-yisheng",
+"dung": true
+},
+{
+"t": "dien",
+"chu": "弟弟（ ）去看医生。",
+"py": "Dìdi ( ) qù kàn yīshēng.",
+"chon": [
+[
+"很",
+"hěn"
+],
+[
+"要",
+"yào"
+],
+[
+"的",
+"de"
+]
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "丁丁怎么了？",
+"chon": [
+"脚不好",
+"眼睛不好",
+"不高兴"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "丁丁要去哪儿？",
+"chon": [
+"学校",
+"商店",
+"医院"
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "妹妹怎么了？",
+"chon": [
+"头发长",
+"脚不好",
+"不吃饭"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "谁和妹妹去医院？",
+"chon": [
+"爸爸",
+"妈妈",
+"大卫"
+],
+"dap": 0
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"怎么",
+"zěnme"
+],
+[
+"医生",
+"yīshēng"
+],
+[
+"医院",
+"yīyuàn"
+],
+[
+"脚",
+"jiǎo"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"怎么",
+"sao"
+],
+[
+"医生",
+"bác sĩ"
+],
+[
+"医院",
+"bệnh viện"
+],
+[
+"脚",
+"bàn chân"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"Câu nào đúng?",
+[
+"你了怎么？",
+"你怎么了？",
+"怎么你了？"
+],
+1
+],
+[
+"弟弟（ ）去看医生。",
+[
+"很",
+"要",
+"的"
+],
+1
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"丁丁",
+"有",
+"两只",
+"脚"
+],
+""
+],
+[
+[
+"你",
+"怎么",
+"了"
+],
+"Bạn sao thế?"
+],
+[
+[
+"我",
+"要",
+"去",
+"医院"
+],
+"Mình phải đi bệnh viện."
+],
+[
+[
+"弟弟",
+"要",
+"去",
+"看",
+"医生"
+],
+"Em trai phải đi khám bác sĩ."
+]
+]
+}
+],
+"tv": [
+[
+"脚",
+"jiǎo",
+"bàn chân"
+]
+]
+},
+"11": {
+"t": "我来北京一年了。 Mình đến Bắc Kinh được một năm rồi.",
+"icon": "🏙️",
+"muc": "Con biết kể mình đến một nơi được bao lâu rồi và đọc năm bằng tiếng Trung",
+"hd": [
+"Chào con! Hôm nay mình học bài mười một của YCT hai: đến đây bao lâu rồi.",
+"Kể mình đến Bắc Kinh được một năm rồi, con nói:",
+"zh:我来北京一年了。",
+"Giới thiệu cả nhóm là học sinh, con nói:",
+"zh:我们是学生。",
+"Con học tiếng Trung được bao lâu rồi? Kể cô nghe nhé!"
+],
+"w": [
+[
+"来",
+"lái",
+"đến, tới",
+"🛬"
+],
+[
+"北京",
+"Běijīng",
+"Bắc Kinh",
+"🏙️"
+],
+[
+"年",
+"nián",
+"năm",
+"🗓️"
+],
+[
+"零",
+"líng",
+"số 0",
+"0️⃣"
+],
+[
+"学生",
+"xuésheng",
+"học sinh",
+"🧑‍🎓"
+]
+],
+"nhom": [
+[
+0,
+1,
+4
+],
+[
+2,
+3
+]
+],
+"cau": [
+[
+"我来北京一年了。",
+"Wǒ lái Běijīng yì nián le.",
+"Mình đến Bắc Kinh được một năm rồi.",
+"Kể mình đến đây bao lâu rồi"
+],
+[
+"我们是学生。",
+"Wǒmen shì xuésheng.",
+"Chúng mình là học sinh.",
+"Giới thiệu cả nhóm là học sinh"
+],
+[
+"现在是二零二六年。",
+"Xiànzài shì èr líng èr liù nián.",
+"Bây giờ là năm 2026.",
+"Nói năm nay là năm nào"
+]
+],
+"vd": [
+[
+"我学习汉语两年了。",
+"Wǒ xuéxí Hànyǔ liǎng nián le.",
+"Mình học tiếng Trung được hai năm rồi."
+]
+],
+"ht": [
+{
+"canh": "Đa-vít học ở Bắc Kinh",
+"l": [
+[
+"av-be-bim",
+"同学",
+"大卫，你来北京几年了？",
+"Dàwèi, nǐ lái Běijīng jǐ nián le?",
+"Đa-vít ơi, bạn đến Bắc Kinh được mấy năm rồi?"
+],
+[
+"av-be-kinh",
+"大卫",
+"我来北京两年了。",
+"Wǒ lái Běijīng liǎng nián le.",
+"Mình đến Bắc Kinh được hai năm rồi."
+],
+[
+"av-be-bim",
+"同学",
+"你是学生吗？",
+"Nǐ shì xuésheng ma?",
+"Bạn là học sinh à?"
+],
+[
+"av-be-kinh",
+"大卫",
+"是，我是学生。我在北京学习汉语。",
+"Shì, wǒ shì xuésheng. Wǒ zài Běijīng xuéxí Hànyǔ.",
+"Ừ, mình là học sinh. Mình học tiếng Trung ở Bắc Kinh."
+],
+[
+"av-be-bim",
+"同学",
+"你觉得北京怎么样？",
+"Nǐ juéde Běijīng zěnmeyàng?",
+"Bạn thấy Bắc Kinh thế nào?"
+],
+[
+"av-be-kinh",
+"大卫",
+"北京很大，我很喜欢。",
+"Běijīng hěn dà, wǒ hěn xǐhuan.",
+"Bắc Kinh rộng lắm, mình rất thích."
+]
+],
+"q": [
+"大卫来北京几年了？",
+"Dàwèi lái Běijīng jǐ nián le?",
+"Đa-vít đến Bắc Kinh được mấy năm rồi?",
+"两年",
+"Hai năm."
+]
+}
+],
+"noi": {
+"de": "Nối câu hỏi với câu trả lời",
+"cap": [
+[
+"大卫，你来北京几年了？",
+"Dàwèi, nǐ lái Běijīng jǐ nián le?",
+"我来北京两年了。",
+"Wǒ lái Běijīng liǎng nián le."
+],
+[
+"你是学生吗？",
+"Nǐ shì xuésheng ma?",
+"是，我是学生。",
+"Shì, wǒ shì xuésheng."
+],
+[
+"你觉得北京怎么样？",
+"Nǐ juéde Běijīng zěnmeyàng?",
+"北京很大，我很喜欢。",
+"Běijīng hěn dà, wǒ hěn xǐhuan."
+]
+]
+},
+"tr": {
+"ten": "小月来北京 · Tiểu Nguyệt đến Bắc Kinh",
+"l": [
+{
+"canh": "Tiểu Nguyệt là học sinh",
+"img": "👧",
+"l": [
+[
+"av-co-giao",
+"",
+"小月是中国人，她是学生。",
+"Xiǎoyuè shì Zhōngguó rén, tā shì xuésheng.",
+"Tiểu Nguyệt là người Trung Quốc, bạn ấy là học sinh."
+]
+]
+},
+{
+"canh": "Bạn ấy đến Bắc Kinh",
+"img": "🛬",
+"l": [
+[
+"av-co-giao",
+"",
+"二零二四年，她来北京了。",
+"Èr líng èr sì nián, tā lái Běijīng le.",
+"Năm 2024, bạn ấy đến Bắc Kinh."
+]
+]
+},
+{
+"canh": "Rất thích Bắc Kinh",
+"img": "🏙️",
+"l": [
+[
+"av-co-giao",
+"",
+"她来北京两年了，她很喜欢北京。",
+"Tā lái Běijīng liǎng nián le, tā hěn xǐhuan Běijīng.",
+"Bạn ấy đến Bắc Kinh được hai năm rồi, bạn ấy rất thích Bắc Kinh."
+]
+]
+}
+]
+},
+"game": [
+[
+"Đọc số năm",
+"2 người · lịch hoặc giấy ghi năm",
+"Một người chỉ vào số năm trên lịch. Người kia đọc từng số, ví dụ 现在是二零二六年。 Đọc đúng thì đổi vai, thử đọc năm con sinh ra."
+],
+[
+"Phỏng vấn bạn mới",
+"2 người",
+"Một người làm bạn mới đến. Người kia hỏi 你是学生吗？ Bạn mới đáp 是，我是学生。 rồi kể 我来北京一年了。 (đổi tên nơi, đổi số năm). Đổi vai."
+]
+],
+"g": {
+"cau": [
+"Kể mình đến đây bao lâu, con nói:",
+"zh:我来北京一年了。",
+"Nói mình là học sinh, con nói:",
+"zh:我们是学生。"
+],
+"ht": [
+"Con bấm Nghe cả đoạn để nghe các bạn nói, rồi bấm Đóng vai, nói thật to phần của mình nhé."
+],
+"thi": [
+"Bài kiểm tra có mười câu: nghe chọn tranh, đọc chọn đúng sai, điền từ và trả lời câu hỏi. Con làm thật cẩn thận nhé!"
+]
+},
+"thi": [
+{
+"t": "tranh",
+"nghe": "学生",
+"chon": [
+"0️⃣",
+"🧑‍🎓",
+"🏙️"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "北京",
+"chon": [
+"🗓️",
+"🧑‍🎓",
+"🏙️"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "零",
+"chon": [
+"🛬",
+"0️⃣",
+"🧑‍🎓"
+],
+"dap": 1
+},
+{
+"t": "doc",
+"chu": "年",
+"py": "nián",
+"img": "🗓️",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "来",
+"py": "lái",
+"img": "🧑‍🎓",
+"dung": false
+},
+{
+"t": "dien",
+"chu": "我学习汉语两（ ）了。",
+"py": "Wǒ xuéxí Hànyǔ liǎng ( ) le.",
+"chon": [
+[
+"点",
+"diǎn"
+],
+[
+"岁",
+"suì"
+],
+[
+"年",
+"nián"
+]
+],
+"dap": 2
+},
+{
+"t": "hoi",
+"cau": "大卫来北京几年了？",
+"chon": [
+"一年",
+"两年",
+"三年"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "大卫在北京做什么？",
+"chon": [
+"学习汉语",
+"做饭",
+"看医生"
+],
+"dap": 0
+},
+{
+"t": "hoi",
+"cau": "小月哪年来北京？",
+"chon": [
+"二零二六年",
+"二零二四年",
+"二零二二年"
+],
+"dap": 1
+},
+{
+"t": "hoi",
+"cau": "小月来北京几年了？",
+"chon": [
+"一年",
+"三年",
+"两年"
+],
+"dap": 2
+}
+],
+"bt": [
+{
+"t": "noi",
+"de": "Nối chữ Hán với phiên âm",
+"cap": [
+[
+"来",
+"lái"
+],
+[
+"北京",
+"Běijīng"
+],
+[
+"年",
+"nián"
+],
+[
+"零",
+"líng"
+],
+[
+"学生",
+"xuésheng"
+]
+]
+},
+{
+"t": "noi",
+"de": "Nối chữ Hán với nghĩa",
+"cap": [
+[
+"来",
+"đến"
+],
+[
+"北京",
+"Bắc Kinh"
+],
+[
+"年",
+"năm"
+],
+[
+"零",
+"số 0"
+],
+[
+"学生",
+"học sinh"
+]
+]
+},
+{
+"t": "chon",
+"de": "Chọn đáp án đúng",
+"cau": [
+[
+"我学习汉语两（ ）了。",
+[
+"点",
+"岁",
+"年"
+],
+2
+],
+[
+"Câu nào đúng?",
+[
+"现在二零二六年是。",
+"是现在二零二六年。",
+"现在是二零二六年。"
+],
+2
+]
+]
+},
+{
+"t": "xep",
+"de": "Sắp xếp thành câu đúng",
+"cau": [
+[
+[
+"我",
+"来",
+"北京",
+"一年",
+"了"
+],
+"Mình đến Bắc Kinh được một năm rồi."
+],
+[
+[
+"我",
+"来",
+"北京",
+"一",
+"年",
+"了"
+],
+"Mình đến Bắc Kinh được một năm rồi."
+],
+[
+[
+"我们",
+"是",
+"学生"
+],
+"Chúng mình là học sinh."
+],
+[
+[
+"现在",
+"是",
+"二",
+"零",
+"二",
+"六",
+"年"
+],
+"Bây giờ là năm 2026."
+]
+]
+}
+],
+"tv": [
+[
+"年",
+"nián",
+"năm"
+],
+[
+"来",
+"lái",
+"đến"
+],
+[
+"北",
+"běi",
+"北京 Běijīng"
+],
+[
+"京",
+"jīng",
+"北京 Běijīng"
+],
+[
+"零",
+"líng",
+"số 0"
+]
+]
+},
+"12": {
+"t": "复习 Ôn tập & thi thử",
+"icon": "🏆",
+"muc": "Con biết dùng lại mọi từ, mọi câu đã học trong cả sách YCT hai",
+"hd": [
+"Chào con! Hôm nay mình học bài mười hai của YCT hai: ôn tập cả sách.",
+"Gặp bạn, con hỏi hôm nay bạn đã làm gì:",
+"zh:你今天做什么了？",
+"Rồi con kể mình học tiếng Trung được bao lâu:",
+"zh:我学习汉语两年了。",
+"Con sắp học xong cả sách rồi, ôn thật kỹ nhé, cô tin con!"
+],
+"cau": [],
+"w": [],
+"vd": [],
+"ht": [],
+"bt": [],
+"tv": [],
+"thi": [
+{
+"t": "tranh",
+"nghe": "好吃",
+"chon": [
+"📅",
+"😋",
+"💵"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "熊猫",
+"chon": [
+"w-qichuang",
+"🪑",
+"🐼"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "不客气",
+"chon": [
+"😊",
+"🤗",
+"📥"
+],
+"dap": 1
+},
+{
+"t": "tranh",
+"nghe": "里面",
+"chon": [
+"📥",
+"🙇",
+"w-qichuang"
+],
+"dap": 0
+},
+{
+"t": "tranh",
+"nghe": "对不起",
+"chon": [
+"💺",
+"2️⃣",
+"🙇"
+],
+"dap": 2
+},
+{
+"t": "tranh",
+"nghe": "来",
+"chon": [
+"⛅",
+"📚",
+"🛬"
+],
+"dap": 2
+},
+{
+"t": "doc",
+"chu": "画",
+"py": "huà",
+"img": "🖍️",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "没关系",
+"py": "méi guānxi",
+"img": "🚪",
+"dung": false
+},
+{
+"t": "doc",
+"chu": "怎么",
+"py": "zěnme",
+"img": "❓",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "做",
+"py": "zuò",
+"img": "📥",
+"dung": false
+},
+{
+"t": "doc",
+"chu": "天气",
+"py": "tiānqì",
+"img": "⛅",
+"dung": true
+},
+{
+"t": "doc",
+"chu": "分钟",
+"py": "fēnzhōng",
+"img": "❌",
+"dung": false
+}
+],
+"song": [
+[
+"wED_ZaR8l2U",
+"Good-bye Song (再见歌)",
+"Little Fox Chinese",
+"1:18"
+]
+],
+"g": {
+"thi": [
+"Đề thi thử có mười hai câu, giống đề thi thật. Con nghe kỹ, nhìn hình rồi chọn nhé."
+]
+}
+},
+"buoc": {
+"py0": [
+"Con bấm vào từng ô, nghe cô giảng, rồi đọc to theo cô nhé."
+],
+"py1": [
+"Con bấm loa, nghe thật kỹ, rồi chọn phiên âm đúng nhé."
+],
+"py2": [
+"Con bấm nút Đọc và thu, đọc thật to, rồi nghe lại xem đã giống cô chưa nhé."
+],
+"py3": [
+"Con nhìn chữ, đọc thầm trong đầu, rồi chọn phiên âm đúng nhé."
+],
+"py4": [
+"Con dùng ngón tay tô theo nét mờ. Tô kín chữ là xong nhé."
+],
+"tu0": [
+"Con nhìn hình, nghe cô đọc, rồi đọc to theo cô nhé."
+],
+"tu1": [
+"Con nghe cô đọc, rồi chạm vào hình đúng nhé."
+],
+"tu2": [
+"Con bấm nút micro, nói thật to, rồi nghe lại xem đã giống cô chưa nhé."
+],
+"tu3": [
+"Con nhìn hình, rồi chọn chữ Hán đúng nhé."
+],
+"tu4": [
+"Con xem cô viết mẫu, rồi tô theo từng nét đang nhấp nháy nhé."
+]
+},
+"gioiThieu": [
+[
+"Xin chào các bạn nhỏ! Cô là Cô Mặt Trời đây!",
+0,
+1.8
+],
+[
+"Cô tên là:",
+0,
+1.0
+],
+[
+"zh:太阳",
+0,
+1.8
+],
+[
+"Các bạn gọi tên cô nào!",
+0,
+1.0
+],
+[
+"zh:太阳",
+0,
+1.8
+],
+[
+"Đầu tiên, mình chào nhau bằng tiếng Trung nhé:",
+0,
+1.0
+],
+[
+"zh:你好！",
+0,
+1.8
+],
+[
+"Giỏi quá! Tiếng Trung khen là:",
+0,
+1.0
+],
+[
+"zh:真棒！",
+0,
+1.8
+],
+[
+"Cô có một người bạn thân, là Ông Mặt Trăng. Tên của ông là:",
+1,
+1.0
+],
+[
+"zh:月亮",
+1,
+1.8
+],
+[
+"Mỗi ngày chỉ hai mươi phút: nghe cô giảng, chơi trò chơi, rồi nói thật to. Nào, mình bắt đầu thôi!",
+1,
+1.2
+],
+[
+"zh:一，二，三，走！",
+1,
+1.0
+]
+]
+}
