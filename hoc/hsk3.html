@@ -1377,7 +1377,7 @@ const R = {
         else { sfx("bad"); $("#heard").innerHTML += `<br>Chưa giống lắm, bạn nghe mẫu rồi đọc lại nhé`; }
       };
       rec.onerror = ev => { mic.dataset.on = "0"; $("#heard").textContent = ev.error === "not-allowed" ? "Bạn cho phép dùng micro rồi thử lại nhé" : "Chưa nghe rõ, bạn thử lại nhé"; };
-      rec.onend = () => { mic.dataset.on = "0"; };
+      rec.onend = () => { mic.dataset.on = "0"; try { AC && AC.close(); } catch (e) {} AC = null; try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {} };   // 08/10 chị (thử app YCT tự học): sau khi máy nghe giọng tiếng bị nhỏ → trả loa về chế độ phát nhạc
       try { rec.start(); } catch (e) { mic.dataset.on = "0"; }
     };
   },
