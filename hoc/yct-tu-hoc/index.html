@@ -836,6 +836,8 @@ body{background:linear-gradient(180deg,#CDEBFA 0,#E6F5FD 260px,#F4FAFE 700px,#FF
 .oDiem{display:flex;align-items:center;gap:12px;justify-content:center;background:#FFF8DC;border:2px solid #F3D27A;border-radius:16px;padding:10px 14px;margin:8px 0}.oDiem b{font:900 30px var(--tx);color:#C9820F}.oDiem span{color:#F5BE10;font-size:22px;letter-spacing:2px}.oDiem span i{font-style:normal;color:#E5DFD3}.oDiem em{font-style:normal;font-size:14px;color:var(--ink-2)}
 .sp2{border:2px solid var(--line);border-radius:16px;padding:12px;text-align:center;display:flex;flex-direction:column;gap:6px;background:#fff}.tg2{font-family:var(--hz);font-size:40px}.pys2{font:700 20px var(--py)}.bt2{display:flex;gap:8px;justify-content:center}.bt2 .big{margin:0}.res2{margin:0;font-size:14px;color:var(--ink-2);min-height:1em}
 .coNoi.coPhu{left:10px;right:10px;transform:translateY(30px);border-radius:22px;padding:8px 10px 8px 6px;max-width:640px;margin:0 auto}.coNoi.coPhu.hien{transform:none}
+.coNoi:not(.coPhu){left:12px;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateY(30px);padding:5px;gap:6px}.coNoi:not(.coPhu).hien{transform:none}.coNoi:not(.coPhu) .cnTxt{display:none}   /* 08/10 chị: "cô mặt trời che chữ" → thu nhỏ, nép góc trái dưới */
+.bdN{display:block;font:600 clamp(16px,3.6vw,22px)/1.3 var(--tx);color:var(--ink-2);margin-top:2px}
 .coNoi.coPhu .cnTxt{flex:1;min-width:0}.coNoi.coPhu .cnTxt b{font-size:12px;color:#7A5A00}.coNoi.coPhu .cnTxt .cnDong{font-size:18px;color:var(--ink);line-height:1.35;min-height:2.6em;display:flex;flex-direction:column;justify-content:center}
 .coNoi .cnTxt .cnZh{font-family:var(--hz);font-size:30px;line-height:1.1;color:var(--ink)}.coNoi .cnTxt .cnPy{font:700 16px var(--py);color:#C9820F}.coNoi .cnTxt .cnPy span{font-size:16px}.cnDong.moi{animation:cnMoi .35s ease}@keyframes cnMoi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .vidCo{position:fixed;inset:0;z-index:85;background:rgba(15,25,30,.82);display:grid;place-items:center;padding:12px}
@@ -1669,13 +1671,13 @@ const xhCache=()=>{try{return JSON.parse(localStorage.getItem("sm-xh-"+(U&&U.u))
 function taiXH(){if(!(U&&U.tk))return Promise.resolve(null);return callApi({app:"xephang",u:U.u,m:U.m,giaoTrinh:GT_TK,tuan:tuanNay()}).then(r=>{if(r&&r.ok)try{localStorage.setItem("sm-xh-"+U.u,JSON.stringify(r))}catch(e){}return r}).catch(()=>null)}
 async function xepHang(){if(!(U&&U.tk))return dnTK();trangPhu("#xh");veTab("xh");   /* 06/10 tối chị: "bảng xếp hạng sao lâu ra thế" → hiện NGAY bảng lần trước, bảng mới tải ngầm */
   const c=xhCache();if(c){window._XH=c;veXH()}else app.innerHTML=`<section class="card nvTop"><b>🏆 Xếp hạng</b><span>Đang tải bảng xếp hạng…</span></section>`;
-  luuTD();const r=await taiXH();
+  try{await luuTD()}catch(e){}const r=await taiXH();   /* 08/10: lưu xong rồi mới lấy bảng */
   if(location.hash!=="#xh")return;
   if(r&&r.ok){const dg=document.activeElement;if(c&&dg&&app.contains(dg)&&dg.tagName==="INPUT")return;window._XH=r;return veXH()}
   if(c)return;
   if(!r||!r.ok){app.innerHTML=`<section class="card nvTop"><b>🏆 Xếp hạng</b><span>Chưa tải được — kiểm tra mạng rồi thử lại nhé</span><button class="big" id="xhLai">Thử lại</button></section>`;app.querySelector("#xhLai").onclick=xepHang;return}
   window._XH=r;veXH()}
-function veXH(){const r=window._XH,L=XH_PV==="tat"?r.tat:XH_PV==="lop"?r.lop:r.nhom;
+function veXH(){const r=window._XH,L=(XH_PV==="tat"?r.tat:XH_PV==="lop"?r.lop:r.nhom).map(x=>x.toi?{...x,kc:KC(),xpt:(XP().tuan||{})[tuanNay()]||0,buoi:buoiXong().size}:x);   /* 08/10: dòng của con lấy số TRONG MÁY (máy chủ có thể chưa kịp lưu) */
   const bang=(k,ten,ic,mau)=>{const S=L.slice().sort((a,b)=>b[k]-a[k]||b.buoi-a.buoi),vt=S.findIndex(x=>x.toi);
     const dong=(x,i)=>`<div class="xhO${x.toi?" toi":""}"><span class="xhH">${i<3?["🥇","🥈","🥉"][i]:i+1}</span><span class="xhAv">${im(x.av&&H[x.av]?x.av:"av-be-trai")}</span><b>${esc(x.ten)}${x.toi?" (con)":""}</b><em>${x[k]} ${ic}</em></div>`;
     return `<div class="xhB"><div class="xhT" style="background:${mau}">${ten}<span>${ic}</span></div>${S.slice(0,10).map(dong).join("")}${vt>=10?`<div class="xhCach">⋯</div>`+dong(S[vt],vt):""}${!S.length?`<p class="ltSap">Chưa có bạn nào</p>`:""}</div>`};
@@ -1775,7 +1777,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610081115";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610081133";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
@@ -2189,7 +2191,7 @@ function lvNoi(){const h=linhVat("kha",200).replace('<svg ','<svg class="vcSun" 
 /* 06/10 chị: "có ví dụ chứ" → cô nói quy tắc biến điệu thì bảng hiện luôn VÍ DỤ: 你好 nǐ hǎo → ní hǎo */
 function bdHinh(i,to){const x=(ND[0].bd||[])[i];if(!x)return "";const [v,d]=x[2].split("→").map(z=>z.trim());
   const V=v.split(/\s+/),D=d.split(/\s+/),k=D.findIndex((z,q)=>z!==V[q]);   // 06/10 chị: "bớt chữ phải đọc — trẻ con lười đọc"
-  return `<span class="bdV${to?" to":""}"><span class="bdT">Biến điệu ${i+1}</span>${rubyHz(x[1],d,v)}${k>=0?`<span class="bdP">${tonePy(V[k])} → <b>${tonePy(D[k])}</b></span>`:""}</span>`}
+  return `<span class="bdV${to?" to":""}"><span class="bdT">Biến điệu ${i+1}</span>${rubyHz(x[1],d,v)}${k>=0?`<span class="bdP">${tonePy(V[k])} → <b>${tonePy(D[k])}</b></span>`:""}${(x[5]||nghiaCua(x[1]))?`<span class="bdN">${esc(x[5]||nghiaCua(x[1]))}</span>`:""}</span>`}   /* 08/10 chị: "sao không có nghĩa tiếng Việt" */
 /* 06/10 chị: "viết thanh bên trên" → phiên âm (có dấu thanh) nằm TRÊN từng chữ Hán; âm bị đổi thanh thì tô viền */
 function rubyHz(hz,py,goc){const c=[...hz],p=(py||"").trim().split(/\s+/),g=(goc||"").trim().split(/\s+/);
   if(!py||p.length!==c.length)return `<span class="rbPy">${tonePy(py||"")}</span><span class="bdZ">${esc(hz)}</span>`;
@@ -2271,7 +2273,7 @@ function luyenPy(n,O){const box=O&&O.box||document.getElementById("luyenPy");if(
     ...P.thanh.map(x=>({lab:x[0],hz:x[1],py:x[2],vn:x[3],mo:x[3],e:"",au:`aud/c0-ps-${x[0]}.mp3`,gi:`aud/c0-pgi-${x[0]}.mp4`})),
     ...P.ghep.map((x,i)=>({lab:`${x[0]} + ${x[1]}`,hz:x[3],py:x[2],vn:x[4],mo:"",e:"",au:`aud/c0-pg${i}.mp3`,gi:`aud/c0-pgi-g${i}.mp4`})),
     ...ND[0].w.slice(6,10).map((w,j)=>({lab:w[1],hz:w[0],py:w[1],vn:w[2],mo:["Thanh 1 — ngang, cao","Thanh 2 — đi lên","Thanh 3 — xuống rồi lên","Thanh 4 — rơi mạnh"][j],e:"",au:`aud/c0-w${6+j}.mp3`,gi:`aud/c0-th${j+1}.mp4`})),
-    ...(ND[0].bd||[]).map((x,i)=>({lab:`Biến điệu ${i+1}`,hz:x[1],py:x[2].split("→").pop().trim(),vn:"",mo:x[3],e:"",bd:1,bi:i,au:`aud/c0-bd${i}.mp3`,gi:`aud/c0-pgi-bd${i}.mp4`}))];
+    ...(ND[0].bd||[]).map((x,i)=>({lab:`Biến điệu ${i+1}`,hz:x[1],py:x[2].split("→").pop().trim(),vn:x[5]||"",mo:x[3],e:"",bd:1,bi:i,au:`aud/c0-bd${i}.mp3`,gi:`aud/c0-pgi-bd${i}.mp4`}))];
   const a=P.van.length,b=P.thanh.length,c=P.ghep.length,h=Math.ceil(b/2),r=(x,y)=>[...Array(y-x).keys()].map(z=>z+x);
   // 06/10 chị: "sau thanh điệu phải có biến điệu luôn" → Thanh điệu → Biến điệu → nguyên âm → phụ âm (chỉ âm đơn giản bō pō…) → ghép
   const t0i=a+b+c+4,nb=(ND[0].bd||[]).length;
@@ -2374,7 +2376,7 @@ const SRN=window.SpeechRecognition||window.webkitSpeechRecognition;
 function giaThu(){return {state:"inactive",start(){this.state="recording";this.onstart&&this.onstart()},stop(){if(this.state!=="recording")return;this.state="inactive";setTimeout(()=>this.onstop&&this.onstop(),0)}}}
 async function taoThu(){moiAmThu();if(window._chiNghe&&SRN)return giaThu();const st=await layMic();return new MediaRecorder(st)}
 function ngheBe(giay){if(!SRN)return null;let r;try{r=new SRN()}catch(e){return null}r.lang="zh-CN";r.interimResults=false;r.maxAlternatives=5;r.continuous=false;
-  const p=new Promise(ok=>{const kq=[];let loi=false,xong=false;const het=v=>{loaPhat();if(!xong){xong=true;ok(v)}};
+  const p=new Promise(ok=>{const kq=[];let loi=false,xong=false;const het=v=>{try{r.abort()}catch(e){}loaPhat();setTimeout(loaPhat,400);if(!xong){xong=true;ok(v)}};
     r.onresult=e=>{for(const res of e.results)for(let i=0;i<res.length;i++)kq.push(res[i].transcript)};r.onerror=e=>{if(e.error==="audio-capture")window._chiNghe=true;if(e.error!=="no-speech"&&e.error!=="aborted")loi=true};
     r.onend=()=>het(loi&&!kq.length?null:kq);setTimeout(()=>het(kq.length?kq:(loi?null:kq)),giay*1000+4000)});
   try{r.start()}catch(e){return null}setTimeout(()=>{try{r.stop()}catch(e){}},giay*1000+700);return p}
@@ -2383,7 +2385,7 @@ const soHan=t=>String(t).replace(/10/g,"十").replace(/\d/g,d=>"零一二三四�
 const pyChu=t=>[...t].map(c=>(PY[c]||[])[0]||"?").join("");
 /* 07/10 chị: "chưa có xác nhận lại là đọc tốt rồi hay cần đọc lại" — máy không nhận giọng được (iPad/Zalo) thì vẫn chấm:
    đo tiếng con thu được: đủ to không, có tiếng nói không, không quá dài → đọc tốt / đọc lại */
-async function chamAm(blob,soAm){try{if(!blob||!blob.size)return {ok:null};const AC=window.AudioContext||window.webkitAudioContext;const ac=window._acCham||(window._acCham=new AC());
+async function chamAm(blob,soAm){try{if(!blob||!blob.size)return {ok:null};const OAC=window.OfflineAudioContext||window.webkitOfflineAudioContext;const ac=new OAC(1,44100,44100);   /* 08/10 chị: "cứ sau thu âm là tiếng nhỏ" — không giữ AudioContext đang chạy (giữ loa ở chế độ gọi điện) */
   const ab=await blob.arrayBuffer();const buf=await new Promise((ok,ko)=>{const r=ac.decodeAudioData(ab,ok,ko);if(r&&r.then)r.then(ok,ko)});
   const x=buf.getChannelData(0),h=Math.max(1,Math.round(buf.sampleRate*.02)),E=[];for(let i=0;i+h<=x.length;i+=h){let t=0;for(let j=i;j<i+h;j++)t+=x[j]*x[j];E.push(Math.sqrt(t/h))}
   let mx=0;for(const e of E)if(e>mx)mx=e;if(mx<0.02)return {ok:false,ly:"nho"};const ng=Math.max(0.012,mx*0.22);let co=0,am=0,lang=99;
@@ -2400,7 +2402,7 @@ function amThu(url){const a=AM_THU||new Audio();try{a.pause()}catch(e){}a.muted=
 /* 06/10 tối chị: "sao mỗi lần thu âm xong âm thanh nhỏ đi" — iPhone/iPad mở micro là chuyển loa sang chế độ gọi điện (nhỏ) → thu xong TẮT MICRO NGAY + trả loa về chế độ phát nhạc */
 const loaPhat=()=>{try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}};loaPhat();
 async function layMic(){clearTimeout(MIC_T);try{if(navigator.audioSession)navigator.audioSession.type="play-and-record"}catch(e){}if(MIC&&MIC.getTracks().every(t=>t.readyState==="live"))return MIC;MIC=await navigator.mediaDevices.getUserMedia({audio:true});return MIC}
-function henTatMic(){clearTimeout(MIC_T);try{MIC&&MIC.getTracks().forEach(t=>t.stop())}catch(e){}MIC=null;loaPhat();setTimeout(loaPhat,400)}
+function henTatMic(){clearTimeout(MIC_T);try{MIC&&MIC.getTracks().forEach(t=>t.stop())}catch(e){}MIC=null;try{if(actx){actx.close();actx=null}}catch(e){}loaPhat();setTimeout(loaPhat,400);setTimeout(loaPhat,1200)}   /* 08/10: đóng luôn AudioContext tiếng bíp (tạo lại khi cần) */
 function thuDem(rec,btn,giay){giay=Math.min(giay||3,3);const goc=btn.innerHTML;btn.disabled=true;let d=1;btn.classList.add("dem");
   const dem=()=>{if(d>0){btn.innerHTML=`<span class="tdSo">${d}</span><span>Chuẩn bị nói…</span>`;tone([520],.08,"sine",.08);d--;setTimeout(dem,500);return}
     rec.start();btn.classList.remove("dem");btn.classList.add("rec");const t0=Date.now();tone([880],.12,"sine",.1);
