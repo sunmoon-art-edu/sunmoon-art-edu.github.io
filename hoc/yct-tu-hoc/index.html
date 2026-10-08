@@ -1251,10 +1251,11 @@ const store={get(k,d){try{return (function(v){return v==null?d:v})(JSON.parse(lo
 /* âm thanh */
 let cur=null;const TOC={vi:1,zh:1};   /* 06/10 tối: tốc độ (Việt 1.2× · Trung 1×) đã LÀM SẴN trong file bằng _toc_bai.py → máy phát đúng 1×, không tự tua (tua trên điện thoại sinh tiếng rè/xẹt) */
 /* 07/10 Thanh Hà soát màn 06: "Giỏi quá" bị dính vào từ đọc tiếp → máy TỰ đọc (bé không bấm) mà cô đang khen thì ĐỢI khen xong (tối đa 1,8s); bé bấm loa thì kêu ngay */
-function play(src,el){const dang=()=>["d","s"].some(k=>FB[k]&&!FB[k].paused&&!FB[k].ended),e=window.event,tay=e&&e.isTrusted&&/^(click|pointer|touch|mouse|key)/.test(e.type);
-  if(!dang()||tay)return play0(src,el);
+let _fbHet=0;   /* 08/10 Nhi soát lại màn 06: khen xong là đọc từ liền (không nghỉ) → nghe dính → nghỉ ≥0,4s sau tiếng khen */
+function play(src,el){const dang=()=>["d","s"].some(k=>FB[k]&&!FB[k].paused&&!FB[k].ended),cho=()=>dang()||Date.now()-_fbHet<400,e=window.event,tay=e&&e.isTrusted&&/^(click|pointer|touch|mouse|key)/.test(e.type);
+  if(!cho()||tay)return play0(src,el);
   const p=new Audio();let huy=0;p._t0=Date.now();p.pause=()=>{huy=1};try{cur&&cur.pause()}catch(e){}cur=p;const t0=Date.now();
-  const k=()=>{if(huy||cur!==p)return;if(dang()&&Date.now()-t0<1800)return setTimeout(k,50);setTimeout(()=>{if(huy||cur!==p)return;const r=play0(src,el);["ended","error"].forEach(ev=>r.addEventListener(ev,()=>p.dispatchEvent(new Event(ev))))},120)};k();return p}
+  const k=()=>{if(huy||cur!==p)return;if(cho()&&Date.now()-t0<2200)return setTimeout(k,40);const r=play0(src,el);["ended","error"].forEach(ev=>r.addEventListener(ev,()=>p.dispatchEvent(new Event(ev))))};k();return p}
 function play0(src,el){try{cur&&cur.pause()}catch(e){}tatFB();document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));const a=new Audio();a._t0=Date.now();cur=a;if(el){el.classList.add("playing");a.onended=a.onerror=()=>el.classList.remove("playing")}if(!KHOA||!/^(?:aud\/c\d+-|in\/to-mau-c\d+\.)/.test(src)){a.src=AMU[src]||(/^aud\//.test(src)?src+"?v="+AV:src);a.play().catch(()=>{});return a}   /* 06/10 tối chị: "bấm loa chỉ cần 1 lần" — phát NGAY trong lúc bé bấm (chờ tải xong mới phát thì iPhone chặn) */
   RS(src).then(u=>{if(cur!==a)return;a.src=u;a.play().catch(()=>{})})   /* 06/10 chị: lời cô đọc nhanh hơn 5% */.catch(()=>el&&el.classList.remove("playing"));return a}
 /* 06/10 chị: mỗi BUỔI ~10 phút, trộn phiên âm + từ của bài — "Buổi 1: thanh điệu + biến điệu + mấy câu chào · Buổi 2: nguyên âm, phụ âm, số đếm · Buổi 3: ghép âm + ôn lại" */
@@ -1407,7 +1408,7 @@ let _fbT=0;function phanHoi(ok){const now=Date.now();if(now-_fbT<350)return;_fbT
   t.className=ok?"ok":"sai";t.innerHTML=ok?"🎉 Giỏi quá!":"💪 Mình thử lại nhé!";void t.offsetWidth;t.classList.add("hien");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("hien"),1100);
   try{if(cur&&!cur.paused&&Date.now()-(cur._t0||0)>400)cur.pause()}catch(e){}fbAm(ok);if(ok){themKC(1);dem("dung")}}   /* 06/10 tối chị: đúng/sai cô có nói; bé bấm là cắt tiếng đang đọc — không để tiếng chạy sau tay bé */
 const FB={};function tatFB(){for(const k in FB)try{FB[k].pause()}catch(e){}}
-function fbAm(ok){const k=ok?"d":"s";let a=FB[k];if(!a){a=FB[k]=new Audio((ok?"aud/fb-dung.mp3":"aud/fb-sai.mp3")+"?v="+AV);a.preload="auto"}tatFB();try{a.currentTime=0}catch(e){}a.play().catch(()=>{})}
+function fbAm(ok){const k=ok?"d":"s";let a=FB[k];if(!a){a=FB[k]=new Audio((ok?"aud/fb-dung.mp3":"aud/fb-sai.mp3")+"?v="+AV);a.preload="auto"}a.onended=()=>{_fbHet=Date.now()};tatFB();try{a.currentTime=0}catch(e){}a.play().catch(()=>{})}
 setTimeout(()=>{fbAm;["d","s"].forEach(k=>{if(!FB[k]){FB[k]=new Audio((k==="d"?"aud/fb-dung.mp3":"aud/fb-sai.mp3")+"?v="+AV);FB[k].preload="auto"}});napAm(["aud/doc-theo.mp3","aud/khen.mp3"])},1500);
 /* 06/10 Thanh Hà: miệng Cô Mặt Trời ĐÓNG – MỞ theo nhịp nói (như từng tiếng), không nhún nhảy */
 const miengV=t=>Math.sin(t/105)>-.15?.45+.55*Math.abs(Math.sin(t/41)):0;
@@ -1773,7 +1774,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610071914";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202610081104";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
