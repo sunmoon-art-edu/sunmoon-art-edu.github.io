@@ -1,5 +1,6 @@
 # 07/10: tiếng NGƯỜI THẬT cho các nút đọc lẻ (thay giọng điện thoại hay sai thanh)
 # Nguồn: github.com/hugolpz/audio-cmn — âm tiết: Chen Wang · từ HSK: Yue Tan (Shtooka) · CC BY-SA
+# LƯU Ý: chạy lại file này sẽ ghi đè am.json → chạy tiếp `python3 am/tao_cau.py` để thêm lại các câu (c/)
 import re,os,json,urllib.request,urllib.parse
 from pypinyin import pinyin,Style
 D=os.path.dirname(os.path.abspath(__file__));R=os.path.dirname(D)
@@ -49,8 +50,8 @@ for h in sorted(han):
             if tai(f"hsk/cmn-{h}.mp3",f"{D}/w/{h}.mp3"):f=f"w/{h}.mp3"
         elif tai(f"syllabs/cmn-{syl}.mp3",f"{D}/s/{syl}.mp3"):f=f"s/{syl}.mp3"
     else:
-        if h in cap and tai(f"hsk/cmn-{h}.mp3",f"{D}/w/{h}.mp3"):f=f"w/{h}.mp3"
+        if tai(f"hsk/cmn-{h}.mp3",f"{D}/w/{h}.mp3"):f=f"w/{h}.mp3"   # 11/10: từ nhiều chữ — thử bản người thật cho mọi từ có trong HSK
     if f:MAP[h]=f
-    elif len(h)==1 or h in cap:thieu.append(h)
+    elif len(h)==1:thieu.append(h)
 json.dump(MAP,open(D+"/am.json","w"),ensure_ascii=False,separators=(",",":"))
 print("co",len(MAP),"thieu",len(thieu),thieu[:40])

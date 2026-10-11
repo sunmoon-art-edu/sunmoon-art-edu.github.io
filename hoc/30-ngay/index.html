@@ -1193,11 +1193,11 @@ let zhVoice=null;
 function pickVoice(){if(!canSpeak)return;const v=speechSynthesis.getVoices();zhVoice=v.find(x=>/zh[-_]CN/i.test(x.lang))||v.find(x=>/^zh/i.test(x.lang))||null}
 if(canSpeak){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
 /* 07/10 chị: nút đọc lẻ dùng TIẾNG NGƯỜI THẬT (âm tiết: Chen Wang · từ: Yue Tan — audio-cmn, CC BY-SA); không có file mới dùng giọng điện thoại */
-let AMF={};fetch("am/am.json").then(r=>r.json()).then(j=>AMF=j).catch(()=>{});
+let AMF={};fetch("am/am.json",{cache:"no-cache"}).then(r=>r.json()).then(j=>AMF=j).catch(()=>{});
 const AMP=new Audio();let amHang=[];
 function phatAm(ds,el){amHang=ds.slice();const tiep=()=>{const f=amHang.shift();if(!f){el&&el.classList.remove("playing");return}AMP.src="am/"+encodeURI(f);AMP.play().catch(()=>{});AMP.onended=()=>setTimeout(tiep,amHang.length?450:0)};tiep()}
 function speak(text,el){
-  const t=String(text).trim().replace(/[。！？!?]+$/,""),ds=AMF[t]?[AMF[t]]:t.split(/[、，,]\s*/).map(x=>AMF[x]);
+  const t=String(text).replace(/—/g,"，").trim().replace(/[。！？!?]+$/,""),ds=AMF[t]?[AMF[t]]:t.split(/[、，,]\s*/).map(x=>AMF[x]);
   if(ds.length&&ds.every(Boolean)){if(canSpeak)speechSynthesis.cancel();document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"));if(el)el.classList.add("playing");phatAm(ds,el);return}
   if(!canSpeak)return;
   AMP.pause();amHang=[];
@@ -1984,7 +1984,7 @@ function rubyTinh(root){if(!root||!window.pinyinPro)return;const w=document.crea
   ds.forEach(n=>{const sp=document.createElement("span");sp.innerHTML=rbHz(n.textContent);n.replaceWith(sp)})}
 ["origin","gate"].forEach(id=>rubyTinh(document.getElementById(id)));document.querySelectorAll("#course > section:not(#origin), .top").forEach(rubyTinh);
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261008115137";
+const BAN_SO="20261011120625";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
