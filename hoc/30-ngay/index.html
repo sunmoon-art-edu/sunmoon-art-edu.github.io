@@ -773,7 +773,7 @@ small.nghia{display:block;font:400 13px/1.25 var(--tx);color:var(--ink-2);margin
     <h1>30 ngày tự học tiếng Trung <span class="hzi">学中文</span></h1>
     <p class="sub">Cho người mới bắt đầu — mỗi buổi 10 phút</p>
     <ul class="howto">
-      <li><span><b>Chọn buổi trong Lộ trình</b> <i>— tối đa 3 buổi mới/ngày</i></span></li>
+      <li><span><b>Chọn buổi trong Lộ trình</b> <i>— tối đa 5 buổi mới/ngày</i></span></li>
       <li><span><b>Nghe → đọc to</b> <i>— máy tự chấm phát âm</i></span></li>
       <li><span><b>Làm bài tập</b> <i>— rồi bấm “Xong buổi”</i></span></li>
     </ul>
@@ -1923,10 +1923,10 @@ const ptB=(n,k)=>bXong(n,k)?100:(lsJ("tt30-bpt",{})[n+"."+k]||0);
 function ghiPt(n,k,p){const o=lsJ("tt30-bpt",{});if((o[n+"."+k]||0)<p){o[n+"."+k]=p;lsS("tt30-bpt",o)}}
 const MO3=()=>{const o=lsJ("tt30-mo3",{});return o.d===today()?o.ds||[]:[]};
 function ghiMo(n,k){if(!KHOA||bXong(n,k))return;const L3=MO3(),key=n+"."+k;if(!L3.includes(key)){L3.push(key);lsS("tt30-mo3",{d:today(),ds:L3})}}
-/* buổi MỚI tối đa 3/ngày · học lại buổi cũ thoải mái */
+/* 11/10 chị: buổi MỚI tối đa 5/ngày (trước 3) · học lại buổi cũ thoải mái */
 function khoaB(n,k){if(!KHOA||bXong(n,k))return"";
   if(k>0&&!bXong(n,k-1))return `Học xong Buổi ${k} để mở`;if(k===0&&n>1&&!done.has(n-1))return `Học xong Ngày ${n-1} để mở`;
-  const L3=MO3();if(!L3.includes(n+"."+k)&&L3.length>=3)return "Hôm nay bạn đã học 3 buổi mới — mai học tiếp nhé! Buổi cũ vẫn học lại được";return""}
+  const L3=MO3();if(!L3.includes(n+"."+k)&&L3.length>=5)return "Hôm nay bạn đã học 5 buổi mới — mai học tiếp nhé! Buổi cũ vẫn học lại được";return""}
 function xongBuoi(n,k){const X=bxSet(),BB=chiaBuoi(n);X.add(n+"."+k);lsS("tt30-buoi",[...X]);ghiPt(n,k,100);
   if(!GM.days.includes(today()))GM.days.push(today());GM.xp+=20;saveGM();updChips();
   if(BB.every((_,i)=>X.has(n+"."+i))&&!done.has(n))return completeLesson();
@@ -1984,7 +1984,7 @@ function rubyTinh(root){if(!root||!window.pinyinPro)return;const w=document.crea
   ds.forEach(n=>{const sp=document.createElement("span");sp.innerHTML=rbHz(n.textContent);n.replaceWith(sp)})}
 ["origin","gate"].forEach(id=>rubyTinh(document.getElementById(id)));document.querySelectorAll("#course > section:not(#origin), .top").forEach(rubyTinh);
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261011120625";
+const BAN_SO="20261011120824";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
