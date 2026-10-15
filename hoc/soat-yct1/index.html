@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Soát app YCT 1 · SunMoon</title>
+<title>Soát app SunMoon · trẻ em + người lớn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Be+Vietnam+Pro:wght@400;600&display=swap">
 <style>
@@ -87,11 +87,12 @@ dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
 <body>
 <div class="khung">
   <header>
-    <h1>Soát app <span>YCT 1 tự học</span></h1>
-    <div class="ban">Bản 07/10/2026 · 20 màn · khổ iPad ngang · <span class="tong" id="tong">đang tải nhận xét…</span></div>
+    <h1>Soát app <span>SunMoon</span></h1>
+    <div class="ban">Trẻ em · bản 07/10/2026 · <span class="tong" id="tong">đang tải nhận xét…</span></div>
   </header>
   <nav class="tabs" role="tablist" aria-label="Chọn việc soát">
-    <button role="tab" id="t-app" aria-controls="p-app" aria-selected="true">Soát app YCT 1</button>
+    <button role="tab" id="t-app" aria-controls="p-app" aria-selected="true">Soát app YCT 1 (trẻ em)</button>
+    <button role="tab" id="t-tt" aria-controls="p-tt" aria-selected="false">Soát app 30 ngày (người lớn)</button>
     <button role="tab" id="t-gt" aria-controls="p-gt" aria-selected="false">Tra soát giáo trình · Hà</button>
   </nav>
   <div id="p-app" role="tabpanel" aria-labelledby="t-app" style="display:flex;flex-direction:column;gap:20px">
@@ -102,6 +103,15 @@ dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
     <p><b>Và:</b> <i>chữ nhỏ quá, nút khó bấm, tiếng rè</i>?</p>
   </section>
   <main class="luoi" id="luoi"></main>
+  </div>
+  <div id="p-tt" role="tabpanel" aria-labelledby="t-tt" hidden style="flex-direction:column;gap:20px">
+  <section class="huong" aria-label="Cách soát app 30 ngày">
+    <p><b>Mở app:</b> <i>hoctiengtrungvn.com/hoc/30-ngay</i></p>
+    <p><b>Thấy lỗi:</b> gõ vào ô <i>Nhi nhận xét</i> / <i>Hà nhận xét</i> → bấm <b>Lưu</b></p>
+    <p><b>Soát kỹ:</b> chữ Hán có đủ <i>phiên âm + nghĩa</i>? đọc đúng thanh?</p>
+    <p><b>Bản 15/10/2026</b> · <i>20 màn · <span id="tong30">đang tải nhận xét…</span></i></p>
+  </section>
+  <main class="luoi" id="luoi30"></main>
   </div>
   <div id="p-gt" role="tabpanel" aria-labelledby="t-gt" hidden style="flex-direction:column;gap:18px">
     <section class="huong" aria-label="Cách tra soát giáo trình">
@@ -176,10 +186,62 @@ function ve(ds,boQuaDangGo){let n=0;ds.forEach(x=>{const c=(NG.find(g=>g[0]===x.
   tong.textContent=n?`đã có ${n} nhận xét`:"chưa có nhận xét"}
 const tai=()=>goi({app:"soat"}).then(r=>{if(r&&r.ok)ve(r.ds||[],true)}).catch(()=>{tong.textContent="chưa tải được nhận xét (kiểm tra mạng)"});
 tai();setInterval(tai,60000);
+/* ===== 15/10 chị: soát app TRẺ EM + NGƯỜI LỚN chung 1 link → tab "Soát app 30 ngày" (nhận xét lưu riêng: bo TT30) ===== */
+const M30=[
+ ["01","Đăng nhập","Mở app phiên mới phải nhập lại mã 4 số · có nút tên người đã học trên máy"],
+ ["02","Trang đầu","Cách học: buổi 10 phút · tối đa 5 buổi mới/ngày"],
+ ["03","Bài mở đầu","Nghe giới thiệu · mũi tên chỉ theo lời cô · 5 tab"],
+ ["04","Lộ trình","Trái: ngày · phải: các buổi ~10 phút + % đã học"],
+ ["05","Buổi học · đầu bài","Ngày · buổi · thanh các bước · nghe giảng bài"],
+ ["06","Bảng phiên âm tổng quát","Bấm ô nào nghe ô đó (tiếng người thật)"],
+ ["07","Ô phiên âm · 4 thanh","Phiên âm · chữ Hán · nghĩa · cách đọc thanh"],
+ ["08","Bingo","Nghe cô đọc → chạm đúng ô · dưới phiên âm có chữ Hán + nghĩa"],
+ ["09","Đọc lại · máy tự chấm","Bấm Đọc & chấm → đọc → máy báo đúng/sai"],
+ ["10","Nối phiên âm","Chạm 🔊 nghe → chạm phiên âm đúng"],
+ ["11","Sơ đồ tư duy từ mới","Hình màu nước · phiên âm · chữ Hán · nghĩa · chạm là nghe"],
+ ["12","Nghe · chọn hình","Mỗi lần 1 câu · nghe → chọn đúng hình"],
+ ["13","Nối hình với chữ","Chạm hình → chạm chữ (có phiên âm + nghĩa)"],
+ ["14","Chữ Hán · bộ thủ","Chữ to có phiên âm · cách nhớ chữ"],
+ ["15","Tập viết","Xem thứ tự nét → tự viết bằng ngón tay"],
+ ["16","Mẫu câu · hội thoại","Chữ Hán · phiên âm · nghĩa · bấm từng câu để nghe"],
+ ["17","Luyện nói · máy tự chấm","Nghe mẫu → nói → máy chấm %"],
+ ["18","Bài tập · điểm","Nghe chọn nghĩa · ghép câu · trắc nghiệm"],
+ ["19","Xong buổi","Hộp chúc mừng tự đóng · nút Học tiếp"],
+ ["20","Hỏi / góp ý","Học viên gửi câu hỏi → về email SunMoon"]];
+const luoi30=document.getElementById("luoi30"),tong30=document.getElementById("tong30");
+luoi30.innerHTML=M30.map(([so,ten,ghi,mh])=>`<figure>
+  <button class="anh" type="button" data-so="${so}" aria-label="Phóng to màn ${so}: ${esc(ten)}"><img src="../soat-30-ngay/img/${so}.jpg" alt="Màn ${so}: ${esc(ten)}" loading="lazy"></button>
+  <figcaption><span class="so">${so}</span><span class="ten">${esc(ten)}${mh?'<span class="minh">ảnh dùng số liệu minh hoạ</span>':""}</span><span class="ghi">${esc(ghi)}</span></figcaption>
+  <div class="nx">${NG.map(([n,c])=>`<div class="o"><label class="${c}" for="nx30-${so}-${c}">${n} nhận xét</label>
+    <div class="dong"><textarea id="nx30-${so}-${c}" rows="2" maxlength="1500" placeholder="Màn ${so}: lỗi gì, ở đâu…"></textarea><button class="luu" type="button" data-so="${so}" data-ng="${n}" data-c="${c}">Lưu</button></div>
+    <div class="tt" id="tt30-${so}-${c}" aria-live="polite"></div></div>`).join("")}</div>
+</figure>`).join("");
+luoi30.addEventListener("click",async e=>{
+  const a=e.target.closest(".anh");if(a){const m=M30.find(x=>x[0]===a.dataset.so);xa.src=`../soat-30-ngay/img/${m[0]}.jpg`;xa.alt=`Màn ${m[0]}: ${m[1]}`;xt.textContent=`${m[0]} · ${m[1]}`;try{dl.showModal()}catch(err){dl.setAttribute("open","")}return}
+  const b=e.target.closest(".luu");if(!b)return;
+  const ta=document.getElementById(`nx30-${b.dataset.so}-${b.dataset.c}`),tt=document.getElementById(`tt30-${b.dataset.so}-${b.dataset.c}`);
+  b.disabled=true;b.textContent="Đang lưu…";tt.className="tt";tt.textContent="";
+  try{const r=await goi({app:"soat",bo:"TT30",viec:"luu",man:b.dataset.so,nguoi:b.dataset.ng,noiDung:ta.value.trim()});
+    if(r&&r.ok){ta.dataset.goc=ta.value.trim();tt.className="tt ok";tt.textContent="Đã lưu "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"})+" ✓";if(r.ds)ve30(r.ds,true)}
+    else{tt.className="tt loi";tt.textContent=(r&&r.loi)||"Chưa lưu được — thử lại nhé"}}
+  catch(err){tt.className="tt loi";tt.textContent="Mất mạng — chưa lưu được, bấm Lưu lại nhé"}
+  b.disabled=false;b.textContent="Lưu"});
+/* nạp nhận xét đã lưu; ô đang gõ dở (khác bản đã lưu) thì không ghi đè */
+function ve30(ds,boQuaDangGo){let n=0;ds.forEach(x=>{const c=(NG.find(g=>g[0]===x.nguoi)||[])[1];if(!c)return;const ta=document.getElementById(`nx30-${x.man}-${c}`);if(!ta)return;
+    if(x.noiDung)n++;const dangGo=document.activeElement===ta||(ta.dataset.goc!==undefined&&ta.value.trim()!==ta.dataset.goc);
+    if(!dangGo||!boQuaDangGo&&ta.value.trim()===""){ta.value=x.noiDung;ta.dataset.goc=x.noiDung;const tt=document.getElementById(`tt30-${x.man}-${c}`);if(x.noiDung&&!tt.textContent)tt.textContent="Lưu lúc "+x.luc;
+      /* 07/10 chị: góp ý đã sửa → gạch ngang + dòng "Đã sửa"; bạn gõ nhận xét mới thì bỏ gạch */
+      if(x.xong&&x.noiDung){ta.classList.add("daSua");tt.className="tt xong";tt.textContent="✅ Đã sửa ("+x.xong.slice(11,16)+" "+x.xong.slice(8,10)+"/"+x.xong.slice(5,7)+"): "+x.traLoi;ta.oninput=()=>ta.classList.remove("daSua")}
+      else{ta.classList.remove("daSua");if(tt.classList.contains("xong")){tt.className="tt";tt.textContent=x.noiDung?"Lưu lúc "+x.luc:""}}}});
+  tong30.textContent=n?`đã có ${n} nhận xét`:"chưa có nhận xét"}
+const tai30=()=>goi({app:"soat",bo:"TT30"}).then(r=>{if(r&&r.ok)ve30(r.ds||[],true)}).catch(()=>{tong30.textContent="chưa tải được nhận xét (kiểm tra mạng)"});
+
+tai30();setInterval(tai30,60000);
+
 /* ===== 07/10 — TAB TRA SOÁT GIÁO TRÌNH (Hà) · lưu bảng SunMoon, app "soatgt" ===== */
-const tabs=[["t-app","p-app"],["t-gt","p-gt"]];
+const tabs=[["t-app","p-app"],["t-tt","p-tt"],["t-gt","p-gt"]];
 function moTab(id){tabs.forEach(([t,p])=>{const on=t===id;document.getElementById(t).setAttribute("aria-selected",on);const el=document.getElementById(p);el.hidden=!on;el.style.display=on?"flex":"none"});
-  try{history.replaceState(null,"",id==="t-gt"?"#giao-trinh":location.pathname)}catch(e){} if(id==="t-gt"&&!gtDaTai)gtTai()}
+  try{history.replaceState(null,"",id==="t-gt"?"#giao-trinh":id==="t-tt"?"#nguoi-lon":location.pathname)}catch(e){} if(id==="t-gt"&&!gtDaTai)gtTai()}
 tabs.forEach(([t])=>document.getElementById(t).addEventListener("click",()=>moTab(t)));
 const GOC="Downloads › GIÁO TRÌNH 2023 › GIÁO TRÌNH TIẾNG TRUNG › ";
 const KHOA=[
@@ -305,7 +367,7 @@ gtDsEl.addEventListener("change",e=>{const i=e.target;if(!i.classList.contains("
   else if(v!==(r.ghiChu||""))gtLuu(id,{ghiChu:v.slice(0,500)})});
 document.querySelectorAll("[data-gtloc]").forEach(b=>b.addEventListener("click",()=>{gtLoc=b.dataset.gtloc;document.querySelectorAll("[data-gtloc]").forEach(x=>x.classList.toggle("on",x===b));gtVe()}));
 gtVe();
-if(location.hash==="#giao-trinh")moTab("t-gt");
+if(location.hash==="#giao-trinh")moTab("t-gt");if(location.hash==="#nguoi-lon")moTab("t-tt");
 setInterval(()=>{if(!document.getElementById("p-gt").hidden)gtTai()},60000);
 </script>
 </body>
