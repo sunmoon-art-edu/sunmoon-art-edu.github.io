@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Soát app 30 ngày · SunMoon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Be+Vietnam+Pro:wght@400;600&display=swap">
+<style>
+/* 15/10 chị: "bảng tra soát giống bên app trẻ em" — 2 quản lý soát 20 màn hình app NGƯỜI LỚN 30 ngày (giống /hoc/soat-yct1/) — dưới mỗi màn "Nhi nhận xét", "Hà nhận xét", bấm Lưu là lưu (bảng SunMoon, action soat) */
+:root{--nen:#FBF4EE;--the:#fff;--muc:#24323A;--phu:#5E6E76;--vien:#D6E3E9;--ngoc:#C8453A;--ngoc-dam:#A2342B;--vang:#F2B935;--vang-nhat:#FFF4D6;
+  --hien:'Baloo 2','Be Vietnam Pro',system-ui,sans-serif;--than:'Be Vietnam Pro',system-ui,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--nen);color:var(--muc);font:400 15px/1.55 var(--than);padding:20px 16px 48px}
+.khung{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:flex-end;justify-content:space-between}
+h1{font:800 clamp(26px,4.2vw,38px)/1.1 var(--hien);margin:0}
+h1 span{color:var(--ngoc)}
+.ban{font-size:13px;color:var(--phu)}
+.huong{background:var(--vang-nhat);border:1px solid var(--vang);border-radius:14px;padding:12px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 22px}
+.huong p{margin:0}.huong b{font-weight:600}.huong i{color:var(--phu)}
+.tong{font-size:14px;color:var(--phu)}
+.luoi{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:18px}
+figure{margin:0;background:var(--the);border:1px solid var(--vien);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.anh{all:unset;cursor:zoom-in;display:block;aspect-ratio:1180/820;max-width:100%;background:var(--nen)}
+.anh:focus-visible{outline:3px solid var(--ngoc);outline-offset:-3px}
+.anh img{width:100%;height:100%;object-fit:cover;display:block}
+figcaption{padding:10px 14px 6px;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline}
+.so{font:800 22px/1 var(--hien);color:var(--ngoc);font-variant-numeric:tabular-nums;grid-row:span 2}
+.ten{font-weight:600;font-size:16px}.ghi{color:var(--phu);font-size:14px}
+.minh{display:inline-block;font-size:12px;background:var(--vang-nhat);border:1px solid var(--vang);border-radius:999px;padding:0 8px;margin-left:6px}
+.nx{padding:6px 14px 14px;display:grid;gap:10px}
+.o label{display:block;font-weight:600;font-size:14px;margin-bottom:4px}
+.o label.nhi{color:#C2436A}.o label.ha{color:#2E7DBA}
+.o .dong{display:flex;gap:8px;align-items:flex-end}
+.o textarea{flex:1;min-width:0;resize:vertical;min-height:44px;border:1.5px solid var(--vien);border-radius:10px;padding:8px 10px;font:inherit;color:var(--muc);background:#fff}
+.o textarea:focus{outline:none;border-color:var(--ngoc)}
+.luu{all:unset;cursor:pointer;background:var(--ngoc);color:#fff;font-weight:600;border-radius:10px;padding:9px 16px;box-shadow:0 3px 0 var(--ngoc-dam)}
+.luu:focus-visible{outline:3px solid var(--vang);outline-offset:2px}
+.luu[disabled]{opacity:.55;cursor:default}
+.tt{font-size:12px;color:var(--phu);min-height:16px;margin-top:3px}
+.tt.ok{color:var(--ngoc-dam)}.tt.loi{color:#C4392A}
+.o textarea.daSua{text-decoration:line-through;color:#8C8C8C;background:#F3F8F1}.tt.xong{color:#2E7D4F;font-size:13px;font-weight:600}
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);width:100%}
+dialog::backdrop{background:rgba(10,16,20,.82)}
+dialog img{width:100%;height:auto;border-radius:12px;display:block}
+dialog p{color:#fff;text-align:center;margin:10px 0 0;font-weight:600}
+/* 07/10 — tab "Tra soát giáo trình" cho Hà */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--vien)}
+.tabs button{all:unset;cursor:pointer;padding:9px 16px;font:600 15px/1.2 var(--than);color:var(--phu);border-radius:10px 10px 0 0;margin-bottom:-2px;border-bottom:3px solid transparent}
+.tabs button[aria-selected="true"]{color:var(--ngoc-dam);border-bottom-color:var(--ngoc);background:var(--the)}
+.tabs button:focus-visible{outline:3px solid var(--ngoc);outline-offset:-3px}
+.gt-tien{background:var(--the);border:1px solid var(--vien);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+.gt-hang{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.gt-so{font:800 24px/1 var(--hien);font-variant-numeric:tabular-nums}.gt-so small{font:400 14px var(--than);color:var(--phu)}
+.gt-dem{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--phu)}.gt-dem b{color:var(--muc)}
+.gt-vach{height:8px;border-radius:99px;background:var(--vien);overflow:hidden}.gt-vach i{display:block;height:100%;width:0;background:var(--ngoc);transition:width .4s}
+.gt-loc{display:flex;gap:6px;flex-wrap:wrap}
+.gt-loc button{all:unset;cursor:pointer;font-size:13px;border:1px solid var(--vien);background:var(--the);border-radius:99px;padding:5px 12px}
+.gt-loc button.on{background:var(--ngoc);border-color:var(--ngoc);color:#fff}
+.gt-khoa h2{font:800 20px/1.2 var(--hien);margin:4px 0 8px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.gt-khoa h2 small{font:400 13px var(--than);color:var(--phu)}
+.gt-ds{background:var(--the);border:1px solid var(--vien);border-radius:14px;overflow:hidden}
+.gt-muc{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.6fr);gap:8px 18px;padding:12px 14px;border-top:1px solid var(--vien)}
+.gt-muc:first-child{border-top:0}.gt-muc.xong{background:#F1FAF6}
+.gt-ten{font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{font-size:12px;font-weight:600;border-radius:6px;padding:1px 7px;white-space:nowrap}
+.chip.ok{background:#E3F4EC;color:#24724F}.chip.thieu{background:var(--vang-nhat);color:#8A600A}.chip.chua{background:#FCE9E6;color:#B23A2B}
+.gt-may{font-size:13px;color:var(--phu);font-style:italic;margin-top:2px}
+.gt-duong{font-size:12px;color:var(--phu);margin-top:4px;word-break:break-word}
+.gt-chon{display:flex;flex-direction:column;gap:6px;min-width:0}
+.gt-nut{display:flex;gap:4px;flex-wrap:wrap}
+.gt-nut button{all:unset;cursor:pointer;font-size:13px;border:1px solid var(--vien);background:#fff;border-radius:8px;padding:5px 10px}
+.gt-nut button[aria-pressed="true"][data-kq="dung"]{background:#2F8A5F;border-color:#2F8A5F;color:#fff}
+.gt-nut button[aria-pressed="true"][data-kq="bosung"]{background:var(--vang);border-color:var(--vang);color:#3A2A05}
+.gt-nut button[aria-pressed="true"][data-kq="sai"]{background:#C4392A;border-color:#C4392A;color:#fff}
+.gt-nut button:focus-visible{outline:2px solid var(--ngoc);outline-offset:2px}
+.gt-o{font:inherit;font-size:13px;width:100%;min-width:0;border:1.5px solid var(--vien);border-radius:8px;padding:6px 9px;background:#fff;color:var(--muc)}
+.gt-o:focus{outline:none;border-color:var(--ngoc)}
+.gt-lk{display:flex;gap:6px;align-items:center}.gt-lk .gt-o{flex:1}
+.gt-lk a{font-size:13px;font-weight:600;color:var(--ngoc-dam);white-space:nowrap;text-decoration:none}
+.gt-tt{font-size:12px;color:var(--phu);min-height:16px}.gt-tt.loi{color:#B23A2B}
+@media (max-width:640px){.gt-muc{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="khung">
+  <header>
+    <h1>Soát app <span>30 ngày tự học</span></h1>
+    <div class="ban">Bản 15/10/2026 · 20 màn · khổ iPad ngang · <span class="tong" id="tong">đang tải nhận xét…</span></div>
+  </header>
+<div id="p-app" role="tabpanel" aria-labelledby="t-app" style="display:flex;flex-direction:column;gap:20px">
+  <section class="huong" aria-label="Cách soát">
+    <p><b>Mở app:</b> <i>hoctiengtrungvn.com/hoc/30-ngay</i></p>
+    <p><b>Thấy lỗi:</b> gõ vào ô <i>Nhi nhận xét</i> / <i>Hà nhận xét</i> → bấm <b>Lưu</b></p>
+    <p><b>Soát kỹ:</b> chữ Hán có đủ <i>phiên âm + nghĩa</i>?</p>
+    <p><b>Và:</b> <i>đọc sai thanh, chữ nhỏ, nút khó bấm, tiếng rè</i>?</p>
+  </section>
+  <main class="luoi" id="luoi"></main>
+  </div>
+</div>
+<dialog id="xem"><img id="xemAnh" alt=""><p id="xemTen"></p></dialog>
+<script>
+const API="https://script.google.com/macros/s/AKfycbzcqoHdsWUcwVkGZimpB-zN5PHvtn3HW1YAc5lGTqdTYhKunKvibm136KhqSFF2O8eKaA/exec";
+const goi=b=>fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(b)}).then(r=>r.json());
+const M=[
+ ["01","Đăng nhập","Mở app phiên mới phải nhập lại mã 4 số · có nút tên người đã học trên máy"],
+ ["02","Trang đầu","Cách học: buổi 10 phút · tối đa 5 buổi mới/ngày"],
+ ["03","Bài mở đầu","Nghe giới thiệu · mũi tên chỉ theo lời cô · 5 tab"],
+ ["04","Lộ trình","Trái: ngày · phải: các buổi ~10 phút + % đã học"],
+ ["05","Buổi học · đầu bài","Ngày · buổi · thanh các bước · nghe giảng bài"],
+ ["06","Bảng phiên âm tổng quát","Bấm ô nào nghe ô đó (tiếng người thật)"],
+ ["07","Ô phiên âm · 4 thanh","Phiên âm · chữ Hán · nghĩa · cách đọc thanh"],
+ ["08","Bingo","Nghe cô đọc → chạm đúng ô · dưới phiên âm có chữ Hán + nghĩa"],
+ ["09","Đọc lại · máy tự chấm","Bấm Đọc & chấm → đọc → máy báo đúng/sai"],
+ ["10","Nối phiên âm","Chạm 🔊 nghe → chạm phiên âm đúng"],
+ ["11","Sơ đồ tư duy từ mới","Hình màu nước · phiên âm · chữ Hán · nghĩa · chạm là nghe"],
+ ["12","Nghe · chọn hình","Mỗi lần 1 câu · nghe → chọn đúng hình"],
+ ["13","Nối hình với chữ","Chạm hình → chạm chữ (có phiên âm + nghĩa)"],
+ ["14","Chữ Hán · bộ thủ","Chữ to có phiên âm · cách nhớ chữ"],
+ ["15","Tập viết","Xem thứ tự nét → tự viết bằng ngón tay"],
+ ["16","Mẫu câu · hội thoại","Chữ Hán · phiên âm · nghĩa · bấm từng câu để nghe"],
+ ["17","Luyện nói · máy tự chấm","Nghe mẫu → nói → máy chấm %"],
+ ["18","Bài tập · điểm","Nghe chọn nghĩa · ghép câu · trắc nghiệm"],
+ ["19","Xong buổi","Hộp chúc mừng tự đóng · nút Học tiếp"],
+ ["20","Hỏi / góp ý","Học viên gửi câu hỏi → về email SunMoon"]
+];
+const NG=[["Nhi","nhi"],["Hà","ha"]];
+const luoi=document.getElementById("luoi"),dl=document.getElementById("xem"),xa=document.getElementById("xemAnh"),xt=document.getElementById("xemTen"),tong=document.getElementById("tong");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+luoi.innerHTML=M.map(([so,ten,ghi,mh])=>`<figure>
+  <button class="anh" type="button" data-so="${so}" aria-label="Phóng to màn ${so}: ${esc(ten)}"><img src="img/${so}.jpg" alt="Màn ${so}: ${esc(ten)}" loading="lazy"></button>
+  <figcaption><span class="so">${so}</span><span class="ten">${esc(ten)}${mh?'<span class="minh">ảnh dùng số liệu minh hoạ</span>':""}</span><span class="ghi">${esc(ghi)}</span></figcaption>
+  <div class="nx">${NG.map(([n,c])=>`<div class="o"><label class="${c}" for="nx-${so}-${c}">${n} nhận xét</label>
+    <div class="dong"><textarea id="nx-${so}-${c}" rows="2" maxlength="1500" placeholder="Màn ${so}: lỗi gì, ở đâu…"></textarea><button class="luu" type="button" data-so="${so}" data-ng="${n}" data-c="${c}">Lưu</button></div>
+    <div class="tt" id="tt-${so}-${c}" aria-live="polite"></div></div>`).join("")}</div>
+</figure>`).join("");
+luoi.addEventListener("click",async e=>{
+  const a=e.target.closest(".anh");if(a){const m=M.find(x=>x[0]===a.dataset.so);xa.src=`img/${m[0]}.jpg`;xa.alt=`Màn ${m[0]}: ${m[1]}`;xt.textContent=`${m[0]} · ${m[1]}`;try{dl.showModal()}catch(err){dl.setAttribute("open","")}return}
+  const b=e.target.closest(".luu");if(!b)return;
+  const ta=document.getElementById(`nx-${b.dataset.so}-${b.dataset.c}`),tt=document.getElementById(`tt-${b.dataset.so}-${b.dataset.c}`);
+  b.disabled=true;b.textContent="Đang lưu…";tt.className="tt";tt.textContent="";
+  try{const r=await goi({app:"soat",bo:"TT30",viec:"luu",man:b.dataset.so,nguoi:b.dataset.ng,noiDung:ta.value.trim()});
+    if(r&&r.ok){ta.dataset.goc=ta.value.trim();tt.className="tt ok";tt.textContent="Đã lưu "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"})+" ✓";if(r.ds)ve(r.ds,true)}
+    else{tt.className="tt loi";tt.textContent=(r&&r.loi)||"Chưa lưu được — thử lại nhé"}}
+  catch(err){tt.className="tt loi";tt.textContent="Mất mạng — chưa lưu được, bấm Lưu lại nhé"}
+  b.disabled=false;b.textContent="Lưu"});
+dl.addEventListener("click",()=>{try{dl.close()}catch(err){dl.removeAttribute("open")}});
+/* nạp nhận xét đã lưu; ô đang gõ dở (khác bản đã lưu) thì không ghi đè */
+function ve(ds,boQuaDangGo){let n=0;ds.forEach(x=>{const c=(NG.find(g=>g[0]===x.nguoi)||[])[1];if(!c)return;const ta=document.getElementById(`nx-${x.man}-${c}`);if(!ta)return;
+    if(x.noiDung)n++;const dangGo=document.activeElement===ta||(ta.dataset.goc!==undefined&&ta.value.trim()!==ta.dataset.goc);
+    if(!dangGo||!boQuaDangGo&&ta.value.trim()===""){ta.value=x.noiDung;ta.dataset.goc=x.noiDung;const tt=document.getElementById(`tt-${x.man}-${c}`);if(x.noiDung&&!tt.textContent)tt.textContent="Lưu lúc "+x.luc;
+      /* 07/10 chị: góp ý đã sửa → gạch ngang + dòng "Đã sửa"; bạn gõ nhận xét mới thì bỏ gạch */
+      if(x.xong&&x.noiDung){ta.classList.add("daSua");tt.className="tt xong";tt.textContent="✅ Đã sửa ("+x.xong.slice(11,16)+" "+x.xong.slice(8,10)+"/"+x.xong.slice(5,7)+"): "+x.traLoi;ta.oninput=()=>ta.classList.remove("daSua")}
+      else{ta.classList.remove("daSua");if(tt.classList.contains("xong")){tt.className="tt";tt.textContent=x.noiDung?"Lưu lúc "+x.luc:""}}}});
+  tong.textContent=n?`đã có ${n} nhận xét`:"chưa có nhận xét"}
+const tai=()=>goi({app:"soat",bo:"TT30"}).then(r=>{if(r&&r.ok)ve(r.ds||[],true)}).catch(()=>{tong.textContent="chưa tải được nhận xét (kiểm tra mạng)"});
+tai();setInterval(tai,60000);
+</script>
+</body>
+</html>

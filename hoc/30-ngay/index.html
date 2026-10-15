@@ -1984,7 +1984,7 @@ function rubyTinh(root){if(!root||!window.pinyinPro)return;const w=document.crea
   ds.forEach(n=>{const sp=document.createElement("span");sp.innerHTML=rbHz(n.textContent);n.replaceWith(sp)})}
 ["origin","gate"].forEach(id=>rubyTinh(document.getElementById(id)));document.querySelectorAll("#course > section:not(#origin), .top").forEach(rubyTinh);
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261011120824";
+const BAN_SO="20261015145252";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
