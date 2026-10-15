@@ -1727,7 +1727,7 @@ function noiCot(box,tF,pF){const ds=JSON.parse(box.dataset.ds),ph=shuffle(ds.map
     else{sai=1;bt.classList.add("wrong");buzz();setTimeout(()=>bt.classList.remove("wrong"),450)}})}
 
 /* 06/10 chị: từ mới = sơ đồ tư duy có hình vẽ; chạm hình → nghe + thẻ to (hình, chữ có phiên âm, nghĩa) */
-const anhTu=(n,i)=>`img/tu/${n}-${i}.jpg`,TU_HINH=n=>n>=2&&n<=26;   /* 06/10: đã vẽ Ngày 2–26 (22–26 bằng Gemini bản free); ngày chưa có hình thì hiện chữ */
+const anhTu=(n,i)=>`img/tu/${n}-${i}.jpg`,TU_HINH=n=>n>=2&&n<=30;   /* 15/10: đủ hình Ngày 2–30 */    /* 06/10: đã vẽ Ngày 2–26 (22–26 bằng Gemini bản free); ngày chưa có hình thì hiện chữ */
 function tuMM(d,n){const W=d.w.map(x=>x.split("|")),N=W.length;
   return `<div class="tmm"><div class="tmmC">Từ mới<br>${N}</div>${W.map(([hz,py,vi],i)=>{const a=(-90+360*i/N)*Math.PI/180,x=50+39*Math.cos(a),y=50+39*Math.sin(a);
     return `<button class="tmmO" data-i="${i}" data-cue="w${i}" data-say="${esc(hz)}" data-py="${esc(py)}" data-vi="${esc(vi)}" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%" aria-label="${esc(hz)} — ${esc(vi)}">${TU_HINH(n)?`<img src="${anhTu(n,i)}" alt="" loading="lazy">`:`<span class="tmmNo">${esc(vi)}</span>`}<span class="tmmH">${rdRuby(hz,py)}</span><span class="tmmV">${esc(vi)}</span></button>`}).join("")}</div><div class="tmmCard" hidden></div>`}
@@ -1988,7 +1988,7 @@ function rubyTinh(root){if(!root||!window.pinyinPro)return;const w=document.crea
   ds.forEach(n=>{const sp=document.createElement("span");sp.innerHTML=rbHz(n.textContent);n.replaceWith(sp)})}
 ["origin","gate"].forEach(id=>rubyTinh(document.getElementById(id)));document.querySelectorAll("#course > section:not(#origin), .top").forEach(rubyTinh);
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261015152145";
+const BAN_SO="20261015153424";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
