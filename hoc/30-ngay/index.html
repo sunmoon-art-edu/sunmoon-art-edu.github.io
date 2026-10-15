@@ -154,12 +154,12 @@ button:focus-visible{outline:3px solid var(--moon);outline-offset:2px}
 .rdb rt{font:600 14px/1.4 var(--tx);color:var(--ink-2)}
 .rdb .vi{display:block;text-align:center;font-size:14px;font-style:italic;font-weight:300;color:var(--ink-2);margin:-2px 0 6px}
 .rdb .all{align-self:center;margin-top:6px;padding:8px 14px;font-size:14px}
-.ga{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.ga{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
 .gab{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid var(--line);border-radius:14px;background:var(--surface)}
 .gab .ini{flex:none;font:700 30px/1 var(--tx);color:var(--sun);min-width:34px;text-align:center}
 .gab ul{list-style:none;margin:0;padding:0 0 0 10px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:2px;flex:1}
 .gab button{display:flex;gap:8px;align-items:baseline;width:100%;border:0;background:none;padding:3px 0;font:inherit;font-size:17px;color:var(--ink);text-align:left}
-.gab button b{min-width:42px;font-weight:600}
+.gab button b{min-width:66px;font-weight:600;white-space:nowrap}.gab button{white-space:nowrap}
 .gab button span{font:400 20px/1 var(--hz);color:var(--ink)}
 details.full{border:2px solid var(--line);border-radius:18px;padding:12px 14px}
 details.full summary{cursor:pointer;font:700 16px/1.3 var(--tx)}
@@ -660,6 +660,7 @@ button,a,.opt,.node{touch-action:manipulation}
 .tmmV{font:400 12px/1.2 var(--tx);color:var(--ink-2);background:var(--surface);border-radius:8px;padding:1px 6px;margin-top:2px;white-space:nowrap}
 small.nghia{display:block;font:400 13px/1.25 var(--tx);color:var(--ink-2);margin-top:3px}
 .hzi ruby rt,.nd ruby rt,.hc .big ruby rt{font:500 .45em/1 var(--tx)}
+.exw{display:inline-flex;flex-direction:column;align-items:center;margin:2px 10px 2px 0;vertical-align:top}.exw small{font:400 12px/1.2 var(--tx);color:var(--ink-2);letter-spacing:0}.rad .ex{display:flex!important;flex-direction:row!important;flex-wrap:wrap;gap:4px 10px}
 .tmmCard{display:flex;gap:14px;align-items:center;margin-top:12px;padding:12px;border-radius:18px;background:var(--sun-soft)}
 .tmmCard img{width:min(42%,190px);aspect-ratio:1;border-radius:16px;object-fit:cover;background:#fff}
 .tmmCard .big{font:600 clamp(30px,8vw,44px)/1.2 var(--zh,inherit)}.tmmCard .big rt{font:500 14px/1 var(--tx)}
@@ -1431,8 +1432,11 @@ const RADS="亻忄讠氵灬饣钅宀艹冫刂囗匚丨丶丿𠂇卜彐";
 const ARW='<svg viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 6h22M18 1l5 5-5 5"/></svg>';
 function nd(c,m,base){const say=[...c].some(x=>/[\u3400-\u9fff]/.test(x)&&!RADS.includes(x));return `<button class="nd${base?" base":""}"${say?` data-say="${esc(c.replace(/[^\u3400-\u9fff]/g,"").slice(-1))}"`:""}><span class="c">${rbHz(c)}</span>${m?`<span class="m">${hzWrap(m)}</span>`:""}</button>`}
 function arw(add){return `<span class="ar2"><span class="pl">+ ${rbHz(add)}</span>${ARW}</span>`}
+/* 15/10 chị: chữ ví dụ của bộ thủ cũng đủ chữ Hán – phiên âm – nghĩa */
+const EXNG={"二":"hai","三":"ba","王":"vua","大":"to","天":"trời","从":"theo","林":"rừng","森":"rừng rậm","休":"nghỉ","谢":"cảm ơn","说":"nói","话":"lời nói","请":"mời","您":"ngài","想":"nghĩ, muốn","你":"bạn","他":"anh ấy","们":"(số nhiều)","吃":"ăn","叫":"gọi, tên là","名":"tên","吗":"không? (hỏi)","国":"nước","回":"về","四":"bốn","忙":"bận","快":"nhanh","慢":"chậm","家":"nhà","字":"chữ","安":"yên","爸":"bố","爷":"ông","多":"nhiều","岁":"tuổi","朋":"bạn","明":"sáng","有":"có","星":"sao","早":"sớm","是":"là","点":"giờ, điểm","热":"nóng","照":"chiếu, chụp","本":"cuốn, gốc","杯":"cốc","校":"trường","饭":"cơm","饿":"đói","饺":"sủi cảo","没":"không có","洗":"rửa","汉":"Hán","贵":"đắt","货":"hàng hoá","财":"của cải","钱":"tiền","银":"bạc","错":"sai","学":"học","好":"tốt","问":"hỏi","间":"gian, giữa","上":"trên","下":"dưới","转":"rẽ, quay","军":"quân","辆":"chiếc (xe)","骑":"cưỡi, đi xe","驾":"lái","看":"nhìn","睡":"ngủ","眼":"mắt","东":"đông","雪":"tuyết","雷":"sấm","零":"số 0","冷":"lạnh","冰":"băng","左":"trái","功":"công","空":"trống, rảnh","语":"ngôn ngữ","泳":"bơi","游":"bơi, chơi","到":"đến","别":"đừng, khác","刻":"khắc","电":"điện","少":"ít","尖":"nhọn","穿":"mặc","窗":"cửa sổ","菜":"rau, món","茶":"trà","花":"hoa","草":"cỏ","加":"cộng","男":"nam","动":"động"};
+const exNghia=ex=>ex.split(/\s+/).map(w=>{const c=w.replace(/[^\u3400-\u9fff]/g,"");return `<span class="exw">${rbHz(w)}${EXNG[c]?`<small>${esc(EXNG[c])}</small>`:""}</span>`}).join("");
 function mindMap(d){
-  const rads=(d.r||[]).map(x=>{const[c,ten,ng,ex]=x.split("|");return `<div class="rad"><span class="rc">${rbHz(c)}</span><span><b>Bộ ${esc(ten)}</b><i>${esc(ng)}</i><span class="ex">${hzWrap(ex)}</span></span></div>`}).join("");
+  const rads=(d.r||[]).map(x=>{const[c,ten,ng,ex]=x.split("|");return `<div class="rad"><span class="rc">${rbHz(c)}</span><span><b>Bộ ${esc(ten)}</b><i>${esc(ng)}</i><span class="ex">${exNghia(ex)}</span></span></div>`}).join("");
   const maps=(d.m||[]).map(x=>{const[type,body]=[x.slice(0,x.indexOf(":")),x.slice(x.indexOf(":")+1)];
     if(type==="chain"){const st=body.split(">");const[c0,m0]=st[0].split("|");return `<div class="flow">${nd(c0,m0,1)}${st.slice(1).map(t=>{const[add,c,m]=t.split("|");return arw(add)+nd(c,m)}).join("")}</div>`}
     const it=body.split("*");const[c0,m0]=it[0].split("|");
@@ -1984,7 +1988,7 @@ function rubyTinh(root){if(!root||!window.pinyinPro)return;const w=document.crea
   ds.forEach(n=>{const sp=document.createElement("span");sp.innerHTML=rbHz(n.textContent);n.replaceWith(sp)})}
 ["origin","gate"].forEach(id=>rubyTinh(document.getElementById(id)));document.querySelectorAll("#course > section:not(#origin), .top").forEach(rubyTinh);
 /* tự cập nhật bản mới (chị 06/10): BAN_SO do dua-len-web.sh ghi lúc đưa lên */
-const BAN_SO="20261015145252";
+const BAN_SO="20261015152145";
 (function(){if(BAN_SO.startsWith("__"))return;let hien=false,kt=0;
   const xem=async()=>{if(Date.now()-kt<60000)return;kt=Date.now();
     try{const t=await(await fetch(location.pathname+"?ban="+Date.now(),{cache:"no-store"})).text();const m=t.match(/const BAN_SO="(\d+)"/);
