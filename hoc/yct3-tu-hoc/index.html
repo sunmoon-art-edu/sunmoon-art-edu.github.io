@@ -327,7 +327,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offse
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand .lw{filter:invert(1)}}
 .brand{flex:1 1 auto;overflow:hidden}
 @media (max-width:560px){.lvl{display:none}}
-.capG{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.capB{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:inherit;text-decoration:none}.capB b{font:700 16px/1.2 var(--tx)}.capB i{font:400 11px/1.2 var(--tx);font-style:normal;color:var(--ink-2)}.capB.on{border-color:var(--gold);background:#FFF6D6}
+.capG{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}@media(max-width:560px){.capG{grid-template-columns:repeat(3,1fr)}}.capB{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:inherit;text-decoration:none}.capB b{font:700 16px/1.2 var(--tx)}.capB i{font:400 11px/1.2 var(--tx);font-style:normal;color:var(--ink-2)}.capB.on{border-color:var(--gold);background:#FFF6D6}
 .lvl{font:700 11px/1 var(--tx);letter-spacing:.06em;background:var(--gold);color:#3A2A08;padding:5px 8px;border-radius:999px;white-space:nowrap}
 .back{white-space:nowrap;flex:none;margin-left:auto;border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-weight:600;font-size:14px}
 .wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:20px 72px;display:flex;flex-direction:column;gap:20px}
@@ -1421,9 +1421,9 @@ function sunIntro(box){
 const imN=e=>isNum(e)?`<span class="tNum">${e}</span>`:im(e);
 const pic=e=>isNum(e)?`<span class="e num">${e}</span>`:`<span class="e">${im(e)}</span>`;
 /* trang chủ */
-/* 08/10 chị: "làm tiếp YCT 2, 3, 4" — 4 app cùng khung, mỗi cấp 1 trang (../yct-tu-hoc/, ../yct2-tu-hoc/ …); thẻ chọn cấp ở trang chủ */
+/* 08/10 chị: "làm tiếp YCT 2, 3, 4" — 4 app cùng khung, mỗi cấp 1 trang (../yct-tu-hoc/, ../yct2-tu-hoc/ …); thẻ chọn cấp ở trang chủ · 01/11: + YCT 5, 6 */
 const CAP_SO=()=>+(GT_TK.slice(5)||1),capUrl=k=>`../${k===1?"yct":"yct"+k}-tu-hoc/`;
-function capChonHTML(){const c=CAP_SO();return `<section class="card capC"><h2><span class="ic">${im("📚")}</span>Các cấp YCT <small>học xong cấp này thì sang cấp sau</small></h2><div class="capG">${[1,2,3,4].map(k=>k===c?`<span class="capB on"><b>YCT ${k}</b><i>đang học</i></span>`:`<a class="capB" href="${capUrl(k)}"><b>YCT ${k}</b><i>${k<c?"ôn lại":"học tiếp"}</i></a>`).join("")}</div></section>`}
+function capChonHTML(){const c=CAP_SO();return `<section class="card capC"><h2><span class="ic">${im("📚")}</span>Các cấp YCT <small>học xong cấp này thì sang cấp sau</small></h2><div class="capG">${[1,2,3,4,5,6].map(k=>k===c?`<span class="capB on"><b>YCT ${k}</b><i>đang học</i></span>`:`<a class="capB" href="${capUrl(k)}"><b>YCT ${k}</b><i>${k<c?"ôn lại":"học tiếp"}</i></a>`).join("")}</div></section>`}
 function home(){
   document.getElementById("backBtn").hidden=true;
   app.innerHTML=`<section class="card stage coGT" id="stage"><img class="moonpal floaty" src="${H["🌛"]||""}" alt="Ông Mặt Trăng"><div class="gtCo"><img class="gtGiao" src="img/lop/co-giao.webp?v=${AV}" alt="Cô giáo SunMoon"><span class="song"><i></i><i></i><i></i></span><button class="sunbtn" aria-label="Nghe Cô Mặt Trời nói">${SUNSVG}</button></div>
@@ -1761,7 +1761,7 @@ async function chia(g){if(CK[g])return CK[g];const r=U&&U.k&&U.k[g];if(!r)throw 
 async function giaiMa(url,g){const r=await fetch(url);if(!r.ok)throw new Error("khong-tai");const b=new Uint8Array(await r.arrayBuffer());return crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},await chia(g),b.slice(12))}
 async function moBai(n){ND[n]=JSON.parse(new TextDecoder().decode(await giaiMa(`enc/c${n}.bin`,nhomCD(n))))}
 const BLOB={},MIME={mp3:"audio/mpeg",mp4:"audio/mp4",pdf:"application/pdf"};
-const AV="202610091214";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
+const AV="202611011320";   // = số trong phien-ban.json — chạy bash nang-ban.sh mỗi lần sửa
 /* 06/10 chị: học viên đang mở app cũng TỰ NHẬN BẢN MỚI — mở lại app / quay lại tab là kiểm, có bản mới thì tự tải lại (không mất tiến độ: tiến độ lưu trong máy) */
 function kiemBanMoi(){fetch("phien-ban.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>{if(!j||!j.v||j.v===AV)return;
   const dang=document.querySelector(".ls,.pw,.mung,.cd,.vidCo")||/^#(cd|b)\d/.test(location.hash);if(dang){   /* 06/10: đang trong bài thì KHÔNG tự tải lại (trước đây làm bé "nhảy về trang phiên âm") — chỉ hiện nút */
